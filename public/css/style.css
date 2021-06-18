@@ -66,7 +66,7 @@ header{
     max-width: 1200px;
     margin: 20px auto;
     padding: 10px;
-    background:  #0781b6;
+    background:  #FF8525;
     box-sizing: border-box;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 18px;
@@ -113,7 +113,7 @@ nav ul li a{
 }
 nav ul li a.active,
 nav ul li a:hover{
-    background: #00a1e6;
+    background: #df6000d8;
     color: white;
     transition: 0.5s;
     text-decoration-line:none;
@@ -142,7 +142,7 @@ nav ul li a:hover{
     font-size: 85px;
     font-family: 'Oswald', sans-serif;
     margin-top: 40px;
-    color:#0781b6;
+    color:#FF8525;
     margin-bottom: 80px;
 }
 .botonesinfo{
@@ -159,7 +159,7 @@ nav ul li a:hover{
     font-size: 18px;
     letter-spacing: 2px;
     border-radius: 40px;
-    background: linear-gradient(90deg,#00a1e6,#0781b6);
+    background: linear-gradient(90deg,#FF8525,#fc9444);
 }
 .botonesinfo .hero-btn2{
     position: relative;
@@ -175,7 +175,7 @@ nav ul li a:hover{
     background: linear-gradient(90deg,#dbdbdb,#ffffff);
 }
 .botonesinfo .btn1:hover{
-    background: linear-gradient(90deg,#00a1e6,#0781b6);
+    background: linear-gradient(90deg,#FF8525,#fc9444);
     color: #fff;
 }
 /***********************************************
@@ -192,7 +192,7 @@ nav ul li a:hover{
 #twiter a,
 #whatsaap a,
 #linkeding a{
-    background:#1f93c4a4;
+    background:#FF8525;
     padding: 15px 20px;
     color: #fff;
     text-decoration: none;
@@ -205,7 +205,7 @@ nav ul li a:hover{
 #twiter a:hover,
 #whatsaap a:hover,
 #linkeding a:hover{
-    background: #0781b6;
+    background: #ff83259c;
     padding: 15px 40px;
     transition: 0.4s ease;
 
@@ -248,7 +248,7 @@ nav ul li a:hover{
     width: 250px;
 }
 .service:hover{
-    background-color: #1f93c4a4;
+    background-color: #ff913e;
     transform: translateY(-3px);
     -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65); 
     box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
@@ -271,7 +271,7 @@ nav ul li a:hover{
 }
 .service > i{
     display: block;
-    color: #1f93c4a4;
+    color: #FF8525;
     font-size: 4rem;
     margin-bottom: 0.9rem;
     transition: color 0.3s ease-out;
@@ -306,11 +306,11 @@ nav ul li a:hover{
     font-size: 18px;
     letter-spacing: 2px;
     border-radius: 40px;
-    background: linear-gradient(90deg,#00a1e6,#0781b6);
+    background: linear-gradient(90deg,#FF8525,#fc9444);
 }
 .service:hover > .btn_modal_wel{
-    -webkit-box-shadow: inset 4px 4px 15px 0px #004b7e, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: inset 4px 4px 15px 0px #004b7e, 5px 5px 15px 5px rgba(0,0,0,0);
+    -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0);
     transition: 0.3s;
     text-decoration: none;
     text-decoration-line:none;
@@ -369,7 +369,7 @@ nav ul li a:hover{
 .frm_pagos{
     font-size: 35px;
     font-family: 'Poppins', sans-serif;
-    color: #00a1e6;
+    color: #FF8525;
 }
 
 .principal {
@@ -447,7 +447,7 @@ nav ul li a:hover{
     padding: 50px;
     color: #fff;
     background: linear-gradient(0deg, rgba(0,0,0,0.8491771708683473) 26%,
-                rgba(0, 109, 192, 0.808) 53%);
+                rgb(255,133,37) 53%);
     background-repeat:no-repeat;
     background-size: 100% 100%;
     background-size: cover;
@@ -553,7 +553,7 @@ h2 {
 ************************************************/
 
 .style1{
-    background-color: #0781b6;
+    background-color: #ff9340;
     height: 5px;
     border-radius: 11px;
     margin-right: 0%;
@@ -598,7 +598,7 @@ h2 {
     margin-left: 40px;
 }
 .testimonial-title h5{
-    color: #0781b6;
+    color: #FF8525;
     font-size: 33;
     font-family: 'Poppins', sans-serif;
 }
@@ -612,7 +612,7 @@ h2 {
     margin-left: 40px;
 }
 .proveedor-title h5{
-    color: #0781b6;
+    color: #FF8525;
     font-size: 33;
     font-family: 'Poppins', sans-serif;
 }
@@ -648,7 +648,7 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
 }
 .contact-form{
-    background-color:  #0781b6;
+    background-color:  #FF8525;
     position: relative;
 }
 .contact-form::before{
@@ -656,7 +656,7 @@ h2 {
     position: absolute;
     width: 26px;
     height: 26px;
-    background-color:#0781b6;
+    background-color:#FF8525;
     transform: rotate(45deg);
     top: 50px;
     left: -13px;
@@ -705,7 +705,7 @@ textarea.contact_input{
     background-color: white;
     border: 2px solid #fafafa;
     font-size: 0.95rem;
-    color: #0781b6;
+    color: #FF8525;
     line-height: 1;
     border-radius: 20px;
     outline: none;
@@ -722,7 +722,7 @@ textarea.contact_input{
     position: relative;
 }
 .contact-info .contact_tittle{
-    color: #0781b6;
+    color: #FF8525;
 }
 .contact-info .contact_text{
     color: black;
@@ -738,7 +738,7 @@ textarea.contact_input{
 .contact_information i{
     width: 28px;
     margin-right: 0.9rem;
-    color: #0781b6;
+    color: #FF8525;
 }
 .contact_information p{
     margin-top: 0;
@@ -758,7 +758,7 @@ textarea.contact_input{
     width: 35px;
     height: 35px;
     border-radius: 5px;
-    background: linear-gradient(45deg, #0781b6, #03577a); 
+    background: linear-gradient(90deg,#FF8525,#fc9444);
     color: white;
     text-align: center;
     line-height: 35px;
@@ -767,7 +767,7 @@ textarea.contact_input{
 }
 .social-icons a:hover{
     transform: scale(1.05);
-    background: linear-gradient(45deg, #03577a, #0781b6); 
+    background: linear-gradient(90deg,#FF8525,#fc9444);
 }
 /***********************************************
 ******************FODA**************************
@@ -796,7 +796,7 @@ textarea.contact_input{
     margin: 30px 0;
 }
 .nosotros_container .nosotros_card:hover{
-    border: 2px solid #0781b6;
+    border: 2px solid #fa9b53;
 }
 .nosotros_container .nosotros_card .nosotros_imbBx{
     position: absolute;
@@ -804,7 +804,7 @@ textarea.contact_input{
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0781b6;
+    background: #FF8525;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -820,7 +820,7 @@ textarea.contact_input{
     top: calc(50% - 75px);
     border-radius: 20px;
     transition: 0.5s ease-in-out;
-    background: #00a1e6;
+    background: #FF8525;
 }
 .nosotros_container .nosotros_card .nosotros_imbBx::before{
     content: attr(data-text);
@@ -880,7 +880,7 @@ textarea.contact_input{
 .single-content::after{
     content: '';
     display: block;
-    background: #0781b6;
+    background: #FF8525;
     top: 20px;
     bottom: 20px;
     opacity: 0;
@@ -962,7 +962,7 @@ textarea.contact_input{
 }
 
 .entry-title {
-    background: #1c74f8;
+    background: #FF8525;
     height: 140px;
     position: relative;
     text-align: center;
@@ -971,7 +971,7 @@ textarea.contact_input{
 }
 
 .entry-title>h3 {
-    background: #0064fa;
+    background: #FF8525;
     font-size: 20px;
     padding: 5px 0;
     text-transform: uppercase;
@@ -982,7 +982,7 @@ textarea.contact_input{
 .entry-title .price {
     position: absolute;
     bottom: -25px;
-    background: #0064fa;
+    background: #FF8525;
     height: 95px;
     width: 95px;
     margin: 0 auto;
@@ -1219,7 +1219,7 @@ textarea.contact_input{
   }
   .main  .title_category{
     font-size: 34px;
-    color: #04a5eb;
+    color: #f7a96e;
   }
   .main img {
     height: auto;
@@ -1282,7 +1282,7 @@ textarea.contact_input{
   
   .card_content {
     padding: 1rem;
-    background: linear-gradient(to bottom left, #0781b6 40%,#04a5eb 100%);
+    background: linear-gradient(to bottom left, #FF8525 40%,#fc9444 100%);
   }
   
   .card_title {
@@ -1378,7 +1378,7 @@ textarea.contact_input{
 	display:block;
 	padding:4px 15px 4px 30px;
 	color:#fff;
-	background-color:#0081c2;
+	background-color:#FF8525;
 	position:absolute;
 	top:10px;
 	right:0;
@@ -1426,7 +1426,7 @@ textarea.contact_input{
 	transition:all .3s ease 0s
 }
 .product-grid8 .title a{color:#000}
-.product-grid8 .title a:hover{color:#0081c2}
+.product-grid8 .title a:hover{color:#FF8525}
 .product-grid8 .all-deals{
 	display:block;
 	color:#fff;
@@ -1439,7 +1439,7 @@ textarea.contact_input{
 	transition:all .5s ease 0s
 }
 .product-grid8 .all-deals .icon{margin-left:7px}
-.product-grid8 .all-deals:hover{background-color:#0081c2}
+.product-grid8 .all-deals:hover{background-color:#FF8525}
 @media only screen and (max-width:990px){
 	.product-grid8{margin-bottom:30px}
 }
@@ -1656,7 +1656,7 @@ textarea.contact_input{
     display: flex;
     justify-content: center;
     align-items: center;
-	background: rgb(7, 129, 182);
+	background: rgb(255,133,37);
 }
 
 .carousel_prove {
@@ -1689,7 +1689,7 @@ textarea.contact_input{
     text-align: center;
     letter-spacing: 1.5px;
     font-size: 14px;
-    background: rgb(7, 129, 182);
+    background: rgb(255,133,37);
     color: white;   
 }
 
@@ -1733,14 +1733,14 @@ textarea.contact_input{
     border-right: 1px solid #ccc4;
     padding: 20px;
     cursor: pointer;
-    background:  rgb(7, 129, 182);
+    background:  rgb(255,133,37);
     color: white;
 }
 
 .buttons_prove .next {
     padding: 20px;
     cursor: pointer;
-    background:  rgb(7, 129, 182);
+    background:  rgb(255,133,37);
     color: white;
 }
 

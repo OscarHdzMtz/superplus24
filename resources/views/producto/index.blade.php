@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <h2>LISTA DE PRODUCTOS
+    <h2>LISTA DE CURSOS
     <form class="form-inline ml-3 float-right">
         <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search" aria-label="Search">
@@ -14,7 +14,7 @@
         </div>
     </form>
     <a href="{{ route('producto.create')}}" class="btn btn-outline-info float-right">
-        <i class="fa fa-plus-circle"> Productos</i>
+        <i class="fa fa-plus-circle"> Cursos</i>
     </a>
     </h2>
     

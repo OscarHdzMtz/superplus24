@@ -13,9 +13,9 @@
     <div id="whatsaap">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-whatsapp"></a>
     </div>
-    <div id="linkeding">
+    <!--<div id="linkeding">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-    </div>
+    </div>-->
 </div>
 @endsection
 @section('navbar_top')
@@ -28,7 +28,7 @@
             </div>
             <div class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
-                jldm605@gmail.com
+                Jose Luis Diaz
             </div>
         </div>
     </div>
@@ -45,8 +45,9 @@
             <ul>
                 <li><a href="{{ url('/')}}" >INICIO</a></li>
                 <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-                <li><a class="active" href="{{ url('/productos')}}">PRODUCTOS</a></li>
+                <li><a class="active" href="{{ url('/productos')}}">CURSOS</a></li>
                 <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
+                <li><a href="{{ url('/nosotros')}}">AULA VIRTUAL</a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>

@@ -13,9 +13,9 @@
     <div id="whatsaap">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-whatsapp"></a>
     </div>
-    <div id="linkeding">
+    <!--<div id="linkeding">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-    </div>
+    </div>-->
 </div>
 @endsection
 @section('navbar_top')
@@ -45,8 +45,9 @@
             <ul>
                 <li><a href="{{ url('/')}}" >INICIO</a></li>
                 <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-                <li><a href="{{ url('/productos')}}">PRODUCTOS</a></li>
+                <li><a href="{{ url('/productos')}}">CURSOS</a></li>
                 <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
+                <li><a href="{{ url('/nosotros')}}">AULA VIRTUAL</a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>
@@ -76,7 +77,7 @@
     <div class="right-column">
     <!-- Product Description -->
     <div class="product-description">
-        <span>{{$producto->visible == 1 ? "En Stock":"Agotado"}}</span>
+        <span>{{$producto->visible == 1 ? "Disponible":"No Disponible"}}</span>
         <h1>{{$producto->name}}</h1>
         <p>{{$producto->extract}}</p>
     </div>
@@ -95,15 +96,17 @@
                 </div>
         </div>
     </div>
-
+    <h3>MXN {{$producto->price}}</h3>
     <!-- Product Pricing -->
+    <h3>Mas Información</h3>
     <div class="product-price">
-        <span>S/{{$producto->price}}</span>
-            <a target="none" href="https://wa.me/51987456321?text=Hola+interesad%40+en+el+Producto%3A+{{$producto->name}}" class="cart-btn">
-            Consultar
+            <a target="none" href="https://wa.me/51987456321?text=Hola+interesad%40+en+el+Producto%3A+{{$producto->extract}}" class="btn btn-success  btn-lg mt-2">
+                <i class="fab fa-whatsapp mr-2"></i>
             </a>
     </div>
-  </div>
+    <a href="mailto:jdiaz11@autonoma.edu.pe" class="btn btn-info  btn-lg mt-2">
+        <i class="fas fa-envelope-open-text mr-2"></i></a>
+    </div>
 </main><br><br>
 <div class="container">
 <div class="media">

@@ -13,9 +13,10 @@
     <div id="whatsaap">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-whatsapp"></a>
     </div>
-    <div id="linkeding">
+    <!--<div id="linkeding">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-    </div>
+        EDITADO MIERCOLES
+    </div>-->
 </div>
 @endsection
 @section('navbar_top')
@@ -28,7 +29,7 @@
             </div>
             <div class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
-                jldm605@gmail.com
+               JOSE LUIS DAIZ
             </div>
         </div>
     </div>
@@ -45,8 +46,9 @@
             <ul>
                 <li><a href="" class="active">INICIO</a></li>
                 <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-                <li><a href="{{ url('/productos')}}">PRODUCTOS</a></li>
+                <li><a href="{{ url('/productos')}}">CURSOS</a></li>
                 <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
+               <!--IMPORTANTE--><li><a href="https://virtual.autonoma.edu.pe/CampusVirtual/Default.aspx#" target="_blank">AULA VIRTUAL</a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>
@@ -63,10 +65,10 @@
 						<br>
                         <h1 class="tipeo1">JLDIAZ</h1>
                         <h1 class="tipeo2"><span class="type"></span></h1>
-                        <div class="botonesinfo">
+                     {{--    <div class="botonesinfo">
                         <a href="" class="btn hero-btn">MAS INFORMACIÓN</a>
                         <a href="{{ url('/productos')}}" class="btn hero-btn2 btn1">VER PRODUCTOS</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -119,6 +121,7 @@
     </div>
 </div>
 @endsection
+<!--CATEGORIAS-->
 @section('cards')
 <div class="container_cards">    
     <div class="row_cards">
@@ -166,7 +169,7 @@
 </div>
 @endsection
 @section('title5')
-<div class="col-12 pt-2" style="background: #0781b6">
+<div class="col-12 pt-2" style="background: #FF8525">
 		<div class="proveedor-title">
 			<h5 style="color: black">CONOCE A</h5>
             <h3 style="color: white">NUESTROS PROVEEDORES</h3>
@@ -200,7 +203,7 @@
 <div class="col-12">
 		<div class="testimonial-title">
 			<h5>CONOCE</h5>
-            <h3>NUESTROS PRODUCTOS</h3>
+            <h3>NUESTROS CURSOS</h3>
             <hr class="style1">
 	    </div>
 </div>
@@ -216,7 +219,7 @@
             <div class="left">
               <div class="details">
                 <h2 class="txt_products">{{$producto->name}}</h2>
-                <p>S/{{$producto->price}}</p>
+                <p>MXN {{$producto->price}}</p>
               </div>
               <div class="buy text-center">
                 <a href="{{route('product-details', $producto->slug)}}">

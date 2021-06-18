@@ -173,7 +173,7 @@
                                     class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-star"></i>
                                     <p>
-                                        Oferata del dia
+                                        Cursos del dia
                                     </p>
                                 </a>
                             </li>
@@ -182,7 +182,7 @@
                                     class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-shopping-bag"></i>
                                     <p>
-                                       Categorias de Producto
+                                       Categorias de los Cursos
                                     </p>
                                 </a>
                             </li>
@@ -191,7 +191,7 @@
                                     class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-shopping-basket"></i>
                                     <p>
-                                      Productos
+                                      Cursos
                                       <?php $product_count = DB::table('productos')->count(); ?>
                                         <span class="right badge badge-danger">{{ $product_count ?? '0' }}</span>
                                     </p>

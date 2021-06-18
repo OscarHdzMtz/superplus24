@@ -67,5 +67,5 @@ class CategoriasController extends Controller
         
         Categorias::find($id)->delete();
         return back()->with('info', 'Se eliminó la categoría');
-        }
+    }
 }

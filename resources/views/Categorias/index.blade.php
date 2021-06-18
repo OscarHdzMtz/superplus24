@@ -16,7 +16,7 @@
     </div><!-- /.container-fluid -->
   </div>
 <div class="container mt-5">
-    <h2>LISTA DE CATEGORÍAS DE LOS PRODUCTOS
+    <h2>LISTA DE CATEGORÍAS DE LOS CURSOS
     <a href="{{ route('Categorias.create')}}" class="btn btn-outline-info">
             <i class="fa fa-plus-circle"> Categorías</i>
         </a>
