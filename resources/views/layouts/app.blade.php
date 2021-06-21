@@ -84,13 +84,18 @@
 
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar bg-light elevation-4">
-                <!-- Brand Logo -->
+                <!-- Brand Logo estaba antes -->
                 <a href="{{ url('/') }}" class="brand-link">
-                    <img src="https://i.ibb.co/Z2shSJj/animado-Recuperado.png" alt="JLDIAZ logo" class="brand-image img-circle"
+                    <img src="{{ asset('dist/img/logop.png')}}" alt="PLUS" class="brand-image img-circle"
                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">JLDM</span>
+                    <span class="brand-text font-weight-light">SuperPlus</span>
                 </a>
 
+
+                {{-- logo plus agregado --}}
+               {{--  <div class="image">
+                    <img src="{{ asset('dist/img/logo.jpg')}}" alt="User Image" width="190px" height="30px">
+                </div> --}}
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel (optional) -->
@@ -155,7 +160,8 @@
                                     class="{{ Request::path() === 'clientes/todas' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-user-friends"></i>
                                     <p>
-                                        Clientes
+                                        {{-- CLEINTES --}}
+                                        Instalacion Clientes
                                     </p>
                                 </a>
                             </li>
@@ -164,7 +170,8 @@
                                     class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-user-friends"></i>
                                     <p>
-                                        Proveedores
+                                        {{-- proveedores --}}
+                                        Productos nuevos
                                     </p>
                                 </a>
                             </li>
@@ -173,7 +180,8 @@
                                     class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-star"></i>
                                     <p>
-                                        Cursos del dia
+                                        {{-- Cursos del dia --}}
+                                        Promociones
                                     </p>
                                 </a>
                             </li>

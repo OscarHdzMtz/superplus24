@@ -25,11 +25,11 @@
         <div class="d-inline-flex ml-auto">
             <div class="headcont">
                 <i class="fas fa-2x fa-mobile-alt messenge"></i>
-                +51 999-999-999
+                +51 953 138 2693
             </div>
             <div class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
-               JOSE LUIS DAIZ
+               SuperPlus25Hrs
             </div>
         </div>
     </div>
@@ -38,17 +38,26 @@
 @section('navbar')
     <header>
     <a href="#" class="logo">
-        <h2 style="color: white" class="imgtamaño">JLDM</h2>
+        <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2>
         <!--<img  class="imgtamaño" src="{{ asset('img/jldm.png')}}" alt="JLDM ! Proyects">-->
     </a>
     <div class="menu-toggle" ></div>
         <nav>
+           {{--  <ul>
+                <li><a href="" class="active">INICIO</a></li>
+                <li><a href="{{ url('/productos')}}">PROMOCIONES</a></li>
+                <li><a href="{{ url('/productos')}}">PRODUCTOS</a></li>
+                <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
+                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
+               <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
+            </ul> --}}
             <ul>
                 <li><a href="" class="active">INICIO</a></li>
-                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-                <li><a href="{{ url('/productos')}}">CURSOS</a></li>
-                <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
-               <!--IMPORTANTE--><li><a href="https://virtual.autonoma.edu.pe/CampusVirtual/Default.aspx#" target="_blank">AULA VIRTUAL</a></li>
+                <li><a href="{{ url('/')}}">PROMOCIONES</a></li>
+                <li><a href="{{ url('/')}}">PRODUCTOS</a></li>
+                <li><a href="{{ url('/')}}">NOSOTROS</a></li>
+                <li><a href="{{ url('/')}}">CONTÁCTENOS</a></li>
+               <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>
@@ -63,7 +72,7 @@
                         <h4>PAGINA <span>WEB</span></h4>
 						<br>
 						<br>
-                        <h1 class="tipeo1">JLDIAZ</h1>
+                        <h1 class="tipeo1">SUPERPLUS</h1>
                         <h1 class="tipeo2"><span class="type"></span></h1>
                      {{--    <div class="botonesinfo">
                         <a href="" class="btn hero-btn">MAS INFORMACIÓN</a>
@@ -88,7 +97,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3 text-center">
+       {{--  <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
                 <div class="service">
                     <i class="fas fa-shopping-cart fa-4x"></i>
@@ -97,14 +106,25 @@
                     <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mas</a>  
                 </div>
             </div>
+        </div> --}}
+        <div class="col-md-3 col-sm-6 mb-3 text-center">
+            <div class="single-content_service">
+                <div class="service">
+                    <i class="fas fa-shopping-cart fa-4x"></i>
+                    <h4 class="title_services">Buscador de tiendas</h4>
+                    <p class="description_services">Localiza tu plus mas cercano</p><br>
+                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mapa</a>  
+                </div>
+            </div>
         </div>
+
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
                 <div class="service">
                     <i class="fas fa-user-check fa-4x"></i>
-                    <h4 class="title_services">Clientes Satisfechos</h4>
+                    <h4 class="title_services">Facturacion Clientes</h4>
                     <p class="description_services">Nuestros clientes felices con nuestro servicio</p>
-                    <a href="{{ url('/nosotros')}}" class="btn_modal_wel mt-5">Ver mas</a>  
+                    <a href="{{ url('/nosotros')}}" class="btn_modal_wel mt-5">Facturar</a>  
                 </div>
             </div>
         </div>
@@ -129,37 +149,37 @@
             <div class="single-content">
                 <img src="{{ asset('img/categoria/cat1.jpg')}}" alt="Categorias Higienika Oficce Perú">
                 <div class="text-content">
-                    <h3>Productos de Celulares</h3>
+                    <h3>Recargas Telefonicas</h3>
                     <hr class="style2">
-                    <h5>Para el hogar y oficina</h5>
+                    <h5>todas las compañias</h5>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="single-content">
-                <img src="{{ asset('img/categoria/cat2.jpg')}}" alt="Categorias Higienika Oficce Perú">
+                <img src="{{ asset('img/categoria/cat1.jpg')}}" alt="Categorias Higienika Oficce Perú">
                 <div class="text-content">
-                    <h3>Artículos de Oficina</h3>
+                    <h3>Pagos de servicio</h3>
                     <hr class="style2">
-                    <h5>Artículos de oficina de las mejores marcas</h5>
+                    <h5>Diferentes pagos de servicios</h5>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="single-content">
-                <img src="{{ asset('img/categoria/cat3.jpg')}}" alt="Categorias Higienika Oficce Perú">
+                <img src="{{ asset('img/categoria/cat1.jpg')}}" alt="Categorias Higienika Oficce Perú">
                 <div class="text-content">
-                    <h3>Repuestos De Moviles</h3>
+                    <h3>Zona Snack</h3>
                     <hr class="style2">
-                    <h5>Distribuimos Partes y repuestos</h5>
+                    <h5>esto es una zona snack</h5>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="single-content">
-                <img src="{{ asset('img/categoria/cat4.jpg')}}" alt="Categorias Higienika Oficce Perú">
+                <img src="{{ asset('img/categoria/cat1.jpg')}}" alt="Categorias Higienika Oficce Perú">
                 <div class="text-content">
-                    <h3>Artículos de Laptops</h3>
+                    <h3>Servicio a domicilio</h3>
                     <hr class="style2">
                     <h5>Artículos Laptops de trabajo</h5>
                 </div>
@@ -171,8 +191,8 @@
 @section('title5')
 <div class="col-12 pt-2" style="background: #FF8525">
 		<div class="proveedor-title">
-			<h5 style="color: black">CONOCE A</h5>
-            <h3 style="color: white">NUESTROS PROVEEDORES</h3>
+			<h5 style="color: black">CONOCE</h5>
+            <h3 style="color: white">NUESTROS PRODCUTOS NUEVOS</h3>
             <hr class="style5">
 	    </div>
 </div>
@@ -189,7 +209,7 @@
             <div class="content">
                 <h1>{{$proveedore->name}}</h1>
                 <hr class="">
-                <h5 style="color: white">En Este segmento puedes poner una descripción de lo mas importante acerca de tus proveedores.</h5>
+                <h5 style="color: white">Dale un plus a tu dia!!</h5>
             </div>
             <div class="img">
                 <img src="{{asset('/img/proveedore/'.$proveedore->image)}}" alt="">
@@ -203,7 +223,7 @@
 <div class="col-12">
 		<div class="testimonial-title">
 			<h5>CONOCE</h5>
-            <h3>NUESTROS CURSOS</h3>
+            <h3>NUESTROS ...</h3>
             <hr class="style1">
 	    </div>
 </div>
@@ -245,9 +265,8 @@
 <footer class="footer">
     <div class="l-footer">
         <!--<img  class="footer_img" src="{{asset('img/JLDIAZ.png')}}" alt="JLDM | Proyectos">-->
-        <h2 style="color: white" class="footer_img">JLDM</h2>
-    <p>Hola Soy JLDIAZ diseñador web esta pagina web esta totalmente gratis para que puedan implementar a algun proyecto universitario la unica de
-        condicon de uso es que mejoren algo a esta pagina web para que asi fortalezcan sus conocimientos.
+        <h2 style="color: white" class="footer_img">SuperPlus</h2>
+    <p>Mision de la empresa
     </p>
     </div>
         <ul class="r-footer">
@@ -256,7 +275,7 @@
                 <ul class="box">
                     <li class="button_social">
                         <i class="fab mr-2 fa-facebook"></i>
-                        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Facebook</a>
                     </li>
                     <li class="button_social">
                         <i class="fab mr-2 fa-twitter"></i>
@@ -264,11 +283,11 @@
                     </li>
                     <li class="button_social">
                         <i class="fab mr-2 fa-instagram"></i>
-                        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">Instagram</a>
                     </li>
                     <li class="button_social">
                         <i class="fab mr-2 fa-linkedin-in"></i>
-                        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="_blank">Linkedin</a>
+                        <a href="#" target="_blank">Linkedin</a>
                     </li>
                 </ul>
             </li>
@@ -279,15 +298,22 @@
                 <li><a href="#">Trabaja con nosotros</a></li>
             </ul>
             </li>
-            <li class="features">
+            {{-- <li class="features">
                 <h2>Procedimiento de Pagos</h2>
                 <ul class="box">
                     <li><a type="button" class="btn btn-outline-info"  data-toggle="modal" data-target=".bd-example-modal-xl" href="#">Ver mas</a></li>
                 </ul>
-                </li>
+            </li> --}}
+            <li class="features">
+                <h2>Procedimiento de Pagos</h2>
+                <ul class="box">
+                    
+                </ul>
+            </li>
+
         </ul>
         <div class="b-footer">
-            <p>Todos los Derechos reservados by <a href="https://josediazmirano.github.io/jldiaz/" target="_blank">©JLDIAZ-2020</a></p>
+            <p>Todos los Derechos reservados by <a href="" target="_blank">©COMERCIALIZADORA PIRCAROS DE LA MIXTECA S.A. de C.V.</a></p>
         </div>
 </footer>
 @endsection
@@ -295,7 +321,7 @@
 <div class="col-12">
 		<div class="testimonial-title">
 			<h5>CONOCE</h5>
-            <h3>NUESTRAS CATEGORÍAS</h3>
+            <h3>NUESTRAS SERVICIOS</h3>
             <hr class="style1">
 	    </div>
 </div>

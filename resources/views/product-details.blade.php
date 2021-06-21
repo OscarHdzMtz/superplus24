@@ -37,21 +37,23 @@
 @section('navbar')
     <header>
     <a href="#" class="logo">
-        <h2 style="color: white" class="imgtamaño">JLDM</h2>
-        <!--<img  class="imgtamaño" src="{{ asset('img/Logojldm.png')}}" alt="JLDM ! Proyects">-->
+        <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2>
+        <!--<img  class="imgtamaño" src="{{ asset('img/jldm.png')}}" alt="JLDM ! Proyects">-->
     </a>
     <div class="menu-toggle" ></div>
         <nav>
             <ul>
-                <li><a href="{{ url('/')}}" >INICIO</a></li>
-                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-                <li><a href="{{ url('/productos')}}">CURSOS</a></li>
+                <li><a href="/" class="active">INICIO</a></li>
+                <li><a href="{{ url('/productos')}}">PROMOCIONES</a></li>
+                <li><a href="{{ url('/productos')}}">PRODUCTOS</a></li>
                 <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
-                <li><a href="{{ url('/nosotros')}}">AULA VIRTUAL</a></li>
+                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
+               <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>
     </header>
+@endsection>
 @endsection
 @section('banner')
 <div class="banner">

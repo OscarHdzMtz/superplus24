@@ -66,7 +66,7 @@ header{
     max-width: 1200px;
     margin: 20px auto;
     padding: 10px;
-    background:  #FF8525;
+    background:  #ffcc00;
     box-sizing: border-box;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 18px;
@@ -138,11 +138,12 @@ nav ul li a:hover{
     color: white;
     margin-bottom: 40px;
 }
+/* texto en movimiento indexx */
 .hero-text .tipeo2{
     font-size: 85px;
     font-family: 'Oswald', sans-serif;
     margin-top: 40px;
-    color:#FF8525;
+    color:#ffcc00;
     margin-bottom: 80px;
 }
 .botonesinfo{
@@ -192,7 +193,7 @@ nav ul li a:hover{
 #twiter a,
 #whatsaap a,
 #linkeding a{
-    background:#FF8525;
+    background:#003baa;
     padding: 15px 20px;
     color: #fff;
     text-decoration: none;
@@ -205,7 +206,7 @@ nav ul li a:hover{
 #twiter a:hover,
 #whatsaap a:hover,
 #linkeding a:hover{
-    background: #ff83259c;
+    background: #ffcc00;
     padding: 15px 40px;
     transition: 0.4s ease;
 
@@ -248,7 +249,7 @@ nav ul li a:hover{
     width: 250px;
 }
 .service:hover{
-    background-color: #ff913e;
+    background-color: #ffcc00;
     transform: translateY(-3px);
     -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65); 
     box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
@@ -269,9 +270,10 @@ nav ul li a:hover{
     right: 0;
     top: 0;
 }
+/* ICONOCES DE SERVCIOS DE LA PAGINA */
 .service > i{
     display: block;
-    color: #FF8525;
+    color: #003baa;
     font-size: 4rem;
     margin-bottom: 0.9rem;
     transition: color 0.3s ease-out;
@@ -299,14 +301,14 @@ nav ul li a:hover{
     position: relative;
     display: inline-block;
     padding: 10px 30px;
-    color: #fff;
+    color: black;
     text-decoration: none;
     text-decoration-line:none;
     text-transform: uppercase;
     font-size: 18px;
     letter-spacing: 2px;
     border-radius: 40px;
-    background: linear-gradient(90deg,#FF8525,#fc9444);
+    background: linear-gradient(90deg,#ffcc00,#ffcc00);
 }
 .service:hover > .btn_modal_wel{
     -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); 
@@ -314,11 +316,12 @@ nav ul li a:hover{
     transition: 0.3s;
     text-decoration: none;
     text-decoration-line:none;
-    color: white;
+    /* color boton servicio HOVER */
+    color:white;
 }
 
 /***********************************************
-********************POPPUP**********************
+********************MODAL**********************
 ************************************************/
 .modal-content_popup {
     position: relative;
@@ -445,9 +448,9 @@ nav ul li a:hover{
     display: flex;
     flex-flow: row wrap;
     padding: 50px;
-    color: #fff;
-    background: linear-gradient(0deg, rgba(0,0,0,0.8491771708683473) 26%,
-                rgb(255,133,37) 53%);
+    color: black;
+    background: linear-gradient(0deg, white 6%,
+    #ffcc00 53%);
     background-repeat:no-repeat;
     background-size: 100% 100%;
     background-size: cover;
@@ -488,9 +491,9 @@ h2 {
     flex: 1 50%;
     margin-right: 1.25em;
 }
-    
+/* textp a footer */
 .box a {
-    color: #fff;
+    color: black;
 }
     
 .h-box {
@@ -500,13 +503,13 @@ h2 {
     
 .b-footer {
     text-align: center;
-    color: #fff;
+    color: black;
     padding-top: 50px;
 }
     
 .l-footer p {
     padding-right: 20%;
-    color: #fff;
+    color: black;
 }   
 .l-footer .footer_img{
     width: auto;

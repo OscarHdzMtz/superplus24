@@ -74,14 +74,14 @@
 <div class="conatiner">
     <div class="form">
         <div class="contact-info">
-                <h3 class="contact_tittle">BIENVENIDO USUARIO</h3>
-                <p class="contact_text">Si tienes un problema al iniciar sesión has olvidado tu contraseña por favor comunícate con los administradores.
+                <h3 class="contact_tittle">SuperPlus</h3>
+                <p class="contact_text">Si tienes un problema al iniciar sesión has olvidado tu contraseña por favor comunícate con el area de sistemas.
                 </p>
 
             <div class="contactos_info">
                 <div class="contact_information">
                     <i class="fas fa-2x fa-user"></i>
-                    <p>jldm605@gmail.com</p>
+                    <p>sistemas_plus@gmail.com</p>
                 </div>
                 <div class="contact_information">
                     <i class="fas fa-2x fa-user"></i>
@@ -91,14 +91,7 @@
                     <i class="fas fa-2x fa-user"></i>
                     <p>9990-89095</p>
                 </div>
-            </div>
-            <div class="social_media">
-                <p>Atte:</p>
-                <div class="social-icons">
-                        <img src="{{asset('img/favicon_higienika_office_peru.png')}}" alt="">
-                        <p>Higienika Oficce Perú</p>
-                </div>
-            </div>
+            </div>       
         </div>
         <div class="contact-form">
             <form method="POST" action="{{ route('login') }}" autocomplete="off">
