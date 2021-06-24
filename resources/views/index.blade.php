@@ -20,12 +20,12 @@
 </div>
 @endsection
 @section('navbar_top')
-<div class="header-top">
+<div style="padding-top: 2px" class="header-top">
     <div class="container d-flex justify-content-between">
         <div class="d-inline-flex ml-auto">
             <div class="headcont">
                 <i class="fas fa-2x fa-mobile-alt messenge"></i>
-                +51 953 138 2693
+                +51 953 138 2693. 
             </div>
             <div class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
@@ -38,8 +38,8 @@
 @section('navbar')
     <header>
     <a href="#" class="logo">
-        <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2>
-        <!--<img  class="imgtamaño" src="{{ asset('img/jldm.png')}}" alt="JLDM ! Proyects">-->
+        {{-- <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2> --}}
+        <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="JLDM ! Proyects">
     </a>
     <div class="menu-toggle" ></div>
         <nav>
@@ -64,7 +64,7 @@
     </header>
 @endsection
 @section('banner')
-<div class="banner">
+<div class="banner">    
         <div class="container">
             <div class="row">
                 <div class="col-12">
