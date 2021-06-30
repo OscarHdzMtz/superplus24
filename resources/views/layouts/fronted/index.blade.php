@@ -35,6 +35,7 @@
     @yield('products')
     @yield('footer')
     @yield('modals')
+    @yield('whats')
     <!--SCRIPT-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
