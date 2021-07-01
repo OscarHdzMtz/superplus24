@@ -18,7 +18,7 @@
     <link type="text/css" href="{{asset('css/slick.css') }}" rel="stylesheet">
 </head>
 <body> 
-    @yield('redes')
+    {{-- @yield('redes') --}}
         <section id="headerSection">
             @yield('navbar_top')
             @yield('navbar')

@@ -124,7 +124,7 @@
                     <i class="fas fa-user-check fa-4x"></i>
                     <h4 class="title_services">Facturacion Clientes</h4>
                     <p class="description_services">Nuestros clientes felices con nuestro servicio</p>
-                    <a href="{{ url('/nosotros')}}" class="btn_modal_wel mt-5">Facturar</a>  
+                    <a href="{{ url('/')}}" class="btn_modal_wel mt-5">Facturar</a>  
                 </div>
             </div>
         </div>
@@ -181,7 +181,7 @@
                 <div class="text-content">
                     <h3>Servicio a domicilio</h3>
                     <hr class="style2">
-                    <h5>Artículos Laptops de trabajo</h5>
+                    <h5>Domicilioo</h5>
                 </div>
             </div>
         </div>
@@ -226,6 +226,8 @@
             <h3>NUESTROS ...</h3>
             <hr class="style1">
 	    </div>
+
+        <h3 align="center"> HOLA MUNDO </h3>     
 </div>
 @endsection
 
@@ -262,66 +264,110 @@
 @endsection
 
 @section('footer')
-<footer class="footer">
-    <div class="l-footer">
-        <!--<img  class="footer_img" src="{{asset('img/JLDIAZ.png')}}" alt="JLDM | Proyectos">-->
-        <h2 style="color: white" class="footer_img">SuperPlus</h2>
-    <p>Mision de la empresa
-    </p>
-    </div>
-        <ul class="r-footer">
-            <li>
-            <h2>Social</h2>
-                <ul class="box">
-                    <li class="button_social">
-                        <i class="fab mr-2 fa-facebook"></i>
-                        <a href="#" target="_blank">Facebook</a>
-                    </li>
-                    <li class="button_social">
-                        <i class="fab mr-2 fa-twitter"></i>
-                        <a href="#">Twitter</a>
-                    </li>
-                    <li class="button_social">
-                        <i class="fab mr-2 fa-instagram"></i>
-                        <a href="#" target="_blank">Instagram</a>
-                    </li>
-                    <li class="button_social">
-                        <i class="fab mr-2 fa-linkedin-in"></i>
-                        <a href="#" target="_blank">Linkedin</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="features">
-            <h2>Información</h2>
-            <ul class="box">
-                <li><a href="#">Políticas de Privacidad</a></li>
-                <li><a href="#">Trabaja con nosotros</a></li>
-            </ul>
-            </li>
-            {{-- <li class="features">
-                <h2>Procedimiento de Pagos</h2>
-                <ul class="box">
-                    <li><a type="button" class="btn btn-outline-info"  data-toggle="modal" data-target=".bd-example-modal-xl" href="#">Ver mas</a></li>
-                </ul>
-            </li> --}}
-            <li class="features">
-                <h2>Procedimiento de Pagos</h2>
-                <ul class="box">
-                    
-                </ul>
-            </li>
-
-        </ul>
-        <div class="b-footer">
-            <p>Todos los Derechos reservados by <a href="" target="_blank">©COMERCIALIZADORA PIRCAROS DE LA MIXTECA S.A. de C.V.</a></p>
-        </div>
-</footer>
+<div class="footer-dark">
+    
+    <footer>        
+        <footer class="new_footer_area bg_color">
+            <div class="box">
+                {{-- <div class="box-sm red"></div> --}}
+                {{-- <div class="box-sm orange"></div> --}}
+                <div class="box-sm yellow "></div>
+                {{-- <div class="box-sm green "></div> --}}
+                <div class="box-sm blue "></div>
+                {{-- <div class="box-sm purple"></div> --}}
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+              </div>
+            <div style="padding-top: 0px" class="new_footer_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong></h3>
+                                <h4><strong>Quienes somos?</strong></h4>
+                                <hr class="style6">                                
+                                <p style="text-align: justify">
+                                    <strong>Brindar a nuestros clientes una gran variedad de productos y servicios las 24 horas del día, 
+                                        ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio</strong>.</p>
+                                <div class="col-md-12 py-5">
+                                    <div class="mb-5 flex-center">
+                            
+                                      <!-- Facebook -->
+                                      <a class="fb-ic">
+                                        <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                                      </a>                                
+                                      <!-- Google +-->
+                                      <a class="gplus-ic">
+                                        <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                                      </a>
+                                    
+                                      <!--Instagram-->
+                                      <a class="ins-ic">
+                                        <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                                      </a>                                    
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="embed-container sombra">
+                                <iframe src="https://www.7-eleven.com.mx/" frameborder="0" allowfullscreen></iframe>
+                            </div>                     
+                            
+                        </div>
+           {{--              <div class="col-lg-3 col-md-6">
+                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                                <ul class="list-unstyled f_list">
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Term &amp; conditions</a></li>
+                                    <li><a href="#">Reporting</a></li>
+                                    <li><a href="#">Documentation</a></li>
+                                    <li><a href="#">Support Policy</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                </ul>
+                            </div>
+                        </div> --}}
+                        <div style="padding-top: 30px" class="col-lg-4 col-md-12">                                
+                            {{-- <iframe class="sombra" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuperplus.picaros%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=618142002368065" width="325px" height="500px" style="border:none;overflow:hidden" style="height:500px;width:325px;" title="Iframe Example"></iframe> --}}
+                            <div class="embed-container sombra">
+                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuperplus.picaros%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=3713982148707397" frameborder="0" allowfullscreen></iframe>
+                            </div>                       
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bg">
+                    <div class="footer_bg_one"></div>
+                    <div class="footer_bg_two"></div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-sm-7">
+                            <p class="mb-0 f_400">Comercializadora Picarops</p>
+                        </div>
+                        <div class="col-lg-6 col-sm-5 text-right">
+                            <p>derechos <div class=""></div> <i class="icon_heart"></i> in <a href="" target="_blank">SuperPluss</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </footer>
+</div>
 @endsection
+
+
 @section('title')
 <div class="col-12">
 		<div class="testimonial-title">
 			<h5>CONOCE</h5>
-            <h3>NUESTRAS SERVICIOS</h3>
+            <h3>NUESTROS SERVICIOS</h3>
             <hr class="style1">
 	    </div>
 </div>
@@ -421,8 +467,8 @@
             <div id="verde" class="content_pagos"> 
                 <h2 class=" frm_pagos text-center">REALIZAMOS DELIVERY ESPECIAL</h2>  
                 <hr class="style3">   
-                <h5>Primero se envía la cotización al cliente, luego de ello el cliente envía la orden de compra por medio de nuestro correo y a las 24 horas 
-                    se le realiza el envío de los productos dentro de Lima sin costo alguno, a provincia se aplica un adicional.</h5>                   
+                <h5>{{-- Primero se envía la cotización al cliente, luego de ello el cliente envía la orden de compra por medio de nuestro correo y a las 24 horas 
+                    se le realiza el envío de los productos dentro de Lima sin costo alguno, a provincia se aplica un adicional. --}}</h5>                   
             </div>
         </div>
     </div>
