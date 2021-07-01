@@ -2,16 +2,16 @@
 @section('redes')
 <div class="red">
     <div id="facebook">
-        <a href="https://www.youtube.com/channel/UCuRgEjJgi9iZFCYVSASpXDw" target="none" class="fab fa-facebook-f "></a>
+        <a href="" target="none" class="fab fa-facebook-f "></a>
     </div>
     <div id="instagram">
-        <a href="https://www.youtube.com/channel/UCuRgEjJgi9iZFCYVSASpXDw" target="none" class="fab fa-instagram"></a>
+        <a href="" target="none" class="fab fa-instagram"></a>
     </div>
     <div id="twiter">
         <a href="" target="none" class="fab fa-twitter-square"></a>
     </div>
     <div id="whatsaap">
-        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-whatsapp"></a>
+        <a href="" target="none" class="fab fa-whatsapp"></a>
     </div>
     <!--<div id="linkeding">
         <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
@@ -25,11 +25,11 @@
         <div class="d-inline-flex ml-auto">
             <div class="headcont">
                 <i class="fas fa-2x fa-mobile-alt messenge"></i>
-                +51 953 138 2693. 
+                953 138 2693 
             </div>
             <div class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
-               SuperPlus25Hrs
+               SuperPlus24Hrs
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                 <li><a href="" class="active">INICIO</a></li>
                 <li><a href="{{ url('/')}}">PROMOCIONES</a></li>
                 <li><a href="{{ url('/')}}">PRODUCTOS</a></li>
-                <li><a href="{{ url('/')}}">NOSOTROS</a></li>
+                <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
                 <li><a href="{{ url('/')}}">CONTÁCTENOS</a></li>
                <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
             </ul>

@@ -2458,10 +2458,10 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     cursor: pointer;
   }
   
-  
+/*   
   .red {
     background-color: #FF5852;
-  }
+  } */
   
   .orange {
     background-color: #FF9000;
