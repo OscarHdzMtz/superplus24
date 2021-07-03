@@ -2,7 +2,7 @@
 @section('redes')
 <div class="red">
     <div id="facebook">
-        <a href="" target="none" class="fab fa-facebook-f "></a>
+        <a href="" target="none" class="fab fa-facebook-f"></a>
     </div>
     <div id="instagram">
         <a href="" target="none" class="fab fa-instagram"></a>
@@ -39,7 +39,7 @@
     <header>
     <a href="#" class="logo">
         {{-- <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2> --}}
-        <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="JLDM ! Proyects">
+        <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">
     </a>
     <div class="menu-toggle" ></div>
         <nav>
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="hero-text">
-                        <h4>PAGINA <span>WEB</span></h4>
+                        {{-- <h4>PAGINA <span>WEB</span></h4> --}}
 						<br>
 						<br>
                         <h1 class="tipeo1">SUPERPLUS</h1>
@@ -111,7 +111,7 @@
             <div class="single-content_service">
                 <div class="service">
                     <i class="fas fa-shopping-cart fa-4x"></i>
-                    <h4 class="title_services">Buscador de tiendas</h4>
+                    <h4 class="title_services">Buscador de plus</h4>
                     <p class="description_services">Localiza tu plus mas cercano</p><br>
                     <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mapa</a>  
                 </div>
@@ -192,7 +192,7 @@
 <div class="col-12 pt-2" style="background: #FF8525">
 		<div class="proveedor-title">
 			<h5 style="color: black">CONOCE</h5>
-            <h3 style="color: white">NUESTROS PRODCUTOS NUEVOS</h3>
+            <h3 style="color: white">NUESTROS PRODUCTOS NUEVOS</h3>
             <hr class="style5">
 	    </div>
 </div>
@@ -264,8 +264,7 @@
 @endsection
 
 @section('footer')
-<div class="footer-dark">
-    
+<div class="footer-dark">    
     <footer>        
         <footer class="new_footer_area bg_color">
             <div class="box">
@@ -349,7 +348,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-7">
-                            <p class="mb-0 f_400">Comercializadora Picarops</p>
+                            <p class="mb-0 f_400">Comercializadora Picaros</p>
                         </div>
                         <div class="col-lg-6 col-sm-5 text-right">
                             <p>derechos <div class=""></div> <i class="icon_heart"></i> in <a href="" target="_blank">SuperPluss</a></p>

@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
 
+    {{-- animaciones al hacer scroll --}}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- Styles -->
     <link type="text/css" href="{{asset('css/style.css') }}" rel="stylesheet">
     <link type="text/css" href="{{asset('css/slick.css') }}" rel="stylesheet">
@@ -46,6 +49,15 @@
     <script src="{{asset('js/provee.js') }}"></script>
     <script src="{{asset('js/slick.min.js') }}"></script>
     <script src="{{asset('js/typed.js') }}"></script>
+
+    {{-- aimaciones al hacer scroll --}}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+   </script>
+
+
+{{--  --}}
     <script>
         var typed = new Typed('.type', {
         strings: ['<span><i class="fas fa-paint-brush"></i></span> DALE UN PLUS A TU DIA!!', 
@@ -53,5 +65,6 @@
                     ,'<span><i class="fas fa-coffee"></i></span> SERVICIO A DOMICILIO'],
         typeSpeed:60,backSpeed:60,loop:true});
     </script>
+
 </body>
 </html>

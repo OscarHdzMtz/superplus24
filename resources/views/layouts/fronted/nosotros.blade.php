@@ -10,6 +10,7 @@
         <title>Nosotros</title>
 
         <!-- Fonts--> 
+        <link href="{{asset('css/stylenos.css') }}" rel="stylesheet">
         <link href="{{asset('css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Styles -->
@@ -34,6 +35,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="{{asset('js/responsive.js') }}"></script>
     <script src="{{asset('js/security.js') }}"></script>
+    <script src="{{asset('js/nosotros.js') }}"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
 	var swiper = new Swiper('.swiper-container', {
