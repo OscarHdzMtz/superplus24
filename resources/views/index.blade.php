@@ -20,7 +20,7 @@
 </div>
 @endsection
 @section('navbar_top')
-<div style="padding-top: 2px" class="header-top">
+<div data-aos="fade-up" style="padding-top: 2px" class="header-top">
     <div class="container d-flex justify-content-between">
         <div class="d-inline-flex ml-auto">
             <div class="headcont">
@@ -36,7 +36,7 @@
 </div>
 @endsection
 @section('navbar')
-    <header>
+    <header data-aos="fade-up">
     <a href="#" class="logo">
         {{-- <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2> --}}
         <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">
@@ -64,7 +64,7 @@
     </header>
 @endsection
 @section('banner')
-<div class="banner">    
+<div data-aos="fade-up" class="banner">    
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -85,7 +85,7 @@
     </div>
 @endsection 
 @section('cards_service')
-<div class="container_cards">
+<div data-aos="fade-up" class="container_cards">
     <div class="row_cards">
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
@@ -143,7 +143,7 @@
 @endsection
 <!--CATEGORIAS-->
 @section('cards')
-<div class="container_cards">    
+<div data-aos="fade-up" class="container_cards">    
     <div class="row_cards">
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="single-content">
@@ -205,13 +205,13 @@
             <span class="next"> &#8594; </span>
         </div>
         @foreach($proveedores as $proveedore)
-        <div class="item">
+        <div data-aos="fade-up" class="item">
             <div class="content">
                 <h1>{{$proveedore->name}}</h1>
                 <hr class="">
                 <h5 style="color: white">Dale un plus a tu dia!!</h5>
             </div>
-            <div class="img">
+            <div data-aos="fade-up" class="img">
                 <img src="{{asset('/img/proveedore/'.$proveedore->image)}}" alt="">
             </div>
         </div>
@@ -264,7 +264,7 @@
 @endsection
 
 @section('footer')
-<div class="footer-dark">    
+<div data-aos="fade-up" class="footer-dark">    
     <footer>        
         <footer class="new_footer_area bg_color">
             <div class="box">
