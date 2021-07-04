@@ -137,9 +137,9 @@
 </div> --}}
 
 <div class="container py-5">
-    <section id="headervalores" class="jumbotron text-center box-shadow">
+    <section style="background: #eeeeee" id="headervalores" class="jumbotron text-center box-shadow">
         <h3 class=""><strong>Nuestra historia</strong></h3>
-        <p style="text-align: justify; font-weight: bold" class="lead"><strong>SUPERPLUS Inicia operaciones el 21 de agosto del 2010 con 1 tienda ubicada en la Col. Sta. Cruz de la Cd. de Huajuapan de León.
+        <p style="text-align: justify; font-weight: bold; " class="lead"><strong>SUPERPLUS Inicia operaciones el 21 de agosto del 2010 con 1 tienda ubicada en la Col. Sta. Cruz de la Cd. de Huajuapan de León.
             Nuestra denominación social Comercializadora Pícaros de la Mixteca S.A de C.V, y nuestro nombre comercial SUPERPLUS con un horario de atención las 24 horas del día, los 365 días del año
             Ofreciendo a nuestros clientes los mejores productos en el mercado tanto en cerveza, abarrotes, vinos, licores y comida rápida, entre otras.
             Presencia en Huajuapan, Putla, Juxtlahuaca, Tonala, Tamazulapan, Tlaxiaco, Chalcatongo, Mariscala y Nochixtlan, con apertura de expansión a otros lugares.</strong></p>     

@@ -1681,7 +1681,8 @@ textarea.contact_input{
     height: 100%;
     display: flex;
     align-items: center;
-    max-width: 150vh;
+    max-width: 190vh;
+    /* max-width: 150vh; */
     max-height: 450px;
     overflow: hidden;
     position: relative;

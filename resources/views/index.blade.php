@@ -508,8 +508,9 @@
 </div>
 @endsection
 
-@section('whats')
 
+{{-- SECCION DE PLUGIN DE WHATSAPP --}}
+@section('whats')
 <div id='whatsapp-chat' class='hide'>
 	<div class='header-chat'>
 	<div align="center" class='head-home'><h3>SuperPlus</h3>
