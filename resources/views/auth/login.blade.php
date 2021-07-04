@@ -71,7 +71,7 @@
 </div>
 @endsection
 @section('content')
-<div class="conatiner">
+{{-- <div class="conatiner">
     <div class="form">
         <div class="contact-info">
                 <h3 class="contact_tittle">SuperPlus</h3>
@@ -93,11 +93,16 @@
                 </div>
             </div>
         
+
+         <div>
+            <img src="{{ asset('img/tienda.png')}}" alt="Photo" style="width:100%;">
+          </div>
         </div>
         <div class="contact-form">
             <form method="POST" action="{{ route('login') }}" autocomplete="off">
             @csrf
-                <h3 class="contact_tittle">INGRESA TUS DATOS</h3>
+            <img src="{{ asset('img/logo.png')}}" alt="Photo" style="width:100%;">
+                <h3 align="center" class="contact_tittle">INGRESA TUS DATOS</h3>
                 <div class="input-container">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="EMAIL" autofocus>
                         @error('email')
@@ -110,7 +115,7 @@
                     <input id="password" type="password" class="form-control  @error('password') is-invalid @enderror" name="password" required  placeholder="CONTRASEÑA" autocomplete="current-password"
                     minlength="5" maxlength="40" pattern="[A-Za-z0-9]+">
                 </div>
-                <input type="submit" value="LogIn" class="contact_btn">
+                <input type="submit" value="Ingresar" class="contact_btn">
                     <div class="form-group row mb-0">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -121,5 +126,50 @@
             </form>
         </div>
     </div>
+</div> --}}
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    {{-- <div align="center" class="row"> <img src="{{ asset('img/logo.png')}}" class="logo"> </div> --}}
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="{{ asset('img/tienda.png')}}" class="imagetienda"> </div>
+                </div>
+            </div>
+            <div class="col-lg-6">                
+                <div class="card2 card border-0 px-4 py-5">     
+                    <div align=center ><img src="{{ asset('img/log.jpg')}}" alt="Photo" style="width:50%;"> </div>              
+                        <div class="input-container">                                                   
+                            <form method="POST" action="{{ route('login') }}" autocomplete="off">
+                                @csrf
+                                
+                                    <h3 style="color: black" align="center" class="contact_tittle">INGRESA TUS DATOS</h3>
+                                    <div class="input-container">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="EMAIL" autofocus>
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><h6 style="color:yellow;">{{ __('Por favor digite bien su usuario o contraseña') }}</h6></strong>
+                                                </span>
+                                            @enderror
+                                    </div>
+                                    <div class="input-container">
+                                        <input id="password" type="password" class="form-control  @error('password') is-invalid @enderror" name="password" required  placeholder="CONTRASEÑA" autocomplete="current-password"
+                                        minlength="5" maxlength="40" pattern="[A-Za-z0-9]+">
+                                    </div>
+                                    <input type="submit" value="Ingresar" class="btn btn-warning text-center">
+                                        <div class="form-group row mb-0">
+                                                    @if (Route::has('password.request'))
+                                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                            {{-- {{ __('Forgot Your Password?') }} --}}
+                                                        </a>
+                                                    @endif
+                                        </div>
+                            </form>                                  
+                       </div>
+                 </div>
+             </div>
+        </div>
+    </div>
 </div>
+
 @endsection 
