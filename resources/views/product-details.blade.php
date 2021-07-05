@@ -124,9 +124,9 @@
 @section('footer')
 <footer class="footer">
     <div class="l-footer">
-        <!--<img  class="footer_img" src="{{asset('img/JLDIAZ.png')}}" alt="JLDM | Proyectos">-->
+        <!--<img  class="footer_img" src="{{asset('img/SuperPlus.png')}}" alt="JLDM | Proyectos">-->
         <h2 style="color: white" class="footer_img">JLDM</h2>
-    <p>Hola Soy JLDIAZ diseñador web esta pagina web esta totalmente gratis para que puedan implementar a algun proyecto universitario la unica de
+    <p>Hola Soy SuperPlus diseñador web esta pagina web esta totalmente gratis para que puedan implementar a algun proyecto universitario la unica de
         condicon de uso es que mejoren algo a esta pagina web para que asi fortalezcan sus conocimientos.
     </p>
     </div>
@@ -167,7 +167,7 @@
                 </li>
         </ul>
         <div class="b-footer">
-            <p>Todos los Derechos reservados by <a href="https://josediazmirano.github.io/jldiaz/" target="_blank">©JLDIAZ-2020</a></p>
+            <p>Todos los Derechos reservados by <a href="https://josediazmirano.github.io/SuperPlus/" target="_blank">©SuperPlus-2020</a></p>
         </div>
 </footer>
 @endsection

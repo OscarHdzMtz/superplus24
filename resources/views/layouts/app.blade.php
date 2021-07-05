@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="imagenes" href="{{asset('img/favicon.ico')}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>JLDM |Panel administrativo</title>
+    <title>Dashboard</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
@@ -40,31 +40,32 @@
                     <!-- Notifications Dropdown Menu -->
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="far fa-bell"></i>
-                            <span class="badge badge-warning navbar-badge">15</span>
+                            <i class="fas fa-power-off"></i>
+                            <span class="badge badge-warning navbar-badge">1</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">15 Notifications</span>
+                            {{-- <span class="dropdown-item dropdown-header">Mi perfil</span> --}}
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
+                                <i class="fas fa-envelope mr-2"></i> Ver mi perfil
+                                {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item">
-                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                <span class="float-right text-muted text-sm">12 hours</span>
+                                <i class="fas fa-users mr-2"></i> Ver usuarios
+                                {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                <span class="float-right text-muted text-sm">2 days</span>
-                            </a>
+                            <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                    <button type="button" class="btn btn-outline-danger btn-lg btn-block">Cerrar Sesión</button>
+                </a> 
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            <a href="#" class="dropdown-item dropdown-footer">Gracias por visitar nuestro portal</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{--  --}}
+                {{--     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <i class="fas fa-power-off"></i>
                         </a>
@@ -77,7 +78,7 @@
                             <div class="dropdown-divider"></div>
                             
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -88,7 +89,7 @@
                 <a href="{{ url('/') }}" class="brand-link">
                     <img src="{{ asset('dist/img/logop.png')}}" alt="PLUS" class="brand-image img-circle"
                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">SuperPlus</span>
+                    <span class="brand-text font-weight-light"><strong>SuperPlus</strong></span>
                 </a>
 
 
@@ -101,7 +102,7 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="{{ asset('dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
+                            <img src="{{ asset('img/log.jpg')}}" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">
@@ -109,10 +110,11 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 @else
                                 {{ Auth::user()->name }}
-                                <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                {{-- BOTON DE CERRAR SESION --}}
+                               {{--  <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                     <button type="button" class="btn btn-outline-danger">Cerrar Sesión</button>
-                                </a> 
+                                </a>  --}}
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
@@ -161,7 +163,7 @@
                                     <i class="text-info fas fa-user-friends"></i>
                                     <p>
                                         {{-- CLEINTES --}}
-                                        Instalacion Clientes
+                                        Instalacion
                                     </p>
                                 </a>
                             </li>
@@ -185,7 +187,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item admin">
+                     {{--        <li class="nav-item admin">
                                 <a href="{{url('Categorias')}}"
                                     class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-shopping-bag"></i>
@@ -193,8 +195,8 @@
                                        Categorias de los Cursos
                                     </p>
                                 </a>
-                            </li>
-                            <li class="nav-item admin">
+                            </li> --}}
+                         {{--    <li class="nav-item admin">
                                 <a href="{{url('producto')}}"
                                     class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-info fas fa-shopping-basket"></i>
@@ -204,7 +206,7 @@
                                         <span class="right badge badge-danger">{{ $product_count ?? '0' }}</span>
                                     </p>
                                 </a>
-                            </li>
+                            </li> --}}
                             @endcan 
 
                             @can('personal')
@@ -248,7 +250,7 @@
             <!-- /.content-wrapper -->
             <footer class="main-footer">
                 <!-- NO QUITAR -->
-                <strong> JLDIAZ
+                <strong> SuperPlus
                     <div class="float-right d-none d-sm-inline-block">
                         <b>Version</b> 1.0
                     </div>

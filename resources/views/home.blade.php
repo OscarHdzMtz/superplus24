@@ -59,7 +59,7 @@
                     <div class="inner">
                         <h3>{{$cons_productos}}</h3>
 
-                        <p>Productos</p>
+                        <p>Productos Nuevos</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box-open"></i>
@@ -73,7 +73,7 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>{{$cons_clientes}}</h3> 
-                        <p>Clinetes</p>
+                        <p>Clientes</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-street-view"></i>
@@ -97,7 +97,7 @@
                             </div>
                         @endif
     
-                        Hola: {{ Auth::user()->name }} Has Iniciado Sesion de manera correcta
+                        BIENVENIDO: {{ Auth::user()->name }} Has Iniciado Sesion de manera correcta
                     </div>
                 </div>
             </div>

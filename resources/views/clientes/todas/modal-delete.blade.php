@@ -8,13 +8,13 @@
                     </button>
             </div>
             <div class="modal-body">
-                Estas seguro que quieres eliminar a este Cliente ?
+                Estas seguro que quieres eliminar esta imagen?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Error mio..</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     {!! Form::open(['action' => ['ClientesController@destroy', $cliente->id],'method' => 'delete']) !!}
                     {{ Form::token() }}
-                <button type="submit" class="btn btn-primary">Eliminar Cliente</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
                 {!! Form::close() !!}
             </div>
         </div>

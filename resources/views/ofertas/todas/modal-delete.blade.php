@@ -8,13 +8,13 @@
                     </button>
             </div>
             <div class="modal-body">
-                Estas seguro que quieres eliminar esta Oferta ?
+                Estas seguro que quieres eliminar esta Promocion
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Error mio..</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     {!! Form::open(['action' => ['PublicofertController@destroy', $oferta->id],'method' => 'delete']) !!}
                     {{ Form::token() }}
-                <button type="submit" class="btn btn-primary">Eliminar Oferta</button>
+                <button type="submit" class="btn btn-primary">Eliminar</button>
                 {!! Form::close() !!}
             </div>
         </div>

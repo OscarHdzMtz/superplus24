@@ -1,6 +1,6 @@
 <div class="container">
     <button type="button" class="btn btn-outline-info btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-plus-circle"></i> Oferta
+        <i class="fa fa-plus-circle"></i> Nuevo Producto
     </button>
     </div>
     
@@ -10,7 +10,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">NUEVO PROVEEDOR</h5>
+                <h5 class="modal-title" id="exampleModalLabel">NUEVO PRODUCTO</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -18,18 +18,18 @@
             <div class="modal-body">
                 <form>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">NOMBRE DEL PROVEEDOR:</label>
+                    <label for="recipient-name" class="col-form-label">NOMBRE:</label>
                     <input type="text" name="name" class="form-control" id="recipient-name"  required>
                 </div>
                 <div class="form-group">
-                    <label for="message-text" class="col-form-label">IMAGEN DEL PROVEEDOR:</label>
+                    <label for="message-text" class="col-form-label">IMAGEN:</label>
                     {{Form::file('image',['required' => 'required' ])}}
                 </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                <button type="submit" class="btn btn-primary">GUARDAR PROVEEDOR</button>
+                <button type="submit" class="btn btn-primary">GUARDAR</button>
             </div>
             </div>
         </div>

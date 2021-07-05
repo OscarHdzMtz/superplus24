@@ -8,13 +8,13 @@
                     </button>
             </div>
             <div class="modal-body">
-                Estas seguro que quieres eliminar un proveedor ?
+                Estas seguro que quieres eliminar el producto?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Error mio..</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     {!! Form::open(['action' => ['ProveedoresController@destroy', $proveedore->id],'method' => 'delete']) !!}
                     {{ Form::token() }}
-                <button type="submit" class="btn btn-primary">Eliminar proveedor</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
                 {!! Form::close() !!}
             </div>
         </div>

@@ -8,7 +8,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Cliente</a></li>
+                    <li class="breadcrumb-item"><a href="#">Nuevo</a></li>
                     <li class="breadcrumb-item active">Index</li>
                 </ol>
             </div><!-- /.col -->
@@ -46,7 +46,7 @@
             </div>
             @endforeach  
         </div>
-        <div class="alert alert-success" role="alert">
+       {{--  <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Hola {{ Auth::user()->name }}</h4>
             <p>Si vas a publicar una Imagen de un cliente porfavor sigue esta recomedación:<br>
                 1-Para que el usuario tenga una mayor satisfaccion al ver 
@@ -55,6 +55,6 @@
                 3-Respete los caracteres de los campos solicitados.
             </p>
             <hr>
-            <p class="mb-0">Que tengas un hermoso día Atte: JLDIAZ</p>
-        </div>
+            <p class="mb-0">Que tengas un hermoso día Atte: SuperPlus</p>
+        </div> --}}
 @endsection
