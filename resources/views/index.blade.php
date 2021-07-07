@@ -483,6 +483,26 @@
             </button>
             </div>
             <div class="principal">
+              
+                <div data-aos="fade-up" class="container_cards">    
+                    <div class="row_cards">
+                        @foreach($ofertas as $oferta)
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="single-content">
+                                <img class="popou_img"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
+                                <div class="text-content">
+                                    <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3>
+                                    {{-- <hr class="style2"> --}}
+                                    {{-- <h5>todas las compañias</h5> --}}
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach 
+                    </div>
+                </div>
+                
+
+          {{--   <div class="principal">
                 @foreach($ofertas as $oferta)
                 <div id="contenedor" class="row_p">
                     <div id="naranja" class="">
@@ -500,7 +520,7 @@
                     </div>
                 </div>
                 @endforeach  
-            </div> 
+            </div>  --}}
         </div>
     </div>
     <div class='icon-scroll'></div> 
