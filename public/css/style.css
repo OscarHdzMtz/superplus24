@@ -51,6 +51,18 @@
     background-position: center;
     min-height: 400px;
 }
+#headerSection_promo{
+    width: 100%;
+    height:  50vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../img/jldm_slider.jpg); */
+    background: #dfdfe1;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
 /***********************************************
 ***************NAVBAR TOP***********************
 ************************************************/
@@ -147,6 +159,14 @@ nav ul li a:hover{
     margin-top: 40px;
     color:#ffcc00;
     margin-bottom: 80px;
+}
+.hero-text .tipeo3{
+    font-size: 85px;
+    font-family: 'Oswald', sans-serif;
+    margin-top: 40px;
+    /* color: white; */
+    color: black;
+    margin-bottom: 40px;
 }
 .botonesinfo{
     margin-top: 50px;

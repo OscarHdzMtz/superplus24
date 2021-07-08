@@ -2,20 +2,17 @@
 @section('redes')
 <div class="red">
     <div id="facebook">
-        <a href="https://www.youtube.com/channel/UCuRgEjJgi9iZFCYVSASpXDw" target="none" class="fab fa-facebook-f "></a>
+        <a href="" target="none" class="fab fa-facebook-f "></a>
     </div>
     <div id="instagram">
-        <a href="https://www.youtube.com/channel/UCuRgEjJgi9iZFCYVSASpXDw" target="none" class="fab fa-instagram"></a>
+        <a href="" target="none" class="fab fa-instagram"></a>
     </div>
     <div id="twiter">
         <a href="" target="none" class="fab fa-twitter-square"></a>
     </div>
     <div id="whatsaap">
-        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-whatsapp"></a>
+        <a href="" target="none" class="fab fa-whatsapp"></a>
     </div>
-    <!--<div id="linkeding">
-        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-    </div>-->
 </div>
 @endsection
 @section('navbar_top')
@@ -44,8 +41,8 @@
         <nav>
             <ul>
                 <li><a href="/">INICIO</a></li>
-                <li><a href="{{ url('/productos')}}">PROMOCIONES</a></li>
-                <li><a href="{{ url('/productos')}}">PRODUCTOS</a></li>
+                <li><a href="{{ url('/promociones')}}">PROMOCIONES</a></li>
+                <li><a href="{{ url('/')}}">BOLSA DE TRABAJO</a></li>
                 <li><a href="{{ url('/nosotros')}}" class="active">NOSOTROS</a></li>
                 <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
                <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>

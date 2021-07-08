@@ -53,10 +53,10 @@
             </ul> --}}
             <ul>
                 <li><a href="" class="active">INICIO</a></li>
-                <li><a href="{{ url('/')}}">PROMOCIONES</a></li>
+                <li><a href="{{ url('/promociones')}}">PROMOCIONES</a></li>
                 <li><a href="{{ url('/')}}">PRODUCTOS</a></li>
                 <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
-                <li><a href="{{ url('/')}}">CONTÁCTENOS</a></li>
+                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
                <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
             </ul>
         </nav>
@@ -344,18 +344,13 @@
                     <div class="footer_bg_two"></div>
                 </div>
             </div>
-            <div class="footer_bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-7">
-                            <p class="mb-0 f_400">Comercializadora Picaros</p>
-                        </div>
-                        <div class="col-lg-6 col-sm-5 text-right">
-                            <p>derechos <div class=""></div> <i class="icon_heart"></i> in <a href="" target="_blank">SuperPluss</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+             <!-- Copyright -->
+              <div class="text-center p-3" style="background-color:#1266f1">
+                     © 2021 Copyright:
+                 <a class="text-white" href="">SuperPlus</a>
+             </div>
+         <!-- Copyright -->
+
         </footer>
     </footer>
 </div>
