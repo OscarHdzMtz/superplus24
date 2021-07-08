@@ -394,7 +394,8 @@ nav ul li a:hover{
 .frm_pagos{
     font-size: 35px;
     font-family: 'Poppins', sans-serif;
-    color: #FF8525;
+    /* color: #FF8525; */
+    color: white;
 }
 
 .principal {

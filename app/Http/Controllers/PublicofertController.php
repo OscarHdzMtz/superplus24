@@ -20,6 +20,14 @@ class PublicofertController extends Controller
         return view('index', compact('ofertas' , 'productos','proveedores'));
                     
     }
+    public function promo(){
+        $promo = publicofert::all();
+        
+        return view('promociones', compact('promo'));
+                    
+    }
+    
+
     public function store(Request $request)
     {
         $oferta = new publicofert();

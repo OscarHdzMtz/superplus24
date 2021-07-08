@@ -20,9 +20,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/promociones', function () {
-    return view('promociones');
-});
+Route::get('/promociones', 'PublicofertController@promo');
 
 Route::get('/productos', 'StoreController@index');
 
