@@ -160,14 +160,15 @@ nav ul li a:hover{
     color:#ffcc00;
     margin-bottom: 80px;
 }
-.hero-text .tipeo3{
+/* .hero-text .tipeo3{
     font-size: 85px;
     font-family: 'Oswald', sans-serif;
     margin-top: 40px;
-    /* color: white; */
+    color: white;
     color: black;
     margin-bottom: 40px;
-}
+} */
+
 .botonesinfo{
     margin-top: 50px;
 }
@@ -2586,4 +2587,107 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+
+/***********************************************
+******************ESTILO CARDS DE PESTAÑA PROMOCION*******************
+************************************************/
+  .container_cards_promo{
+    width: 100%;
+    padding-right: 35px;
+    padding-left: 55px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row_cards_promo {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-right: -15px;
+    margin-left: -15px;
+    
+}
+
+.single-contentpromo{
+    position: relative;
+    transition: .3s;
+    border-radius: 15px;
+    box-shadow: 10px 20px 20px rgba(0,0,0,0.5);
+}
+.single-contentpromo .text-contentpromo,
+.single-contentpromo::after{
+    position: absolute;
+    left: 20px;
+    right: 20px;
+}
+.single-contentpromo::after{
+    content: '';
+    display: block;
+    background: #ffcb08;
+    top: 20px;
+    bottom: 20px;
+    opacity: 0;
+    transform: rotate3d(-1,1,0,100deg);
+    transition: 0.4s;
+    border-radius: 15px;
+}
+.single-contentpromo:hover::after{
+    opacity: 0.9;
+    transform: rotate3d(0,0,0,0deg)
+}
+.single-contentpromo img{
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+.single-contentpromo .text-contentpromo{
+    top:45%;
+    opacity: 0;
+    z-index: 1;
+    transform: translate(10%, -30%);
+    transition:0.3s;
+    text-align: center;
+    color: #fff;
+}
+.single-contentpromo .text-contentpromo h4{
+    font-family: 'Poppins', sans-serif;
+}
+.single-contentpromo:hover .text-contentpromo{
+    opacity: 1;
+    transform: translate(0,-50%);
+    transition-delay:0.3s
+}
+
+.frm_pagos_promo{
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    /* color: #FF8525; */
+    color: white;
+}
+.popou_img_promo{
+    height: 100%;
+    width: 100%;
+}
+
+
+/* ESTILO DE PALABRA PROMOCION  RESPONSIVO */
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+    .tipeo3 {
+      font-size: 85px;
+      font-family: 'Oswald', sans-serif;
+    margin-top: 40px;
+    color: black;
+      margin-bottom: 40px;
+    }
+  } 
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+    .tipeo3 {
+      font-size: 50px;
+    }
   }

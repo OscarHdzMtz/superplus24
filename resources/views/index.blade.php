@@ -54,7 +54,7 @@
             <ul>
                 <li><a href="" class="active">INICIO</a></li>
                 <li><a href="{{ url('/promociones')}}">PROMOCIONES</a></li>
-                <li><a href="{{ url('/')}}">PRODUCTOS</a></li>
+                <li><a href="{{ url('/')}}">BOLSA DE TRABAJO</a></li>
                 <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
                 <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
                <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>

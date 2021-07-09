@@ -69,25 +69,7 @@
         </div>
     </div>
 @endsection 
-@section('footer')
-<div class="box">
-    {{-- <div class="box-sm red"></div> --}}
-    {{-- <div class="box-sm orange"></div> --}}
-    <div class="box-sm yellow "></div>
-    {{-- <div class="box-sm green "></div> --}}
-    <div class="box-sm blue "></div>
-    {{-- <div class="box-sm purple"></div> --}}
-    <div class="box-sm yellow "></div>
-    <div class="box-sm blue "></div>
-    <div class="box-sm yellow "></div>
-    <div class="box-sm blue "></div>
-    <div class="box-sm yellow "></div>
-    <div class="box-sm blue "></div>
-  </div>
-<footer class="footer">
-   
-</footer>
-@endsection
+
 @section('title')
 <div class="col-12">
     <h1 align="center" style="color: #003baa" class="tipeo2"><span class="type"></span></h1>
@@ -97,15 +79,15 @@
             <hr class="style6">
 	    </div>
 </div>
-<div data-aos="fade-up" class="container_cards">    
-    <div class="row_cards">
+<div data-aos="fade-up" class="container_cards_promo">    
+    <div class="row_cards_promo">
         @foreach($promo as $oferta)
         <div class="col-md-3 col-sm-6 mb-3">
-            <div class="single-content">
-                <img class="popou_img"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
-                <div class="text-content">
+            <div class="single-contentpromo">
+                <img class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
+                <div class="text-contentpromo">
                     {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
-                    <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->texto}}</h2></strong> </h3>
+                    <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3>
                     {{-- <hr class="style2"> --}}
                     {{-- <h5>todas las compañias</h5> --}}
                 </div>
@@ -133,4 +115,44 @@
     </div>
     @endforeach  
 </div> --}}
+@endsection
+
+
+@section('footer')
+<div data-aos="fade-up" class="footer-dark">    
+    <footer>        
+        <footer class="new_footer_area bg_color">
+            <div class="box">
+                {{-- <div class="box-sm red"></div> --}}
+                {{-- <div class="box-sm orange"></div> --}}
+                <div class="box-sm yellow "></div>
+                {{-- <div class="box-sm green "></div> --}}
+                <div class="box-sm blue "></div>
+                {{-- <div class="box-sm purple"></div> --}}
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+              </div>
+            <div style="padding-top: 0px" class="new_footer_top">              
+                <div class="footer_bg">
+                    <div class="footer_bg_one"></div>
+                    <div class="footer_bg_two"></div>
+                </div>
+            </div>
+             <!-- Copyright -->
+              <div class="text-center p-3" style="background-color:#1266f1">
+                     © 2021 Copyright:
+                 <a class="text-white" href="">SuperPlus</a>
+             </div>
+         <!-- Copyright -->
+
+        </footer>
+    </footer>
+</div>
+{{-- <footer class="footer">
+   
+</footer> --}}
 @endsection
