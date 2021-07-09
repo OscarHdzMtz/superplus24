@@ -91,9 +91,11 @@
             <div class="single-content_service">
                 <div class="service">
                     <i class="fas fa-percent fa-4x"></i>
-                    <h4 class="title_services">Ofertas del Día</h4>
+                    <h4 class="title_services">Promociones</h4>
                     <p class="description_services">Ofertas especiales</p><br>
-                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver mas</a>  
+                    {{-- ESTA LINEA ABRE EL MODAL DE PROMOCIONES --}}
+                   {{--  <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver mas</a>   --}}
+                   <a class="btn_modal_wel mt-5" href="{{ url('/promociones')}}">Ver mas</a>
                 </div>
             </div>
         </div>
@@ -109,8 +111,8 @@
         </div> --}}
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
-                <div class="service">
-                    <i class="fas fa-shopping-cart fa-4x"></i>
+                <div class="service">                    
+                    <i class="fas fa-map-marker-alt fa-4x"></i>
                     <h4 class="title_services">Buscador de plus</h4>
                     <p class="description_services">Localiza tu plus mas cercano</p><br>
                     <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mapa</a>  
@@ -120,18 +122,18 @@
 
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
-                <div class="service">
-                    <i class="fas fa-user-check fa-4x"></i>
+                <div class="service">                    
+                    <i class="fas fa-file-invoice fa-4x"></i>
                     <h4 class="title_services">Facturacion Clientes</h4>
-                    <p class="description_services">Nuestros clientes felices con nuestro servicio</p>
-                    <a href="{{ url('/')}}" class="btn_modal_wel mt-5">Facturar</a>  
+                    <p class="description_services">genera y descarga tu Factura Electrónica.</p>
+                    <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank" class="btn_modal_wel mt-5">Facturar</a>  
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
-                <div class="service">
-                    <i class="fas fa-thumbs-up fa-4x"></i>
+                <div class="service">                    
+                    <i class="fab fa-cc-mastercard fa-4x"></i>
                     <h4 class="title_services">Múltiples Formas de Pago</h4>
                     <p class="description_services">Diferentes tipos de pago</p>
                     <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mas</a>          
