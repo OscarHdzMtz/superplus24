@@ -36,7 +36,7 @@
 </div>
 @endsection
 @section('navbar')
-    <header data-aos="fade-up">
+    <header>
     <a href="#" class="logo">
         {{-- <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2> --}}
         <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">

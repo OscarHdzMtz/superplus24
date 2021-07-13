@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">DESCRIPCION DE LA OFERTA:</label>
-                    <textarea type="text" name="texto" class="form-control" id="recipient-name" onkeyup="countChars(this);" maxlength="300" required></textarea>
+                    <textarea type="text" name="texto" class="form-control" id="recipient-name" onkeyup="countChars(this);" maxlength="300" {{-- required --}}></textarea>
                     Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
                 </div> 
                 <div class="form-group">

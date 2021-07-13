@@ -23,7 +23,7 @@
         <input type="text" name="titulo" class="form-control" required value="{{ $oferta->titulo }}">
     </div> 
     <div class="card-body">
-        <textarea name="texto" id="" class="form-control" required rows="6">{{ $oferta->texto }}</textarea>
+        <textarea name="texto" id="" class="form-control" {{-- required --}} rows="6">{{ $oferta->texto }}</textarea>
     </div>
     <div class="form-group cold-md-6"> 
         <label>Imagen</label>
