@@ -16,13 +16,16 @@
     {{-- animaciones al hacer scroll --}}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    {{-- estilo de prueba --}}
+    <link type="text/css" href="{{asset('css/stylenos.css') }}" rel="stylesheet">
+
     <!-- Styles -->
     <link type="text/css" href="{{asset('css/style.css') }}" rel="stylesheet">
     <link type="text/css" href="{{asset('css/slick.css') }}" rel="stylesheet">
 </head>
 <body> 
     {{-- @yield('redes') --}}
-        <section id="headerSection">
+        {{-- <section id="headerSection"> --}}
             @yield('navbar_top')
             @yield('navbar')
             @yield('banner')

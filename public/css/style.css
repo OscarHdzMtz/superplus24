@@ -160,6 +160,17 @@ nav ul li a:hover{
     color:#ffcc00;
     margin-bottom: 80px;
 }
+/* nuevo texto en movimiento indexx usadop actualmente*/
+.textmov{
+    font-size: 5vw;
+    /* font-size: 55px; */
+    font-family: 'Oswald', sans-serif;
+    margin-top: 40px;
+    color:#ffcc00;
+    margin-bottom: 0px;
+    /* margin-bottom: 80px; */
+    text-align: center;
+}
 /* .hero-text .tipeo3{
     font-size: 85px;
     font-family: 'Oswald', sans-serif;

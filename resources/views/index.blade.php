@@ -23,11 +23,11 @@
 <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
     <div class="container d-flex justify-content-between">
         <div class="d-inline-flex ml-auto">
-            <div class="headcont">
+            <div style="color: black" class="headcont">
                 <i class="fas fa-2x fa-mobile-alt messenge"></i>
                 953 138 2693 
             </div>
-            <div class="headcont">
+            <div style="color: black" class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
                SuperPlus24Hrs
             </div>
@@ -64,27 +64,56 @@
     </header>
 @endsection
 @section('banner')
-<div data-aos="fade-up" class="banner">    
+<div class="sombraslider">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+              alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+              alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+              alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+</div>
+
+{{-- <div data-aos="fade-up" class="banner">    
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="hero-text">
+                    <div class="hero-text"> --}}
                         {{-- <h4>PAGINA <span>WEB</span></h4> --}}
-						<br>
+						{{-- <br>
 						<br>
                         <h1 class="tipeo1">SUPERPLUS</h1>
-                        <h1 class="tipeo2"><span class="type"></span></h1>
+                        <h1 class="tipeo2"><span class="type"></span></h1> --}}
                      {{--    <div class="botonesinfo">
                         <a href="" class="btn hero-btn">MAS INFORMACIÓN</a>
                         <a href="{{ url('/productos')}}" class="btn hero-btn2 btn1">VER PRODUCTOS</a>
                         </div> --}}
-                    </div>
+                    {{-- </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection 
 @section('cards_service')
+<h1 class="textmov"><span class="type"></span></h1>
 <div data-aos="fade-up" class="container_cards">
     <div class="row_cards">
         <div class="col-md-3 col-sm-6 mb-3 text-center">
