@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>JLDM |Contáctanos</title>
+        <title>Contactanos</title>
 
         <!-- Fonts--> 
         <link href="{{asset('css/style.css') }}" rel="stylesheet">
@@ -30,8 +30,8 @@
     <script src="{{asset('js/typed.js') }}"></script>
     <script>
 	var typed = new Typed('.type', {
-    strings: ['<span><i class="fas fa-mobile-alt"></i></span> +51 99999999', 
-                '<span><i class="fas fa-mail-bulk"></i></span> jldm605@gmail.com'],
+    strings: ['<span><i class="fas fa-mobile-alt"></i></span> 953 000 00 00', 
+                '<span><i class="fas fa-mail-bulk"></i></span> plus@gmail.com'],
     typeSpeed:60,backSpeed:60,loop:true});
     </script>
     </body>
