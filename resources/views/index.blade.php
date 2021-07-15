@@ -258,12 +258,23 @@
             <hr class="style1">
 	    </div>
 
-        <h3 align="center"> HOLA MUNDO </h3>     
+        {{-- <h3 align="center"> HOLA MUNDO </h3>     --}} 
 </div>
 @endsection
 
 @section('products')
-<div class="producst_body autoplay ">
+<div class="slider">
+    
+	<div class="slide-track">
+        @foreach($proveedores as $proveedore)
+		<div class="slide">            
+			<img src="{{asset('/img/proveedore/'.$proveedore->image)}}" height="100" width="250" alt="" />            
+		</div>
+        @endforeach
+	</div>
+    
+</div>
+{{-- <div class="producst_body autoplay ">
     @foreach($productos as $producto)
     <div class="wrapper">
         <div class="container">
@@ -291,7 +302,7 @@
         </div>
       </div>
     @endforeach 
-</div>
+</div> --}}
 @endsection
 
 @section('footer')
