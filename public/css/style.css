@@ -161,8 +161,9 @@ nav ul li a:hover{
     margin-bottom: 80px;
 }
 /* nuevo texto en movimiento indexx usadop actualmente*/
+/* Empezamos con los estilos del escritorio */
 .textmov{
-    font-size: 5vw;
+    font-size: 50px;
     /* font-size: 55px; */
     font-family: 'Oswald', sans-serif;
     margin-top: 40px;
@@ -171,6 +172,50 @@ nav ul li a:hover{
     /* margin-bottom: 80px; */
     text-align: center;
 }
+ 
+@media screen and (max-width: 991px) {
+    /* Aquí van los estilos para tablets grandes */
+    .textmov{
+        font-size: 40px;
+        /* font-size: 55px; */
+        font-family: 'Oswald', sans-serif;
+        margin-top: 40px;
+        color:#ffcc00;
+        margin-bottom: 0px;
+        /* margin-bottom: 80px; */
+        text-align: center;
+    }
+    }
+     
+    @media screen and (max-width: 767px) {
+    /* Aquí van los estilos para tablets medianas */
+    .textmov{
+        font-size: 30px;
+        /* font-size: 55px; */
+        font-family: 'Oswald', sans-serif;
+        margin-top: 40px;
+        color:#ffcc00;
+        margin-bottom: 0px;
+        /* margin-bottom: 80px; */
+        text-align: center;
+    }
+    }
+     
+    @media screen and (max-width: 479px) {
+    /* Aquí van los estilos para smartphones */
+    .textmov{
+        font-size: 25px;
+        /* font-size: 55px; */
+        font-family: 'Oswald', sans-serif;
+        margin-top: 40px;
+        color:#ffcc00;
+        margin-bottom: 0px;
+        /* margin-bottom: 80px; */
+        text-align: center;
+    }
+    }
+
+
 /* .hero-text .tipeo3{
     font-size: 85px;
     font-family: 'Oswald', sans-serif;

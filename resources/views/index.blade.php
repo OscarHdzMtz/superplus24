@@ -68,15 +68,15 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+            <img class="d-block w-100" src="{{ asset('img/categoria/prueba2.jpg')}}"
               alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+            <img class="d-block w-100" src="{{ asset('img/categoria/prueba.png')}}"
               alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+            <img class="d-block w-100" src="{{ asset('img/categoria/prueba1.png')}}"
               alt="Third slide">
           </div>
         </div>
