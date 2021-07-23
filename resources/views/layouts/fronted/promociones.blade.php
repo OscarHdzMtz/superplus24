@@ -22,9 +22,9 @@
             @yield('navbar')
             @yield('banner')
         </section>
-        <div>
+        {{-- <div>
             @yield('timespace')
-        </div>
+        </div> --}}
         @yield('title')
        {{--  <div class="body_clientes">
             @yield('clientes')
@@ -33,6 +33,13 @@
         @yield('foda')    
         @yield('footer') 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+   {{-- se agragro bootstrap.min.js para que sirva navbar en modo cel --}}
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+   
+
     <script src="{{asset('js/responsive.js') }}"></script>
     <script src="{{asset('js/security.js') }}"></script>
     <script src="{{asset('js/nosotros.js') }}"></script>
@@ -56,6 +63,10 @@
     });	
     </script>
     <script src="{{asset('js/typed.js') }}"></script>
+
+    {{-- estilo nuevo navbar --}}
+    <script src="{{asset('js/prueba.js') }}"></script>
+
     <script>
 	var typed = new Typed('.type', {
     strings: ['<span><i class="fas fa-mobile-alt"></i></span> 24 Horas Contigo', 

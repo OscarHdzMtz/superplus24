@@ -26,10 +26,10 @@
 <body> 
     {{-- @yield('redes') --}}
         {{-- <section id="headerSection"> --}}
-            @yield('navbar_top')
+            {{-- @yield('navbar_top') --}}
             @yield('navbar')
             @yield('banner')
-        </section>
+        {{-- </section> --}}
     @yield('cards_service')
     @yield('title')
         <div class="body_cards">
@@ -52,6 +52,8 @@
     <script src="{{asset('js/provee.js') }}"></script>
     <script src="{{asset('js/slick.min.js') }}"></script>
     <script src="{{asset('js/typed.js') }}"></script>
+{{-- js de prueba --}}
+    <script src="{{asset('js/prueba.js') }}"></script>
 
     {{-- aimaciones al hacer scroll --}}
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

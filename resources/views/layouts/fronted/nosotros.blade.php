@@ -36,6 +36,9 @@
     <script src="{{asset('js/responsive.js') }}"></script>
     <script src="{{asset('js/security.js') }}"></script>
     <script src="{{asset('js/nosotros.js') }}"></script>
+    
+    <script src="{{asset('js/prueba.js') }}"></script>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
 	var swiper = new Swiper('.swiper-container', {

@@ -10,6 +10,8 @@
         <title>Contactanos</title>
 
         <!-- Fonts--> 
+        <link href="{{asset('css/stylenos.css') }}" rel="stylesheet">
+
         <link href="{{asset('css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Styles -->
@@ -28,6 +30,10 @@
     <script src="{{asset('js/responsive.js') }}"></script>
     <script src="{{asset('js/security.js') }}"></script>
     <script src="{{asset('js/typed.js') }}"></script>
+
+    {{-- js de prueba --}}
+    <script src="{{asset('js/prueba.js') }}"></script>
+    
     <script>
 	var typed = new Typed('.type', {
     strings: ['<span><i class="fas fa-mobile-alt"></i></span> 953 000 00 00', 

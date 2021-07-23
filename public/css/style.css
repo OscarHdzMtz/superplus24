@@ -74,12 +74,12 @@
 /***********************************************
 *******************NAVBAR***********************
 ************************************************/
-header{
+/* header{
     position: relative;
     max-width: 1200px;
-    margin: 20px auto;
-    /* padding: 10px; */
-    padding: 0px;
+    margin: 20px auto; */
+    /* padding: 10px; */   /* es la unica fila que no va al descomentar el navbar antiguo */
+    /* padding: 0px;
     background:  #ffcc00;
     box-sizing: border-box;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -132,7 +132,7 @@ nav ul li a:hover{
     transition: 0.5s;
     text-decoration-line:none;
     border-radius: 15px;
-}
+} */
 /***********************************************
 *******************BANNER***********************
 ************************************************/
@@ -2816,3 +2816,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     
   }
   /*TERMINA ESTILO DE MARCAS DE PROVEEDORES A VECES NO DEJA SER MUY SRESPOSIVO LA PAGINA*/
+
+
+
+  

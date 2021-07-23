@@ -36,32 +36,38 @@
 </div>
 @endsection
 @section('navbar')
-    <header>
-    <a href="#" class="logo">
-        {{-- <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2> --}}
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a href="#" class="logo">            
         <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">
     </a>
-    <div class="menu-toggle" ></div>
-        <nav>
-           {{--  <ul>
-                <li><a href="" class="active">INICIO</a></li>
-                <li><a href="{{ url('/productos')}}">PROMOCIONES</a></li>
-                <li><a href="{{ url('/productos')}}">PRODUCTOS</a></li>
-                <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
-                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-               <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
-            </ul> --}}
-            <ul>
-                <li><a href="" class="active">INICIO</a></li>
-                <li><a href="{{ url('/promociones')}}">PROMOCIONES</a></li>
-                <li><a href="{{ url('/')}}">BOLSA DE TRABAJO</a></li>
-                <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
-                <li><a href="{{ url('/contact')}}">CONTÁCTENOS</a></li>
-               <!--IMPORTANTE--><li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
-            </ul>
-        </nav>
-        <div class="clearfix"></div>
-    </header>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item active">
+                <a href="/" class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>INICIO</a>
+            </li>
+            <li class="nav-item">
+                <a href="/promociones" class="nav-link" href="javascript:void(0);"><i class="fas fa-percentage"></i>PROMOCIONES</a>
+            </li>
+            <li class="nav-item">
+                <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i class="fas fa-check-circle"></i>NOSOTROS</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
+            </li>          
+            <li class="nav-item">
+                <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTENOS</a>
+            </li>   
+            <li class="nav-item">
+                <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank" class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 @endsection
 @section('banner')
 <div class="sombraslider">
