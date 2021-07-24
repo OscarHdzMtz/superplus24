@@ -41,6 +41,9 @@ Route::get('categorias/{slug}',[
 
 
 Route::get('/nosotros', 'ClientesController@clientes');
+Route::get('/empleo', function () {
+    return view('empleo');
+});
 
 Auth::routes();
 

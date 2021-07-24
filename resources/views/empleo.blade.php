@@ -1,4 +1,4 @@
-@extends('layouts.fronted.promociones')
+@extends('layouts.fronted.empleo')
 @section('redes')
 <div class="red">
     <div id="facebook">
@@ -46,14 +46,14 @@
             <li class="nav-item">
                 <a href="/" class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>INICIO</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a href="/promociones" class="nav-link" href="javascript:void(0);"><i class="fas fa-percentage"></i>PROMOCIONES</a>
             </li>
             <li class="nav-item">
                 <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i class="fas fa-check-circle"></i>NOSOTROS</a>
             </li>
-            <li class="nav-item">
-                <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
+            <li class="nav-item active">
+                <a href="/" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
             </li>          
             <li class="nav-item">
                 <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTENOS</a>
@@ -92,8 +92,7 @@
                         {{-- <h4>PAGINA <span>WEB</span></h4> --}}
 						<br>
 						<br>
-                        <h1 class="tipeo3">promociones</h1>
-                        
+                        <h1 class="textempleo">¡UNETE A NUESTRO EQUIPO DE TRABAJO</h1>                        
                     </div>
                 </div>
             </div>
@@ -101,53 +100,44 @@
     </div>
 @endsection 
 
-@section('title')
-<div class="col-12">
-    <h1 align="center" style="color: #003baa" class="tipeo2"><span class="type"></span></h1>
-		<div class="testimonial-title">
-			<h5>CONOCE</h5>
-            <h3>NUESTRAS PROMOCIONES</h3>
-            <hr class="style6">
-	    </div>
-</div>
-<div data-aos="fade-up" class="container_cards_promo">    
-    <div class="row_cards_promo">
-        @foreach($promo as $oferta)
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="single-contentpromo">
-                <img class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
-                <div class="text-contentpromo">
-                    {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
-                    <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3>
-                    {{-- <hr class="style2"> --}}
-                    {{-- <h5>todas las compañias</h5> --}}
-                </div>
-            </div>
+@section('body')
+<div id="projectFacts" class="sectionClass">
+    <div class="fullwidth height columns">
+      <div class="factswrap" onscroll="myFunction()">
+        <div class="item fadeupbig animated animated" data-number="450" style="visibility: visible;">
+          <img src="img/networking.png" alt="">
+          <p>+ de</p>
+          <p id="number1" class="number">0</p>
+          <span class="Line-under"></span>
+          <p>Empleados</p>
         </div>
-        @endforeach 
+        <div class="item fadeupbig animated animated" data-number="20" style="visibility: visible;">
+          <img src="img/portfolio.png" alt="">
+          <p>+ de</p>
+          <p id="number2" class="number">0</p>
+          <span class="Line-under"></span>
+          <p>sucursales</p>
+        </div>
+        <div class="item fadeupbig animated animated" data-number="700" style="visibility: visible;">
+          <img src="img/handshake.png" alt="">
+          <p>presntes en mas + de</p>
+          <p id="number3" class="number">0</p>
+          <span class="Line-under"></span>
+          <p>lugares</p>
+        </div>
+        <div class="item fadeupbig animated animated" data-number="8" style="visibility: visible;">
+          <img src="img/company.png" alt="">
+          <p>+ de</p>
+          <p id="number4" class="number">0</p>
+          <span class="Line-under"></span>
+          <p>dfdgfd</p>
+        </div>                  
+      </div>
     </div>
-</div>
+  </div>
+  
+@endsection 
 
-{{-- <div class="principal">
-    @foreach($ofertas as $oferta)
-    <div id="contenedor" class="row_p">
-        <div id="naranja" class="">
-            <img class="popou_img"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
-        </div>       
-        <div id="verde" class="content_pagos"> 
-            <strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong>  
-            <br>    
-            <h4>{{$oferta->texto}}</h4>  
-            <button type="button" class="btnwssp btn btn-outline-success btn-lg">
-                <a target="none" href="https://wa.me/51987654321?text=Hola%2CEstoy+interesad%40+en+la+oferta%3A+{{$oferta->titulo}}">
-                   Preguntar
-                </a>
-            </button> 
-        </div>
-    </div>
-    @endforeach  
-</div> --}}
-@endsection
 
 
 @section('footer')

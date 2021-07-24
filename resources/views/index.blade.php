@@ -56,7 +56,7 @@
                 <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i class="fas fa-check-circle"></i>NOSOTROS</a>
             </li>
             <li class="nav-item">
-                <a href="/" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
+                <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
             </li>          
             <li class="nav-item">
                 <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTENOS</a>
@@ -150,7 +150,7 @@
                     <i class="fas fa-map-marker-alt fa-4x"></i>
                     <h4 class="title_services">Buscador de plus</h4>
                     <p class="description_services">Localiza tu plus mas cercano</p><br>
-                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mapa</a>  
+                    <a class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mapa</a>  
                 </div>
             </div>
         </div>
@@ -508,7 +508,7 @@
             </div>       
             <div id="verde" class="content_pagos"> 
                 <h2 class=" frm_pagos text-center">REALIZAMOS DELIVERY ESPECIAL</h2>  
-                <hr class="style3">   
+                <hr class="style3">                   
                 <h5>{{-- Primero se envía la cotización al cliente, luego de ello el cliente envía la orden de compra por medio de nuestro correo y a las 24 horas 
                     se le realiza el envío de los productos dentro de Lima sin costo alguno, a provincia se aplica un adicional. --}}</h5>                   
             </div>
