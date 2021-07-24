@@ -103,7 +103,7 @@
 
 @section('title')
 <div class="col-12">
-    <h1 align="center" style="color: #003baa" class="tipeo2"><span class="type"></span></h1>
+    <h1 align="center" class="textmov"><span class="type"></span></h1>
 		<div class="testimonial-title">
 			<h5>CONOCE</h5>
             <h3>NUESTRAS PROMOCIONES</h3>
