@@ -150,7 +150,7 @@
                     <i class="fas fa-map-marker-alt fa-4x"></i>
                     <h4 class="title_services">Buscador de plus</h4>
                     <p class="description_services">Localiza tu plus mas cercano</p><br>
-                    <a class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mapa</a>  
+                    <a href="/mapa" class="btn_modal_wel mt-5">Ver mapa</a>  
                 </div>
             </div>
         </div>
@@ -168,10 +168,10 @@
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
                 <div class="service">                    
-                    <i class="fab fa-cc-mastercard fa-4x"></i>
-                    <h4 class="title_services">Múltiples Formas de Pago</h4>
-                    <p class="description_services">Diferentes tipos de pago</p>
-                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mas</a>          
+                    <i class="fas fa-motorcycle fa-4x"></i>
+                    <h4 class="title_services">Servicio a domicilio</h4>
+                    <p class="description_services">...</p>
+                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mas</a>          
                 </div>
             </div>
         </div>
@@ -216,9 +216,9 @@
             <div class="single-content">
                 <img src="{{ asset('img/categoria/cat1.jpg')}}" alt="Categorias Higienika Oficce Perú">
                 <div class="text-content">
-                    <h3>Servicio a domicilio</h3>
+                    <h3>Múltiples Formas de Pago</h3>
                     <hr class="style2">
-                    <h5>Domicilioo</h5>
+                    <h5>Diferentes tipos de pago</h5>
                 </div>
             </div>
         </div>
@@ -499,15 +499,15 @@
             </div>
     </div>
 </div>
-
+{{-- plus a domicilio --}}
 <div class="modal fade bd-example-modal-xl2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div id="contenedor" class="row_p">
             <div id="naranja" class="">
-                <img class="popou_img"src="{{ asset('img/entrega.jpg')}}" alt="">
+                <img class="popou_img"src="{{ asset('img/entrega.png')}}" alt="">
             </div>       
             <div id="verde" class="content_pagos"> 
-                <h2 class=" frm_pagos text-center">REALIZAMOS DELIVERY ESPECIAL</h2>  
+                <h2 style="color: black" class=" frm_pagos text-center">SUPERPLUS A DOMICILIO</h2>  
                 <hr class="style3">                   
                 <h5>{{-- Primero se envía la cotización al cliente, luego de ello el cliente envía la orden de compra por medio de nuestro correo y a las 24 horas 
                     se le realiza el envío de los productos dentro de Lima sin costo alguno, a provincia se aplica un adicional. --}}</h5>                   
@@ -515,7 +515,7 @@
         </div>
     </div>
 </div>
-
+{{-- promociones en modal --}}
 <div class="modal fade modal fade bd-example-modal-x3" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
     <div class="modal-content">

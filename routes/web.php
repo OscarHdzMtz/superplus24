@@ -44,6 +44,9 @@ Route::get('/nosotros', 'ClientesController@clientes');
 Route::get('/empleo', function () {
     return view('empleo');
 });
+Route::get('/mapa', function () {
+    return view('mapa');
+});
 
 Auth::routes();
 

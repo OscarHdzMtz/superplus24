@@ -270,3 +270,18 @@ i {
   .factswrap .item:hover span{
 	background: white;
   }
+
+/* ESTILO DE FRAME DEL MAPA */
+  .map-container-4{
+	overflow:hidden;
+	padding-bottom:56.25%;
+	position:relative;
+	height:0;
+	}
+	.map-container-4 iframe{
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	position:absolute;
+	}
