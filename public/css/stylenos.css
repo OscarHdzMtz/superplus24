@@ -30,9 +30,9 @@ i {
     background-color: #003baa;
 	padding: 0px;
     /* estilo que define margen isquierdo y derecho */
-    margin-right: 20px;
-    margin-left: 20px;
-    border-radius: 20px;
+   /*  margin-right: 20px;
+    margin-left: 20px; */
+    /* border-radius: 20px; */
 }
 #navbarSupportedContent{
 	overflow: hidden;
