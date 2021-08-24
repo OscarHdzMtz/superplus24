@@ -92,7 +92,7 @@
                         {{-- <h4>PAGINA <span>WEB</span></h4> --}}
 						<br>
 						<br>
-                        <h1 class="tipeo3">promociones</h1>
+                        <h1 class="tipeo2">promociones</h1>
                         
                     </div>
                 </div>
