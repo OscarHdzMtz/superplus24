@@ -132,7 +132,7 @@
 
                             <li class="nav-item">
                                 <a href="{{url('home')}}" class="{{ Request::path() === '/home' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-info  fas fa-home"></i>
+                                    <i class="text-warning  fas fa-home"></i>
                                     <p>Inicio</p>
                                 </a>
                             </li>
@@ -140,7 +140,7 @@
                             <li class="nav-item">
                                 <a href="{{url('usuarios')}}"
                                     class="{{ Request::path() === 'usuarios' ? 'nav-link active ' : 'nav-link' }}">
-                                    <i class="text-info  fas fa-users"></i>
+                                    <i class="text-warning  fas fa-users"></i>
                                     <p>
                                         Usuarios
                                         <?php $users_count = DB::table('users')->count(); ?>
@@ -151,7 +151,7 @@
                             <li class="nav-item admin">
                                 <a href="{{url('roles')}}"
                                     class="{{ Request::path() === 'roles' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-info fas fa-user-tag"></i>
+                                    <i class="text-warning fas fa-user-tag"></i>
                                     <p>
                                         Roles    
                                     </p>
@@ -160,7 +160,7 @@
                             <li class="nav-item admin">
                                 <a href="{{url('clientes/todas')}}"
                                     class="{{ Request::path() === 'clientes/todas' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-info fas fa-user-friends"></i>
+                                    <i class="text-warning fas fa-user-friends"></i>
                                     <p>
                                         {{-- CLEINTES --}}
                                         Instalacion
@@ -170,7 +170,7 @@
                             <li class="nav-item admin">
                                 <a href="{{url('proveedores')}}"
                                     class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-info fas fa-user-friends"></i>
+                                    <i class="text-warning fas fa-user-friends"></i>
                                     <p>
                                         {{-- proveedores --}}
                                         Productos nuevos
@@ -180,7 +180,7 @@
                             <li class="nav-item admin">
                                 <a href="{{url('ofertas/todas')}}"
                                     class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-info fas fa-star"></i>
+                                    <i class="text-warning fas fa-star"></i>
                                     <p>
                                         {{-- Cursos del dia --}}
                                         Promociones

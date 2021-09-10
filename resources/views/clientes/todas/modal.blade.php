@@ -1,6 +1,6 @@
 <div class="container">
-    <button type="button" class="btn btn-outline-info mb-8 btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-plus-circle"></i> Nuevo
+    <button type="button" class="btn btn-outline-success mb-8 btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-plus-circle"></i> Agregar Instalaciones Plus
     </button>
 </div>
     
@@ -28,7 +28,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
                 <button type="submit" class="btn btn-primary">GUARDAR</button>
             </div>
             </div>

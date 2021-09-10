@@ -1,6 +1,6 @@
 <div class="container">
-    <button type="button" class="btn btn-outline-info btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-plus-circle"></i> Promociones
+    <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-plus-circle"></i> Agregar Promociones
     </button>
     </div>
     
@@ -33,7 +33,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
                 <button type="submit" class="btn btn-primary">GUARDAR OFERTA</button>
             </div>
             </div>

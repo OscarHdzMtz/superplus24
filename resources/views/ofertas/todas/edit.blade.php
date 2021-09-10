@@ -36,7 +36,7 @@
     <div class="card-footer text-muted small">
         {{ $oferta->updated_at }}
         <a href="{{URL::action('PublicofertController@edit',$oferta->id)}}">
-            <button type="submit" class="btn btn-info  ">
+            <button type="submit" class="btn btn-primary  ">
             <i class="far fa-save"></i>
             </button> 
         </a>

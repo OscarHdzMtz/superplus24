@@ -1,5 +1,5 @@
 <div class="container">
-    <button type="button" class="btn btn-outline-info btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-plus-circle"></i> Nuevo Producto
     </button>
     </div>

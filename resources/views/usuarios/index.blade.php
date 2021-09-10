@@ -28,7 +28,7 @@
           </div>
       </form>
       <a href="usuarios/create">
-        <button type="button" class="btn btn-outline-info float-right"><i class="fa fa-plus-circle"></i> Usuario</button>
+        <button type="button" class="btn btn-outline-success float-right"><i class="fa fa-plus-circle"></i> Usuario</button>
       </a>
     </h2>
     <h6> 
@@ -68,7 +68,7 @@
       <td>
 
       <form action="{{route('usuarios.destroy',$user->id)}}" method="POST">
-        <a href="{{route('usuarios.show', $user->id)}}"><button type="button"  class="btn btn-outline-info"><i class="far fa-eye"></i></button></a>
+        <a href="{{route('usuarios.show', $user->id)}}"><button type="button"  class="btn btn-outline-primary"><i class="far fa-eye"></i></button></a>
         <a href="{{route('usuarios.edit',$user->id)}}"><button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i></button></a>
         <!--@csrf
           @method('DELETE')

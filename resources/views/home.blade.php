@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-info">
+                <div class="small-box bg-primary">
                     <div class="inner">
                     <h3>{{$cons_user}}</h3>
 
@@ -34,7 +34,7 @@
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/usuarios" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -47,9 +47,9 @@
                         <p>Ofertas Del dia</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-cash-register"></i>
+                        <i class="fas fa-percent"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/ofertas/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -57,14 +57,14 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>{{$cons_productos}}</h3>
+                        <h3 style="color: white">{{$cons_proveedores}}</h3>
 
-                        <p>Productos Nuevos</p>
+                        <p style="color: white">Productos Nuevos</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box-open"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/proveedores" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -73,12 +73,12 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>{{$cons_clientes}}</h3> 
-                        <p>Clientes</p>
+                        <p>Instalaciones</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-street-view"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/clientes/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

@@ -37,7 +37,7 @@
             </div> 
             <div class="card-footer border-info">
                 <a href="{{URL::action('PublicofertController@edit',$oferta->id)}}">
-                    <button type="button" class="btn btn-info btn-sm ">
+                    <button type="button" class="btn btn-warning btn-sm ">
                         <i class="far fa-edit"></i>
                     </button> 
                 </a>
