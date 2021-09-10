@@ -130,14 +130,14 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
 
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a href="{{url('home')}}" class="{{ Request::path() === '/home' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-warning  fas fa-home"></i>
                                     <p>Inicio</p>
                                 </a>
                             </li>
                             @can('administrador')
-                            <li class="nav-item">
+                            <li class="nav-item textsidebar">
                                 <a href="{{url('usuarios')}}"
                                     class="{{ Request::path() === 'usuarios' ? 'nav-link active ' : 'nav-link' }}">
                                     <i class="text-warning  fas fa-users"></i>
@@ -160,7 +160,7 @@
                             <li class="nav-item admin">
                                 <a href="{{url('clientes/todas')}}"
                                     class="{{ Request::path() === 'clientes/todas' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-user-friends"></i>
+                                    <i class="text-warning fas fa-hotel"></i>
                                     <p>
                                         {{-- CLEINTES --}}
                                         Instalacion
@@ -180,10 +180,73 @@
                             <li class="nav-item admin">
                                 <a href="{{url('ofertas/todas')}}"
                                     class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-star"></i>
+                                    <i class="text-warning fas fa-percentage"></i>
                                     <p>
                                         {{-- Cursos del dia --}}
                                         Promociones
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">                                    
+                                    <i class="text-warning fas fa-image"></i>
+                                    <p>                                 
+                                        Slider Principal
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-code-branch"></i>
+                                    <p>                                 
+                                        Servicios
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-file-image"></i>
+                                    <p>                                 
+                                        Marcas Proveedores
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-star"></i>
+                                    <p>                                 
+                                        Mi empresa
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-handshake"></i>
+                                    <p>                                 
+                                        ofertas de trabajo
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-map-marker-alt"></i>
+                                    <p>                                 
+                                        GoogleMaps
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{url('#')}}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-eye"></i>
+                                    <p>                                 
+                                        Vista Previa
                                     </p>
                                 </a>
                             </li>
