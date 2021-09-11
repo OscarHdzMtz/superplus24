@@ -94,8 +94,8 @@
                         {{-- <h4>PAGINA <span>WEB</span></h4> --}}
 						<br>
 						<br>
-                        <h1 class="tipeo1">COMUNÍCATE CON NOSOTROS</h1>
-                        <h1 class="tipeo2"><span class="type"></span></h1>
+                        <h1 class="textempleo">COMUNÍCATE CON NOSOTROS</h1>
+                        {{-- <h1 class="tipeo2"><span class="type"></span></h1> --}}
                     </div>
                 </div>
             </div>
@@ -104,6 +104,7 @@
 @endsection 
 @section('cards_service')
 <div class="container_cards">
+    <h1 align="center" class="textmov"><span class="type"></span></h1>
     <div class="row_cards">
         <div class="col-md-3 col-sm-6 mb-3 text-center">
             <div class="single-content_service">
@@ -209,9 +210,42 @@
     </div>
 </div>
 @endsection
+
 @section('footer')
-<footer class="footer">
-    
-    
-</footer>
+<div data-aos="fade-up" class="footer-dark">    
+    <footer>        
+        <footer class="new_footer_area bg_color">
+            <div class="box">
+                {{-- <div class="box-sm red"></div> --}}
+                {{-- <div class="box-sm orange"></div> --}}
+                <div class="box-sm yellow "></div>
+                {{-- <div class="box-sm green "></div> --}}
+                <div class="box-sm blue "></div>
+                {{-- <div class="box-sm purple"></div> --}}
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
+              </div>
+            <div style="padding-top: 0px" class="new_footer_top">              
+                <div class="footer_bg">
+                    <div class="footer_bg_one"></div>
+                    <div class="footer_bg_two"></div>
+                </div>
+            </div>
+             <!-- Copyright -->
+              <div class="text-center p-3" style="background-color:#1266f1">
+                     © 2021 Copyright:
+                 <a class="text-white" href="">SuperPlus</a>
+             </div>
+         <!-- Copyright -->
+
+        </footer>
+    </footer>
+</div>
+{{-- <footer class="footer">
+   
+</footer> --}}
 @endsection

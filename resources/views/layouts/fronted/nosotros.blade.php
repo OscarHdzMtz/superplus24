@@ -19,11 +19,11 @@
 </head>
 
 <body>
-    @yield('redes')
-    <section id="headerSection_nosotros">
-        @yield('navbar_top')
+    @yield('redes')    
+    <section id="headerSection_promo">
+        {{-- @yield('navbar_top') --}}
         @yield('navbar')
-        @yield('banner')
+        @yield('banner')    
     </section>
     <div>
         @yield('timespace')
