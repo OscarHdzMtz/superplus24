@@ -114,7 +114,7 @@
     <div class="row_cards_promo">
         @foreach($promo as $oferta)
         <div class="col-md-3 col-sm-6 mb-3">
-            <div class="single-contentpromo">
+            <div class="{{-- single-contentpromo --}}"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
                 <img class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
                 <div class="text-contentpromo">
                     {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
