@@ -12,17 +12,21 @@ class PublicofertController extends Controller
         //return view('clientes.todas.index', ['clientes' => Clientes::all()->where('user_id',auth()->id())]);
         return view('ofertas.todas.index',['ofertas' => publicofert::all()]);
     }
-    public function ofertas(){
+    public function ofertas(){        
         $ofertas = publicofert::all();
         $productos = Productos::all();
         $proveedores = Proveedores::all();
+        
     
         return view('index', compact('ofertas' , 'productos','proveedores'));
                     
     }
+    /* muestra las promociones en el apartado de promociones*/
     public function promo(){
-        $promo = publicofert::all();
+        /* promocion ordenada de acuerdo a la fecha creada */
+        $promo = publicofert::orderBy('created_at', 'desc')->get();
         
+        /* retorna la vista y le pasa las promociones de la base de datos */
         return view('promociones', compact('promo'));
                     
     }

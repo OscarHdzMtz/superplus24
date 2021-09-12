@@ -2727,7 +2727,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     left: 20px;
     right: 20px;
 }
-.single-contentpromo::after{
+/* este codigo hace un hover sobre la tarjeta de color amarillo al pasar el cursos */
+/* .single-contentpromo::after{
     content: '';
     display: block;
     background: #ffcb08;
@@ -2737,7 +2738,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     transform: rotate3d(-1,1,0,100deg);
     transition: 0.4s;
     border-radius: 15px;
-}
+} */
 .single-contentpromo:hover::after{
     opacity: 0.9;
     transform: rotate3d(0,0,0,0deg)

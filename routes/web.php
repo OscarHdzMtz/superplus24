@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PublicofertController;
+use App\Http\Controllers\StoreController;
+use App\Models\publicofert;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -13,16 +17,18 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 /*NAVBAR*/
-Route::get('/', 'PublicofertController@ofertas');
+Route::get('/', [PublicofertController::class, 'ofertas']);/* Route::get('/', 'PublicofertController@ofertas'); */
 
+Route::get('/promociones', [PublicofertController::class, 'promo']); /* Route::get('/promociones', 'PublicofertController@promo');  asi se hace con laravel 7*/
 
+Route::get('/nosotros', [ClientesController::class, 'clientes']);/* Route::get('/nosotros', 'ClientesController@clientes'); */
+
+Route::get('/productos', [StoreController::class, 'index']); /* Route::get('/productos', 'StoreController@index'); */
+
+/* retorna solamente una vista */
 Route::get('/contact', function () {
     return view('contact');
 });
-
-Route::get('/promociones', 'PublicofertController@promo');
-
-Route::get('/productos', 'StoreController@index');
 
 Route::get('productos/{slug}',
 [
@@ -30,17 +36,11 @@ Route::get('productos/{slug}',
     'uses' => 'StoreController@show'
 ]);
 
-/*PRUEBA
-Route::resource('/categorias', 'StoreController');*/
-
-
 Route::get('categorias/{slug}',[
     'uses' => 'StoreController@searchCategory',
 ])->name('searchCategory');
 
 
-
-Route::get('/nosotros', 'ClientesController@clientes');
 Route::get('/empleo', function () {
     return view('empleo');
 });
@@ -58,7 +58,6 @@ Route::resource('roles','RoleController')->middleware('auth')->middleware('auth'
 Route::resource('/clientes/todas', 'ClientesController')->middleware('auth');
 Route::resource('/proveedores', 'ProveedoresController')->middleware('auth');
 Route::resource('/ofertas/todas', 'PublicofertController')->middleware('auth');
-
 Route::resource('/Categorias', 'CategoriasController')->middleware('auth');
 Route::resource('/producto', 'ProductoController')->middleware('auth');
 
