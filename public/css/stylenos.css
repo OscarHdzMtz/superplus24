@@ -197,79 +197,6 @@ i {
     margin-left: 20px;
 }
 
-/* ESTILO CONTADOR NUMERICO */
-.fullwidth {
-	width: 100% !important;
-	display: table;
-	float: none;
-	padding: 0;
-	min-height: 1px;
-	height: 100%;
-	position: relative;
-  }
-  #projectFacts .fullwidth{
-	padding: 0;
-  }
-  .factswrap{
-	  display: flex;
-	margin-top: 30px;
-	flex-direction: row;
-	flex-wrap: wrap;
-  }
-  .factswrap .item{
-	width: 25%;
-	height: 100%;
-	padding: 50px 0px;
-	text-align: center;
-	transition:  all .5s ease-in-out;
-  }
-  .factswrap .item:nth-child(1){
-	background: #fecb00;
-  }
-  .factswrap .item:nth-child(2){
-	background: #003baa;
-  }
-  .factswrap .item:nth-child(3){
-	background: #fecb00;
-  }
-  .factswrap .item:nth-child(4){
-	background: #003baa;
-  }
-  .factswrap .item p.number{
-	font-size: 40px;
-	padding: 0;
-	font-weight: bold;
-  }  								
-  .factswrap .item p{
-	color: rgba(255, 255, 255, 0.8);
-	font-size: 18px;
-	margin: 0;
-	padding: 10px;
-	font-family: 'Open Sans';
-	font-weight: bold;
-	transition:  all .5s ease-in-out;
-  }
-  .factswrap .item span.Line-under{
-	width: 60px;
-	background: rgba(255, 255, 255, 0.8);
-	height: 2px;
-	display: block;
-	margin: 0 auto;
-	transition:  all .5s ease-in-out;
-  }
-  .factswrap .item img{
-	  width: 80px;
-	  opacity: .8;
-	  transition:  all .5s ease-in-out;
-  }
-  .factswrap .item:hover img, .factswrap .item:hover p{
-	color: #fff;
-	opacity: 1;
-  }
-  
-  .factswrap .item:hover span{
-	background: white;
-  }
 
 /* ESTILO DE FRAME DEL MAPA */
   .map-container-4{
@@ -286,47 +213,53 @@ i {
 	position:absolute;
 	}
 
-/* ESTILO COUNTERS OFERTAS DE TRABAJO*/
+/********************************************************
+************ ESTILO COUNTERS OFERTAS DE TRABAJO**********
+*********************************************************/
 	.containercount{
 		background-color: #fecb00;		
 		}
 	.containercount p{
 		color: black;
 	}
-
+	
+	.textcount1{
+		font-size: 20px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		/* margin-top: 100px; */
+		/* color:#ffcc00; */
+		margin-bottom: 20px;
+		/* margin-bottom: 80px; */
+		text-align: center;
+	}
 	.numcount{
 		font-size: 50px;
 		/* font-size: 55px; */
 		font-family: 'Oswald', sans-serif;
-		margin-top: 40px;
+		margin-top: 0px;
 		color:#ffcc00;
 		margin-bottom: -20px;
 		/* margin-bottom: 80px; */
 		text-align: center;
 	}
-	.textcount1{
-		font-size: 20px;
-		/* font-size: 55px; */
-		font-family: 'Oswald', sans-serif;
-		margin-top: 40px;
-		color:#ffcc00;
-		margin-bottom: 0px;
-		/* margin-bottom: 80px; */
-		text-align: center;
-	}
 	.textcount2{
-		font-size: 40px;
+		font-size: 35px;
 		/* font-size: 55px; */
-		font-family: 'Oswald', sans-serif;
+		/* font-family: 'Oswald', sans-serif; */
 		text-align: center;
 	}
 
 	.bg-grey {
 		background: #F4F7FC;
 	  }
-/*----------------------
-imgenes y slider de la
------------------------*/
+	.bg-counter{
+		background: #dfe6f2;
+		border-radius: 5px;
+	}
+/*************************************************************
+*******imgenes y slider de la seccion OFERTAS DE TRABAJO******
+**************************************************************/
 h5.subtitle {
 	color: #21c87a;
 	margin-bottom: 10px;
@@ -345,12 +278,14 @@ h5.subtitle {
   
   .service-content {
 	padding-top: 60px;
-	padding-left: 15px;
+	padding-left: 0px;
+	text-align: center;
   }
   
   .service-content h1 {
 	margin-bottom: 20px;
 	margin-top: 15px;
+	
   }
   
   .service-icon {
@@ -364,9 +299,22 @@ h5.subtitle {
 	border-radius: 50%;
 	padding-top: 5px;
   }
+  .service-icon-count {
+	/* margin-right: 20px; */
+	color: #003baa;
+	margin-top: 100px;
+	font-size: 25px;
+	/* width: 50px;
+	height: 50px;
+	background: #21c87a; */
+	/* text-align: center; */
+	border-radius: 50%;
+	/* padding-top: 5px; */
+  }
   
   .service-block {
 	margin-bottom: 50px;
+	margin-left: 150px;
   }
   
   .service-inner-content h4 {
@@ -440,42 +388,161 @@ h5.subtitle {
 	z-index: 9999;
   }
 	  
+
+/***************************************************
+********************** RESPONSIVO ******************
+****************************************************/
+
 /*----------------------------------
-    MEDIUM LAYOUT: 1280px
+    DISEÑO MEDIO: 1280px
 -----------------------------------*/
 @media (max-width: 1200px) {
-
+	.service-block {
+		margin-bottom: 50px;
+		margin-left: 30px;
+	  }
 }	  
 
 /*----------------------------------
-    TABLET LAYOUT: 768px
+    DISEÑO TABLET: 768px
 ------------------------------------*/
 @media (max-width: 992px) {
 	.service-img {
 		margin-bottom: 0px;
 	}
+	.service-block {
+		margin-bottom: 50px;
+		margin-left: 50px;
+	  }
 }
 
 /*----------------------------------
-    WIDE MOBILE LAYOUT: 7680px
+    DISEÑO MÓVIL AMPLIO-horizontal: 768px
 -----------------------------------*/
 @media (max-width: 768px) {
 	.service-img {
 		margin-bottom: 0px;
 	  }
+	  .service-block {
+		margin-bottom: 50px;
+		margin: 0px auto;
+	  }
+	  .textcount1{
+		font-size: 13px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		margin-top: 20px;
+		color:#ffcc00;
+		margin-bottom: 20px;
+		/* margin-bottom: 80px; */
+		text-align: center;
+	}
+	.numcount{
+		font-size: 50px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		margin-top: 20px;
+		color:#ffcc00;
+		margin-bottom: -20px;
+		/* margin-bottom: 80px; */
+		text-align: center;
+	}
+	.textcount2{
+		font-size: 25px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		text-align: center;
+	}
 }
 
 
-/* Extra Small Devices, Phones */
+/* Dispositivos extra pequeños, teléfonos */
 	  @media (max-width: 640px) {
 		.service-img {
 			margin-bottom: 0px;
 		  }
+		  .service-block {
+			margin-bottom: 50px;
+			margin-left: 50px;
+		  }
+		  .service-content {
+			padding-top: 60px;
+			padding-left: -50px;
+			text-align: center;
+		  }
+		  
+		  .service-content h1 {
+			margin-bottom: 20px;
+			margin-top: 15px;
+		  }
 	  }
 
-	  /* Custom, iPhone Retina */
+	  /*Personalizado, iPhone Retina */
 @media (max-width: 480px) {
 	.service-img {
 		margin-bottom: 0px;
+	  }
+	  .service-block {
+		margin-bottom: 50px;
+		margin-left: 0px;
+	  }
+	  .service-content {
+		padding-top: 60px;
+		padding-left: 0px;
+		padding-right: 30px;
+		text-align: center;
+	  }
+	  
+	  .service-content h1 {
+		margin-bottom: 20px;
+		margin-top: 15px;
+	  }
+	  .textcount1{
+		font-size: 20px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		/* margin-top: 30px; */
+		color:#ffcc00;
+		margin-bottom: 20px;
+		/* margin-bottom: 80px; */
+		text-align: center;
+	}
+	.numcount{
+		font-size: 50px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		margin-top: 25px;
+		color:#ffcc00;
+		margin-bottom: -20px;
+		/* margin-bottom: 80px; */
+		text-align: center;
+	}
+	.textcount2{
+		font-size: 40px;
+		/* font-size: 55px; */
+		font-family: 'Oswald', sans-serif;
+		text-align: center;
+	}
+	.service-content {
+		padding-top: 60px;
+		padding-left: 0px;
+		text-align: center;
+	  }
+	.service-content h1 {
+		margin-bottom: 20px;
+		margin: 0px auto;
+		font-size: 9vw;
+	  }
+	  .service-icon-count {
+		/* margin-right: 20px; */
+		color: #003baa;
+		margin-top: 0px;
+		font-size: 25px;
+		/* width: 50px;
+		height: 50px;
+		background: #21c87a; */
+		/* text-align: center; */
+		border-radius: 50%;
+		/* padding-top: 5px; */
 	  }
 	}

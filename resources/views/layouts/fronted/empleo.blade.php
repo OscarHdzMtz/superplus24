@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    @yield('redes')
+    {{-- @yield('redes') --}}
     <section id="headerSection_empleo">
         {{-- @yield('navbar_top') --}}
         @yield('navbar')

@@ -119,9 +119,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-7 pl-5">
+                <div class="col-lg-8 pl-5">
                     <div class="service-content">
-                        <h1>Forma Parte de una de las empresas mas importantes de la region Mixteca</h1>
+                        <h1>Ven y forma parte de una de las cadenas comerciales mas importantes y en expancion de la region
+                            Mixteca.</h1>
                         {{-- <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p> --}}
                     </div>
                 </div>
@@ -134,17 +135,17 @@
                 <div class="col-lg-10 offset-lg-4">
                     <div class="carousel slide " id="service-carousel" data-ride="carousel">
                         <div class="carousel-inner">
-                            
+
                             <div class="carousel-item active">
                                 <div class="col-lg-12">
-                                    <div class="row">                                    
+                                    <div class="row">
                                         <div class="col-lg-8">
                                             <div class="service-block media">
                                                 <div class="service-icon">
-                                                    <i class="ti-cloud"></i>
+                                                    <i class="fas fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="service-inner-content media-body">
-                                                    <h4>Buen ambiente de trabajo</h4>
+                                                    <h4>Excelente ambiente de trabajo</h4>
                                                     <p>Texto Texto TextoTexto .......</p>
                                                 </div>
                                             </div>
@@ -154,14 +155,14 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="col-lg-12">
-                                    <div class="row">                                    
+                                    <div class="row">
                                         <div class="col-lg-8">
                                             <div class="service-block media">
                                                 <div class="service-icon">
-                                                    <i class="ti-cloud"></i>
+                                                    <i class="fas fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="service-inner-content media-body">
-                                                    <h4>Buen dsdbhsajkhfsakjfhdsa de trabajo</h4>
+                                                    <h4>Buen salario</h4>
                                                     <p>Texto Texto TextoTexto .......</p>
                                                 </div>
                                             </div>
@@ -187,7 +188,7 @@
                                         <div class="col-lg-8">
                                             <div class="service-block media">
                                                 <div class="service-icon">
-                                                    <i class="ti-cloud"></i>
+                                                    <i class="fas fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="service-inner-content media-body">
                                                     <h4>Oportunidades de crecimiento</h4>
@@ -209,27 +210,41 @@
 @section('body')
     <!-- section Counter Start -->
 
-    <body onload="load()">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
-                    <p class="textcount1">Una empresa con mas de:</p>
-                    <p style="color: blue" id='0101' class="fs-2 numcount">0</p>
-                    <p class="textcount2">Sucursales</p>
+    <div id="counter" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+                <div class="bg-counter">
+                    <div class="service-icon-count fa-3x">
+                        <i class="fas fa-store"></i>                        
+                    </div>
+                    <p class="textcount1">Una empresa con mas de:</p>                   
+                    <p class="counter-value fs-2 numcount" data-count="40">0</p>
+                    <p class="textcount2"><strong>Sucursales</strong></p>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
-                    <p class="textcount1">Presentes en mas de:</p>
-                    <p style="color: blue" id='0102' class="fs-2 numcount">0</p>
-                    <p class="textcount2">Lugares</p>
+             
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+                <div class="bg-counter">
+                    <div class="service-icon-count fa-3x">
+                        <i class="fas fa-map-marked"></i>
+                    </div>
+                    <p class="textcount1">Con presencia en mas de:</p>
+                    <p id='0102' class="counter-value fs-2 numcount" data-count="5">0</p>
+                    <p class="textcount2"><strong>Lugares</strong></p>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+                <div class="bg-counter">
+                    <div class="service-icon-count fa-3x">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <p class="textcount1">Con mas de:</p>
-                    <p style="color: blue" class="fs-2 numcount"><span id='0103'>0</span></p>
-                    <p class="textcount2">Colaboradores</p>
+                    <p id='0102' class="counter-value fs-2 numcount" data-count="140">0</p>
+                    <p class="textcount2"><strong>Colaboradores</strong></p>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
 @endsection
 
 
