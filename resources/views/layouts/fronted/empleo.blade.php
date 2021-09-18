@@ -9,6 +9,10 @@
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link type="text/css" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    {{-- Link para la seccion de COUNTERS --}}
+{{--     <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> --}}
+
     <title>Empleo</title>
 
     <!-- Fonts-->
@@ -30,7 +34,8 @@
     {{-- <div>
             @yield('timespace')
         </div> --}}
-    <section class="cta-section ">
+        @yield('image')
+    <section {{-- class="cta-section " --}}>
         @yield('body')
     </section>
     @yield('title')

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/styleletras.css') }}" rel="stylesheet">
+    
 
     {{-- ESTILO BOOTSTRAP --}}
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
@@ -25,7 +26,7 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
     {{-- estilo de prueba --}}
-    <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">    
 
     <!-- ESTILOS PROPIOD -->
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -72,6 +73,7 @@
     <script src="{{ asset('js/typed.js') }}"></script>
     {{-- js de prueba --}}
     <script src="{{ asset('js/prueba.js') }}"></script>
+    <script src="{{ asset('js/counter.js') }}"></script>
 
     {{-- aimaciones al hacer scroll --}}
     {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
@@ -95,6 +97,8 @@
             loop: true
         });
     </script>
+
+   
 
 </body>
 

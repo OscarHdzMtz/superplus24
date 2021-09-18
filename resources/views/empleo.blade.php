@@ -99,43 +99,130 @@
         </div>
     </div>
 @endsection 
+@section('image')
+<section class="bg-grey" id="service">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-4">
+                <div class="service-img">
+                    <img src="{{ asset('img/clientes/avatar.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="col-lg-6 pl-4">
+                <div class="service-content">
+                    <h1>Forma Parte de una de las empresas mas importantes de la region Mixteca</h1>
+                    <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p>
+                </div>               
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-5 service-wrap">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-8 offset-lg-4">
+                <div class="carousel slide " id="service-carousel" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="service-block media">
+                                            <div class="service-icon">
+                                                <i class="ti-reload"></i>
+                                            </div>
+                                            <div class="service-inner-content media-body">
+                                                <h4>Backup System</h4>
+                                                <p>Our team are experts in matching you with the right provider.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="service-block media">
+                                            <div class="service-icon">
+                                                <i class="ti-cloud"></i>
+                                            </div>
+                                            <div class="service-inner-content media-body">
+                                                <h4>Cloud Hosting</h4>
+                                                <p>Our team are experts in matching you with the right provider.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="service-block media">
+                                            <div class="service-icon">
+                                                <i class="ti-world"></i>
+                                            </div>
+                                            <div class="service-inner-content media-body">
+                                                <h4>Web hosting</h4>
+                                                <p>Our team are experts in matching you with the right provider.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="service-block media">
+                                            <div class="service-icon">
+                                                <i class="ti-server"></i>
+                                            </div>
+                                            <div class="service-inner-content media-body">
+                                                <h4>Office Cloud</h4>
+                                                <p>Our team are experts in matching you with the right provider.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="pl-3">Want to know more about this? <a href="#">Contact us</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
 
 @section('body')
-<div id="projectFacts" class="sectionClass">
-    <div class="fullwidth height columns">
-      <div class="factswrap" onscroll="myFunction()">
-        <div class="item fadeupbig animated animated" data-number="450" style="visibility: visible;">
-          <img src="img/networking.png" alt="">
-          <p>+ de</p>
-          <p id="number1" class="number">0</p>
-          <span class="Line-under"></span>
-          <p>Empleados</p>
-        </div>
-        <div class="item fadeupbig animated animated" data-number="20" style="visibility: visible;">
-          <img src="img/portfolio.png" alt="">
-          <p>+ de</p>
-          <p id="number2" class="number">0</p>
-          <span class="Line-under"></span>
-          <p>sucursales</p>
-        </div>
-        <div class="item fadeupbig animated animated" data-number="700" style="visibility: visible;">
-          <img src="img/handshake.png" alt="">
-          <p>presntes en mas + de</p>
-          <p id="number3" class="number">0</p>
-          <span class="Line-under"></span>
-          <p>lugares</p>
-        </div>
-        <div class="item fadeupbig animated animated" data-number="8" style="visibility: visible;">
-          <img src="img/company.png" alt="">
-          <p>+ de</p>
-          <p id="number4" class="number">0</p>
-          <span class="Line-under"></span>
-          <p>dfdgfd</p>
-        </div>                  
-      </div>
+  <!-- section Counter Start -->
+<body onload="load()">
+    <p>
+        {{-- <div class="d-flex justify-content-center fs-1 fw-bold textcount2 ">Se parte de una de las empresas mas importantes de la region Mixteca</div> --}}
+        </p>
+    <p>
+    <div class="containercount">      
+       <div class="row">
+          <div class="col-sm">
+            <p class="textcount1">Con mas de:</p>
+             <p style="color: blue" id='0101' class="fs-2 numcount">0</p>
+             <p class="textcount2">Sucursales</p>
+          </div>
+          <div class="col-sm">
+            <p class="textcount1">Presentes en mas de:</p>
+             <p  style="color: blue" id='0102' class="fs-2 numcount">0</p>
+             <p class="textcount2">Lugares</p>
+          </div>
+          <div class="col-sm">
+            <p class="textcount1">Con mas de:</p>
+             <p style="color: blue" class="fs-2 numcount"><span id='0103'>0</span></p>
+             <p class="textcount2">Colaboradores</p>
+          </div>
+       </div>
     </div>
-  </div>
-  
+    </p>
+</body>
 @endsection 
 
 
