@@ -110,7 +110,7 @@
     </div>
 @endsection
 @section('image')
-    <section class="bg-grey" id="service">
+    <section data-aos="fade-up" class="bg-grey" id="service">
         <div class="container">
             <div class="row ">
                 <div class="col-lg-4">
@@ -132,10 +132,9 @@
     <section class="pt-5 service-wrap">
         <div class="container">
             <div class="row ">
-                <div class="col-lg-10 offset-lg-4">
+                <div class="col-lg-8 offset-lg-4">
                     <div class="carousel slide " id="service-carousel" data-ride="carousel">
                         <div class="carousel-inner">
-
                             <div class="carousel-item active">
                                 <div class="col-lg-12">
                                     <div class="row">
@@ -207,10 +206,54 @@
     </section>
 @endsection
 
+@section('banempleo')
+    
+@endsection
+
+@section('title')
+<div data-aos="fade-right" class="col-12">
+		<div class="testimonial-title">
+			<h5>CONOCE</h5>
+            <h3>NUESTRAS VACANTES</h3>
+            <hr class="style1">
+	    </div>
+</div>
+@endsection
+
+@section('cards')
+<div data-aos="fade-up" id="counter" class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
+            <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img
+                    src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
+                    class="img-fluid"
+                  />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">AUXILIAR DE TIENDAS</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a href="#!" class="btn btn-primary">Postularme</a>
+                </div>
+              </div>      
+        </div> 
+            
+    </div>
+</div>
+@endsection
+
+
+
 @section('body')
     <!-- section Counter Start -->
-
-    <div id="counter" class="container">
+    <div style="padding-top: 50px" data-aos="fade-up" id="counter" class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                 <div class="bg-counter">
