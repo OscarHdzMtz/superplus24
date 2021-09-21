@@ -102,7 +102,7 @@
                         {{-- <h4>PAGINA <span>WEB</span></h4> --}}
                         <br>
                         <br>
-                        <h1 class="textempleo">¡UNETE A NUESTRO EQUIPO DE TRABAJO</h1>
+                        <h1 class="tipeo2">¡UNETE A NUESTRO EQUIPO !</h1>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@
             </div>
         </div>
     </section>
-    <section class="pt-5 service-wrap">
+    <section data-aos="fade-left" class="pt-5 service-wrap">
         <div class="container">
             <div class="row ">
                 <div class="col-lg-8 offset-lg-4">
@@ -237,8 +237,13 @@
                 <div class="card-body">
                   <h5 class="card-title">AUXILIAR DE TIENDAS</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    Requisitos
+                    <br>
+                    1
+                    <br>
+                    2
+                    <br>
+                    3
                   </p>
                   <a href="#!" class="btn btn-primary">Postularme</a>
                 </div>

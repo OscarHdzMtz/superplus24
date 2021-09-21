@@ -94,7 +94,7 @@
                         {{-- <h4>PAGINA <span>WEB</span></h4> --}}
 						<br>
 						<br>
-                        <h1 class="textempleo">COMUNÍCATE CON NOSOTROS</h1>
+                        <h1 class="tipeo2">COMUNÍCATE CON NOSOTROS</h1>
                         {{-- <h1 class="tipeo2"><span class="type"></span></h1> --}}
                     </div>
                 </div>
