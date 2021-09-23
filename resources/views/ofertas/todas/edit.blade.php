@@ -33,6 +33,12 @@
                 <img src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->titulo}}" height="300px" width="50px" class="card-img-top">
             @endif
     </div>
+    <div class="form-group">
+        <label>Fecha Inicio</label>        
+        <input type="date" name="fechaInicio" value="{{$oferta->fechaInicio}}">  <br>
+        <label>Fecha Fin</label>
+        <input type="date" name="fechaFin" value="{{$oferta->fechaFin}}">
+    </div> 
     <div class="card-footer text-muted small">
         {{ $oferta->updated_at }}
         <a href="{{URL::action('PublicofertController@edit',$oferta->id)}}">

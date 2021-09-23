@@ -30,6 +30,12 @@
                     <label for="message-text" class="col-form-label">IMAGEN DE LA OFERTA:</label>
                     {{Form::file('image',['required' => 'required' ])}}
                 </div>
+                <div class="form-group">
+                    <label>Fecha Inicio</label>
+                    <input type="date" name="fechaInicio">   <br>                 
+                    <label>Fecha Fin   </label>
+                    <input type="date" name="fechaFin">
+                </div>                
                 </form>
             </div>
             <div class="modal-footer">

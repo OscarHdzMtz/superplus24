@@ -29,8 +29,10 @@
                     <div class="card-body">
                         <h1 class="card-title">{{$oferta->titulo}}</h1><br><hr>
                         <h5 class="card-title">{{$oferta->texto}}</h5><br><hr>
-                        <p class="card-text"><small class="text-muted">Fecha Ingreso:{{ $oferta->created_at}}</small></p>
-                        <p class="card-text"><small class="text-muted">Fecha Actualizado:{{ $oferta->updated_at}}</small></p>
+                        {{-- <p class="card-text"><small class="text-muted">Fecha Ingreso:{{ $oferta->created_at}}</small></p>
+                        <p class="card-text"><small class="text-muted">Fecha Actualizado:{{ $oferta->updated_at}}</small></p> --}}
+                        <p class="card-text"><small class="text-muted">Fecha Inicio: {{ $oferta->fechaInicio}}</small></p>
+                        <p class="card-text"><small class="text-muted">Fecha Fin: {{ $oferta->fechaFin}}</small></p>
                         <!--<h5 class="card-title">Usuarios que lo publico:{{$oferta->user_id}}</h5><br>-->
                     </div>
                 </div>

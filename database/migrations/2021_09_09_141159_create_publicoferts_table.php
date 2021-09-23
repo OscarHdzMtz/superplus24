@@ -20,6 +20,8 @@ class CreatePublicofertsTable extends Migration
             $table->string("titulo");
             $table->string("texto")->nullable();
             $table->string("image");
+            $table->string("fechaInicio");
+            $table->string("fechaFin");
             $table->timestamps();
         });
     }
