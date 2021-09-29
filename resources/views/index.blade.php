@@ -14,9 +14,9 @@
             <a href="" target="none" class="fab fa-whatsapp"></a>
         </div>
         <!--<div id="linkeding">
-            <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-            EDITADO MIERCOLES
-        </div>-->
+                            <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
+                            EDITADO MIERCOLES
+                        </div>-->
     </div>
 @endsection
 
@@ -255,16 +255,16 @@
 
 {{-- PRODUCTOS NUEVOS --}}
 @section('title5')
-    <div class="col-12 pt-2" style="background: #FF8525">
-        <div class="proveedor-title">
-            <h5 style="color: black">CONOCE</h5>
-            <h3 style="color: white">NUESTROS PRODUCTOS NUEVOS</h3>
-            <hr class="style5">
-        </div>
+<div class="col-12">
+    <div class="testimonial-title">
+        <h5>CONOCE</h5>
+        <h3>NUESTROS PRODUCTOS NUEVOS</h3>
+        <hr class="style1">
     </div>
+</div>
 @endsection
 @section('Proveedores')
-    <div class="container_prove">
+    {{-- <div class="container_prove">
         <div class="carousel_prove">
             <div class="buttons_prove">
                 <span class="prev"> &#8592; </span>
@@ -282,6 +282,52 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div> --}}
+
+    <div data-aos="fade-up" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
+                <div class="col-lg-10 pl-5">                   
+                    <div class="m-0 vh-10 row justify-content-center">
+                        <a href="#">
+                            <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
+                        </a> 
+                    </div>                  
+                    <div class="service-content">                        
+                        <h1>prodcutio fdg dsfsdfs sdfsdfsd sdfsdf.</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @php $i = 1 @endphp
+                        @foreach ($proveedores as $proveedore)
+                            <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
+                                @php $i++ @endphp
+                                <img class="d-block w-100" src="{{ asset('/img/proveedore/' . $proveedore->image) }}"
+                                    alt="First slide">
+                                {{-- <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="color: black"><strong>{{ $proveedore->name }}</strong></h5>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                  </div> --}}
+                                <h5 style="color: black"><strong>{{ $proveedore->name }}</strong></h5>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
@@ -654,11 +700,13 @@
             }
         }
         const whatsapp_chat = document.getElementById("whatsapp-chat");
+
         function cerrar_chat() {
             whatsapp_chat.classList.add("hide");
             whatsapp_chat.classList.remove("show");
 
         }
+
         function mostrar_chat() {
             whatsapp_chat.classList.add("show");
             whatsapp_chat.classList.remove("hide");

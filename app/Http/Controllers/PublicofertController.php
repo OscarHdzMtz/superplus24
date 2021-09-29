@@ -35,8 +35,7 @@ class PublicofertController extends Controller
         $fechasistema = Carbon::yesterday();
         /* $fechafinsistema = Carbon::today(); */
         /* return $fechasistema; */ 
-        $promo = publicofert::whereBetween('fechaInicio', '>', $fechasistema)        
-        ->orderBy('updated_at', 'DESC')->get();
+        $promo = publicofert::orderBy('updated_at', 'DESC')->get();
 
         /* retorna la vista y le pasa las promociones de la base de datos */
         return view('promociones', compact('promo'));
