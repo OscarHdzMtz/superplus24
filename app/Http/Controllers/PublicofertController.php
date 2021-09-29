@@ -19,7 +19,7 @@ class PublicofertController extends Controller
     }
     public function ofertas()
     {
-        $ofertas = publicofert::all();
+        $ofertas = publicofert::where('deldia', 'on')->get();
         $productos = Productos::all();
         $proveedores = Proveedores::all();
 
@@ -35,7 +35,7 @@ class PublicofertController extends Controller
         $fechasistema = Carbon::yesterday();
         /* $fechafinsistema = Carbon::today(); */
         /* return $fechasistema; */ 
-        $promo = publicofert::orderBy('updated_at', 'DESC')->get();
+        $promo = publicofert::orderby('updated_at', 'DESC')->get();
 
         /* retorna la vista y le pasa las promociones de la base de datos */
         return view('promociones', compact('promo'));
@@ -57,6 +57,7 @@ class PublicofertController extends Controller
         }
         $oferta->fechaInicio = request('fechaInicio');
         $oferta->fechaFin = request('fechaFin');
+        $oferta->deldia = request('deldia');
         $oferta->save();
         return redirect('ofertas/todas');
     }
@@ -76,6 +77,7 @@ class PublicofertController extends Controller
         }
         $oferta->fechaInicio = request('fechaInicio');
         $oferta->fechaFin = request('fechaFin');
+        $oferta->deldia = request('deldia');
         $oferta->update();
         return redirect('ofertas/todas');
     }

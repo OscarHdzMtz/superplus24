@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         User::factory(1)->create();
-        Publicofert::factory(20)->create();
+        /* Publicofert::factory(20)->create(); */
     }
 }

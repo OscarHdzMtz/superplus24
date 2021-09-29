@@ -33,7 +33,16 @@
                         <p class="card-text"><small class="text-muted">Fecha Actualizado:{{ $oferta->updated_at}}</small></p> --}}
                         <p class="card-text"><small class="text-muted">Fecha Inicio: {{ $oferta->fechaInicio}}</small></p>
                         <p class="card-text"><small class="text-muted">Fecha Fin: {{ $oferta->fechaFin}}</small></p>
-                        <!--<h5 class="card-title">Usuarios que lo publico:{{$oferta->user_id}}</h5><br>-->
+                        <!--<h5 class="card-title">Usuarios que lo publico:{{$oferta->user_id}}</h5><br>-->                       
+                        @if ($oferta->deldia == 'on')
+                        <div>
+                            <p style="color: green" class="card-text"><strong>Activo</strong><small class="text-muted"></small></p>
+                        </div>                                                    
+                        @else
+                        <div>
+                            <p style="color: red" class="card-text"><strong>Inactivo</strong><small class="text-muted"></small></p>
+                        </div>                          
+                        @endif                        
                     </div>
                 </div>
             </div> 

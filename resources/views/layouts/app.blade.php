@@ -330,6 +330,19 @@
     <script>
         function countChars(obj){
         document.getElementById("charNum").innerHTML = obj.value.length+' caracteres';}
-    </script>    
+    </script>  
+   {{--  <script>
+        $('input[type="checkbox"]').change(function() {
+            if (this.checked) {
+          var estado = 'Encendido'; 
+          console.log('Checkbox', estado);
+          console.log("Valor del Checkbox: " +  $(this).val());
+      } else {
+          var estado = 'Apagado'; 
+          console.log('Checkbox', estado);
+      }
+      $('#respPersonas').html(estado); 
+  });
+    </script>  --}} 
 </body>
 </html>

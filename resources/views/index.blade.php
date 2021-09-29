@@ -143,8 +143,8 @@
                         <h4 class="title_services">Promociones</h4>
                         <p class="description_services">Ofertas especiales</p><br>
                         {{-- ESTA LINEA ABRE EL MODAL DE PROMOCIONES --}}
-                        {{-- <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver mas</a> --}}
-                        <a class="btn_modal_wel mt-5" href="{{ url('/promociones') }}">Ver mas</a>
+                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver mas</a>
+                        {{-- <a class="btn_modal_wel mt-5" href="{{ url('/promociones') }}">Ver mas</a> --}}
                     </div>
                 </div>
             </div>

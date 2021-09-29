@@ -21,7 +21,8 @@ class CreatePublicofertsTable extends Migration
             $table->string("texto")->nullable();
             $table->string("image");
             $table->string("fechaInicio");
-            $table->string("fechaFin");
+            $table->string("fechaFin");            
+            $table->string("deldia")->nullable();
             $table->timestamps();
         });
     }
