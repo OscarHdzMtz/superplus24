@@ -37,6 +37,7 @@
                     <a href="/usuarios" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+          
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
