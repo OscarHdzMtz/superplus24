@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="container ">
-    <h1>
-        Cursos<small>[Agregar Cursos]</small>
+    <h1 class="text-center">
+        Productos Nuevos <br>
+        <small>Agregar Productos</small>
     </h1>
 
 <div class="row text-center">
@@ -55,8 +56,8 @@
         </div>
 
           <div class="form-group">
-            {!! Form::submit('Guardar', array('class' =>'btn btn-outline-primary')) !!}
-            <a href="{{ route('producto.index')}}" class="btn btn-outline-primary">ATRAS</a>
+            {!! Form::submit('Guardar', array('class' =>'btn btn-primary')) !!}
+            <a href="{{ route('producto.index')}}" class="btn btn-danger">Cerrar</a>
             
         {!! Form::close()!!}   
         </div>

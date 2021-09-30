@@ -1,5 +1,5 @@
 <div class="container">
-    <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal"
+    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal"
         data-target="#exampleModal">
         <i class="fa fa-plus-circle"></i> Agregar Promociones
     </button>

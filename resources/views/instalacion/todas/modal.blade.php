@@ -1,5 +1,5 @@
 <div class="container">
-    <button type="button" class="btn btn-outline-success mb-8 btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-success mb-8 btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-plus-circle"></i> Agregar Instalaciones Plus
     </button>
 </div>

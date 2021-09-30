@@ -28,7 +28,7 @@
           </div>
       </form>
       <a href="usuarios/create">
-        <button type="button" class="btn btn-outline-success float-right"><i class="fa fa-plus-circle"></i> Usuario</button>
+        <button type="button" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i>Agregar Usuario</button>
       </a>
     </h2>
     <h6> 

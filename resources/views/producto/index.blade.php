@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <h2>LISTA DE CURSOS
+    <h2>LISTA DE PRODUCTOS
     <form class="form-inline ml-3 float-right">
         <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search" aria-label="Search">
@@ -13,8 +13,8 @@
             </div>
         </div>
     </form>
-    <a href="{{ route('producto.create')}}" class="btn btn-outline-info float-right">
-        <i class="fa fa-plus-circle"> Cursos</i>
+    <a href="{{ route('producto.create')}}" class="btn btn-success float-right">
+        <i class="fa fa-plus-circle"> Agregar Productos</i>
     </a>
     </h2>
     
@@ -44,7 +44,7 @@
                 <tr>
                     <td>
                         <a href="{{URL::action('ProductoController@edit',$producto->id)}}">
-                            <button type="button" class="btn btn-outline-info">
+                            <button type="button" class="btn btn-warning">
                                 <i class="far fa-edit"></i>
                             </button> 
                         </a> 
@@ -52,7 +52,7 @@
                     <td>
                         {!! Form::open(['action' => ['ProductoController@destroy', $producto->id],'method' => 'DELETE']) !!}
                         {{ Form::token() }}
-                            <button class="btn btn-outline-danger" onclick="return confirm('Estas Seguro de Eliminar Esta Producto?')">
+                            <button class="btn btn-danger" onclick="return confirm('Estas Seguro de Eliminar Esta Producto?')">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         {!! Form::close() !!}

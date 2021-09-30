@@ -194,7 +194,7 @@
                                                 class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-file-image"></i>
                                                 <p>
-                                                    Prodcutos Nuevos
+                                                    Productos Nuevos
                                                 </p>
                                             </a>
                                         </li>
@@ -220,13 +220,26 @@
                                         </li>
                                     </ul>
                                 </li>
+
+                                {{-- ***************************PROMOCIONES********************* --}}
+                                <li class="nav-item admin">
+                                    <a href="{{ url('ofertas/todas') }}"
+                                        class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-percentage"></i>
+                                        <p>
+                                            {{-- Cursos del dia --}}
+                                            Promociones
+                                        </p>
+                                    </a>
+                                </li>
+
                                 {{-- **********************OFERTAS DE TRABAJO************ --}}
                                 <li class="nav-item textsidebar">
                                     <a href="#" class="nav-link">
                                         <i class="text-warning fas fa-copy"></i>
                                         <p>
                                             Ofertas de Trabajo
-                                            <i class="fas fa-angle-left right"></i>                                            
+                                            <i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
@@ -242,20 +255,20 @@
                                     </ul>
                                 </li>
 
-                                   {{-- **********************NOSOTROS************ --}}
-                                   <li class="nav-item textsidebar">
+                                {{-- **********************NOSOTROS************ --}}
+                                <li class="nav-item textsidebar">
                                     <a href="#" class="nav-link">
                                         <i class="text-warning fas fa-copy"></i>
                                         <p>
-                                            Ofertas de Trabajo
-                                            <i class="fas fa-angle-left right"></i>                                            
+                                            Nosotros
+                                            <i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item admin">
                                             <a href="{{ url('Instalacion/todas') }}"
                                                 class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
-                                                <i class="text-warning fas fa-hotel"></i>
+                                                <i class="nav-icon fas fa-hotel"></i>
                                                 <p>
                                                     {{-- CLEINTES --}}
                                                     Instalacion
@@ -265,7 +278,7 @@
                                         <li class="nav-item admin">
                                             <a href="{{ url('#') }}"
                                                 class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
-                                                <i class="text-warning fas fa-star"></i>
+                                                <i class="nav-icon fas fa-star"></i>
                                                 <p>
                                                     Mi empresa
                                                 </p>
@@ -273,17 +286,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                {{-- ***************************PROMOCIONES*********************--}}
-                                <li class="nav-item admin">
-                                    <a href="{{ url('ofertas/todas') }}"
-                                        class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
-                                        <i class="text-warning fas fa-percentage"></i>
-                                        <p>
-                                            {{-- Cursos del dia --}}
-                                            Promociones
-                                        </p>
-                                    </a>
-                                </li>                                                             
                                 <li class="nav-item admin">
                                     <a href="{{ url('#') }}"
                                         class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
