@@ -303,16 +303,16 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @php $i = 1 @endphp
-                        @foreach ($proveedores as $proveedore)
+                        @foreach ($productos as $productos)
                             <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                                 @php $i++ @endphp
-                                <img class="d-block w-100" src="{{ asset('/img/proveedore/' . $proveedore->image) }}"
+                                <img class="d-block w-100" src="{{ asset('/img/productos/' . $productos->image) }}"
                                     alt="First slide">
                                 {{-- <div class="carousel-caption d-none d-md-block">
                                     <h5 style="color: black"><strong>{{ $proveedore->name }}</strong></h5>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                                   </div> --}}
-                                <h5 style="color: black"><strong>{{ $proveedore->name }}</strong></h5>
+                                <h5 style="color: black"><strong>{{ $productos->name }}</strong></h5>
                                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                             </div>
                         @endforeach
