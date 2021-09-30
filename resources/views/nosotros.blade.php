@@ -91,7 +91,7 @@
             <div>
                 <h3 style="text-align: center; color: #003baa"><strong>Nuestra Mision</strong></h3>
                 <p style="text-align: justify">
-                   <strong>Brindar a nuestros clientes una gran variedad de productos y servicios las 24 horas del día, 
+                   <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios las 24 horas del día, 
                     ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio.</strong> 
                 </p>
             </div>
@@ -150,7 +150,7 @@
         <h3 class=""><strong>Nuestra historia</strong></h3>
         <p style="text-align: justify; font-weight: bold; " class="lead"><strong>SUPERPLUS Inicia operaciones el 21 de agosto del 2010 con 1 tienda ubicada en la Col. Sta. Cruz de la Cd. de Huajuapan de León.
             Nuestra denominación social Comercializadora Pícaros de la Mixteca S.A de C.V, y nuestro nombre comercial SUPERPLUS con un horario de atención las 24 horas del día, los 365 días del año
-            Ofreciendo a nuestros clientes los mejores productos en el mercado tanto en cerveza, abarrotes, vinos, licores y comida rápida, entre otras.
+            Ofreciendo a nuestros Instalacion los mejores productos en el mercado tanto en cerveza, abarrotes, vinos, licores y comida rápida, entre otras.
             Presencia en Huajuapan, Putla, Juxtlahuaca, Tonala, Tamazulapan, Tlaxiaco, Chalcatongo, Mariscala y Nochixtlan, con apertura de expansión a otros lugares.</strong></p>     
    </section>
     <div class="row justify-content-center">
@@ -162,7 +162,7 @@
             {{-- <h5 style="text-align: center" class="card-title">Mision</h5> --}}
             <hr>
             <p style="text-align: justify;font-size: 125%" class="card-text">
-                <strong>Brindar a nuestros clientes una gran variedad de productos y servicios las 24 horas del día, ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio.</strong></p>
+                <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios las 24 horas del día, ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio.</strong></p>
           </div>
   <svg viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,90.7C672,64,768,64,864,85.3C960,107,1056,149,1152,186.7C1248,224,1344,256,1392,272L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
           
@@ -212,12 +212,12 @@
   </div>
 
 @endsection
-@section('clientes')
+@section('Instalacion')
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            @foreach($clientes as $cliente)
+            @foreach($Instalacion as $cliente)
             <div class="swiper-slide">
-                <img class="client_img text-center"src="{{asset('/img/clientes/'.$cliente->image)}}" alt="{{$cliente->image}}" class="card-img-top">
+                <img class="client_img text-center"src="{{asset('/img/Instalacion/'.$cliente->image)}}" alt="{{$cliente->image}}" class="card-img-top">
             </div>
             @endforeach  
         </div>

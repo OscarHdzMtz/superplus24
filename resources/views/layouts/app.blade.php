@@ -158,8 +158,8 @@
                                 </a>
                             </li> 
                             <li class="nav-item admin">
-                                <a href="{{url('clientes/todas')}}"
-                                    class="{{ Request::path() === 'clientes/todas' ? 'nav-link active' : 'nav-link' }}">
+                                <a href="{{url('Instalacion/todas')}}"
+                                    class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="text-warning fas fa-hotel"></i>
                                     <p>
                                         {{-- CLEINTES --}}
@@ -283,11 +283,11 @@
                                 </a>
                             </li>
                             <li class="nav-item admin">
-                                <a href="{{url('clientes/todas')}}"
-                                    class="{{ Request::path() === 'clientes/todas' ? 'nav-link active' : 'nav-link' }}">
+                                <a href="{{url('Instalacion/todas')}}"
+                                    class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="fas fa-user-friends"></i>
                                     <p>
-                                        clientes
+                                        Instalacion
                                     </p>
                                 </a>
                             </li>

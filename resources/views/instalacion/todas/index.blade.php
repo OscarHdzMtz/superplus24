@@ -15,14 +15,14 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-@include('clientes.todas.modal') 
+@include('Instalacion.todas.modal') 
 <div class="mt-3 row-cols-1 card-columns ">
-    @foreach($clientes as $cliente)
-        @include('clientes.todas.modal-delete') 
+    @foreach($Instalacion as $cliente)
+        @include('Instalacion.todas.modal-delete') 
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{asset('/img/clientes/'.$cliente->image)}}" alt="{{$cliente->image}}" class="card-img-top">
+                            <img src="{{asset('/img/Instalacion/'.$cliente->image)}}" alt="{{$cliente->image}}" class="card-img-top">
                         </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -34,7 +34,7 @@
                     </div>
                 </div> 
                     <div class="card-footer  border-success">
-                    <a href="{{URL::action('ClientesController@edit',$cliente->id)}}">
+                    <a href="{{URL::action('InstalacionController@edit',$cliente->id)}}">
                         <button type="button" class="btn btn-primary btn-sm ">
                             <i class="far fa-edit"></i>
                         </button> 

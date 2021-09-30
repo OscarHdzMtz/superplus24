@@ -130,7 +130,7 @@
             <div class="single-content_service">
                 <div class="service">
                     <i class="fas fa-user-check fa-4x"></i>
-                    <h4 class="title_services">Facturacion Clientes</h4>
+                    <h4 class="title_services">Facturacion Instalacion</h4>
                     <p class="description_services">Genera y descarga tu Factura Electronica</p>
                     <!--<a href="{{ url('/nosotros')}}" class="btn_modal_wel mt-5">Ver mas</a>-->
                 </div>

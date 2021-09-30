@@ -115,7 +115,7 @@
             <div class="row ">
                 <div class="col-lg-4">
                     <div class="service-img">
-                        <img src="{{ asset('img/clientes/avatar.png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('img/Instalacion/avatar.png') }}" alt="" class="img-fluid">
                     </div>
                 </div>
 

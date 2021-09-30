@@ -29,8 +29,8 @@
         @yield('timespace')
     </div>
     @yield('title')
-    <div class="body_clientes">
-        @yield('clientes')
+    <div class="body_Instalacion">
+        @yield('Instalacion')
     </div>
     @yield('title2')
     @yield('foda')

@@ -4,7 +4,7 @@
     </button>
 </div>
     
-    {!! Form::open(['url' => 'clientes/todas','files'=>'true']) !!}
+    {!! Form::open(['url' => 'Instalacion/todas','files'=>'true']) !!}
     {{Form::token()}} 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

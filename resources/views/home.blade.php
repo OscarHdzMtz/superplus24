@@ -72,13 +72,13 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{$cons_clientes}}</h3> 
+                        <h3>{{$cons_Instalacion}}</h3> 
                         <p>Instalaciones</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-street-view"></i>
                     </div>
-                    <a href="/clientes/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/Instalacion/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

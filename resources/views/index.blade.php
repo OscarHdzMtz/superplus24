@@ -173,7 +173,7 @@
                 <div class="single-content_service">
                     <div class="service">
                         <i class="fas fa-file-invoice fa-4x"></i>
-                        <h4 class="title_services">Facturacion Clientes</h4>
+                        <h4 class="title_services">Facturacion Instalacion</h4>
                         <p class="description_services">genera y descarga tu Factura Electrónica.</p>
                         <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
                             class="btn_modal_wel mt-5">Facturar</a>
@@ -405,7 +405,7 @@
                                     <h4><strong>Quienes somos?</strong></h4>
                                     <hr class="style6">
                                     <p style="text-align: justify">
-                                        <strong>Brindar a nuestros clientes una gran variedad de productos y servicios las
+                                        <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios las
                                             24 horas del día,
                                             ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio</strong>.
                                     </p>

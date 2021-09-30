@@ -39,10 +39,10 @@ CREATE TABLE `categorias` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Estructura de tabla para la tabla `Instalacion`
 --
 
-CREATE TABLE `clientes` (
+CREATE TABLE `Instalacion` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
@@ -52,10 +52,10 @@ CREATE TABLE `clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `clientes`
+-- Volcado de datos para la tabla `Instalacion`
 --
 
-INSERT INTO `clientes` (`id`, `user_id`, `nombre`, `image`, `created_at`, `updated_at`) VALUES
+INSERT INTO `Instalacion` (`id`, `user_id`, `nombre`, `image`, `created_at`, `updated_at`) VALUES
 (1, 1, 'plus11', 'chalca.jpg', '2021-07-20 23:35:08', '2021-07-20 23:35:08'),
 (2, 1, 'sdsadsa', 'img1.PNG', '2021-07-20 23:35:16', '2021-07-20 23:35:16');
 
@@ -268,9 +268,9 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `clientes`
+-- Indices de la tabla `Instalacion`
 --
-ALTER TABLE `clientes`
+ALTER TABLE `Instalacion`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -342,9 +342,9 @@ ALTER TABLE `categorias`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT de la tabla `Instalacion`
 --
-ALTER TABLE `clientes`
+ALTER TABLE `Instalacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --

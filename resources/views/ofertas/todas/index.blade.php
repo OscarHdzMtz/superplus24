@@ -36,12 +36,8 @@
                         <!--<h5 class="card-title">Usuarios que lo publico:{{$oferta->user_id}}</h5><br>-->                       
                         @if ($oferta->deldia == 'on')
                         <div>
-                            <p style="color: green" class="card-text"><strong>Activo</strong><small class="text-muted"></small></p>
-                        </div>                                                    
-                        @else
-                        <div>
-                            <p style="color: red" class="card-text"><strong>Inactivo</strong><small class="text-muted"></small></p>
-                        </div>                          
+                            <p style="color: green" class="card-text"><strong>Exclusivo</strong><small class="text-muted"></small></p>
+                        </div>                                                                                                 
                         @endif                        
                     </div>
                 </div>

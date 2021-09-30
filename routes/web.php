@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PublicofertController;
 use App\Http\Controllers\StoreController;
 use App\Models\publicofert;
@@ -21,7 +21,7 @@ Route::get('/', [PublicofertController::class, 'ofertas']);/* Route::get('/', 'P
 
 Route::get('/promociones', [PublicofertController::class, 'promo']); /* Route::get('/promociones', 'PublicofertController@promo');  asi se hace con laravel 7*/
 
-Route::get('/nosotros', [ClientesController::class, 'clientes']);/* Route::get('/nosotros', 'ClientesController@clientes'); */
+Route::get('/nosotros', [InstalacionController::class, 'Instalacion']);/* Route::get('/nosotros', 'InstalacionController@Instalacion'); */
 
 Route::get('/productos', [StoreController::class, 'index']); /* Route::get('/productos', 'StoreController@index'); */
 
@@ -55,7 +55,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* GESTION*/
 Route::resource('usuarios','UserController')->middleware('auth')->middleware('auth');
 Route::resource('roles','RoleController')->middleware('auth')->middleware('auth');
-Route::resource('/clientes/todas', 'ClientesController')->middleware('auth');
+Route::resource('/Instalacion/todas', 'InstalacionController')->middleware('auth');
 Route::resource('/proveedores', 'ProveedoresController')->middleware('auth');
 Route::resource('/ofertas/todas', 'PublicofertController')->middleware('auth');
 Route::resource('/Categorias', 'CategoriasController')->middleware('auth');

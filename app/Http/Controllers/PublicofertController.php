@@ -13,7 +13,7 @@ class PublicofertController extends Controller
     public function index()
     {
         $ofertas = publicofert::orderBy('updated_at','DESC')->get();
-        //return view('clientes.todas.index', ['clientes' => Clientes::all()->where('user_id',auth()->id())]);
+        //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
         /* return view('ofertas.todas.index', ['ofertas' => publicofert::all()]); */
         return view('ofertas.todas.index', compact('ofertas'));
     }

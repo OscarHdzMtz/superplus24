@@ -16,7 +16,7 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-{!! Form::open(['action' => ['ClientesController@update', $cliente->id],'method' => 'PATCH','files'=>'true']) !!} 
+{!! Form::open(['action' => ['InstalacionController@update', $cliente->id],'method' => 'PATCH','files'=>'true']) !!} 
 {{ Form::token() }}
 <div class="card text-center mx-auto" style="width: 400px;">
     <div class="card-header">
@@ -26,17 +26,17 @@
         <label>Imagen</label><br>
             {{Form::file('image')}}
             @if($cliente->image != "")
-                <img src="{{asset('/img/clientes/'.$cliente->image)}}" alt="{{$cliente->image}}" height="150px" width="50px" class="card-img-top">
+                <img src="{{asset('/img/Instalacion/'.$cliente->image)}}" alt="{{$cliente->image}}" height="150px" width="50px" class="card-img-top">
             @endif
     </div>
     <div class="card-footer text-muted small">
         {{ $cliente->updated_at }}
-        <a href="{{URL::action('ClientesController@edit',$cliente->id)}}">
+        <a href="{{URL::action('InstalacionController@edit',$cliente->id)}}">
             <button type="submit" class="btn btn-primary  ">
             <i class="far fa-save"></i>
             </button> 
         </a>
-        <a href="{{URL::action('ClientesController@index')}}">
+        <a href="{{URL::action('InstalacionController@index')}}">
             <button type="button" class="btn btn-danger  float-right mr-1 ">
                 <i class="far fa-window-close"></i>
             </button> 
