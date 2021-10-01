@@ -172,8 +172,8 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="{{ url('#') }}"
-                                                class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                            <a href="{{ route('slidermain.index') }}"
+                                                class="{{ Request::path() === 'slidermain.index' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-image"></i>
                                                 <p>
                                                     Slider Principal
@@ -191,7 +191,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ url('producto') }}"
-                                                class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                                class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-file-image"></i>
                                                 <p>
                                                     Productos Nuevos

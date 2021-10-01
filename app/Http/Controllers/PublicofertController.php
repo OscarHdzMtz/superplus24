@@ -23,7 +23,6 @@ class PublicofertController extends Controller
         $productos = Productos::all();
         $proveedores = Proveedores::all();
 
-
         return view('index', compact('ofertas', 'productos', 'proveedores'));
     }
 
@@ -32,10 +31,12 @@ class PublicofertController extends Controller
     public function promo()
     {
         /* promocion ordenada de acuerdo a la fecha creada */
-        $fechasistema = Carbon::yesterday();
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::today();
         /* $fechafinsistema = Carbon::today(); */
         /* return $fechasistema; */ 
-        $promo = publicofert::orderby('updated_at', 'DESC')->get();
+        /* $promo = publicofert::orderby('updated_at', 'DESC')->get(); */
+        $promo = publicofert::where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
         /* retorna la vista y le pasa las promociones de la base de datos */
         return view('promociones', compact('promo'));

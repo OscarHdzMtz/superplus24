@@ -27,8 +27,8 @@ class PublicofertFactory extends Factory
             'titulo'=>$this->faker->name(),
             'texto'=>$this->faker->randomElement(['esto es promo', 'es oytra promo']),                        
             'image'=>$this->faker->randomElement(['anturell.png', 'corona.jpg', 'electr.png', '1.png', 'brill.png']),
-            'fechaInicio'=>$this->faker->randomElement(['2021-09-24', '2021-09-23', '2021-09-21','2021-09-20',]),
-            'fechaFin'=>$this->faker->randomElement(['2021-09-29', '2021-09-30', '2021-09-28','2021-09-27',]),
+            'fechaInicio'=>$this->faker->randomElement(['2021-10-01', '2021-10-03', '2021-10-22','2021-10-01',]),
+            'fechaFin'=>$this->faker->randomElement(['2021-10-29', '2021-30-30', '2021-09-28','2021-09-27',]),
         ];
     }
 }

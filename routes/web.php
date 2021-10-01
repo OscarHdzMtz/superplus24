@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PublicofertController;
+use App\Http\Controllers\SlidermainController;
 use App\Http\Controllers\StoreController;
 use App\Models\publicofert;
 use Illuminate\Support\Facades\Route;
@@ -60,5 +61,5 @@ Route::resource('/proveedores', 'ProveedoresController')->middleware('auth');
 Route::resource('/ofertas/todas', 'PublicofertController')->middleware('auth');
 Route::resource('/Categorias', 'CategoriasController')->middleware('auth');
 Route::resource('/producto', 'ProductoController')->middleware('auth');
-
-/*ADMIN*/
+/* ************************************************ */
+Route::get('/sliderindex', [SlidermainController::class, 'index'])->middleware('auth')->name('slidermain.index');
