@@ -173,7 +173,7 @@
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ url('slidermain') }}"
-                                                class="{{ Request::path() === 'slider' ? 'nav-link active' : 'nav-link' }}">
+                                                class="{{ Request::path() === 'slidermain' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-image"></i>
                                                 <p>
                                                     Slider Principal
