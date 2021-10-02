@@ -21,6 +21,7 @@
         <div class="row">
             @foreach ($slider as $slideradd)
                 @include('slidermain.modaledit')
+                @include('slidermain.modaldelete')
                 <div class="col-md-6">
                     <div class="card">
                         <img src="{{ asset('/img/slider/' . $slideradd->image) }}" class="card-img-top" alt="..." />
@@ -38,7 +39,7 @@
                                   <i class="far fa-edit"></i>Editar
                               </button>
                           </a>
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar-">
+                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldeleteslider-{{$slideradd->id}}">
                               <i class="far fa-trash-alt"></i>Eliminar
                           </button>
                       </div>

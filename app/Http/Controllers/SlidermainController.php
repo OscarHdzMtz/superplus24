@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slidermain;
+
 class SlidermainController extends Controller
 {
     //
-    public function index(){
-        $slider = Slidermain::all();        
+    public function index()
+    {
+        $slider = Slidermain::all();
         return view('slidermain.index', compact('slider'));
-    }      
-    public function create(){
+    }
+    public function create()
+    {
+    }
+    public function store(request $request)
+    {
 
-    }  
-    public function store(request $request){
-     
         $slideradd = new Slidermain();
 
         $slideradd->user_id = auth()->id();
@@ -31,12 +34,13 @@ class SlidermainController extends Controller
         $slideradd->save();
         return redirect('slidermain');
     }
-   /*  public function edit($id)
+    /*  public function edit($id)
     {        
         return view('slidermain.modaledit', ['slideradd' => Slidermain::findOrFail($id)]);
     } */
 
-    public function update(Request $request, $id){            
+    public function update(Request $request, $id)
+    {
         $slideradd = Slidermain::findOrFail($id);
         $slideradd->name = request('name');
         $slideradd->description = request('description');
@@ -52,4 +56,11 @@ class SlidermainController extends Controller
     }
 
 
+    public function destroy($id)
+    {
+        $slideradd = Slidermain::findOrFail($id);
+        unlink(public_path('img/slider/' .$slideradd->image));
+        $slideradd->delete();
+        return redirect('slidermain');
+    }
 }
