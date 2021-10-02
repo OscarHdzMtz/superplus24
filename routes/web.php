@@ -61,5 +61,4 @@ Route::resource('/proveedores', 'ProveedoresController')->middleware('auth');
 Route::resource('/ofertas/todas', 'PublicofertController')->middleware('auth');
 Route::resource('/Categorias', 'CategoriasController')->middleware('auth');
 Route::resource('/producto', 'ProductoController')->middleware('auth');
-/* ************************************************ */
-Route::get('/sliderindex', [SlidermainController::class, 'index'])->middleware('auth')->name('slidermain.index');
+Route::resource('/slidermain', 'SlidermainController')->middleware('auth');

@@ -15,8 +15,9 @@ class CreateSlidermainsTable extends Migration
     {
         Schema::create('slidermains', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion')->nullable();
+            $table->integer("user_id");
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->string('image');
             $table->string('fechaInicio');
             $table->string('fechaFin');            

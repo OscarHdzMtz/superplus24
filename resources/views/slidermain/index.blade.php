@@ -15,20 +15,20 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-@include('slidermain.modal') 
+@include('slidermain.slidermodal') 
 
 <div style="padding-top: 50px" class="container-fluid">
     <div class="row">
-        @foreach ($slide as $slider)
+        @foreach ($slider as $slider)
     <div class="col-md-6">
         <div class="card">
             <img
-              src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
+              src="{{asset('/img/slider/'.$slider->image)}}"
               class="card-img-top"
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">{{$slider->nombre}}</h5>
+              <h5 class="card-title">{{$slider->name}}</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up the bulk of the
                 card's content.
