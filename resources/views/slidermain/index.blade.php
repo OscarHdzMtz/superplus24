@@ -30,8 +30,9 @@
             <div class="card-body">
               <h5 class="card-title">{{$slider->name}}</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the
-                card's content.
+                {{$slider->description}}
+                <h5>Fecha Inicio: <small>{{$slider->fechaInicio}}</small></h5>
+                <h5>Fecha Inicio: <small>{{$slider->fechaFin}}</small></h5>                
               </p>
               <a href="#!" class="btn btn-primary">editar</a> 
               <a href="#!" class="btn btn-primary">eliminar</a>
