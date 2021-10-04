@@ -6,6 +6,7 @@ use App\Models\Productos;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
 use App\Models\Publicofert;
+use App\Models\Slidermain;
 use Carbon\Carbon;
 
 class PublicofertController extends Controller
@@ -19,11 +20,16 @@ class PublicofertController extends Controller
     }
     public function ofertas()
     {
+        /* varibales */
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::today();
+
         $ofertas = publicofert::where('deldia', 'on')->get();
         $productos = Productos::all();
-        $proveedores = Proveedores::all();
+        $proveedores = Proveedores::all();    
+        $slider = Slidermain::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
-        return view('index', compact('ofertas', 'productos', 'proveedores'));
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider'));
     }
 
 
