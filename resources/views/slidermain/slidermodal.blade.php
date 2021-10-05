@@ -1,8 +1,20 @@
 <div class="container">
-    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal"
+    <h2> Lista de Slider
+        <form class="form-inline ml-3 float-right">
+            <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar" aria-label="Search">
+                <div class="input-group-prepend">
+                    <button class="input-group-text" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal"
         data-target="#exampleModal">
         <i class="fa fa-plus-circle"></i> Agregar Slider
-    </button>
+    </button>    
+</h2>
 </div>
 
 {!! Form::open(['url' => 'slidermain', 'files' => 'true']) !!}

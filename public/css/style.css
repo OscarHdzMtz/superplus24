@@ -2089,7 +2089,7 @@ textarea.contact_input{
 } 
 .r-footer {
     flex: 2 0px;
-}
+} 
 }
 @media (max-width:480px){
     .conatiner{
@@ -2121,6 +2121,11 @@ textarea.contact_input{
     .contact_btn{
         padding: 0.45rem 1.2rem;
     }
+    .carousel img {
+        max-height: 450px;
+        margin: 0 auto;
+        border-radius: 25px;
+        }
 }
 
 

@@ -27,7 +27,7 @@ class PublicofertController extends Controller
         $ofertas = publicofert::where('deldia', 'on')->get();
         $productos = Productos::all();
         $proveedores = Proveedores::all();    
-        $slider = Slidermain::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+        $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
         return view('index', compact('ofertas', 'productos', 'proveedores', 'slider'));
     }
@@ -38,7 +38,9 @@ class PublicofertController extends Controller
     {
         /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
-        $actualFin = Carbon::today();
+        $actualFin = Carbon::yesterday();        
+
+
         /* $fechafinsistema = Carbon::today(); */
         /* return $fechasistema; */ 
         /* $promo = publicofert::orderby('updated_at', 'DESC')->get(); */
