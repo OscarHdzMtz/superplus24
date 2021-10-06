@@ -15,6 +15,13 @@ class CreateCardserviciosTable extends Migration
     {
         Schema::create('cardservicios', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('image');            
+            $table->boolean('status')->nullable();
+            $table->date('fechaInicio')->nullable();
+            $table->date('fechaFin')->nullable();
             $table->timestamps();
         });
     }

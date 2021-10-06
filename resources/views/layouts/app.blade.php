@@ -183,8 +183,8 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('#') }}"
-                                                class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                            <a href="{{ url('cardservicio') }}"
+                                                class="{{ Request::path() === 'cardservicio' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-code-branch"></i>
                                                 <p>
                                                     Servicios
