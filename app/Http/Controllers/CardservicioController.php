@@ -41,4 +41,13 @@ class CardservicioController extends Controller
         $serviciosadd->update();
         return redirect('cardservicio');
     }
+
+    public function destroy($id){
+        {
+            $serviciosadd = Cardservicio::findOrFail($id);
+            unlink(public_path('img/servicios/' . $serviciosadd->image));
+            $serviciosadd->delete();
+            return redirect('cardservicio');
+        }
+    }
 }

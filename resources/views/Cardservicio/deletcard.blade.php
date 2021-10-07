@@ -11,12 +11,12 @@
 			{{-- <div class="modal-body">
 				<p>Do you really want to delete these records? This process cannot be undone.</p>
 			</div> --}}
-			<div class="modal-footer justify-content-center">
+			<div class="modal-footer justify-content-center">               
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>                
                 {!! Form::open(['action' => ['CardservicioController@destroy', $serviciosadd->id],'method' => 'delete']) !!}
-                    {{ Form::token() }}
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                {{ Form::token() }}
+				<button type="submit" class="btn btn-danger">Delete</button>
                 {!! Form::close() !!}
-				<button type="button" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 	</div>
