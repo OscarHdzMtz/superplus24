@@ -17,46 +17,33 @@
     </div>  
     @include('Cardservicio.createcard')  
 
-
-
-    <div class="content-header">
-        <div class="conten-fluido">
-            <div class="row">
-                @foreach ($servicios as $serviciosadd)          
-                    <div class="col-md-6">
-                        <div style="background: #f4f4f4 ; border-radius: 10px;  border-color: black">
-                            <div id="carouselExampleSlidesOnly" class="carousel slide titlesli" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" src="{{ asset('/img/servicios/' . $serviciosadd->image) }}"
-                                            class="card-img-top" alt="First slide">
-                                        <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption ">
-                                            <h5>{{ $serviciosadd->description }}</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3>{{ $serviciosadd->name }}</h3>
-                                <h5>Fecha Inicio: <small>{{ $serviciosadd->fechaInicio }}</small></h5>
-                                <h5>Fecha Inicio: <small>{{ $serviciosadd->fechaFin }}</small></h5>
-                            </div>
-                            <div class="card-footer border-info">
-                                <a>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                        data-target="#modaledit-{{ $serviciosadd->id }}">
-                                        <i class="far fa-edit"></i>Editar
-                                    </button>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#modaldeleteslider-{{ $serviciosadd->id }}">
-                                    <i class="far fa-trash-alt"></i>Eliminar
+    <div data-aos="fade-up" class="container_cards">
+        <div class="row_cards">
+            @foreach ($servicios as $serviciosadd)   
+            @include('Cardservicio.editcard')
+            <div class="col-md-3 col-sm-6 mb-3">                                                 
+                <div class="single-content">
+                    <img src="{{ asset('/img/servicios/' . $serviciosadd->image) }}" alt="SuperPlus">
+                    <div class="text-content">
+                        <h4>{{ $serviciosadd->name }}</h4>
+                        {{-- <hr class="style2"> --}}
+                        <h5>{{ $serviciosadd->description }}</h5>
+                        <div class="card-footer border-info">
+                            <a>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                    data-target="#modalservicioedit-{{$serviciosadd->id}}">
+                                    <i class="far fa-edit"></i>Editar
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                            </a>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#modaldeleteslider-">
+                                <i class="far fa-trash-alt"></i>Eliminar
+                            </button>
+                        </div> 
+                    </div>                   
+                </div>                              
             </div>
+            @endforeach
         </div>
     </div>
 @endsection

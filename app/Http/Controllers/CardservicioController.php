@@ -26,4 +26,19 @@ class CardservicioController extends Controller
         $serviciosadd->save();
         return redirect('cardservicio');
     }
+
+    public function update(Request $request, $id){
+        $serviciosadd = new Cardservicio();
+        $serviciosadd = Cardservicio::findOrFail($id);
+        $serviciosadd->user_id = auth()->id();
+        $serviciosadd->name = request('name');
+        $serviciosadd->description = request('description');
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $file->move(public_path() . '/img/servicios', $file->getClientOriginalName());
+            $serviciosadd->image = $file->getClientOriginalName();
+        }
+        $serviciosadd->update();
+        return redirect('cardservicio');
+    }
 }

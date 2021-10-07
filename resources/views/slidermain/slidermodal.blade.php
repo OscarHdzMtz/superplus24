@@ -1,30 +1,18 @@
 <div class="container">
-    <h2> Lista de Slider
-        <form class="form-inline ml-3 float-right">
-            <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar" aria-label="Search">
-                <div class="input-group-prepend">
-                    <button class="input-group-text" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal"
-        data-target="#exampleModal">
+    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal"
+        data-target="#modalslider">
         <i class="fa fa-plus-circle"></i> Agregar Slider
-    </button>    
-</h2>
+    </button>
 </div>
 
 {!! Form::open(['url' => 'slidermain', 'files' => 'true']) !!}
 {{ Form::token() }}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
+<div class="modal fade" id="modalslider" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalslider"><strong>NUEVA</strong></h5>
+                <h5 class="modal-title" id="exampleModalslider"><strong>Agregar Slider</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
