@@ -21,6 +21,7 @@
         <div class="row_cards">
             @foreach ($servicios as $serviciosadd)   
             @include('Cardservicio.editcard')
+            @include('Cardservicio.deletcard')
             <div class="col-md-3 col-sm-6 mb-3">                                                 
                 <div class="single-content">
                     <img src="{{ asset('/img/servicios/' . $serviciosadd->image) }}" alt="SuperPlus">
@@ -36,7 +37,7 @@
                                 </button>
                             </a>
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#modaldeleteslider-">
+                                data-target="#modaldeletetcard-{{$serviciosadd->id}}">
                                 <i class="far fa-trash-alt"></i>Eliminar
                             </button>
                         </div> 
