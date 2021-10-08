@@ -317,7 +317,7 @@ nav ul li a:hover{
     
 }
 .container_cards{
-    width: 100%;
+    width: 100%;       
     padding-right: 35px;
     padding-left: 35px;
     margin-right: auto;
@@ -969,7 +969,7 @@ textarea.contact_input{
 ************************************************/
 .body_cards{
     background: white;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     padding-bottom: 60px;
 }
 .single-content{
