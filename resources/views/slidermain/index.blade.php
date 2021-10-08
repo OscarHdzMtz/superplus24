@@ -30,7 +30,7 @@
                                         <img class="d-block w-100" src="{{ asset('/img/slider/' . $slideradd->image) }}"
                                             class="card-img-top" alt="First slide">
                                         <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption ">
-                                            <h5>{{ $slideradd->description }}</h5>
+                                            <h5>{!! $slideradd->description !!}</h5>
                                         </div>
                                     </div>
                                 </div>

@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
-                        <textarea type="text" name="description" class="form-control" id="recipient-name"
+                        <textarea type="text" name="description" class="ckeditor form-control" id="recipient-name"
                             onkeyup="countChars(this);" maxlength="300" {{-- required --}}></textarea>
                         Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
                     </div>
@@ -50,3 +50,11 @@
 </div>
 {!! Form::close() !!}
 
+<section>
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
+</section>
