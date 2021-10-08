@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cardservicio;
 use App\Models\Productos;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
@@ -23,13 +24,12 @@ class PublicofertController extends Controller
         /* varibales */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::today();
-
         $ofertas = publicofert::where('deldia', 'on')->get();
         $productos = Productos::all();
         $proveedores = Proveedores::all();    
         $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
-
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider'));
+        $servicios = Cardservicio::all();
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios'));
     }
 
 

@@ -213,46 +213,18 @@
 @section('cards')
     <div data-aos="fade-up" class="container_cards">
         <div class="row_cards">
+            @foreach ($servicios as $servicios)                            
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="single-content">
-                    <img src="{{ asset('img/categoria/cat1.jpg') }}" alt="Categorias Higienika Oficce Perú">
+                    <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus">
                     <div class="text-content">
-                        <h3>Recargas Telefonicas</h3>
+                        <h3>{{$servicios->name}}</h3>
                         <hr class="style2">
-                        <h5>todas las compañias</h5>
+                        <h5>{{$servicios->description}}</h5>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="single-content">
-                    <img src="{{ asset('img/categoria/cat1.jpg') }}" alt="Categorias Higienika Oficce Perú">
-                    <div class="text-content">
-                        <h3>Pagos de servicio</h3>
-                        <hr class="style2">
-                        <h5>Diferentes pagos de servicios</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="single-content">
-                    <img src="{{ asset('img/categoria/cat1.jpg') }}" alt="Categorias Higienika Oficce Perú">
-                    <div class="text-content">
-                        <h3>Zona Snack</h3>
-                        <hr class="style2">
-                        <h5>esto es una zona snack</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="single-content">
-                    <img src="{{ asset('img/categoria/cat1.jpg') }}" alt="Categorias Higienika Oficce Perú">
-                    <div class="text-content">
-                        <h3>Múltiples Formas de Pago</h3>
-                        <hr class="style2">
-                        <h5>Diferentes tipos de pago</h5>
-                    </div>
-                </div>
-            </div>
+            </div>  
+            @endforeach        
         </div>
     </div>
 @endsection
