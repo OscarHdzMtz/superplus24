@@ -63,3 +63,6 @@ Route::resource('/Categorias', 'CategoriasController')->middleware('auth');
 Route::resource('/producto', 'ProductoController')->middleware('auth');
 Route::resource('/slidermain', 'SlidermainController')->middleware('auth');
 Route::resource('/cardservicio', 'CardservicioController')->middleware('auth');
+Route::resource('/textoproducto', 'TextoProductoController')->middleware('auth');
+
+Route::post('ckeditor/upload', 'TextoProductoController@upload')->name('ckeditor.image-upload');

@@ -10,7 +10,7 @@
     <title>Dashboard</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
@@ -23,7 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
-    <link href="{{asset('css/dashboard/styledash.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard/styledash.css') }}" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -192,14 +192,35 @@
                                                 </p>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('producto') }}"
-                                                class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
-                                                <i class="nav-icon fas fa-file-image"></i>
+                                        <li class="nav-item textsidebar">
+                                            <a href="#" class="nav-link">
+                                                <i class="text-warning fas fa-copy"></i>
                                                 <p>
                                                     Productos Nuevos
+                                                    <i class="fas fa-angle-left right"></i>
+                                                    <span class="badge badge-info right">6</span>
                                                 </p>
                                             </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="{{ url('producto') }}"
+                                                        class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
+                                                        <i class="text-blue fas fa-file-image"></i>
+                                                        <p>
+                                                            Agregar Productos Nuevos
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="{{ url('textoproducto') }}"
+                                                        class="{{ Request::path() === 'textoproducto' ? 'nav-link active' : 'nav-link' }}">
+                                                        <i class="text-blue fas fa-file-image"></i>
+                                                        <p>
+                                                            Editar Texto Producto                                                            
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ url('proveedores') }}"
@@ -385,9 +406,15 @@
     </div>
     <script src="{{ asset('js/responsive.js') }}"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 
     <script>
         function countChars(obj) {
