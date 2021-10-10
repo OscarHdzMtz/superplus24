@@ -18,9 +18,10 @@
 
     @include('Textoproducto.createtext')
 
-    <div style="padding-top: 50px" class="container-fluid">
+    <div style="padding-top: 50px" class="container">
         <div class="row">
             @foreach ($textproduct as $textproduct)
+            @include('Textoproducto.editext')
                 <div class="col-md-6">
                     <div class="card border border-success shadow-0 mb-3">
                         <div class="card-header bg-transparent border-success">Tarjeta numero {{ $textproduct->id }}</div>
@@ -33,7 +34,7 @@
                         <div class="card-footer border-info">
                             <a>
                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                    data-target="#modaledit-">
+                                    data-target="#modaledit-{{ $textproduct->id }}">
                                     <i class="far fa-edit"></i>Editar
                                 </button>
                             </a>
