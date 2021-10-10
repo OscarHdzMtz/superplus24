@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Textoproducto;
+use Faker\Provider\ar_JO\Text;
 use Illuminate\Http\Request;
 
 class TextoproductoController extends Controller
@@ -28,6 +29,11 @@ class TextoproductoController extends Controller
         $textproductadd->texto = request('texto');      
         $textproductadd->update();
         return redirect('textoproducto');
+    }
 
+    public function destroy($id){
+        $textproductadd = Textoproducto::findOrFail($id);        
+        $textproductadd->delete();
+        return redirect('textoproducto');
     }
 }
