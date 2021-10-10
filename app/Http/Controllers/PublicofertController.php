@@ -8,6 +8,7 @@ use App\Models\Proveedores;
 use Illuminate\Http\Request;
 use App\Models\Publicofert;
 use App\Models\Slidermain;
+use App\Models\Textoproducto;
 use Carbon\Carbon;
 
 class PublicofertController extends Controller
@@ -29,7 +30,8 @@ class PublicofertController extends Controller
         $proveedores = Proveedores::all();    
         $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
         $servicios = Cardservicio::all();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios'));
+        $texproduct = Textoproducto::all();
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
     }
 
 

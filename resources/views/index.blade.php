@@ -269,10 +269,12 @@
                         <a href="#">
                             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
                         </a> 
-                    </div>                  
+                    </div>        
+                    @foreach ($texproduct as $texproduct)                                            
                     <div class="service-content">                        
-                        <h1>prodcutio fdg dsfsdfs sdfsdfsd sdfsdf.</h1>
+                        <h1>{!!$texproduct->texto!!}</h1>
                     </div>
+                    @endforeach          
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
