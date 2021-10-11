@@ -16,7 +16,7 @@ class CreateTextoproductosTable extends Migration
         Schema::create('textoproductos', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id");
-            $table->string('texto');            
+            $table->text('texto');            
             $table->string('image')->nullable();            
             $table->timestamps();
         });

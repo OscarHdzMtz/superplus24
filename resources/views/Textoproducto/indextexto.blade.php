@@ -16,14 +16,14 @@
         </div><!-- /.container-fluid -->
     </div>
 
-    @include('Textoproducto.createtext')
+    {{-- @include('Textoproducto.createtext') --}}
 
     <div style="padding-top: 50px" class="container">
         <div class="row">
             @foreach ($textproduct as $textproduct)
             @include('Textoproducto.editext')
             @include('Textoproducto.deletetext')
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card border border-success shadow-0 mb-3">
                         <div class="card-header bg-transparent border-success">Tarjeta numero {{ $textproduct->id }}</div>
                         <div class="card-body text-success">
@@ -39,10 +39,10 @@
                                     <i class="far fa-edit"></i>Editar
                                 </button>
                             </a>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                          {{--   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                 data-target="#modaldeleteslider-{{ $textproduct->id }}">
                                 <i class="far fa-trash-alt"></i>Eliminar
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </div>

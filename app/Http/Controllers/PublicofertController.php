@@ -26,11 +26,11 @@ class PublicofertController extends Controller
         $actualInicio = Carbon::today();
         $actualFin = Carbon::today();
         $ofertas = publicofert::where('deldia', 'on')->get();
-        $productos = Productos::all();
+        $productos = Productos::Orderby('updated_at','DESC')->get();
         $proveedores = Proveedores::all();    
         $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
         $servicios = Cardservicio::all();
-        $texproduct = Textoproducto::all();
+        $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
         return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
     }
 
