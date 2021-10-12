@@ -115,7 +115,7 @@
             <div class="row ">
                 <div class="col-lg-4">
                     <div class="service-img">
-                        <img src="{{ asset('img/clientes/avatar.png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('img/avatar.png') }}" alt="" class="img-fluid">
                     </div>
                 </div>
 
@@ -207,51 +207,54 @@
 @endsection
 
 @section('banempleo')
-    
+
 @endsection
 
 @section('title')
-<div data-aos="fade-right" class="col-12">
-		<div class="testimonial-title">
-			<h5>CONOCE</h5>
+    <div data-aos="fade-right" class="col-12">
+        <div class="testimonial-title">
+            <h5>CONOCE</h5>
             <h3>NUESTRAS VACANTES</h3>
             <hr class="style1">
-	    </div>
-</div>
+        </div>
+    </div>
 @endsection
 
 @section('cards')
-<div data-aos="fade-up" id="counter" class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-            <div class="card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                  <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-                    class="img-fluid"
-                  />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">AUXILIAR DE TIENDAS</h5>
-                  <p class="card-text">
-                    Requisitos
-                    <br>
-                    1
-                    <br>
-                    2
-                    <br>
-                    3
-                  </p>
-                  <a href="#!" class="btn btn-primary">Postularme</a>
-                </div>
-              </div>      
-        </div> 
-            
+@include('contactempleo.indexcontact')
+    <div data-aos="fade-up" class="container_vacan">        
+        <div class="card">
+            <div class="img-cover"><img src="{{ asset('img/vacantes/2.png') }}"></div>
+            <div class="desc">
+                {{-- <h1>The Mountain</h1>                 --}}
+                <a data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                            stroke-width="3" />
+                    </svg></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-cover"><img src="{{ asset('img/vacantes/7.png') }}"></div>
+            <div class="desc">                                
+                <a href="">POSTULARME <svg width="19" height="14" viewBox="0 0 23 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                            stroke-width="3" />
+                    </svg></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-cover"><img src="{{ asset('img/vacantes/5.png') }}"></div>
+            <div class="desc">                           
+                <a href="">POSTULARME <svg width="19" height="14" viewBox="0 0 23 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                            stroke-width="3" />
+                    </svg></a>
+            </div>
+        </div>
     </div>
-</div>
 @endsection
 
 
@@ -263,13 +266,13 @@
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                 <div class="bg-counter">
                     <div class="service-icon-count fa-3x">
-                        <i class="fas fa-store"></i>                        
+                        <i class="fas fa-store"></i>
                     </div>
-                    <p class="textcount1">Una empresa con mas de:</p>                   
+                    <p class="textcount1">Una empresa con mas de:</p>
                     <p class="counter-value fs-2 numcount" data-count="40">0</p>
                     <p class="textcount2"><strong>Sucursales</strong></p>
                 </div>
-             
+
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                 <div class="bg-counter">
