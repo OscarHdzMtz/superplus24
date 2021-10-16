@@ -96,8 +96,25 @@ class PublicofertController extends Controller
     public function destroy($id)
     {
         $oferta = publicofert::findOrFail($id);
-        unlink(public_path('img/ofertas/' . $oferta->image));
-        $oferta->delete();
+        
+        if(file_exists(public_path('img/ofertas/' . $oferta->image)) AND !empty($oferta->image)){
+            unlink(public_path('img/ofertas/' . $oferta->image));
+            $oferta->delete();
+        }
+        try{
+
+            $oferta->delete();
+            $bug = 0;
+        }
+        catch(\Exception $e){
+            $bug = $e->errorInfo[1];
+        } 
+        if($bug==0){
+            alert('succes');
+        }else{
+            echo 'error';
+        }
+                
         return redirect('ofertas/todas');
     }
 }
