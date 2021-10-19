@@ -177,7 +177,7 @@
                 <div class="single-content_service">
                     <div class="service">
                         <i class="fas fa-file-invoice fa-4x"></i>
-                        <h4 class="title_services">Facturacion Instalacion</h4>
+                        <h4 class="title_services">Facturacion</h4>
                         <p class="description_services">genera y descarga tu Factura Electrónica.</p>
                         <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
                             class="btn_modal_wel mt-5">Facturar</a>
@@ -189,7 +189,7 @@
                     <div class="service">
                         <i class="fas fa-motorcycle fa-4x"></i>
                         <h4 class="title_services">Servicio a domicilio</h4>
-                        <p class="description_services">...</p>
+                        <p class="description_services">SuperPlus</p>
                         <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver
                             mas</a>
                     </div>
