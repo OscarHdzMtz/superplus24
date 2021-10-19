@@ -40,16 +40,15 @@ class PublicofertController extends Controller
     {
         /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
-        $actualFin = Carbon::yesterday();        
-
-
-        /* $fechafinsistema = Carbon::today(); */
-        /* return $fechasistema; */ 
-        /* $promo = publicofert::orderby('updated_at', 'DESC')->get(); */
+        $actualFin = Carbon::yesterday();          
         $promo = publicofert::where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
+
+        /* SLIDER */
+        $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+
         /* retorna la vista y le pasa las promociones de la base de datos */
-        return view('promociones', compact('promo'));
+        return view('promociones', compact('promo', 'slider'));
         /* return $fechasistema; */
     }
 
@@ -110,7 +109,7 @@ class PublicofertController extends Controller
             $bug = $e->errorInfo[1];
         } 
         if($bug==0){
-            alert('succes');
+            echo('succes');
         }else{
             echo 'error';
         }
