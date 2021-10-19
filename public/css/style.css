@@ -402,13 +402,14 @@ nav ul li a:hover{
     background: linear-gradient(90deg,#ffcc00,#ffcc00);
 }
 .service:hover > .btn_modal_wel{
-    -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0);
+    background: white;
+    /* -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0);  */
+    /* box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); */
     transition: 0.3s;
     text-decoration: none;
     text-decoration-line:none;
     /* color boton servicio HOVER */
-    color:white;
+    color: #003baa;
 }
 
 /***********************************************
@@ -705,7 +706,7 @@ h2 {
     margin-left: 40px;
 }
 .testimonial-title h5{
-    color: #FF8525;
+    color: #003baa;
     font-size: 33;
     font-family: 'Poppins', sans-serif;
 }
