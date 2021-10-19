@@ -85,54 +85,13 @@
 
 
 @section('banner')
-    <div class="sombraslider">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">                                       
-            <div class="carousel-inner">
-                @php $i = 1 @endphp
-                @foreach ($slider as $slider)
-                    <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
-                        @php $i++ @endphp
-                        <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}"
-                            alt="First slide">
-                        {{-- <div class="carousel-caption d-none d-md-block">
-                            <h5 style="color: black"><strong>{{ $proveedore->name }}</strong></h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                          </div> --}}
-                        {{-- <h5 style="color: black"><strong>{{ $slider->name }}</strong></h5> --}}                        
-                    </div>
-                @endforeach             
-            </div>            
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
+<div id="carouselExampleSlidesOnly" class="banner slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{{ asset('img/slider/plus.png') }}" alt="First slide">
+      </div>      
     </div>
-
-    {{-- <div data-aos="fade-up" class="banner">    
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hero-text"> --}}
-    {{-- <h4>PAGINA <span>WEB</span></h4> --}}
-    {{-- <br>
-						<br>
-                        <h1 class="tipeo1">SUPERPLUS</h1>
-                        <h1 class="tipeo2"><span class="type"></span></h1> --}}
-    {{-- <div class="botonesinfo">
-                        <a href="" class="btn hero-btn">MAS INFORMACIÓN</a>
-                        <a href="{{ url('/productos')}}" class="btn hero-btn2 btn1">VER PRODUCTOS</a>
-                        </div> --}}
-    {{-- </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+  </div>
 @endsection
 
 
