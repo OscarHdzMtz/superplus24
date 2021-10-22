@@ -10901,3 +10901,7 @@ a.text-dark:focus {
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+

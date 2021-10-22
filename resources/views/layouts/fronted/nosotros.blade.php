@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <title>Nosotros</title>
 
-    <!-- Fonts-->
+    <!-- Fonts-->    
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    @yield('redes')    
+    {{-- @yield('redes')     --}}
     <section id="headerSection_promo">
         {{-- @yield('navbar_top') --}}
         @yield('navbar')
