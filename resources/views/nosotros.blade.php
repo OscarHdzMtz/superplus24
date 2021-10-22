@@ -75,20 +75,13 @@
     </nav>
 @endsection
 @section('banner')
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hero-text">
-                        {{-- <h4>PAGINA <span>WEB</span></h4> --}}
-                        <br>
-                        <br>
-                        <h1 class="tipeo2">SUPERPLUS</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{{ asset('img/slider/plus.png') }}" alt="First slide">
+      </div>      
     </div>
+  </div>
 @endsection
 @section('foda')
     <div class="container">
