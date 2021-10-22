@@ -99,7 +99,7 @@
                         <div class="photo"
                             style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)">
                         </div>
-                        <ul class="details" style="background-image: url(../img/logop.png); background-repeat: no-repeat; background-position: center">
+                        <ul class="details logohover">
 
                         </ul>
                     </div>
@@ -122,7 +122,7 @@
                         <div class="photo"
                             style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)">
                         </div>
-                        <ul class="details" style="background-image: url(../img/logop.png); background-repeat: no-repeat; background-position: center">                                                            
+                        <ul class="details logohover">                                                            
                         </ul>
                     </div>
                     <div class="description">
@@ -142,7 +142,7 @@
                 <div class="photo"
                     style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)">
                 </div>
-                <ul class="details" style="background-image: url(../img/logop.png); background-repeat: no-repeat; background-position: center">
+                <ul class="details logohover">
                     
                 </ul>
             </div>

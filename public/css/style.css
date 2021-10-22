@@ -3074,6 +3074,12 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   .blog-card:hover .details {
     left: 0%;
   }
+  .blog-card .logohover{
+    background-image: url(../img/logop.png); 
+    background-size: 90% ;   
+    background-repeat: no-repeat; 
+    background-position: center;
+  }
   
   @media (min-width: 640px) {
     .blog-card {
@@ -3147,8 +3153,12 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     .blog-card.alt .details {
       padding-left: 25px;
     }
+    .blog-card .logohover{
+        background-image: url(../img/logop.png);
+        background-size: 100%;
+         background-repeat: no-repeat; 
+         background-position: center;
+      }
   }
-  
-  
-
+    
 /* fin */
