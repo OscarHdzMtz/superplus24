@@ -94,17 +94,17 @@
     </header> --}}
 @endsection
 @section('banner')
-<div id="carouselExampleSlidesOnly" class="banner_empleo" data-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="banner_empleo sombraslider slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="{{ asset('img/slider/plus.png') }}" alt="First slide">
+        <img class="d-block w-100" src="{{ asset('img/slider/empleo.png') }}" alt="First slide">
       </div>      
     </div>
   </div>
 @endsection
 @section('image')
     <section data-aos="fade-up" class="bg-grey" id="service">
-        <div class="container">
+        <div style="margin-top: 30px" class="container">
             <div class="row ">
                 <div class="col-lg-4">
                     <div class="service-img">
@@ -254,22 +254,21 @@
 
 @section('body')
     <!-- section Counter Start -->
-    <div style="padding-top: 50px" data-aos="fade-up" id="counter" class="container">
+    <div style="padding-top: 50px" data-aos="fade-up" id="counter" class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                 <div class="bg-counter">
-                    <div class="service-icon-count fa-3x">
+                    <div class="service-icon-count fa-4x">
                         <i class="fas fa-store"></i>
                     </div>
                     <p class="textcount1">Una empresa con mas de:</p>
                     <p class="counter-value fs-2 numcount" data-count="40">0</p>
                     <p class="textcount2"><strong>Sucursales</strong></p>
                 </div>
-
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                 <div class="bg-counter">
-                    <div class="service-icon-count fa-3x">
+                    <div class="service-icon-count fa-4x">
                         <i class="fas fa-map-marked"></i>
                     </div>
                     <p class="textcount1">Con presencia en mas de:</p>
@@ -279,7 +278,7 @@
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                 <div class="bg-counter">
-                    <div class="service-icon-count fa-3x">
+                    <div class="service-icon-count fa-4x">
                         <i class="fas fa-users"></i>
                     </div>
                     <p class="textcount1">Con mas de:</p>
