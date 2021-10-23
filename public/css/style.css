@@ -3111,17 +3111,18 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   
   @media (min-width: 640px) {
     .blog-card {
+        margin-left: 5%;
       flex-direction: row;
       max-width: 1000px;
     }
   
     .blog-card .meta {
-      flex-basis: 40%;
+      flex-basis: 50%;
       height: auto;
     }
   
     .blog-card .description {
-      flex-basis: 60%;
+      flex-basis: 100%;
     }
 
      .blog-card .description h1,
