@@ -99,7 +99,7 @@
         </div>
     </div> --}}
     <div class="sombraslider">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">                                       
+        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">                                       
             <div class="carousel-inner">
                 @php $i = 1 @endphp
                 @foreach ($slider as $slider)

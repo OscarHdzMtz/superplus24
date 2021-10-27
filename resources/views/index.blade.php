@@ -220,52 +220,38 @@
         </div>
     </div> --}}
 
-    <div data-aos="fade-up" class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-                <div class="col-lg-10 pl-5">                   
-                    <div class="m-0 vh-10 row justify-content-center">
-                        <a href="#">
-                            <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
-                        </a> 
-                    </div>        
-                    @foreach ($texproduct as $texproduct)                                            
-                    <div class="service-content">                        
-                        <h1>{!!$texproduct->texto!!}</h1>
-                    </div>
-                    @endforeach          
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @php $i = 1 @endphp
-                        @foreach ($productos as $productos)
-                            <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
-                                @php $i++ @endphp
-                                <img class="d-block w-100" src="{{ asset('/img/productos/' . $productos->image) }}"
-                                    alt="First slide">
-                                {{-- <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="color: black"><strong>{{ $proveedore->name }}</strong></h5>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                  </div> --}}
-                                <h5 style="color: black"><strong>{{ $productos->name }}</strong></h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </div>
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+    <div data-aos="fade-up" class="container-fluid">        
 
-        </div>
+
+        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                @php $i = 1 @endphp
+                @foreach ($productos as $productos)
+              <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
+                @php $i++ @endphp
+                <div class="mask flex-center">
+                  <div class="container">
+                    <div class="row align-items-center">
+                      <div class="col-md-7 col-12 order-md-1 order-2">                    
+                        <h4>{{ $productos->texto }}</h4>
+                        <p style="color: white">{!! $productos->texto!!}</p>
+                        <a href="#">BUY NOW</a> </div>
+                      <div class="col-md-5 col-12 order-md-2 order-1"><img src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto" alt="slide"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>   
+              @endforeach                    
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>        
     </div>
 @endsection
 
