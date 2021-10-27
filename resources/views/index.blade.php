@@ -312,48 +312,11 @@
 </div> --}}
 <div class="slider">
 	<div class="slide-track">
-		<div class="slide">
-			<img src="{{ asset('/img/prueba/candy.png') }}" height="100" width="250" alt="" />
+        @foreach ($proveedores as $proveedores)
+        <div class="slide">
+			<img src="{{ asset('/img/proveedore/'.$proveedores->image) }}" height="100" width="250" alt="{{$proveedores->image}}" />
 		</div>
-		<div class="slide">
-			<img src="{{ asset('/img/prueba/kisspng-doritos-nachos-tortilla-chip-logo-5b0bdc36486397.0675783615275039262966.png') }}" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="{{ asset('/img/prueba/corona.png') }}" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="{{ asset('/img/prueba/kisspng-ruffles-logo-potato-chip-advertising-food-logo-5ac8f869be46b1.4373375415231202337794.png') }}" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="{{ asset('/img/prueba/kisspng-frito-lay-fritos-cheetos-sabritas-brand-lays-logo-5b2796d841a586.8608808515293211762689.png') }}" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
-		</div>
-		<div class="slide">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
-		</div>
+        @endforeach	
 	</div>
 </div>
 @endsection
