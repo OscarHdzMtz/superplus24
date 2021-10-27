@@ -63,7 +63,7 @@
                     <td>{{$producto->name}}</td>
                     <td>{{$producto->categoria->name}}</td>
                     <td>{{$producto->extract}}</td>
-                    <td>{{$producto->descriptions}}</td>
+                    <td>{{ $producto->descriptions }}</td>
                     <td>{{ number_format( $producto->price,2)}}</td>
                     <td>{{$producto->visible == 1 ? "En Stock":"Agotado"}}</td>
                 </tr>

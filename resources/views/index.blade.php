@@ -222,7 +222,6 @@
 
     <div data-aos="fade-up" class="container-fluid">        
 
-
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 @php $i = 1 @endphp
@@ -233,9 +232,9 @@
                   <div class="container">
                     <div class="row align-items-center">
                       <div class="col-md-7 col-12 order-md-1 order-2">                    
-                        <h4>{{ $productos->texto }}</h4>
-                        <p style="color: white">{!! $productos->texto!!}</p>
-                        <a href="#">BUY NOW</a> </div>
+                        <h4 style="color: black; text-transform: uppercase">{{ $productos->name }}</h4>
+                        <h4 >{!! $productos->descriptions!!}</h4>
+                        <a href="#"><h3>{{ $productos->price }}</h3></a></div>
                       <div class="col-md-5 col-12 order-md-2 order-1"><img src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto" alt="slide"></div>
                     </div>
                   </div>

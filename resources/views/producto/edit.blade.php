@@ -30,7 +30,7 @@
         <input type="text" name="extract" class="form-control" value="{{ $producto->extract }}">
     </div>
     <div class="card-body">
-        <textarea name="descriptions"  class="form-control"  rows="6" value="{{ $producto->descriptions }}">
+        <textarea name="descriptions"  class="ckeditor form-control"  rows="6" value="{{ $producto->descriptions }}">
             {{ $producto->descriptions }}
         </textarea>
     </div>
@@ -65,3 +65,13 @@
 </div>
 {!! Form::close() !!}
 @endsection
+
+
+<section>
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
+</section>

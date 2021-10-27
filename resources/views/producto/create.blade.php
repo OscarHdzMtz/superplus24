@@ -37,7 +37,7 @@
         </div>
         <div class="form-group">
             <label for="descriptions">Descripción:</label>
-            {{ Form::textarea('descriptions', null, array('class' =>'form-control input',  'required' => 'required', 'maxlength' => "400"))}}
+            {{ Form::textarea('descriptions', null, array('class' =>'form-control input ckeditor form-control',  'required' => 'required', 'maxlength' => "400"))}}
         </div>
         <div class="row">
             <div class="form-group col-md-6">
@@ -64,3 +64,13 @@
     </div>
 </div>
 @endsection
+
+
+<section>
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
+</section>
