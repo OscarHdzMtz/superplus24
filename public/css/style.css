@@ -2868,7 +2868,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     width: 95%;
   }
   .slider::before, .slider::after {
-    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+    /* background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%); */
     content: "";
     height: 100px;
     position: absolute;
@@ -2894,6 +2894,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   .slider .slide {
     height: 50px;
     width: 250px;
+    margin-right: 60px;
   }
    
   /*TERMINA ESTILO DE MARCAS DE PROVEEDORES A VECES NO DEJA SER MUY SRESPOSIVO LA PAGINA*/
