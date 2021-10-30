@@ -15,7 +15,7 @@ class PublicofertController extends Controller
 {
     public function index()
     {
-        $ofertas = publicofert::orderBy('updated_at','DESC')->get();
+        $ofertas = Publicofert::orderBy('updated_at','DESC')->get();
         //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
         /* return view('ofertas.todas.index', ['ofertas' => publicofert::all()]); */
         return view('ofertas.todas.index', compact('ofertas'));
@@ -41,7 +41,7 @@ class PublicofertController extends Controller
         /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::yesterday();          
-        $promo = publicofert::where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+        $promo = Publicofert::where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
 
         /* SLIDER */
@@ -55,7 +55,7 @@ class PublicofertController extends Controller
 
     public function store(Request $request)
     {
-        $oferta = new publicofert();
+        $oferta = new Publicofert();
 
         $oferta->user_id = auth()->id();
         $oferta->titulo = request('titulo');
@@ -73,11 +73,11 @@ class PublicofertController extends Controller
     }
     public function edit($id)
     {
-        return view('ofertas.todas.edit', ['oferta' => publicofert::findOrFail($id)]);
+        return view('ofertas.todas.edit', ['oferta' => Publicofert::findOrFail($id)]);
     }
     public function update(Request $request, $id)
     {
-        $oferta = publicofert::findOrFail($id);
+        $oferta = Publicofert::findOrFail($id);
         $oferta->titulo = request('titulo');
         $oferta->texto = request('texto');
         if ($request->hasFile('image')) {
@@ -94,7 +94,7 @@ class PublicofertController extends Controller
 
     public function destroy($id)
     {
-        $oferta = publicofert::findOrFail($id);
+        $oferta = Publicofert::findOrFail($id);
         
         if(file_exists(public_path('img/ofertas/' . $oferta->image)) AND !empty($oferta->image)){
             unlink(public_path('img/ofertas/' . $oferta->image));
