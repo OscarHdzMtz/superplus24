@@ -73,7 +73,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{$cons_Instalacion}}</h3> 
+                        {{-- <h3>{{$cons_Instalacion}}</h3>  --}}
                         <p>Instalaciones</p>
                     </div>
                     <div class="icon">
