@@ -511,7 +511,7 @@
         </div>
     </div>
     {{-- promociones en modal --}}
-    <div class="modal fade modal fade bd-example-modal-x3" tabindex="-1" role="dialog"
+  {{--   <div class="modal fade modal fade bd-example-modal-x3" tabindex="-1" role="dialog"
         aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -533,9 +533,7 @@
                                         <div class="text-content">
                                             <h3><strong>
                                                     <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2>
-                                                </strong> </h3>
-                                            {{-- <hr class="style2"> --}}
-                                            {{-- <h5>todas las compañias</h5> --}}
+                                                </strong> </h3>                                        
                                         </div>
                                     </div>
                                 </div>
@@ -568,7 +566,7 @@
         </div>
         <div class='icon-scroll'></div>
         <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6>
-    </div>
+    </div> --}}
 @endsection
 
 
