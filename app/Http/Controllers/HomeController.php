@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $cons_user = User::count();
-        $cons_ofertas = publicofert::count();
+        $cons_ofertas = Publicoferts::count();
         $cons_productos = Productos::count();
         /* $cons_Instalacion = Instalacion::count(); */
         $cons_proveedores = proveedores::count();
