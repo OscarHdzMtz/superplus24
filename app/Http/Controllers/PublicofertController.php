@@ -31,7 +31,7 @@ class PublicofertController extends Controller
         $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
         $servicios = Cardservicio::all();
         $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
+        return view('index', compact(/* 'ofertas',  */'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
     }
 
 
