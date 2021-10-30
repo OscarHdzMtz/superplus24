@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Instalacion;
 use App\Models\Productos;
 use App\Models\Proveedores;
-use App\Models\publicofert;
+use App\Models\Publicoferts;
 use App\Models\User;
 use Illuminate\Http\Request;
 
