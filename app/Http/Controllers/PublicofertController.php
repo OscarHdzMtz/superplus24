@@ -6,7 +6,7 @@ use App\Models\Cardservicio;
 use App\Models\Productos;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
-use App\Models\Publicofert;
+use App\Models\Publicoferts;
 use App\Models\Slidermain;
 use App\Models\Textoproducto;
 use Carbon\Carbon;
@@ -15,7 +15,7 @@ class PublicofertController extends Controller
 {
     public function index()
     {
-        $ofertas = Publicofert::orderBy('updated_at','DESC')->get();
+        $ofertas = Publicoferts::orderBy('updated_at','DESC')->get();
         //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
         /* return view('ofertas.todas.index', ['ofertas' => publicofert::all()]); */
         return view('ofertas.todas.index', compact('ofertas'));
@@ -25,7 +25,7 @@ class PublicofertController extends Controller
         /* varibales */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::today();
-        /* $ofertas = publicofert::where('deldia', 'on')->get(); */
+        /* $ofertas = Publicoferts::where('deldia', 'on')->get(); */
         $productos = Productos::Orderby('updated_at','DESC')->get();
         $proveedores = Proveedores::all();    
         $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
@@ -41,7 +41,7 @@ class PublicofertController extends Controller
         /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::yesterday();          
-        $promo = Publicofert::where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+        $promo = Publicoferts::where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
 
         /* SLIDER */
@@ -55,7 +55,7 @@ class PublicofertController extends Controller
 
     public function store(Request $request)
     {
-        $oferta = new Publicofert();
+        $oferta = new Publicoferts();
 
         $oferta->user_id = auth()->id();
         $oferta->titulo = request('titulo');
@@ -73,11 +73,11 @@ class PublicofertController extends Controller
     }
     public function edit($id)
     {
-        return view('ofertas.todas.edit', ['oferta' => Publicofert::findOrFail($id)]);
+        return view('ofertas.todas.edit', ['oferta' => Publicoferts::findOrFail($id)]);
     }
     public function update(Request $request, $id)
     {
-        $oferta = Publicofert::findOrFail($id);
+        $oferta = Publicoferts::findOrFail($id);
         $oferta->titulo = request('titulo');
         $oferta->texto = request('texto');
         if ($request->hasFile('image')) {
@@ -94,7 +94,7 @@ class PublicofertController extends Controller
 
     public function destroy($id)
     {
-        $oferta = Publicofert::findOrFail($id);
+        $oferta = Publicoferts::findOrFail($id);
         
         if(file_exists(public_path('img/ofertas/' . $oferta->image)) AND !empty($oferta->image)){
             unlink(public_path('img/ofertas/' . $oferta->image));
