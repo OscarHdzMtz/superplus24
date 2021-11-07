@@ -25,13 +25,13 @@ class PublicofertController extends Controller
         /* varibales */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::today();
-        /* $ofertas = Publicoferts::where('deldia', 'on')->get(); */
+        $ofertas = Publicoferts::where('deldia', 'on')->get();
         $productos = Productos::Orderby('updated_at','DESC')->get();
         $proveedores = Proveedores::all();    
         $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
         $servicios = Cardservicio::all();
         $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
-        return view('index', compact(/* 'ofertas',  */'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
     }
 
 

@@ -14,9 +14,9 @@
             <a href="" target="none" class="fab fa-whatsapp"></a>
         </div>
         <!--<div id="linkeding">
-                            <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-                            EDITADO MIERCOLES
-                        </div>-->
+                                <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
+                                EDITADO MIERCOLES
+                            </div>-->
     </div>
 @endsection
 
@@ -85,13 +85,13 @@
 
 
 @section('banner')
-<div id="carouselExampleSlidesOnly" class="banner slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="{{ asset('img/slider/plus.png') }}" alt="First slide">
-      </div>      
+    <div id="carouselExampleSlidesOnly" class="banner slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('img/slider/plus.png') }}" alt="First slide">
+            </div>
+        </div>
     </div>
-  </div>
 @endsection
 
 
@@ -106,7 +106,8 @@
                         <h4 class="title_services">Promociones</h4>
                         <p class="description_services">Ofertas especiales</p><br>
                         {{-- ESTA LINEA ABRE EL MODAL DE PROMOCIONES --}}
-                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver mas</a>
+                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver
+                            mas</a>
                         {{-- <a class="btn_modal_wel mt-5" href="{{ url('/promociones') }}">Ver mas</a> --}}
                     </div>
                 </div>
@@ -172,31 +173,31 @@
 @section('cards')
     <div data-aos="fade-up" class="container_cards">
         <div class="row_cards">
-            @foreach ($servicios as $servicios)                            
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="single-content">
-                    <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus">
-                    <div class="text-content">
-                        <h3>{{$servicios->name}}</h3>
-                        <hr class="style2">
-                        <h5>{{$servicios->description}}</h5>
+            @foreach ($servicios as $servicios)
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="single-content">
+                        <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus">
+                        <div class="text-content">
+                            <h3>{{ $servicios->name }}</h3>
+                            <hr class="style2">
+                            <h5>{{ $servicios->description }}</h5>
+                        </div>
                     </div>
                 </div>
-            </div>  
-            @endforeach        
+            @endforeach
         </div>
     </div>
 @endsection
 
 {{-- PRODUCTOS NUEVOS --}}
 @section('title5')
-<div class="col-12">
-    <div class="testimonial-title">
-        <h5>CONOCE</h5>
-        <h3>NUESTROS PRODUCTOS NUEVOS</h3>
-        <hr class="style1">
+    <div class="col-12">
+        <div class="testimonial-title">
+            <h5>CONOCE</h5>
+            <h3>NUESTROS PRODUCTOS NUEVOS</h3>
+            <hr class="style1">
+        </div>
     </div>
-</div>
 @endsection
 @section('Proveedores')
     {{-- <div class="container_prove">
@@ -220,27 +221,32 @@
         </div>
     </div> --}}
 
-    <div data-aos="fade-up" class="container-fluid">        
+    <div data-aos="fade-up" class="container-fluid">
 
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 @php $i = 1 @endphp
                 @foreach ($productos as $productos)
-              <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
-                @php $i++ @endphp
-                <div class="mask flex-center">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-7 col-12 order-md-1 order-2">                    
-                        <h4 style="color: black; text-transform: uppercase">{{ $productos->name }}</h4>
-                        <h4 >{!! $productos->descriptions!!}</h4>
-                        <a href="#"><h3>{{ $productos->price }}</h3></a></div>
-                      <div class="col-md-5 col-12 order-md-2 order-1"><img src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto" alt="slide"></div>
+                    <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
+                        @php $i++ @endphp
+                        <div class="mask flex-center">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7 col-12 order-md-1 order-2">
+                                        <h4 style="color: black; text-transform: uppercase">{{ $productos->name }}</h4>
+                                        <h4>{!! $productos->descriptions !!}</h4>
+                                        <a href="#">
+                                            <h3>{{ $productos->price }}</h3>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-5 col-12 order-md-2 order-1"><img
+                                            src="{{ asset('/img/productos/' . $productos->image) }}"
+                                            class="mx-auto" alt="slide"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>   
-              @endforeach                    
+                @endforeach
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -250,7 +256,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>        
+        </div>
     </div>
 @endsection
 
@@ -295,15 +301,16 @@
       </div>
     @endforeach 
 </div> --}}
-<div class="slider">
-	<div class="slide-track">
-        @foreach ($proveedores as $proveedores)
-        <div class="slide">
-			<img src="{{ asset('/img/proveedore/'.$proveedores->image) }}" height="100" width="250" alt="{{$proveedores->image}}" />
-		</div>
-        @endforeach	
-	</div>
-</div>
+    <div class="slider">
+        <div class="slide-track">
+            @foreach ($proveedores as $proveedores)
+                <div class="slide">
+                    <img src="{{ asset('/img/proveedore/' . $proveedores->image) }}" height="100" width="250"
+                        alt="{{ $proveedores->image }}" />
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
 
 @section('footer')
@@ -335,7 +342,8 @@
                                     <h4><strong>Quienes somos?</strong></h4>
                                     <hr class="style6">
                                     <p style="text-align: justify">
-                                        <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios las
+                                        <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios
+                                            las
                                             24 horas del día,
                                             ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio</strong>.
                                     </p>
@@ -407,6 +415,7 @@
 
 <!--MODALS-->
 @section('modals')
+    {{-- Modal formas de pago --}}
     <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -421,7 +430,8 @@
                     <div id="contenedor" class="row_p">
                         <div id="naranja" class="">
                             <img class="
-                            popou_img"src="{{ asset('img/pagos.jpg') }}" alt="">
+                            popou_img" src="{{ asset('img/pagos.jpg') }}"
+                                alt="">
                         </div>
                         <div id="verde" class="content_pagos">
                             <h2 class=" frm_pagos text-center">FORMAS DE PAGO</h2>
@@ -492,14 +502,14 @@
             </div>
         </div>
     </div>
+
     {{-- plus a domicilio --}}
     <div class="modal fade bd-example-modal-xl2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div id="contenedor" class="row_p">
                 <div id="naranja" class="">
-                <img class=" popou_img"src="{{ asset('img/entrega.png') }}"
-                    alt="">
+                    <img class=" popou_img" src="{{ asset('img/entrega.png') }}" alt="">
                 </div>
                 <div id="verde" class="content_pagos">
                     <h2 style="color: black" class=" frm_pagos text-center">SUPERPLUS A DOMICILIO</h2>
@@ -510,8 +520,9 @@
             </div>
         </div>
     </div>
+
     {{-- promociones en modal --}}
-  {{--   <div class="modal fade modal fade bd-example-modal-x3" tabindex="-1" role="dialog"
+    <div class="modal fade modal fade bd-example-modal-x3" tabindex="-1" role="dialog"
         aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -533,7 +544,7 @@
                                         <div class="text-content">
                                             <h3><strong>
                                                     <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2>
-                                                </strong> </h3>                                        
+                                                </strong> </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -541,32 +552,34 @@
                         </div>
                     </div>
                 </div>
-
-
-                {{-- <div class="principal">
-                @foreach ($ofertas as $oferta)
-                <div id="contenedor" class="row_p">
-                    <div id="naranja" class="">
-                        <img class="popou_img"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
-                    </div>       
-                    <div id="verde" class="content_pagos"> 
-                        <strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong>  
-                        <br>    
-                        <h4>{{$oferta->texto}}</h4>  
-                        <button type="button" class="btnwssp btn btn-outline-success btn-lg">
-                            <a target="none" href="https://wa.me/51987654321?text=Hola%2CEstoy+interesad%40+en+la+oferta%3A+{{$oferta->titulo}}">
-                               Preguntar
-                            </a>
-                        </button> 
-                    </div>
+                <div class="principal">
+                    @foreach ($ofertas as $oferta)
+                        <div id="contenedor" class="row_p">
+                            <div id="naranja" class="">
+                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                    alt="{{ $oferta->image }}">
+                            </div>
+                            <div id="verde" class="content_pagos">
+                                <strong>
+                                    <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2>
+                                </strong>
+                                <br>
+                                <h4>{{ $oferta->texto }}</h4>
+                                <button type="button" class="btnwssp btn btn-outline-success btn-lg">
+                                    <a target="none"
+                                        href="https://wa.me/51987654321?text=Hola%2CEstoy+interesad%40+en+la+oferta%3A+{{ $oferta->titulo }}">
+                                        Preguntar
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                @endforeach  
-            </div> --}}
             </div>
         </div>
         <div class='icon-scroll'></div>
         <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6>
-    </div> --}}
+    </div>
 @endsection
 
 
