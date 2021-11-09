@@ -156,7 +156,7 @@
         </div>
     </div>
 @endsection
-@section('Instalacion')
+{{-- @section('Instalacion')
     <div class="swiper-container">
         <div class="swiper-wrapper">
             @foreach ($Instalacion as $cliente)
@@ -167,7 +167,7 @@
             @endforeach
         </div>
     </div>
-@endsection
+@endsection --}}
 
 @section('footer')
     <div data-aos="fade-up" class="footer-dark">
