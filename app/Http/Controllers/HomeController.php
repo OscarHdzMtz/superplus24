@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Instalacion;
+use App\Models\Instalacions;
 use App\Models\Productos;
 use App\Models\Proveedores;
 use App\Models\Publicoferts;
@@ -31,8 +31,8 @@ class HomeController extends Controller
         $cons_user = User::count();
         $cons_ofertas = Publicoferts::count();
         $cons_productos = Productos::count();
-        /* $cons_Instalacion = Instalacion::count(); */
+        $cons_Instalacion = Instalacions::count();
         $cons_proveedores = proveedores::count();
-        return view('home',compact('cons_user','cons_ofertas','cons_productos',/* 'cons_Instalacion', */'cons_proveedores'));
+        return view('home',compact('cons_user','cons_ofertas','cons_productos','cons_Instalacion','cons_proveedores'));
     }
 }

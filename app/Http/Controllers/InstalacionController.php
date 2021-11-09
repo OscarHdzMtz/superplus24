@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Instalacion;
+use App\Models\Instalacions;
 class InstalacionController extends Controller
 {   
     public function index(){
          //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
-        return view('Instalacion.todas.index',['Instalacion' => Instalacion::all()]);
+        return view('Instalacion.todas.index',['Instalacion' => Instalacions::all()]);
     }
     public function Instalacion(){
     
-        $Instalacion = Instalacion::all();
+        $Instalacion = Instalacions::all();
         return view('nosotros', 
                     ['Instalacion' => $Instalacion]);
                     
     }
     public function store(Request $request)
     {
-        $cliente = new Instalacion();
+        $cliente = new Instalacions();
             
         $cliente->user_id = auth()->id();
         $cliente->nombre = request('nombre');
@@ -33,11 +33,11 @@ class InstalacionController extends Controller
     }
     public function edit($id)
     {
-        return view('Instalacion.todas.edit',['cliente' => Instalacion::findOrFail($id)]);
+        return view('Instalacion.todas.edit',['cliente' => Instalacions::findOrFail($id)]);
     }
     public function update(Request $request,$id)
     {
-        $cliente = Instalacion::findOrFail($id);
+        $cliente = Instalacions::findOrFail($id);
         $cliente->nombre = $request->get('nombre');
         if($request->hasFile('image')){
             $file = $request->image;
@@ -50,7 +50,7 @@ class InstalacionController extends Controller
 
     public function destroy($id)
     {
-        $cliente = Instalacion::findOrFail($id);
+        $cliente = Instalacions::findOrFail($id);
         unlink(public_path('img/Instalacion/'.$cliente->image));
         $cliente->delete();
         return redirect('Instalacion/todas');
