@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Instalacions;
-class InstalacionController extends Controller
+class InstalacionsController extends Controller
 {   
     public function index(){
          //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
@@ -12,7 +12,7 @@ class InstalacionController extends Controller
     }
     public function Instalacion(){
     
-        $Instalacion = Instalacions::all();
+        $Instalacion = Instalacions::all();        
         return view('nosotros', 
                     ['Instalacion' => $Instalacion]);
                     

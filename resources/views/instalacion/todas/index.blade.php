@@ -34,7 +34,7 @@
                     </div>
                 </div> 
                     <div class="card-footer  border-success">
-                    <a href="{{URL::action('InstalacionController@edit',$cliente->id)}}">
+                    <a href="{{URL::action('InstalacionsController@edit',$cliente->id)}}">
                         <button type="button" class="btn btn-primary btn-sm ">
                             <i class="far fa-edit"></i>
                         </button> 

@@ -16,7 +16,7 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-{!! Form::open(['action' => ['InstalacionController@update', $cliente->id],'method' => 'PATCH','files'=>'true']) !!} 
+{!! Form::open(['action' => ['InstalacionsController@update', $cliente->id],'method' => 'PATCH','files'=>'true']) !!} 
 {{ Form::token() }}
 <div class="card text-center mx-auto" style="width: 400px;">
     <div class="card-header">
@@ -31,12 +31,12 @@
     </div>
     <div class="card-footer text-muted small">
         {{ $cliente->updated_at }}
-        <a href="{{URL::action('InstalacionController@edit',$cliente->id)}}">
+        <a href="{{URL::action('InstalacionsController@edit',$cliente->id)}}">
             <button type="submit" class="btn btn-primary  ">
             <i class="far fa-save"></i>
             </button> 
         </a>
-        <a href="{{URL::action('InstalacionController@index')}}">
+        <a href="{{URL::action('InstalacionsController@index')}}">
             <button type="button" class="btn btn-danger  float-right mr-1 ">
                 <i class="far fa-window-close"></i>
             </button> 
