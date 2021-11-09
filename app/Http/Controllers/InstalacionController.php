@@ -13,9 +13,9 @@ class InstalacionController extends Controller
     public function Instalacion(){
     
         $Instalacion = Instalacion::all();
-        return view('nosotros', 
+/*         return view('nosotros', 
                     ['Instalacion' => $Instalacion]);
-                    
+ */                    
     }
     public function store(Request $request)
     {
