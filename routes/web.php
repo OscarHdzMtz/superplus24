@@ -22,7 +22,7 @@ Route::get('/', [PublicofertController::class, 'ofertas']);/* Route::get('/', 'P
 
 Route::get('/promociones', [PublicofertController::class, 'promo']); /* Route::get('/promociones', 'PublicofertController@promo');  asi se hace con laravel 7*/
 
-Route::get('/nosotros', [InstalacionController::class, 'Instalacion']);/* Route::get('/nosotros', 'InstalacionController@Instalacion'); */
+/* Route::get('/nosotros', [InstalacionController::class, 'Instalacion']); *//* Route::get('/nosotros', 'InstalacionController@Instalacion'); */
 
 Route::get('/productos', [StoreController::class, 'index']); /* Route::get('/productos', 'StoreController@index'); */
 
@@ -48,6 +48,11 @@ Route::get('/empleo', function () {
 Route::get('/mapa', function () {
     return view('mapa');
 });
+
+Route::get('/nosotros', function () {
+    return view('nosotros');
+});
+
 
 Auth::routes();
 
