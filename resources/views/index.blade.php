@@ -13,10 +13,6 @@
         <div id="whatsaap">
             <a href="" target="none" class="fab fa-whatsapp"></a>
         </div>
-        <!--<div id="linkeding">
-                                <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-                                EDITADO MIERCOLES
-                            </div>-->
     </div>
 @endsection
 
@@ -222,7 +218,6 @@
     </div> --}}
 
     <div data-aos="fade-up" class="container-fluid">
-
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 @php $i = 1 @endphp
@@ -264,8 +259,8 @@
 @section('title2')
     <div class="col-12">
         <div class="testimonial-title">
-            <h5>CONOCE</h5>
-            <h3>NUESTROS ...</h3>
+            <h5>TRABAJANDO CON</h5>
+            <h3>MARCAS..</h3>
             <hr class="style1">
         </div>
     </div>
@@ -301,7 +296,7 @@
       </div>
     @endforeach 
 </div> --}}
-    <div class="slider">
+    {{-- <div class="slider">
         <div class="slide-track">
             @foreach ($proveedores as $proveedores)
                 <div class="slide">
@@ -310,7 +305,24 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
+
+    <!-- ======= MARCAS PROVEEDORES ======= -->
+    <section id="clients" class="clients">
+        <div class="container-fluid" data-aos="zoom-in">
+            <div class="clients-slider swiper">
+                <div class="swiper-wrapper align-items-center">
+                    @foreach ($proveedores as $proveedores)
+                        <div class="swiper-slide"><img src="{{ asset('/img/proveedore/' . $proveedores->image) }}"
+                                class="img-fluid" alt=""></div>
+                    @endforeach
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+            </div>
+        </div>
+    </section><!-- End Clients Section -->
 @endsection
 
 @section('footer')
@@ -591,16 +603,12 @@
                 <h3>SuperPlus</h3>
                 <div class='info-avatar'><img
                         src='https://sistemadecotizaciones.files.wordpress.com/2020/08/supportmale.png' /></div>
-
             </div>
-
             <div class='get-new'>
                 {{-- <div id='get-label'>Soporte</div> --}}
                 <div id='get-nama'>Servicio al cliente</div>
-
             </div>
         </div>
-
         <div class='start-chat'>
             <div class='first-msg'><span>DALE UN PLUS A TU DIA!</span></div>
             <div class='first-msg'><span>¡Hola! ¿En que podemos ayudarte?</span></div>
@@ -611,8 +619,6 @@
         </div>
         <div id='get-number'>529532293052</div><a class='close-chat' onclick="cerrar_chat();" href='#'>×</a>
     </div>
-
-
     <a class='blantershow-chat' onclick="mostrar_chat();" href='#' title='Show Chat'><svg width="20" viewBox="0 0 24 24">
             <defs />
             <path fill="#eceff1"
@@ -645,7 +651,6 @@
         function cerrar_chat() {
             whatsapp_chat.classList.add("hide");
             whatsapp_chat.classList.remove("show");
-
         }
 
         function mostrar_chat() {
