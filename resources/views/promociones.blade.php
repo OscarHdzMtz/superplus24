@@ -107,10 +107,12 @@
                         @php $i++ @endphp
                         <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}"
                             alt="First slide">
-                        <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
-                            <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
-                            {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
-                          </div>                                               
+                            @if ($slider->description <> null)
+                            <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
+                                <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
+                                {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                              </div> 
+                            @endif                                                                      
                     </div>
                 @endforeach             
             </div>            

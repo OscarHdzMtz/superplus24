@@ -33,6 +33,9 @@
     <!-- ESTILOS PROPIOD -->
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/slick.css') }}" rel="stylesheet">
+
+    {{-- estilos de efectos de slider productos nuevos --}}
+    <link type="text/css" href="{{ asset('css/slider/slider.css') }}" rel="stylesheet">
 </head>
 
 <body>
