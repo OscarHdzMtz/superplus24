@@ -10,3 +10,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/public/img/ofertas
+/public/img/productos
+/public/img/proveedore
+/public/img/prueba
+/public/img/servicios
+/public/img/slider
+/public/img/vacantes
