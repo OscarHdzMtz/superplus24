@@ -3176,6 +3176,10 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     background-size: 90% ;   
     background-repeat: no-repeat; 
     background-position: center;
+    /* vuelve imagen en blanco y negro */
+    opacity: 0.8;
+    transition: 0.3s;
+    filter: grayscale(100);
   }
   
   @media (min-width: 640px) {
@@ -3264,3 +3268,27 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   }
     
 /* fin */
+
+
+/* ------------NUESTRA HISTORIA------------ */
+.historia {
+  padding-top: 60px;
+  padding-bottom: 90px;  
+}
+
+.historia-sm {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.historia-title {
+  margin-bottom: 30px;
+}
+
+.historia-text{
+  font-size: 1.1rem;
+    font-weight: 300;    
+    line-height: 30px;  
+  text-align: justify;
+}
+

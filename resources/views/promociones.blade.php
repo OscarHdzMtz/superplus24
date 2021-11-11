@@ -185,16 +185,17 @@
             <div class="box">
                 {{-- <div class="box-sm red"></div> --}}
                 {{-- <div class="box-sm orange"></div> --}}
-                <div class="box-sm yellow "></div>
+                <div class="box-sm blue "></div>
                 {{-- <div class="box-sm green "></div> --}}
                 <div class="box-sm blue "></div>
                 {{-- <div class="box-sm purple"></div> --}}
-                <div class="box-sm yellow "></div>
                 <div class="box-sm blue "></div>
-                <div class="box-sm yellow "></div>
                 <div class="box-sm blue "></div>
+                <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px" src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
                 <div class="box-sm yellow "></div>
-                <div class="box-sm blue "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm yellow "></div>
               </div>
             <div style="padding-top: 0px" class="new_footer_top">              
                 <div class="footer_bg">

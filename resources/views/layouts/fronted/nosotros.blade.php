@@ -28,11 +28,12 @@
     <div>
         @yield('timespace')
     </div>
-    @yield('title')
+    {{-- @yield('title') --}}
     <div class="body_Instalacion">
         @yield('Instalacion')
     </div>
     @yield('title2')
+    @yield('historia')
     @yield('foda')
     @yield('footer')
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
