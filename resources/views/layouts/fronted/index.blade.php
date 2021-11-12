@@ -141,6 +141,8 @@
             loop: true
         });
     </script>
+
+    {{-- SCRIPT PRELOADER DE CARGA DE PAGINA --}}
     <script>
         $(window).on('load', function() {
             setTimeout(function() {

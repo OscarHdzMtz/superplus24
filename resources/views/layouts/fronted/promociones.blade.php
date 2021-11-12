@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div class="loader-page"></div>
     @yield('redes')
     <section {{-- id="headerSection_promo" --}}>
         {{-- @yield('navbar_top') --}}
@@ -87,6 +88,18 @@
             loop: true
         });
     </script>
+{{-- SCRIPT PRELOADER DE CARGA DE PAGINA --}}
+<script>
+    $(window).on('load', function() {
+        setTimeout(function() {
+            $(".loader-page").css({
+                visibility: "hidden",
+                opacity: "0"
+            })
+        }, 2000);
+
+    });
+</script>
 </body>
 
 </html>
