@@ -155,9 +155,8 @@
         <div class="contact-info">
                 {{-- <h3 class="contact_tittle">ESTAMOS UBICADOS EN</h3> --}}
                 <p class="contact_text"> 
-                </p>
-
-            <img src="{{ asset('/img/estaticos/contact.webp') }}" alt="">
+                </p>          
+                    <img src="{{ asset('/img/estaticos/contact.webp') }}" alt="">                
             <div class="social_media">
                 {{-- <p>REDES SOCIALES</p> --}}
                 <div class="social-icons">

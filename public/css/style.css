@@ -899,6 +899,10 @@ textarea.contact_input{
     background-color: #003baa;
     color: white;
 }
+
+.contact-info img{
+  max-width: 100%;
+}
 /***********************************************
 ******************FODA**************************
 ************************************************/
@@ -3298,4 +3302,4 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     line-height: 30px;  
   text-align: justify;
 }
-
+contact-info
