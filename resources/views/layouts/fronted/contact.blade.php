@@ -20,7 +20,7 @@
 
 <body>
     <!--oncontextmenu = "return false"-->
-    @yield('redes')
+    {{-- @yield('redes') --}}
     <section id="headerSection_promo">
         {{-- @yield('navbar_top') --}}
         @yield('navbar')

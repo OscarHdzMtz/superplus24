@@ -103,7 +103,7 @@
     </div>
 @endsection 
 @section('cards_service')
-<div class="container_cards">
+{{-- <div class="container_cards">
     <h1 align="center" class="textmov"><span class="type"></span></h1>
     <div class="row_cards">
         <div class="col-md-3 col-sm-6 mb-3 text-center">
@@ -147,35 +147,22 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
 @section('Content_messege')
 <div class="conatiner">
     <div class="form">
         <div class="contact-info">
-                <h3 class="contact_tittle">ESTAMOS UBICADOS EN</h3>
+                {{-- <h3 class="contact_tittle">ESTAMOS UBICADOS EN</h3> --}}
                 <p class="contact_text"> 
                 </p>
 
-            <div class="contactos_info">
-                <div class="contact_information">
-                    <i class="fas fa-2x fa-map-marker-alt"></i>
-                    <p>AV. </p>
-                </div>
-                <div class="contact_information">
-                <i class="fas fa-2x fa-phone-volume"></i>
-                    <p>953 000 00 00</p>
-                </div>
-                <div class="contact_information">
-                    <i class="far fa-2x fa-envelope"></i>
-                    <p>Plus@gmail.com</p>
-                </div>
-            </div>
+            <img src="{{ asset('/img/estaticos/contact.webp') }}" alt="">
             <div class="social_media">
-                <p>REDES SOCIALES</p>
+                {{-- <p>REDES SOCIALES</p> --}}
                 <div class="social-icons">
                     <a href="" target="none">
-                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-facebook-f fa-1x"></i>
                     </a>
                     <a href="" target="none">
                         <i class="fab fa-instagram"></i>
@@ -191,18 +178,22 @@
         </div>
         <div class="contact-form">
             <form action="" autocomplete="off">
-                <h3 class="contact_tittle">COMUNÍCATE CON NOSOTROS</h3>
+                <h3 class="contact_tittle">    ESCRIBENOS ...</h3>
                 <div class="input-container ">
-                    <input type="text" name="name" class="contact_input" placeholder="NOMBRE">
+                    <input type="text" name="name" class="contact_input" placeholder="Nombre" required>
                 </div>
                 <div class="input-container">
-                    <input type="text" name="email" class="contact_input" placeholder="EMAIL">
+                    {{-- <input id="" type="email" class="form-control contact_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus> --}}
+                    <input type="email" name="email" class="contact_input" placeholder="Email" required autocomplete="email">
                 </div>
                 <div class="input-container">
-                    <input type="tel" name="celular" class="contact_input" placeholder="CELULAR">
+                    <input type="tel" name="celular" class="contact_input" placeholder="Celular" required>
                 </div>
                 <div class="input-container">
-                    <textarea name="mensaje" class="contact_input" id="" placeholder="MENSAJE"></textarea>
+                    <input type="tel" name="estado" class="contact_input" placeholder="Estado">
+                </div>
+                <div class="input-container">
+                    <textarea name="mensaje" class="contact_input" id="" placeholder="Mensaje"></textarea>
                 </div>
                 <input type="submit" value="ENVIAR" class="contact_btn">
             </form>
@@ -224,7 +215,7 @@
                 {{-- <div class="box-sm purple"></div> --}}
                 <div class="box-sm blue "></div>
                 <div class="box-sm blue "></div>
-                {{-- <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px" src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt=""> --}}
+                <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px;position: relative;" src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
                 <div class="box-sm yellow "></div>
                 <div class="box-sm yellow "></div>
                 <div class="box-sm yellow "></div>
