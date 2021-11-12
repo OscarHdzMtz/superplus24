@@ -58,7 +58,7 @@
                 <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
             </li>          
             <li class="nav-item active">
-                <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTENOS</a>
+                <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTANOS</a>
             </li>   
             <li class="nav-item">
                 <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank" class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
@@ -178,7 +178,8 @@
         </div>
         <div class="contact-form">
             <form action="" autocomplete="off">
-                <h3 class="contact_tittle">    ESCRIBENOS ...</h3>
+                <h3 class="contact_tittle text-center">DANOS TU OPINION</h3>
+                <hr style="margin: 0 auto" class="style1">
                 <div class="input-container ">
                     <input type="text" name="name" class="contact_input" placeholder="Nombre" required>
                 </div>
@@ -193,7 +194,8 @@
                     <input type="tel" name="estado" class="contact_input" placeholder="Estado">
                 </div>
                 <div class="input-container">
-                    <textarea name="mensaje" class="contact_input" id="" placeholder="Mensaje"></textarea>
+                    <textarea name="mensaje" class="contact_input" id="" placeholder="Mensaje" onkeyup="countChars(this);" ></textarea>
+                    <p id="charNum" class="text-success text-center">0 caracteres</p>
                 </div>
                 <input type="submit" value="ENVIAR" class="contact_btn">
             </form>
@@ -240,4 +242,9 @@
 {{-- <footer class="footer">
    
 </footer> --}}
+<script>
+    function countChars(obj) {
+        document.getElementById("charNum").innerHTML = obj.value.length + ' caracteres';
+    }
+</script>
 @endsection
