@@ -244,7 +244,7 @@
                 @endforeach
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span {{-- class="carousel-control-prev-icon"  --}}aria-hidden="true"></span>
+                <span {{-- class="carousel-control-prev-icon" --}}aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
@@ -338,7 +338,8 @@
                     {{-- <div class="box-sm purple"></div> --}}
                     <div class="box-sm blue "></div>
                     <div class="box-sm blue "></div>
-                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px" src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
+                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px"
+                        src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
                     <div class="box-sm yellow "></div>
                     <div class="box-sm yellow "></div>
                     <div class="box-sm yellow "></div>
@@ -380,25 +381,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-12">
+                            {{-- <div class="col-lg-4 col-md-12">
                                 <div class="embed-container sombra">
                                     <iframe src="https://www.7-eleven.com.mx/" frameborder="0" allowfullscreen></iframe>
                                 </div>
 
-                            </div>
-                            {{-- <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Help</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Term &amp; conditions</a></li>
-                                    <li><a href="#">Reporting</a></li>
-                                    <li><a href="#">Documentation</a></li>
-                                    <li><a href="#">Support Policy</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                </ul>
-                            </div>
-                        </div> --}}
+                            </div> --}}
                             <div style="padding-top: 30px" class="col-lg-4 col-md-12">
                                 {{-- <iframe class="sombra" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuperplus.picaros%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=618142002368065" width="325px" height="500px" style="border:none;overflow:hidden" style="height:500px;width:325px;" title="Iframe Example"></iframe> --}}
                                 <div class="embed-container sombra">
@@ -407,6 +395,20 @@
                                         frameborder="0" allowfullscreen></iframe>
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
+                                    style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                                    <ul class="list-unstyled f_list">
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">Term &amp; conditions</a></li>
+                                        <li><a href="#">Reporting</a></li>
+                                        <li><a href="#">Documentation</a></li>
+                                        <li><a href="#">Support Policy</a></li>
+                                        <li><a href="#">Privacy</a></li>
+                                    </ul>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="footer_bg">
@@ -565,7 +567,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="principal">
+             {{--    <div class="principal">
                     @foreach ($ofertas as $oferta)
                         <div id="contenedor" class="row_p">
                             <div id="naranja" class="">
@@ -587,11 +589,11 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
+                </div> --}}
             </div>
         </div>
-        <div class='icon-scroll'></div>
-        <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6>
+   {{--      <div class='icon-scroll'></div>
+        <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6> --}}
     </div>
 @endsection
 

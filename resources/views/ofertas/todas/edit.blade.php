@@ -42,9 +42,9 @@
             <input type="date" name="fechaFin" value="{{ $oferta->fechaFin }}">
         </div>        
             <div class="form-group">
-                <div class="form-check">
-                    <label><input type="checkbox" name="deldia" value="{{ $oferta->deldia }}"> Promocion del dia </label>
-                    
+                <div class="card-header">
+                    <label for="deldia">Estatus:</label>
+                    <input type="checkbox" name="deldia" {{ $oferta->deldia == 1 ? "checked='checked'" : ''}}> 
                 </div>
             </div>        
         <div class="card-footer text-muted small">

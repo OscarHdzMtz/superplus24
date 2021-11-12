@@ -39,9 +39,9 @@
                         <input type="date" name="fechaFin" required>
                     </div>
                     <div class="form-group">
-                        <div class="form-check">
-                            <label><input type="checkbox" name="deldia"> PROMOCIONES EXCLUSIVOS </label>
-                        </div>
+                        <label for="visible">Estatus:</label>
+                        {!!
+                            Form::checkbox('deldia',null,array('class' => 'form-check-label'))    !!}
                     </div>
                 </form>
             </div>

@@ -34,9 +34,9 @@
                         <p class="card-text"><small class="text-muted">Fecha Inicio: {{ $oferta->fechaInicio}}</small></p>
                         <p class="card-text"><small class="text-muted">Fecha Fin: {{ $oferta->fechaFin}}</small></p>
                         <!--<h5 class="card-title">Usuarios que lo publico:{{$oferta->user_id}}</h5><br>-->                       
-                        @if ($oferta->deldia == 'on')
+                        @if ($oferta->deldia == '1')
                         <div>
-                            <p style="color: green" class="card-text"><strong>Exclusivo</strong><small class="text-muted"></small></p>
+                            <p style="color: green" class="card-text"><strong>Promo Exclusivo</strong><small class="text-muted"></small></p>
                         </div>                                                                                                 
                         @endif                        
                     </div>
