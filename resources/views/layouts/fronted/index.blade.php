@@ -39,6 +39,7 @@
 </head>
 
 <body>
+    <div class="loader-page"></div>
     {{-- @yield('redes') --}}
     {{-- <section id="headerSection"> --}}
     {{-- @yield('navbar_top') --}}
@@ -138,6 +139,17 @@
             typeSpeed: 60,
             backSpeed: 60,
             loop: true
+        });
+    </script>
+    <script>
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $(".loader-page").css({
+                    visibility: "hidden",
+                    opacity: "0"
+                })
+            }, 2000);
+
         });
     </script>
 </body>
