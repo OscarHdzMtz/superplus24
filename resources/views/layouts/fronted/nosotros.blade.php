@@ -19,6 +19,11 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader-page-img">
+            <div class="loader-page"></div>
+        </div>
+    </div>
     {{-- @yield('redes')     --}}
     <section {{-- id="headerSection_promo" --}}>
         {{-- @yield('navbar_top') --}}
@@ -47,6 +52,8 @@
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="{{ asset('js/security.js') }}"></script>
     <script src="{{ asset('js/nosotros.js') }}"></script>
+    {{-- preloader --}}
+    <script src="{{ asset('js/preloader/loader.js') }}"></script>
 
     <script src="{{ asset('js/prueba.js') }}"></script>
 

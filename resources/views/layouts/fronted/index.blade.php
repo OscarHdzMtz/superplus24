@@ -39,7 +39,11 @@
 </head>
 
 <body>
-    <div class="loader-page"></div>
+    <div id="preloader">
+        <div class="loader-page-img">
+            <div class="loader-page"></div>
+        </div>
+    </div>
     {{-- @yield('redes') --}}
     {{-- <section id="headerSection"> --}}
     {{-- @yield('navbar_top') --}}
@@ -80,6 +84,8 @@
     {{-- js de prueba --}}
     <script src="{{ asset('js/prueba.js') }}"></script>
     <script src="{{ asset('js/counter.js') }}"></script>
+
+    <script src="{{ asset('js/preloader/loader.js') }}"></script>
 
     {{-- aimaciones al hacer scroll --}}
     {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
@@ -141,19 +147,8 @@
             loop: true
         });
     </script>
-
-    {{-- SCRIPT PRELOADER DE CARGA DE PAGINA --}}
-    <script>
-        $(window).on('load', function() {
-            setTimeout(function() {
-                $(".loader-page").css({
-                    visibility: "hidden",
-                    opacity: "0"
-                })
-            }, 2000);
-
-        });
-    </script>
+    
+    
 </body>
 
 </html>

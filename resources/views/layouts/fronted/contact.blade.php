@@ -19,6 +19,11 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader-page-img">
+            <div class="loader-page"></div>
+        </div>
+    </div>
     <!--oncontextmenu = "return false"-->
     {{-- @yield('redes') --}}
     <section id="headerSection_promo">
@@ -41,6 +46,8 @@
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="{{ asset('js/security.js') }}"></script>
     <script src="{{ asset('js/typed.js') }}"></script>
+    {{-- preloader --}}
+    <script src="{{ asset('js/preloader/loader.js') }}"></script>
 
     {{-- js de prueba --}}
     <script src="{{ asset('js/prueba.js') }}"></script>

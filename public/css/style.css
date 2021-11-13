@@ -3305,7 +3305,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
 
 
-
+/* 
 .loader-page {
   position: fixed;
   z-index: 25000;
@@ -3349,7 +3349,99 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   animation: rotarload 1s ease-out infinite;
   transform: rotate(0deg);
 }
+ */
 
 
 
 
+
+
+
+#preloader {
+  position: fixed;
+  z-index: 25000;
+  background: rgb(255, 255, 255);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  
+}
+.loader-page-img {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;  
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  z-index: 1001;  
+  background-image: url('../img/logop.png');
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  z-index: 1020;
+}
+.loader-page {
+  display: block;
+  position: relative;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #003baa;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  z-index: 1001;
+}
+.loader-page:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #ffcc00;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+.loader-page:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #003baa;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+  0%   {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0%   {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}

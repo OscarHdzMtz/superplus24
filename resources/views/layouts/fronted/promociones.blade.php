@@ -21,7 +21,11 @@
 </head>
 
 <body>
-    <div class="loader-page"></div>
+    <div id="preloader">
+        <div class="loader-page-img">
+            <div class="loader-page"></div>
+        </div>
+    </div>
     @yield('redes')
     <section {{-- id="headerSection_promo" --}}>
         {{-- @yield('navbar_top') --}}
@@ -90,15 +94,27 @@
     </script>
 {{-- SCRIPT PRELOADER DE CARGA DE PAGINA --}}
 <script>
-    $(window).on('load', function() {
-        setTimeout(function() {
-            $(".loader-page").css({
-                visibility: "hidden",
-                opacity: "0"
-            })
-        }, 2000);
+     $(window).on('load', function() {
+            setTimeout(function() {
+                $(".loader-page").css({
+                    visibility: "hidden",
+                    opacity: "0"
+                })
+            }, 2000);
+            setTimeout(function() {
+                $(".loader-page-img").css({
+                    visibility: "hidden",
+                    opacity: "0"
+                })
+            }, 2000);
+            setTimeout(function() {
+                $("#preloader").css({
+                    visibility: "hidden",
+                    opacity: "0"
+                })
+            }, 2000);
 
-    });
+        });
 </script>
 </body>
 
