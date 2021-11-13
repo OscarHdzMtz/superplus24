@@ -24,18 +24,18 @@ Route::get('/promociones', [PublicofertController::class, 'promo']); /* Route::g
 
 /* Route::get('/nosotros', [InstalacionController::class, 'Instalacion']); *//* Route::get('/nosotros', 'InstalacionController@Instalacion'); */
 
-Route::get('/productos', [StoreController::class, 'index']); /* Route::get('/productos', 'StoreController@index'); */
+/* Route::get('/productos', [StoreController::class, 'index']);  *//* Route::get('/productos', 'StoreController@index'); */
 
 /* retorna solamente una vista */
 Route::get('/contact', function () {
     return view('contact');
 });
 
-/* Route::get('productos/{slug}',
+Route::get('productos/{slug}',
 [
     'as'   => 'product-details',
     'uses' => 'StoreController@show'
-]); */
+]);
 
 Route::get('categorias/{slug}',[
     'uses' => 'StoreController@searchCategory',
