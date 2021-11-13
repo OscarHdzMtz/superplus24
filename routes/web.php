@@ -31,11 +31,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('productos/{slug}',
+/* Route::get('productos/{slug}',
 [
     'as'   => 'product-details',
     'uses' => 'StoreController@show'
-]);
+]); */
 
 Route::get('categorias/{slug}',[
     'uses' => 'StoreController@searchCategory',
