@@ -398,14 +398,13 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
                                     style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                    <h3 class="f-title f_600 t_color f_size_18">Help</h3>
-                                    <ul class="list-unstyled f_list">
-                                        <li><a href="#">FAQ</a></li>
-                                        <li><a href="#">Term &amp; conditions</a></li>
-                                        <li><a href="#">Reporting</a></li>
-                                        <li><a href="#">Documentation</a></li>
-                                        <li><a href="#">Support Policy</a></li>
-                                        <li><a href="#">Privacy</a></li>
+                                    <h3 class="f-title f_600 t_color f_size_18 text-right"><strong>ENLACES</strong></h3>
+                                    <ul class="list-unstyled f_list text-right">
+                                        <li><a href="#">PROMOCIONES</a></li>
+                                        <li><a href="#">NOSOTROS</a></li>
+                                        <li><a href="#">BOLSA DE TRABAJO</a></li>
+                                        <li><a href="#">CONTACTANOS</a></li>                                 
+                                        <li><a href="#">FACTURACION</a></li>
                                     </ul>
                                 </div>
                             </div>                            
