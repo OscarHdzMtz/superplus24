@@ -84,7 +84,7 @@
     <div id="carouselExampleSlidesOnly" class="banner slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('img/slider/plus.png') }}" alt="First slide">
+                <img class="d-block w-100" src="{{ asset('img/superplus.jpg') }}" alt="First slide">
             </div>
         </div>
     </div>

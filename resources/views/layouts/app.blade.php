@@ -142,7 +142,7 @@
                                     <p>Inicio</p>
                                 </a>
                             </li>
-                            @can('administrador')
+                            @can('Administrador')
                                 <li class="nav-item textsidebar">
                                     <a href="{{ url('usuarios') }}"
                                         class="{{ Request::path() === 'usuarios' ? 'nav-link active ' : 'nav-link' }}">
@@ -350,7 +350,7 @@
                             </li> --}}
                             @endcan
 
-                            @can('personal')
+                            @can('RecursosHumanos')
                                 <li class="nav-item admin">
                                     <a href="{{ url('ofertas/todas') }}"
                                         class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
