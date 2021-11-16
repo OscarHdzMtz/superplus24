@@ -220,7 +220,7 @@
             <div class="img-cover"><img src="{{ asset('img/vacantes/2.png') }}"></div>
             <div class="desc">
                 {{-- <h1>The Mountain</h1>                 --}}
-                <a data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
+                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
                             stroke-width="3" />

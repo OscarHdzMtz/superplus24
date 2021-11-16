@@ -2,45 +2,40 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">FORMULARIO SUPERPLUS</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body mx-3">
-                <div class="md-form mb-3">
-                    <i class="fas fa-user prefix grey-text"></i>
-                    <input type="text" id="form34" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form34">Nombre completo</label>
-                </div>
-
-                <div class="md-form mb-3">
-                    <i class="fas fa-envelope prefix grey-text"></i>
-                    <input type="email" id="form29" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form29">Correo</label>
-                </div>
-
-                <div class="md-form mb-3">
-                    <i class="fas fa-tag prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form32">Numero telefonico</label>
-                </div>
-                <div class="md-form mb-3">
-                    <i class="fas fa-tag prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form32">Lugar de residencia</label>
-                </div>
-               
-                <div class="md-form">
-                    <label data-error="wrong" data-success="right" for="form32"><strong>Adjunte su Solicitud de Empleo o CV</strong></label>
-                    <div class="container">
-                        <input type="file" name="archivosubido">                    
-                    </div>                    
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-block btn-outline-primary">Enviar <i class="fas fa-paper-plane-o ml-1"></i></button>
+            <div class="registration-form">
+                <form>
+                    <div class="form-icon">
+                        <span><img src="{{ asset('img/logop.png') }}" alt=""></i></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control item" id="username" placeholder="Nombre completo">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control item" id="email" placeholder="Correo">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control item" id="phone-number" placeholder="Numero telefonico">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control item" id="lugar" placeholder="Lugar de Residencia">
+                    </div>                                        
+                    <div class="form-group">
+                        <a class="text-center"><strong>Adjunte su Solicitud de empleo o CV</strong></a>
+                        <input type="file" name="archivosubido">
+                    </div>
+                    <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">He leído y acepto el aviso de privacidad.</small> <a href="#" class="terms" target="blank">Aviso de privacidad</a> </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block create-account">Enviar</button>
+                    </div>
+                </form>
+                {{-- <div class="social-media">
+                    <h5>Visitanos</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+                        <a href="#"><i class="icon-social-google" title="Google"></i></a>
+                        <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
+                    </div>
+                </div> --}}
             </div>
         </div>
     </div>
