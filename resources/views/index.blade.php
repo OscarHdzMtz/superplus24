@@ -557,7 +557,7 @@
                                             alt="{{ $oferta->image }}">
                                         <div class="text-content">
                                             <h3><strong>
-                                                    <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2>
+                                                    {{-- <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2> --}}
                                                 </strong> </h3>
                                         </div>
                                     </div>
