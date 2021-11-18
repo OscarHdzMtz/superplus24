@@ -7,7 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>correo electronico SupePlus</h1>
-    <p>este es el primer correo desde la pagina de SupePlus</p>
+    <h1><strong>CONTACTANOS SUPERPLUS</strong></h1>
+    <h3>Informacion del Cliente</h3>
+
+    <p><strong>Nombre: </strong>{{ $contacto ['name'] }}</p>
+    <p><strong>Correo: </strong>{{ $contacto ['email'] }}</p>
+    <p><strong>Celular: </strong>{{ $contacto ['celular'] }}</p>
+    <p><strong>Estado: </strong>{{ $contacto ['estado'] }}</p>
+    <p><strong>Mensaje: </strong>{{ $contacto ['mensaje'] }}</p>
 </body>
 </html>

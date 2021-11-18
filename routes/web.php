@@ -7,8 +7,8 @@ use App\Http\Controllers\StoreController;
 use App\Models\publicofert;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\ContactanosMailable;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ContactanosController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,13 +28,9 @@ Route::get('/promociones', [PublicofertController::class, 'promo']); /* Route::g
 
 /* Route::get('/productos', [StoreController::class, 'index']);  *//* Route::get('/productos', 'StoreController@index'); */
 
-/* retorna solamente una vista */
-Route::get('contactanos', function () {
-    $correo = new ContactanosMailable;
-
-    Mail::to('atackevil9922@gmail.com')->send($correo);
-    return "mesnaje enviado";
-});
+/* Ruta de contactanos para el envio de correo*/
+Route::get('/contact', [ContactanosController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactanosController::class, 'store'])->name('contact.store');
 
 
 Route::get('productos/{slug}',

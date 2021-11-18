@@ -6,19 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 
 class ContactanosMailable extends Mailable
 {
     use Queueable, SerializesModels;
-    public $subjet = "informaacion de contacto";
+    public $subjet = "informacion de contacto";
+    public $contacto;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($contacto)
     {
-        //
+        //RECIBE LOS DATOS DEL FORMULARIO
+        $this->contacto = $contacto;
     }
 
     /**
@@ -28,6 +32,6 @@ class ContactanosMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('contact');
+        return $this->view('email.contactanos');
     }
 }
