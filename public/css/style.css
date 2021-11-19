@@ -1942,13 +1942,15 @@ textarea.contact_input{
 }
 .clients .swiper-slide img {
   /* max-width: 220%; */
+  filter: none;
+  opacity: 1;
+
+}
+.clients .swiper-slide img:hover {
+
   opacity: 0.5;
   transition: 0.3s;
   filter: grayscale(100);
-}
-.clients .swiper-slide img:hover {
-  filter: none;
-  opacity: 1;
 }
 
 .clients .swiper-pagination {
@@ -2159,13 +2161,13 @@ textarea.contact_input{
 
 .clients .swiper-slide img {
   max-width: 100%;
+  filter: none;
+  opacity: 1; 
+}
+.clients .swiper-slide img:hover {
   opacity: 0.5;
   transition: 0.3s;
   filter: grayscale(100);
-}
-.clients .swiper-slide img:hover {
-  filter: none;
-  opacity: 1;
 }
 
 .clients .swiper-pagination {
