@@ -114,7 +114,7 @@
 
                 <div class="col-lg-8 pl-5">
                     <div class="service-content">
-                        <h1>Ven y forma parte de una de las cadenas comerciales mas importantes y en expancion de la region
+                        <h1>Ven y forma parte de una de las cadenas comerciales mas importantes y en expansión de la región
                             Mixteca.</h1>
                         {{-- <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p> --}}
                     </div>
@@ -138,7 +138,7 @@
                                                 </div>
                                                 <div class="service-inner-content media-body">
                                                     <h4>Excelente ambiente de trabajo</h4>
-                                                    <p>Texto Texto TextoTexto .......</p>
+                                                    {{-- <p>Texto Texto TextoTexto .......</p> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -154,8 +154,8 @@
                                                     <i class="fas fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="service-inner-content media-body">
-                                                    <h4>Buen salario</h4>
-                                                    <p>Texto Texto TextoTexto .......</p>
+                                                    <h4>Crecimiento laboral</h4>
+                                                    {{-- <p>Texto Texto TextoTexto .......</p> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -183,8 +183,8 @@
                                                     <i class="fas fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="service-inner-content media-body">
-                                                    <h4>Oportunidades de crecimiento</h4>
-                                                    <p>Texto Texto TextoTexto .......</p>
+                                                    <h4>Unete a nuestro equipo</h4>
+                                                    {{-- <p>Texto Texto TextoTexto .......</p> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -230,21 +230,21 @@
         <div class="card">
             <div class="img-cover"><img src="{{ asset('img/vacantes/7.png') }}"></div>
             <div class="desc">                                
-                <a href="">POSTULARME <svg width="19" height="14" viewBox="0 0 23 18" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
-                            stroke-width="3" />
-                    </svg></a>
+                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                        stroke-width="3" />
+                </svg></a>
             </div>
         </div>
         <div class="card">
             <div class="img-cover"><img src="{{ asset('img/vacantes/5.png') }}"></div>
             <div class="desc">                           
-                <a href="">POSTULARME <svg width="19" height="14" viewBox="0 0 23 18" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
-                            stroke-width="3" />
-                    </svg></a>
+                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                        stroke-width="3" />
+                </svg></a>
             </div>
         </div>
     </div>
