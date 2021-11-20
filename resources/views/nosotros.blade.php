@@ -112,7 +112,7 @@
                         </ul>
                     </div>
                     <div class="description">
-                        <h1>Mision</h1>
+                        <h1>Misión</h1>
                         {{-- <h2>Opening a door to the future</h2> --}}
                         <p>
                             Brindar a nuestros clientes una gran variedad de productos y servicios las 24 horas del día,
@@ -134,7 +134,7 @@
                         </ul>
                     </div>
                     <div class="description">
-                        <h1>Vision</h1>
+                        <h1>Visión</h1>
                         {{-- <h2>Java is not the same as JavaScript</h2> --}}
                         <p>
                             Ser la empresa líder en la región Mixteca, en tiendas de conveniencia, incrementando nuestra

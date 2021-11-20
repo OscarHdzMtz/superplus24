@@ -123,7 +123,7 @@
                     <div class="service">
                         <i class="fas fa-map-marker-alt fa-4x"></i>
                         <h4 class="title_services">Buscador de plus</h4>
-                        <p class="description_services">Localiza tu plus mas cercano</p><br>
+                        <p class="description_services">Localiza tu plus más cercano</p><br>
                         <a href="/mapa" class="btn_modal_wel mt-5">Ver mapa</a>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                     <div class="service">
                         <i class="fas fa-file-invoice fa-4x"></i>
                         <h4 class="title_services">Facturacion</h4>
-                        <p class="description_services">genera y descarga tu Factura Electrónica.</p>
+                        <p class="description_services">Genera y descarga tu factura electrónica.</p>
                         <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
                             class="btn_modal_wel mt-5">Facturar</a>
                     </div>

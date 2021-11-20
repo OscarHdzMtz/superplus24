@@ -114,7 +114,7 @@
 
                 <div class="col-lg-8 pl-5">
                     <div class="service-content">
-                        <h1>Ven y forma parte de una de las cadenas comerciales mas importantes y en expansión de la región
+                        <h1>Ven y forma parte de una de las cadenas comerciales más importantes y en expansión de la región
                             Mixteca.</h1>
                         {{-- <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p> --}}
                     </div>
@@ -183,7 +183,7 @@
                                                     <i class="fas fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="service-inner-content media-body">
-                                                    <h4>Unete a nuestro equipo</h4>
+                                                    <h4>Únete a nuestro equipo</h4>
                                                     {{-- <p>Texto Texto TextoTexto .......</p> --}}
                                                 </div>
                                             </div>
