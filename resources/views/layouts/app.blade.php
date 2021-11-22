@@ -300,8 +300,8 @@
                                             </a>
                                         </li>
                                         <li class="nav-item admin">
-                                            <a href="{{ url('#') }}"
-                                                class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                            <a href="{{ url('miempresa') }}"
+                                                class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-star"></i>
                                                 <p>
                                                     Mi empresa

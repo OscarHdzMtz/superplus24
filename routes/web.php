@@ -8,6 +8,7 @@ use App\Models\publicofert;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\MiempresaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,4 @@ Route::resource('/producto', 'ProductoController')->middleware('auth');
 Route::resource('/slidermain', 'SlidermainController')->middleware('auth');
 Route::resource('/cardservicio', 'CardservicioController')->middleware('auth');
 Route::resource('/textoproducto', 'TextoproductoController')->middleware('auth');
+Route::resource('/miempresa', 'MiempresaController')->middleware('auth');
