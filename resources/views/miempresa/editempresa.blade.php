@@ -14,7 +14,7 @@
                 <form>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">NOMBRE :</label>
-                        <input type="text" name="name" class="form-control" id="recipient-name" value="{{$getempresa->titulo}}" required>
+                        <input type="text" name="titulo" class="form-control" id="recipient-name" value="{{$getempresa->titulo}}" required>
                     </div>
                     <div class="form-outline">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
@@ -34,9 +34,9 @@
                         <label>Imagen Hover</label>
                         <br>
                             {{Form::file('imghover')}}
-                            @if($getempresa->image != "")
+                            {{-- @if($getempresa->image != "") --}}
                             <img src="{{asset('/img/miempresa/'.$getempresa->imghover)}}" alt="{{$getempresa->name}}" height="300px" width="50px" class="card-img-top">
-                            @endif
+                            {{-- @endif --}}
                     </div>                                     
                 </form>
             </div>

@@ -15,7 +15,7 @@ class MiempresaController extends Controller
     public function index()
     {
         $empresa = Miempresa::all();
-        return view('Miempresa.indexempresa', compact('empresa'));        
+        return view('miempresa.indexempresa', compact('empresa'));        
         //
     }
 
@@ -37,7 +37,7 @@ class MiempresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -49,6 +49,8 @@ class MiempresaController extends Controller
     public function show(Miempresa $miempresa)
     {
         //
+         //
+       
     }
 
     /**
@@ -59,7 +61,7 @@ class MiempresaController extends Controller
      */
     public function edit(Miempresa $miempresa)
     {
-        //
+        //       
     }
 
     /**
@@ -69,9 +71,27 @@ class MiempresaController extends Controller
      * @param  \App\Models\Miempresa  $miempresa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Miempresa $miempresa)
+    public function update(Request $request, $id)
     {
         //
+        $getempresa = new Miempresa();
+        $getempresa = Miempresa::findOrFail($id);
+        $getempresa->user_id = auth()->id();
+        $getempresa->titulo = request('titulo');
+        $getempresa->description = request('description');
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $file->move(public_path() . '/img/miempresa', $file->getClientOriginalName());
+            $getempresa->image = $file->getClientOriginalName();
+        }
+        if ($request->hasFile('imghover')) {
+            $file = $request->imghover;
+            $file->move(public_path() . '/img/miempresa', $file->getClientOriginalName());
+            $getempresa->imghover = $file->getClientOriginalName();
+        }        
+        $getempresa->update();
+
+        return redirect('miempresa');
     }
 
     /**

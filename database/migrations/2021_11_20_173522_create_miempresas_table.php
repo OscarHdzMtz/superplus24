@@ -15,11 +15,12 @@ class CreateMiempresasTable extends Migration
     {
         Schema::create('miempresas', function (Blueprint $table) {
             $table->id();
+            $table->integer("user_id");
             $table->string('titulo');
-            $table->string('description');
+            $table->longText('description');
             $table->string('image'); 
-            $table->string('imghover');            
-            $table->boolean('status');
+            $table->string('imghover')->nullable();            
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }
