@@ -16,10 +16,12 @@ class CreateMiempresasTable extends Migration
         Schema::create('miempresas', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id");
+            $table->string('label');
             $table->string('titulo');
             $table->longText('description');
             $table->string('image'); 
-            $table->string('imghover')->nullable();            
+            $table->string('imghover')->nullable();             
+            $table->integer('orden')->nullable();                       
             $table->boolean('status')->nullable();
             $table->timestamps();
         });

@@ -443,7 +443,12 @@
     
 /* fin */
 
-
+/* BANNER NOSOTROS */
+.banner_nosotros img {
+  max-height: 400px;
+  margin: 0 auto;
+  /* border-radius: 5px; */
+  }
 
 
 

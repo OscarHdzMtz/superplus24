@@ -185,6 +185,14 @@ nav ul li a:hover{
     text-align: center;
 }
 
+
+/* BANNER NOSOTROS */
+.banner_index img {
+  max-height: 700px;
+  margin: 0 auto;
+  /* border-radius: 5px; */
+  }
+
 /* BANNER NOSOTROS */
 .banner_nosotros img {
     max-height: 400px;

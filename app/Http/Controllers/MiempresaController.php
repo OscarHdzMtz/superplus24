@@ -14,7 +14,7 @@ class MiempresaController extends Controller
      */
     public function index()
     {
-        $empresa = Miempresa::all();
+        $empresa = Miempresa::orderby('orden', 'ASC' )->get();        
         return view('miempresa.indexempresa', compact('empresa'));        
         //
     }
@@ -27,6 +27,7 @@ class MiempresaController extends Controller
     public function create()
     {
         //
+        return view('miempresa.creatempresa');
     }
 
     /**
@@ -37,7 +38,25 @@ class MiempresaController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $getempresa = new Miempresa();        
+        $getempresa->user_id = auth()->id();    
+        $getempresa->orden = request('orden');    
+        $getempresa->label = request('label');
+        $getempresa->titulo = request('titulo');
+        $getempresa->description = request('description');
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $file->move(public_path() . '/img/miempresa', $file->getClientOriginalName());
+            $getempresa->image = $file->getClientOriginalName();
+        }     
+        if ($request->hasFile('imghover')) {
+            $file = $request->imghover;
+            $file->move(public_path() . '/img/miempresa', $file->getClientOriginalName());
+            $getempresa->imghover = $file->getClientOriginalName();
+        }               
+        $getempresa->save();
+
+        return redirect('miempresa');
     }
 
     /**
@@ -76,7 +95,7 @@ class MiempresaController extends Controller
         //
         $getempresa = new Miempresa();
         $getempresa = Miempresa::findOrFail($id);
-        $getempresa->user_id = auth()->id();
+        $getempresa->user_id = auth()->id();        
         $getempresa->titulo = request('titulo');
         $getempresa->description = request('description');
         if ($request->hasFile('image')) {
@@ -89,6 +108,7 @@ class MiempresaController extends Controller
             $file->move(public_path() . '/img/miempresa', $file->getClientOriginalName());
             $getempresa->imghover = $file->getClientOriginalName();
         }        
+        $getempresa->orden = request('orden');
         $getempresa->update();
 
         return redirect('miempresa');
