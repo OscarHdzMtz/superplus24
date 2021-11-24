@@ -450,6 +450,50 @@
   /* border-radius: 5px; */
   }
 
+  
 
+  /***********************************************
+**********FORMILARIO MI EMPRESA****************
+************************************************/
+
+.empresa-form{
+  background-color:  white;
+  position: relative;
+}
+.empresa_tittle{
+  color: black;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;    
+}
+.input-container{
+  position: relative;
+  margin: 1rem 0;
+}
+.empresa_input{
+  width: 100%;
+  outline: none;
+  border: 2px solid #eeeeee;
+  background-color: #eeeeee;
+  padding: 0.6rem 1.2rem;
+  color: #4b4b4b;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+.empresa_input::placeholder {
+  color: #888888;    
+  font-weight: bold;
+}
+textarea.empresa_input{
+  padding: 0.8rem 1.2rem;
+  min-height: 150px;
+  border-radius: 22px;
+  resize: none;
+  overflow: auto;
+} 
+/* FIN EMPRESA FORM */
 
 
