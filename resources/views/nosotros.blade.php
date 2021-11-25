@@ -88,7 +88,8 @@
                     </div>
                 </div>
             </div>        
-        @elseif($empresa->label == 'historia')    
+        @elseif($empresa->label == 'historia')   
+        <div class="historia">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
@@ -104,7 +105,9 @@
                     </div>
                 </div>
             </div>   
-        @elseif($empresa->label == 'titulo')     
+        </div> 
+        @elseif($empresa->label == 'titulo')
+        <div class="testimonial-title-padding">
             <div class="col-12">
                 <div class="testimonial-title">
                     {{-- <h5>CONOCE</h5> --}}
@@ -112,6 +115,7 @@
                     <hr class="style6">
                 </div>
             </div>
+        </div>     
         @else
             <div class="container">
                 <div class="row">
@@ -134,25 +138,21 @@
                     </div>
                 </div>
             </div> 
-            @endif      
+        @endif      
     @endforeach
 @endsection
 
-@section('historia')
-
+{{-- @section('historia')
 @endsection
 
 @section('title2')
-
 @endsection
 
 @section('foda')
-
 @endsection
-
+ --}}
 @section('footer')
-    <div data-aos="fade-up" class="footer-dark">
-        <footer>
+    <div style="padding-top: 10px" data-aos="fade-up" class="footer-dark">        
             <footer class="new_footer_area bg_color">
                 <div class="box">
                     {{-- <div class="box-sm red"></div> --}}
@@ -182,9 +182,7 @@
                     <a class="text-white" href="">SuperPlus</a>
                 </div>
                 <!-- Copyright -->
-
-            </footer>
-        </footer>
+            </footer>        
     </div>
     {{-- <footer class="footer">
    

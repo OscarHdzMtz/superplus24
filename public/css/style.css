@@ -186,10 +186,12 @@ nav ul li a:hover{
 }
 
 
-/* BANNER NOSOTROS */
+/* BANNER index */
 .banner_index img {
-  max-height: 700px;
-  margin: 0 auto;
+  width: 100%;
+    height: 75vh;
+    margin: 0;
+    padding: 0;
   /* border-radius: 5px; */
   }
 
@@ -727,7 +729,12 @@ h2 {
 .testimonial-title{
     margin-top: 25px;
     margin-left: 40px;
+    
 }
+.testimonial-title-padding {  
+  padding-bottom: 50px;  
+}
+
 .testimonial-title h5{
     color: #003baa;
     font-size: 33;
@@ -3293,8 +3300,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
 /* ------------NUESTRA HISTORIA------------ */
 .historia {
-  padding-top: 60px;
-  padding-bottom: 90px;  
+  padding-top: 50px;
+  padding-bottom: 60px;  
 }
 
 .historia-sm {
@@ -3308,7 +3315,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
 .historia-text{
   font-size: 1.1rem;
-    font-weight: 300;    
+    font-weight: 500;    
     line-height: 30px;  
   text-align: justify;
 }
