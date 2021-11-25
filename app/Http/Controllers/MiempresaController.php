@@ -18,6 +18,10 @@ class MiempresaController extends Controller
         return view('miempresa.indexempresa', compact('empresa'));        
         //
     }
+    public function indexfront(){
+        $empresafront = Miempresa::orderby('orden', 'ASC' )->get();        
+        return view('nosotros', compact('empresafront'));    
+    }
 
     /**
      * Show the form for creating a new resource.
