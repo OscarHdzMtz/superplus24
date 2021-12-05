@@ -268,8 +268,8 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="{{ url('#') }}"
-                                                class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                            <a href="{{ url('vacantes') }}"
+                                                class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-handshake"></i>
                                                 <p>
                                                     Vacantes

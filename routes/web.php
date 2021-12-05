@@ -70,3 +70,4 @@ Route::resource('/slidermain', 'SlidermainController')->middleware('auth');
 Route::resource('/cardservicio', 'CardservicioController')->middleware('auth');
 Route::resource('/textoproducto', 'TextoproductoController')->middleware('auth');
 Route::resource('/miempresa', 'MiempresaController')->middleware('auth');
+Route::resource('/vacantes', 'VacanteController')->middleware('auth');
