@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\MiempresaController;
+use App\Http\Controllers\VacanteController;
+use App\Models\Vacante;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,8 @@ Route::get('/nosotros', [MiempresaController::class, 'indexfront']);/* Route::ge
 
 /* Route::get('/productos', [StoreController::class, 'index']);  *//* Route::get('/productos', 'StoreController@index'); */
 
+Route::get('/empleo', [VacanteController::class, 'setvacante']);
+
 /* Ruta de contactanos para el envio de correo*/
 Route::get('/contact', [ContactanosController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactanosController::class, 'store'])->name('contact.store');
@@ -45,9 +49,9 @@ Route::get('categorias/{slug}',[
 ])->name('searchCategory');
 
 
-Route::get('/empleo', function () {
+/* Route::get('/empleo', function () {
     return view('empleo');
-});
+}); */
 Route::get('/mapa', function () {
     return view('mapa');
 });

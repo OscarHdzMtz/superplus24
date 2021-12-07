@@ -12,7 +12,7 @@
 				<p>Do you really want to delete these records? This process cannot be undone.</p>
 			</div> --}}
 			<div class="modal-footer justify-content-center">               
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                
+				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>                
                 {!! Form::open(['action' => ['VacanteController@destroy', $getvacante->id],'method' => 'delete']) !!}
                 {{ Form::token() }}
 				<button type="submit" class="btn btn-danger">Borrar</button>

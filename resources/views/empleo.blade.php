@@ -94,13 +94,13 @@
     </header> --}}
 @endsection
 @section('banner')
-<div id="carouselExampleSlidesOnly" class="banner_empleo sombraslider slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="{{ asset('img/slider/empleo.png') }}" alt="First slide">
-      </div>      
+    <div id="carouselExampleSlidesOnly" class="banner_empleo sombraslider slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('img/slider/empleo.png') }}" alt="First slide">
+            </div>
+        </div>
     </div>
-  </div>
 @endsection
 @section('image')
     <section data-aos="fade-up" class="bg-grey" id="service">
@@ -214,39 +214,21 @@
 @endsection
 
 @section('cards')
-@include('contactempleo.indexcontact')
-    <div data-aos="fade-up" class="container_vacan">        
+    @include('contactempleo.indexcontact')
+    <div data-aos="fade-up" class="container_vacan">
+        @foreach ($addvacante as $setvacante)                    
         <div class="card">
-            <div class="img-cover"><img src="{{ asset('img/vacantes/2.png') }}"></div>
+            <div class="img-cover"><img src="{{asset('/img/vacantes/'.$setvacante->image)}}"></div>
             <div class="desc">
-                {{-- <h1>The Mountain</h1>                 --}}
-                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                {{-- <h1>The Mountain</h1> --}}
+                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19"
+                        height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
                             stroke-width="3" />
                     </svg></a>
             </div>
         </div>
-        <div class="card">
-            <div class="img-cover"><img src="{{ asset('img/vacantes/7.png') }}"></div>
-            <div class="desc">                                
-                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
-                        stroke-width="3" />
-                </svg></a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="img-cover"><img src="{{ asset('img/vacantes/5.png') }}"></div>
-            <div class="desc">                           
-                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19" height="14" viewBox="0 0 23 18" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
-                        stroke-width="3" />
-                </svg></a>
-            </div>
-        </div>
+        @endforeach
     </div>
 @endsection
 
@@ -305,7 +287,8 @@
                     {{-- <div class="box-sm purple"></div> --}}
                     <div class="box-sm blue "></div>
                     <div class="box-sm blue "></div>
-                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px" src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
+                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px"
+                        src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
                     <div class="box-sm yellow "></div>
                     <div class="box-sm yellow "></div>
                     <div class="box-sm yellow "></div>

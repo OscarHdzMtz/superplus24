@@ -127,6 +127,7 @@
 	margin-top: 13px;
 }
 .modal-confirm .btn, .modal-confirm .btn:active {
+  font-weight: bold;
 	color: #fff;
 	border-radius: 4px;
 	background: #60c7c1;
@@ -141,6 +142,12 @@
 }
 .modal-confirm .btn-secondary {
 	background: #c1c1c1;
+}
+.modal-confirm .btn-warning {
+	background: #ffc107;
+}
+.modal-confirm .btn-success {
+	background: #28a745;
 }
 .modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
 	background: #a8a8a8;

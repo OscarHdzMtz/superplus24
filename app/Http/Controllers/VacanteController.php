@@ -15,8 +15,13 @@ class VacanteController extends Controller
     public function index()
     {
         //
-        $vacanteplus = Vacante::all();
+        $vacanteplus = Vacante::orderby('updated_at', 'DESC')->get();
         return view('vacantes.indexvacante', compact('vacanteplus'));
+    }
+
+    public function setvacante(){
+        $addvacante = Vacante::where('status','1')->orderby('updated_at', 'DESC')->get();
+        return view('empleo', compact('addvacante'));
     }
 
     /**
