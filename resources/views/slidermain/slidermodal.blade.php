@@ -1,6 +1,5 @@
 <div class="container">
-    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal"
-        data-target="#modalslider">
+    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#modalslider">
         <i class="fa fa-plus-circle"></i> Agregar Slider
     </button>
 </div>
@@ -38,7 +37,18 @@
                         <input type="date" name="fechaInicio" required> <br>
                         <label>FECHA FIN </label>
                         <input type="date" name="fechaFin" required>
-                    </div>                   
+                    </div>
+                    <hr width="85%" height="10px" color=”black”/>
+                    <div class="control-group">
+                        <label class="control-label">SELECCIONE PAGINAS A SER VISIBLES</label>
+                        <div class="controls">
+                            <select name="pagina[]" data-select="multiple" multiple="multiple">
+                                <option value="index">Principal</option>
+                                <option value="promociones">Promociones</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -53,8 +63,8 @@
 <section>
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script type="text/javascript">
-    $(document).ready(function () {
-        $('.ckeditor').ckeditor();
-    });
-</script>
+        $(document).ready(function() {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
 </section>

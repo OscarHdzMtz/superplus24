@@ -31,6 +31,8 @@ class SlidermainController extends Controller
         }
         $slideradd->fechaInicio = request('fechaInicio');
         $slideradd->fechaFin = request('fechaFin');
+        $slideradd->pagina = request('pagina');
+        $slideradd['pagina'] = json_encode($request->pagina);        
         $slideradd->save();
         return redirect('slidermain');
     }
@@ -51,6 +53,8 @@ class SlidermainController extends Controller
         }
         $slideradd->fechaInicio = request('fechaInicio');
         $slideradd->fechaFin = request('fechaFin');
+        $slideradd->pagina = request('pagina');
+        $slideradd['pagina'] = json_encode($request->pagina);  
         $slideradd->update();
         return redirect('slidermain');
     }

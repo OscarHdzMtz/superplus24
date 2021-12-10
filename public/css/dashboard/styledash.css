@@ -749,3 +749,50 @@ textarea.empresa_input{
   }
 
   /* FIN ESTILO CARDS VACANTES */
+
+/*  ESTILO SELECT SLIDER*/
+  .mselect {
+    display: inline-block;
+    padding: 4px 0;
+    margin-bottom: 9px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #555;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #BBB;
+    max-height:80px;
+    overflow-y:scroll;
+  }
+
+  .mselect-opt {
+    display:block;
+    cursor:pointer;
+    padding:0 6px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .mselect-opt.selected {
+    color:white;
+    background:dodgerblue;
+  }
+
+  .mselect-opt i {
+    display:none;
+    margin-top:2px;
+  }
+
+  .mselect-opt.selected i {
+    display:block;
+  }
+/* FIN ESTILO SELECT SLIDER*/

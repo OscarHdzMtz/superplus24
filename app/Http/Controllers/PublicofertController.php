@@ -28,10 +28,18 @@ class PublicofertController extends Controller
         $ofertas = Publicoferts::where('deldia', '1')->get();
         $productos = Productos::Orderby('updated_at','DESC')->get();
         $proveedores = Proveedores::all();    
-        $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+        $sliderindex = Slidermain::OrderBy('created_at','DESC')
+                                    ->where('pagina','LIKE', '%index%')
+                                    ->where('fechaInicio','<=', $actualInicio)
+                                    ->where('fechaFin', '>=', $actualFin)->get(); 
+        /* return $array;       */
+        $slider = Slidermain::OrderBy('created_at','DESC')
+                                ->where('pagina','LIKE', '%promociones%')
+                                ->where('fechaInicio','<=', $actualInicio)
+                                ->where('fechaFin', '>=', $actualFin)->get();
         $servicios = Cardservicio::all();
         $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct'));
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct', 'sliderindex'));
     }
 
 

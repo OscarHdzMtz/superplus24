@@ -59,4 +59,39 @@
         </div>
     </div>
 
+    {{-- script de seleccion se SELECT SLIDER --}}
+    <script>
+        $('[data-select="multiple"]').each(function() {
+            var $select = $(this)
+            $mselect = $('<div class="mselect"></div>');
+
+            $select.hide();
+
+            var $opts = $select.find('option');
+
+
+            $select.after($mselect);
+            $opts.each(function(i, opt) {
+                $mselect.append('<a href="#" class="mselect-opt" data-idx="' + i +
+                    '"><i class="icon-ok  icon-white pull-right"></i>' + $(opt).text() + '</a>');
+            });
+
+
+        });
+
+        $(document).on('click', '.mselect-opt', function(event) {
+            event.preventDefault();
+            var $parent = $(this).parents('.mselect'),
+                $opts = $parent.find('.mselect-opt'),
+                $ogselect = $parent.prev('select'),
+                idx = $(this).data('idx'),
+                $ogopt = $ogselect.find('option').eq(idx);
+
+            $(this).toggleClass('selected');
+            var val = !$ogopt.is(':selected') ? 'selected' : '';
+
+            $ogopt.prop('selected', val);
+        });
+    </script>
+    {{-- script de seleccion se SELECT SLIDER --}}
 @endsection

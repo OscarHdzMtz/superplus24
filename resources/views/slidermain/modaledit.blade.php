@@ -1,8 +1,7 @@
-
-    {!! Form::open(['action' => ['SlidermainController@update', $slideradd->id], 'method' => 'PATCH', 'files' => 'true']) !!}
-    {{ Form::token() }}
-    <div class="modal fade" id="modaledit-{{$slideradd->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
-    aria-hidden="true">
+{!! Form::open(['action' => ['SlidermainController@update', $slideradd->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{{ Form::token() }}
+<div class="modal fade" id="modaledit-{{ $slideradd->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalslider" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,28 +14,41 @@
                 <form>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">NOMBRE :</label>
-                        <input type="text" name="name" class="form-control" id="recipient-name" value="{{$slideradd->name}}" required>
+                        <input type="text" name="name" class="form-control" id="recipient-name"
+                            value="{{ $slideradd->name }}" required>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
                         <textarea type="text" name="description" class="ckeditor form-control" id="recipient-name"
-                            onkeyup="countChars(this);" maxlength="300" {{-- required --}}>{{$slideradd->description}}</textarea>
+                            onkeyup="countChars(this);" maxlength="300"
+                            {{-- required --}}>{{ $slideradd->description }}</textarea>
                         Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
                     </div>
-                    <div class="form-group cold-md-6"> 
+                    <div class="form-group cold-md-6">
                         <label>Imagen</label>
                         <br>
-                            {{Form::file('image')}}
-                            @if($slideradd->image != "")
-                            <img src="{{asset('/img/slider/'.$slideradd->image)}}" alt="{{$slideradd->name}}" height="300px" width="50px" class="card-img-top">
-                            @endif
+                        {{ Form::file('image') }}
+                        @if ($slideradd->image != '')
+                            <img src="{{ asset('/img/slider/' . $slideradd->image) }}" alt="{{ $slideradd->name }}"
+                                height="300px" width="50px" class="card-img-top">
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>FECHA INICIO</label>
-                        <input type="date" name="fechaInicio" value="{{$slideradd->fechaInicio}}" required> <br>
+                        <input type="date" name="fechaInicio" value="{{ $slideradd->fechaInicio }}" required> <br>
                         <label>FECHA FIN </label>
-                        <input type="date" name="fechaFin" value="{{$slideradd->fechaFin}}" required>
-                    </div>                   
+                        <input type="date" name="fechaFin" value="{{ $slideradd->fechaFin }}" required>
+                    </div>
+                    <hr width="85%" color=”black” />
+                    <div class="control-group">
+                        <label class="control-label">SELECCIONE PAGINAS A SER VISIBLES</label>
+                        <div class="controls">
+                            <select name="pagina[]" data-select="multiple" multiple="multiple">
+                                <option value="index">Principal</option>
+                                <option value="promociones">Promociones</option>
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -46,5 +58,5 @@
         </div>
     </div>
 </div>
-    {!! Form::close() !!}
+{!! Form::close() !!}
 

@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div> --}}    
     <div class="sombraslider">
         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">                                       
             <div class="carousel-inner">

@@ -81,13 +81,40 @@
 
 
 @section('banner')
-    <div id="carouselExampleSlidesOnly" class="banner_index" data-ride="carousel">
+  {{--   <div id="carouselExampleSlidesOnly" class="banner_index" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="{{ asset('img/superplus.jpg') }}" alt="First slide">
             </div>
         </div>
-    </div>
+    </div> --}}
+
+     <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">                                       
+            <div class="carousel-inner">
+                @php $i = 1 @endphp
+                @foreach ($sliderindex as $slider)                                                
+                    <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
+                        @php $i++ @endphp
+                        <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}"
+                            alt="First slide">
+                            @if ($slider->description <> null)
+                            <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
+                                <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
+                                {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                              </div> 
+                            @endif                                                                      
+                    </div>                    
+                @endforeach             
+            </div>               
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>                              
+        </div>
 @endsection
 
 
