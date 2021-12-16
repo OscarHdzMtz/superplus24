@@ -23,6 +23,12 @@ class CardservicioController extends Controller
             $file->move(public_path() . '/img/servicios', $file->getClientOriginalName());
             $serviciosadd->image = $file->getClientOriginalName();
         }
+        if ($request->hasFile('imghover')) {
+            $file = $request->imghover;
+            $file->move(public_path() . '/img/servicios', $file->getClientOriginalName());
+            $serviciosadd->imghover = $file->getClientOriginalName();
+            $serviciosadd->status = request('status') ? 1 : 0;
+        }
         $serviciosadd->save();
         return redirect('cardservicio');
     }
@@ -38,6 +44,12 @@ class CardservicioController extends Controller
             $file->move(public_path() . '/img/servicios', $file->getClientOriginalName());
             $serviciosadd->image = $file->getClientOriginalName();
         }
+        if ($request->hasFile('imghover')) {
+            $file = $request->imghover;
+            $file->move(public_path() . '/img/servicios', $file->getClientOriginalName());
+            $serviciosadd->imghover = $file->getClientOriginalName();
+        }
+        $serviciosadd->status = request('status') ? 1 : 0;
         $serviciosadd->update();
         return redirect('cardservicio');
     }

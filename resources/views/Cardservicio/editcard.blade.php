@@ -16,12 +16,12 @@
                         <label for="recipient-name" class="col-form-label">NOMBRE :</label>
                         <input type="text" name="name" class="form-control" id="recipient-name" value="{{$serviciosadd->name}}" required>
                     </div>
-                    <div class="form-outline">
+                    {{-- <div class="form-outline">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
                         <textarea type="text" name="description" class="form-control" id="recipient-name"
-                            onkeyup="countChars(this);" maxlength="300" {{-- required --}} >{{$serviciosadd->description}}</textarea>
+                            onkeyup="countChars(this);" maxlength="300" required >{{$serviciosadd->description}}</textarea>
                         Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
-                    </div>
+                    </div> --}}
                     <div class="form-group cold-md-6"> 
                         <label>Imagen</label>
                         <br>
@@ -29,7 +29,21 @@
                             @if($serviciosadd->image != "")
                             <img src="{{asset('/img/servicios/'.$serviciosadd->image)}}" alt="{{$serviciosadd->name}}" height="300px" width="50px" class="card-img-top">
                             @endif
-                    </div>                                      
+                    </div>  
+                    <div class="form-group cold-md-6"> 
+                        <label>Imagen sobre imagen</label>
+                        <br>
+                            {{Form::file('imghover')}}
+                            @if($serviciosadd->imghover != "")
+                            <img src="{{asset('/img/servicios/'.$serviciosadd->imghover)}}" alt="{{$serviciosadd->name}}" height="300px" width="50px" class="card-img-top">
+                            @endif
+                    </div>  
+                    <div class="form-group">
+                        <div class="card-header">
+                            <label for="status">Status:</label>
+                            <input type="checkbox" name="status" {{ $serviciosadd->status == 1 ? "checked='checked'" : ''}}> 
+                        </div>
+                    </div>                                       
                 </form>
             </div>
             <div class="modal-footer">

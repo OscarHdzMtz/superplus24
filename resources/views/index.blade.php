@@ -200,10 +200,8 @@
                 <div class="col-md-3 col-sm-6 mb-3">
                     <div class="single-content">
                         <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus">
-                        <div class="text-content">
-                            <h3>{{ $servicios->name }}</h3>
-                            <hr class="style2">
-                            <h5>{{ $servicios->description }}</h5>
+                        <div style="padding-top: 20px" class="text-content">
+                            <img src="{{ asset('/img/servicios/' . $servicios->imghover) }}" alt="ServiciosPlus">
                         </div>
                     </div>
                 </div>

@@ -26,9 +26,7 @@
                 <div class="single-content">
                     <img src="{{ asset('/img/servicios/' . $serviciosadd->image) }}" alt="SuperPlus">
                     <div class="text-content">
-                        <h4>{{ $serviciosadd->name }}</h4>
-                        {{-- <hr class="style2"> --}}
-                        <h5>{{ $serviciosadd->description }}</h5>
+                        <img src="{{ asset('/img/servicios/' . $serviciosadd->imghover) }}" alt="SuperPlus">
                         <div class="card-footer border-info">
                             <a>
                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"

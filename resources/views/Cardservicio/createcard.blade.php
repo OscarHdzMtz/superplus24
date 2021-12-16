@@ -23,16 +23,25 @@
                         <label for="recipient-name" class="col-form-label">NOMBRE :</label>
                         <input type="text" name="name" class="form-control" id="recipient-name" required>
                     </div>
-                    <div class="form-outline">
+                    {{-- <div class="form-outline">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
                         <textarea type="text" name="description" class="form-control" id="recipient-name"
-                            onkeyup="countChars(this);" maxlength="300" {{-- required --}}></textarea>
+                            onkeyup="countChars(this);" maxlength="300" required></textarea>
                         Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">IMAGEN:</label>
                         {{ Form::file('image', ['required' => 'required']) }}
-                    </div>                                       
+                    </div>  
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">IMAGEN SOBRE IMAGEN:</label>
+                        {{ Form::file('imghover', ['required' => 'required']) }}
+                    </div> 
+                    <div class="form-group">
+                        <label for="visible">Status:</label>
+                        {!!
+                            Form::checkbox('status',null,array('class' => 'form-check-label'))    !!}
+                    </div>                                     
                 </form>
             </div>
             <div class="modal-footer">

@@ -33,7 +33,7 @@
 .single-content::after{
     content: '';
     display: block;
-    background: #FF8525;
+    background: #06213f;
     top: 5px;
     bottom: 5px;
     opacity: 0;

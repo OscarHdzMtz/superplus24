@@ -17,9 +17,11 @@ class CreateCardserviciosTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('name');
-            $table->string('description');
-            $table->string('image');            
-            $table->boolean('status')->nullable();
+            $table->string('description')->nullable();
+            $table->string('image');   
+            $table->string('imghover');
+            $table->boolean('status')();
+            $table->integer('orden')->nullable();
             $table->date('fechaInicio')->nullable();
             $table->date('fechaFin')->nullable();
             $table->timestamps();

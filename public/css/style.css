@@ -1023,13 +1023,13 @@ textarea.contact_input{
 .single-content .text-content,
 .single-content::after{
     position: absolute;
-    left: 20px;
-    right: 20px;
+    left: 5px;
+    right: 3px;
 }
 .single-content::after{
     content: '';
     display: block;
-    background: #FF8525;
+    background: #06213f;
     top: 20px;
     bottom: 20px;
     opacity: 0;
