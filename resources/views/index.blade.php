@@ -81,7 +81,7 @@
 
 
 @section('banner')
-  {{--   <div id="carouselExampleSlidesOnly" class="banner_index" data-ride="carousel">
+    {{-- <div id="carouselExampleSlidesOnly" class="banner_index" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="{{ asset('img/superplus.jpg') }}" alt="First slide">
@@ -89,32 +89,31 @@
         </div>
     </div> --}}
 
-     <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">                                       
-            <div class="carousel-inner">
-                @php $i = 1 @endphp
-                @foreach ($sliderindex as $slider)                                                
-                    <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
-                        @php $i++ @endphp
-                        <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}"
-                            alt="First slide">
-                            @if ($slider->description <> null)
-                            <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
-                                <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
-                                {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
-                              </div> 
-                            @endif                                                                      
-                    </div>                    
-                @endforeach             
-            </div>               
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>                              
+    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            @php $i = 1 @endphp
+            @foreach ($sliderindex as $slider)
+                <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
+                    @php $i++ @endphp
+                    <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide">
+                    @if ($slider->description != null)
+                        <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
+                            <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
+                            {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                        </div>
+                    @endif
+                </div>
+            @endforeach
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 @endsection
 
 
@@ -371,37 +370,57 @@
                     <div class="box-sm yellow "></div>
                 </div>
                 <div style="padding-top: 0px" class="new_footer_top">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
                                 <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
                                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                    <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong>
+                                    {{-- <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong> --}}
                                     </h3>
                                     <h4><strong>Quienes somos?</strong></h4>
-                                    <hr class="style6">
-                                    <p style="text-align: justify">
+                                    <hr class="stylefooter">
+                                    <p>
                                         <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios
                                             las
                                             24 horas del día,
                                             ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio</strong>.
                                     </p>
-                                    <div class="col-md-12 py-5">
-                                        <div class="mb-5 flex-center">
-
-                                            <!-- Facebook -->
-                                            <a class="fb-ic">
-                                                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                                            </a>
-                                            <!-- Google +-->
-                                            <a class="gplus-ic">
-                                                <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                                            </a>
-
-                                            <!--Instagram-->
-                                            <a class="ins-ic">
-                                                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                                            </a>
+                                    <div class="col-md-12 py-5 text-center justify-content-md-center">
+                                        <div class="mb-3 flex-center">
+                                            <div class="estilo2">
+                                                <ul>
+                                                    <li>
+                                                        <a href="instragram" class="" target="_blank">
+                                                            <span class="fa-stack fa-lg fa-2x">
+                                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                                <div class="icono">
+                                                                    <span class="fa fa-facebook fa-stack-1x"></span>
+                                                                </div>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="instragram" class="" target="_blank">
+                                                            <span class="fa-stack fa-lg fa-2x">
+                                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                                <div class="icono">
+                                                                    <span class="fa fa-whatsapp fa-stack-1x"></span>
+                                                                </div>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="instragram" class="" target="_blank">
+                                                            <span class="fa-stack fa-lg fa-2x">
+                                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                                <div class="icono">
+                                                                    <span class="fa fa-google fa-stack-1x"></span>
+                                                                </div>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                <ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -412,27 +431,37 @@
                                 </div>
 
                             </div> --}}
-                            <div style="padding-top: 30px" class="col-lg-4 col-md-12">
-                                {{-- <iframe class="sombra" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuperplus.picaros%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=618142002368065" width="325px" height="500px" style="border:none;overflow:hidden" style="height:500px;width:325px;" title="Iframe Example"></iframe> --}}
+                            <div style="padding-top: -100px"
+                                class="col-lg-4 col-md-12 text-center justify-content-md-center">
+                                <div class="container">
+                                    <img src="{{ asset('img/estaticos/prueba.png') }}" class="img-fluid"
+                                        alt="SuperPlus">
+                                </div>
+                            </div>
+                            {{-- IFRAME PARA FACEBOOK --}}
+                            {{-- <div style="padding-top: 30px" class="col-lg-4 col-md-12">                                
                                 <div class="embed-container sombra">
                                     <iframe
                                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuperplus.picaros%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=3713982148707397"
                                         frameborder="0" allowfullscreen></iframe>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
+                            </div> --}}
+                            <div style="padding-top: 20px"
+                                class="col-lg-4 col-md-12 text-center justify-content-md-center">
                                 <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
                                     style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                    <h3 class="f-title f_600 t_color f_size_18 text-right"><strong>ENLACES</strong></h3>
-                                    <ul class="list-unstyled f_list text-right">
-                                        <li><a href="#">PROMOCIONES</a></li>
-                                        <li><a href="#">NOSOTROS</a></li>
-                                        <li><a href="#">BOLSA DE TRABAJO</a></li>
-                                        <li><a href="#">CONTACTANOS</a></li>                                 
-                                        <li><a href="#">FACTURACION</a></li>
-                                    </ul>
+                                    <h4 style="padding-top: 20px"><strong>ENLACES</strong></h4>
+                                    <hr class="stylefooter">
+                                    <div class="container">
+                                        <button class="btn btn_get btn_get_two" type="submit">PROMOCIONES</button>
+                                        <button class="btn btn_get btn_get_two" type="submit">NOSOTROS</button>
+                                        <button class="btn btn_get btn_get_two" type="submit">OFERTA DE TRABAJO</button>
+                                        <button class="btn btn_get btn_get_two" type="submit">CONTACTANOS</button>
+                                        <button class="btn btn_get btn_get_two" type="submit">FACTURACION</button>
+                                        <button class="btn btn_get btn_get_two" type="submit">AVISO DE PRIVACIDAD</button>
+                                    </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                     <div class="footer_bg">
@@ -591,7 +620,7 @@
                         </div>
                     </div>
                 </div>
-             {{--    <div class="principal">
+                {{-- <div class="principal">
                     @foreach ($ofertas as $oferta)
                         <div id="contenedor" class="row_p">
                             <div id="naranja" class="">
@@ -616,7 +645,7 @@
                 </div> --}}
             </div>
         </div>
-   {{--      <div class='icon-scroll'></div>
+        {{-- <div class='icon-scroll'></div>
         <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6> --}}
     </div>
 @endsection
