@@ -29,11 +29,11 @@
 </head>
 
 <body>
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div class="loader-page-img">
             <div class="loader-page"></div>
         </div>
-    </div>
+    </div> --}}
     {{-- @yield('redes') --}}
     <section {{-- id="headerSection_empleo" --}}>
         {{-- @yield('navbar_top') --}}

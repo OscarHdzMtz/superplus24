@@ -20,7 +20,7 @@ class CreateCardserviciosTable extends Migration
             $table->string('description')->nullable();
             $table->string('image');   
             $table->string('imghover');
-            $table->boolean('status')();
+            $table->boolean('status');
             $table->integer('orden')->nullable();
             $table->date('fechaInicio')->nullable();
             $table->date('fechaFin')->nullable();

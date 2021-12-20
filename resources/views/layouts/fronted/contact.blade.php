@@ -19,11 +19,11 @@
 </head>
 
 <body>
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div class="loader-page-img">
             <div class="loader-page"></div>
         </div>
-    </div>
+    </div> --}}
     <!--oncontextmenu = "return false"-->
     {{-- @yield('redes') --}}
     <section id="headerSection_promo">
