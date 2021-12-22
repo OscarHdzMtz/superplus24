@@ -128,7 +128,7 @@
                         <h4 class="title_services">Promociones</h4>
                         <p class="description_services">Ofertas especiales</p><br>
                         {{-- ESTA LINEA ABRE EL MODAL DE PROMOCIONES --}}
-                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-x3">Ver
+                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".ofertaexclusiva">Ver
                             mas</a>
                         {{-- <a class="btn_modal_wel mt-5" href="{{ url('/promociones') }}">Ver mas</a> --}}
                     </div>
@@ -172,7 +172,7 @@
                         <i class="fas fa-motorcycle fa-4x"></i>
                         <h4 class="title_services">Servicio a domicilio</h4>
                         <p class="description_services">SuperPlus</p>
-                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver
+                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".delivery">Ver
                             mas</a>
                     </div>
                 </div>
@@ -572,7 +572,7 @@
     </div>
 
     {{-- plus a domicilio --}}
-    <div class="modal fade bd-example-modal-xl2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+    <div class="modal fade delivery" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div id="contenedor" class="row_p">
@@ -590,7 +590,7 @@
     </div>
 
     {{-- promociones en modal --}}
-    <div class="modal fade modal fade bd-example-modal-x3" tabindex="-1" role="dialog"
+    <div class="modal fade modal fade ofertaexclusiva" tabindex="-1" role="dialog"
         aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">

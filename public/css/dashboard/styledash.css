@@ -603,6 +603,16 @@ textarea.empresa_input{
     color: white;
     margin-top: 20px;
 }
+.vacantes-form .cancel{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #DB4437;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
 
 .vacantes-form .social-media{
     max-width: 600px;
@@ -796,3 +806,144 @@ textarea.empresa_input{
     display:block;
   }
 /* FIN ESTILO SELECT SLIDER*/
+
+
+/***********************************************
+************CARTAS DE SERVICIO*****************
+************************************************/
+.row_cards {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-right: -15px;
+    margin-left: -15px;
+
+}
+.container_cards{
+    width: 100%;
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.single-content_service{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+.service{
+    margin: 10px;
+    background-color: #ffcc00;
+    overflow: hidden;
+    padding: 35px 15px;
+    position: relative;
+    text-align: center;
+    transition: background-color 0.3s ease-in,
+                transform 0.3s ease-in;
+    width: 250px;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
+}
+.servicecard{
+    background-color: #ffcc00;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
+}
+.service:hover{
+    background-color: #ffcc00;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
+}
+.service::before{
+    content: '';
+    border-width: 20px;
+    border-style: solid;
+    border-color: #ffffff #ffffff rgba(0,0,0,0.4) rgba(0,0, 0, 0.4);
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    transition: right 0.3s ease-out,
+                top 0.3s ease-out;
+}
+.service:hover::before{
+    right: 0;
+    top: 0;
+}
+/* ICONOCES DE SERVCIOS DE LA PAGINA */
+.service > i{
+    display: block;
+    color: #003baa;
+    font-size: 4rem;
+    margin-bottom: 0.9rem;
+    transition: color 0.3s ease-out;
+}
+.service > .title_services{
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.55rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    transition: color 0.3s ease-out;
+}
+.service > .description_services{
+    line-height: 1.55rem;
+    margin: 0;
+    transition: color 0.3s ease-out;
+}
+.service:hover > i,
+.service:hover > .description_services,
+.service:hover > .title_services{
+    color: white;
+}
+.btn_modal_wel{
+    position: relative;
+    display: inline-block;
+    padding: 10px 30px;
+    color: black;
+    text-decoration: none;
+    text-decoration-line:none;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(90deg,white,white);
+}
+.service:hover > .btn_modal_wel{
+    background: white;
+    /* -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0);  */
+    /* box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); */
+    transition: 0.3s;
+    text-decoration: none;
+    text-decoration-line:none;
+    /* color boton servicio HOVER */
+    color: #003baa;
+}
+
+/***********************************************
+************ FIN CARTAS DE SERVICIO*****************
+************************************************/
+
+/* ************************************************
+******ESTILOS QUIENES SOMOS FOOTER**
+*********************************************** */
+.f_widget p {
+  margin-top: 20px;
+  color: #0A3782;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: right;
+  text-align: justify;
+  line-height: 40px;
+}
+/* ************************************************
+****** FIN ESTILOS QUIENES SOMOS FOOTER**
+*********************************************** */

@@ -32,14 +32,10 @@ class PublicofertController extends Controller
                                     ->where('pagina','LIKE', '%index%')
                                     ->where('fechaInicio','<=', $actualInicio)
                                     ->where('fechaFin', '>=', $actualFin)->get(); 
-        /* return $array;       */
-        $slider = Slidermain::OrderBy('created_at','DESC')
-                                ->where('pagina','LIKE', '%promociones%')
-                                ->where('fechaInicio','<=', $actualInicio)
-                                ->where('fechaFin', '>=', $actualFin)->get();
+        /* return $array;       */        
         $servicios = Cardservicio::all();
         $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'slider', 'servicios', 'texproduct', 'sliderindex'));
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex'));
     }
 
 
@@ -51,9 +47,11 @@ class PublicofertController extends Controller
         $actualFin = Carbon::yesterday();          
         $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
 
-
         /* SLIDER */
-        $slider = Slidermain::OrderBy('created_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+        $slider = Slidermain::OrderBy('created_at','DESC')
+        ->where('pagina','LIKE', '%promociones%')
+        ->where('fechaInicio','<=', $actualInicio)
+        ->where('fechaFin', '>=', $actualFin)->get();
 
         /* retorna la vista y le pasa las promociones de la base de datos */
         return view('promociones', compact('promo', 'slider'));

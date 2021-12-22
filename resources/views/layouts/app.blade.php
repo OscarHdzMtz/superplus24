@@ -42,10 +42,10 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Notifications Dropdown Menu -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
+                        {{-- <a class="nav-link" data-toggle="dropdown" href="#">
                             <i class="fas fa-power-off"></i>
                             <span class="badge badge-warning navbar-badge">1</span>
-                        </a>
+                        </a> --}}
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             {{-- <span class="dropdown-item dropdown-header">Mi perfil</span> --}}
                             <div class="dropdown-divider"></div>
@@ -106,28 +106,8 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="{{ asset('img/log.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                        </div>
-                        <div class="info">
-                            <a href="#" class="d-block">
-                                @guest
-                                    <a class="nav-link"
-                                        href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
-                                @else
-                                    {{ Auth::user()->name }}
-                                    {{-- BOTON DE CERRAR SESION --}}
-                                    {{-- <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                    <button type="button" class="btn btn-outline-danger">Cerrar Sesión</button>
-                                </a> --}}
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        style="display: none;">
-                                        @csrf
-                                    </form>
-                                @endguest
-                            </a>
-                        </div>
+                           <h4><img src="{{ asset('img/log.jpg') }}" class="img-circle elevation-2" alt="User Image"> {{ Auth::user()->name }}<h4>
+                        </div>                       
                     </div>
 
                     <!-- Sidebar Menu -->
@@ -175,6 +155,15 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
+                                            <a href="{{ url('configuracion') }}"
+                                                class="{{ Request::path() === 'configuracion' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a href="{{ url('slidermain') }}"
                                                 class="{{ Request::path() === 'slidermain' ? 'nav-link active' : 'nav-link' }}">
                                                 <i class="nav-icon fas fa-image"></i>
@@ -192,36 +181,15 @@
                                                 </p>
                                             </a>
                                         </li>
-                                        <li class="nav-item textsidebar">
-                                            <a href="#" class="nav-link">
-                                                <i class="text-warning fas fa-copy"></i>
+                                        <li class="nav-item">
+                                            <a href="{{ url('producto') }}"
+                                                class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-file-image"></i>
                                                 <p>
                                                     Productos Nuevos
-                                                    <i class="fas fa-angle-left right"></i>
-                                                    <span class="badge badge-info right">6</span>
                                                 </p>
                                             </a>
-                                            <ul class="nav nav-treeview">
-                                                <li class="nav-item">
-                                                    <a href="{{ url('producto') }}"
-                                                        class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
-                                                        <i class="text-blue fas fa-file-image"></i>
-                                                        <p>
-                                                            Agregar Productos Nuevos
-                                                        </p>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="{{ url('textoproducto') }}"
-                                                        class="{{ Request::path() === 'textoproducto' ? 'nav-link active' : 'nav-link' }}">
-                                                        <i class="text-blue fas fa-file-image"></i>
-                                                        <p>
-                                                            Editar Texto Producto                                                            
-                                                        </p>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        </li>                                       
                                         <li class="nav-item">
                                             <a href="{{ url('proveedores') }}"
                                                 class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
@@ -371,8 +339,29 @@
                                 </li>
                             @endcan
                         </ul>
+                        
                     </nav>
                     <!-- /.sidebar-menu -->
+                    <div class="info">
+                        <a href="#" class="d-block">
+                            @guest
+                                <a class="nav-link"
+                                    href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
+                            @else
+                                {{-- {{ Auth::user()->name }} --}}
+                                {{-- BOTON DE CERRAR SESION --}}
+                                <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                <button style="margin-top: 50px; margin-bottom: 20px" type="button" class="btn btn-outline-danger btn-block">Cerrar Sesión</button>
+                            </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            @endguest
+                        </a>
+                    </div>
                 </div>
                 <!-- /.sidebar -->
             </aside>
