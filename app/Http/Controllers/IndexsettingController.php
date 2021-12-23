@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\indexsetting;
+use App\Models\Indexsetting;
 use Illuminate\Http\Request;
 
 class IndexsettingController extends Controller
@@ -15,7 +15,7 @@ class IndexsettingController extends Controller
     public function index()
     {
         //
-        $setting = indexsetting::Orderby('orden', 'ASC')->get();
+        $setting = Indexsetting::Orderby('orden', 'ASC')->get();
         return view('indexsetting.index', compact('setting'));
     }
 
@@ -38,7 +38,7 @@ class IndexsettingController extends Controller
     public function store(Request $request)
     {
         //
-        $addsetting = new indexsetting();
+        $addsetting = new Indexsetting();
         $addsetting->user_id = auth()->id(); 
         $addsetting->label = request('label');
         $addsetting->orden = request('orden');            
@@ -55,10 +55,10 @@ class IndexsettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\indexsetting  $indexsetting
+     * @param  \App\Models\Indexsetting  $indexsetting
      * @return \Illuminate\Http\Response
      */
-    public function show(indexsetting $indexsetting)
+    public function show(Indexsetting $indexsetting)
     {
         //
     }
@@ -66,10 +66,10 @@ class IndexsettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\indexsetting  $indexsetting
+     * @param  \App\Models\Indexsetting  $indexsetting
      * @return \Illuminate\Http\Response
      */
-    public function edit(indexsetting $indexsetting)
+    public function edit(Indexsetting $indexsetting)
     {
         //
     }
@@ -78,13 +78,13 @@ class IndexsettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\indexsetting  $indexsetting
+     * @param  \App\Models\Indexsetting  $indexsetting
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $addsetting = indexsetting::findOrFail($id);     
+        $addsetting = Indexsetting::findOrFail($id);     
         /* $addsetting->label = request('label'); */
         $addsetting->orden = request('orden');            
         $addsetting->titulo = request('titulo');
@@ -100,13 +100,13 @@ class IndexsettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\indexsetting  $indexsetting
+     * @param  \App\Models\Indexsetting  $indexsetting
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $addsetting = indexsetting::findOrFail($id);
+        $addsetting = Indexsetting::findOrFail($id);
         $addsetting->delete();
         return redirect('configuracion');
     }
