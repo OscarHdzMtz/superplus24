@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\MiempresaController;
 use App\Http\Controllers\VacanteController;
+use App\Http\Controllers\IndexsettingController;
 use App\Models\Vacante;
 
 /*
@@ -75,4 +76,4 @@ Route::resource('/cardservicio', 'CardservicioController')->middleware('auth');
 Route::resource('/textoproducto', 'TextoproductoController')->middleware('auth');
 Route::resource('/miempresa', 'MiempresaController')->middleware('auth');
 Route::resource('/vacantes', 'VacanteController')->middleware('auth');
-Route::resource('/configuracion', 'indexsettingController')->middleware('auth');
+Route::resource('/configuracion', 'IndexsettingController')->middleware('auth');

@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['indexsettingController@update', $getsetting->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::open(['action' => ['IndexsettingController@update', $getsetting->id], 'method' => 'PATCH', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalsetting-{{ $getsetting->id }}" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel" aria-hidden="true">
