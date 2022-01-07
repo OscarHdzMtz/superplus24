@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Publicoferts;
 use App\Models\Slidermain;
 use App\Models\Textoproducto;
+use App\Models\Indexsetting;
 use Carbon\Carbon;
 
 class PublicofertController extends Controller
@@ -35,7 +36,9 @@ class PublicofertController extends Controller
         /* return $array;       */        
         $servicios = Cardservicio::all();
         $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex'));
+        $gettarjeta = Indexsetting::Orderby('orden', 'ASC')->
+                                    where('label', 'tarjeta')->get();
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta'));
     }
 
 

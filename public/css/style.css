@@ -363,9 +363,14 @@ nav ul li a:hover{
     transition: background-color 0.3s ease-in,
                 transform 0.3s ease-in;
     width: 250px;
+    background-color: #ffcc00;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
 }
 .service:hover{
-    background-color: #ffcc00;
+    background-color: #ffffff;
     transform: translateY(-3px);
     -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
     box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
@@ -395,7 +400,7 @@ nav ul li a:hover{
     transition: color 0.3s ease-out;
 }
 .service > .title_services{
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.55rem;
     margin-bottom: 1rem;
@@ -410,31 +415,32 @@ nav ul li a:hover{
 .service:hover > i,
 .service:hover > .description_services,
 .service:hover > .title_services{
-    color: white;
+    color: #003baa;
 }
 
 .btn_modal_wel{
     position: relative;
     display: inline-block;
     padding: 10px 30px;
-    color: black;
+    color: #ffffff;
+    font-weight: bold;
     text-decoration: none;
     text-decoration-line:none;
     text-transform: uppercase;
     font-size: 18px;
     letter-spacing: 2px;
     border-radius: 40px;
-    background: linear-gradient(90deg,#ffcc00,#ffcc00);
+    background: linear-gradient(90deg,#003baa,#003baa);
 }
 .service:hover > .btn_modal_wel{
-    background: white;
+    background: #003baa;
     /* -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0);  */
     /* box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); */
     transition: 0.3s;
     text-decoration: none;
     text-decoration-line:none;
     /* color boton servicio HOVER */
-    color: #003baa;
+    color: #ffffff;
 }
 
 /***********************************************

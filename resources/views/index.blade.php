@@ -121,62 +121,24 @@
     <h1 class="textmov"><span class="type"></span></h1>
     <div data-aos="fade-up" class="container_cards">
         <div class="row_cards">
+            @foreach ($gettarjeta as $settarjeta)
             <div class="col-md-3 col-sm-6 mb-3 text-center">
                 <div class="single-content_service">
                     <div class="service">
-                        <i class="fas fa-percent fa-4x"></i>
-                        <h4 class="title_services">Promociones</h4>
-                        <p class="description_services">Ofertas especiales</p><br>
-                        {{-- ESTA LINEA ABRE EL MODAL DE PROMOCIONES --}}
-                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".ofertaexclusiva">Ver
-                            mas</a>
-                        {{-- <a class="btn_modal_wel mt-5" href="{{ url('/promociones') }}">Ver mas</a> --}}
+                        <i class="{{ $settarjeta->icono }} fa-4x"></i>
+                        <h4 class="title_services">{{ $settarjeta->titulo }}</h4>
+                        <p class="description_services">{{ $settarjeta->description }}</p><br>
+                        @if ($settarjeta->modal != '1')
+                                    <a href="{{ $settarjeta->redireccion }}"
+                                        class="btn_modal_wel mt-5">{{ $settarjeta->titulobtn }}</a>
+                                @else
+                                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal"
+                                        data-target=".{{ $settarjeta->redireccion }}">{{ $settarjeta->titulobtn }}</a>
+                                @endif
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-3 col-sm-6 mb-3 text-center">
-            <div class="single-content_service">
-                <div class="service">
-                    <i class="fas fa-shopping-cart fa-4x"></i>
-                    <h4 class="title_services">Entrega Inmediata</h4>
-                    <p class="description_services">Servicio de entrega inmediata</p><br>
-                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".bd-example-modal-xl2">Ver mas</a>  
-                </div>
-            </div>
-        </div> --}}
-            <div class="col-md-3 col-sm-6 mb-3 text-center">
-                <div class="single-content_service">
-                    <div class="service">
-                        <i class="fas fa-map-marker-alt fa-4x"></i>
-                        <h4 class="title_services">Buscador de plus</h4>
-                        <p class="description_services">Localiza tu plus más cercano</p><br>
-                        <a href="/mapa" class="btn_modal_wel mt-5">Ver mapa</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-3 text-center">
-                <div class="single-content_service">
-                    <div class="service">
-                        <i class="fas fa-file-invoice fa-4x"></i>
-                        <h4 class="title_services">Facturacion</h4>
-                        <p class="description_services">Genera y descarga tu factura electrónica.</p>
-                        <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
-                            class="btn_modal_wel mt-5">Facturar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-3 text-center">
-                <div class="single-content_service">
-                    <div class="service">
-                        <i class="fas fa-motorcycle fa-4x"></i>
-                        <h4 class="title_services">Servicio a domicilio</h4>
-                        <p class="description_services">SuperPlus</p>
-                        <a href="" class="btn_modal_wel mt-5" data-toggle="modal" data-target=".delivery">Ver
-                            mas</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach         
         </div>
     </div>
 @endsection
