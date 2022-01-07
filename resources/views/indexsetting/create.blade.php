@@ -29,6 +29,8 @@
                         <div class="form-group text-cemter">
                             <input  type="text" name="label" class="form-control item" id="username"
                                 value="tarjeta" readonly>
+                                <div style="margin-top: -25px" class="d-flex flex-column text-center"> <small
+                                    class="agree-text">tarjeta, tituloservicios, tituloproductos, titulomarcas, imagenfooter, titulofooter</small> </div>
                         </div>                        
                         <div class="form-group">
                             <input type="text" name="titulo" class="form-control item" id="username"

@@ -16,7 +16,10 @@ class IndexsettingController extends Controller
     {
         //
         $setting = Indexsetting::Orderby('orden', 'ASC')->get();
-        return view('indexsetting.index', compact('setting'));
+        $getimagen = Indexsetting::Orderby('orden', 'ASC')->where('label','imagenfooter')->get();
+        $gettitulo = Indexsetting::Orderby('orden', 'ASC')->where('label' , '!=', 'tarjeta')
+                                    ->where('label', '!=', 'imagenfooter')->get();
+        return view('indexsetting.index', compact('setting', 'gettitulo', 'getimagen'));
     }
 
     /**
@@ -88,11 +91,21 @@ class IndexsettingController extends Controller
         /* $addsetting->label = request('label'); */
         $addsetting->orden = request('orden');            
         $addsetting->titulo = request('titulo');
-        $addsetting->description = request('description');
-        $addsetting->icono = request('icono');
-        $addsetting->titulobtn = request('titulobtn');
-        $addsetting->redireccion = request('redireccion');
-        $addsetting->modal = request('modal') ? 1 : 0;
+        $addsetting->style = request('style');
+        if($addsetting->label != 'imagenfooter'){  
+            $addsetting->description = request('description');
+        }          
+        if($addsetting->label == 'tarjeta'){            
+            $addsetting->icono = request('icono');
+            $addsetting->titulobtn = request('titulobtn');
+            $addsetting->redireccion = request('redireccion');
+            $addsetting->modal = request('modal') ? 1 : 0;
+        }               
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $file->move(public_path() . '/img/imagenfooter', $file->getClientOriginalName());
+            $addsetting->image = $file->getClientOriginalName();
+        } 
         $addsetting->update();
         return redirect('configuracion');
     }

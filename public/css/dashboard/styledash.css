@@ -517,6 +517,16 @@ textarea.empresa_input{
   font-size: 33;
   font-family: 'Poppins', sans-serif;
 }
+.testimonial-title-main{
+  padding-top: 35px;
+  padding-bottom: 40px
+
+}
+.testimonial-title-main h3{
+  color: #003baa;
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+}
 .testimonial-title h3{
   color: #000000;
   font-size: 40px;
@@ -947,3 +957,40 @@ textarea.empresa_input{
 /* ************************************************
 ****** FIN ESTILOS QUIENES SOMOS FOOTER**
 *********************************************** */
+
+
+/* ************************************************
+****** ESTILOS PIE DE TEXTO**
+*********************************************** */
+.tituloestatico{
+    background-color: black;
+    height: 5px;
+    width: 100%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estilonaranja{
+    background-color: #ff9340;
+    height: 5px;
+    width: 50%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estiloamarillo{
+    background-color: #ffcc00;
+    height: 5px;
+    width: 50%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estiloazul{
+    background-color: #003baa;
+    height: 5px;
+    width: 50%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}

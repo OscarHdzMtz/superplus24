@@ -53,7 +53,87 @@
                     </div>
                 @endif
             @endforeach
-        </div>      
+        </div>
+    </div>    
+
+    <div class="container">
+        <div class="col-12">
+            <div class="testimonial-title-main text-center">
+                <h5>EDICION</h5>
+                <h3>TITULOS PAGINA PRINCIPAL</h3>
+                <hr class="tituloestatico">
+            </div>
+        </div>
+        @foreach ($gettitulo as $getsetting)
+            @if ($getsetting->label != 'titulofooter')
+                <div class="col-12">
+                    <div class="testimonial-title">
+                        <h5>{{ $getsetting->titulo }}</h5>
+                        <h3>{{ $getsetting->description }}</h3>
+                        <hr class="{{ $getsetting->style }}">
+                        <div class="card-footer border-info">
+                            <a>
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#modalsetting-{{ $getsetting->id }}">
+                                    <i class="far fa-edit"></i> Editar
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @else
+            <div class="col-12">
+                <div class="testimonial-title-main text-center">
+                    <h5>EDICION</h5>
+                    <h3>PIE DE PAGINA</h3>
+                    <hr class="tituloestatico">
+                </div>
+            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
+                                style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                {{-- <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong> --}}
+                                </h3>
+                                <h4><strong>{{ $getsetting->titulo }}</strong></h4>
+                                <hr class="{{ $getsetting->style }}">
+                                <p>
+                                    <strong>{{ $getsetting->description }}</strong>.
+                                </p>
+                                <div class="card-footer border-info">
+                                    <a>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#modalsetting-{{ $getsetting->id }}">
+                                            <i class="far fa-edit"></i> Editar
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top: -100px" class="col-lg-4 col-md-12 text-center justify-content-md-center">
+                            @foreach ($getimagen as $getsetting)
+                            <div class="container">
+                                <img src="{{asset('/img/imagenfooter/'.$getsetting->image)}}" class="img-fluid"
+                                    alt="SuperPlus">
+                                    <div class="card-footer border-info">
+                                        <a>
+                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                data-target="#modalsetting-{{ $getsetting->id }}">
+                                                <i class="far fa-edit"></i> Editar
+                                            </button>
+                                        </a>
+                                    </div>
+                            </div>
+                            @endforeach                           
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    @endif
+
+    @endforeach
     </div>
 
 @endsection
