@@ -821,7 +821,7 @@ form{
 }
 .contact_tittle{
     color: black;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 1.5rem;
     margin-bottom: 0.7rem;
 }
@@ -832,10 +832,10 @@ form{
 .contact_input{
     width: 100%;
     outline: none;
-    border: 2px solid #eeeeee;
-    background-color: #eeeeee;
+    border: 2px solid #ffcc00;
+    background-color: #ffcc00;
     padding: 0.6rem 1.2rem;
-    color: #4b4b4b;
+    color: #003baa;
     font-weight: bold;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
@@ -843,7 +843,7 @@ form{
     transition: 0.3s;
 }
 .contact_input::placeholder {
-    color: #888888;
+    color: #003baa;
     font-weight: bold;
 }
 textarea.contact_input{
@@ -858,7 +858,7 @@ textarea.contact_input{
     background-color: #003baa;
     border: 2px solid #fafafa;
     font-size: 0.95rem;
-    color: white;
+    color: #ffcc00;
     font-weight: bold;
     line-height: 1;
     border-radius: 35px;
@@ -3704,3 +3704,37 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 /* ************************************************
 ******FIN  ESTILOS PIE DE TEXTO**
 *********************************************** */
+
+
+/* ESTILO ICONOS CONTACTANOS */
+.estilocontact ul {
+  cursor: default;
+  list-style: none;
+  padding-left: 0;
+}
+.estilocontact ul li {
+  display: block;
+  padding: 10px;
+  vertical-align: middle;
+}
+.estilocontact ul li a .prueba{
+  background: #003baa;
+  border-radius: 50%;
+}
+.estilocontact ul li a {
+  color: white;
+}
+.estilocontact ul li a h5{
+  font-weight: bold;
+  color: black;
+}
+.estilocontact ul li a:hover {
+  color: #ffcc00;
+}
+.estilocontact ul li a .icono{
+  color: #ffcc00;
+}
+.estilocontact ul li a .icono:hover{
+  color: white;
+}
+/* FIN ESTILO ICONOS CONTACTANOS */

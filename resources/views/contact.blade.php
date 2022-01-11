@@ -12,7 +12,7 @@
         </div>
         <div id="whatsaap">
             <a href="" target="none" class="fab fa-whatsapp"></a>
-        </div>      
+        </div>
     </div>
 @endsection
 @section('navbar_top')
@@ -159,32 +159,12 @@
 @section('Content_messege')
     <div class="conatiner">
         <div class="form">
-            <div class="contact-info">
-                {{-- <h3 class="contact_tittle">ESTAMOS UBICADOS EN</h3> --}}
-                <p class="contact_text">
-                </p>
-                <img src="{{ asset('/img/estaticos/contact.webp') }}" alt="">
-                <div class="social_media">
-                    {{-- <p>REDES SOCIALES</p> --}}
-                    <div class="social-icons">
-                        <a href="" target="none">
-                            <i class="fab fa-facebook-f fa-1x"></i>
-                        </a>
-                        <a href="" target="none">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="" target="none">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
             <form action="{{ route('contact.store') }}" method="POST">
                 @csrf
                 <div class="contact-form">
                     <form action="" autocomplete="off">
-                        <h3 class="contact_tittle text-center">DANOS TU OPINION</h3>
-                        <hr style="margin: 0 auto" class="style1">
+                        <h3 class="contact_tittle text-center">EN<img style="margin-top: -10px" src="{{ asset('/img/logo.png') }}" alt="" width="160" height="55">TU OPINIÓN ES IMPORTANTE</h3>
+                        {{-- <hr style="margin: 0 auto" class="style1"> --}}
                         <div class="input-container ">
                             <input type="text" name="name" class="contact_input" placeholder="Nombre" required>
                         </div>
@@ -208,7 +188,37 @@
                     </form>
                 </div>
             </form>
-
+            <div class="contact-info">
+                {{-- <h3 class="contact_tittle">ESTAMOS UBICADOS EN</h3> --}}
+                <p class="contact_text">
+                </p>
+                <div class="estilocontact text-center justify-content-md-center">
+                    <ul>
+                        <li>
+                            <a href="instragram" class="" target="_blank">
+                                <span class="fa-stack fa-lg fa-2x">
+                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                    <div class="icono">
+                                        <span class="fa fa-facebook fa-stack-1x"></span>
+                                    </div>
+                                </span>
+                                <h5>SuperPlus 24h Contigo</h5></a>
+                        </li>
+                        <li>
+                            <a href="instragram" class="" target="_blank">
+                                <span class="fa-stack fa-lg fa-2x">
+                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                    <div class="icono">
+                                        <span class="fa fa-whatsapp fa-stack-1x"></span>
+                                    </div>
+                                </span>
+                                <h5>953 133 9127</h5></a>
+                        </li>                      
+                        <ul>
+                </div>
+                <h3 class="text-center contact_tittle">O escanea el codigo</h3>
+                <img src="{{ asset('/img/estaticos/codigoqr.png') }}" alt="">               
+            </div>
         </div>
     </div>
     @if (session('info'))
