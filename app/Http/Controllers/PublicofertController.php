@@ -38,7 +38,9 @@ class PublicofertController extends Controller
         $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
         $gettarjeta = Indexsetting::Orderby('orden', 'ASC')->
                                     where('label', 'tarjeta')->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta'));
+        $getitulo = Indexsetting::all();
+        $getimagen = Indexsetting::where('label','imagenfooter')->get();
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen'));
     }
 
 

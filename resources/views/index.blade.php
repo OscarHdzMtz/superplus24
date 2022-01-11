@@ -122,36 +122,40 @@
     <div data-aos="fade-up" class="container_cards">
         <div class="row_cards">
             @foreach ($gettarjeta as $settarjeta)
-            <div class="col-md-3 col-sm-6 mb-3 text-center">
-                <div class="single-content_service">
-                    <div class="service">
-                        <i class="{{ $settarjeta->icono }} fa-4x"></i>
-                        <h4 class="title_services">{{ $settarjeta->titulo }}</h4>
-                        <p class="description_services">{{ $settarjeta->description }}</p><br>
-                        @if ($settarjeta->modal != '1')
-                                    <a href="{{ $settarjeta->redireccion }}"
-                                        class="btn_modal_wel mt-5">{{ $settarjeta->titulobtn }}</a>
-                                @else
-                                    <a href="" class="btn_modal_wel mt-5" data-toggle="modal"
-                                        data-target=".{{ $settarjeta->redireccion }}">{{ $settarjeta->titulobtn }}</a>
-                                @endif
+                <div class="col-md-3 col-sm-6 mb-3 text-center">
+                    <div class="single-content_service">
+                        <div class="service">
+                            <i class="{{ $settarjeta->icono }} fa-4x"></i>
+                            <h4 class="title_services">{{ $settarjeta->titulo }}</h4>
+                            <p class="description_services">{{ $settarjeta->description }}</p><br>
+                            @if ($settarjeta->modal != '1')
+                                <a href="{{ $settarjeta->redireccion }}"
+                                    class="btn_modal_wel mt-5">{{ $settarjeta->titulobtn }}</a>
+                            @else
+                                <a href="" class="btn_modal_wel mt-5" data-toggle="modal"
+                                    data-target=".{{ $settarjeta->redireccion }}">{{ $settarjeta->titulobtn }}</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach         
+            @endforeach
         </div>
     </div>
 @endsection
 
 {{-- SERIVIOSS --}}
 @section('title')
-    <div class="col-12">
-        <div class="testimonial-title">
-            <h5>CONOCE</h5>
-            <h3>NUESTROS SERVICIOS</h3>
-            <hr class="style1">
-        </div>
-    </div>
+    @foreach ($getitulo as $settitulo)
+        @if ($settitulo->label == 'tituloservicios')
+            <div class="col-12">
+                <div class="testimonial-title">
+                    <h5>{{ $settitulo->titulo }}</h5>
+                    <h3>{{ $settitulo->description }}</h3>
+                    <hr class="{{ $settitulo->style }}">
+                </div>
+            </div>
+        @endif
+    @endforeach
 @endsection
 <!--TARJETAS SERVICIOS-->
 @section('cards')
@@ -173,13 +177,17 @@
 
 {{-- PRODUCTOS NUEVOS --}}
 @section('title5')
-    <div class="col-12">
-        <div class="testimonial-title">
-            <h5>CONOCE</h5>
-            <h3>NUESTROS PRODUCTOS NUEVOS</h3>
-            <hr class="style1">
-        </div>
-    </div>
+    @foreach ($getitulo as $settitulo)
+        @if ($settitulo->label == 'tituloproductos')
+            <div class="col-12">
+                <div class="testimonial-title">
+                    <h5>{{ $settitulo->titulo }}</h5>
+                    <h3>{{ $settitulo->description }}</h3>
+                    <hr class="{{ $settitulo->style }}">
+                </div>
+            </div>
+        @endif
+    @endforeach
 @endsection
 @section('Proveedores')
     {{-- <div class="container_prove">
@@ -243,13 +251,17 @@
 
 {{-- MARCA PROVEDORES --}}
 @section('title2')
-    <div class="col-12">
-        <div class="testimonial-title">
-            <h5>TRABAJANDO CON</h5>
-            <h3>MARCAS..</h3>
-            <hr class="style1">
-        </div>
-    </div>
+    @foreach ($getitulo as $settitulo)
+        @if ($settitulo->label == 'titulomarcas')
+            <div class="col-12">
+                <div class="testimonial-title">
+                    <h5>{{ $settitulo->titulo }}</h5>
+                    <h3>{{ $settitulo->description }}</h3>
+                    <hr class="{{ $settitulo->style }}">
+                </div>
+            </div>
+        @endif
+    @endforeach
 @endsection
 
 @section('products')
@@ -337,16 +349,19 @@
                             <div class="col-lg-4 col-md-12">
                                 <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
                                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                    {{-- <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong> --}}
-                                    </h3>
-                                    <h4><strong>Quienes somos?</strong></h4>
-                                    <hr class="stylefooter">
-                                    <p>
-                                        <strong>Brindar a nuestros Instalacion una gran variedad de productos y servicios
-                                            las
-                                            24 horas del día,
-                                            ofreciéndoles siempre nuestro plus con la calidad de nuestro servicio</strong>.
-                                    </p>
+                                    {{-- <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong> 
+                                    </h3> --}}
+                                    @foreach ($getitulo as $settitulo)
+                                        @if ($settitulo->label == 'titulofooter')
+                                            <h4><strong>{{ $settitulo->titulo }}</strong></h4>
+                                            <hr class="stylefooter">
+                                            <p>
+                                                <strong>{{ $settitulo->description }}</strong>.
+                                            </p>
+                                        @endif
+                                    @endforeach
+
+
                                     <div class="col-md-12 py-5 text-center justify-content-md-center">
                                         <div class="mb-3 flex-center">
                                             <div class="estilo2">
@@ -381,7 +396,7 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                <ul>
+                                                    <ul>
                                             </div>
                                         </div>
                                     </div>
@@ -393,13 +408,16 @@
                                 </div>
 
                             </div> --}}
+                            @foreach ($getimagen as $setimagen)
                             <div style="padding-top: -100px"
-                                class="col-lg-4 col-md-12 text-center justify-content-md-center">
-                                <div class="container">
-                                    <img src="{{ asset('img/estaticos/prueba.png') }}" class="img-fluid"
-                                        alt="SuperPlus">
-                                </div>
+                            class="col-lg-4 col-md-12 text-center justify-content-md-center">
+                            <div class="container">
+                                <img src="{{ asset('/img/imagenfooter/' . $setimagen->image) }}" class="img-fluid"
+                                    alt="SuperPlus">
                             </div>
+                        </div>
+                            @endforeach
+                            
                             {{-- IFRAME PARA FACEBOOK --}}
                             {{-- <div style="padding-top: 30px" class="col-lg-4 col-md-12">                                
                                 <div class="embed-container sombra">
@@ -552,8 +570,8 @@
     </div>
 
     {{-- promociones en modal --}}
-    <div class="modal fade modal fade ofertaexclusiva" tabindex="-1" role="dialog"
-        aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal fade modal fade ofertaexclusiva" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">

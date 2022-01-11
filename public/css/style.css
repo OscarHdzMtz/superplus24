@@ -3664,3 +3664,43 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   color: white;
 }
 /* FIN ESTILO ICONOS FOOTER INDEX */
+
+
+/* ************************************************
+****** ESTILOS PIE DE TEXTO**
+*********************************************** */
+.tituloestatico{
+    background-color: black;
+    height: 5px;
+    width: 100%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estilonaranja{
+    background-color: #ff9340;
+    height: 5px;
+    width: 40%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estiloamarillo{
+    background-color: #ffcc00;
+    height: 5px;
+    width: 40%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estiloazul{
+    background-color: #003baa;
+    height: 5px;
+    width: 40%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+/* ************************************************
+******FIN  ESTILOS PIE DE TEXTO**
+*********************************************** */
