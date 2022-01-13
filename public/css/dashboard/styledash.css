@@ -994,3 +994,280 @@ textarea.empresa_input{
     /* border-radius: 11px; */
     margin-right: 0%;
 }
+
+
+/*************************************************************
+*******imgenes y slider de la seccion OFERTAS DE TRABAJO******
+**************************************************************/
+h5.subtitle {
+	color: #21c87a;
+	margin-bottom: 10px;
+	font-weight: 300;
+  }
+
+  .service-heading {
+	margin-bottom: 50px;
+  }
+
+  .service-images {
+	margin-bottom: -100px;
+	border: 10px solid #fff;
+	z-index: 9999;
+  }
+
+  .service-content {
+	padding-top: 60px;
+	padding-left: 0px;
+	text-align: center;
+  }
+
+  .service-content h1 {
+	margin-bottom: 20px;
+	margin-top: 15px;
+
+  }
+
+  .service-icon {
+	margin-right: 20px;
+	color: #fff;
+	font-size: 25px;
+	width: 50px;
+	height: 50px;
+	background: #21c87a;
+	text-align: center;
+	border-radius: 50%;
+	padding-top: 5px;
+  }
+  .service-icon-count {
+	/* margin-right: 20px; */
+	color: #003baa;
+	margin-top: 100px;
+	font-size: 25px;
+	/* width: 50px;
+	height: 50px;
+	background: #21c87a; */
+	/* text-align: center; */
+	border-radius: 50%;
+	/* padding-top: 5px; */
+  }
+
+  .service-block {
+	margin-bottom: 50px;
+	margin-left: 150px;
+  }
+
+  .service-inner-content h4 {
+	text-transform: uppercase;
+  }
+
+  /*----------------------
+   WEB SERVICES
+  -----------------------*/
+  #services-2 {
+	position: relative;
+	background: url("../images/bg/6.jpg") no-repeat fixed 50% 50%;
+	background-size: cover;
+  }
+
+  #services-2:before {
+	position: absolute;
+	content: "";
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(30deg, rgba(121, 110, 255, 0.95) 0%, rgba(33, 200, 122, 0.95) 100%);
+  }
+
+  .web-service-block {
+	text-align: center;
+	padding: 35px 25px;
+	transition: all .5s ease-in-out;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	margin-bottom: 10px;
+  }
+
+  .web-service-block i {
+	font-size: 70px;
+	margin-bottom: 30px;
+	display: block;
+	color: #fff;
+  }
+
+  .web-service-block h3 {
+	color: #fff;
+  }
+
+  .web-service-block p {
+	color: #eee;
+	margin-top: 15px;
+  }
+
+  .web-service-block:hover {
+	background: #fff;
+	border-color: transparent;
+  }
+
+  .web-service-block:hover i {
+	color: #21c87a;
+  }
+
+  .web-service-block:hover h3 {
+	color: #111;
+  }
+
+  .web-service-block:hover p {
+	color: #111;
+  }
+
+  .service-img {
+	margin-bottom: -200px;
+	/* border: 10px solid #fff; */
+	z-index: 9999;
+  }
+  /********************************************************
+  ************ ESTILO COUNTERS OFERTAS DE TRABAJO**********
+  *********************************************************/
+  	.containercount{
+  		background-color: #fecb00;
+  		}
+  	.containercount p{
+  		color: black;
+  	}
+
+  	.textcount1{
+  		font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.55rem;
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+      transition: color 0.3s ease-out;
+  	}
+  	.numcount{
+  		font-size: 50px;
+  		/* font-size: 55px; */
+  		font-family: 'Oswald', sans-serif;
+  		margin-top: 0px;
+  		color:#fecb00;
+  		margin-bottom: -20px;
+  		/* margin-bottom: 80px; */
+  		text-align: center;
+  	}
+  	.textcount2{
+  		font-size: 35px;
+  		/* font-size: 55px; */
+  		/* font-family: 'Oswald', sans-serif; */
+  		text-align: center;
+  	}
+
+  	.bg-grey {
+  		background: #F4F7FC;
+  	  }
+  	.bg-counter{
+  		/* background: #dfe6f2; */
+  		border-radius: 5px;
+  	}
+
+
+    /*************************************************************
+    ******* RESPONSIVO imgenes y slider de la seccion OFERTAS DE TRABAJO******
+    **************************************************************/
+    @media (max-width: 992px) {
+    	.service-img {
+    		margin-bottom: 0px;
+    	}
+    	.service-block {
+    		margin-bottom: 50px;
+    		margin-left: 50px;
+    	  }
+    }
+
+    @media (max-width: 640px) {
+    .service-img {
+      margin-bottom: 0px;
+      }
+      .service-block {
+      margin-bottom: 50px;
+      margin-left: 50px;
+      }
+      .service-content {
+      padding-top: 60px;
+      padding-left: -50px;
+      text-align: center;
+      }
+
+      .service-content h1 {
+      margin-bottom: 20px;
+      margin-top: 15px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+    	.service-img {
+    		margin-bottom: 0px;
+    	  }
+    	  .service-block {
+    		margin-bottom: 50px;
+    		margin-left: 0px;
+    	  }
+    	  .service-content {
+    		padding-top: 60px;
+    		padding-left: 0px;
+    		padding-right: 30px;
+    		text-align: center;
+    	  }
+        .service-content h1 {
+      		margin-bottom: 20px;
+      		margin: 0px auto;
+      		font-size: 9vw;
+      	  }
+          /* banner inicio */
+                  .banner img {
+                      width: 100%;
+                      height: 200px;
+                      margin: 0 auto;
+                      /* border-radius: 25px; */
+                      }
+
+                  .banner_nosotros img {
+                       width: 100%;
+                       height: 150px;
+                       margin: 0 auto;
+                          /* border-radius: 5px; */
+                   }
+                   .banner_empleo img {
+                      width: 100%;
+                      height: 150px;
+                      margin: 0 auto;
+                         /* border-radius: 5px; */
+                  }
+
+    }
+    /*************************************************************
+    *******FIN RESPONSIVO imgenes y slider de la seccion OFERTAS DE TRABAJO******
+    **************************************************************/
+
+    
+    /* BANNER index */
+    .banner_index img {
+      width: 100%;
+        height: 75vh;
+        margin: 0;
+        padding: 0;
+      /* border-radius: 5px; */
+      }
+
+    /* BANNER NOSOTROS */
+    .banner_nosotros img {
+        max-height: 400px;
+        margin: 0 auto;
+        /* border-radius: 5px; */
+        }
+
+        /* BANNER EMPLEO */
+    .banner_empleo img {
+        max-height: 400px;
+        margin: 0 auto;
+        /* border-radius: 5px; */
+        }

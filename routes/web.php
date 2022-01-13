@@ -77,3 +77,4 @@ Route::resource('/textoproducto', 'TextoproductoController')->middleware('auth')
 Route::resource('/miempresa', 'MiempresaController')->middleware('auth');
 Route::resource('/vacantes', 'VacanteController')->middleware('auth');
 Route::resource('/configuracion', 'IndexsettingController')->middleware('auth');
+Route::resource('/ajustesempleo', 'EmpleosettingController')->middleware('auth');

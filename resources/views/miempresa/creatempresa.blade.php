@@ -32,6 +32,8 @@
                         </div>
                         <div class="input-container">
                             <input type="text" name="label" class="empresa_input" placeholder="Label" required>
+                            <small
+                                    class="agree-text">banner, historia, titulo, mision, vision, valores</small> 
                         </div>    
                         <div class="input-container">
                             {{-- <input id="" type="email" class="form-control contact_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus> --}}

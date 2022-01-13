@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     @elseif($getempresa->label == 'historia')
-                        <div class="container">
+                        <div style="padding-top: 20px" class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
                                     {{-- <h5 >CONOCE</h5> --}}

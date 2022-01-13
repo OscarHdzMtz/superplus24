@@ -169,6 +169,8 @@
                                                 <i class="nav-icon fas fa-image"></i>
                                                 <p>
                                                     Slider Principal
+                                                    <?php $slider_count = DB::table('slidermains')->count(); ?>
+                                                    <span class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
                                                 </p>
                                             </a>
                                         </li>
@@ -187,6 +189,8 @@
                                                 <i class="nav-icon fas fa-file-image"></i>
                                                 <p>
                                                     Productos Nuevos
+                                                    <?php $producto_count = DB::table('productos')->count(); ?>
+                                                    <span class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
                                                 </p>
                                             </a>
                                         </li>                                       
@@ -220,7 +224,10 @@
                                         <i class="text-warning fas fa-percentage"></i>
                                         <p>
                                             {{-- Cursos del dia --}}
+                                            
                                             Promociones
+                                            <?php $promo_count = DB::table('publicoferts')->count(); ?>
+                                            <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
                                         </p>
                                     </a>
                                 </li>
@@ -241,6 +248,17 @@
                                                 <i class="nav-icon fas fa-handshake"></i>
                                                 <p>
                                                     Vacantes
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('ajustesempleo') }}"
+                                                class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-handshake"></i>
+                                                <p>
+                                                    Ajustes Empleo
                                                 </p>
                                             </a>
                                         </li>
@@ -394,6 +412,7 @@
         </div>
     </div>
     <script src="{{ asset('js/responsive.js') }}"></script>
+    <script src="{{ asset('js/dashboard/counter.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
