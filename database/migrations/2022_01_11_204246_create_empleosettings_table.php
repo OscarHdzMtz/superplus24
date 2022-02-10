@@ -21,7 +21,7 @@ class CreateEmpleosettingsTable extends Migration
             $table->string('numero')->nullable();
             $table->string('subtitulo')->nullable();
             $table->longText('description');
-            $table->string('image'); 
+            $table->string('image')->nullable(); 
             $table->string('icono')->nullable();
             $table->string('imghover')->nullable();             
             $table->integer('orden')->nullable();                       

@@ -132,7 +132,7 @@
                             <div class="description">
                                 <h1>{{ $empresa->titulo }}</h1>
                                 {{-- <h2>Opening a door to the future</h2> --}}
-                                <p>{{ $empresa->description }}</p>
+                                <p>{!! $empresa->description !!}</p>
                             </div>
                         </div>
                     </div>
