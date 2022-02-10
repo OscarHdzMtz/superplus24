@@ -52,7 +52,7 @@
                                 <br>
                                 {{ Form::file('image') }}
                                 @if ($setempleo->image != '')
-                                    <img src="{{ asset('/img/miempresa/' . $setempleo->image) }}"
+                                    <img src="{{ asset('/img/empleo/' . $setempleo->image) }}"
                                         alt="{{ $setempleo->name }}" height="300px" width="50px"
                                         class="card-img-top">
                                 @endif

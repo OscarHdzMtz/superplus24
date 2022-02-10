@@ -26,7 +26,7 @@
     </div> --}}
     <!--oncontextmenu = "return false"-->
     {{-- @yield('redes') --}}
-    <section id="headerSection_promo">
+    <section {{-- id="headerSection_promo" --}}>
         {{-- @yield('navbar_top') --}}
         @yield('navbar')
         @yield('banner')

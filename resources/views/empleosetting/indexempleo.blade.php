@@ -21,7 +21,7 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">                
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ asset('/img/miempresa/' . $setempleo->image) }}"
+                        <img class="d-block w-100" src="{{ asset('/img/empleo/' . $setempleo->image) }}"
                             alt="First slide">
                         <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">                           
                         </div>
@@ -42,7 +42,7 @@
                     <div class="row ">
                         <div class="col-lg-4">
                             <div class="service-img">
-                                <img src="{{ asset('/img/miempresa/' . $setempleo->image) }}" class="img-fluid">
+                                <img src="{{ asset('/img/empleo/' . $setempleo->image) }}" class="img-fluid">
                             </div>
                         </div>
 

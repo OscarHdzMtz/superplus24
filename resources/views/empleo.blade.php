@@ -94,33 +94,41 @@
     </header> --}}
 @endsection
 @section('banner')
-    <div id="carouselExampleSlidesOnly" class="banner_empleo sombraslider slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('img/slider/empleo.png') }}" alt="First slide">
+    @foreach ($getempleo as $setempleo)
+        @if ($setempleo->label == 'banner')
+            <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{{ asset('/img/empleo/' . $setempleo->image) }}"
+                            alt="First slide">
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        @endif
+    @endforeach
 @endsection
 @section('image')
     <section data-aos="fade-up" class="bg-grey" id="service">
-        <div style="margin-top: 30px" class="container">
-            <div class="row ">
-                <div class="col-lg-4">
-                    <div class="service-img">
-                        <img src="{{ asset('img/avatar.png') }}" alt="" class="img-fluid">
-                    </div>
-                </div>
+        @foreach ($getempleo as $setempleo)
+            @if ($setempleo->label == 'imagentexto')
+                <div style="margin-top: 30px" class="container">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="service-img">
+                                <img src="{{ asset('/img/empleo/' . $setempleo->image) }}" alt="" class="img-fluid">
+                            </div>
+                        </div>
 
-                <div class="col-lg-8 pl-5">
-                    <div class="service-content">
-                        <h1>Ven y forma parte de una de las cadenas comerciales más importantes y en expansión de la región
-                            Mixteca.</h1>
-                        {{-- <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p> --}}
+                        <div class="col-lg-8 pl-5">
+                            <div class="service-content">
+                                <h1>{!! $setempleo->description !!}.</h1>
+                                {{-- <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p> --}}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </section>
     <section data-aos="fade-left" class="pt-5 service-wrap">
         <div class="container">
@@ -216,18 +224,18 @@
 @section('cards')
     @include('contactempleo.indexcontact')
     <div data-aos="fade-up" class="container_vacan">
-        @foreach ($addvacante as $setvacante)                    
-        <div class="card">
-            <div class="img-cover"><img src="{{asset('/img/vacantes/'.$setvacante->image)}}"></div>
-            <div class="desc">
-                {{-- <h1>The Mountain</h1> --}}
-                <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19"
-                        height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
-                            stroke-width="3" />
-                    </svg></a>
+        @foreach ($addvacante as $setvacante)
+            <div class="card">
+                <div class="img-cover"><img src="{{ asset('/img/vacantes/' . $setvacante->image) }}"></div>
+                <div class="desc">
+                    {{-- <h1>The Mountain</h1> --}}
+                    <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19"
+                            height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                                stroke-width="3" />
+                        </svg></a>
+                </div>
             </div>
-        </div>
         @endforeach
     </div>
 @endsection
@@ -238,36 +246,20 @@
     <!-- section Counter Start -->
     <div style="padding-top: 50px" data-aos="fade-up" id="counter" class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
-                <div class="bg-counter">
-                    <div class="service-icon-count fa-4x">
-                        <i class="fas fa-store"></i>
+            @foreach ($getempleo as $setempleo)
+                @if ($setempleo->label == 'contadores')
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+                        <div class="bg-counter">
+                            <div class="service-icon-count fa-4x">
+                                <i class="{{ $setempleo->icono }}"></i>
+                            </div>
+                            <p class="textcount1">{!! $setempleo->titulo !!}</p>
+                            <p class="counter-value fs-2 numcount" data-count="{{ $setempleo->numero }}">0</p>
+                            <p class="textcount2"><strong>{!! $setempleo->description !!}</strong></p>
+                        </div>
                     </div>
-                    <p class="textcount1">Una empresa con mas de:</p>
-                    <p class="counter-value fs-2 numcount" data-count="40">0</p>
-                    <p class="textcount2"><strong>Sucursales</strong></p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
-                <div class="bg-counter">
-                    <div class="service-icon-count fa-4x">
-                        <i class="fas fa-map-marked"></i>
-                    </div>
-                    <p class="textcount1">Con presencia en mas de:</p>
-                    <p id='0102' class="counter-value fs-2 numcount" data-count="5">0</p>
-                    <p class="textcount2"><strong>Lugares</strong></p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
-                <div class="bg-counter">
-                    <div class="service-icon-count fa-4x">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <p class="textcount1">Con mas de:</p>
-                    <p id='0102' class="counter-value fs-2 numcount" data-count="140">0</p>
-                    <p class="textcount2"><strong>Colaboradores</strong></p>
-                </div>
-            </div>
+                @endif
+            @endforeach            
         </div>
     </div>
 @endsection

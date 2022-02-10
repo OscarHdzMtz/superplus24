@@ -33,7 +33,7 @@
     <section style="padding-top: 20px">
         @yield('footer')
     </section>
-    <{{-- div>
+    {{--< div>
         @yield('timespace')
     </div>
     @yield('title')

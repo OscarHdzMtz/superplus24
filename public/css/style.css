@@ -803,16 +803,17 @@ h2 {
     background-color:  white;
     position: relative;
 }
-.contact-form::before{
+/* esto es un rombo que aparece en a tarjeta de CONTACTANOS */
+/* .contact-form::before{
     content: '';
     position: absolute;
     width: 26px;
     height: 26px;
-    background-color:#003baa;
+    background-color: red;
     transform: rotate(45deg);
     top: 50px;
     left: -13px;
-}
+} */
 form{
     padding: 2.3rem 2.2rem;
     z-index: 10;

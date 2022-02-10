@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vacante;
+use App\Models\Empleosetting;
 use Illuminate\Http\Request;
 
 class VacanteController extends Controller
@@ -21,7 +22,8 @@ class VacanteController extends Controller
 
     public function setvacante(){
         $addvacante = Vacante::where('status','1')->orderby('updated_at', 'DESC')->get();
-        return view('empleo', compact('addvacante'));
+        $getempleo = Empleosetting::orderby('orden','ASC')->get();
+        return view('empleo', compact('addvacante', 'getempleo'));
     }
 
     /**

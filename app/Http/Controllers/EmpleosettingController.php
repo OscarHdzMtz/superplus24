@@ -108,7 +108,7 @@ class EmpleosettingController extends Controller
         }
         if ($request->hasFile('image')) {
             $file = $request->image;
-            $file->move(public_path() . '/img/miempresa', $file->getClientOriginalName());
+            $file->move(public_path() . '/img/empleo', $file->getClientOriginalName());
             $setempleo->image = $file->getClientOriginalName();
         }                              
         $setempleo->update();

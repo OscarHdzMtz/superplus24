@@ -93,21 +93,14 @@
     </header> --}}
 @endsection
 @section('banner')
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hero-text">
-                        {{-- <h4>PAGINA <span>WEB</span></h4> --}}
-                        <br>
-                        <br>
-                        <h1 class="tipeo2">COMUNÍCATE CON NOSOTROS</h1>
-                        {{-- <h1 class="tipeo2"><span class="type"></span></h1> --}}
-                    </div>
-                </div>
-            </div>
+<div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ asset('/img/estaticos/contactanos.png') }}"
+                alt="First slide">
         </div>
     </div>
+</div>
 @endsection
 @section('cards_service')
     {{-- <div class="container_cards">
@@ -163,7 +156,7 @@
                 @csrf
                 <div class="contact-form">
                     <form action="" autocomplete="off">
-                        <h3 class="contact_tittle text-center">EN<img style="margin-top: -10px" src="{{ asset('/img/logo.png') }}" alt="" width="160" height="55">TU OPINIÓN ES IMPORTANTE</h3>
+                        {{-- <h3 class="contact_tittle text-center">EN<img style="margin-top: -10px" src="{{ asset('/img/logo.png') }}" alt="" width="160" height="55">TU OPINIÓN ES IMPORTANTE</h3> --}}
                         {{-- <hr style="margin: 0 auto" class="style1"> --}}
                         <div class="input-container ">
                             <input type="text" name="name" class="contact_input" placeholder="Nombre" required>
@@ -229,7 +222,7 @@
 @endsection
 
 @section('footer')
-    <div data-aos="fade-up" class="footer-dark">
+    <div style="margin-top: -5px" data-aos="fade-up" class="footer-dark">
         <footer>
             <footer class="new_footer_area bg_color">
                 <div class="box">
