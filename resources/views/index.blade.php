@@ -223,10 +223,10 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-7 col-12 order-md-1 order-2">
                                         <h4 style="color: black; text-transform: uppercase">{{ $productos->name }}</h4>
-                                        <h4>{!! $productos->descriptions !!}</h4>
-                                        <a href="#">
+                                        <h4 style="color: black">{!! $productos->descriptions !!}</h4>
+                                       {{--  <a href="#">
                                             <h3>{{ $productos->price }}</h3>
-                                        </a>
+                                        </a> --}}
                                     </div>
                                     <div class="col-md-5 col-12 order-md-2 order-1"><img
                                             src="{{ asset('/img/productos/' . $productos->image) }}"
@@ -444,13 +444,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="footer_bg">
+                    {{-- ---------------IMAGEN CON EL REPARTIDOR EN MOVIMIENTO--------------}}
+                   {{--  <div class="footer_bg">
                         <div class="footer_bg_one"></div>
                         <div class="footer_bg_two"></div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- Copyright -->
-                <div class="text-center p-3" style="background-color:#1266f1">
+                <div class="text-center p-3" style="background-color:#1266f1" >
                     © 2021 Copyright:
                     <a class="text-white" href="">SuperPlus</a>
                 </div>

@@ -108,7 +108,7 @@
     @endforeach
 @endsection
 @section('image')
-    <section data-aos="fade-up" class="bg-grey" id="service">
+    <section data-aos="fade-up" {{-- class="bg-grey" --}} id="service">
         @foreach ($getempleo as $setempleo)
             @if ($setempleo->label == 'imagentexto')
                 <div style="margin-top: 30px" class="container">

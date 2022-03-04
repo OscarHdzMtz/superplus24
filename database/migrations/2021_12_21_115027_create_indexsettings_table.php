@@ -19,7 +19,7 @@ class CreateIndexsettingsTable extends Migration
             $table->string('label');
             $table->string('titulo');
             $table->string('subtitulo')->nullable();
-            $table->string('description');
+            $table->longText('description');
             $table->string('redireccion');
             $table->string('titulobtn')->nullable();
             $table->string('icono')->nullable();

@@ -240,7 +240,18 @@
                                             Ofertas de Trabajo
                                             <i class="fas fa-angle-left right"></i>
                                         </p>
-                                    </a>
+                                    </a>                                    
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('ajustesempleo') }}"
+                                                class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ url('vacantes') }}"
@@ -248,17 +259,6 @@
                                                 <i class="nav-icon fas fa-handshake"></i>
                                                 <p>
                                                     Vacantes
-                                                </p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="{{ url('ajustesempleo') }}"
-                                                class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
-                                                <i class="nav-icon fas fa-handshake"></i>
-                                                <p>
-                                                    Ajustes Empleo
                                                 </p>
                                             </a>
                                         </li>
@@ -274,7 +274,16 @@
                                             <i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
-                                    <ul class="nav nav-treeview">
+                                    <ul class="nav nav-treeview">                                        
+                                        <li class="nav-item admin">
+                                            <a href="{{ url('miempresa') }}"
+                                                class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
                                         <li class="nav-item admin">
                                             <a href="{{ url('Instalacion/todas') }}"
                                                 class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
@@ -282,15 +291,6 @@
                                                 <p>
                                                     {{-- CLEINTES --}}
                                                     Instalacion
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item admin">
-                                            <a href="{{ url('miempresa') }}"
-                                                class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
-                                                <i class="nav-icon fas fa-star"></i>
-                                                <p>
-                                                    Mi empresa
                                                 </p>
                                             </a>
                                         </li>
