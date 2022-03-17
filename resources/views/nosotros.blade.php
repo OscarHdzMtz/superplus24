@@ -170,12 +170,56 @@
                     <div class="box-sm yellow "></div>
                     <div class="box-sm yellow "></div>
                 </div>
-                <div style="padding-top: 0px" class="new_footer_top">
-                    <div class="footer_bg">
-                        <div class="footer_bg_one"></div>
-                        <div class="footer_bg_two"></div>
-                    </div>
-                </div>
+                <div style="margin-top: -55px" class="footer-basic">
+                    <footer>
+                        <div class="col-md-12 py-0 text-center justify-content-md-center">
+                            <div class="mb-3 flex-center">
+                                <div class="estilo2">
+                                    <ul>
+                                        <li>
+                                            <a href="instragram" class="" target="_blank">
+                                                <span class="fa-stack fa-lg fa-2x">
+                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                    <div class="icono">
+                                                        <span class="fa fa-facebook fa-stack-1x"></span>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="instragram" class="" target="_blank">
+                                                <span class="fa-stack fa-lg fa-2x">
+                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                    <div class="icono">
+                                                        <span class="fa fa-whatsapp fa-stack-1x"></span>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="instragram" class="" target="_blank">
+                                                <span class="fa-stack fa-lg fa-2x">
+                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                    <div class="icono">
+                                                        <span class="fa fa-google fa-stack-1x"></span>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <ul>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="/index">Inicio</a></li>
+                            <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
+                            <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>                            
+                            <li class="list-inline-item"><a href="/contact">Contactanos</a></li>
+                            <li class="list-inline-item"><a href="#">Politica de privacidad</a></li>
+                        </ul>
+                        <p class="copyright">Dale un plus a tu dia!</p>
+                    </footer>
+                </div>    
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color:#1266f1">
                     © 2021 Copyright:
