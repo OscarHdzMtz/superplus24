@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">TITULO :</label>
-                        <input type="text" name="titulo" class="form-control" id="recipient-name" value="{{$getempresa->titulo}}" required>
+                        <input type="text" name="titulo" class="form-control" id="recipient-name" value="{{$getempresa->titulo}}">
                     </div>
                     <div class="form-outline">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>

@@ -3068,7 +3068,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   }
 
   .blog-card:hover .photo {
-    transform: scale(1.3) rotate(3deg);
+    /* aumenta y rota la imagen al hacer hover */
+    transform: scale(1.6) /* rotate(3deg) */;    
   }
 
   .blog-card .meta {
@@ -3081,9 +3082,10 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
-    background-size: cover;
+    background-size: 60% ;
+    background-repeat: no-repeat;
     background-position: center;
     transition: transform 0.2s;
   }
@@ -3156,7 +3158,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     font-family: Poppins, sans-serif;
   }
 
-  .blog-card .description h1 {
+  .blog-card .description h1 {    
     line-height: 1;
     margin: 0;
     font-size: 2.7rem;
@@ -3169,19 +3171,23 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     color: #a2a2a2;
     margin-top: 5px;
   }
+  
   .blog-card .description p {
-    line-height: 1.2;
-    margin: 0;
-    font-size: 1.5rem;
+    font-family: Arial;
+    line-height: 30px;
+    margin: 0;       
+    font-size: 1.3rem;
     text-align: justify;
+    margin-bottom: 20px;
   }
   .blog-card .description .fas {
     color: #ffcc00;
   }
   .blog-card .description ul a {
-    line-height: 1.2;
-    margin: 0;
-    font-size: 1.5rem;
+    font-family: Arial;
+    line-height: 30px;
+    margin: 0;       
+    font-size: 1.3rem;
     text-align: justify;
   }
 
@@ -3222,8 +3228,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     content: "";
     position: absolute;
     height: 5px;
-    background: #FF8525;
-    width: 95px;
+    background: #ffcc00;
+    width: 150px;
     top: -0.75rem;
     border-radius: 3px;
   }
@@ -3233,11 +3239,12 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   }
   .blog-card .logohover{
     background-image: url(../img/logop.png);
-    background-size: 90% ;
+    /* tamaño en celulares */
+    background-size: 45% ;
     background-repeat: no-repeat;
     background-position: center;
     /* vuelve imagen en blanco y negro */
-    opacity: 0.8;
+    opacity: 1;
     transition: 0.3s;
     filter: grayscale(100);
   }
@@ -3260,7 +3267,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
      .blog-card .description h1,
   .blog-card .description h2 {
-    font-family: Poppins, sans-serif;
+    font-family: sans-serif;
   }
 
   .blog-card .description h1 {
@@ -3277,16 +3284,24 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     margin-top: 5px;
   }
   .blog-card .description h1 {
+    margin-top: 45px;
     font-size: 2.9rem;
     line-height: 1.5;
   }
   .blog-card .description p {
-    font-size: 1.7rem;
-    line-height: 1.5;
+    font-family: Arial;
+    font-size: 1.4rem;
+    /* font-weight: 480; */
+    line-height: 30px;
+  text-align: justify;
+  margin-bottom: 40px;
   }
-  .blog-card .description ul a {
-    font-size: 1.7rem;
-    line-height: 1.5;
+  .blog-card .description ul a {    
+    font-family: Arial;
+    font-size: 1.4rem;
+    /* font-weight: 480; */
+    line-height: 30px;
+  text-align: justify;
   }
 
 
@@ -3317,13 +3332,28 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     }
     .blog-card .logohover{
         background-image: url(../img/logop.png);
-        background-size: 100%;
+        /* tamaño en computadora */
+        background-size: 57%;
          background-repeat: no-repeat;
          background-position: center;
          /* vuelve imagen en blanco y negro */
-         opacity: 0.8;
+         opacity: 1;
          transition: 0.3s;
          filter: grayscale(100);
+      }
+      .blog-card .photo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0px;
+        left: 0;        
+        /* TAMAÑO NUEVO */
+        height: auto;
+        width: 100%;        
+        /* TAMAÑO ANTES */
+        /* background-size: cover;
+        background-position: center; */
+        transition: transform 0.2s;
       }
   }
 
@@ -3346,8 +3376,9 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .historia-text{
-  font-size: 1.1rem;
-    font-weight: 500;
+  font-family: Arial;
+  font-size: 1.3rem;
+    /* font-weight: 200; */
     line-height: 30px;
   text-align: justify;
 }

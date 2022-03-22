@@ -94,7 +94,7 @@
                             </div>
                             <div class="description">
                                 <h1>{{ $getempresa->titulo }}</h1>
-                                <p>{{ $getempresa->description }}</p>
+                                <p>{!! $getempresa->description !!}</p>
                                 <div class="">
                                     <a>
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"

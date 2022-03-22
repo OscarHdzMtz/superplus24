@@ -17,7 +17,7 @@ class CreateMiempresasTable extends Migration
             $table->id();
             $table->integer("user_id");
             $table->string('label');
-            $table->string('titulo');
+            $table->string('titulo')->nullable();
             $table->longText('description');
             $table->string('image'); 
             $table->string('imghover')->nullable();             
