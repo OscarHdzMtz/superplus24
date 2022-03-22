@@ -30,7 +30,7 @@
                             <input type="text" name="label" class="form-control item" id="username" value="contadores"
                                 readonly>
                             <div style="margin-top: -25px" class="d-flex flex-column text-center"> <small
-                                    class="agree-text">textoimagen, contadores, slider</small> </div>
+                                    class="agree-text">imagentexto, contadores, banner</small> </div>
                         </div>
                         <div class="form-group">
                             <div class="form-group">

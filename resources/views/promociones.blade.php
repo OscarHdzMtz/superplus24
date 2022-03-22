@@ -59,7 +59,7 @@
                 <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTANOS</a>
             </li>   
             <li class="nav-item">
-                <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank" class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
+                <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank" class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
             </li>
         </ul>
     </div>
@@ -138,11 +138,11 @@
             <hr class="style6">
 	    </div>
 </div>
-<div data-aos="fade-up" class="container_cards_promo">    
+<div {{-- data-aos="fade-up"  --}}class="container_cards_promo">    
     <div class="row_cards_promo">
         @foreach($promo as $oferta)
         <div class="col-md-3 col-sm-6 mb-3">
-            <div class="{{-- single-contentpromo --}}"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
+            <div data-aos="zoom-in" class="{{-- single-contentpromo --}}"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
                 <img class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
                 <div class="text-contentpromo">
                     {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
@@ -179,7 +179,7 @@
 
 
 @section('footer')
-<div data-aos="fade-up" class="footer-dark">    
+<div class="footer-dark">    
     <footer>        
         <footer class="new_footer_area bg_color">
             <div class="box">
@@ -198,7 +198,7 @@
                 <div class="box-sm yellow "></div>                
               </div>
               <div style="margin-top: -55px" class="footer-basic">
-                <footer>
+                <footer data-aos="fade-right" >
                     <div class="col-md-12 py-0 text-center justify-content-md-center">
                         <div class="mb-3 flex-center">
                             <div class="estilo2">

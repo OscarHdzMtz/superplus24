@@ -67,7 +67,7 @@
                             class="fas fa-phone"></i>CONTACTANOS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
+                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
                         class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
                 </li>
             </ul>
@@ -151,7 +151,7 @@
 @endsection
 @section('Content_messege')
     <div class="conatiner">
-        <div class="form">
+        <div data-aos="fade-up" class="form">
             <form action="{{ route('contact.store') }}" method="POST">
                 @csrf
                 <div class="contact-form">

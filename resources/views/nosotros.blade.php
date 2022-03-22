@@ -67,7 +67,7 @@
                             class="fas fa-phone"></i>CONTACTANOS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
+                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
                         class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
                 </li>
             </ul>
@@ -92,7 +92,7 @@
         <div class="historia">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+                    <div data-aos="fade-left" class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
                         {{-- <h5 >CONOCE</h5> --}}
                         <div class="testimonial-title">
                             <h3>{{ $empresa->titulo }}</h3>
@@ -100,7 +100,7 @@
                         </div>
                         <p class="historia-text">{{ $empresa->description }}</p>
                     </div>
-                    <div class="col-md-6 order-2 order-md-1">
+                    <div data-aos="fade-right" class="col-md-6 order-2 order-md-1">
                         <img class="img-fluid w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}" alt="about image">
                     </div>
                 </div>
@@ -117,7 +117,7 @@
             </div>
         </div>     
         @else
-            <div class="container">
+            <div data-aos="fade-up" class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="blog-card">
@@ -152,85 +152,86 @@
 @endsection
  --}}
 @section('footer')
-    <div style="padding-top: 10px" data-aos="fade-up" class="footer-dark">        
-            <footer class="new_footer_area bg_color">
-                <div class="box">
-                    {{-- <div class="box-sm red"></div> --}}
-                    {{-- <div class="box-sm orange"></div> --}}
-                    <div class="box-sm blue "></div>
-                    {{-- <div class="box-sm green "></div> --}}
-                    <div class="box-sm blue "></div>
-                    {{-- <div class="box-sm purple"></div> --}}
-                    <div class="box-sm blue "></div>
-                    <div class="box-sm blue "></div>
-                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px"
-                        src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                </div>
-                <div style="margin-top: -55px" class="footer-basic">
-                    <footer>
-                        <div class="col-md-12 py-0 text-center justify-content-md-center">
-                            <div class="mb-3 flex-center">
-                                <div class="estilo2">
+<div data-aos="fade-up" class="footer-dark">
+    <footer>
+        <footer class="new_footer_area bg_color">
+            <div class="box">
+                {{-- <div class="box-sm red"></div> --}}
+                {{-- <div class="box-sm orange"></div> --}}
+                <div class="box-sm blue "></div>
+                {{-- <div class="box-sm green "></div> --}}
+                <div class="box-sm blue "></div>
+                {{-- <div class="box-sm purple"></div> --}}
+                <div class="box-sm blue "></div>
+                <div class="box-sm blue "></div>
+                <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px"
+                    src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
+                <div class="box-sm yellow "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm yellow "></div>
+                <div class="box-sm yellow "></div>
+            </div>
+            {{-- pie de pagina --}}
+            <div style="margin-top: -55px" class="footer-basic">
+                <footer data-aos="fade-right">
+                    <div class="col-md-12 py-0 text-center justify-content-md-center">
+                        <div class="mb-3 flex-center">
+                            <div class="estilo2">
+                                <ul>
+                                    <li>
+                                        <a href="instragram" class="" target="_blank">
+                                            <span class="fa-stack fa-lg fa-2x">
+                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                <div class="icono">
+                                                    <span class="fa fa-facebook fa-stack-1x"></span>
+                                                </div>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="instragram" class="" target="_blank">
+                                            <span class="fa-stack fa-lg fa-2x">
+                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                <div class="icono">
+                                                    <span class="fa fa-whatsapp fa-stack-1x"></span>
+                                                </div>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="instragram" class="" target="_blank">
+                                            <span class="fa-stack fa-lg fa-2x">
+                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                <div class="icono">
+                                                    <span class="fa fa-google fa-stack-1x"></span>
+                                                </div>
+                                            </span>
+                                        </a>
+                                    </li>
                                     <ul>
-                                        <li>
-                                            <a href="instragram" class="" target="_blank">
-                                                <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fa fa-facebook fa-stack-1x"></span>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instragram" class="" target="_blank">
-                                                <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fa fa-whatsapp fa-stack-1x"></span>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instragram" class="" target="_blank">
-                                                <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fa fa-google fa-stack-1x"></span>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <ul>
-                                </div>
                             </div>
                         </div>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a href="/index">Inicio</a></li>
-                            <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
-                            <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>                            
-                            <li class="list-inline-item"><a href="/contact">Contactanos</a></li>
-                            <li class="list-inline-item"><a href="#">Politica de privacidad</a></li>
-                        </ul>
-                        <p class="copyright">Dale un plus a tu dia!</p>
-                    </footer>
-                </div>    
-                <!-- Copyright -->
-                <div class="text-center p-3" style="background-color:#1266f1">
-                    © 2021 Copyright:
-                    <a class="text-white" href="">SuperPlus</a>
-                </div>
-                <!-- Copyright -->
-            </footer>        
-    </div>
-    {{-- <footer class="footer">
-   
-</footer> --}}
+                    </div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="/index">Inicio</a></li>
+                        <li class="list-inline-item"><a href="/promociones">Promociones</a></li>                            
+                        <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>                            
+                        <li class="list-inline-item"><a href="/contact">Contactanos</a></li>  
+                        <li class="list-inline-item"><a href="#">Politica de privacidad</a></li>
+                    </ul>
+                    <p class="copyright">Dale un plus a tu dia!</p>
+                </footer>
+            </div>
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color:#1266f1">
+                © 2021 Copyright:
+                <a class="text-white" href="">SuperPlus</a>
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+    </footer>
+</div>
 @endsection
 
 @section('title')

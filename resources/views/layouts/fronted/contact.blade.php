@@ -9,6 +9,11 @@
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link type="text/css" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+          {{-- animaciones al hacer scroll --}}
+    {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
+    <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
+
     <title>Contactanos</title>
 
     <!-- Fonts-->
@@ -61,6 +66,16 @@
             typeSpeed: 60,
             backSpeed: 60,
             loop: true
+        });
+    </script>
+
+    {{-- aimaciones al hacer scroll --}}
+    {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script>
+        AOS.init({
+            easing: 'ease-in-out-sine',
+            duration: 1000
         });
     </script>
 </body>

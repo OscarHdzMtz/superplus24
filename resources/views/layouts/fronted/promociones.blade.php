@@ -11,6 +11,11 @@
     <link type="text/css" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+        {{-- animaciones al hacer scroll --}}
+    {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
+    <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
+
     <title>Promociones</title>
 
     <!-- Fonts-->
@@ -116,6 +121,17 @@
 
         });
 </script>
+
+{{-- aimaciones al hacer scroll --}}
+    {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script>
+        AOS.init({
+            easing: 'ease-in-out-sine',
+            duration: 1000
+        });
+    </script>
+
 </body>
 
 </html>

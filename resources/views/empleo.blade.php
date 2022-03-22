@@ -68,7 +68,7 @@
                             class="fas fa-phone"></i>CONTACTANOS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
+                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
                         class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
                 </li>
             </ul>
@@ -223,7 +223,7 @@
 
 @section('cards')
     @include('contactempleo.indexcontact')
-    <div data-aos="fade-up" class="container_vacan">
+    <div style="margin-bottom: 50px" data-aos="fade-up" class="container_vacan">
         @foreach ($addvacante as $setvacante)
             <div class="card">
                 <div class="img-cover"><img src="{{ asset('/img/vacantes/' . $setvacante->image) }}"></div>
@@ -288,7 +288,7 @@
                 </div>
                 {{-- pie de pagina --}}
                 <div style="margin-top: -55px" class="footer-basic">
-                    <footer>
+                    <footer data-aos="fade-right">
                         <div class="col-md-12 py-0 text-center justify-content-md-center">
                             <div class="mb-3 flex-center">
                                 <div class="estilo2">

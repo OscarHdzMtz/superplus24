@@ -71,7 +71,7 @@
                             class="fas fa-phone"></i>CONTACTANOS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank"
+                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
                         class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
                 </li>
             </ul>
@@ -119,10 +119,10 @@
 
 @section('cards_service')
     <h1 class="textmov"><span class="type"></span></h1>
-    <div data-aos="fade-up" class="container_cards">
+    <div class="container_cards">
         <div class="row_cards">
             @foreach ($gettarjeta as $settarjeta)
-                <div class="col-md-3 col-sm-6 mb-3 text-center">
+                <div data-aos="fade-up" class="col-md-3 col-sm-6 mb-3 text-center">
                     <div class="single-content_service">
                         <div class="service">
                             <i class="{{ $settarjeta->icono }} fa-4x"></i>
@@ -159,10 +159,10 @@
 @endsection
 <!--TARJETAS SERVICIOS-->
 @section('cards')
-    <div data-aos="fade-up" class="container_cards">
+    <div class="container_cards">
         <div class="row_cards">
             @foreach ($servicios as $servicios)
-                <div class="col-md-3 col-sm-6 mb-3">
+                <div data-aos="fade-up" class="col-md-3 col-sm-6 mb-3">
                     <div class="single-content">
                         <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus">
                         <div style="padding-top: 20px" class="text-content">
@@ -347,7 +347,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
-                                <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
+                                <div data-aos="fade-right" class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
                                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                     {{-- <h3 align="center" lass="f-title f_600 t_color f_size_18"><strong>SuperPlus</strong> 
                                     </h3> --}}
@@ -409,7 +409,7 @@
 
                             </div> --}}
                             @foreach ($getimagen as $setimagen)
-                            <div style="padding-top: -100px"
+                            <div data-aos="fade-up" style="padding-top: -100px"
                             class="col-lg-4 col-md-12 text-center justify-content-md-center">
                             <div class="container">
                                 <img src="{{ asset('/img/imagenfooter/' . $setimagen->image) }}" class="img-fluid"
@@ -426,19 +426,19 @@
                                         frameborder="0" allowfullscreen></iframe>
                                 </div>
                             </div> --}}
-                            <div style="padding-top: 20px"
+                            <div data-aos="fade-left" style="padding-top: 20px"
                                 class="col-lg-4 col-md-12 text-center justify-content-md-center">
                                 <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
                                     style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                                     <h4 style="padding-top: 20px"><strong>ENLACES</strong></h4>
                                     <hr class="stylefooter">
                                     <div class="container">
-                                        <button class="btn btn_get btn_get_two" type="submit">PROMOCIONES</button>
-                                        <button class="btn btn_get btn_get_two" type="submit">NOSOTROS</button>
-                                        <button class="btn btn_get btn_get_two" type="submit">OFERTA DE TRABAJO</button>
-                                        <button class="btn btn_get btn_get_two" type="submit">CONTACTANOS</button>
-                                        <button class="btn btn_get btn_get_two" type="submit">FACTURACION</button>
-                                        <button class="btn btn_get btn_get_two" type="submit">AVISO DE PRIVACIDAD</button>
+                                        <a class="btn btn_get btn_get_two" type="submit" href="/promociones">PROMOCIONES</a>
+                                        <a class="btn btn_get btn_get_two" type="submit" href="/nosotros">NOSOTROS</a>
+                                        <a class="btn btn_get btn_get_two" type="submit" href="/empleo">OFERTA DE TRABAJO</a>
+                                        <a class="btn btn_get btn_get_two" type="submit" href="/contact">CONTACTANOS</a>
+                                        <a class="btn btn_get btn_get_two" type="submit" href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx">FACTURACION</a>
+                                        <a class="btn btn_get btn_get_two" type="submit">AVISO DE PRIVACIDAD</a>
                                     </div>
                                 </div>
                             </div>
