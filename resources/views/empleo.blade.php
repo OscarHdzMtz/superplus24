@@ -108,10 +108,10 @@
     @endforeach
 @endsection
 @section('image')
-    <section data-aos="fade-up" {{-- class="bg-grey" --}} id="service">
+    <section id="service">
         @foreach ($getempleo as $setempleo)
             @if ($setempleo->label == 'imagentexto')
-                <div style="margin-top: 30px" class="container">
+                <div data-aos="fade-up"  style="margin-top: 30px" class="container">
                     <div class="row ">
                         <div class="col-lg-4">
                             <div class="service-img">
@@ -121,8 +121,7 @@
 
                         <div class="col-lg-8 pl-5">
                             <div class="service-content">
-                                <h1>{!! $setempleo->description !!}.</h1>
-                                {{-- <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p> --}}
+                                <h1>{!! $setempleo->description !!}.</h1>                                
                             </div>
                         </div>
                     </div>
@@ -130,7 +129,7 @@
             @endif
         @endforeach
     </section>
-    <section data-aos="fade-left" class="pt-5 service-wrap">
+    <section class="pt-5 service-wrap">
         <div class="container">
             <div class="row ">
                 <div class="col-lg-8 offset-lg-4">

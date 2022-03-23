@@ -92,8 +92,7 @@
         <div class="historia">
             <div class="container">
                 <div class="row align-items-center">
-                    <div data-aos="fade-left" class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
-                        {{-- <h5 >CONOCE</h5> --}}
+                    <div  class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">                        
                         <div class="testimonial-title">
                             <h3>{{ $empresa->titulo }}</h3>
                             <hr class="style6 historia-title">
@@ -130,8 +129,7 @@
                                 </ul>
                             </div>
                             <div class="description">
-                                <h1>{{ $empresa->titulo }}</h1>
-                                {{-- <h2>Opening a door to the future</h2> --}}
+                                <h1>{{ $empresa->titulo }}</h1>                                
                                 <p>{!! $empresa->description !!}</p>
                             </div>
                         </div>
