@@ -32,10 +32,9 @@
             </div>
         </div>
     </div> --}}
-    <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
+    <div data-aos="zoom-in-down" class="header-top">
         <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
-    </div> 
-    
+    </div>     
 @endsection
 
 
@@ -44,6 +43,9 @@
        {{--  <a href="#" class="logo">
             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
         </a> --}}
+        <a href="#" class="logo">
+            <img class="imgtamaño">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white"></i>
@@ -108,14 +110,14 @@
                 </div>
             @endforeach
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+       {{--  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
-        </a>
+        </a> --}}
     </div>
 @endsection
 
@@ -359,7 +361,7 @@
                                             <h4><strong>{{ $settitulo->titulo }}</strong></h4>
                                             <hr class="stylefooter">
                                             <p>
-                                                <strong>{{ $settitulo->description }}</strong>.
+                                                {{ $settitulo->description }}.
                                             </p>
                                         @endif
                                     @endforeach

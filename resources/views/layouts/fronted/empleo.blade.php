@@ -36,7 +36,7 @@
     </div> --}}
     {{-- @yield('redes') --}}
     <section {{-- id="headerSection_empleo" --}}>
-        {{-- @yield('navbar_top') --}}
+        @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
     </section>

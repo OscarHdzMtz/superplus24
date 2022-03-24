@@ -18,7 +18,8 @@ i {
 }
 .navbar-mainbg{
 	/* background-color: #5161ce; */
-    background-color: #003baa;
+    /* background-color: #003baa; */
+	background-color: #111;
 	padding: 0px;
     /* estilo que define margen isquierdo y derecho */
     /* margin-right: 20px;
@@ -110,7 +111,8 @@ i {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #003baa;
+    /* background-color: #003baa; */
+	background-color: #111;
 }
 .hori-selector .right:before{
 	bottom: 0;
@@ -196,6 +198,7 @@ i {
     height: 18vh;
     margin: 0;
     padding: 0;
+	margin-bottom: -4px;
 }
 
 
@@ -406,6 +409,7 @@ h5.subtitle {
 		height: 16vh;
 		margin: 0;
 		padding: 0;
+		margin-bottom: -3px;
 	}	
 }	  
 
@@ -425,6 +429,7 @@ h5.subtitle {
 		height: 12vh;
 		margin: 0;
 		padding: 0;
+		margin-bottom: -2.5px;
 	}	
 }
 
@@ -468,6 +473,7 @@ h5.subtitle {
 		height: 10vh;
 		margin: 0;
 		padding: 0;
+		margin-bottom: -2.3px;
 	}	
 }
 
@@ -571,6 +577,7 @@ h5.subtitle {
 			height: 6vh;
 			margin: 0;
 			padding: 0;
+			margin-bottom: -3px;
 		}	
 }
 	

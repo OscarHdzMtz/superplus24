@@ -16,7 +16,7 @@
     </div>
 @endsection
 @section('navbar_top')
-    <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
+    {{-- <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
         <div class="container d-flex justify-content-between">
             <div class="d-inline-flex ml-auto">
                 <div style="color: black" class="headcont">
@@ -29,12 +29,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <div data-aos="zoom-in-down" class="header-top">
+        <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
+    </div> 
 @endsection
 @section('navbar')
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a href="#" class="logo">
+       {{--  <a href="#" class="logo">
             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
+        </a> --}}
+        <a href="#" class="logo">
+            <img class="imgtamaño">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -242,7 +248,7 @@
                     <div class="box-sm yellow "></div>
                 </div>
                 {{-- pie de pagina --}}
-                <div style="margin-top: -55px" class="footer-basic">
+                <div style="margin-top: -60px" class="footer-basic">
                     <footer>
                         <div class="col-md-12 py-0 text-center justify-content-md-center">
                             <div class="mb-3 flex-center">
