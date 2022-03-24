@@ -190,6 +190,14 @@ i {
     text-decoration: none;
     margin-left: 20px;
 }
+/* tamaño del logo del navabar-top */
+.imgnavbartop{
+    width: 100%;
+    height: 18vh;
+    margin: 0;
+    padding: 0;
+}
+
 
 
 /* ESTILO DE FRAME DEL MAPA */
@@ -393,6 +401,12 @@ h5.subtitle {
 		margin-bottom: 50px;
 		margin-left: 30px;
 	  }
+	  .imgnavbartop{
+		width: 100%;
+		height: 16vh;
+		margin: 0;
+		padding: 0;
+	}	
 }	  
 
 /*----------------------------------
@@ -406,6 +420,12 @@ h5.subtitle {
 		margin-bottom: 50px;
 		margin-left: 50px;
 	  }
+	  .imgnavbartop{
+		width: 100%;
+		height: 12vh;
+		margin: 0;
+		padding: 0;
+	}	
 }
 
 /*----------------------------------
@@ -443,6 +463,12 @@ h5.subtitle {
 		font-family: 'Oswald', sans-serif;
 		text-align: center;
 	}
+	.imgnavbartop{
+		width: 100%;
+		height: 10vh;
+		margin: 0;
+		padding: 0;
+	}	
 }
 
 
@@ -465,6 +491,12 @@ h5.subtitle {
 			margin-bottom: 20px;
 			margin-top: 15px;
 		  }
+		  .imgnavbartop{
+			width: 100%;
+			height: 8vh;
+			margin: 0;
+			padding: 0;
+		}	
 	  }
 
 	  /*Personalizado, iPhone Retina */
@@ -520,7 +552,7 @@ h5.subtitle {
 		margin-bottom: 20px;
 		margin: 0px auto;
 		font-size: 9vw;
-	  }
+	}
 	  .service-icon-count {
 		/* margin-right: 20px; */
 		color: #003baa;
@@ -532,9 +564,15 @@ h5.subtitle {
 		/* text-align: center; */
 		border-radius: 50%;
 		/* padding-top: 5px; */
-	  }
-	
 	}
+	  /* tamaño del logo del navabar-top */
+		.imgnavbartop{
+			width: 100%;
+			height: 6vh;
+			margin: 0;
+			padding: 0;
+		}	
+}
 	
 
 

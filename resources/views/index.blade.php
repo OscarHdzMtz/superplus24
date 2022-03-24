@@ -18,7 +18,7 @@
 
 
 @section('navbar_top')
-    <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
+   {{--  <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
         <div class="container d-flex justify-content-between">
             <div class="d-inline-flex ml-auto">
                 <div style="color: black" class="headcont">
@@ -31,15 +31,19 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <div data-aos="fade-up" style="padding-top: 2px" class="header-top">
+        <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
+    </div> 
+    
 @endsection
 
 
 @section('navbar')
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a href="#" class="logo">
+       {{--  <a href="#" class="logo">
             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
-        </a>
+        </a> --}}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white"></i>
@@ -96,10 +100,9 @@
                 <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                     @php $i++ @endphp
                     <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide">
-                    @if ($slider->description != null)
+                    @if ($slider->description != "")
                         <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
-                            <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
-                            {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                            <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>                            
                         </div>
                     @endif
                 </div>
