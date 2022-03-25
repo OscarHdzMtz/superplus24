@@ -21,6 +21,6 @@ class ContactanosController extends Controller
 
         Mail::to('atackevil9922@gmail.com')->send($correo);
         
-        return redirect()->route('contact')->with('info', 'informacion enviada a SuperPlus');
+        return redirect()->route('contact')->with('info', 'Informacion enviada a Superplus');
     }
 }

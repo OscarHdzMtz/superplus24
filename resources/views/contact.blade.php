@@ -31,12 +31,12 @@
         </div>
     </div> --}}
     <div data-aos="zoom-in-down" class="header-top">
-        <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
-    </div> 
+        <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">
+    </div>
 @endsection
 @section('navbar')
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-       {{--  <a href="#" class="logo">
+        {{-- <a href="#" class="logo">
             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
         </a> --}}
         <a href="#" class="logo">
@@ -79,34 +79,52 @@
             </ul>
         </div>
     </nav>
-    {{-- <header>
-    <a href="#" class="logo">        
-        <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">
-    </a>
-    <div class="menu-toggle" ></div>
-        <nav>
-         
-            <ul>
-                <li><a href="/" >INICIO</a></li>
-                <li><a href="{{ url('/promociones')}}">PROMOCIONES</a></li>
-                <li><a href="{{ url('/')}}">BOLSA DE TRABAJO</a></li>
-                <li><a href="{{ url('/nosotros')}}">NOSOTROS</a></li>
-                <li><a href="{{ url('/contact')}}" class="active">CONTÁCTENOS</a></li>
-             <li><a href="http://picaroscomer.dyndns.org:81/WebflecHJ/facturacion_01.aspx" target="_blank">FACTURACION</a></li>
-            </ul>
-        </nav>
-        <div class="clearfix"></div>
-    </header> --}}
+    @if (session('info'))
+        {{-- <script>
+            alert("{{ session('info') }}");
+        </script> --}}        
+        <div classs="container ">
+            <div class="row no-gutters fixed-bottom">
+                <div class="col-lg-4 col-md-12 ml-auto">
+                    <div class="alert alert-gradient shadow" role="alert">
+                        <div class="row">
+                            <div style="margin-left: -10px"  class="col-2">
+                                <img class="d-block w-100" src="{{ asset('/img/logop.png') }}" alt="First slide">
+                            </div>
+                            <div class="col-10 my-auto">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true" style="color: #000">&times;</span>
+                                </button>
+                                  <h5 style="margin-left: -25px" class="alert-heading-gradient">{{ session('info') }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .alert-gradient{
+                background: #5cb85c;
+                border-radius:5px;
+                border:none;
+                color:#fff;
+            }
+            .alert-heading-gradient{
+                color:#fff;
+                font-weight:1.3em;
+            }
+            
+        </style>
+    @endif  
 @endsection
 @section('banner')
-<div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('/img/estaticos/contactanos.png') }}"
-                alt="First slide">
+    <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('/img/estaticos/contactanos.png') }}" alt="First slide">
+            </div>
         </div>
     </div>
-</div>
 @endsection
 @section('cards_service')
     {{-- <div class="container_cards">
@@ -179,8 +197,8 @@
                             <input type="text" name="estado" class="contact_input" placeholder="Estado">
                         </div>
                         <div class="input-container">
-                            <textarea name="mensaje" class="contact_input" id="" placeholder="Mensaje"
-                                onkeyup="countChars(this);" required></textarea>
+                            <textarea name="mensaje" class="contact_input" id="" placeholder="Mensaje" onkeyup="countChars(this);"
+                                required></textarea>
                             <p id="charNum" class="text-success text-center">0 caracteres</p>
                         </div>
                         <input type="submit" value="ENVIAR" class="contact_btn">
@@ -201,7 +219,8 @@
                                         <span class="fa fa-facebook fa-stack-1x"></span>
                                     </div>
                                 </span>
-                                <h5>SuperPlus 24h Contigo</h5></a>
+                                <h5>SuperPlus 24h Contigo</h5>
+                            </a>
                         </li>
                         <li>
                             <a href="instragram" class="" target="_blank">
@@ -211,20 +230,16 @@
                                         <span class="fa fa-whatsapp fa-stack-1x"></span>
                                     </div>
                                 </span>
-                                <h5>953 133 9127</h5></a>
-                        </li>                      
+                                <h5>953 133 9127</h5>
+                            </a>
+                        </li>
                         <ul>
                 </div>
                 <h3 class="text-center contact_tittle">O escanea el codigo</h3>
-                <img src="{{ asset('/img/estaticos/codigoqr.png') }}" alt="">               
+                <img src="{{ asset('/img/estaticos/codigoqr.png') }}" alt="">
             </div>
         </div>
-    </div>
-    @if (session('info'))
-        <script>
-            alert("{{ session('info') }}");
-        </script>
-    @endif
+    </div>    
 @endsection
 
 @section('footer')
@@ -292,7 +307,7 @@
                             <li class="list-inline-item"><a href="/index">Inicio</a></li>
                             <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
                             <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>
-                            <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>                            
+                            <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
                             <li class="list-inline-item"><a href="#">Politica de privacidad</a></li>
                         </ul>
                         <p class="copyright">Dale un plus a tu dia!</p>
