@@ -201,6 +201,7 @@
                                 required></textarea>
                             <p id="charNum" class="text-success text-center">0 caracteres</p>
                         </div>
+                        <x-honey-recaptcha/> 
                         <input type="submit" value="ENVIAR" class="contact_btn">
                     </form>
                 </div>
