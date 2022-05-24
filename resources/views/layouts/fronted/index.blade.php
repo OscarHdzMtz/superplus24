@@ -138,7 +138,7 @@
     {{-- texto en movimiento --}}
     <script>
         var typed = new Typed('.type', {
-            strings: ['<span><i class="fas fa-check"></i></span> DALE UN PLUS A TU DIA!!',
+            strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
                 '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
                 /* '<span><i class="fas fa-motorcycle"></i></span> SERVICIO A DOMICILIO' */
             ],

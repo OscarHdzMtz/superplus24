@@ -14,13 +14,13 @@
                         <input type="email" class="form-control item" id="email" placeholder="Correo">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control item" id="phone-number" placeholder="Numero telefonico">
+                        <input type="text" class="form-control item" id="phone-number" placeholder="Numero telefónico">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control item" id="lugar" placeholder="Lugar de Residencia">
                     </div>                                        
                     <div class="form-group">
-                        <a class="text-center"><strong>Adjunte su Solicitud de empleo o CV</strong></a>
+                        <a class="text-center"><strong>Adjunte su solicitud de empleo o CV</strong></a>
                         <input type="file" name="archivosubido">
                     </div>
                     <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">He leído y acepto el aviso de privacidad.</small> <a href="#" class="terms" target="blank">Aviso de privacidad</a> </div>

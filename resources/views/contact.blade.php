@@ -236,7 +236,7 @@
                         </li>
                         <ul>
                 </div>
-                <h3 class="text-center contact_tittle">O escanea el codigo</h3>
+                <h3 class="text-center contact_tittle">O escanea el código</h3>
                 <img src="{{ asset('/img/estaticos/codigoqr.png') }}" alt="">
             </div>
         </div>
@@ -309,9 +309,9 @@
                             <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
                             <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>
                             <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
-                            <li class="list-inline-item"><a href="#">Politica de privacidad</a></li>
+                            <li class="list-inline-item"><a href="#">Política de privacidad</a></li>
                         </ul>
-                        <p class="copyright">Dale un plus a tu dia!</p>
+                        <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
                     </footer>
                 </div>
 

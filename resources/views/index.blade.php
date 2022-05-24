@@ -206,7 +206,7 @@
                     <div class="content">
                         <h1>{{ $proveedore->name }}</h1>
                         <hr class="">
-                <h5 style=" color: white">Dale un plus a tu dia!!</h5>
+                <h5 style=" color: white">¡DALE UN PLUS A TU DIA!</h5>
                     </div>
                     <div data-aos="fade-up" class="img">
                         <img src="{{ asset('/img/proveedore/' . $proveedore->image) }}" alt="">
@@ -652,7 +652,7 @@
             </div>
         </div>
         <div class='start-chat'>
-            <div class='first-msg'><span>DALE UN PLUS A TU DIA!</span></div>
+            <div class='first-msg'><span>¡DALE UN PLUS A TU DIA!</span></div>
             <div class='first-msg'><span>¡Hola! ¿En que podemos ayudarte?</span></div>
             <div class='blanter-msg'><textarea id='chat-input' placeholder='Escribe un mensaje' maxlength='120'
                     row='1'></textarea>

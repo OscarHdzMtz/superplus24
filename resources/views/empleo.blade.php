@@ -232,9 +232,16 @@
         @foreach ($addvacante as $setvacante)
             <div class="card">
                 <div class="img-cover"><img src="{{ asset('/img/vacantes/' . $setvacante->image) }}"></div>
+                {{-- <div class="desc">                    
+                    <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19"
+                            height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
+                                stroke-width="3" />
+                        </svg></a>
+                </div> --}}
                 <div class="desc">
                     {{-- <h1>The Mountain</h1> --}}
-                    <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19"
+                    <a style="color: white" href="https://wa.me/5219532774901">POSTULARME<svg width="19"
                             height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white"
                                 stroke-width="3" />
@@ -336,10 +343,10 @@
                             <li class="list-inline-item"><a href="/index">Inicio</a></li>
                             <li class="list-inline-item"><a href="/promociones">Promociones</a></li>                            
                             <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>                            
-                            <li class="list-inline-item"><a href="/contact">Contactanos</a></li>  
-                            <li class="list-inline-item"><a href="#">Politica de privacidad</a></li>
+                            <li class="list-inline-item"><a href="/contact">Contáctanos</a></li>  
+                            <li class="list-inline-item"><a href="#">Política de privacidad</a></li>
                         </ul>
-                        <p class="copyright">Dale un plus a tu dia!</p>
+                        <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
                     </footer>
                 </div>
                 <!-- Copyright -->
