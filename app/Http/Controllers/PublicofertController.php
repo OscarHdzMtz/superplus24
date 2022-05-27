@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cardservicio;
 use App\Models\Productos;
+use App\Models\Categorias;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
 use App\Models\Publicoferts;
@@ -12,14 +13,18 @@ use App\Models\Textoproducto;
 use App\Models\Indexsetting;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use App\Http\Requests\SaveProductoRequest;
+
 class PublicofertController extends Controller
 {
     public function index()
     {
         $ofertas = Publicoferts::orderBy('updated_at','DESC')->get();
         //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
-        /* return view('ofertas.todas.index', ['ofertas' => publicofert::all()]); */
-        return view('ofertas.todas.index', compact('ofertas'));
+        /* return view('addpromociones.index', ['ofertas' => publicofert::all()]); */
+        return view('addpromociones.index', compact('ofertas'));
     }
     public function ofertas()
     {
@@ -63,12 +68,20 @@ class PublicofertController extends Controller
         /* return $fechasistema; */
     }
 
+    public function create()
+    {
+        //
+        $categorias = Categorias::orderBy('id' , 'desc')->pluck('name', 'id');        
+        return view('addpromociones.createpromo', compact('categorias'));
+    }
+
 
     public function store(Request $request)
     {
         $oferta = new Publicoferts();
 
         $oferta->user_id = auth()->id();
+        $oferta->categoria_id  = $request->get('categoria_id');
         $oferta->titulo = request('titulo');
         $oferta->texto = request('texto');
         if ($request->hasFile('image')) {
@@ -80,11 +93,11 @@ class PublicofertController extends Controller
         $oferta->fechaFin = request('fechaFin');
         $oferta->deldia = request('deldia') ? 1 : 0;
         $oferta->save();
-        return redirect('ofertas/todas');
+        return redirect('addpromociones');
     }
     public function edit($id)
     {
-        return view('ofertas.todas.edit', ['oferta' => Publicoferts::findOrFail($id)]);
+        return view('addpromociones.edit', ['oferta' => Publicoferts::findOrFail($id)]);
     }
     public function update(Request $request, $id)
     {
@@ -100,7 +113,7 @@ class PublicofertController extends Controller
         $oferta->fechaFin = request('fechaFin');
         $oferta->deldia       = $request->get('deldia') ? 1 : 0;
         $oferta->update();
-        return redirect('ofertas/todas');
+        return redirect('addpromociones');
     }
 
     public function destroy($id)
@@ -125,6 +138,6 @@ class PublicofertController extends Controller
             echo 'error';
         }
                 
-        return redirect('ofertas/todas');
+        return redirect('addpromociones');
     }
 }

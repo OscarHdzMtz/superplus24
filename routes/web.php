@@ -68,7 +68,7 @@ Route::resource('usuarios','UserController')->middleware('auth')->middleware('au
 Route::resource('roles','RoleController')->middleware('auth')->middleware('auth');
 Route::resource('/Instalacion/todas', 'InstalacionController')->middleware('auth');
 Route::resource('/proveedores', 'ProveedoresController')->middleware('auth');
-Route::resource('/ofertas/todas', 'PublicofertController')->middleware('auth');
+Route::resource('/addpromociones', 'PublicofertController')->middleware('auth');
 Route::resource('/Categorias', 'CategoriasController')->middleware('auth');
 Route::resource('/producto', 'ProductoController')->middleware('auth');
 Route::resource('/slidermain', 'SlidermainController')->middleware('auth');

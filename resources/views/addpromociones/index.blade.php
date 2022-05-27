@@ -15,11 +15,26 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-@include('ofertas.todas.modal') 
+  <div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark"></h1>
+            </div><!-- /.col -->
+            <div class="col-sm-12">
+                <a href="{{ route('addpromociones.create')}}" class="btn btn-success btn-lg btn-block">
+                    <i class="fa fa-plus-circle"> Agregar Promociones</i>
+                </a>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div> 
+{{-- AGREGAR PROMO CON MODAL  --}}
+{{-- @include('addpromociones.modal') --}} 
 
 <div class="mt-3 row-cols-1 card-columns ">
     @foreach($ofertas as $oferta)
-        @include('ofertas.todas.modal-delete') 
+        @include('addpromociones.modal-delete') 
         <div class="card mb-3 " style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-4">

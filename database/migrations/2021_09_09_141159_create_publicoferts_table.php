@@ -23,6 +23,11 @@ class CreatePublicofertsTable extends Migration
             $table->date("fechaInicio");
             $table->date("fechaFin");            
             $table->boolean('deldia');
+            $table->integer('categoria_id')->unsigned();
+            $table->foreign('categoria_id')
+                  ->references('id')
+                  ->on('categorias')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

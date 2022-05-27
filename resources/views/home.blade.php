@@ -50,7 +50,7 @@
                     <div class="icon">
                         <i class="fas fa-percent"></i>
                     </div>
-                    <a href="/ofertas/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/addpromociones" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

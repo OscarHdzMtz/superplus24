@@ -4,7 +4,7 @@
         <i class="fa fa-plus-circle"></i> Agregar Promociones
     </button>
 </div>
-{!! Form::open(['url' => 'ofertas/todas', 'files' => 'true']) !!}
+{!! Form::open(['url' => 'addpromociones', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

@@ -219,8 +219,8 @@
 
                                 {{-- ***************************PROMOCIONES********************* --}}
                                 <li class="nav-item admin">
-                                    <a href="{{ url('ofertas/todas') }}"
-                                        class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                    <a href="{{ url('addpromociones') }}"
+                                        class="{{ Request::path() === 'addpromociones' ? 'nav-link active' : 'nav-link' }}">
                                         <i class="text-warning fas fa-percentage"></i>
                                         <p>
                                             {{-- Cursos del dia --}}
@@ -338,8 +338,8 @@
 
                             @can('RecursosHumanos')
                                 <li class="nav-item admin">
-                                    <a href="{{ url('ofertas/todas') }}"
-                                        class="{{ Request::path() === 'ofertas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                    <a href="{{ url('addpromociones') }}"
+                                        class="{{ Request::path() === 'addpromociones' ? 'nav-link active' : 'nav-link' }}">
                                         <i class="fas fa-user-friends"></i>
                                         <p>
                                             Oferata del dia
