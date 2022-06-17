@@ -32,57 +32,63 @@
             </div>
         </div>
     </div> --}}
-    <div data-aos="zoom-in-down" class="header-top">
+    {{-- <div data-aos="zoom-in-down" class="header-top">
         <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
-    </div>     
+    </div>  --}}    
 @endsection
 
 
 @section('navbar')
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
-       {{--  <a href="#" class="logo">
+    <div class="img-fixed">
+        <div {{-- data-aos="zoom-in-down" --}}>
+            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        </div>
+        <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
+            {{-- <a href="#" class="logo">
             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
         </a> --}}
-        <a href="#" class="logo">
-            <img class="imgtamaño">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <div class="hori-selector">
-                    <div class="left"></div>
-                    <div class="right"></div>
-                </div>
-                <li class="nav-item active">
-                    <a href="/" class="nav-link" href="javascript:void(0);"><i
-                            class="fas fa-tachometer-alt"></i>INICIO</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/promociones" class="nav-link" href="javascript:void(0);"><i
-                            class="fas fa-percentage"></i>PROMOCIONES</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i
-                            class="fas fa-check-circle"></i>NOSOTROS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA
-                        DE TRABAJO</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/contact" class="nav-link" href="javascript:void(0);"><i
-                            class="fas fa-phone"></i>CONTACTANOS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
-                        class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <a href="#" class="logo">
+                <img class="imgtamaño">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    <li class="nav-item active">
+                        <a href="/" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-tachometer-alt"></i>INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/promociones" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-percentage"></i>PROMOCIONES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i
+                                class="fas fa-check-circle"></i>NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/empleo" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-building"></i>BOLSA
+                            DE TRABAJO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-phone"></i>CONTACTANOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
+                            class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 @endsection
 
 
