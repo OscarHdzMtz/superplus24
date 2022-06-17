@@ -36,11 +36,12 @@
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
+        @yield('title')
     </section>
     {{-- <div>
             @yield('timespace')
         </div> --}}
-    @yield('title')
+        {{-- @yield('title') --}}
     {{-- <div class="body_Instalacion">
             @yield('Instalacion')
         </div> --}}

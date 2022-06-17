@@ -35,9 +35,10 @@
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
+        @yield('Content_messege')
     </section>
-    @yield('cards_service')
-    @yield('Content_messege')
+    {{-- @yield('cards_service') --}}
+    {{-- @yield('Content_messege') --}}
     @yield('footer')
 
     {{-- EMPIEZAN LOS SCRIPTS --}}

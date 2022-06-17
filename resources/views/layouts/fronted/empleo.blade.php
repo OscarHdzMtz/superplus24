@@ -39,19 +39,22 @@
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
+        @yield('image')
+        @yield('title')
+        @yield('cards')    
     </section>
     {{-- <div>
             @yield('timespace')
         </div> --}}
-        @yield('image')
+        {{-- @yield('image') --}}
     <section {{-- class="cta-section " --}}>
         @yield('body')
     </section>
     @yield('title5')    
     <section>
         @yield('banempleo')
-        @yield('title')
-        @yield('cards')        
+       {{--  @yield('title')
+        @yield('cards')     --}}    
     </section>    
     {{-- <div class="body_Instalacion">
             @yield('Instalacion')

@@ -30,12 +30,16 @@
             </div>
         </div>
     </div> --}}
-    <div data-aos="zoom-in-down" class="header-top">
+    {{-- <div data-aos="zoom-in-down" class="header-top">
         <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
-    </div> 
+    </div>  --}}
 @endsection
 @section('navbar')
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
+<div class="img-fixed">
+    <div {{-- data-aos="zoom-in-down" --}}>
+        <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+    </div>
+    <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
         {{-- <a href="#" class="logo">
             <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
         </a> --}}
@@ -79,6 +83,7 @@
             </ul>
         </div>
     </nav>
+</div>
 @endsection
 
 
