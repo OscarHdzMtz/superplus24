@@ -85,7 +85,7 @@
             <div class="col-12">
                 <div class="testimonial-title-main text-center">
                     <h5>EDICION</h5>
-                    <h3>PIE DE PAGINA</h3>
+                    <h3>QUIENES SOMOS</h3>
                     <hr class="tituloestatico">
                 </div>
             </div>

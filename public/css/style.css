@@ -3698,6 +3698,39 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 /* FIN ESTILO ICONOS FOOTER INDEX */
 
 
+/* estilo iconos  */
+
+.estilo3 ul {
+  cursor: default;
+  /* list-style: none; */
+  padding-left: 0;
+  padding-right: 0;
+}
+.estilo3 ul li {
+  width: 300px;
+  display: inline-block;
+  /* padding: 0 9.5rem 0 0; */
+  vertical-align: middle;
+}
+.estilo3 ul li a .prueba{
+  background: #003baa;
+  border-radius: 50%;
+}
+.estilo3 ul li a {
+  color: white;
+}
+.estilo3 ul li a:hover {
+  color: #ffcc00;
+}
+.estilo3 ul li a .icono{
+  color: #ffcc00;
+}
+.estilo3 ul li a .icono:hover{
+  color: white;
+}
+/* FIN ESTILO ICONOS FOOTER INDEX */
+
+
 /* ************************************************
 ****** ESTILOS PIE DE TEXTO**
 *********************************************** */

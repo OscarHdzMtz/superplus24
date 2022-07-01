@@ -57,6 +57,8 @@
     </div>
     @yield('title5')
     @yield('Proveedores')
+    @yield('title1')
+    @yield('redessociales')
     @yield('title2')
     @yield('products')
     @yield('footer')

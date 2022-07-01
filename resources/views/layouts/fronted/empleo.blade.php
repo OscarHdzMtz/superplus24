@@ -39,7 +39,8 @@
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
-        @yield('image')
+        @yield('image')        
+        @yield('body')
         @yield('title')
         @yield('cards')    
     </section>
@@ -48,7 +49,7 @@
         </div> --}}
         {{-- @yield('image') --}}
     <section {{-- class="cta-section " --}}>
-        @yield('body')
+        
     </section>
     @yield('title5')    
     <section>
