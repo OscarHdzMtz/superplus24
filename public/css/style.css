@@ -3911,3 +3911,65 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   display: inline-block;
   margin: 100px auto;
 }
+
+
+/* ESTILO DE ICONOS REDES SOCIALES */
+section #services {
+  text-align: center;
+  transform: translatez(0);
+}
+section #services h2 {
+  margin: 80px 0px 40px;
+  color: #fff;
+  font-size: 2.4em;
+  text-transform: uppercase;
+  text-align: center;
+}
+section #services li {
+  width: 120px;
+  height: 140px;
+  display: inline-block;
+  margin: 20px;
+  list-style: none;
+}
+section #services li div {
+  width: 120px;
+  height: 120px;
+  color: #003baa;
+  font-size: 3.4em;
+  text-align: center;
+  line-height: 120px;
+  border-radius: 50%;
+  background-color: #003baa;
+  transition: all 0.5s ease;
+}
+section #services li a {
+  color: #ffcc00;
+}
+section #services li div:hover {
+  transform: rotate(360deg);
+  border-radius: 100px;
+}
+section #services li span {
+  width: 120px;
+  height: 20px;
+  display: block;
+  padding: 15px 0px;
+  color: #003baa;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+}
+.credits a {
+  display: block;
+  text-align: center;
+  color: #74d4b3;
+  text-decoration: none;
+  font-size: 24px;
+  margin-top: 50px;
+  background: white;
+  padding: 20px;
+  max-width: 300px;
+}
+/* FIN ESTILO DE ICONOS REDES SOCIALES */

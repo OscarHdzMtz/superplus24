@@ -302,7 +302,7 @@
 @endsection
 
 @section('redessociales')
-<div class="col-md-12 py-5 text-center justify-content-md-center">
+{{-- <div class="col-md-12 py-5 text-center justify-content-md-center">
     <div class="mb-3 flex-center">
         <div class="estilo3">
             <ul>
@@ -339,7 +339,35 @@
                 <ul>
         </div>
     </div>
-</div>
+</div> --}}
+<section>
+    <ul id="services">        
+        <li>
+          <div class="facebook">
+            <a href="https://www.facebook.com/superplus24horas/">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </div>
+          <span>Facebook</span>
+        </li>
+        <li>
+            <div class="instagram">
+              <a href="https://www.instagram.com/superplus24hrs/">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+            <span>Instagram</span>
+          </li>
+        <li>
+          <div class="twitter">
+            <a href='https://vm.tiktok.com/ZMNA67fEu/'>
+                <i class="fab fa-tiktok" aria-hidden="true"></i>
+            </a>
+          </div>
+          <span>TikTok</span>
+        </li>             
+      </ul>
+</section>
 @endsection
 
 {{-- MARCA PROVEDORES --}}
@@ -417,7 +445,7 @@
 @endsection
 
 @section('footer')
-    <div data-aos="fade-up" class="footer-dark">
+    <div style="margin-top: 30px" data-aos="fade-up" class="footer-dark">
         <footer>
             <footer class="new_footer_area bg_color">
                 <div class="box">
@@ -452,8 +480,8 @@
                 </div>
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color:#1266f1">
-                    © 2021 Copyright:
-                    <a class="text-white" href="">SuperPlus</a>
+                    <strong> ©{{now()->year}} </strong> 
+                    <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
                 </div>
                 <!-- Copyright -->
 
