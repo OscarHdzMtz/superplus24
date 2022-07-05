@@ -214,6 +214,16 @@
                                                 </p>
                                             </a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('politicaprivacidad') }}"
+                                                class="{{ Request::path() === 'politicaprivacidad' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-user-friends"></i>
+                                                <p>
+                                                    {{-- proveedores --}}
+                                                    Politica de Privacidad
+                                                </p>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 

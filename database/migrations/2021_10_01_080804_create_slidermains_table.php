@@ -21,7 +21,9 @@ class CreateSlidermainsTable extends Migration
             $table->string('image');
             $table->string('fechaInicio');
             $table->string('fechaFin');     
-            $table->string('pagina');       
+            $table->string('pagina');   
+            $table->integer('orden')->nullable();
+            $table->boolean('status')->nullable();    
             $table->timestamps();
             
         });

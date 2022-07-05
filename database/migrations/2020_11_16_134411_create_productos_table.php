@@ -18,10 +18,14 @@ class CreateProductosTable extends Migration
             $table->string('name',255);
             $table->string('slug');
             $table->string('descriptions',500);
-            $table->string('extract');
-            $table->decimal('price',5,2);
+            $table->string('extract')->nullable();
+            $table->decimal('price',5,2)->nullable();
             $table->string('image');
             $table->boolean('visible');
+            $table->date("fechaInicio")->nullable();
+            $table->date("fechaFin")->nullable(); 
+            $table->boolean("status")->nullable(); 
+            $table->integer("orden")->nullable(); 
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')
                   ->references('id')

@@ -11,6 +11,7 @@ use App\Models\Publicoferts;
 use App\Models\Slidermain;
 use App\Models\Textoproducto;
 use App\Models\Indexsetting;
+use App\Models\Politicaprivacidad;
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +46,9 @@ class PublicofertController extends Controller
                                     where('label', 'tarjeta')->get();
         $getitulo = Indexsetting::all();
         $getimagen = Indexsetting::where('label','imagenfooter')->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen'));
+        /* obtener politicas de privacidad */
+        $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad'));
     }
 
 
@@ -63,8 +66,11 @@ class PublicofertController extends Controller
         ->where('fechaInicio','<=', $actualInicio)
         ->where('fechaFin', '>=', $actualFin)->get();
 
+          /* obtener politicas de privacidad */
+          $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
+
         /* retorna la vista y le pasa las promociones de la base de datos */
-        return view('promociones', compact('promo', 'slider'));
+        return view('promociones', compact('promo', 'slider', 'politicaprivacidad'));
         /* return $fechasistema; */
     }
 

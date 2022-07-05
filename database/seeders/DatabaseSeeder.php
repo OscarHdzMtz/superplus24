@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         User::factory(1)->create();
         Role::factory(2)->create();
-        Publicoferts::factory(100)->create();
+     /*    Publicoferts::factory(100)->create(); */
     }
 }

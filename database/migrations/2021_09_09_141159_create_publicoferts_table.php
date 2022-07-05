@@ -22,6 +22,7 @@ class CreatePublicofertsTable extends Migration
             $table->string("image");
             $table->date("fechaInicio");
             $table->date("fechaFin");            
+            $table->boolean('status')->nullable();
             $table->boolean('deldia');
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')

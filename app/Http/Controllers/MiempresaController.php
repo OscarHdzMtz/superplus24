@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Miempresa;
+use App\Models\Politicaprivacidad;
 use Illuminate\Http\Request;
 
 class MiempresaController extends Controller
@@ -19,8 +20,11 @@ class MiempresaController extends Controller
         //
     }
     public function indexfront(){
-        $empresafront = Miempresa::orderby('orden', 'ASC' )->get();        
-        return view('nosotros', compact('empresafront'));    
+        $empresafront = Miempresa::orderby('orden', 'ASC' )->get();     
+        
+         /* obtener politicas de privacidad */
+         $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
+        return view('nosotros', compact('empresafront', 'politicaprivacidad'));    
     }
 
     /**

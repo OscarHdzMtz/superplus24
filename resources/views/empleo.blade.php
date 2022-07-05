@@ -349,7 +349,8 @@
                             <li class="list-inline-item"><a href="/promociones">Promociones</a></li>                            
                             <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>                            
                             <li class="list-inline-item"><a href="/contact">Contáctanos</a></li>  
-                            <li class="list-inline-item"><a href="#">Política de privacidad</a></li>
+                            <li style="color: black" class="list-inline-item"> <a data-toggle="modal"
+                                data-target=".politica">Política de privacidad</a></li>
                         </ul>
                         <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
                     </footer>
@@ -364,7 +365,7 @@
             </footer>
         </footer>
     </div>
-    {{-- <footer class="footer">
-   
+    {{-- <footer class="footer">   
 </footer> --}}
+@include('modalPoliticaPrivacidad')
 @endsection
