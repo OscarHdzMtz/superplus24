@@ -17,7 +17,7 @@ class PoliticaprivacidadController extends Controller
         //
         $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
         /* return $politicaprivacidad; */
-        return view('politicaprivacidad.indexpolitica', compact('politicaprivacidad'));
+        return view('Politicaprivacidad.indexpolitica', compact('politicaprivacidad'));
     }
 
     /**
