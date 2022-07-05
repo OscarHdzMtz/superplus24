@@ -345,25 +345,276 @@
                                 </a>
                             </li> --}}
                             @endcan
+{{-- TERMINA EL ROL DE ADMINISTRADOR --}}
+
+
+{{-- EMPEZANDO EL ROL DE MARKETING --}}
+                            @can('Marketing')                            
+                            {{-- ***********************PAGINA PRINCIPAL********************* --}}
+                            <li class="nav-item textsidebar">
+                                <a href="#" class="nav-link">
+                                    <i class="text-warning fas fa-copy"></i>
+                                    <p>
+                                        Pagina de Inicio
+                                        <i class="fas fa-angle-left right"></i>
+                                        <span class="badge badge-info right">6</span>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url('configuracion') }}"
+                                            class="{{ Request::path() === 'configuracion' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-cogs"></i>
+                                            <p>
+                                                Configuracion
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('slidermain') }}"
+                                            class="{{ Request::path() === 'slidermain' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-image"></i>
+                                            <p>
+                                                Slider Principal
+                                                <?php $slider_count = DB::table('slidermains')->count(); ?>
+                                                <span class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('cardservicio') }}"
+                                            class="{{ Request::path() === 'cardservicio' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-code-branch"></i>
+                                            <p>
+                                                Servicios
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('producto') }}"
+                                            class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-file-image"></i>
+                                            <p>
+                                                Productos Nuevos
+                                                <?php $producto_count = DB::table('productos')->count(); ?>
+                                                <span class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
+                                            </p>
+                                        </a>
+                                    </li>                                       
+                                    <li class="nav-item">
+                                        <a href="{{ url('proveedores') }}"
+                                            class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-user-friends"></i>
+                                            <p>
+                                                {{-- proveedores --}}
+                                                Marcas Proveedores
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('Categorias') }}"
+                                            class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-user-friends"></i>
+                                            <p>
+                                                {{-- proveedores --}}
+                                                Categorias
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('politicaprivacidad') }}"
+                                            class="{{ Request::path() === 'politicaprivacidad' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-user-friends"></i>
+                                            <p>
+                                                {{-- proveedores --}}
+                                                Politica de Privacidad
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {{-- ***************************PROMOCIONES********************* --}}
+                            <li class="nav-item admin">
+                                <a href="{{ url('addpromociones') }}"
+                                    class="{{ Request::path() === 'addpromociones' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-percentage"></i>
+                                    <p>
+                                        {{-- Cursos del dia --}}
+                                        
+                                        Promociones
+                                        <?php $promo_count = DB::table('publicoferts')->count(); ?>
+                                        <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- **********************OFERTAS DE TRABAJO************ --}}
+                            <li class="nav-item textsidebar">
+                                <a href="#" class="nav-link">
+                                    <i class="text-warning fas fa-copy"></i>
+                                    <p>
+                                        Ofertas de Trabajo
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>                                    
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url('ajustesempleo') }}"
+                                            class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-cogs"></i>
+                                            <p>
+                                                Configuracion
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url('vacantes') }}"
+                                            class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-handshake"></i>
+                                            <p>
+                                                Vacantes
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {{-- **********************NOSOTROS************ --}}
+                            <li class="nav-item textsidebar">
+                                <a href="#" class="nav-link">
+                                    <i class="text-warning fas fa-copy"></i>
+                                    <p>
+                                        Nosotros
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">                                        
+                                    <li class="nav-item admin">
+                                        <a href="{{ url('miempresa') }}"
+                                            class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-cogs"></i>
+                                            <p>
+                                                Configuracion
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item admin">
+                                        <a href="{{ url('Instalacion/todas') }}"
+                                            class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-hotel"></i>
+                                            <p>
+                                                {{-- CLEINTES --}}
+                                                Instalacion
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{ url('#') }}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-map-marker-alt"></i>
+                                    <p>
+                                        GoogleMaps
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{ url('#') }}"
+                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-eye"></i>
+                                    <p>
+                                        Vista Previa
+                                    </p>
+                                </a>
+                            </li>
+                            {{-- <li class="nav-item admin">
+                            <a href="{{url('Categorias')}}"
+                                class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
+                                <i class="text-info fas fa-shopping-bag"></i>
+                                <p>
+                                   Categorias de los Cursos
+                                </p>
+                            </a>
+                        </li> --}}
+                            {{-- <li class="nav-item admin">
+                            <a href="{{url('producto')}}"
+                                class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
+                                <i class="text-info fas fa-shopping-basket"></i>
+                                <p>
+                                  Cursos
+                                  <?php $product_count = DB::table('productos')->count(); ?>
+                                    <span class="right badge badge-danger">{{ $product_count ?? '0' }}</span>
+                                </p>
+                            </a>
+                        </li> --}}
+                        @endcan
 
                             @can('RecursosHumanos')
-                                <li class="nav-item admin">
-                                    <a href="{{ url('addpromociones') }}"
-                                        class="{{ Request::path() === 'addpromociones' ? 'nav-link active' : 'nav-link' }}">
-                                        <i class="fas fa-user-friends"></i>
+                              {{-- **********************OFERTAS DE TRABAJO************ --}}
+                              <li class="nav-item textsidebar">
+                                <a href="#" class="nav-link">
+                                    <i class="text-warning fas fa-copy"></i>
+                                    <p>
+                                        Ofertas de Trabajo
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>                                    
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url('ajustesempleo') }}"
+                                            class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-cogs"></i>
+                                            <p>
+                                                Configuracion
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url('vacantes') }}"
+                                            class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="nav-icon fas fa-handshake"></i>
+                                            <p>
+                                                Vacantes
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                                {{-- **********************NOSOTROS************ --}}
+                                <li class="nav-item textsidebar">
+                                    <a href="#" class="nav-link">
+                                        <i class="text-warning fas fa-copy"></i>
                                         <p>
-                                            Oferata del dia
+                                            Nosotros
+                                            <i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
-                                </li>
-                                <li class="nav-item admin">
-                                    <a href="{{ url('Instalacion/todas') }}"
-                                        class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
-                                        <i class="fas fa-user-friends"></i>
-                                        <p>
-                                            Instalacion
-                                        </p>
-                                    </a>
+                                    <ul class="nav nav-treeview">                                        
+                                        <li class="nav-item admin">
+                                            <a href="{{ url('miempresa') }}"
+                                                class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                        {{-- <li class="nav-item admin">
+                                            <a href="{{ url('Instalacion/todas') }}"
+                                                class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-hotel"></i>
+                                                <p>                                                    
+                                                    Instalacion
+                                                </p>
+                                            </a>
+                                        </li> --}}
+                                    </ul>
                                 </li>
                             @endcan
                         </ul>
