@@ -34,8 +34,8 @@
             <div class="testimonial-title-main text-center">                
                 <div class="card">
                     @foreach ($politicaprivacidad as $politica)
-                    @include('politicaprivacidad.editpolitica')
-                    @include('politicaprivacidad.deletepolitica')
+                    @include('Politicaprivacidad.editpolitica')
+                    @include('Politicaprivacidad.deletepolitica')
                     <div class="">                      
                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                                 data-target="#modalpoliticaedit-{{ $politica->id }}">
