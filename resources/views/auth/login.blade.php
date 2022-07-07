@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="input-container">
                                         <input id="password" type="password" class="form-control  @error('password') is-invalid @enderror" name="password" required  placeholder="CONTRASEÑA" autocomplete="current-password"
-                                        minlength="3" maxlength="40" pattern="[A-Za-z0-9]+">
+                                        minlength="3" maxlength="40" pattern="[A-Za-z0-9.!#$%&’*+/=?^_`{|}]+">
                                     </div>
                                     <input type="submit" value="Ingresar" class="btn btn-warning text-center">
                                         <div class="form-group row mb-0">
