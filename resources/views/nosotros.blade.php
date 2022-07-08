@@ -188,7 +188,7 @@
                             <div class="estilo2">
                                 <ul>
                                     <li>
-                                        <a href="instragram" class="" target="_blank">
+                                        <a href="https://www.facebook.com/superplus24horas/" class="" target="_blank">
                                             <span class="fa-stack fa-lg fa-2x">
                                                 <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
                                                 <div class="icono">
@@ -198,7 +198,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="instragram" class="" target="_blank">
+                                        <a href="https://www.instagram.com/superplus24hrs/" class="" target="_blank">
                                             <span class="fa-stack fa-lg fa-2x">
                                                 <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
                                                 <div class="icono">
@@ -208,15 +208,15 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="instragram" class="" target="_blank">
+                                        <a href="https://vm.tiktok.com/ZMNA67fEu/" class="" target="_blank">
                                             <span class="fa-stack fa-lg fa-2x">
                                                 <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
                                                 <div class="icono">
-                                                    <span class="fa fa-google fa-stack-1x"></span>
+                                                    <span class="fab fa-tiktok fa-stack-1x"></span>
                                                 </div>
                                             </span>
                                         </a>
-                                    </li>
+                                    </li>                                   
                                     <ul>
                             </div>
                         </div>
