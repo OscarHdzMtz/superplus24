@@ -20,6 +20,7 @@
 
 <!-- Main content -->
 <section class="content">
+    @can('Administrador')
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -29,7 +30,7 @@
                     <div class="inner">
                     <h3>{{$cons_user}}</h3>
 
-                        <p>Usuarios</p>
+                        <p><strong>Usuarios</strong></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-users"></i>
@@ -45,7 +46,7 @@
                     <div class="inner">
                         <h3>{{$cons_ofertas}}</h3>
 
-                        <p>Ofertas Del dia</p>
+                        <p><strong>Promociones</strong></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-percent"></i>
@@ -60,7 +61,7 @@
                     <div class="inner">
                         <h3 style="color: white">{{$cons_productos}}</h3>
 
-                        <p style="color: white">Productos Nuevos</p>
+                        <p style="color: white"><strong>Productos Nuevos</strong></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-box-open"></i>
@@ -73,8 +74,8 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        {{-- <h3>{{$cons_Instalacion}}</h3>  --}}
-                        <p>Instalaciones</p>
+                        <h3 style="color: white">{{$cons_categorias}}</h3> 
+                        <p><strong>Categorias</strong></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-street-view"></i>
@@ -85,11 +86,64 @@
             <!-- ./col -->
         </div>
     </div>
+    @endcan
+    @can('Marketing')
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+         <!-- ./col -->
+         <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>{{$cons_ofertas}}</h3>
+
+                    <p><strong>Promociones</strong></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-percent"></i>
+                </div>
+                <a href="/addpromociones" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3 style="color: white">{{$cons_productos}}</h3>
+
+                    <p style="color: white"><strong>Productos Nuevos</strong></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <a href="/producto" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3 style="color: white">{{$cons_categorias}}</h3> 
+                    <p><strong>Categorias</strong></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-street-view"></i>
+                </div>
+                <a href="/Instalacion/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+</div>
+    @endcan
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header"><h3 style="text-align: center">BIENVENIDO:<strong> {{ Auth::user()->name }}</strong></h3> </div>
     
                     <div class="card-body">
                         @if (session('status'))
@@ -97,8 +151,10 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-    
-                        BIENVENIDO: {{ Auth::user()->name }} Has Iniciado Sesion de manera correcta
+                        <img style="max-width: 50%; margin-left: 26%" src="{{ asset('img/estaticos/logopalomita.png') }}" alt="SuperPlus24">
+                        <br>
+                        <br>
+                         <h4 style="text-align: center">Ha Iniciado Sesion de manera correcta</h4>
                     </div>
                 </div>
             </div>

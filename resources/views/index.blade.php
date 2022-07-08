@@ -41,7 +41,7 @@
 @section('navbar')
     <div class="img-fixed">
         <div {{-- data-aos="zoom-in-down" --}}>
-            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus24">
         </div>
         <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
             {{-- <a href="#" class="logo">
