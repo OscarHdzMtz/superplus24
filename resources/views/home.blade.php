@@ -80,7 +80,7 @@
                     <div class="icon">
                         <i class="fas fa-street-view"></i>
                     </div>
-                    <a href="/Instalacion/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="Categorias" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -132,7 +132,7 @@
                 <div class="icon">
                     <i class="fas fa-street-view"></i>
                 </div>
-                <a href="/Instalacion/todas" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="Categorias" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
