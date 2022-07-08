@@ -229,7 +229,7 @@
                                             <span class="fa-stack fa-lg fa-2x">
                                                 <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
                                                 <div class="icono">
-                                                    <span class="fa fa-whatsapp fa-stack-1x"></span>
+                                                    <span class="fab fa-instagram fa-stack-1x"></span>
                                                 </div>
                                             </span>
                                         </a>
