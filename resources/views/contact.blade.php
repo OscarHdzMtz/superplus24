@@ -321,9 +321,9 @@
                 </div>
 
                 <!-- Copyright -->
-                <div class="text-center p-3" style="background-color:#1266f1">
-                    © 2021 Copyright:
-                    <a class="text-white" href="">SuperPlus</a>
+                <div class="text-center p-3" style="background-color:#003baa; color: white">
+                    <strong> ©{{now()->year}} </strong> 
+                    <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
                 </div>
                 <!-- Copyright -->
 
