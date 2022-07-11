@@ -2,16 +2,13 @@
 @section('redes')
 <div class="red">
     <div id="facebook">
-        <a href="" target="none" class="fab fa-facebook-f "></a>
+        <a href="https://www.facebook.com/superplus24horas/" target="none" class="fab fa-facebook-f "></a>
     </div>
     <div id="instagram">
-        <a href="" target="none" class="fab fa-instagram"></a>
-    </div>
-    <div id="twiter">
-        <a href="" target="none" class="fab fa-twitter-square"></a>
-    </div>
+        <a href="https://www.instagram.com/superplus24hrs/" target="none" class="fab fa-instagram"></a>
+    </div>    
     <div id="whatsaap">
-        <a href="" target="none" class="fab fa-whatsapp"></a>
+        <a href="https://vm.tiktok.com/ZMNA67fEu/" target="none" class="fab fa-tiktok"></a>
     </div>
 
 </div>
