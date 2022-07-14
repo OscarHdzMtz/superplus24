@@ -134,6 +134,16 @@
         });
     </script>
 
+    {{-- SCRIPT QUE OBTIENE LA IMAGEN DE LAS PROMOCIONES PARA MANDARLO A UN MODAL --}}
+    <script>
+            $(function() {
+                $('.clic_abre_modal').on('click', function() {
+                    $('.set_imagen_promo').attr('src', $(this).find('img').attr('src'));        
+                    $('#modalpromo').modal('show');             
+                });		
+            });
+    </script>
+
 </body>
 
 </html>

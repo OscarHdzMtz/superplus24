@@ -150,13 +150,12 @@
     <div class="row_cards_promo">
         @foreach($promo as $oferta)
         <div class="col-md-3 col-sm-6 mb-3">
-            <div data-aos="zoom-in" class="{{-- single-contentpromo --}}"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
-                <img class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
+            <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
+                <img id="get_image_promo" class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
                 <div class="text-contentpromo">
                     {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
-                    <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3>
-                    {{-- <hr class="style2"> --}}
-                    {{-- <h5>todas las compañias</h5> --}}
+                    {{-- <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3> --}}
+                    {{-- <hr class="style2"> --}}                    
                 </div>
             </div>
         </div>
@@ -183,6 +182,29 @@
     </div>
     @endforeach  
 </div> --}}
+
+
+{{-- MODAL DONDE SE VA MOSTRAR LAS PROMOCIONES AL DAR CLICK --}}
+<div class="modal fade" id="modalpromo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" data-dismiss="modal">
+      <div class="modal-content"> 
+        {{-- <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div> --}}             
+        <div class="modal-body">            
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <img src="" class="set_imagen_promo" style="max-width: 100%; padding-top: 10px" >        
+          {{-- <input style="color: #003baa" type="text" id="textmodal"/><br> --}}                            
+        </div> 
+        {{-- <div class="modal-footer">            
+            <div class="form-group input-group"> --}}                         
+                 {{-- <label style="color: #003baa" for="nombre">Nombre</label><input style="color: #003baa" type="text" id="textmodal"/><br>
+                 <span id="textmodal"></span> --}}
+           {{--  </div>
+        </div>     --}}                    
+      </div>
+    </div>
+  </div>
 @endsection
 
 

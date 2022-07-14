@@ -608,8 +608,8 @@
         aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-center modal-title" id="exampleModalCenterTitle">OFERTAS DEL DÍA</h5>
+                <div class="modal-header text-center">
+                    <h5 class="text-center modal-title" id="exampleModalCenterTitle">PROMOCIONES EXCLUSIVAS</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -619,7 +619,7 @@
                     <div data-aos="fade-up" class="container_cards">
                         <div class="row_cards">
                             @foreach ($ofertas as $oferta)
-                                <div class="col-md-3 col-sm-6 mb-3">
+                                <div class="col-md-4 col-sm-6 mb-4">
                                     <div class="single-content">
                                         <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
                                             alt="{{ $oferta->image }}">
