@@ -609,30 +609,47 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="text-center modal-title" id="exampleModalCenterTitle">PROMOCIONES EXCLUSIVAS</h5>
+                    <h5 class="text-center modal-title" id="exampleModalCenterTitle"><strong>PROMOCIONES EXCLUSIVAS</strong></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="principal">
-
-                    <div data-aos="fade-up" class="container_cards">
-                        <div class="row_cards">
-                            @foreach ($ofertas as $oferta)
-                                <div class="col-md-4 col-sm-6 mb-4">
-                                    <div class="single-content">
-                                        <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                                            alt="{{ $oferta->image }}">
-                                        <div class="text-content">
-                                            <h3><strong>
-                                                    {{-- <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2> --}}
-                                                </strong> </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                <div class="principal text-center justify-content-md-center ">
+                    @empty(!$ofertas)
+                        <div data-aos="fade-up" class="container_cards">
+                            <div class="row_cards">                            
+                                    @foreach ($ofertas as $oferta)                                                                                            
+                                    <div class="col-md-4 col-sm-6 mb-4">
+                                        @if ($oferta->texto <> '')
+                                            <div class="single-content">
+                                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                    alt="{{ $oferta->image }}">                                                                                   
+                                                <div class="text-content">
+                                            
+                                                        <h2 class="frm_pagos text-center">{{ $oferta->texto }}</h2>                                                                                                               
+                                                </div>                                                           
+                                            </div>                                      
+                                        @else
+                                        <div class="">
+                                            <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                alt="{{ $oferta->image }}">                                                                                                                                                                                 
+                                        </div> 
+                                        @endif  
+                                    </div>                                                                                               
+                                    @endforeach                                                                                                                  
+                            </div>
+                            <div class="mb-5">
+                                <a href="/promociones"
+                                         class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>  
+                            </div>   
                         </div>
-                    </div>
+                        @else
+                        <div class="sinpromo mt-5">
+                            <p>No hay promociones exclusivas</p>    
+                            <a href="/promociones"
+                            class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>   
+                        </div>
+                    @endempty 
                 </div>
                 {{-- <div class="principal">
                     @foreach ($ofertas as $oferta)
