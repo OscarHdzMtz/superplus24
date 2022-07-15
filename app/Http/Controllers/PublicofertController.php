@@ -25,8 +25,7 @@ class PublicofertController extends Controller
         if($request){
             $query = trim($request->get('search'));
             $ofertas = Publicoferts::where('titulo','LIKE','%'. $query.'%')
-            ->orderBy('id','asc')
-            ->simplePaginate(5);
+            ->orderBy('updated_at','DESC')->get();
             return view('addpromociones.index',['ofertas' => $ofertas , 'search' => $query]);
         }
 
