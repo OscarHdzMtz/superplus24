@@ -20,12 +20,20 @@ use App\Http\Requests\SaveProductoRequest;
 
 class PublicofertController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ofertas = Publicoferts::orderBy('updated_at','DESC')->get();
+        if($request){
+            $query = trim($request->get('search'));
+            $ofertas = Publicoferts::where('titulo','LIKE','%'. $query.'%')
+            ->orderBy('id','asc')
+            ->simplePaginate(5);
+            return view('addpromociones.index',['ofertas' => $ofertas , 'search' => $query]);
+        }
+
+        /* $ofertas = Publicoferts::orderBy('updated_at','DESC')->get(); */
         //return view('Instalacion.todas.index', ['Instalacion' => Instalacion::all()->where('user_id',auth()->id())]);
         /* return view('addpromociones.index', ['ofertas' => publicofert::all()]); */
-        return view('addpromociones.index', compact('ofertas'));
+        /* return view('addpromociones.index', compact('ofertas')); */
     }
     public function ofertas()
     {

@@ -29,6 +29,31 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+    <div class="container">
+        <form class="form-inline ml-3 float-right">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar"
+                    aria-label="Search">
+                <div class="input-group-prepend">
+                    <button class="input-group-text" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    @if ($search)
+    <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+        El resultado de la busqueda de <strong>'{{ $search }}'</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        {{-- <div class="alert alert-success mt-5" role="alert">
+            El resultado de la busqueda de <strong>'{{ $search }}'</strong> son:.
+        </div> --}}
+    @endif
+
     {{-- AGREGAR PROMO CON MODAL --}}
     {{-- @include('addpromociones.modal') --}}
 
@@ -91,9 +116,9 @@
                         <th scope="col">Eliminar</th>
                         <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Vigencia</th>                        
+                        <th scope="col">Tiempo de vigencia</th>
                         <th scope="col">Estado</th>
-                        <th scope="col">Oferta exlusiva</th>
+                        <th scope="col">Oferta exclusiva</th>
                         <th scope="col">Descripcion</th>
                     </tr>
                 </thead>
@@ -114,21 +139,22 @@
                                     onclick="return confirm('Estas Seguro de Eliminar la promoción?')">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
-                                {!! Form::close() !!}                              
+                                {!! Form::close() !!}
                             </td>
                             <td>
                                 <img src="{{ asset('/img/ofertas/' . $oferta->image) }}" alt="{{ $oferta->image }}"
                                     width="150" height="150">
                             </td>
                             <td>{{ $oferta->titulo }}</td>
-                            <td style="text-align: center"><strong>{{ $oferta->fechaInicio }} <br> a <br> {{ $oferta->fechaFin }}</strong> </td>                            
+                            <td style="text-align: center"><strong>{{ $oferta->fechaInicio }} <br> a <br>
+                                    {{ $oferta->fechaFin }}</strong></td>
                             <td>
                                 @if ($oferta->fechaFin >= date('Y-m-d'))
                                     <p style="color: #00C851" class="card-text"><strong>Activo</strong><small
                                             class="text-muted"></small></p>
                                 @else
-                                     <p style="color: #ff4444" class="card-text"><strong>Expirado</strong><small
-                                     class="text-muted"></small></p>
+                                    <p style="color: #ff4444" class="card-text"><strong>Expirado</strong><small
+                                            class="text-muted"></small></p>
                                 @endif
                             </td>
                             <td>
