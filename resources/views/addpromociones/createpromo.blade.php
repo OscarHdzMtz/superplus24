@@ -51,9 +51,9 @@
                             <input type="date" name="fechaFin" required>
                         </div>
                         <div class="form-group">
-                            <label for="visible">Oferta Exlusiva:</label>
+                            <label for="visible">Oferta Exclusiva:</label>
                             {!!
-                                Form::checkbox('deldia',null,array('class' => 'form-check-label'))    !!}
+                                Form::checkbox('deldia',null,array())    !!}
                         </div>
                         <div class="form-group">
                             {!! Form::submit('Guardar', ['class' => 'btn btn-outline-success']) !!}

@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">Ofertas</li>
+                        <li class="breadcrumb-item">Promociones</li>
                         <li class="breadcrumb-item">Index</li>
                         <li class="breadcrumb-item active"><a href="#">Editar</a></li>
                     </ol>
@@ -43,7 +43,7 @@
         </div>        
             <div class="form-group">
                 <div class="card-header">
-                    <label for="deldia">Estatus:</label>
+                    <label for="deldia">Oferta exclusiva:</label>
                     <input type="checkbox" name="deldia" {{ $oferta->deldia == 1 ? "checked='checked'" : ''}}> 
                 </div>
             </div>        
