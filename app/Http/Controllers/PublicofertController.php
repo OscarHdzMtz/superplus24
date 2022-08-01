@@ -64,8 +64,10 @@ class PublicofertController extends Controller
     {
         /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
-        $actualFin = Carbon::yesterday();          
-        $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>=', $actualFin)->get();
+        $actualFin = Carbon::yesterday(); 
+        /* return $actualFin; */
+
+        $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
 
         /* SLIDER */
         $slider = Slidermain::OrderBy('created_at','DESC')
