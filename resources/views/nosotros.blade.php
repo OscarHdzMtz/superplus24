@@ -77,8 +77,8 @@
                             class="fas fa-phone"></i>CONTACTANOS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
-                        class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>FACTURACION</a>
+                    <a href="/facturacion" class="nav-link" href="javascript:void(0);"><i
+                            class="fas fa-phone"></i>FACTURACION</a>
                 </li>
             </ul>
         </div>

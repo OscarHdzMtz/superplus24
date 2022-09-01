@@ -1,21 +1,7 @@
 @extends('layouts.fronted.product-details')
 @section('redes')
 <div class="red">
-    <div id="facebook">
-        <a href="https://www.youtube.com/channel/UCuRgEjJgi9iZFCYVSASpXDw" target="none" class="fab fa-facebook-f "></a>
-    </div>
-    <div id="instagram">
-        <a href="https://www.youtube.com/channel/UCuRgEjJgi9iZFCYVSASpXDw" target="none" class="fab fa-instagram"></a>
-    </div>
-    <div id="twiter">
-        <a href="" target="none" class="fab fa-twitter-square"></a>
-    </div>
-    <div id="whatsaap">
-        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-whatsapp"></a>
-    </div>
-    <!--<div id="linkeding">
-        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-    </div>-->
+  
 </div>
 @endsection
 @section('navbar_top')
@@ -28,7 +14,7 @@
             </div>
             <div class="headcont">
                 <i class="fas fa-2x fa-envelope messenge"></i>
-                jldm605@gmail.com
+                @gmail.ccom
             </div>
         </div>
     </div>
@@ -38,7 +24,7 @@
     <header>
     <a href="#" class="logo">
         <h2 style="color: white" class="imgtamaño">SUPERPLUS</h2>
-        <!--<img  class="imgtamaño" src="{{ asset('img/jldm.png')}}" alt="JLDM ! Proyects">-->
+        <!--<img  class="imgtamaño" src="{{ asset('img/jldm.png')}}" alt="">-->
     </a>
     <div class="menu-toggle" ></div>
         <nav>
@@ -102,11 +88,11 @@
     <!-- Product Pricing -->
     <h3>Mas Información</h3>
     <div class="product-price">
-            <a target="none" href="https://wa.me/51987456321?text=Hola+interesad%40+en+el+Producto%3A+{{$producto->extract}}" class="btn btn-success  btn-lg mt-2">
+            <a target="none" href="https://wa.me/9531382693?text=Hola+interesad%40+en+el+Producto%3A+{{$producto->extract}}" class="btn btn-success  btn-lg mt-2">
                 <i class="fab fa-whatsapp mr-2"></i>
             </a>
     </div>
-    <a href="mailto:jdiaz11@autonoma.edu.pe" class="btn btn-info  btn-lg mt-2">
+    <a href="correo@gmail.com" class="btn btn-info  btn-lg mt-2">
         <i class="fas fa-envelope-open-text mr-2"></i></a>
     </div>
 </main><br><br>
@@ -124,7 +110,7 @@
 @section('footer')
 <footer class="footer">
     <div class="l-footer">
-        <!--<img  class="footer_img" src="{{asset('img/SuperPlus.png')}}" alt="JLDM | Proyectos">-->
+        <!--<img  class="footer_img" src="{{asset('img/SuperPlus.png')}}" alt="">-->
         <h2 style="color: white" class="footer_img">JLDM</h2>
     <p>Hola Soy SuperPlus diseñador web esta pagina web esta totalmente gratis para que puedan implementar a algun proyecto universitario la unica de
         condicon de uso es que mejoren algo a esta pagina web para que asi fortalezcan sus conocimientos.
@@ -136,7 +122,7 @@
                 <ul class="box">
                     <li class="button_social">
                         <i class="fab mr-2 fa-facebook"></i>
-                        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="_blank">Facebook</a>
+                        <a href="" target="_blank">Facebook</a>
                     </li>
                     <li class="button_social">
                         <i class="fab mr-2 fa-twitter"></i>
@@ -144,11 +130,11 @@
                     </li>
                     <li class="button_social">
                         <i class="fab mr-2 fa-instagram"></i>
-                        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="_blank">Instagram</a>
+                        <a href="" target="_blank">Instagram</a>
                     </li>
                     <li class="button_social">
                         <i class="fab mr-2 fa-linkedin-in"></i>
-                        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="_blank">Linkedin</a>
+                        <a href="" target="_blank">Linkedin</a>
                     </li>
                 </ul>
             </li>
@@ -167,7 +153,7 @@
                 </li>
         </ul>
         <div class="b-footer">
-            <p>Todos los Derechos reservados by <a href="https://josediazmirano.github.io/SuperPlus/" target="_blank">©SuperPlus-2020</a></p>
+            <p>Todos los Derechos reservados by <a href="" target="_blank">©SuperPlus-2020</a></p>
         </div>
 </footer>
 @endsection

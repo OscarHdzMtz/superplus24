@@ -57,6 +57,9 @@ Route::get('/mapa', function () {
     return view('mapa');
 });
 
+Route::get('/facturacion', function(){
+    return view("facturacion");
+});
 
 
 Auth::routes();

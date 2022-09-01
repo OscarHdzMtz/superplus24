@@ -12,10 +12,7 @@
     </div>
     <div id="whatsaap">
         <a href="" target="none" class="fab fa-whatsapp"></a>
-    </div>
-    <!--<div id="linkeding">
-        <a href="https://www.linkedin.com/in/jose-diaz-mira/" target="none" class="fab fa-linkedin"></a>
-    </div>-->
+    </div>   
 </div>
 @endsection
 @section('navbar_top')
@@ -59,8 +56,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="hero-text">
-                        <h4>PAGINA <span>WEB</span></h4>
+                    <div class="hero-text">                        
 					    <br><br>
                         <h1 class="tipeo1">VARIEDAD DE PRODUCTOS</h1>
                         <h1 class="tipeo2"><span class="type"></span></h1>
@@ -79,7 +75,7 @@
                 <div class="product-image8">
                     <a href="#">
                         <img  class="pic-1" src="{{asset('/img/productos/'.$producto->image)}}" alt="{{$producto->image}}">
-                        <!--<img class="pic-2" src="https://via.placeholder.com/280x300/FFF5EE/000000">-->
+                        <!--<img class="pic-2" src="">-->
                     </a>
                     <ul class="social">
                         <li><a href="" class="fa fa-search"></a></li>
@@ -103,7 +99,7 @@
 @section('footer')
 <footer class="footer">
     <div class="l-footer">
-        <!--<img  class="footer_img" src="{{asset('img/SuperPlus.png')}}" alt="JLDM | Proyectos">-->
+        <!--<img  class="footer_img" src="{{asset('img/SuperPlus.png')}}" alt="">-->
         <h2 style="color: white" class="footer_img">Super</h2>
     <p>
     </p>

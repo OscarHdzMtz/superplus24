@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpleosettingsTable extends Migration
+class CreateFacturacionPagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateEmpleosettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('empleosettings', function (Blueprint $table) {
+        Schema::create('facturacion_pages', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id");            
+            $table->integer("user_id");
             $table->string('label');
             $table->string('titulo');
             $table->string('numero')->nullable();
             $table->string('subtitulo')->nullable();
             $table->longText('description');
-            $table->string('image')->nullable(); 
-            $table->string('imgBanner')->nullable();
+            $table->string('image')->nullable();
             $table->string('icono')->nullable();
-            $table->string('imghover')->nullable();             
+            $table->string('imghover')->nullable();            
             $table->integer('orden')->nullable();                       
             $table->boolean('status')->nullable();
             $table->timestamps();
@@ -38,6 +37,6 @@ class CreateEmpleosettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empleosettings');
+        Schema::dropIfExists('facturacion_pages');
     }
 }
