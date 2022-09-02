@@ -16,12 +16,13 @@ class CreateFacturacionPagesTable extends Migration
         Schema::create('facturacion_pages', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id");
-            $table->string('label');
-            $table->string('titulo');
+            $table->string('label')->nullable();
+            $table->string('titulo')->nullable();
             $table->string('numero')->nullable();
             $table->string('subtitulo')->nullable();
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('imgBanner')->nullable();
             $table->string('icono')->nullable();
             $table->string('imghover')->nullable();            
             $table->integer('orden')->nullable();                       

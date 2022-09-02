@@ -61,7 +61,6 @@ Route::get('/facturacion', function(){
     return view("facturacion");
 });
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -82,3 +81,4 @@ Route::resource('/vacantes', 'VacanteController')->middleware('auth');
 Route::resource('/configuracion', 'IndexsettingController')->middleware('auth');
 Route::resource('/ajustesempleo', 'EmpleosettingController')->middleware('auth');
 Route::resource('/politicaprivacidad', 'PoliticaprivacidadController')->middleware('auth');
+Route::resource('/facturacion', 'FacturacionPageController')->middleware('auth');
