@@ -307,7 +307,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item admin">
-                                    <a href="{{ url('facturacion') }}"
+                                    <a href="{{ url('facturacionPlus') }}"
                                         class="{{ Request::path() === 'facturacion' ? 'nav-link active' : 'nav-link' }}">
                                         <i class="text-warning fas fa-file-image"></i>
                                         <p>

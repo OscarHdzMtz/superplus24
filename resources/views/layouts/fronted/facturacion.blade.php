@@ -15,7 +15,8 @@
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
-    <title>facturacion | SuperPlus 24H</title>
+    <title>facturacion</title>
+    <title>facturar</title>
 
     <!-- Fonts-->
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
@@ -35,7 +36,7 @@
     <section {{-- id="headerSection_promo" --}}>
         @yield('navbar_top')
         @yield('navbar')
-        @yield('banner')
+        {{-- @yield('banner') --}}
         @yield('Content_messege')
     </section>
     {{-- @yield('cards_service') --}}

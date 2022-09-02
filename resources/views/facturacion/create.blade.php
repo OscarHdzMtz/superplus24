@@ -22,7 +22,7 @@
 </div>
 
 {{-- MODAL BANNER --}}
-{!! Form::open(['url' => 'facturacion', 'files' => 'true']) !!}
+{!! Form::open(['url' => 'facturacionPlus', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">
@@ -72,7 +72,7 @@
 
 
 {{-- MODAL TITULO --}}
-{!! Form::open(['url' => 'facturacion', 'files' => 'true']) !!}
+{!! Form::open(['url' => 'facturacionPlus', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalTituloFacturacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">
@@ -112,7 +112,7 @@
 
 
 {{-- MODAL SUBTITULO --}}
-{!! Form::open(['url' => 'facturacion', 'files' => 'true']) !!}
+{!! Form::open(['url' => 'facturacionPlus', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalSubTituloFacturacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">
@@ -153,7 +153,7 @@
 
 
 {{-- MODAL ImagenTextio --}}
-{!! Form::open(['url' => 'facturacion', 'files' => 'true']) !!}
+{!! Form::open(['url' => 'facturacionPlus', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalImagenTexto" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">
@@ -201,7 +201,7 @@
 </div>
 
 {{-- MODAL Crear Boton --}}
-{!! Form::open(['url' => 'facturacion', 'files' => 'true']) !!}
+{!! Form::open(['url' => 'facturacionPlus', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalCreateBoton" tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">

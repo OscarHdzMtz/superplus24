@@ -8,6 +8,7 @@ use App\Models\publicofert;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\FacturacionPageController;
 use App\Http\Controllers\MiempresaController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\IndexsettingController;
@@ -56,10 +57,7 @@ Route::get('categorias/{slug}',[
 Route::get('/mapa', function () {
     return view('mapa');
 });
-
-Route::get('/facturacion', function(){
-    return view("facturacion");
-});
+Route::get('/facturacion', [FacturacionPageController::class, 'indexFrontEnd']);
 
 Auth::routes();
 
@@ -81,4 +79,4 @@ Route::resource('/vacantes', 'VacanteController')->middleware('auth');
 Route::resource('/configuracion', 'IndexsettingController')->middleware('auth');
 Route::resource('/ajustesempleo', 'EmpleosettingController')->middleware('auth');
 Route::resource('/politicaprivacidad', 'PoliticaprivacidadController')->middleware('auth');
-Route::resource('/facturacion', 'FacturacionPageController')->middleware('auth');
+Route::resource('/facturacionPlus', 'FacturacionPageController')->middleware('auth');

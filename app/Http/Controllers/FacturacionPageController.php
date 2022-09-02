@@ -13,6 +13,11 @@ class FacturacionPageController extends Controller
         $getFacturacion =  FacturacionPage::orderby('orden','ASC')->get();
         return view('facturacion.index', compact('getFacturacion'));
     }
+    public function indexFrontEnd()    
+    {
+        $getFacturacion =  FacturacionPage::orderby('orden','ASC')->get();    
+        return view('facturacion', compact('getFacturacion'));
+    }
 
     public function store(Request $request){
         $facturacionadd = new FacturacionPage();
@@ -28,7 +33,7 @@ class FacturacionPageController extends Controller
             $facturacionadd->image = $file->getClientOriginalName();
         }        
         $facturacionadd->save();
-        return redirect('facturacion');
+        return redirect('facturacionPlus');
     }
 
     public function update(Request $request, $id){
@@ -46,7 +51,7 @@ class FacturacionPageController extends Controller
             $facturacionadd->image = $file->getClientOriginalName();
         }        
         $facturacionadd->update();
-        return redirect('facturacion');
+        return redirect('facturacionPlus');
     }
     public function destroy($id)
     {
@@ -54,7 +59,7 @@ class FacturacionPageController extends Controller
              //
              $facturacionadd = FacturacionPage::findOrFail($id);
              $facturacionadd->delete();
-             return redirect('facturacion');
+             return redirect('facturacionPlus');
     }
  
 }

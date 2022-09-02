@@ -100,7 +100,7 @@
         @elseif($setFacturacion->label == 'boton')
             <div>
                 {{-- <h5>CONOCE</h5> --}}
-                <div class="container">
+                <div class="container text-center justify-content-md-center">
                     <div class="">
                         <a style="background: #003BAA; color: blanchedalmond" href="" class="btn_modal_wel mt-5" data-toggle="modal"
                         data-target=".{{ $setFacturacion->subtitulo }}">{{ $setFacturacion->titulo }}</a>
