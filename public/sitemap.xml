@@ -24,5 +24,10 @@
         <loc>https://superplus24horas.com/contact</loc>
         <lastmod>2022-07-09T17:50:23-05:00</lastmod>        
         <priority>0.8</priority>
+    </url> 
+    <url>
+        <loc>https://superplus24horas.com/facturacion</loc>
+        <lastmod>2022-07-09T17:50:23-05:00</lastmod>        
+        <priority>0.8</priority>
     </url>    
 </urlset>
