@@ -67,7 +67,7 @@
             </li>   
             <li class="nav-item">
                 <a href="/facturacion" class="nav-link" href="javascript:void(0);"><i
-                        class="fas fa-phone"></i>FACTURACION</a>
+                        class="far fa-copy"></i>FACTURACION</a>
             </li>
         </ul>
     </div>
