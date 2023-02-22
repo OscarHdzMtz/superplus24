@@ -12,6 +12,7 @@ use App\Http\Controllers\FacturacionPageController;
 use App\Http\Controllers\MiempresaController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\IndexsettingController;
+use App\Http\Controllers\CrearCuponesController;
 use App\Models\Vacante;
 
 /*
@@ -80,3 +81,4 @@ Route::resource('/configuracion', 'IndexsettingController')->middleware('auth');
 Route::resource('/ajustesempleo', 'EmpleosettingController')->middleware('auth');
 Route::resource('/politicaprivacidad', 'PoliticaprivacidadController')->middleware('auth');
 Route::resource('/facturacionPlus', 'FacturacionPageController')->middleware('auth');
+Route::resource('/crearCupones', 'CrearCuponesController')->middleware('auth');

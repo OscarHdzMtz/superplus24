@@ -68,6 +68,9 @@ class PublicofertController extends Controller
         /* return $actualFin; */
 
         $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
+        //EJEMPLOS DE CONSULTAS JOIN
+        //$promo = Publicoferts::join('role_user', 'Publicoferts.user_id' , '=', 'role_user.user_id')->join('users', 'role_user.user_id', '=', 'users.id')->select('Publicoferts.titulo', 'users.name')->get();
+
 
         /* SLIDER */
         $slider = Slidermain::OrderBy('created_at','DESC')
@@ -77,7 +80,7 @@ class PublicofertController extends Controller
 
           /* obtener politicas de privacidad */
           $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
-
+        //return $promo;
         /* retorna la vista y le pasa las promociones de la base de datos */
         return view('promociones', compact('promo', 'slider', 'politicaprivacidad'));
         /* return $fechasistema; */

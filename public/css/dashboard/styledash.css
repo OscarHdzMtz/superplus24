@@ -489,6 +489,8 @@
   letter-spacing: 0.5px;
   border-radius: 25px;
   transition: 0.3s;
+  border-color: #21c87a;
+  text-align: center;
 }
 .empresa_input::placeholder {
   color: #888888;
@@ -500,6 +502,21 @@ textarea.empresa_input{
   border-radius: 22px;
   resize: none;
   overflow: auto;
+}
+
+.empresa_btn{
+  width: 100%;
+  outline: none;
+  border: 2px solid #eeeeee;  
+  padding: 0.6rem 1.2rem;
+  color: #eeeeee;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+  border-color: #21c87a;
+  text-align: center;
 }
 /* FIN EMPRESA FORM */
 

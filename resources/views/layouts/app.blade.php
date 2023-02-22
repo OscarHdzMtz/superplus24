@@ -14,8 +14,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Font Awesome Icons LOCAL VERSION ANTERIOR-->
+    {{-- <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free-6.3.0-web/css/all.min.css') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -312,6 +313,15 @@
                                         <i class="text-warning fas fa-file-image"></i>
                                         <p>
                                             Facturacion
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item admin">
+                                    <a href="{{ url('crearCupones') }}"
+                                        class="{{ Request::path() === 'crearcupones' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-file-image"></i>
+                                        <p>
+                                            Crear Cupones
                                         </p>
                                     </a>
                                 </li>
