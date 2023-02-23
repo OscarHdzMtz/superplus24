@@ -13,6 +13,8 @@ use App\Http\Controllers\MiempresaController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\IndexsettingController;
 use App\Http\Controllers\CrearCuponesController;
+use App\Http\Controllers\GenerarCuponesClientesController;
+use App\Models\GenerarCuponesClientes;
 use App\Models\Vacante;
 
 /*
@@ -39,6 +41,10 @@ Route::get('/empleo', [VacanteController::class, 'setvacante']);
 /* Ruta de contactanos para el envio de correo*/
 Route::get('/contact', [ContactanosController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactanosController::class, 'store'])->name('contact.store');
+
+/* Route::get('/cupones', [GenerarCuponesClientesController::class, 'index'])->name('cupones');
+Route::put('/cupones', [GenerarCuponesClientesController::class, 'store'])->name('cupones.store'); */
+Route::resource('cupones','GenerarCuponesClientesController');
 
 
 Route::get('productos/{slug}',

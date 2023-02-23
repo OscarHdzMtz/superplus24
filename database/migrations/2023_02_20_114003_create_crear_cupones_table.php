@@ -22,7 +22,7 @@ class CreateCrearCuponesTable extends Migration
             $table->date("fechaInicio");
             $table->date("fechaFin");            
             $table->integer("contadorCodigoDeBarras"); 
-            $table->longText("valorCodigoDeBarras")->l; 
+            $table->longText("valorCodigoDeBarras"); 
             $table->integer("inicioDeRangoGenerarCodigoDeBarras")->nullable(); 
             $table->integer("finDeRangoGenerarCodigoDeBarras")->nullable(); 
             $table->boolean('status')->nullable();            
