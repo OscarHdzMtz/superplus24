@@ -24,7 +24,12 @@ class CreateGenerarCuponesClientesTable extends Migration
             $table->string("pais")->nullable(); 
             $table->string("latLong")->nullable(); 
             $table->string("direccionMac")->nullable(); 
-            $table->string("tipoNavegador"); 
+            $table->string("correo")->nullable(); 
+            $table->string("numCelular")->nullable(); 
+            $table->string("tipoDeDispositivo")->nullable(); 
+            $table->string("modeloDeDispositivo")->nullable(); 
+            $table->string("tipoNavegador")->nullable(); 
+            $table->string("adicional"); 
             $table->boolean("status")->nullable(); 
             $table->timestamps();
         });

@@ -16,8 +16,10 @@ class CreateCrearCuponesTable extends Migration
         Schema::create('crear_cupones', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->integer("user_id");
+            $table->integer("configuracionCodigoBarras_id");
             $table->string("titulo");
-            $table->string("description")->nullable();
+            $table->string("subtitulo")->nullable();
+            $table->string("description")->nullable();            
             $table->string("image");
             $table->date("fechaInicio");
             $table->date("fechaFin");            
@@ -25,8 +27,12 @@ class CreateCrearCuponesTable extends Migration
             $table->longText("valorCodigoDeBarras"); 
             $table->integer("inicioDeRangoGenerarCodigoDeBarras")->nullable(); 
             $table->integer("finDeRangoGenerarCodigoDeBarras")->nullable(); 
+            $table->integer("orden")->nullable(); 
             $table->boolean('status')->nullable();            
             $table->string("btnCupones")->nullable();
+            $table->string("adicional")->nullable();
+            $table->string("rutaPagina")->nullable();
+            $table->longText("politicaDeUso")->nullable();
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')
                   ->references('id')

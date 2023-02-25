@@ -79,7 +79,7 @@
                                 {!! Form::close() !!}
                             </td>
                             <td>
-                                <img src="{{ asset('/img/ofertas/' . $cupones->image) }}" alt="{{ $cupones->image }}"
+                                <img src="{{ asset('/img/cupones/' . $cupones->image) }}" alt="{{ $cupones->image }}"
                                     width="150" height="150">
                             </td>
                             <td>{{ $cupones->titulo }}</td>                         

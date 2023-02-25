@@ -53,7 +53,7 @@ class CrearCuponesController extends Controller
         $getTableCrearCupones->description = request('description');
         if ($request->hasFile('image')) {
             $file = $request->image;
-            $file->move(public_path() . '/img/ofertas', $file->getClientOriginalName());
+            $file->move(public_path() . '/img/cupones', $file->getClientOriginalName());
             $getTableCrearCupones->image = $file->getClientOriginalName();
         }      
         if ($request->valorCodigoDeBarras == "") {
@@ -118,7 +118,7 @@ class CrearCuponesController extends Controller
         $cupones->description = request('description');
         if ($request->hasFile('image')) {
             $file = $request->image;
-            $file->move(public_path() . '/img/ofertas', $file->getClientOriginalName());
+            $file->move(public_path() . '/img/cupones', $file->getClientOriginalName());
             $cupones->image = $file->getClientOriginalName();
         }
         $cupones->fechaInicio = request('fechaInicio');
@@ -136,8 +136,8 @@ class CrearCuponesController extends Controller
     public function destroy($id)
     {
         $cupones = CrearCupones::findOrFail($id);    
-        if(file_exists(public_path('img/ofertas/' . $cupones->image)) AND !empty($cupones->image)){
-            unlink(public_path('img/ofertas/' . $cupones->image));
+        if(file_exists(public_path('img/cupones/' . $cupones->image)) AND !empty($cupones->image)){
+            unlink(public_path('img/cupones/' . $cupones->image));
             $cupones->delete();
         }
         try{

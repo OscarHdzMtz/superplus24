@@ -44,7 +44,7 @@ Route::post('/contact', [ContactanosController::class, 'store'])->name('contact.
 
 /* Route::get('/cupones', [GenerarCuponesClientesController::class, 'index'])->name('cupones');
 Route::put('/cupones', [GenerarCuponesClientesController::class, 'store'])->name('cupones.store'); */
-Route::resource('cupones','GenerarCuponesClientesController');
+Route::resource('/cupones','GenerarCuponesClientesController');
 
 
 Route::get('productos/{slug}',

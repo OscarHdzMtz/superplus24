@@ -6,16 +6,17 @@ use Illuminate\Http\Request;
 
 class Utilerias extends Controller
 {
-    public function obtenerMacCliente(){
+    public function obtenerMacCliente()
+    {
         $MAC = exec('getmac');
-		// Almacenando el valor 'getmac' en $MAC
-		// Actualización del valor $MAC usando la función strtok, 
-		// strtok se usa para dividir la cadena en tokens
-		// el carácter dividido de strtok se define como un espacio
-		// porque getmac devuelve el nombre del transporte después
-		// Dirección MAC 
-		//Nota: este código no funcionará en el IDE en línea, porque ‘getmac’ es un comando CMD. Intente ejecutarlo en localhost.
-		$MAC = strtok($MAC, ' ');
+        // Almacenando el valor 'getmac' en $MAC
+        // Actualización del valor $MAC usando la función strtok, 
+        // strtok se usa para dividir la cadena en tokens
+        // el carácter dividido de strtok se define como un espacio
+        // porque getmac devuelve el nombre del transporte después
+        // Dirección MAC 
+        //Nota: este código no funcionará en el IDE en línea, porque ‘getmac’ es un comando CMD. Intente ejecutarlo en localhost.
+        $MAC = strtok($MAC, ' ');
         return $MAC;
     }
     function saber_navegador()
@@ -39,34 +40,72 @@ class Utilerias extends Controller
             return 'Other';
     }
 
-    function IPLocalClientes(){        
+    function IPLocalClientes()
+    {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
         } else {
-             $ip = $_SERVER['REMOTE_ADDR'];
+            $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
     }
-    function getUserIpAddress() {
+    function validarDisp()
+    {
+        $tablet_browser = 0;
+        $mobile_browser = 0;
+        $body_class = 'desktop';
 
-        foreach ( [ 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR' ] as $key ) {
-    
-            // Comprobamos si existe la clave solicitada en el array de la variable $_SERVER 
-            if ( array_key_exists( $key, $_SERVER ) ) {
-    
-                // Eliminamos los espacios blancos del inicio y final para cada clave que existe en la variable $_SERVER 
-                foreach ( array_map( 'trim', explode( ',', $_SERVER[ $key ] ) ) as $ip ) {
-    
-                    // Filtramos* la variable y retorna el primero que pase el filtro
-                    if ( filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) !== false ) {
-                        return $ip;
-                    }
-                }
+        if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+            $tablet_browser++;
+            $body_class = "tablet";
+        }
+
+        if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android|iemobile)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+            $mobile_browser++;
+            $body_class = "mobile";
+        }
+
+        if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']), 'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
+            $mobile_browser++;
+            $body_class = "mobile";
+        }
+
+        $mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));
+        $mobile_agents = array(
+            'w3c ', 'acs-', 'alav', 'alca', 'amoi', 'audi', 'avan', 'benq', 'bird', 'blac',
+            'blaz', 'brew', 'cell', 'cldc', 'cmd-', 'dang', 'doco', 'eric', 'hipt', 'inno',
+            'ipaq', 'java', 'jigs', 'kddi', 'keji', 'leno', 'lg-c', 'lg-d', 'lg-g', 'lge-',
+            'maui', 'maxo', 'midp', 'mits', 'mmef', 'mobi', 'mot-', 'moto', 'mwbp', 'nec-',
+            'newt', 'noki', 'palm', 'pana', 'pant', 'phil', 'play', 'port', 'prox',
+            'qwap', 'sage', 'sams', 'sany', 'sch-', 'sec-', 'send', 'seri', 'sgh-', 'shar',
+            'sie-', 'siem', 'smal', 'smar', 'sony', 'sph-', 'symb', 't-mo', 'teli', 'tim-',
+            'tosh', 'tsm-', 'upg1', 'upsi', 'vk-v', 'voda', 'wap-', 'wapa', 'wapi', 'wapp',
+            'wapr', 'webc', 'winw', 'winw', 'xda ', 'xda-'
+        );
+
+        if (in_array($mobile_ua, $mobile_agents)) {
+            $mobile_browser++;
+        }
+
+        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'opera mini') > 0) {
+            $mobile_browser++;
+            //Check for tablets on opera mini alternative headers
+            $stock_ua = strtolower(isset($_SERVER['HTTP_X_OPERAMINI_PHONE_UA']) ? $_SERVER['HTTP_X_OPERAMINI_PHONE_UA'] : (isset($_SERVER['HTTP_DEVICE_STOCK_UA']) ? $_SERVER['HTTP_DEVICE_STOCK_UA'] : ''));
+            if (preg_match('/(tablet|ipad|playbook)|(android(?!.*mobile))/i', $stock_ua)) {
+                $tablet_browser++;
             }
         }
-    
-        return '?'; // Retornamos '?' si no hay ninguna IP o no pase el filtro
-    } 
+        if ($tablet_browser > 0) {
+            // Si es tablet has lo que necesites
+            print 'es tablet';
+        } else if ($mobile_browser > 0) {
+            // Si es dispositivo mobil has lo que necesites
+            print 'es un mobil';
+        } else {
+            // Si es ordenador de escritorio has lo que necesites
+            print 'es un ordenador de escritorio';
+        }
     }
+}

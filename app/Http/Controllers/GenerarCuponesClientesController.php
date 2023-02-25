@@ -108,6 +108,10 @@ class GenerarCuponesClientesController extends Controller
 		//eliminar espacios vacios el inicio y final
 		$PublicIP = trim($ip_address);
         
+        $nombreCupon = $getcrearCupones->titulo;
+        $nombreImagenCupon= $getcrearCupones->image;
+        //$detect = new \Detection\MobileDetect;
+        //$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
 
         if ($getcrearCupones->contadorCodigoDeBarras <= $getcrearCupones->finDeRangoGenerarCodigoDeBarras) {
             $cuponGenerado = $getcrearCupones->valorCodigoDeBarras . $getcrearCupones->contadorCodigoDeBarras;
@@ -116,10 +120,10 @@ class GenerarCuponesClientesController extends Controller
             $getcrearCupones->update();  
         } else {
             $cuponGenerado = "Ya no hay cupones por generar";
-        };
-        
-      
-        return "CUPON -- " . $cuponGenerado . " -- GENERADO"; 
+        };        
+        //return $deviceType;
+        //return " CUPON -- " . $cuponGenerado . " -- GENERADO " . $utilerias->validarDisp() . " CON IP_PUBLICA " .$PublicIP; 
+        return redirect('cupones')->with('info', 'Informacion enviada a Superplus')->with('cupongenerado', $cuponGenerado)->with('nombreCupon', $nombreCupon)->with('nombreImagenCupon', $nombreImagenCupon);
     }
 
     /**

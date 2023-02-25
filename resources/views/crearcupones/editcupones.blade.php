@@ -54,7 +54,7 @@
                                 <br>                               
                                 {{ Form::file('image') }}
                                 @if ($cupones->image != '')
-                                    <img src="{{ asset('/img/ofertas/' . $cupones->image) }}" alt="{{ $cupones->titulo }}"
+                                    <img src="{{ asset('/img/cupones/' . $cupones->image) }}" alt="{{ $cupones->titulo }}"
                                         height="300px" width="50px" class="card-img-top">
                                 @endif
                             </div>
