@@ -16,7 +16,7 @@ class CreateCrearCuponesTable extends Migration
         Schema::create('crear_cupones', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->integer("user_id");
-            $table->integer("configuracionCodigoBarras_id");
+            $table->integer("configuracionCodigoBarras_id")->nullable();
             $table->string("titulo");
             $table->string("subtitulo")->nullable();
             $table->longText("description")->nullable();            
@@ -32,16 +32,15 @@ class CreateCrearCuponesTable extends Migration
             $table->string("btnCupones")->nullable();
             $table->string("adicional")->nullable();
             $table->string("rutaPagina")->nullable();
-            $table->longText("politicaDeUso")->nullable();
-            $table->longText("politicaDeUso")->nullable();
-            $table->integer('categoria_id')->unsigned();
-            $table->string('reactivarGeneracionEn')->unsigned();
-            $table->longText('mensaje')->unsigned();
-            $table->string('iconoCupon')->unsigned();
-            $table->string('tipoDeCupon')->unsigned();
-            $table->string('tipoDeCodigoAGenerar')->unsigned();
-            $table->string('nombrePaginaCupon')->unsigned();
+            $table->longText("politicaDeUso")->nullable();                        
+            $table->string('reactivarGeneracionEn')->nullable();
+            $table->longText('mensaje')->nullable();
+            $table->string('iconoCupon')->nullable();
+            $table->string('tipoDeCupon')->nullable();
+            $table->string('tipoDeCodigoAGenerar')->nullable();
+            $table->string('nombrePaginaCupon')->nullable();
             $table->boolean('prioridad')->nullable();            
+            $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')
                   ->references('id')
                   ->on('categorias')
