@@ -19,7 +19,7 @@ class CreateCrearCuponesTable extends Migration
             $table->integer("configuracionCodigoBarras_id");
             $table->string("titulo");
             $table->string("subtitulo")->nullable();
-            $table->string("description")->nullable();            
+            $table->longText("description")->nullable();            
             $table->string("image");
             $table->date("fechaInicio");
             $table->date("fechaFin");            
@@ -33,7 +33,15 @@ class CreateCrearCuponesTable extends Migration
             $table->string("adicional")->nullable();
             $table->string("rutaPagina")->nullable();
             $table->longText("politicaDeUso")->nullable();
+            $table->longText("politicaDeUso")->nullable();
             $table->integer('categoria_id')->unsigned();
+            $table->string('reactivarGeneracionEn')->unsigned();
+            $table->longText('mensaje')->unsigned();
+            $table->string('iconoCupon')->unsigned();
+            $table->string('tipoDeCupon')->unsigned();
+            $table->string('tipoDeCodigoAGenerar')->unsigned();
+            $table->string('nombrePaginaCupon')->unsigned();
+            $table->boolean('prioridad')->nullable();            
             $table->foreign('categoria_id')
                   ->references('id')
                   ->on('categorias')

@@ -120,7 +120,11 @@
     {{-- VALIDAMOS SI LA VARIABLE DE SESION CONTIENE VALOR CUPON Y LOS MOSTRAMOS EN UN MODAL --}}
     @if (session('cupongenerado'))
     @include('modalcupon.viewmodalcupon')        
-    @endif    
+    @endif   
+
+    @if (session('info'))
+    @include('modalcupon.errorModalCupon')   
+    @endif
 @endsection
 
 

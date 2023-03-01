@@ -17,8 +17,7 @@ class CrearCuponesController extends Controller
     public function index()
     {
         //
-        $getCupones = CrearCupones::all();
-        
+        $getCupones = CrearCupones::all();        
         return view('crearcupones.index', compact('getCupones'));
     }
 
