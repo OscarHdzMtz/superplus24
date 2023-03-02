@@ -37,7 +37,7 @@ class GenerarcuponesclientesController extends Controller
         $utilerias = new Utilerias();
         $IPLocalCliente = $utilerias->IPLocalClientes();
         $json     = file_get_contents("http://ipinfo.io/$IPLocalCliente/geo");
-        return $json;
+/*         return $json; */
         $json     = json_decode($json, true);
         $country  = $json['country'];
         $region   = $json['region'];
