@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Generarcuponesclientes;
-use App\Models\Crearcupones;
+use App\Models\GenerarCuponesClientes;
+use App\Models\CrearCupones;
 use App\Http\Controllers\Utilerias;
 use Carbon\Carbon;
 use Hamcrest\DiagnosingMatcher;
@@ -20,7 +20,7 @@ class GenerarcuponesclientesController extends Controller
     {
         //
 
-        $cupones = Crearcupones::orderby('id', 'desc')->select('titulo', 'id', 'description', 'image')->get();
+        $cupones = CrearCupones::orderby('id', 'desc')->select('titulo', 'id', 'description', 'image')->get();
         /* return $cupones; */
         return view('cupones', compact('cupones'));
     }
@@ -33,7 +33,7 @@ class GenerarcuponesclientesController extends Controller
     public function create($PublicIP, $cuponGenerado, $id)
     {
         //
-        $addCuponGenerado = new Generarcuponesclientes();
+        $addCuponGenerado = new GenerarCuponesClientes();
         $utilerias = new Utilerias();
         $IPLocalCliente = $utilerias->IPLocalClientes();
         $json     = file_get_contents("http://ipinfo.io/$IPLocalCliente/geo");
@@ -74,7 +74,7 @@ class GenerarcuponesclientesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Generarcuponesclientes  $Generarcuponesclientes
+     * @param  \App\Models\GenerarCuponesClientes  $Generarcuponesclientes
      * @return \Illuminate\Http\Response
      */
     public function show(Generarcuponesclientes $Generarcuponesclientes)
@@ -85,10 +85,10 @@ class GenerarcuponesclientesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Generarcuponesclientes  $Generarcuponesclientes
+     * @param  \App\Models\GenerarCuponesClientes  $Generarcuponesclientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Generarcuponesclientes $Generarcuponesclientes)
+    public function edit(GenerarCuponesClientes $Generarcuponesclientes)
     {
         //
     }
@@ -97,7 +97,7 @@ class GenerarcuponesclientesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Generarcuponesclientes  $Generarcuponesclientes
+     * @param  \App\Models\GenerarCuponesClientes  $Generarcuponesclientes
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -112,7 +112,7 @@ class GenerarcuponesclientesController extends Controller
         $getCrearcupones = Crearcupones::findOrFail($id);
         $nombreCupon = $getCrearcupones->titulo;
 
-        $consultaCuponesGeneradosClientes = Generarcuponesclientes::where('cupon_id', '=', $id)->get()->toArray();
+        $consultaCuponesGeneradosClientes = GenerarCuponesClientes::where('cupon_id', '=', $id)->get()->toArray();
         /* return $consultaCuponesGeneradosClientes; */
         $CountConsultaCuponesGeneradosClientes = count($consultaCuponesGeneradosClientes);
         for ($buscarIpPublica = 0; $buscarIpPublica < $CountConsultaCuponesGeneradosClientes; $buscarIpPublica++) {
@@ -135,7 +135,7 @@ class GenerarcuponesclientesController extends Controller
 
             if ($IPLocalCliente === $IpLocalBuscarBD and $fechaRegistroCupon <> $fechaActual) {
                 $idCuponBorrar = $consultaCuponesGeneradosClientes[$buscarIpPublica]['id'];
-                $consultaClienteBorrar = Generarcuponesclientes::findOrFail($idCuponBorrar);
+                $consultaClienteBorrar = GenerarCuponesClientes::findOrFail($idCuponBorrar);
                 $consultaClienteBorrar->delete();
             }
         }
@@ -157,10 +157,10 @@ class GenerarcuponesclientesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Generarcuponesclientes  $Generarcuponesclientes
+     * @param  \App\Models\GenerarCuponesClientes  $Generarcuponesclientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Generarcuponesclientes $Generarcuponesclientes)
+    public function destroy(GenerarCuponesClientes $Generarcuponesclientes)
     {
         //
     }
