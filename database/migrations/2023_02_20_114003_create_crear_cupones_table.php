@@ -39,6 +39,7 @@ class CreateCrearCuponesTable extends Migration
             $table->string('tipoDeCupon')->nullable();
             $table->string('tipoDeCodigoAGenerar')->nullable();
             $table->string('nombrePaginaCupon')->nullable();
+            $table->date('fechaRegistro')->nullable();
             $table->boolean('prioridad')->nullable();            
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')

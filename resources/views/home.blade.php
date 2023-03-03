@@ -151,7 +151,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <img style="max-width: 50%; margin-left: 26%" src="{{ asset('img/estaticos/logopalomita.png') }}" alt="SuperPlus24">
+                        <img style="max-width: 50%; margin-left: 26%" src="{{ asset('img/estaticos/logopalomita.png') }}" alt="SuperPlus">
                         <br>
                         <br>
                          <h4 style="text-align: center">Ha Iniciado Sesion de manera correcta</h4>

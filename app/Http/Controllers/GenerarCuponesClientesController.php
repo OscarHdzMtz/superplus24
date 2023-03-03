@@ -34,6 +34,8 @@ class GenerarcuponesclientesController extends Controller
     public function create($PublicIP, $cuponGenerado, $id)
     {
         //
+        $fechaActualgenerarCupon = Carbon::now();
+        $fechaActualgenerarCupon = $fechaActualgenerarCupon->toDateString();
         $addCuponGenerado = new GenerarCuponesClientes();
         $utilerias = new Utilerias();
         $IPLocalCliente = $utilerias->IPLocalClientes();
@@ -59,6 +61,7 @@ class GenerarcuponesclientesController extends Controller
         $addCuponGenerado->direccionMac    = $macCliente;
         $addCuponGenerado->tipoNavegador = $tipoNavegador;
         $addCuponGenerado->direccionIPLocal = $IPLocalCliente;
+        $addCuponGenerado->fechaRegistro = $fechaActualgenerarCupon;
         $addCuponGenerado->save();
     }
 
@@ -130,7 +133,7 @@ class GenerarcuponesclientesController extends Controller
             $diaSiguente = Carbon::tomorrow();
             $diaSiguenteNew = Carbon::createFromFormat('Y-m-d H:i:s', $diaSiguente)->format('d-m-Y');
             $horaRegistroCupon = substr($consultaCuponesGeneradosClientes[$buscarIpPublica]['created_at'], 11, 5);
-            $fechaRegistroCupon = substr($consultaCuponesGeneradosClientes[$buscarIpPublica]['created_at'], 8, 2);
+            $fechaRegistroCupon = substr($consultaCuponesGeneradosClientes[$buscarIpPublica]['fechaRegistro'], 8, 2);
             /* return $fechaRegistroCupon . "_" . $fechaActual . "*" . $consultaCuponesGeneradosClientes[$buscarIpPublica]['created_at']; */
             if ($IPLocalCliente === $IpLocalBuscarBD and $fechaRegistroCupon === $fechaActual) {
                 return redirect('cupones')->with('info', 'Podrá adquirir un nuevo cupón el ')->with('nombreCupon', $nombreCupon)->with('diaSiguente', $diaSiguenteNew);
@@ -140,7 +143,9 @@ class GenerarcuponesclientesController extends Controller
 
             if ($IPLocalCliente === $IpLocalBuscarBD and $fechaRegistroCupon <> $fechaActual) {
                 $idCuponBorrar = $consultaCuponesGeneradosClientes[$buscarIpPublica]['id'];
+
                 $consultaClienteBorrar = GenerarCuponesClientes::findOrFail($idCuponBorrar);
+
                 $consultaClienteBorrar->delete();
             }
         }
@@ -164,7 +169,8 @@ class GenerarcuponesclientesController extends Controller
             }else {
                 $cuponGenerado = $getCrearcupones->valorCodigoDeBarras;                   
             }
-                $this->create($PublicIP, $cuponGenerado, $id);                          
+                $this->create($PublicIP, $cuponGenerado, $id);          
+
                 //VALIDAMOS EL NUMERO QUE LLEVA INCREMENTNDO EL CONTADOR PARA PONER EXPIRADO A LA COLUMNA ADICIONAL CUANODO LLEGUE AL LIMITE DEL RANGO
                 if ($getCrearcupones->contadorCodigoDeBarras < $getCrearcupones->finDeRangoGenerarCodigoDeBarras) {
                     $getCrearcupones->contadorCodigoDeBarras = $getCrearcupones->contadorCodigoDeBarras + 1;

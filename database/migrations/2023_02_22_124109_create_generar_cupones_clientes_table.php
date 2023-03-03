@@ -30,6 +30,7 @@ class CreateGenerarCuponesClientesTable extends Migration
             $table->string("modeloDeDispositivo")->nullable(); 
             $table->string("tipoNavegador")->nullable();             
             $table->string("adicional")->nullable();
+            $table->date('fechaRegistro')->nullable();
             $table->boolean("status")->nullable(); 
             $table->timestamps();
         });
