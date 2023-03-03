@@ -62,7 +62,11 @@ class CrearCuponesController extends Controller
         } else {
             $getTableCrearCupones->valorCodigoDeBarras = request('valorCodigoDeBarras');
         }                
-        $getTableCrearCupones->contadorCodigoDeBarras = request('inicioDeRangoGenerarCodigoDeBarras');
+        if ($request->inicioDeRangoGenerarCodigoDeBarras == "") {
+            $getTableCrearCupones->contadorCodigoDeBarras = 1;    
+        }else {
+            $getTableCrearCupones->contadorCodigoDeBarras = request('inicioDeRangoGenerarCodigoDeBarras');
+        }        
         $getTableCrearCupones->inicioDeRangoGenerarCodigoDeBarras = request('inicioDeRangoGenerarCodigoDeBarras');
         $getTableCrearCupones->finDeRangoGenerarCodigoDeBarras = request('finDeRangoGenerarCodigoDeBarras');        
         $getTableCrearCupones->fechaInicio = request('fechaInicio');

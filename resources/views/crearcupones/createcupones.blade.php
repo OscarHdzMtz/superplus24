@@ -36,7 +36,7 @@
                         </div>                                          
                         <div class="input-container">
                             <textarea name="description" class="empresa_input" id="" placeholder="Descripcion"
-                                onkeyup="countChars(this);" required></textarea>
+                                onkeyup="countChars(this);"></textarea>
                             <p id="charNum" class="text-success text-center">0 caracteres</p>
                         </div>
                         <div class="row col-md-12">                            
