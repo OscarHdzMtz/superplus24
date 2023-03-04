@@ -8,6 +8,7 @@ use App\Http\Controllers\Utilerias;
 use Carbon\Carbon;
 use Hamcrest\DiagnosingMatcher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class GenerarcuponesclientesController extends Controller
 {
@@ -22,7 +23,7 @@ class GenerarcuponesclientesController extends Controller
         $fechaSistema = Carbon::yesterday();   
         $fechaActualSistema  = Carbon::now();
         $cupones = CrearCupones::orderby('id', 'desc')->select('titulo', 'id', 'description', 'image')->where('fechaInicio', '<', $fechaActualSistema)->Where('fechaFin', '>', $fechaSistema)->where('adicional', '=', NULL)->get();
-        /* return $cupones; */
+        /* return $cupones; */        
         return view('cupones', compact('cupones'));
     }
 
@@ -119,6 +120,9 @@ class GenerarcuponesclientesController extends Controller
         /* return $getCrearcupones; */
         $nombreCupon = $getCrearcupones->titulo;
 
+        $nombreCookie = $getCrearcupones->titulo;
+        $valorCookie = $getCrearcupones->id;
+
         $consultaCuponesGeneradosClientes = GenerarCuponesClientes::where('cupon_id', '=', $id)->get()->toArray();
         /* return $consultaCuponesGeneradosClientes; */
         $CountConsultaCuponesGeneradosClientes = count($consultaCuponesGeneradosClientes);
@@ -135,13 +139,17 @@ class GenerarcuponesclientesController extends Controller
             $horaRegistroCupon = substr($consultaCuponesGeneradosClientes[$buscarIpPublica]['created_at'], 11, 5);
             $fechaRegistroCupon = substr($consultaCuponesGeneradosClientes[$buscarIpPublica]['fechaRegistro'], 8, 2);
             /* return $fechaRegistroCupon . "_" . $fechaActual . "*" . $consultaCuponesGeneradosClientes[$buscarIpPublica]['created_at']; */
-            if ($IPLocalCliente === $IpLocalBuscarBD and $fechaRegistroCupon === $fechaActual) {
+            
+            //OBTENEMOS EL VALOR DE LA COOKIE
+            $getvalorCookie = cookie::get($nombreCookie);     
+            $getvalorIDString = strval($getCrearcupones->id);
+            if ($IPLocalCliente === $IpLocalBuscarBD /* and $fechaRegistroCupon === $fechaActual */ and $getvalorCookie === $getvalorIDString) {                
                 return redirect('cupones')->with('info', 'Podrá adquirir un nuevo cupón el ')->with('nombreCupon', $nombreCupon)->with('diaSiguente', $diaSiguenteNew);
             }
             /* return var_dump($consultaCuponesGeneradosClientes[$buscarIpPublica]['direccionIPPublica']) . " es " . " igual " . $PublicIP; */
             /* return redirect('cupones')->with('info', 'ya fue generado, favor de volver a intentarlo en 00:00:00')->with('nombreCupon', $nombreCupon); */
-
-            if ($IPLocalCliente === $IpLocalBuscarBD and $fechaRegistroCupon <> $fechaActual) {
+            
+            if ($IPLocalCliente === $IpLocalBuscarBD /* and $fechaRegistroCupon <> $fechaActual */ and $getvalorCookie === null) {
                 $idCuponBorrar = $consultaCuponesGeneradosClientes[$buscarIpPublica]['id'];
 
                 $consultaClienteBorrar = GenerarCuponesClientes::findOrFail($idCuponBorrar);
@@ -172,16 +180,24 @@ class GenerarcuponesclientesController extends Controller
                 $this->create($PublicIP, $cuponGenerado, $id);          
 
                 //VALIDAMOS EL NUMERO QUE LLEVA INCREMENTNDO EL CONTADOR PARA PONER EXPIRADO A LA COLUMNA ADICIONAL CUANODO LLEGUE AL LIMITE DEL RANGO
-                if ($getCrearcupones->contadorCodigoDeBarras < $getCrearcupones->finDeRangoGenerarCodigoDeBarras) {
+                if ($getCrearcupones->contadorCodigoDeBarras < $getCrearcupones->finDeRangoGenerarCodigoDeBarras or $getCrearcupones->finDeRangoGenerarCodigoDeBarras === null) {
                     $getCrearcupones->contadorCodigoDeBarras = $getCrearcupones->contadorCodigoDeBarras + 1;
                     $getCrearcupones->update();   
                 }elseif ($getCrearcupones->contadorCodigoDeBarras === $getCrearcupones->finDeRangoGenerarCodigoDeBarras){
                     $getCrearcupones->adicional = "expirado";
                     $getCrearcupones->update();
                 }
+                //PROCEDIMIENTO PARA OBTENER EL TIEMPO DE CADUCIDAD DEL COOKIE EN MINUTOS
+                $hora24hr = Carbon::now();
+                $horaString = substr($hora24hr->toTimeString(),0 , 2);
+                $minutosString = substr($hora24hr->toTimeString(),3 , 2);
+                $horasEnMinutos = (24 - $horaString) * 60;
+                $minutosRestantes = 60 - $minutosString;
+                $duracionCookie = $horasEnMinutos + $minutosRestantes;
 
-                return redirect('cupones')->with('cupongenerado', $cuponGenerado)->with('nombreCupon', $nombreCupon)->with('nombreImagenCupon', $nombreImagenCupon);
-            
+                //GUARDAMOS LA COOKIE CON $ID DEL CUPON COMO VALOR
+                Cookie::queue($nombreCookie, $valorCookie, $duracionCookie);                
+                return redirect('cupones')->with('cupongenerado', $cuponGenerado)->with('nombreCupon', $nombreCupon)->with('nombreImagenCupon', $nombreImagenCupon);            
         }
         //return " CUPON -- " . $cuponGenerado . " -- GENERADO " . $utilerias->validarDisp() . " CON IP_PUBLICA " .$PublicIP;         
     }
