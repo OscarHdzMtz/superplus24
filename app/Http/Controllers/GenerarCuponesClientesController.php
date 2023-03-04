@@ -41,9 +41,9 @@ class GenerarcuponesclientesController extends Controller
         $utilerias = new Utilerias();
         $IPLocalCliente = $utilerias->IPLocalClientes();
         //PRODUCCION
-        //$json     = file_get_contents("http://ipinfo.io/$IPLocalCliente/geo");
+        $json     = file_get_contents("http://ipinfo.io/$IPLocalCliente/geo");
         //TESTING
-        $json     = file_get_contents("http://ipinfo.io/$PublicIP/geo");
+        //$json     = file_get_contents("http://ipinfo.io/$PublicIP/geo");
         $json     = json_decode($json, true);
         $country  = $json['country'];
         $region   = $json['region'];
@@ -120,7 +120,7 @@ class GenerarcuponesclientesController extends Controller
         /* return $getCrearcupones; */
         $nombreCupon = $getCrearcupones->titulo;
 
-        $nombreCookie = $getCrearcupones->titulo;
+        $nombreCookie = $getCrearcupones->id;
         $valorCookie = $getCrearcupones->id;
 
         $consultaCuponesGeneradosClientes = GenerarCuponesClientes::where('cupon_id', '=', $id)->get()->toArray();
