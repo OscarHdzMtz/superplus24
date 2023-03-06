@@ -30,14 +30,14 @@
 
 <style>
     .modal-content .modal-header {
-        background: #47c9a2;
+        background: #ffcc00;
         /* border-bottom: none;   */
         display: flex;
         justify-content: center;
         /* margin: -20px -20px 0; */
         /* border-radius: 5px 5px 0 0;
   padding: 35px; */
-        border-color: #47c9a2;
+        border-color: #ffcc00;
     }
 
     .modal-content .modal-footer {        

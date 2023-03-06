@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GenerarCuponesClientes;
 use App\Models\CrearCupones;
 use App\Http\Controllers\Utilerias;
+use App\Models\Politicaprivacidad;
 use Carbon\Carbon;
 use Hamcrest\DiagnosingMatcher;
 use Illuminate\Http\Request;
@@ -19,12 +20,14 @@ class GenerarcuponesclientesController extends Controller
      */
     public function index()
     {
-        //        
+        //    
+        $statusCookie = cookie::get('cookie');
         $fechaSistema = Carbon::yesterday();   
         $fechaActualSistema  = Carbon::now();
         $cupones = CrearCupones::orderby('id', 'desc')->select('titulo', 'id', 'description', 'image')->where('fechaInicio', '<', $fechaActualSistema)->Where('fechaFin', '>', $fechaSistema)->where('adicional', '=', NULL)->get();
+        $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
         /* return $cupones; */        
-        return view('cupones', compact('cupones'));
+        return view('cupones', compact('cupones', 'statusCookie', 'politicaprivacidad'));
     }
 
     /**
@@ -72,10 +75,12 @@ class GenerarcuponesclientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
         //                
-
+        cookie::queue('cookie', 'aceptado', 1440);
+        return redirect('cupones');
+        /* return  cookie::get('prueba'); */
     }
 
     /**
@@ -109,8 +114,12 @@ class GenerarcuponesclientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //        
+        //                
         $utilerias = new Utilerias();
+        $statusCookie = cookie::get('cookie');
+        if ($statusCookie === null) {
+            return redirect('cupones')->with('statusCookie', $statusCookie);
+        }
         $ip_address = file_get_contents('http://checkip.amazonaws.com/');
         //eliminar espacios vacios el inicio y final
         $PublicIP = trim($ip_address);
@@ -211,5 +220,16 @@ class GenerarcuponesclientesController extends Controller
     public function destroy(GenerarCuponesClientes $Generarcuponesclientes)
     {
         //
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\GenerarCuponesClientes  $Generarcuponesclientes
+     * @return \Illuminate\Http\Response
+     */
+    public function activarCookie(Request $request)
+    {
+
     }
 }

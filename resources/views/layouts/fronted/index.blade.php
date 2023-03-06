@@ -45,6 +45,8 @@
             <div class="loader-page"></div>
         </div>
     </div>
+    {{-- MOSTRAR MODAL COOKIE --}}
+    @include('modals.cookies')
     {{-- @yield('redes') --}}
     {{-- <section id="headerSection"> --}}
     @yield('navbar_top')
@@ -150,8 +152,12 @@
             loop: true
         });
     </script>
-    
-    
+    <script>
+        $(document).ready(function() {
+            $('#cookieModal').modal('show');
+        });
+    </script>
+
 </body>
 
 </html>

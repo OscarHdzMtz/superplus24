@@ -125,6 +125,12 @@
     @if (session('info'))
     @include('modalcupon.errorModalCupon')   
     @endif
+
+    @if (empty($statusCookie))
+    @include('modals.cookies')   
+    @endif
+
+    @include('modalPoliticaPrivacidad')
 @endsection
 
 
@@ -217,3 +223,4 @@
    
 </footer> --}}
 @endsection
+<!-- Button trigger modal -->

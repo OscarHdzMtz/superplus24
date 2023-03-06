@@ -1,5 +1,5 @@
  {{-- POLITICAS DE PRIVACIDAD --}}
- <div class="modal fade modal fade politica" tabindex="-1" role="dialog"
+ <div class="modal fade modal fade politica" id="modalPoliticaPrivacidad" tabindex="-1" role="dialog"
  aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
  <div class="modal-dialog modal-xl">
      <div class="modal-content">

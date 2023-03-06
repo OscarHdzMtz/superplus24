@@ -188,7 +188,16 @@
             $("#errorModalCupon").modal("show");
         });
     </script>
-    
+    <script>       
+        $(document).ready(function() {                        
+            $("#modalCookie").modal("show");            
+        });
+        function cerrarModalCookie(){
+            $("#modalCookie").modal("hide");
+            $("#modalPoliticaPrivacidad").modal("show");  
+        }
+    </script>
+
     {{-- SCRIPT DESCARGAR CUPON A PNG --}}
     <script>
         function exportarHTMLaPNG(divId, filename) {
@@ -228,4 +237,5 @@
          }); */
     </script>
 </body>
+
 </html>
