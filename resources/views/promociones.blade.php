@@ -1,20 +1,20 @@
 @extends('layouts.fronted.promociones')
 @section('redes')
-<div class="red">
-    <div id="facebook">
-        <a href="https://www.facebook.com/superplus24horas/" target="none" class="fab fa-facebook-f "></a>
-    </div>
-    <div id="instagram">
-        <a href="https://www.instagram.com/superplus24hrs/" target="none" class="fab fa-instagram"></a>
-    </div>    
-    <div id="whatsaap">
-        <a href="https://vm.tiktok.com/ZMNA67fEu/" target="none" class="fab fa-tiktok"></a>
-    </div>
+    <div class="red">
+        <div id="facebook">
+            <a href="https://www.facebook.com/superplus24horas/" target="none" class="fab fa-facebook-f "></a>
+        </div>
+        <div id="instagram">
+            <a href="https://www.instagram.com/superplus24hrs/" target="none" class="fab fa-instagram"></a>
+        </div>
+        <div id="whatsaap">
+            <a href="https://vm.tiktok.com/ZMNA67fEu/" target="none" class="fab fa-tiktok"></a>
+        </div>
 
-</div>
+    </div>
 @endsection
 @section('navbar_top')
-{{-- <div class="header-top">
+    {{-- <div class="header-top">
     <div class="container d-flex justify-content-between">
         <div class="d-inline-flex ml-auto">
             <div class="headcont">
@@ -28,52 +28,61 @@
         </div>
     </div>
 </div> --}}
-{{-- <div data-aos="zoom-in-down" class="header-top">
+    {{-- <div data-aos="zoom-in-down" class="header-top">
     <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
 </div>  --}}
 @endsection
 @section('navbar')
-<div class="img-fixed">
-    <div {{-- data-aos="zoom-in-down" --}}>
-        <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
-    </div>
-<nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
-    {{-- <a href="#" class="logo">            
+    <div class="img-fixed">
+        <div {{-- data-aos="zoom-in-down" --}}>
+            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        </div>
+        <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
+            {{-- <a href="#" class="logo">            
         <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">
     </a> --}}
-    <a href="#" class="logo">            
-        <img  class="imgtamaño">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <i class="fas fa-bars text-white"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item">
-                <a href="/" class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>INICIO</a>
-            </li>
-            <li class="nav-item active">
-                <a href="/promociones" class="nav-link" href="javascript:void(0);"><i class="fas fa-percentage"></i>PROMOCIONES</a>
-            </li>
-            <li class="nav-item">
-                <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i class="fas fa-check-circle"></i>NOSOTROS</a>
-            </li>
-            <li class="nav-item">
-                <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
-            </li>          
-            <li class="nav-item">
-                <a href="/contact" class="nav-link" href="javascript:void(0);"><i class="fas fa-phone"></i>CONTACTANOS</a>
-            </li>   
-            <li class="nav-item">
-                <a href="/facturacion" class="nav-link" href="javascript:void(0);"><i
-                        class="far fa-copy"></i>FACTURACION</a>
-            </li>
-        </ul>
+            <a href="#" class="logo">
+                <img class="imgtamaño">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-tachometer-alt"></i>INICIO</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="/promociones" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-percentage"></i>PROMOCIONES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i
+                                class="fas fa-check-circle"></i>NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA
+                            DE TRABAJO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link" href="javascript:void(0);"><i
+                                class="fas fa-phone"></i>CONTACTANOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/facturacion" class="nav-link" href="javascript:void(0);"><i
+                                class="far fa-copy"></i>FACTURACION</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-</nav>
-</div>
-        {{-- NAVBAR QUE ESTABA ANTES --}}
+    {{-- NAVBAR QUE ESTABA ANTES --}}
     {{-- <header>
         <a href="#" class="logo">            
             <img  class="imgtamaño" src="{{ asset('dist/img/logo.png')}}" alt="SuperPlus">
@@ -93,7 +102,7 @@
     </header> --}}
 @endsection
 @section('banner')
-{{-- <div class="banner">
+    {{-- <div class="banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -106,25 +115,24 @@
                 </div>
             </div>
         </div>
-    </div> --}}    
+    </div> --}}
     <div class="sombraslider">
-        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">                                       
+        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 @php $i = 1 @endphp
                 @foreach ($slider as $slider)
                     <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                         @php $i++ @endphp
-                        <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}"
-                            alt="First slide">
-                            @if ($slider->description <> null)
+                        <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide">
+                        @if ($slider->description != null)
                             <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
                                 <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
                                 {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
-                              </div> 
-                            @endif                                                                      
+                            </div>
+                        @endif
                     </div>
-                @endforeach             
-            </div>            
+                @endforeach
+            </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -136,36 +144,76 @@
         </div>
 
     </div>
-@endsection 
+@endsection
 
 @section('title')
-<div class="col-12">
-    <h1 align="center" class="textmov"><span class="type"></span></h1>
-		<div class="testimonial-title">
-			<h5>CONOCE</h5>
+    <div class="col-12">
+        <h1 align="center" class="textmov"><span class="type"></span></h1>
+        <div class="testimonial-title">
+            <h5>CONOCE</h5>
             <h3>NUESTRAS PROMOCIONES</h3>
             <hr class="style6">
-	    </div>
-</div>
-<div {{-- data-aos="fade-up"  --}}class="container_cards_promo">    
-    <div class="row_cards_promo">
-        @foreach($promo as $oferta)
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
-                <img id="get_image_promo" class="popou_img_promo"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
-                <div class="text-contentpromo">
-                    {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
-                    {{-- <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3> --}}
-                    {{-- <hr class="style2"> --}}                    
-                </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row d-flex justify-content-between ml-0">
+            <div class="col-lg-12">
+                <form action="{{ url('promociones') }}" method="GET" novalidate="novalidate">
+                    <div class="row">
+                        {{-- <div class="col-lg-4 col-md-4 col-sm-12 p-0 mr-3 mt-3">
+                            <input type="text" class="form-control search-slt" id="keyboard" name="keyboard"
+                                placeholder="Buscar por:">
+                        </div> --}}
+                        <div class="col-lg-8 col-md-10 col-sm-12 p-0 mr-3 mt-3">
+                            <select class="form-control search-slt" id="category_filter" name="category">
+                                <option>Filtre por departamento</option>
+                                @foreach ($categorias as $itemCategoria)
+                                    {{-- <option>                                        
+                                            <p class="text-center">{{ $itemCategoria->name }}</p>                                        
+                                    </option> --}}
+                                    <option value="{{ $itemCategoria->id }}"
+                                        {{ $categoriaBuscar == $itemCategoria->id ? 'selected="selected"' : '' }}>
+                                        {{ $itemCategoria->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 p-0 mr-2 mt-3">
+                            <button type="submit" class="btn btn-danger wrn-btn btn-block">FILTRAR</button>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 p-0 mt-3">
+                            {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}                            
+                            @if ($categoriaBuscar)                                
+                                <a href="{{ url('promociones')}}">
+                                    <i class="btn btn-success wrn-btn btn-block">TODOS</i>
+                                </a> 
+                            @endif                                                        
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        @endforeach 
     </div>
-</div>
+    <div {{-- data-aos="fade-up"  --}}class="container_cards_promo">
+        <div class="row_cards_promo">
+            @foreach ($promo as $oferta)
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
+                        <img id="get_image_promo"
+                            class="popou_img_promo"src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                            alt="{{ $oferta->image }}">
+                        <div class="text-contentpromo">
+                            {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
+                            {{-- <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3> --}}
+                            {{-- <hr class="style2"> --}}
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
-{{-- <div class="principal">
-    @foreach($ofertas as $oferta)
+    {{-- <div class="principal">
+    @foreach ($ofertas as $oferta)
     <div id="contenedor" class="row_p">
         <div id="naranja" class="">
             <img class="popou_img"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
@@ -185,113 +233,118 @@
 </div> --}}
 
 
-{{-- MODAL DONDE SE VA MOSTRAR LAS PROMOCIONES AL DAR CLICK --}}
-<div class="modal fade" id="modalpromo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" data-dismiss="modal">
-      <div class="modal-content"> 
-        {{-- <div class="modal-header">
+    {{-- MODAL DONDE SE VA MOSTRAR LAS PROMOCIONES AL DAR CLICK --}}
+    <div class="modal fade" id="modalpromo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" data-dismiss="modal">
+            <div class="modal-content">
+                {{-- <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          </div> --}}             
-        <div class="modal-body">            
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <img src="" class="set_imagen_promo" style="max-width: 100%; padding-top: 10px" >        
-          {{-- <input style="color: #003baa" type="text" id="textmodal"/><br> --}}                            
-        </div> 
-        {{-- <div class="modal-footer">            
-            <div class="form-group input-group"> --}}                         
-                 {{-- <label style="color: #003baa" for="nombre">Nombre</label><input style="color: #003baa" type="text" id="textmodal"/><br>
+          </div> --}}
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="" class="set_imagen_promo" style="max-width: 100%; padding-top: 10px">
+                    {{-- <input style="color: #003baa" type="text" id="textmodal"/><br> --}}
+                </div>
+                {{-- <div class="modal-footer">            
+            <div class="form-group input-group"> --}}
+                {{-- <label style="color: #003baa" for="nombre">Nombre</label><input style="color: #003baa" type="text" id="textmodal"/><br>
                  <span id="textmodal"></span> --}}
-           {{--  </div>
-        </div>     --}}                    
-      </div>
+                {{--  </div>
+        </div>     --}}
+            </div>
+        </div>
     </div>
-  </div>
 @endsection
 
 
 @section('footer')
-<div style="margin-top: 30px" class="footer-dark">    
-    <footer>        
-        <footer class="new_footer_area bg_color">
-            <div class="box">
-                {{-- <div class="box-sm red"></div> --}}
-                {{-- <div class="box-sm orange"></div> --}}
-                <div class="box-sm blue "></div>
-                {{-- <div class="box-sm green "></div> --}}
-                <div class="box-sm blue "></div>
-                {{-- <div class="box-sm purple"></div> --}}
-                <div class="box-sm blue "></div>
-                <div class="box-sm blue "></div>
-                <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px" src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
-                <div class="box-sm yellow "></div>
-                <div class="box-sm yellow "></div>
-                <div class="box-sm yellow "></div>
-                <div class="box-sm yellow "></div>                
-              </div>
-              <div style="margin-top: -60px" class="footer-basic">
-                <footer data-aos="fade-right" >
-                    <div class="col-md-12 py-0 text-center justify-content-md-center">
-                        <div class="mb-3 flex-center">
-                            <div class="estilo2">
-                                <ul>
-                                    <li>
-                                        <a href="https://www.facebook.com/superplus24horas/" class="" target="_blank">
-                                            <span class="fa-stack fa-lg fa-2x">
-                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                <div class="icono">
-                                                    <span class="fa fa-facebook fa-stack-1x"></span>
-                                                </div>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.instagram.com/superplus24hrs/" class="" target="_blank">
-                                            <span class="fa-stack fa-lg fa-2x">
-                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                <div class="icono">
-                                                    <span class="fab fa-instagram fa-stack-1x"></span>
-                                                </div>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://vm.tiktok.com/ZMNA67fEu/" class="" target="_blank">
-                                            <span class="fa-stack fa-lg fa-2x">
-                                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                <div class="icono">
-                                                    <span class="fab fa-tiktok fa-stack-1x"></span>
-                                                </div>
-                                            </span>
-                                        </a>
-                                    </li>                                   
+    <div style="margin-top: 30px" class="footer-dark">
+        <footer>
+            <footer class="new_footer_area bg_color">
+                <div class="box">
+                    {{-- <div class="box-sm red"></div> --}}
+                    {{-- <div class="box-sm orange"></div> --}}
+                    <div class="box-sm blue "></div>
+                    {{-- <div class="box-sm green "></div> --}}
+                    <div class="box-sm blue "></div>
+                    {{-- <div class="box-sm purple"></div> --}}
+                    <div class="box-sm blue "></div>
+                    <div class="box-sm blue "></div>
+                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px"
+                        src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
+                    <div class="box-sm yellow "></div>
+                    <div class="box-sm yellow "></div>
+                    <div class="box-sm yellow "></div>
+                    <div class="box-sm yellow "></div>
+                </div>
+                <div style="margin-top: -60px" class="footer-basic">
+                    <footer data-aos="fade-right">
+                        <div class="col-md-12 py-0 text-center justify-content-md-center">
+                            <div class="mb-3 flex-center">
+                                <div class="estilo2">
                                     <ul>
+                                        <li>
+                                            <a href="https://www.facebook.com/superplus24horas/" class=""
+                                                target="_blank">
+                                                <span class="fa-stack fa-lg fa-2x">
+                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                    <div class="icono">
+                                                        <span class="fa fa-facebook fa-stack-1x"></span>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/superplus24hrs/" class=""
+                                                target="_blank">
+                                                <span class="fa-stack fa-lg fa-2x">
+                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                    <div class="icono">
+                                                        <span class="fab fa-instagram fa-stack-1x"></span>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://vm.tiktok.com/ZMNA67fEu/" class="" target="_blank">
+                                                <span class="fa-stack fa-lg fa-2x">
+                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                    <div class="icono">
+                                                        <span class="fab fa-tiktok fa-stack-1x"></span>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="/index">Inicio</a></li>
-                        <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>
-                        <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
-                        <li class="list-inline-item"><a href="/contact">Contáctanos</a></li>
-                        <li style="color: black" class="list-inline-item"> <a data-toggle="modal"
-                            data-target=".politica">Política de privacidad</a></li>
-                    </ul>
-                    <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
-                </footer>
-            </div>         
-           
-             <!-- Copyright -->
-             <div class="text-center p-3" style="background-color:#003baa; color: white">
-                <strong> ©{{now()->year}} </strong> 
-                <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
-            </div>
-         <!-- Copyright -->
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="/index">Inicio</a></li>
+                            <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>
+                            <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
+                            <li class="list-inline-item"><a href="/contact">Contáctanos</a></li>
+                            <li style="color: black" class="list-inline-item"> <a data-toggle="modal"
+                                    data-target=".politica">Política de privacidad</a></li>
+                        </ul>
+                        <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
+                    </footer>
+                </div>
 
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color:#003baa; color: white">
+                    <strong> ©{{ now()->year }} </strong>
+                    <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
         </footer>
-    </footer>
-</div>
-@include('modalPoliticaPrivacidad')
-{{-- <footer class="footer">
+    </div>
+    @include('modalPoliticaPrivacidad')
+    {{-- <footer class="footer">
    
 </footer> --}}
 @endsection

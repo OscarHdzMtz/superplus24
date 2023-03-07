@@ -60,14 +60,27 @@ class PublicofertController extends Controller
 
 
     /* muestra las promociones en el apartado de promociones*/
-    public function promo()
+    public function promo(Request $request)
     {
         /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::yesterday(); 
-        /* return $actualFin; */
-
-        $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
+        $idCategory = 0;
+        
+        $categoriasArray = Categorias::all()->toArray();
+        $categoriaBuscar = $request->get('category');        
+        if ($categoriaBuscar <> '' /* AND $categoriaBuscar <> "Filtre por departamento" */) {
+            for ($buscarIdCategory=0; $buscarIdCategory < count($categoriasArray); $buscarIdCategory++) { 
+                $valCategoriaRecorrida = $categoriasArray[$buscarIdCategory]['name'];
+                if ($valCategoriaRecorrida === $categoriaBuscar) {
+                    $idCategory = $categoriasArray[$buscarIdCategory]['id'];
+                }
+            }
+            $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $categoriaBuscar)->get();
+        }else {
+            $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
+        }        
+        
         //EJEMPLOS DE CONSULTAS JOIN
         //$promo = Publicoferts::join('role_user', 'Publicoferts.user_id' , '=', 'role_user.user_id')->join('users', 'role_user.user_id', '=', 'users.id')->select('Publicoferts.titulo', 'users.name')->get();
 
@@ -81,8 +94,9 @@ class PublicofertController extends Controller
           /* obtener politicas de privacidad */
           $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
         //return $promo;
-        /* retorna la vista y le pasa las promociones de la base de datos */
-        return view('promociones', compact('promo', 'slider', 'politicaprivacidad'));
+        /* retorna la vista y le pasa las promociones de la base de datos */        
+        $categorias = Categorias::orderby('name', 'asc')->get();
+        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar'));
         /* return $fechasistema; */
     }
 
