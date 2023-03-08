@@ -92,7 +92,7 @@ class PublicofertController extends Controller
 
         $consulataBDCategorias = Publicoferts::where('fechaInicio', '<=', $actualInicio)
                                 ->where('fechaFin', '>', $actualFin)
-                                ->join('categorias', 'Publicoferts.categoria_id', '=', 'categorias.id')
+                                ->join('categorias', 'publicoferts.categoria_id', '=', 'categorias.id')
                                 ->select('categorias.id', 'categorias.name')->get();                                
         $arrayCategoria = $consulataBDCategorias->toArray();
         //ELIMINAMOS LOS ID_CATEGORIA REPETIDOS en el array
