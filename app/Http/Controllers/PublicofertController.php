@@ -22,11 +22,11 @@ class PublicofertController extends Controller
 {
     public function index(Request $request)
     {
-        if($request){
+        if ($request) {
             $query = trim($request->get('search'));
-            $ofertas = Publicoferts::where('titulo','LIKE','%'. $query.'%')
-            ->orderBy('updated_at','DESC')->get();
-            return view('addpromociones.index',['ofertas' => $ofertas , 'search' => $query]);
+            $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')
+            ->orderBy('updated_at', 'DESC')->get();
+            return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query]);
         }
 
         /* $ofertas = Publicoferts::orderBy('updated_at','DESC')->get(); */
@@ -39,21 +39,18 @@ class PublicofertController extends Controller
         /* varibales */
         $actualInicio = Carbon::today();
         $actualFin = Carbon::today();
-        $ofertas = Publicoferts::where('deldia', '1')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
-        $productos = Productos::Orderby('updated_at','DESC')->get();
-        $proveedores = Proveedores::all();    
-        $sliderindex = Slidermain::OrderBy('created_at','DESC')
-                                    ->where('pagina','LIKE', '%index%')
-                                    ->where('fechaInicio','<=', $actualInicio)
-                                    ->where('fechaFin', '>=', $actualFin)->get(); 
-        /* return $array;       */        
+        $ofertas = Publicoferts::where('deldia', '1')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
+        $productos = Productos::Orderby('updated_at', 'DESC')->get();
+        $proveedores = Proveedores::all();
+        $sliderindex = Slidermain::OrderBy('created_at', 'DESC')
+            ->where('pagina', 'LIKE', '%index%')
+            ->where('fechaInicio', '<=', $actualInicio)
+            ->where('fechaFin', '>=', $actualFin)->get();
         $servicios = Cardservicio::all();
-        $texproduct = Textoproducto::orderBy('updated_at','DESC')->take(1)->get();
-        $gettarjeta = Indexsetting::Orderby('orden', 'ASC')->
-                                    where('label', 'tarjeta')->get();
+        $texproduct = Textoproducto::orderBy('updated_at', 'DESC')->take(1)->get();
+        $gettarjeta = Indexsetting::Orderby('orden', 'ASC')->where('label', 'tarjeta')->get();
         $getitulo = Indexsetting::all();
-        $getimagen = Indexsetting::where('label','imagenfooter')->get();
-        /* obtener politicas de privacidad */
+        $getimagen = Indexsetting::where('label', 'imagenfooter')->get();
         $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
         return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad'));
     }
@@ -62,48 +59,51 @@ class PublicofertController extends Controller
     /* muestra las promociones en el apartado de promociones*/
     public function promo(Request $request)
     {
-        /* promocion ordenada de acuerdo a la fecha creada */
         $actualInicio = Carbon::today();
-        $actualFin = Carbon::yesterday(); 
+        $actualFin = Carbon::yesterday();
         $idCategory = 0;
-        
+
         $categoriasArray = Categorias::all()->toArray();
-        $categoriaBuscar = $request->get('category');        
+        $categoriaBuscar = $request->get('category');
         if ($categoriaBuscar <> '' /* AND $categoriaBuscar <> "Filtre por departamento" */) {
-            for ($buscarIdCategory=0; $buscarIdCategory < count($categoriasArray); $buscarIdCategory++) { 
+            for ($buscarIdCategory = 0; $buscarIdCategory < count($categoriasArray); $buscarIdCategory++) {
                 $valCategoriaRecorrida = $categoriasArray[$buscarIdCategory]['name'];
                 if ($valCategoriaRecorrida === $categoriaBuscar) {
                     $idCategory = $categoriasArray[$buscarIdCategory]['id'];
                 }
             }
-            $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $categoriaBuscar)->get();
-        }else {
-            $promo = Publicoferts::OrderBy('updated_at','DESC')->where('fechaInicio','<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
-        }        
-        
+            $promo = Publicoferts::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $categoriaBuscar)->get();
+        } else {
+            $promo = Publicoferts::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
+        }
+
         //EJEMPLOS DE CONSULTAS JOIN
         //$promo = Publicoferts::join('role_user', 'Publicoferts.user_id' , '=', 'role_user.user_id')->join('users', 'role_user.user_id', '=', 'users.id')->select('Publicoferts.titulo', 'users.name')->get();
 
 
         /* SLIDER */
-        $slider = Slidermain::OrderBy('created_at','DESC')
-        ->where('pagina','LIKE', '%promociones%')
-        ->where('fechaInicio','<=', $actualInicio)
-        ->where('fechaFin', '>=', $actualFin)->get();
+        $slider = Slidermain::OrderBy('created_at', 'DESC')
+            ->where('pagina', 'LIKE', '%promociones%')
+            ->where('fechaInicio', '<=', $actualInicio)
+            ->where('fechaFin', '>=', $actualFin)->get();
 
-          /* obtener politicas de privacidad */
-          $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
-        //return $promo;
-        /* retorna la vista y le pasa las promociones de la base de datos */        
-        $categorias = Categorias::orderby('name', 'asc')->get();
-        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar'));
-        /* return $fechasistema; */
+        /* obtener politicas de privacidad */
+        $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
+
+        $consulataBDCategorias = Publicoferts::where('fechaInicio', '<=', $actualInicio)
+                                ->where('fechaFin', '>', $actualFin)
+                                ->join('categorias', 'Publicoferts.categoria_id', '=', 'categorias.id')
+                                ->select('categorias.id', 'categorias.name')->get();                                
+        $arrayCategoria = $consulataBDCategorias->toArray();
+        //ELIMINAMOS LOS ID_CATEGORIA REPETIDOS en el array
+        $categorias = array_unique($arrayCategoria, SORT_REGULAR);        
+        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar'));        
     }
 
     public function create()
     {
         //
-        $categorias = Categorias::orderBy('id' , 'desc')->pluck('name', 'id');        
+        $categorias = Categorias::orderBy('id', 'desc')->pluck('name', 'id');
         return view('addpromociones.createpromo', compact('categorias'));
     }
 
@@ -151,25 +151,24 @@ class PublicofertController extends Controller
     public function destroy($id)
     {
         $oferta = Publicoferts::findOrFail($id);
-        
-        if(file_exists(public_path('img/ofertas/' . $oferta->image)) AND !empty($oferta->image)){
+
+        if (file_exists(public_path('img/ofertas/' . $oferta->image)) and !empty($oferta->image)) {
             unlink(public_path('img/ofertas/' . $oferta->image));
             $oferta->delete();
         }
-        try{
+        try {
 
             $oferta->delete();
             $bug = 0;
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             $bug = $e->errorInfo[1];
-        } 
-        if($bug==0){
-            echo('succes');
-        }else{
+        }
+        if ($bug == 0) {
+            echo ('succes');
+        } else {
             echo 'error';
         }
-                
+
         return redirect('addpromociones');
     }
 }

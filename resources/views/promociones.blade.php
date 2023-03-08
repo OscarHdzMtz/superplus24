@@ -146,7 +146,7 @@
     </div>
 @endsection
 
-@section('title')
+@section('title')   
     <div class="col-12">
         <h1 align="center" class="textmov"><span class="type"></span></h1>
         <div class="testimonial-title">
@@ -164,16 +164,13 @@
                             <input type="text" class="form-control search-slt" id="keyboard" name="keyboard"
                                 placeholder="Buscar por:">
                         </div> --}}
-                        <div class="col-lg-8 col-md-10 col-sm-12 p-0 mr-3 mt-3">
+                        <div class="col-lg-8 col-md-10 col-sm-12 p-0 mr-3 mt-3 styleSelect">
                             <select class="form-control search-slt" id="category_filter" name="category">
                                 <option>Filtre por departamento</option>
                                 @foreach ($categorias as $itemCategoria)
-                                    {{-- <option>                                        
-                                            <p class="text-center">{{ $itemCategoria->name }}</p>                                        
-                                    </option> --}}
-                                    <option value="{{ $itemCategoria->id }}"
-                                        {{ $categoriaBuscar == $itemCategoria->id ? 'selected="selected"' : '' }}>
-                                        {{ $itemCategoria->name }}</option>
+                                    <option value="{{ $itemCategoria['id'] }}"
+                                        {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected="selected"' : '' }}>
+                                        {{ $itemCategoria['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -181,12 +178,12 @@
                             <button type="submit" class="btn btn-danger wrn-btn btn-block">FILTRAR</button>
                         </div>
                         <div class="col-lg-1 col-md-1 col-sm-1 p-0 mt-3">
-                            {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}                            
-                            @if ($categoriaBuscar)                                
-                                <a href="{{ url('promociones')}}">
-                                    <i class="btn btn-success wrn-btn btn-block">TODOS</i>
-                                </a> 
-                            @endif                                                        
+                            {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}
+                            @if ($categoriaBuscar)
+                                <a href="{{ url('promociones') }}">
+                                    <i class="btn btn-success wrn-btn btn-block">TODAS</i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </form>
