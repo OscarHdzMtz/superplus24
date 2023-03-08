@@ -427,6 +427,24 @@ nav ul li a:hover{
 .service:hover > .title_services{
     color: #003baa;
 }
+.btn_filtro_promo{
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px;
+  color: black;
+  /* font-weight: bold; */
+  text-decoration: none;
+  text-decoration-line:none;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  border-radius: 40px;
+  /* background: linear-gradient(90deg,#003baa,#003baa); */
+}
+
+.btn_filtro_promo:hover{
+  color: white;
+}
 
 .btn_modal_wel{
     position: relative;

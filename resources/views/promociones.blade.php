@@ -164,7 +164,7 @@
                             <input type="text" class="form-control search-slt" id="keyboard" name="keyboard"
                                 placeholder="Buscar por:">
                         </div> --}}
-                        <div class="col-lg-8 col-md-10 col-sm-12 p-0 mr-3 mt-3 styleSelect">
+                        <div class="col-lg-6 col-md-6 col-sm-12 p-0 mr-3 mt-3 styleSelect">
                             <select class="form-control search-slt" id="category_filter" name="category">
                                 <option>Filtre por departamento</option>
                                 @foreach ($categorias as $itemCategoria)
@@ -174,14 +174,14 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 p-0 mr-2 mt-3">
-                            <button type="submit" class="btn btn-danger wrn-btn btn-block">FILTRAR</button>
+                        <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
+                            <button type="submit" class="btn_filtro_promo btn-warning btn-block"><i class="fas fa-filter"></i><strong> Filtrar</strong></button>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 p-0 mt-3">
+                        <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
                             {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}
                             @if ($categoriaBuscar)
-                                <a href="{{ url('promociones') }}">
-                                    <i class="btn btn-success wrn-btn btn-block">TODAS</i>
+                                <a class="btn_filtro_promo btn-success btn-block text-center" href="{{ url('promociones') }}">
+                                    <i class="far fa-hand-point-left"></i><strong> todas</strong>
                                 </a>
                             @endif
                         </div>
