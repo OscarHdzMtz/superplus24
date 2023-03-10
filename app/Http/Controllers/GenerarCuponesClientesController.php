@@ -44,9 +44,9 @@ class GenerarcuponesclientesController extends Controller
         $utilerias = new Utilerias();
         $IPLocalCliente = $utilerias->IPLocalClientes();
         //PRODUCCION
-        $json     = file_get_contents("http://ipinfo.io/$IPLocalCliente/geo");
+        //$json     = file_get_contents("http://ipinfo.io/$IPLocalCliente/geo");
         //TESTING
-        //$json     = file_get_contents("http://ipinfo.io/$PublicIP/geo");
+        $json     = file_get_contents("http://ipinfo.io/$PublicIP/geo");
         $json     = json_decode($json, true);
         $country  = $json['country'];
         $region   = $json['region'];
@@ -131,6 +131,7 @@ class GenerarcuponesclientesController extends Controller
 
         $nombreCookie = $getCrearcupones->id;
         $valorCookie = $getCrearcupones->id;
+        $imagenCupon = $getCrearcupones->image;
 
         $consultaCuponesGeneradosClientes = GenerarCuponesClientes::where('cupon_id', '=', $id)->get()->toArray();
         /* return $consultaCuponesGeneradosClientes; */
@@ -153,7 +154,22 @@ class GenerarcuponesclientesController extends Controller
             $getvalorCookie = cookie::get($nombreCookie);     
             $getvalorIDString = strval($getCrearcupones->id);
             if ($IPLocalCliente === $IpLocalBuscarBD /* and $fechaRegistroCupon === $fechaActual */ and $getvalorCookie === $getvalorIDString) {                
-                return redirect('cupones')->with('info', 'Podrá adquirir un nuevo cupón el ')->with('nombreCupon', $nombreCupon)->with('diaSiguente', $diaSiguenteNew);
+                $arrayCantidadCupones = CrearCupones::all()->toArray();
+                $countArrayCupones = count($arrayCantidadCupones);
+                for ($recorrerArrayCupones=0; $recorrerArrayCupones < $countArrayCupones; $recorrerArrayCupones++) { 
+                    $idCuponAleatorio = $arrayCantidadCupones[$recorrerArrayCupones]['id'];
+                    $imagenCuponAleatorio = $arrayCantidadCupones[$recorrerArrayCupones]['image'];
+                    $getValorCookieComparar = cookie::get($idCuponAleatorio);                
+                    if ($getValorCookieComparar === null) {
+                        break;
+                    }
+                    if ($recorrerArrayCupones === $countArrayCupones -1) {
+                        $idCuponAleatorio = null;
+                        break;
+                    }
+                };
+                    /* $obtenerCuponAleatorio = $arrayCantidadCupones[mt_rand(0, $countArrayCupones-1)]; */                                    
+                return redirect('cupones')->with('info', 'Podrá adquirir este cupón el ')->with('nombreCupon', $nombreCupon)->with('diaSiguente', $diaSiguenteNew)->with('imagenCupon', $imagenCupon)->with('idCuponAleatorio', $idCuponAleatorio)->with('imagenCuponAleatorio', $imagenCuponAleatorio);
             }
             /* return var_dump($consultaCuponesGeneradosClientes[$buscarIpPublica]['direccionIPPublica']) . " es " . " igual " . $PublicIP; */
             /* return redirect('cupones')->with('info', 'ya fue generado, favor de volver a intentarlo en 00:00:00')->with('nombreCupon', $nombreCupon); */

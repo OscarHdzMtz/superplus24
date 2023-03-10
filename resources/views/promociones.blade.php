@@ -166,7 +166,7 @@
                         </div> --}}
                         <div class="col-lg-6 col-md-6 col-sm-12 p-0 mr-3 mt-3 styleSelect">
                             <select class="form-control search-slt" id="category_filter" name="category">
-                                <option>Filtre por departamento</option>
+                                <option>DEPARTAMENTO</option>
                                 @foreach ($categorias as $itemCategoria)
                                     <option value="{{ $itemCategoria['id'] }}"
                                         {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected="selected"' : '' }}>
