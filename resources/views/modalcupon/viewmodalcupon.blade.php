@@ -81,8 +81,7 @@
     }
 
     .modal-footer .btn-danger {
-        background: #c4302b;
-        25D366
+        background: #c4302b;        
     }
 
     .modal-footer .btn-success {

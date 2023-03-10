@@ -127,6 +127,11 @@
         /* padding: 35px; */
     }
 
+    .modal-content .modal-footer {
+        display: flex;
+        justify-content: center;
+    }
+
     .modal-content h4 {
         text-align: center;
         font-size: 36px;
@@ -287,32 +292,35 @@
                     <div style="margin-top: -12px">
                         <img src="{{ asset('/img/cupones/' . session('imagenCuponAleatorio')) }}" class="img-fluid">
                     </div>
-                    {{-- ACCION GENERAR CUPON --}}
-                    {!! Form::open([
-                        'action' => ['GenerarCuponesClientesController@update', session('idCuponAleatorio')],
-                        'method' => 'PATCH',
-                        'files' => 'true',
-                    ]) !!}
-                    {{ Form::token() }}
-
-                    <div {{-- style="border: #000000 1px solid;" --}} class="row">
-                        <div style="margin-left: -44px; margin-right: -24px " class="col-md-10">
-                            <button onclick="preloaderCupon()" type="submit"
-                                class="btn_filtro_promo btn-success text-center mt-3 ml-0">GENERAR CUPÓN
-                            </button>
-                        </div>
-                        <div  class="col-md-2">
-                            <a style="cursor: pointer;" class="btn_filtro_promo btn-danger text-center mt-3"
-                                data-dismiss="modal">
-                                {{-- <i class="fa-solid fa-xmark"></i> --}}<strong> Cerrar</strong>
+                    <div {{-- style="border: #000000 1px solid;"  --}}class="row">
+                        <div style="cursor: pointer; display: flex; align-items: center; align-content: center; justify-content: center"
+                            class="col-6">
+                            <a style="border: #f15e5e 1.5px solid"
+                                class="btn_filtro_promo btn-danger btn-block text-center" data-dismiss="modal">
+                                <i class="fa-solid fa-xmark mr-1"></i><strong>Cerrar</strong>
                             </a>
                         </div>
+                        <div {{-- style="border: green 1px solid;" --}} class="col-6">
+                            {!! Form::open([
+                                'action' => ['GenerarCuponesClientesController@update', session('idCuponAleatorio')],
+                                'method' => 'PATCH',
+                                'files' => 'true',
+                                'style' => 'margin-left: -20px',
+                            ]) !!}
+                            {{ Form::token() }}
+                            <button
+                                style="border: green 1px solid; display: flex; align-items: center;margin-left: -18px;"
+                                onclick="preloaderCupon()" type="submit"
+                                class="btn_filtro_promo btn-success text-center"> <i class="fas fa-sync-alt mr-1"></i>
+                                <strong> Generar</strong>
+                            </button>
+                            {!! Form::close() !!}
+                        </div>
                     </div>
-                    {!! Form::close() !!}
                 @else
                     <div>
                         <h4>Visite nuestras promociones</h4>
-                        <img {{-- style="margin-top: -20px" --}} src="{{ asset('/img/estaticos/logopalomita.png') }}" width="50%"
+                        <img src="{{ asset('/img/estaticos/logopalomita.png') }}" width="50%"
                             class="img-fluid">
                         <div>
                             <a style="cursor: pointer;" class="btn_filtro_promo btn-danger text-center mt-3"
@@ -326,8 +334,6 @@
                         </div>
                     </div>
                 @endif
-                {{-- <button class="btn btn-success" data-dismiss="modal">Cerrar</button> --}}
-
             </div>
         </div>
 </div>
