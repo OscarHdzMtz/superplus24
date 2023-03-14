@@ -113,8 +113,21 @@
         font-family: 'Varela Round', sans-serif;
     }
 
-    .modal-confirm .modal-content .modal-body {
-        color: black
+    .modal-confirm {
+        background: black;
+    }
+
+
+    /*  @media only screen and (max-width: 480px) {
+        .modal-confirm .modal-content .modal-body {
+        margin-left: -17px;
+        background: white;
+       
+    }
+    } */
+    .modal-confirm .modal-content {
+        background: green;
+        /* left: -10px; */
     }
 
     .modal-content .modal-header {
@@ -122,7 +135,8 @@
         border-bottom: none;
         position: relative;
         text-align: center;
-        margin: -20px -20px 0;
+        /* margin: -1px -10px 0; */
+        margi
         border-radius: 5px 5px 0 0;
         /* padding: 35px; */
     }
@@ -166,8 +180,7 @@
     .modal-content .divIzquierdo {
         display: inline-block;
         width: 50%;
-        height: 50%;
-        float: left;
+        height: 100% float: left;
         text-align: center;
         /* border: #000000 1px solid; */
         margin: -16px -16px -16px;
@@ -180,14 +193,47 @@
         display: inline-block;
         width: 55%;
         height: 100%;
-        margin: -15px;
+        margin: -10px;
         margin-top: 3px;
         text-align: center;
         /* border: #000000 1px solid; */
     }
 
-    .modal-content .divDerecho p {
+    .modal-content .divDerecho p {        
+        font-size: 1em;
         color: white;
+    }
+
+    .modal-content .divDerecho small {
+        color: #000000;
+        margin-top: -20px;
+        font-size: 0.8em;
+        color: white;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .modal-content .divDerecho {
+        display: inline-block;
+        width: 55%;
+        height: 100%;
+        margin: -10px;
+        margin-top: 0px;
+        text-align: center;
+        
+    }
+        .modal-content .divDerecho p {
+            margin-top: -1px;
+            margin-bottom: -5px;
+            font-size: 1em;
+            color: white;
+        }
+
+        .modal-content .divDerecho small {
+            color: #000000;
+            margin-top: -20px;
+            font-size: 0.7em;
+            color: white;
+        }
     }
 
     .modal-content .icon-box {
@@ -262,7 +308,7 @@
 
 <div class="modal fade" id="errorModalCupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <<div class="modal-dialog modal-confirm">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="divIzquierdo">
@@ -280,16 +326,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body text-center">
-                {{-- <h4><strong>{{ session('nombreCupon') }}</strong></h4> --}}
-
-                {{-- <p><strong>¡CUPÓN GENERADO!</strong></p>
-                <p>{{ session('info') }} {{ session('diaSiguente') }}</p> --}}
                 @if (session('idCuponAleatorio'))
                     {{-- <h4>{{ session('idCuponAleatorio') }}</h4> --}}
                     <h5><strong>CUPÓN DISPONIBLE</strong></h5>
-                    <img style="margin-top: -20px" src="{{ asset('/img/estaticos/flecha-abajo.gif') }}" width="80px"
+                    <div style="margin-top: -20px; display: flex; align-items: center; align-content: center; justify-content: center">
+                        <img  src="{{ asset('/img/estaticos/flecha-abajo.gif') }}" width="80px"
                         class="img-fluid">
-                    <div style="margin-top: -12px">
+                    </div>                    
+                    <div
+                        style="margin-top: -12px; display: flex; align-items: center; align-content: center; justify-content: center">
                         <img src="{{ asset('/img/cupones/' . session('imagenCuponAleatorio')) }}" class="img-fluid">
                     </div>
                     <div {{-- style="border: #000000 1px solid;"  --}}class="row">
@@ -319,9 +364,8 @@
                     </div>
                 @else
                     <div>
-                        <h4>Visite nuestras promociones</h4>
-                        <img src="{{ asset('/img/estaticos/logopalomita.png') }}" width="50%"
-                            class="img-fluid">
+                        <h4>VISITE NUESTRAS PROMOCIONES</h4>
+                        <img src="{{ asset('/img/estaticos/logopalomita.png') }}" width="50%" class="img-fluid">
                         <div>
                             <a style="cursor: pointer;" class="btn_filtro_promo btn-danger text-center mt-3"
                                 data-dismiss="modal">
@@ -335,6 +379,10 @@
                     </div>
                 @endif
             </div>
+            {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> --}}
         </div>
-</div>
+    </div>
 </div>
