@@ -319,9 +319,18 @@
                                 <li class="nav-item admin">
                                     <a href="{{ url('crearCupones') }}"
                                         class="{{ Request::path() === 'crearcupones' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning  fa-solid fa-bullhorn"></i>
+                                        <p>
+                                            Cupones
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item admin">
+                                    <a href="{{ url('crearPublicidad') }}"
+                                        class="{{ Request::path() === 'crearPublicidad' ? 'nav-link active' : 'nav-link' }}">
                                         <i class="text-warning fas fa-file-image"></i>
                                         <p>
-                                            Crear Cupones
+                                            Pubicidad
                                         </p>
                                     </a>
                                 </li>
@@ -419,7 +428,7 @@
                                                 <span class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
                                             </p>
                                         </a>
-                                    </li>                                       
+                                    </li>                                                                              
                                     <li class="nav-item">
                                         <a href="{{ url('proveedores') }}"
                                             class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
@@ -449,7 +458,7 @@
                                                 Politica de Privacidad
                                             </p>
                                         </a>
-                                    </li>
+                                    </li>                                                                    
                                 </ul>
                             </li>
 
@@ -464,6 +473,24 @@
                                         Promociones
                                         <?php $promo_count = DB::table('publicoferts')->count(); ?>
                                         <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item admin">
+                                <a href="{{ url('crearCupones') }}"
+                                    class="{{ Request::path() === 'crearcupones' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-file-image"></i>
+                                    <p>
+                                        Cupones
+                                    </p>
+                                </a>
+                            </li> 
+                            <li class="nav-item admin">
+                                <a href="{{ url('crearPublicidad') }}"
+                                    class="{{ Request::path() === 'crearPublicidad' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="text-warning fas fa-file-image"></i>
+                                    <p>
+                                        Pubicidad
                                     </p>
                                 </a>
                             </li>
@@ -685,9 +712,9 @@
             </footer>
 
             <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
+            {{-- <aside class="control-sidebar control-sidebar-dark">
                 <h1>Hola que hace</h1>
-            </aside>
+            </aside> --}}
             <!-- /.control-sidebar -->
         </div>
     </div>

@@ -14,7 +14,7 @@ class CreateCuponesTable extends Migration
     public function up()
     {
         Schema::create('cupones', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements("id");
             $table->integer("user_id");
             $table->string('label')->nullable();
             $table->string('titulo')->nullable();

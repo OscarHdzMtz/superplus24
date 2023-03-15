@@ -4,6 +4,7 @@ use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PublicofertController;
 use App\Http\Controllers\SlidermainController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\PublicidadEmergenteController;
 use App\Models\publicofert;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -89,3 +90,4 @@ Route::resource('/ajustesempleo', 'EmpleosettingController')->middleware('auth')
 Route::resource('/politicaprivacidad', 'PoliticaprivacidadController')->middleware('auth');
 Route::resource('/facturacionPlus', 'FacturacionPageController')->middleware('auth');
 Route::resource('/crearCupones', 'CrearCuponesController')->middleware('auth');
+Route::resource('/crearPublicidad', 'PublicidadEmergenteController')->middleware('auth');
