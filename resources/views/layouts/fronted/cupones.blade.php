@@ -33,6 +33,9 @@
     </div>   --}}
     @yield('redes')
     <section {{-- id="headerSection_promo" --}}>
+        @if ($nombreImagenPublicidadEmergente)
+            @include('modals.publicidadEmergente')
+        @endif
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
@@ -188,13 +191,14 @@
             $("#errorModalCupon").modal("show");
         });
     </script>
-    <script>       
-        $(document).ready(function() {                        
-            $("#modalCookie").modal("show");            
+    <script>
+        $(document).ready(function() {
+            $("#modalCookie").modal("show");
         });
-        function cerrarModalCookie(){
+
+        function cerrarModalCookie() {
             $("#modalCookie").modal("hide");
-            $("#modalPoliticaPrivacidad").modal("show");  
+            $("#modalPoliticaPrivacidad").modal("show");
         }
     </script>
 
@@ -235,6 +239,14 @@
         /*  $('#boton-descarga').click(function() {
              exportarHTMLaPNG('imagen', 'imagen.png');
          }); */
+    </script>
+    {{-- se activa cuando se ha terminado de cargar el DOM (estructura de la página) pero antes de que se hayan cargado todos los recursos externos como imágenes y hojas de estilo. --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aquí va la función que quieres ejecutar
+            /* console.log('La página se ha cargado'); */
+            $("#modalPublicidadEmergente").modal("show");
+        });
     </script>
 </body>
 

@@ -53,6 +53,10 @@ class PublicidadEmergenteController extends Controller
             $file->move(public_path() . '/img/publicidadEmergente', $file->getClientOriginalName());
             $publicidad->image = $file->getClientOriginalName();
         }
+        $publicidad->vigenciaCookie = request('vigenciaCookie');
+        $publicidad->paginasAMostrar = request('paginasAMostrar');
+        /* $publicidad['paginasAMostrar'] = json_encode($request->paginasAMostrar); */ 
+        $publicidad['paginasAMostrar'] = implode('|', $request->paginasAMostrar);  
         $publicidad->fechaInicio = request('fechaInicio');
         $publicidad->fechaFin = request('fechaFin');
         $publicidad->prioridad = request('prioridad') ? 1 : 0;
@@ -94,20 +98,23 @@ class PublicidadEmergenteController extends Controller
      * @param  \App\Models\PublicidadEmergente  $publicidadEmergente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $publicidadEmergente, $id)
+    public function update(Request $request, $id)
     {
         //
         $getPublicidadEditar = PublicidadEmergente::findorFail($id);
 
         $getPublicidadEditar->user_id = auth()->id();
-        $getPublicidadEditar->categoria_id  = $publicidadEmergente->get('categoria_id');
+        $getPublicidadEditar->categoria_id  = $request->get('categoria_id');
         $getPublicidadEditar->titulo = request('titulo');
         $getPublicidadEditar->description = request('description');
-        if ($publicidadEmergente->hasFile('image')) {
-            $file = $publicidadEmergente->image;
+        if ($request->hasFile('image')) {
+            $file = $request->image;
             $file->move(public_path() . '/img/publicidadEmergente', $file->getClientOriginalName());
             $getPublicidadEditar->image = $file->getClientOriginalName();
         }
+        $getPublicidadEditar->vigenciaCookie = request('vigenciaCookie');
+        $getPublicidadEditar->paginasAMostrar = request('paginasAMostrar');        
+        $getPublicidadEditar['paginasAMostrar'] = implode('|', $request->paginasAMostrar);  
         $getPublicidadEditar->fechaInicio = request('fechaInicio');
         $getPublicidadEditar->fechaFin = request('fechaFin');
         $getPublicidadEditar->prioridad = request('prioridad') ? 1 : 0;

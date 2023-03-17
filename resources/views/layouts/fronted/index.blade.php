@@ -49,6 +49,9 @@
     @include('modals.cookies')
     {{-- @yield('redes') --}}
     {{-- <section id="headerSection"> --}}
+    @if ($nombreImagenPublicidadEmergente)
+        @include('modals.publicidadEmergente')
+    @endif
     @yield('navbar_top')
     @yield('navbar')
     @yield('banner')
@@ -157,7 +160,14 @@
             $('#cookieModal').modal('show');
         });
     </script>
-
+    {{-- se activa cuando se ha terminado de cargar el DOM (estructura de la página) pero antes de que se hayan cargado todos los recursos externos como imágenes y hojas de estilo. --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aquí va la función que quieres ejecutar
+            /* console.log('La página se ha cargado'); */
+            $("#modalPublicidadEmergente").modal("show");
+        });
+    </script>
 </body>
 
 </html>

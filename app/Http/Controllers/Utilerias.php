@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class Utilerias extends Controller
 {
@@ -107,5 +108,29 @@ class Utilerias extends Controller
             // Si es ordenador de escritorio has lo que necesites
             print 'es un ordenador de escritorio';
         }
+    }
+    function MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina){        
+        $longArrayPublicidadEmergente = count($arrayPublicidadEmergente);        
+        $nombreImagenPublicidadEmergente = "";
+        if ($longArrayPublicidadEmergente > 0) {
+            /* $numeroAleatorioPublicidad = rand(0, $longArrayPublicidadEmergente-1); */
+            for ($numeroAleatorioPublicidad=0; $numeroAleatorioPublicidad < $longArrayPublicidadEmergente; $numeroAleatorioPublicidad++) { 
+                $valIdgenerado = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['id'];
+                $vigenciaCookie = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['vigenciaCookie'];
+                $arrayPaginasAMostrar = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['paginasAMostrar'];
+                $arrayPaginasAMostrar = explode('|', $arrayPaginasAMostrar);
+                $buscarPaginaMostrar = array_search($URLnombrePagina, $arrayPaginasAMostrar);
+                if ($buscarPaginaMostrar <> false || $buscarPaginaMostrar === 0) {
+                    $valorCookie = cookie::get("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina);    
+                    $valorModalAceptarCookie = cookie::get('cookie');
+                    if (!$valorCookie && $valorModalAceptarCookie <> null) {
+                        Cookie::queue("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina, $valIdgenerado, $vigenciaCookie);
+                        $nombreImagenPublicidadEmergente = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['image'];
+                        break;
+                    }      
+                }
+            }                                 
+        }
+        return $nombreImagenPublicidadEmergente;
     }
 }

@@ -11,7 +11,7 @@
     <link type="text/css" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-          {{-- animaciones al hacer scroll --}}
+    {{-- animaciones al hacer scroll --}}
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
@@ -34,6 +34,9 @@
     <!--oncontextmenu = "return false"-->
     {{-- @yield('redes') --}}
     <section {{-- id="headerSection_promo" --}}>
+        @if ($nombreImagenPublicidadEmergente)
+            @include('modals.publicidadEmergente')
+        @endif
         @yield('navbar_top')
         @yield('navbar')
         {{-- @yield('banner') --}}
@@ -79,6 +82,14 @@
         AOS.init({
             easing: 'ease-in-out-sine',
             duration: 1000
+        });
+    </script>
+    {{-- se activa cuando se ha terminado de cargar el DOM (estructura de la página) pero antes de que se hayan cargado todos los recursos externos como imágenes y hojas de estilo. --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aquí va la función que quieres ejecutar
+            /* console.log('La página se ha cargado'); */
+            $("#modalPublicidadEmergente").modal("show");
         });
     </script>
 </body>

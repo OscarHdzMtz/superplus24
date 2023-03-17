@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FacturacionPage;
+use App\Models\PublicidadEmergente;
 
 class FacturacionPageController extends Controller
 {
@@ -15,8 +16,15 @@ class FacturacionPageController extends Controller
     }
     public function indexFrontEnd()    
     {
+        //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
+        $utilerias = new Utilerias();
+        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
+        $URLnombrePagina = "facturacion";
+        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);   
+
         $getFacturacion =  FacturacionPage::orderby('orden','ASC')->get();    
-        return view('facturacion', compact('getFacturacion'));
+        return view('facturacion', compact('getFacturacion', 'nombreImagenPublicidadEmergente'));
     }
 
     public function store(Request $request){

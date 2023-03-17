@@ -26,6 +26,9 @@ class CreatePublicidadEmergentesTable extends Migration
             $table->boolean('deldia')->nullable();
             $table->string("adicional")->nullable();
             $table->string("paginasAMostrar")->nullable();
+            $table->string("textoDelBoton")->nullable();            
+            $table->string("paginaARedireccionar")->nullable();            
+            $table->integer("vigenciaCookie")->nullable();
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')
                   ->references('id')

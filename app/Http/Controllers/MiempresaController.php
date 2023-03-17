@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Miempresa;
 use App\Models\Politicaprivacidad;
+use App\Models\PublicidadEmergente;
 use Illuminate\Http\Request;
 
 class MiempresaController extends Controller
@@ -24,7 +25,15 @@ class MiempresaController extends Controller
         
          /* obtener politicas de privacidad */
          $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
-        return view('nosotros', compact('empresafront', 'politicaprivacidad'));    
+
+         //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
+        $utilerias = new Utilerias();
+        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
+        $URLnombrePagina = "nosotros";
+        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);   
+
+        return view('nosotros', compact('empresafront', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));    
     }
 
     /**

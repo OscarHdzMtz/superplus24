@@ -45,10 +45,7 @@
                             <div class="card-header">
                                 <input type="text" name="titulo" class="empresa_input" required
                                     value="{{ $getPublicidadEditar->titulo }}">
-                            </div>
-                            <div class="card-body">
-                                <textarea name="description" id="" class="empresa_input" {{-- required --}} rows="6">{{ $getPublicidadEditar->description }}</textarea>
-                            </div>
+                            </div>                            
                             <div class="form-group cold-md-6">
                                 <label>Imagen</label>
                                 <br>                               
@@ -59,10 +56,36 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="visible">Volver a mostrar despues de: </label>
+                                        <input style="width: 100px;text-align: center" type="text" name="vigenciaCookie"
+                                            class="empresa_input" value={{ $getPublicidadEditar->titulo }} required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="visible">Prioridad</label><input type="checkbox" name="prioridad" {{ $getPublicidadEditar->prioridad == 1 ? "checked='checked'" : ''}}> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label>Fecha Inicio</label>
                                 <input type="date" name="fechaInicio" value="{{ $getPublicidadEditar->fechaInicio }}" class="empresa_input"> <br>
                                 <label>Fecha Fin</label>
                                 <input type="date" name="fechaFin" value="{{ $getPublicidadEditar->fechaFin }}" class="empresa_input">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">SELECCIONE PAGINAS A SER VISIBLES</label>  <br>     
+                                <small>Manten presionado la tecla control para selecccionar mas de una opcion</small>                     
+                                <select name="paginasAMostrar[]" data-select="multiple" multiple="multiple"
+                                    class="empresa_input">                                    
+                                    <option value="index" selected>Principal</option>
+                                    <option value="promociones" selected>Promociones</option>
+                                    <option value="cupones">Cupones</option>
+                                    <option value="empleo">Empleo</option>
+                                    <option value="nosotros">Nosotros</option>
+                                    <option value="contact">Contacto</option>
+                                    <option value="facturacion">Facturacion</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -72,7 +95,7 @@
                                         <i class="far fa-save"> Actualizar</i>
                                     </button>
                                 {{-- </a> --}}
-                                <a href="{{ URL::action('CrearCuponesController@index') }}">
+                                <a href="{{ route('crearPublicidad.index') }}">
                                     <button type="button" class="btn btn-outline-danger">
                                         <i class="far fa-window-close"> Cancelar</i>
                                     </button>

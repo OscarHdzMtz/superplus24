@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-        {{-- animaciones al hacer scroll --}}
+    {{-- animaciones al hacer scroll --}}
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
@@ -27,13 +27,16 @@
 </head>
 
 <body>
-   {{--  <div id="preloader">
+    {{--  <div id="preloader">
         <div class="loader-page-img">
             <div class="loader-page"></div>
         </div>
     </div> --}}
     @yield('redes')
     <section {{-- id="headerSection_promo" --}}>
+        @if ($nombreImagenPublicidadEmergente)
+            @include('modals.publicidadEmergente')
+        @endif
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
@@ -42,7 +45,7 @@
     {{-- <div>
             @yield('timespace')
         </div> --}}
-        {{-- @yield('title') --}}
+    {{-- @yield('title') --}}
     {{-- <div class="body_Instalacion">
             @yield('Instalacion')
         </div> --}}
@@ -99,9 +102,9 @@
             loop: true
         });
     </script>
-{{-- SCRIPT PRELOADER DE CARGA DE PAGINA --}}
-<script>
-     $(window).on('load', function() {
+    {{-- SCRIPT PRELOADER DE CARGA DE PAGINA --}}
+    <script>
+        $(window).on('load', function() {
             setTimeout(function() {
                 $(".loader-page").css({
                     visibility: "hidden",
@@ -122,9 +125,9 @@
             }, 2000);
 
         });
-</script>
+    </script>
 
-{{-- aimaciones al hacer scroll --}}
+    {{-- aimaciones al hacer scroll --}}
     {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
     <script src="{{ asset('js/aos.js') }}"></script>
     <script>
@@ -136,14 +139,27 @@
 
     {{-- SCRIPT QUE OBTIENE LA IMAGEN DE LAS PROMOCIONES PARA MANDARLO A UN MODAL --}}
     <script>
-            $(function() {
-                $('.clic_abre_modal').on('click', function() {
-                    $('.set_imagen_promo').attr('src', $(this).find('img').attr('src'));        
-                    $('#modalpromo').modal('show');             
-                });		
+        $(function() {
+            $('.clic_abre_modal').on('click', function() {
+                $('.set_imagen_promo').attr('src', $(this).find('img').attr('src'));
+                $('#modalpromo').modal('show');
             });
+        });
     </script>
 
+    {{-- <script>
+    $(document).ready(function() {
+        $("#modalPublicidadEmergente").modal("show");
+    });
+</script> --}}
+    {{-- se activa cuando se ha terminado de cargar el DOM (estructura de la página) pero antes de que se hayan cargado todos los recursos externos como imágenes y hojas de estilo. --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aquí va la función que quieres ejecutar
+            /* console.log('La página se ha cargado'); */
+            $("#modalPublicidadEmergente").modal("show");
+        });
+    </script>
 </body>
 
 </html>

@@ -17,6 +17,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Requests\SaveProductoRequest;
+use App\Models\PublicidadEmergente;
+use Illuminate\Support\Facades\Cookie;
+
+use function GuzzleHttp\Promise\queue;
 
 class PublicofertController extends Controller
 {
@@ -52,7 +56,14 @@ class PublicofertController extends Controller
         $getitulo = Indexsetting::all();
         $getimagen = Indexsetting::where('label', 'imagenfooter')->get();
         $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad'));
+
+        //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
+        $utilerias = new Utilerias();
+        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $URLnombrePagina = "index";
+        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
+        
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));
     }
 
 
@@ -97,7 +108,15 @@ class PublicofertController extends Controller
         $arrayCategoria = $consulataBDCategorias->toArray();
         //ELIMINAMOS LOS ID_CATEGORIA REPETIDOS en el array
         $categorias = array_unique($arrayCategoria, SORT_REGULAR);        
-        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar'));        
+
+        //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
+        $utilerias = new Utilerias();
+        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
+        $URLnombrePagina = "promociones";
+        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);    
+     
+        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar', 'nombreImagenPublicidadEmergente'));        
     }
 
     public function create()

@@ -6,6 +6,7 @@ use App\Models\GenerarCuponesClientes;
 use App\Models\CrearCupones;
 use App\Http\Controllers\Utilerias;
 use App\Models\Politicaprivacidad;
+use App\Models\PublicidadEmergente;
 use Carbon\Carbon;
 use Hamcrest\DiagnosingMatcher;
 use Illuminate\Http\Request;
@@ -27,7 +28,13 @@ class GenerarcuponesclientesController extends Controller
         $cupones = CrearCupones::orderby('id', 'desc')->select('titulo', 'id', 'description', 'image')->where('fechaInicio', '<', $fechaActualSistema)->Where('fechaFin', '>', $fechaSistema)->where('adicional', '=', NULL)->get();
         $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
         /* return $cupones; */        
-        return view('cupones', compact('cupones', 'statusCookie', 'politicaprivacidad'));
+
+        $utilerias = new Utilerias();
+        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $URLnombrePagina = "contact";
+        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
+
+        return view('cupones', compact('cupones', 'statusCookie', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));
     }
 
     /**

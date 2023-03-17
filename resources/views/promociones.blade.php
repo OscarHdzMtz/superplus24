@@ -175,12 +175,14 @@
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
-                            <button type="submit" class="btn_filtro_promo btn-warning btn-block"><i class="fas fa-filter"></i><strong> Filtrar</strong></button>
+                            <button type="submit" class="btn_filtro_promo btn-warning btn-block"><i
+                                    class="fas fa-filter"></i><strong> Filtrar</strong></button>
                         </div>
                         <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
                             {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}
                             @if ($categoriaBuscar)
-                                <a class="btn_filtro_promo btn-success btn-block text-center" href="{{ url('promociones') }}">
+                                <a class="btn_filtro_promo btn-success btn-block text-center"
+                                    href="{{ url('promociones') }}">
                                     <i class="far fa-hand-point-left"></i><strong> todas</strong>
                                 </a>
                             @endif

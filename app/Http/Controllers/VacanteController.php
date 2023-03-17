@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vacante;
 use App\Models\Empleosetting;
 use App\Models\Politicaprivacidad;
+use App\Models\PublicidadEmergente;
 use Illuminate\Http\Request;
 
 class VacanteController extends Controller
@@ -27,7 +28,15 @@ class VacanteController extends Controller
 
          /* obtener politicas de privacidad */
          $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
-        return view('empleo', compact('addvacante', 'getempleo', 'politicaprivacidad'));
+
+         //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
+        $utilerias = new Utilerias();
+        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
+        $URLnombrePagina = "empleo";
+        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);   
+
+        return view('empleo', compact('addvacante', 'getempleo', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));
     }
 
     /**

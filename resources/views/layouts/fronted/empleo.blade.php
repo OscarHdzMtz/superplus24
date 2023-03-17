@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     {{-- Link para la seccion de COUNTERS --}}
-{{--     <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> --}}
+    {{--     <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> --}}
 
-{{-- animaciones al hacer scroll --}}
+    {{-- animaciones al hacer scroll --}}
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
@@ -37,34 +37,37 @@
     </div> --}}
     {{-- @yield('redes') --}}
     <section {{-- id="headerSection_empleo" --}}>
+        @if ($nombreImagenPublicidadEmergente)
+            @include('modals.publicidadEmergente')
+        @endif
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
-        @yield('image')        
+        @yield('image')
         @yield('body')
         @yield('title')
-        @yield('cards')    
+        @yield('cards')
     </section>
     {{-- <div>
             @yield('timespace')
         </div> --}}
-        {{-- @yield('image') --}}
+    {{-- @yield('image') --}}
     <section {{-- class="cta-section " --}}>
-        
+
     </section>
-    @yield('title5')    
+    @yield('title5')
     <section>
         @yield('banempleo')
-       {{--  @yield('title')
-        @yield('cards')     --}}    
-    </section>    
+        {{--  @yield('title')
+        @yield('cards')     --}}
+    </section>
     {{-- <div class="body_Instalacion">
             @yield('Instalacion')
         </div> --}}
     {{-- @yield('title2') --}}
     @yield('foda')
     @yield('footer')
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
     {{-- se agragro bootstrap.min.js para que sirva navbar en modo cel --}}
@@ -177,7 +180,7 @@
         });
     </script>
 
-      {{-- aimaciones al hacer scroll --}}
+    {{-- aimaciones al hacer scroll --}}
     {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
     <script src="{{ asset('js/aos.js') }}"></script>
     <script>
@@ -186,7 +189,14 @@
             duration: 2000
         });
     </script>
-
+    {{-- se activa cuando se ha terminado de cargar el DOM (estructura de la página) pero antes de que se hayan cargado todos los recursos externos como imágenes y hojas de estilo. --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aquí va la función que quieres ejecutar
+            /* console.log('La página se ha cargado'); */
+            $("#modalPublicidadEmergente").modal("show");
+        });
+    </script>
 </body>
 
 </html>

@@ -60,13 +60,15 @@
                                 {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="" href=" {{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="" href=" {{ route('logout') }}"
+                                onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 <button type="button" class="btn btn-outline-danger btn-lg btn-block">Cerrar
                                     Sesión</button>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">Gracias por visitar nuestro portal</a>
+                            <a href="#" class="dropdown-item dropdown-footer">Gracias por visitar nuestro
+                                portal</a>
                         </div>
                     </li>
                     {{--  --}}
@@ -107,8 +109,9 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                           <h4><img src="{{ asset('img/log.jpg') }}" class="img-circle elevation-2" alt="User Image"> {{ Auth::user()->name }}<h4>
-                        </div>                       
+                            <h4><img src="{{ asset('img/log.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                                {{ Auth::user()->name }}<h4>
+                        </div>
                     </div>
 
                     <!-- Sidebar Menu -->
@@ -171,7 +174,8 @@
                                                 <p>
                                                     Slider Principal
                                                     <?php $slider_count = DB::table('slidermains')->count(); ?>
-                                                    <span class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
+                                                    <span
+                                                        class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
                                                 </p>
                                             </a>
                                         </li>
@@ -191,10 +195,11 @@
                                                 <p>
                                                     Productos Nuevos
                                                     <?php $producto_count = DB::table('productos')->count(); ?>
-                                                    <span class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
+                                                    <span
+                                                        class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
                                                 </p>
                                             </a>
-                                        </li>                                       
+                                        </li>
                                         <li class="nav-item">
                                             <a href="{{ url('proveedores') }}"
                                                 class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
@@ -235,7 +240,7 @@
                                         <i class="text-warning fas fa-percentage"></i>
                                         <p>
                                             {{-- Cursos del dia --}}
-                                            
+
                                             Promociones
                                             <?php $promo_count = DB::table('publicoferts')->count(); ?>
                                             <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
@@ -251,7 +256,7 @@
                                             Ofertas de Trabajo
                                             <i class="fas fa-angle-left right"></i>
                                         </p>
-                                    </a>                                    
+                                    </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ url('ajustesempleo') }}"
@@ -285,7 +290,7 @@
                                             <i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
-                                    <ul class="nav nav-treeview">                                        
+                                    <ul class="nav nav-treeview">
                                         <li class="nav-item admin">
                                             <a href="{{ url('miempresa') }}"
                                                 class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
@@ -373,211 +378,213 @@
                                 </a>
                             </li> --}}
                             @endcan
-{{-- TERMINA EL ROL DE ADMINISTRADOR --}}
+                            {{-- TERMINA EL ROL DE ADMINISTRADOR --}}
 
 
-{{-- EMPEZANDO EL ROL DE MARKETING --}}
-                            @can('Marketing')                            
-                            {{-- ***********************PAGINA PRINCIPAL********************* --}}
-                            <li class="nav-item textsidebar">
-                                <a href="#" class="nav-link">
-                                    <i class="text-warning fas fa-copy"></i>
-                                    <p>
-                                        Pagina de Inicio
-                                        <i class="fas fa-angle-left right"></i>
-                                        <span class="badge badge-info right">6</span>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ url('configuracion') }}"
-                                            class="{{ Request::path() === 'configuracion' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-cogs"></i>
-                                            <p>
-                                                Configuracion
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url('slidermain') }}"
-                                            class="{{ Request::path() === 'slidermain' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-image"></i>
-                                            <p>
-                                                Slider Principal
-                                                <?php $slider_count = DB::table('slidermains')->count(); ?>
-                                                <span class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url('cardservicio') }}"
-                                            class="{{ Request::path() === 'cardservicio' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-code-branch"></i>
-                                            <p>
-                                                Servicios
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url('producto') }}"
-                                            class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-file-image"></i>
-                                            <p>
-                                                Productos Nuevos
-                                                <?php $producto_count = DB::table('productos')->count(); ?>
-                                                <span class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
-                                            </p>
-                                        </a>
-                                    </li>                                                                              
-                                    <li class="nav-item">
-                                        <a href="{{ url('proveedores') }}"
-                                            class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-user-friends"></i>
-                                            <p>
-                                                {{-- proveedores --}}
-                                                Marcas Proveedores
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url('Categorias') }}"
-                                            class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-user-friends"></i>
-                                            <p>
-                                                {{-- proveedores --}}
-                                                Categorias
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url('politicaprivacidad') }}"
-                                            class="{{ Request::path() === 'politicaprivacidad' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-user-friends"></i>
-                                            <p>
-                                                {{-- proveedores --}}
-                                                Politica de Privacidad
-                                            </p>
-                                        </a>
-                                    </li>                                                                    
-                                </ul>
-                            </li>
+                            {{-- EMPEZANDO EL ROL DE MARKETING --}}
+                            @can('Marketing')
+                                {{-- ***********************PAGINA PRINCIPAL********************* --}}
+                                <li class="nav-item textsidebar">
+                                    <a href="#" class="nav-link">
+                                        <i class="text-warning fas fa-copy"></i>
+                                        <p>
+                                            Pagina de Inicio
+                                            <i class="fas fa-angle-left right"></i>
+                                            <span class="badge badge-info right">6</span>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('configuracion') }}"
+                                                class="{{ Request::path() === 'configuracion' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('slidermain') }}"
+                                                class="{{ Request::path() === 'slidermain' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-image"></i>
+                                                <p>
+                                                    Slider Principal
+                                                    <?php $slider_count = DB::table('slidermains')->count(); ?>
+                                                    <span
+                                                        class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('cardservicio') }}"
+                                                class="{{ Request::path() === 'cardservicio' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-code-branch"></i>
+                                                <p>
+                                                    Servicios
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('producto') }}"
+                                                class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-file-image"></i>
+                                                <p>
+                                                    Productos Nuevos
+                                                    <?php $producto_count = DB::table('productos')->count(); ?>
+                                                    <span
+                                                        class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('proveedores') }}"
+                                                class="{{ Request::path() === 'proveedores' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-user-friends"></i>
+                                                <p>
+                                                    {{-- proveedores --}}
+                                                    Marcas Proveedores
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('Categorias') }}"
+                                                class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-user-friends"></i>
+                                                <p>
+                                                    {{-- proveedores --}}
+                                                    Categorias
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('politicaprivacidad') }}"
+                                                class="{{ Request::path() === 'politicaprivacidad' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-user-friends"></i>
+                                                <p>
+                                                    {{-- proveedores --}}
+                                                    Politica de Privacidad
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
 
-                            {{-- ***************************PROMOCIONES********************* --}}
-                            <li class="nav-item admin">
-                                <a href="{{ url('addpromociones') }}"
-                                    class="{{ Request::path() === 'addpromociones' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-percentage"></i>
-                                    <p>
-                                        {{-- Cursos del dia --}}
-                                        
-                                        Promociones
-                                        <?php $promo_count = DB::table('publicoferts')->count(); ?>
-                                        <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item admin">
-                                <a href="{{ url('crearCupones') }}"
-                                    class="{{ Request::path() === 'crearcupones' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-file-image"></i>
-                                    <p>
-                                        Cupones
-                                    </p>
-                                </a>
-                            </li> 
-                            <li class="nav-item admin">
-                                <a href="{{ url('crearPublicidad') }}"
-                                    class="{{ Request::path() === 'crearPublicidad' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-file-image"></i>
-                                    <p>
-                                        Pubicidad
-                                    </p>
-                                </a>
-                            </li>
+                                {{-- ***************************PROMOCIONES********************* --}}
+                                <li class="nav-item admin">
+                                    <a href="{{ url('addpromociones') }}"
+                                        class="{{ Request::path() === 'addpromociones' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-percentage"></i>
+                                        <p>
+                                            {{-- Cursos del dia --}}
 
-                            {{-- **********************OFERTAS DE TRABAJO************ --}}
-                            <li class="nav-item textsidebar">
-                                <a href="#" class="nav-link">
-                                    <i class="text-warning fas fa-copy"></i>
-                                    <p>
-                                        Ofertas de Trabajo
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>                                    
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ url('ajustesempleo') }}"
-                                            class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-cogs"></i>
-                                            <p>
-                                                Configuracion
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ url('vacantes') }}"
-                                            class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-handshake"></i>
-                                            <p>
-                                                Vacantes
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                                            Promociones
+                                            <?php $promo_count = DB::table('publicoferts')->count(); ?>
+                                            <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item admin">
+                                    <a href="{{ url('crearCupones') }}"
+                                        class="{{ Request::path() === 'crearcupones' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-file-image"></i>
+                                        <p>
+                                            Cupones
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item admin">
+                                    <a href="{{ url('crearPublicidad') }}"
+                                        class="{{ Request::path() === 'crearPublicidad' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-file-image"></i>
+                                        <p>
+                                            Pubicidad
+                                        </p>
+                                    </a>
+                                </li>
 
-                            {{-- **********************NOSOTROS************ --}}
-                            <li class="nav-item textsidebar">
-                                <a href="#" class="nav-link">
-                                    <i class="text-warning fas fa-copy"></i>
-                                    <p>
-                                        Nosotros
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">                                        
-                                    <li class="nav-item admin">
-                                        <a href="{{ url('miempresa') }}"
-                                            class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-cogs"></i>
-                                            <p>
-                                                Configuracion
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item admin">
-                                        <a href="{{ url('Instalacion/todas') }}"
-                                            class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-hotel"></i>
-                                            <p>
-                                                {{-- CLEINTES --}}
-                                                Instalacion
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item admin">
-                                <a href="{{ url('#') }}"
-                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-map-marker-alt"></i>
-                                    <p>
-                                        GoogleMaps
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item admin">
-                                <a href="{{ url('#') }}"
-                                    class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="text-warning fas fa-eye"></i>
-                                    <p>
-                                        Vista Previa
-                                    </p>
-                                </a>
-                            </li>
-                            {{-- <li class="nav-item admin">
+                                {{-- **********************OFERTAS DE TRABAJO************ --}}
+                                <li class="nav-item textsidebar">
+                                    <a href="#" class="nav-link">
+                                        <i class="text-warning fas fa-copy"></i>
+                                        <p>
+                                            Ofertas de Trabajo
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('ajustesempleo') }}"
+                                                class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('vacantes') }}"
+                                                class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-handshake"></i>
+                                                <p>
+                                                    Vacantes
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                {{-- **********************NOSOTROS************ --}}
+                                <li class="nav-item textsidebar">
+                                    <a href="#" class="nav-link">
+                                        <i class="text-warning fas fa-copy"></i>
+                                        <p>
+                                            Nosotros
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item admin">
+                                            <a href="{{ url('miempresa') }}"
+                                                class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item admin">
+                                            <a href="{{ url('Instalacion/todas') }}"
+                                                class="{{ Request::path() === 'Instalacion/todas' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-hotel"></i>
+                                                <p>
+                                                    {{-- CLEINTES --}}
+                                                    Instalacion
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item admin">
+                                    <a href="{{ url('#') }}"
+                                        class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-map-marker-alt"></i>
+                                        <p>
+                                            GoogleMaps
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item admin">
+                                    <a href="{{ url('#') }}"
+                                        class="{{ Request::path() === '#' ? 'nav-link active' : 'nav-link' }}">
+                                        <i class="text-warning fas fa-eye"></i>
+                                        <p>
+                                            Vista Previa
+                                        </p>
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item admin">
                             <a href="{{url('Categorias')}}"
                                 class="{{ Request::path() === 'Categorias' ? 'nav-link active' : 'nav-link' }}">
                                 <i class="text-info fas fa-shopping-bag"></i>
@@ -586,7 +593,7 @@
                                 </p>
                             </a>
                         </li> --}}
-                            {{-- <li class="nav-item admin">
+                                {{-- <li class="nav-item admin">
                             <a href="{{url('producto')}}"
                                 class="{{ Request::path() === 'producto' ? 'nav-link active' : 'nav-link' }}">
                                 <i class="text-info fas fa-shopping-basket"></i>
@@ -597,41 +604,41 @@
                                 </p>
                             </a>
                         </li> --}}
-                        @endcan
+                            @endcan
 
                             @can('RecursosHumanos')
-                              {{-- **********************OFERTAS DE TRABAJO************ --}}
-                              <li class="nav-item textsidebar">
-                                <a href="#" class="nav-link">
-                                    <i class="text-warning fas fa-copy"></i>
-                                    <p>
-                                        Ofertas de Trabajo
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>                                    
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ url('ajustesempleo') }}"
-                                            class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-cogs"></i>
-                                            <p>
-                                                Configuracion
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ url('vacantes') }}"
-                                            class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
-                                            <i class="nav-icon fas fa-handshake"></i>
-                                            <p>
-                                                Vacantes
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                                {{-- **********************OFERTAS DE TRABAJO************ --}}
+                                <li class="nav-item textsidebar">
+                                    <a href="#" class="nav-link">
+                                        <i class="text-warning fas fa-copy"></i>
+                                        <p>
+                                            Ofertas de Trabajo
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('ajustesempleo') }}"
+                                                class="{{ Request::path() === 'ajustesempleo' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                    Configuracion
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ url('vacantes') }}"
+                                                class="{{ Request::path() === 'vacantes' ? 'nav-link active' : 'nav-link' }}">
+                                                <i class="nav-icon fas fa-handshake"></i>
+                                                <p>
+                                                    Vacantes
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 {{-- **********************NOSOTROS************ --}}
                                 <li class="nav-item textsidebar">
                                     <a href="#" class="nav-link">
@@ -641,7 +648,7 @@
                                             <i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
-                                    <ul class="nav nav-treeview">                                        
+                                    <ul class="nav nav-treeview">
                                         <li class="nav-item admin">
                                             <a href="{{ url('miempresa') }}"
                                                 class="{{ Request::path() === 'miempresa' ? 'nav-link active' : 'nav-link' }}">
@@ -664,21 +671,22 @@
                                 </li>
                             @endcan
                         </ul>
-                        
+
                     </nav>
                     <!-- /.sidebar-menu -->
                     <div class="info">
                         <a href="#" class="d-block">
                             @guest
-                                <a class="nav-link"
-                                    href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                             @else
                                 {{-- {{ Auth::user()->name }} --}}
                                 {{-- BOTON DE CERRAR SESION --}}
-                                <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                <button style="margin-top: 50px; margin-bottom: 20px" type="button" class="btn btn-outline-danger btn-block">Cerrar Sesión</button>
-                            </a>
+                                    <button style="margin-top: 50px; margin-bottom: 20px" type="button"
+                                        class="btn btn-outline-danger btn-block">Cerrar Sesión</button>
+                                </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">

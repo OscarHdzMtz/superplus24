@@ -43,12 +43,15 @@
                                     {{ Str::substr($getpublicidad->fechaInicio, 8, 2) }}/{{ Str::substr($getpublicidad->fechaInicio, 5, 2) }}/{{ Str::substr($getpublicidad->fechaInicio, 0, 4) }}
                                     -
                                     {{ Str::substr($getpublicidad->fechaFin, 8, 2) }}/{{ Str::substr($getpublicidad->fechaFin, 5, 2) }}/{{ Str::substr($getpublicidad->fechaFin, 0, 4) }}
-                                    @if ($getpublicidad->fechaFin >= date('Y-m-d'))
-                                    <a style="color: white" class="badge badge-success">Activo</a>
-                                    @else
-                                    <a style="color: white" class="badge badge-danger">Expirado</a>
-                                    @endif                                    
                                 </p>
+                                <div class="container">
+                                    <h5 class="card-title"><strong>Disponible en:</strong> {{ $getpublicidad->paginasAMostrar }}</h5> <br>
+                                </div>
+                                @if ($getpublicidad->fechaFin >= date('Y-m-d'))
+                                    <a style="color: white" class="badge badge-success">Activo</a>
+                                @else
+                                    <a style="color: white" class="badge badge-danger">Expirado</a>
+                                @endif
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 mb-6">
