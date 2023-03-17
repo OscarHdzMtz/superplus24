@@ -123,11 +123,19 @@ class Utilerias extends Controller
                 if ($buscarPaginaMostrar <> false || $buscarPaginaMostrar === 0) {
                     $valorCookie = cookie::get("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina);    
                     $valorModalAceptarCookie = cookie::get('cookie');
-                    if (!$valorCookie && $valorModalAceptarCookie <> null) {
-                        Cookie::queue("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina, $valIdgenerado, $vigenciaCookie);
-                        $nombreImagenPublicidadEmergente = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['image'];
-                        break;
-                    }      
+                    if ($URLnombrePagina == "cupones") {
+                        if (!$valorCookie && $valorModalAceptarCookie <> null) {
+                            Cookie::queue("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina, $valIdgenerado, $vigenciaCookie);
+                            $nombreImagenPublicidadEmergente = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['image'];
+                            break;
+                        }       
+                    }else {
+                        if (!$valorCookie) {
+                            Cookie::queue("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina, $valIdgenerado, $vigenciaCookie);
+                            $nombreImagenPublicidadEmergente = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['image'];
+                            break;
+                        }     
+                    }                        
                 }
             }                                 
         }

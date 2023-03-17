@@ -51,7 +51,7 @@
                                 <br>                               
                                 {{ Form::file('image') }}
                                 @if ($getPublicidadEditar->image != '')
-                                    <img src="{{ asset('/img/cupones/' . $getPublicidadEditar->image) }}" alt="{{ $getPublicidadEditar->titulo }}"
+                                    <img src="{{ asset('/img/publicidadEmergente/' . $getPublicidadEditar->image) }}" alt="{{ $getPublicidadEditar->titulo }}"
                                         height="300px" width="50px" class="card-img-top">
                                 @endif
                             </div>
@@ -60,7 +60,7 @@
                                     <div class="col">
                                         <label for="visible">Volver a mostrar despues de: </label>
                                         <input style="width: 100px;text-align: center" type="text" name="vigenciaCookie"
-                                            class="empresa_input" value={{ $getPublicidadEditar->titulo }} required>
+                                            class="empresa_input" value={{ $getPublicidadEditar->vigenciaCookie }} required>
                                     </div>
                                     <div class="col">
                                         <label for="visible">Prioridad</label><input type="checkbox" name="prioridad" {{ $getPublicidadEditar->prioridad == 1 ? "checked='checked'" : ''}}> 

@@ -31,7 +31,7 @@ class GenerarcuponesclientesController extends Controller
 
         $utilerias = new Utilerias();
         $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
-        $URLnombrePagina = "contact";
+        $URLnombrePagina = "cupones";
         $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
 
         return view('cupones', compact('cupones', 'statusCookie', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));

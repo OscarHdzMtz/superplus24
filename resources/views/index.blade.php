@@ -123,12 +123,12 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a> --}}
-    </div>  
+    </div>
 @endsection
 
 
 @section('cards_service')
-{{-- TEXTO EN MOVIMIENTO --}}
+    {{-- TEXTO EN MOVIMIENTO --}}
     <h1 class="textmov"><span class="type"></span></h1>
     {{-- EMPIEZA LA SECCION QUIENES SOMOS --}}
     <div class="historia">
@@ -214,17 +214,19 @@
 
 {{-- PRODUCTOS NUEVOS --}}
 @section('title5')
-    @foreach ($getitulo as $settitulo)
-        @if ($settitulo->label == 'tituloproductos')
-            <div class="col-12">
-                <div class="testimonial-title">
-                    <h5>{{ $settitulo->titulo }}</h5>
-                    <h3>{{ $settitulo->description }}</h3>
-                    <hr class="{{ $settitulo->style }}">
+    @if (count($productos) > 0)
+        @foreach ($getitulo as $settitulo)
+            @if ($settitulo->label == 'tituloproductos')
+                <div class="col-12">
+                    <div class="testimonial-title">
+                        <h5>{{ $settitulo->titulo }}</h5>
+                        <h3>{{ $settitulo->description }}</h3>
+                        <hr class="{{ $settitulo->style }}">
+                    </div>
                 </div>
-            </div>
-        @endif
-    @endforeach
+            @endif
+        @endforeach
+    @endif
 @endsection
 @section('Proveedores')
     {{-- <div class="container_prove">
@@ -302,7 +304,7 @@
 @endsection
 
 @section('redessociales')
-{{-- <div class="col-md-12 py-5 text-center justify-content-md-center">
+    {{-- <div class="col-md-12 py-5 text-center justify-content-md-center">
     <div class="mb-3 flex-center">
         <div class="estilo3">
             <ul>
@@ -340,34 +342,34 @@
         </div>
     </div>
 </div> --}}
-<section>
-    <ul id="services">        
-        <li>
-          <div class="facebook">
-            <a href="https://www.facebook.com/superplus24horas/">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-          </div>
-          <span>Facebook</span>
-        </li>
-        <li>
-            <div class="instagram">
-              <a href="https://www.instagram.com/superplus24hrs/">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </div>
-            <span>Instagram</span>
-          </li>
-        <li>
-          <div class="twitter">
-            <a href='https://vm.tiktok.com/ZMNA67fEu/'>
-                <i class="fab fa-tiktok" aria-hidden="true"></i>
-            </a>
-          </div>
-          <span>TikTok</span>
-        </li>             
-      </ul>
-</section>
+    <section>
+        <ul id="services">
+            <li>
+                <div class="facebook">
+                    <a href="https://www.facebook.com/superplus24horas/">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <span>Facebook</span>
+            </li>
+            <li>
+                <div class="instagram">
+                    <a href="https://www.instagram.com/superplus24hrs/">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <span>Instagram</span>
+            </li>
+            <li>
+                <div class="twitter">
+                    <a href='https://vm.tiktok.com/ZMNA67fEu/'>
+                        <i class="fab fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <span>TikTok</span>
+            </li>
+        </ul>
+    </section>
 @endsection
 
 {{-- MARCA PROVEDORES --}}
@@ -467,21 +469,21 @@
                 {{-- pie de pagina --}}
                 <div style="margin-top: -60px" class="footer-basic">
                     <footer data-aos="fade-right">
-                        
+
                         <ul class="list-inline">
                             <li class="list-inline-item"><a href="/index">Inicio</a></li>
-                            <li class="list-inline-item"><a href="/promociones">Promociones</a></li>                            
-                            <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>                            
-                            <li class="list-inline-item"><a href="/contact">Contáctanos</a></li>  
+                            <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
+                            <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
+                            <li class="list-inline-item"><a href="/contact">Contáctanos</a></li>
                             <li style="color: black" class="list-inline-item"> <a data-toggle="modal"
-                                data-target=".politica">Política de privacidad</a></li>                                                        
+                                    data-target=".politica">Política de privacidad</a></li>
                         </ul>
                         <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
                     </footer>
                 </div>
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color:#003baa; color: white">
-                    <strong> ©{{now()->year}} </strong> 
+                    <strong> ©{{ now()->year }} </strong>
                     <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
                 </div>
                 <!-- Copyright -->
@@ -609,7 +611,8 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="text-center modal-title" id="exampleModalCenterTitle"><strong>PROMOCIONES EXCLUSIVAS</strong></h5>
+                    <h5 class="text-center modal-title" id="exampleModalCenterTitle"><strong>PROMOCIONES
+                            EXCLUSIVAS</strong></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -617,39 +620,37 @@
                 <div class="principal text-center justify-content-md-center ">
                     @empty(!$ofertas)
                         <div data-aos="fade-up" class="container_cards">
-                            <div class="row_cards">                            
-                                    @foreach ($ofertas as $oferta)                                                                                            
+                            <div class="row_cards">
+                                @foreach ($ofertas as $oferta)
                                     <div class="col-md-4 col-sm-6 mb-4">
-                                        @if ($oferta->texto <> '')
+                                        @if ($oferta->texto != '')
                                             <div class="single-content">
                                                 <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                                                    alt="{{ $oferta->image }}">                                                                                   
+                                                    alt="{{ $oferta->image }}">
                                                 <div class="text-content">
-                                            
-                                                        <h2 class="frm_pagos text-center">{{ $oferta->texto }}</h2>                                                                                                               
-                                                </div>                                                           
-                                            </div>                                      
+
+                                                    <h2 class="frm_pagos text-center">{{ $oferta->texto }}</h2>
+                                                </div>
+                                            </div>
                                         @else
-                                        <div class="">
-                                            <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                                                alt="{{ $oferta->image }}">                                                                                                                                                                                 
-                                        </div> 
-                                        @endif  
-                                    </div>                                                                                               
-                                    @endforeach                                                                                                                  
+                                            <div class="">
+                                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                    alt="{{ $oferta->image }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="mb-5">
-                                <a href="/promociones"
-                                         class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>  
-                            </div>   
+                                <a href="/promociones" class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>
+                            </div>
                         </div>
-                        @else
+                    @else
                         <div class="sinpromo mt-5">
-                            <p>No hay promociones exclusivas</p>    
-                            <a href="/promociones"
-                            class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>   
+                            <p>No hay promociones exclusivas</p>
+                            <a href="/promociones" class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>
                         </div>
-                    @endempty 
+                    @endempty
                 </div>
                 {{-- <div class="principal">
                     @foreach ($ofertas as $oferta)

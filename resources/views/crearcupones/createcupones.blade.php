@@ -35,7 +35,7 @@
                             <input type="text" name="titulo" class="empresa_input" placeholder="Titulo">
                         </div>                                          
                         <div class="input-container">
-                            <textarea name="description" class="empresa_input" id="" placeholder="Descripcion"
+                            <textarea name="description" class="empresa_input" id="" placeholder="Descripcion (Opcional)"
                                 onkeyup="countChars(this);"></textarea>
                             <p id="charNum" class="text-success text-center">0 caracteres</p>
                         </div>
