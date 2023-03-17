@@ -62,8 +62,14 @@ class PublicofertController extends Controller
         $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
         $URLnombrePagina = "index";
         $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
+
+        //VALIDAR SI MOSTRAR O NO EL PRELOADER
+        $valorCookiePreloader = cookie::get('val_preloader');
+        if (!$valorCookiePreloader) {
+            cookie::queue('val_preloader', "Aceptado", 30);
+        }        
         
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad', 'nombreImagenPublicidadEmergente', 'valorCookiePreloader'));
     }
 
 

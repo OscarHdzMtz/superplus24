@@ -40,11 +40,13 @@
 </head>
 
 <body>
+    @if (!$valorCookiePreloader)
     <div id="preloader">
         <div class="loader-page-img">
             <div class="loader-page"></div>
         </div>
     </div>
+    @endif   
     {{-- MOSTRAR MODAL COOKIE --}}
     @include('modals.cookies')
     {{-- @yield('redes') --}}
