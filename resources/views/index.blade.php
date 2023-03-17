@@ -618,7 +618,7 @@
                     </button>
                 </div>
                 <div class="principal text-center justify-content-md-center ">
-                    @empty(!$ofertas)
+                    @if(count($ofertas) > 0)
                         <div data-aos="fade-up" class="container_cards">
                             <div class="row_cards">
                                 @foreach ($ofertas as $oferta)
@@ -650,7 +650,7 @@
                             <p>No hay promociones exclusivas</p>
                             <a href="/promociones" class="btn_modal_promoexclusivo mt-5">Ver todas los promociones</a>
                         </div>
-                    @endempty
+                    @endif
                 </div>
                 {{-- <div class="principal">
                     @foreach ($ofertas as $oferta)
