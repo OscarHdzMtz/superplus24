@@ -17,36 +17,38 @@
     </div>
 
     {{-- @include('Textoproducto.createtext') --}}
-    <div class="container">
-        {{-- <a href="{{ route('miempresa.create')}}" class="btn btn-outline-info">
-            <i class="fa fa-plus-circle"> Agregar Miempresa</i>
-        </a> --}}
+    <div class="container mt-3">
+        <a href="{{ route('miempresa.create')}}" class="btn btn-outline-info">
+            <i class="fa fa-plus-circle"></i> Agregar modulo
+        </a>
         <div class="row">
             <div class="col-sm-12">
-                @foreach ($empresa as $getempresa)
+                @foreach ($empresa as $getempresa)                
                     @include('miempresa.editempresa')
+                    @include('miempresa.delete')
                     @if ($getempresa->label == 'banner')
-                        <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
+                        <div id="carouselExampleSlidesOnly" class="banner_nosotros mt-4" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img class="d-block w-100" src="{{ asset('/img/miempresa/' . $getempresa->image) }}"
                                         alt="First slide">
                                     <div style="background-color: rgba(0, 0, 0, .5)"
-                                        class="carousel-caption d-none d-md-block">
-                                        <div class="card-footer border-info">
-                                            <a>
-                                                <button type="button" class="btn btn-warning {{-- btn-sm --}}"
-                                                    data-toggle="modal"
-                                                    data-target="#modalempresaedit-{{ $getempresa->id }}">
-                                                    <i class="far fa-edit"></i> Editar
-                                                </button>
-                                            </a>
-                                        </div>
+                                        class="carousel-caption d-none d-md-block">                                       
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @elseif($getempresa->label == 'historia')
+                        <div class="">
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#modalempresaedit-{{ $getempresa->id }}">
+                                <i class="far fa-edit"></i> Editar
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#modalEliminarMiempresa-{{ $getempresa->id }}">
+                                <i class="far fa-trash-alt"></i> Eliminar
+                            </button>
+                        </div>
+                    @elseif($getempresa->label == 'historia' OR $getempresa->label == 'responsabilidad_social')
                         <div style="padding-top: 20px" class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
@@ -57,12 +59,14 @@
                                     </div>
                                     <p class="historia-text">{{ $getempresa->description }}</p>
                                     <div class="">
-                                        <a>
-                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                data-target="#modalempresaedit-{{ $getempresa->id }}">
-                                                <i class="far fa-edit"></i> Editar
-                                            </button>
-                                        </a>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                            data-target="#modalempresaedit-{{ $getempresa->id }}">
+                                            <i class="far fa-edit"></i> Editar
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#modalEliminarMiempresa-{{ $getempresa->id }}">
+                                            <i class="far fa-trash-alt"></i> Eliminar
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-md-6 order-2 order-md-1">
@@ -72,15 +76,20 @@
                             </div>
                         </div>
                     @elseif($getempresa->label == 'titulo')
-
                         <div class="testimonial-title">
                             {{-- <h5>CONOCE</h5> --}}
                             <h1>{{ $getempresa->titulo }}</h1>
                             <hr class="style6">
-                            <button type="button" class="btn btn-warning {{-- btn-sm --}}" data-toggle="modal"
-                                data-target="#modalempresaedit-{{ $getempresa->id }}">
-                                <i class="far fa-edit"></i> Editar
-                            </button>
+                            <div class="">
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                    data-target="#modalempresaedit-{{ $getempresa->id }}">
+                                    <i class="far fa-edit"></i> Editar
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#modalEliminarMiempresa-{{ $getempresa->id }}">
+                                    <i class="far fa-trash-alt"></i> Eliminar
+                                </button>
+                            </div>
                         </div>
                     @else
                         <div class="blog-card">
@@ -96,12 +105,14 @@
                                 <h1>{{ $getempresa->titulo }}</h1>
                                 <p>{!! $getempresa->description !!}</p>
                                 <div class="">
-                                    <a>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                            data-target="#modalempresaedit-{{ $getempresa->id }}">
-                                            <i class="far fa-edit"></i> Editar
-                                        </button>
-                                    </a>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                        data-target="#modalempresaedit-{{ $getempresa->id }}">
+                                        <i class="far fa-edit"></i> Editar
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#modalEliminarMiempresa-{{ $getempresa->id }}">
+                                        <i class="far fa-trash-alt"></i> Eliminar
+                                    </button>
                                 </div>
                             </div>
                         </div>

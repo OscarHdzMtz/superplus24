@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>        
-        @elseif($empresa->label == 'historia')   
+        @elseif($empresa->label == 'historia' OR $empresa->label == 'responsabilidad_social')   
         <div class="historia">
             <div class="container">
                 <div class="row align-items-center">

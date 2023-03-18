@@ -137,8 +137,11 @@ class MiempresaController extends Controller
      * @param  \App\Models\Miempresa  $miempresa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Miempresa $miempresa)
+    public function destroy($id)
     {
         //
+        $getEmpresaDelete = Miempresa::findorFail($id);
+        $getEmpresaDelete->delete();                
+        return redirect('miempresa');
     }
 }

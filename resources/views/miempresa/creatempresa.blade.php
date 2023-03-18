@@ -22,26 +22,36 @@
         </h1>
 
         <div class="row text-center justify-content-md-center">
-            <div class="col-md-offset col-md-6">                
-                {!! Form::open(['route' => 'miempresa.store', 'files' => 'true']) !!}                
+            <div class="col-md-offset col-md-6">
+                {!! Form::open(['route' => 'miempresa.store', 'files' => 'true']) !!}
                 <div class="empresa-form">
-                    <form>                        
+                    <form>
                         <hr style="margin: 0 auto" class="style1">
                         <div class="input-container ">
                             <input type="text" name="orden" class="empresa_input" placeholder="orden" required>
                         </div>
                         <div class="input-container">
-                            <input type="text" name="label" class="empresa_input" placeholder="Label" required>
+                            {{-- <input type="text" name="label" class="empresa_input" placeholder="Label" value="Responsabilidad social" required>
                             <small
-                                    class="agree-text">banner, historia, titulo, mision, vision, valores</small> 
-                        </div>    
+                                    class="agree-text">banner, historia, titulo, mision, vision, valores, responsabilidad_social</small>  --}}
+                            <select class="form-select empresa_input" name="label" aria-label="Default select example" required>
+                                <option selected>Seleccione una opcion</option>
+                                <option value="banner">banner</option>
+                                <option value="titulo">titulo</option>
+                                <option value="historia">historia</option>
+                                <option value="mision">mision</option>
+                                <option value="vision">vision</option>
+                                <option value="valores">valores</option>
+                                <option value="responsabilidad_social">responsabilidad_social</option>                                
+                            </select>
+                        </div>
                         <div class="input-container">
                             {{-- <input id="" type="email" class="form-control contact_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus> --}}
                             <input type="text" name="titulo" class="empresa_input" placeholder="Titulo">
-                        </div>                                          
+                        </div>
                         <div class="input-container">
-                            <textarea name="description" class="empresa_input" id="" placeholder="Descripcion"
-                                onkeyup="countChars(this);" required></textarea>
+                            <textarea name="description" class="empresa_input" id="" placeholder="Descripcion" onkeyup="countChars(this);"
+                                required></textarea>
                             <p id="charNum" class="text-success text-center">0 caracteres</p>
                         </div>
                         <div class="form-group">
@@ -49,17 +59,17 @@
                             {{ Form::file('image', ['required' => 'required']) }}
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="col-form-label">IMAGEN SOBRE IMAGEN:</label>
+                            <label for="message-text" class="col-form-label">IMAGEN SOBRE IMAGEN<small>(Opcional)</small>:</label>
                             {{ Form::file('imghover') }}
                         </div>
-    
+
                         <div class="form-group">
                             {!! Form::submit('Guardar', ['class' => 'btn btn-outline-success']) !!}
                             <a href="{{ route('miempresa.index') }}" class="btn btn-outline-danger">Cancelar</a>
                         </div>
                     </form>
                 </div>
-               {{--  <form>
+                {{--  <form>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Orden :</label>
                         <input type="text" name="orden" class="form-control" id="recipient-name" required>
@@ -94,5 +104,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    </div>    
+    </div>
 @endsection

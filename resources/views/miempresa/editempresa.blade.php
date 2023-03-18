@@ -33,7 +33,7 @@
                             @endif
                     </div>   
                     <div class="form-group cold-md-6"> 
-                        <label>Imagen sobre imagen</label>
+                        <label>Imagen sobre imagen<small>(Opcional)</small></label>
                         <br>
                             {{Form::file('imghover')}}
                             {{-- esto valida que ya exista la imagen y manda una excepcion --}}
