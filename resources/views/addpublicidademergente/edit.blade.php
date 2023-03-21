@@ -32,16 +32,14 @@
                     <form>
                         {{-- <hr style="margin: 0 auto" class="style1"> --}}
                         {{-- <div class="card text-center mx-auto" style="width: 400px;"> --}}
-                            <div class="form-group">
-                                <label  class="control-label" for="categoria_id">CATEGORIAS</label>                                                                
-                                    {{-- {!! Form::select('categoria_id', $categoriasEdit,null,['class' => 'form-control'],)!!} --}}
-                                    {{-- <option value="estiloamarillo" @if ($getsetting->style == 'estiloamarillo') selected @endif>estiloamarillo</option> --}}
+                            {{-- <div class="form-group">
+                                <label  class="control-label" for="categoria_id">CATEGORIAS</label>                                                                                                    
                                     <select name="categoria_id" id="categoria_id" class="empresa_input">
                                         @foreach ($categorias as $categoriasEdit)
                                             <option value="{{$categoriasEdit->id}}" @if ($getPublicidadEditar->categoria_id == $categoriasEdit->id) selected @endif class="empresa_input">{{$categoriasEdit->name}}</option>  
                                         @endforeach
                                     </select>                                                                 
-                            </div> 
+                            </div>  --}}
                             <div class="card-header">
                                 <input type="text" name="titulo" class="empresa_input" required
                                     value="{{ $getPublicidadEditar->titulo }}">
@@ -62,8 +60,23 @@
                                         <input style="width: 100px;text-align: center" type="text" name="vigenciaCookie"
                                             class="empresa_input" value={{ $getPublicidadEditar->vigenciaCookie }} required>
                                     </div>
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <label for="visible">Prioridad</label><input type="checkbox" name="prioridad" {{ $getPublicidadEditar->prioridad == 1 ? "checked='checked'" : ''}}> 
+                                    </div> --}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="visible">Agregar Boton <small>(Opcional)</small></label> <br>
+                                        <input type="text" name="textoDelBoton"
+                                            class="empresa_input" value={{ $getPublicidadEditar->textoDelBoton }}>
+                                    </div>
+                                    <div class="col">
+                                        <label for="visible">Redireccionar a: <small>(Opcional)</small></label> <br>
+                                        <input type="text" name="paginaARedireccionar"
+                                            class="empresa_input" value={{ $getPublicidadEditar->paginaARedireccionar }}>
+                                            <Small>Ejemplo: promociones, cupones, facturacion,</Small>
                                     </div>
                                 </div>
                             </div>

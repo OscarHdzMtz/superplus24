@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Mail;
 use App\Models\PublicidadEmergente;
+use Illuminate\Support\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -15,11 +16,18 @@ class ContactanosController extends Controller
     public function index(){
 
         $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::yesterday();
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();        
         $URLnombrePagina = "contact";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
         
-        return view('contact', compact('nombreImagenPublicidadEmergente'));
+        return view('contact', compact('getPublicidadSeleccionado'));
     }
 
     public function store(Request $request ){

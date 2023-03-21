@@ -42,7 +42,7 @@ class PublicofertController extends Controller
     {
         /* varibales */
         $actualInicio = Carbon::today();
-        $actualFin = Carbon::today();
+        $actualFin = Carbon::yesterday();
         $ofertas = Publicoferts::where('deldia', '1')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
         $productos = Productos::Orderby('updated_at', 'DESC')->get();
         $proveedores = Proveedores::all();
@@ -58,18 +58,22 @@ class PublicofertController extends Controller
         $politicaprivacidad = Politicaprivacidad::orderby('orden', 'ASC')->get();
 
         //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
-        $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $utilerias = new Utilerias();        
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();      
         $URLnombrePagina = "index";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
-
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
+        
         //VALIDAR SI MOSTRAR O NO EL PRELOADER
         $valorCookiePreloader = cookie::get('val_preloader');
         if (!$valorCookiePreloader) {
-            cookie::queue('val_preloader', "Aceptado", 30);
-        }        
-        
-        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad', 'nombreImagenPublicidadEmergente', 'valorCookiePreloader'));
+            cookie::queue('val_preloader', "Aceptado", 60);
+        }                
+        return view('index', compact('ofertas', 'productos', 'proveedores', 'servicios', 'texproduct', 'sliderindex', 'gettarjeta', 'getitulo', 'getimagen', 'politicaprivacidad', 'getPublicidadSeleccionado', 'valorCookiePreloader'));
     }
 
 
@@ -115,14 +119,19 @@ class PublicofertController extends Controller
         //ELIMINAMOS LOS ID_CATEGORIA REPETIDOS en el array
         $categorias = array_unique($arrayCategoria, SORT_REGULAR);        
 
-        //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
+        //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA        
         $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();    
         //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
         $URLnombrePagina = "promociones";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);    
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
      
-        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar', 'nombreImagenPublicidadEmergente'));        
+        return view('promociones', compact('promo', 'slider', 'politicaprivacidad', 'categorias', 'categoriaBuscar', 'getPublicidadSeleccionado'));        
     }
 
     public function create()

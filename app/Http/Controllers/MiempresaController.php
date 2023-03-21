@@ -6,6 +6,7 @@ use App\Models\Miempresa;
 use App\Models\Politicaprivacidad;
 use App\Models\PublicidadEmergente;
 use Illuminate\Http\Request;
+USE Illuminate\Support\Carbon;
 
 class MiempresaController extends Controller
 {
@@ -28,12 +29,19 @@ class MiempresaController extends Controller
 
          //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
         $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::yesterday();
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();        
         //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
         $URLnombrePagina = "nosotros";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);   
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
 
-        return view('nosotros', compact('empresafront', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));    
+        return view('nosotros', compact('empresafront', 'politicaprivacidad', 'getPublicidadSeleccionado'));    
     }
 
     /**

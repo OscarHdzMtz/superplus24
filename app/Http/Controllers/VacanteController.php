@@ -7,6 +7,7 @@ use App\Models\Empleosetting;
 use App\Models\Politicaprivacidad;
 use App\Models\PublicidadEmergente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class VacanteController extends Controller
 {
@@ -31,12 +32,19 @@ class VacanteController extends Controller
 
          //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
         $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::yesterday();
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();       
         //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
         $URLnombrePagina = "empleo";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);   
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
 
-        return view('empleo', compact('addvacante', 'getempleo', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));
+        return view('empleo', compact('addvacante', 'getempleo', 'politicaprivacidad', 'getPublicidadSeleccionado'));
     }
 
     /**

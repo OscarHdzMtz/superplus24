@@ -34,7 +34,7 @@
     <!--oncontextmenu = "return false"-->
     {{-- @yield('redes') --}}
     <section {{-- id="headerSection_promo" --}}>
-        @if ($nombreImagenPublicidadEmergente)
+        @if ($getPublicidadSeleccionado)
             @include('modals.publicidadEmergente')
         @endif
         @yield('navbar_top')

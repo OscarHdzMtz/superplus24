@@ -111,7 +111,7 @@ class Utilerias extends Controller
     }
     function MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina){        
         $longArrayPublicidadEmergente = count($arrayPublicidadEmergente);        
-        $nombreImagenPublicidadEmergente = "";
+        $idPublicidadSeleccionado= "";
         if ($longArrayPublicidadEmergente > 0) {
             /* $numeroAleatorioPublicidad = rand(0, $longArrayPublicidadEmergente-1); */
             for ($numeroAleatorioPublicidad=0; $numeroAleatorioPublicidad < $longArrayPublicidadEmergente; $numeroAleatorioPublicidad++) { 
@@ -126,19 +126,19 @@ class Utilerias extends Controller
                     if ($URLnombrePagina == "cupones") {
                         if (!$valorCookie && $valorModalAceptarCookie <> null) {
                             Cookie::queue("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina, $valIdgenerado, $vigenciaCookie);
-                            $nombreImagenPublicidadEmergente = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['image'];
+                            $idPublicidadSeleccionado = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['id'];
                             break;
                         }       
                     }else {
                         if (!$valorCookie) {
                             Cookie::queue("id-" . $valIdgenerado . "-p_emergentes_" . $URLnombrePagina, $valIdgenerado, $vigenciaCookie);
-                            $nombreImagenPublicidadEmergente = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['image'];
+                            $idPublicidadSeleccionado = $arrayPublicidadEmergente[$numeroAleatorioPublicidad]['id'];
                             break;
                         }     
                     }                        
                 }
             }                                 
         }
-        return $nombreImagenPublicidadEmergente;
+        return $idPublicidadSeleccionado;
     }
 }

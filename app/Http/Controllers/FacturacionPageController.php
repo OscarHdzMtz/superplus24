@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\FacturacionPage;
 use App\Models\PublicidadEmergente;
+use Illuminate\Support\Carbon;
 
 class FacturacionPageController extends Controller
 {
@@ -18,13 +19,20 @@ class FacturacionPageController extends Controller
     {
         //ESTE CODIGO VALIDA SI MOSTRAR O NO LA PUBLICIDAD EN LA PAGINA
         $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::yesterday();
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();    
         //NOMBRE A BUSCAR EN EL ARREGLO DE LAS PAGINAS  A MOSTRAR
         $URLnombrePagina = "facturacion";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);   
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
 
         $getFacturacion =  FacturacionPage::orderby('orden','ASC')->get();    
-        return view('facturacion', compact('getFacturacion', 'nombreImagenPublicidadEmergente'));
+        return view('facturacion', compact('getFacturacion', 'getPublicidadSeleccionado'));
     }
 
     public function store(Request $request){

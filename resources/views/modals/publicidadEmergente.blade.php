@@ -8,14 +8,26 @@
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div> --}}
-            <div class="btnCerrarModal"  >
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">{{-- &times; --}}<i class="fas fa-times-circle fa-2x"><br></i></button>
+            <div class="btnCerrarModal">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">{{-- &times; --}}<i
+                        class="fas fa-times-circle fa-2x"><br></i></button>
             </div>
-            <div class="modal-content mx-auto text-center">                
+
+            <div class="modal-content mx-auto text-center">
                 <div>
-                    <img src="{{ asset('/img/publicidadEmergente/' . $nombreImagenPublicidadEmergente) }}" class="img-fluid">
-                </div>               
-            </div>           
+                    <img src="{{ asset('/img/publicidadEmergente/' . $getPublicidadSeleccionado->image) }}"
+                        class="img-fluid">
+                </div>
+                @if ($getPublicidadSeleccionado->paginaARedireccionar)
+                    <div class="mb-3">
+                        <a class="btn_filtro_promo btn-success text-center mt-3"
+                            href="{{ "/" . $getPublicidadSeleccionado->paginaARedireccionar }}">
+                            <i class="fas fa-percentage"></i><strong>
+                                {{ $getPublicidadSeleccionado->textoDelBoton }}</strong>
+                        </a>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 </div>
@@ -32,18 +44,20 @@
         border-color: #ffcc00;
     }
 
-    .modal-content .modal-footer {        
+    .modal-content .modal-footer {
         display: flex;
-        justify-content: center;        
+        justify-content: center;
     }
-    .modal-content .btnCerrarModal{        
-        position: absolute; 
-        right: 1px; 
-        top: 1px; 
+
+    .modal-content .btnCerrarModal {
+        position: absolute;
+        right: 1px;
+        top: 1px;
         z-index: 9;
     }
-    .modal-content .btnCerrarModal button{  
-        color: red;        
+
+    .modal-content .btnCerrarModal button {
+        color: red;
         background: white;
         border-radius: 50%;
     }
@@ -54,17 +68,17 @@
         margin: 10px 0;
     }
 
-    .modal-header .icon-box {        
+    .modal-header .icon-box {
         display: inline-block;
         margin-right: -30px;
         z-index: 9;
         padding: 15px;
-               
+
     }
 
-    .modal-header .icon-box img{        
+    .modal-header .icon-box img {
         width: 98px;
-        height: 98px;            
+        height: 98px;
     }
 
 
@@ -74,26 +88,26 @@
     }
 
     .modal-footer .btn {
-    padding: 10px 30px;
-    color: #ffffff;
-    font-weight: bold;
-    text-decoration: none;
-    text-decoration-line:none;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 2px;
-    border-radius: 40px;
+        padding: 10px 30px;
+        color: #ffffff;
+        font-weight: bold;
+        text-decoration: none;
+        text-decoration-line: none;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 2px;
+        border-radius: 40px;
     }
 
     .modal-footer .btn-danger {
-        background: #c4302b;        
+        background: #c4302b;
     }
 
     .modal-footer .btn-success {
         background: #25D366;
     }
 
-   /*  .modal-footer .btn:hover,
+    /*  .modal-footer .btn:hover,
     .modal-confirm .btn:focus {
         background: #eda645;
         outline: none;
@@ -102,6 +116,5 @@
     ..modal-footer .btn span {
         margin: 1px 3px 0;
         float: left;
-    }    
-
+    }
 </style>

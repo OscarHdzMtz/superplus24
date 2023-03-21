@@ -30,11 +30,18 @@ class GenerarcuponesclientesController extends Controller
         /* return $cupones; */        
 
         $utilerias = new Utilerias();
-        $arrayPublicidadEmergente = PublicidadEmergente::all()->toArray();    
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::yesterday();
+        $arrayPublicidadEmergente = PublicidadEmergente::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get()->toArray();      
         $URLnombrePagina = "cupones";
-        $nombreImagenPublicidadEmergente = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina); 
+        $idPublicidadSeleccionado = $utilerias->MostrarPublicidad($arrayPublicidadEmergente, $URLnombrePagina);        
+        if ($idPublicidadSeleccionado) {
+            $getPublicidadSeleccionado = PublicidadEmergente::findOrFail($idPublicidadSeleccionado);
+        }else {
+            $getPublicidadSeleccionado = "";
+        }
 
-        return view('cupones', compact('cupones', 'statusCookie', 'politicaprivacidad', 'nombreImagenPublicidadEmergente'));
+        return view('cupones', compact('cupones', 'statusCookie', 'politicaprivacidad', 'getPublicidadSeleccionado'));
     }
 
     /**

@@ -44,8 +44,16 @@
                                     -
                                     {{ Str::substr($getpublicidad->fechaFin, 8, 2) }}/{{ Str::substr($getpublicidad->fechaFin, 5, 2) }}/{{ Str::substr($getpublicidad->fechaFin, 0, 4) }}
                                 </p>
+                                @php
+                                    $str_pagina = $getpublicidad->paginasAMostrar;
+                                    $arrayPaginasAMostrar = explode('|', $str_pagina);
+                                @endphp
+                                <h5 class="card-title text-center"><strong>Disponible en:</strong></h5> <br>
+                                @foreach ($arrayPaginasAMostrar as $item)
+                                    <small><strong>{{ $item }}</strong></small>
+                                @endforeach
                                 <div class="container">
-                                    <h5 class="card-title"><strong>Disponible en:</strong> {{ $getpublicidad->paginasAMostrar }}</h5> <br>
+
                                 </div>
                                 @if ($getpublicidad->fechaFin >= date('Y-m-d'))
                                     <a style="color: white" class="badge badge-success">Activo</a>

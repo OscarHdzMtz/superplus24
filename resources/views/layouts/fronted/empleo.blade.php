@@ -37,7 +37,7 @@
     </div> --}}
     {{-- @yield('redes') --}}
     <section {{-- id="headerSection_empleo" --}}>
-        @if ($nombreImagenPublicidadEmergente)
+        @if ($getPublicidadSeleccionado)
             @include('modals.publicidadEmergente')
         @endif
         @yield('navbar_top')

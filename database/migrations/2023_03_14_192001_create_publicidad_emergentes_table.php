@@ -29,11 +29,11 @@ class CreatePublicidadEmergentesTable extends Migration
             $table->string("textoDelBoton")->nullable();            
             $table->string("paginaARedireccionar")->nullable();            
             $table->integer("vigenciaCookie")->nullable();
-            $table->integer('categoria_id')->unsigned();
+            /* $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')
                   ->references('id')
                   ->on('categorias')
-                  ->onDelete('cascade');            
+                  ->onDelete('cascade');  */           
             $table->timestamps();
         });
     }

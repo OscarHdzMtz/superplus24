@@ -26,14 +26,14 @@
                 <div class="empresa-form">
                     <form>
                         <hr style="margin: 0 auto" class="style1">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="control-label" for="categoria_id">CATEGORIAS</label>
                             {!! Form::select('categoria_id', $categorias, null, [
                                 'class' => 'empresa_input',
                                 'placeholder' => 'Elige una categoria*',
                                 'required',
                             ]) !!}
-                        </div>
+                        </div> --}}
                         <div class="input-container">
                             {{-- <input id="" type="email" class="form-control contact_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus> --}}
                             <input type="text" name="titulo" class="empresa_input" placeholder="Titulo*" required>
@@ -52,14 +52,31 @@
                                 <div class="col">
                                     <label for="visible">Volver a mostrar despues de: </label>
                                     <input style="width: 100px;text-align: center" type="text" name="vigenciaCookie"
-                                        class="empresa_input" id="username" placeholder="Minutos" maxlength="4" required>
+                                        class="empresa_input" id="username" placeholder="Minutos" maxlength="7" required>
+                                </div>
+                                {{-- <div class="col">
+                                    <label for="visible">Agregar Boton</label>
+                                    {!! Form::checkbox('textoDelBoton', null, []) !!}
+                                </div> --}}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="visible">Agregar Boton <small>(Opcional)</small></label> <br>
+                                    <input type="text" name="textoDelBoton"
+                                        class="empresa_input" id="username" placeholder="texto del boton">
                                 </div>
                                 <div class="col">
-                                    <label for="visible">Prioridad</label>
-                                    {!! Form::checkbox('prioridad', null, []) !!}
+                                    <label for="visible">Redireccionar a: <small>(Opcional)</small></label> <br>
+                                    <input type="text" name="paginaARedireccionar"
+                                        class="empresa_input" id="username" placeholder="nombre de la pagina">
+                                        <Small>Ejemplo: promociones, cupones, facturacion,</Small>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <label class="control-label">SELECCIONE PAGINAS A SER VISIBLES</label>  <br>     
                             <small>Manten presionado la tecla control para selecccionar mas de una opcion</small>                     

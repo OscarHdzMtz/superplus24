@@ -51,7 +51,7 @@
     @include('modals.cookies')
     {{-- @yield('redes') --}}
     {{-- <section id="headerSection"> --}}
-    @if ($nombreImagenPublicidadEmergente)
+    @if ($getPublicidadSeleccionado)
         @include('modals.publicidadEmergente')
     @endif
     @yield('navbar_top')

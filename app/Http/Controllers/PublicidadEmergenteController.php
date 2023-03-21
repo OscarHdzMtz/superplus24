@@ -16,7 +16,7 @@ class PublicidadEmergenteController extends Controller
     public function index()
     {
         //
-        $publicidad = PublicidadEmergente::all();
+        $publicidad = PublicidadEmergente::all();        
         return view('addpublicidademergente.index', compact('publicidad'));
     }
 
@@ -45,7 +45,7 @@ class PublicidadEmergenteController extends Controller
         $publicidad = new PublicidadEmergente();
 
         $publicidad->user_id = auth()->id();
-        $publicidad->categoria_id  = $request->get('categoria_id');
+        /* $publicidad->categoria_id  = $request->get('categoria_id'); */
         $publicidad->titulo = request('titulo');
         $publicidad->description = request('description');
         if ($request->hasFile('image')) {
@@ -57,9 +57,11 @@ class PublicidadEmergenteController extends Controller
         $publicidad->paginasAMostrar = request('paginasAMostrar');
         /* $publicidad['paginasAMostrar'] = json_encode($request->paginasAMostrar); */ 
         $publicidad['paginasAMostrar'] = implode('|', $request->paginasAMostrar);  
+        $publicidad->textoDelBoton = request('textoDelBoton');
+        $publicidad->paginaARedireccionar = request('paginaARedireccionar');
         $publicidad->fechaInicio = request('fechaInicio');
         $publicidad->fechaFin = request('fechaFin');
-        $publicidad->prioridad = request('prioridad') ? 1 : 0;
+        /* $publicidad->prioridad = request('prioridad') ? 1 : 0; */
         $publicidad->save();
         return redirect('crearPublicidad');
     }
@@ -104,7 +106,7 @@ class PublicidadEmergenteController extends Controller
         $getPublicidadEditar = PublicidadEmergente::findorFail($id);
 
         $getPublicidadEditar->user_id = auth()->id();
-        $getPublicidadEditar->categoria_id  = $request->get('categoria_id');
+        /* $getPublicidadEditar->categoria_id  = $request->get('categoria_id'); */
         $getPublicidadEditar->titulo = request('titulo');
         $getPublicidadEditar->description = request('description');
         if ($request->hasFile('image')) {
@@ -115,9 +117,11 @@ class PublicidadEmergenteController extends Controller
         $getPublicidadEditar->vigenciaCookie = request('vigenciaCookie');
         $getPublicidadEditar->paginasAMostrar = request('paginasAMostrar');        
         $getPublicidadEditar['paginasAMostrar'] = implode('|', $request->paginasAMostrar);  
+        $getPublicidadEditar->textoDelBoton = request('textoDelBoton');
+        $getPublicidadEditar->paginaARedireccionar = request('paginaARedireccionar');
         $getPublicidadEditar->fechaInicio = request('fechaInicio');
         $getPublicidadEditar->fechaFin = request('fechaFin');
-        $getPublicidadEditar->prioridad = request('prioridad') ? 1 : 0;
+        /* $getPublicidadEditar->prioridad = request('prioridad') ? 1 : 0; */
         $getPublicidadEditar->save();
         return redirect('crearPublicidad');
     }
