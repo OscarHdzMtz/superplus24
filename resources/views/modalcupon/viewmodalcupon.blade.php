@@ -30,14 +30,14 @@
 
 <style>
     .modal-content .modal-header {
-        background: #ffcc00;
+        background: #008f39;
         /* border-bottom: none;   */
         display: flex;
         justify-content: center;
         /* margin: -20px -20px 0; */
         /* border-radius: 5px 5px 0 0;
   padding: 35px; */
-        border-color: #ffcc00;
+        border-color: #008f39;
     }
 
     .modal-content .modal-footer {        
@@ -85,7 +85,7 @@
     }
 
     .modal-footer .btn-success {
-        background: #25D366;
+        background: #008f39;
     }
 
    /*  .modal-footer .btn:hover,

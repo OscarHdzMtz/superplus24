@@ -164,20 +164,22 @@
                             <input type="text" class="form-control search-slt" id="keyboard" name="keyboard"
                                 placeholder="Buscar por:">
                         </div> --}}
-                        <div class="col-lg-6 col-md-6 col-sm-12 p-0 mr-3 mt-3 styleSelect">
-                            <select class="form-control search-slt" id="category_filter" name="category">
-                                <option>DEPARTAMENTO</option>
-                                @foreach ($categorias as $itemCategoria)
-                                    <option value="{{ $itemCategoria['id'] }}"
-                                        {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected="selected"' : '' }}>
-                                        {{ $itemCategoria['name'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
-                            <button type="submit" class="btn_filtro_promo btn-warning btn-block"><i
-                                    class="fas fa-filter"></i><strong> Filtrar</strong></button>
-                        </div>
+                        @if (count($promo) > 0)
+                            <div class="col-lg-6 col-md-6 col-sm-12 p-0 mr-3 mt-3 styleSelect">
+                                <select class="form-control search-slt" id="category_filter" name="category">
+                                    <option>FILTRE POR DEPARTAMENTO</option>
+                                    @foreach ($categorias as $itemCategoria)
+                                        <option value="{{ $itemCategoria['id'] }}"
+                                            {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected="selected"' : '' }}>
+                                            {{ $itemCategoria['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>                                               
+                            <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
+                                <button type="submit" class="btn_filtro_promo btn-warning btn-block"><i
+                                        class="fas fa-filter"></i><strong> Filtrar</strong></button>
+                            </div>
+                        @endif
                         <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
                             {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}
                             @if ($categoriaBuscar)

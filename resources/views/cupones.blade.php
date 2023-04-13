@@ -107,9 +107,10 @@
                             'action' => ['GenerarCuponesClientesController@update', $cupon->id],
                             'method' => 'PATCH',
                             'files' => 'true',
+                            'style' => 'margin-top: -20px',
                         ]) !!}
                         {{ Form::token() }}
-                        <button onclick="preloaderCupon()" type="submit" class="btn_modal_wel btn-block">GENERAR
+                        <button onclick="preloaderCupon()" type="submit" class="btn_modal_cupon btn-block">GENERAR
                             CUPON</button>                           
                         {!! Form::close() !!}
                     </div>

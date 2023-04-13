@@ -446,6 +446,21 @@ nav ul li a:hover{
   color: white;
 }
 
+.btn_modal_cupon{
+  position: relative;
+  display: inline-block;
+  padding: 10px 35px;  
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  text-decoration-line:none;
+  text-transform: uppercase;
+  font-size: 1em;
+  /* letter-spacing: 1px; */
+  border-radius: 30px;
+  background: linear-gradient(90deg,#003baa,#003baa);
+}
+
 .btn_modal_wel{
     position: relative;
     display: inline-block;

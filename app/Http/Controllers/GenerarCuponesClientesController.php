@@ -168,7 +168,11 @@ class GenerarcuponesclientesController extends Controller
             $getvalorCookie = cookie::get($nombreCookie);     
             $getvalorIDString = strval($getCrearcupones->id);
             if ($IPLocalCliente === $IpLocalBuscarBD /* and $fechaRegistroCupon === $fechaActual */ and $getvalorCookie === $getvalorIDString) {                
-                $arrayCantidadCupones = CrearCupones::all()->toArray();
+                //$arrayCantidadCupones = CrearCupones::all()->toArray();
+                $fechaSistema = Carbon::yesterday();   
+                $fechaActualSistema  = Carbon::now();
+                $arrayCantidadCupones = CrearCupones::orderby('id', 'desc')->select('titulo', 'id', 'description', 'image')->where('fechaInicio', '<', $fechaActualSistema)->Where('fechaFin', '>', $fechaSistema)->where('adicional', '=', NULL)->get()->toArray();
+
                 $countArrayCupones = count($arrayCantidadCupones);
                 for ($recorrerArrayCupones=0; $recorrerArrayCupones < $countArrayCupones; $recorrerArrayCupones++) { 
                     $idCuponAleatorio = $arrayCantidadCupones[$recorrerArrayCupones]['id'];
