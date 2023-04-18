@@ -29,7 +29,7 @@ class PublicofertController extends Controller
         if ($request) {
             $query = trim($request->get('search'));
             $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')
-            ->orderBy('updated_at', 'DESC')->get();
+            /* ->orderBy('updated_at', 'ASC') */->get();
             return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query]);
         }
 
@@ -141,6 +141,17 @@ class PublicofertController extends Controller
         return view('addpromociones.createpromo', compact('categorias'));
     }
 
+    public function posts(Request $request){
+        $position = 1;
+        $sorts = $request->get('sorts');
+
+        foreach ($sorts as $sort) {
+            $post = Publicoferts::find($sort);    
+            $post->orden = $position;
+            $post->save();
+            $position++;                    
+        }
+    }
 
     public function store(Request $request)
     {

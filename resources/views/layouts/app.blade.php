@@ -28,7 +28,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div id="app">
+    <div {{-- id="app" --}}>
         <div class="wrapper">
             <!-- Navbar -->
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -725,6 +725,43 @@
             <!-- /.control-sidebar -->
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+        /* var lista = document.getelementId() */
+        Sortable.create(lista, {
+            animation: 150,
+            chosenClass: "seleccionado",
+            // ghostClass: "fantasma"
+            dragClass: "drag",            
+
+            onEnd: () => {
+                console.log('Se inserto un elemento');
+            },
+            group: "lista-personas",
+            store: {
+                // Guardamos el orden de la lista
+                set: (sortable) => {
+                    const orden = sortable.toArray();
+                    /* localStorage.setItem(sortable.options.group.name, orden.join('|')); */
+                    /* console.log(orden) */
+                    axios.post("{{ route('api.sort') }}",{
+                        sorts: orden
+                    }).catch(function (error) {
+                        console.log(error)
+                    }); 
+                },
+
+                // Obtenemos el orden de la lista
+                get: (sortable) => {
+                    const orden = localStorage.getItem(sortable.options.group.name);
+                    console.log("Se obtuvo el array" + orden)
+                    return orden ? orden.split('|') : [];                    
+                }
+            }
+        });
+    </script>
+
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="{{ asset('js/dashboard/counter.js') }}"></script>
 
@@ -742,20 +779,7 @@
         function countChars(obj) {
             document.getElementById("charNum").innerHTML = obj.value.length + ' caracteres';
         }
-    </script>
-    {{-- <script>
-        $('input[type="checkbox"]').change(function() {
-            if (this.checked) {
-          var estado = 'Encendido'; 
-          console.log('Checkbox', estado);
-          console.log("Valor del Checkbox: " +  $(this).val());
-      } else {
-          var estado = 'Apagado'; 
-          console.log('Checkbox', estado);
-      }
-      $('#respPersonas').html(estado); 
-  });
-    </script> --}}
+    </script>      
 </body>
 
 </html>
