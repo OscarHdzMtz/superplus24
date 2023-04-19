@@ -91,4 +91,4 @@ Route::resource('/politicaprivacidad', 'PoliticaprivacidadController')->middlewa
 Route::resource('/facturacionPlus', 'FacturacionPageController')->middleware('auth');
 Route::resource('/crearCupones', 'CrearCuponesController')->middleware('auth');
 Route::resource('/crearPublicidad', 'PublicidadEmergenteController')->middleware('auth');
-Route::post('/sort/post', [PublicofertController::class, 'posts'])->name('api.sort');
+Route::post('/dragandrop/post', [PublicofertController::class, 'posts'])->name('dragandrop.sort');

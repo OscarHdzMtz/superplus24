@@ -29,7 +29,7 @@ class PublicofertController extends Controller
         if ($request) {
             $query = trim($request->get('search'));
             $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')
-            /* ->orderBy('updated_at', 'ASC') */->get();
+            ->orderBy('orden', 'ASC')->get();
             return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query]);
         }
 
@@ -93,9 +93,9 @@ class PublicofertController extends Controller
                     $idCategory = $categoriasArray[$buscarIdCategory]['id'];
                 }
             }
-            $promo = Publicoferts::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $categoriaBuscar)->get();
+            $promo = Publicoferts::OrderBy('orden', 'ASC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $categoriaBuscar)->get();
         } else {
-            $promo = Publicoferts::OrderBy('updated_at', 'DESC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
+            $promo = Publicoferts::OrderBy('orden', 'ASC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
         }
 
         //EJEMPLOS DE CONSULTAS JOIN
@@ -142,14 +142,14 @@ class PublicofertController extends Controller
     }
 
     public function posts(Request $request){
-        $position = 1;
+        $orden = 1;
         $sorts = $request->get('sorts');
 
         foreach ($sorts as $sort) {
             $post = Publicoferts::find($sort);    
-            $post->orden = $position;
+            $post->orden = $orden;
             $post->save();
-            $position++;                    
+            $orden++;                    
         }
     }
 

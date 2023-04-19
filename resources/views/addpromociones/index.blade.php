@@ -43,12 +43,12 @@
         </form>
     </div>
     @if ($search)
-    <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
-        El resultado de la busqueda de <strong>'{{ $search }}'</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>    
+        <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+            El resultado de la busqueda de <strong>'{{ $search }}'</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     @endif
     <div class="container mt-5">
         <div class="table-responsive">
@@ -115,5 +115,41 @@
             </table>
         </div>
     </div>
-    </div>
+
+    {{-- ENVIA LAS POSISIONES AL HACER DRAG AND DROP AL CONTROLADOR --}}
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+        /* var lista = document.getelementId() */
+        Sortable.create(lista, {
+            animation: 150,
+            chosenClass: "seleccionado",
+            // ghostClass: "fantasma"
+            dragClass: "drag",
+
+            onEnd: () => {
+                console.log('Se inserto un elemento');
+            },
+            group: "lista-personas",
+            store: {
+                // Guardamos el orden de la lista
+                set: (sortable) => {
+                    const orden = sortable.toArray();
+                    /* localStorage.setItem(sortable.options.group.name, orden.join('|')); */
+                    /* console.log(orden) */
+                    axios.post("{{ route('dragandrop.sort') }}", {
+                        sorts: orden
+                    }).catch(function(error) {
+                        console.log(error)
+                    });
+                },
+
+                // Obtenemos el orden de la lista en el localStorage
+                get: (sortable) => {
+                    const orden = localStorage.getItem(sortable.options.group.name);
+                    console.log("Se obtuvo el array" + orden)
+                    return orden ? orden.split('|') : [];
+                }
+            }
+        });
+    </script>
 @endsection
