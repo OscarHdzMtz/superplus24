@@ -57,14 +57,16 @@
     @yield('navbar_top')
     @yield('navbar')
     @yield('banner')
+    @yield('title5')
+    @yield('Proveedores')
     {{-- </section> --}}
     @yield('cards_service')
     @yield('title')
     <div class="body_cards">
         @yield('cards')
     </div>
-    @yield('title5')
-    @yield('Proveedores')
+    {{-- @yield('title5')
+    @yield('Proveedores') --}}
     @yield('title1')
     @yield('redessociales')
     @yield('title2')

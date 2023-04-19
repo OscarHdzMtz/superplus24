@@ -148,7 +148,7 @@
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="EMAIL" autofocus>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong><h6 style="color:yellow;">{{ __('Por favor digite bien su usuario o contraseña') }}</h6></strong>
+                                                    <strong><h6 style="color: red;">{{ __('Por favor digité bien su usuario o contraseña') }}</h6></strong>
                                                 </span>
                                             @enderror
                                     </div>

@@ -214,6 +214,9 @@
 
 {{-- PRODUCTOS NUEVOS --}}
 @section('title5')
+{{-- TEXTO EN MOVIMIENTO --}}
+{{-- <h1 class="textmov"><span class="type"></span></h1> --}}
+{{-- EMPIEZA LA SECCION QUIENES SOMOS --}}
     @if (count($productos) > 0)
         @foreach ($getitulo as $settitulo)
             @if ($settitulo->label == 'tituloproductos')
@@ -229,27 +232,6 @@
     @endif
 @endsection
 @section('Proveedores')
-    {{-- <div class="container_prove">
-        <div class="carousel_prove">
-            <div class="buttons_prove">
-                <span class="prev"> &#8592; </span>
-                <span class="next"> &#8594; </span>
-            </div>
-            @foreach ($proveedores as $proveedore)
-                <div data-aos="fade-up" class="item">
-                    <div class="content">
-                        <h1>{{ $proveedore->name }}</h1>
-                        <hr class="">
-                <h5 style=" color: white">¡DALE UN PLUS A TU DIA!</h5>
-                    </div>
-                    <div data-aos="fade-up" class="img">
-                        <img src="{{ asset('/img/proveedore/' . $proveedore->image) }}" alt="">
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
-
     <div data-aos="fade-up" class="container-fluid">
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
@@ -259,17 +241,15 @@
                         @php $i++ @endphp
                         <div class="mask flex-center">
                             <div class="container">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7 col-12 order-md-1 order-2">
-                                        <h4 style="color: black; text-transform: uppercase">{{ $productos->name }}</h4>
-                                        <h4 style="color: black">{!! $productos->descriptions !!}</h4>
-                                        {{-- <a href="#">
-                                            <h3>{{ $productos->price }}</h3>
-                                        </a> --}}
+                                <div class="row align-items-center mt-1">
+                                    <div class="col-md-6 col-12 order-md-1 order-2 mt-2">
+                                        <h4 style="color: black; text-transform: uppercase; ">{{ $productos->name }}</h4>
+                                        <h5 style="color: black; margin-bottom: 30px">{!! $productos->descriptions !!}</h5>
                                     </div>
-                                    <div class="col-md-5 col-12 order-md-2 order-1"><img
+                                    <div class="col-md-6 col-12 order-md-1 order-1"><img
                                             src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto"
-                                            alt="slide"></div>
+                                            alt="slide">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -277,11 +257,11 @@
                 @endforeach
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span {{-- class="carousel-control-prev-icon" --}}aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                <span {{-- class="carousel-control-next-icon" --}} aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
         </div>
@@ -618,14 +598,15 @@
                     </button>
                 </div>
                 <div class="principal text-center justify-content-md-center ">
-                    @if(count($ofertas) > 0)
+                    @if (count($ofertas) > 0)
                         <div data-aos="fade-up" class="container_cards">
                             <div class="row_cards">
                                 @foreach ($ofertas as $oferta)
                                     <div class="col-md-4 col-sm-6 mb-4">
                                         @if ($oferta->texto != '')
                                             <div class="single-content">
-                                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                <img class="popou_img"
+                                                    src="{{ asset('/img/ofertas/' . $oferta->image) }}"
                                                     alt="{{ $oferta->image }}">
                                                 <div class="text-content">
 
@@ -634,7 +615,8 @@
                                             </div>
                                         @else
                                             <div class="">
-                                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                <img class="popou_img"
+                                                    src="{{ asset('/img/ofertas/' . $oferta->image) }}"
                                                     alt="{{ $oferta->image }}">
                                             </div>
                                         @endif
