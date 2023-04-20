@@ -21,8 +21,8 @@
                 @if ($getPublicidadSeleccionado->paginaARedireccionar)
                     <div class="mb-3">
                         <a class="btn_filtro_promo btn-success text-center mt-3"
-                            href="{{ "/" . $getPublicidadSeleccionado->paginaARedireccionar }}">
-                            <i class="fas fa-percentage"></i><strong>
+                            href="{{ /* "/" . */ $getPublicidadSeleccionado->paginaARedireccionar }}">
+                            <i class="fas fa-sign-in-alt"></i>
                                 {{ $getPublicidadSeleccionado->textoDelBoton }}</strong>
                         </a>
                     </div>
