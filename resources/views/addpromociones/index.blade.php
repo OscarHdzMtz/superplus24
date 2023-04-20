@@ -30,7 +30,14 @@
         </div><!-- /.container-fluid -->
     </div>
     <div class="container">
-        <form style="border: green 1px solid" class="form-inline ml-3 float-right">            
+        <div class="row"></div>
+        <button type="button" class="btn btn-success mr-5">
+            Vigentes <span class="badge badge-light">{{ $countCatalogados }}</span>
+          </button> 
+          <button type="button" class="btn btn-danger mr-5">
+            Expirados <span class="badge badge-light">{{ $countDesatalogados }}</span>
+          </button> 
+        <form style="border: green 1px solid" class="form-inline ml-3 float-right">                       
             <div  style="margin-left: 20px" class="input-group input-group-sm">
                 <input type="checkbox" id="descatalogados" name="descatalogados">
                 <label style="margin-right: 30px; margin-left: 5px" for="scales">Descatalogados</label>                

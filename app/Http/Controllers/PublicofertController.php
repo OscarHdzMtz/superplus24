@@ -28,6 +28,8 @@ class PublicofertController extends Controller
     {
         $actualInicio = Carbon::today();
         $actualFin = Carbon::yesterday();
+        $countCatalogados = Publicoferts::where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->count();
+        $countDesatalogados = Publicoferts::where('fechaInicio', '<', $actualInicio)->where('fechaFin', '<', $actualFin)->count();
         if ($request) {
             $query = trim($request->get('search'));
             $descatalogados = $request->get('descatalogados');
@@ -39,7 +41,7 @@ class PublicofertController extends Controller
                 $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)
                 ->orderBy('orden', 'ASC')->get(); 
             }        
-            return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query]);
+            return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query, 'countCatalogados' => $countCatalogados, 'countDesatalogados' => $countDesatalogados]);
         }
 
         /* $ofertas = Publicoferts::orderBy('updated_at','DESC')->get(); */
