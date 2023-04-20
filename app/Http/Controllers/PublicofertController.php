@@ -26,10 +26,19 @@ class PublicofertController extends Controller
 {
     public function index(Request $request)
     {
+        $actualInicio = Carbon::today();
+        $actualFin = Carbon::yesterday();
         if ($request) {
             $query = trim($request->get('search'));
-            $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')
-            ->orderBy('orden', 'ASC')->get();
+            $descatalogados = $request->get('descatalogados');
+            if ($descatalogados <> null) {
+                $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')
+                ->orderBy('orden', 'ASC')->get();            
+            }
+            else {
+                $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)
+                ->orderBy('orden', 'ASC')->get(); 
+            }        
             return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query]);
         }
 

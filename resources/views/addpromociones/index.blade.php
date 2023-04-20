@@ -30,13 +30,15 @@
         </div><!-- /.container-fluid -->
     </div>
     <div class="container">
-        <form class="form-inline ml-3 float-right">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar"
+        <form style="border: green 1px solid" class="form-inline ml-3 float-right">            
+            <div  style="margin-left: 20px" class="input-group input-group-sm">
+                <input type="checkbox" id="descatalogados" name="descatalogados">
+                <label style="margin-right: 30px; margin-left: 5px" for="scales">Descatalogados</label>                
+                <input style="border: green 1px solid" class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar"
                     aria-label="Search">
                 <div class="input-group-prepend">
-                    <button class="input-group-text" type="submit">
-                        <i class="fas fa-search"></i>
+                    <button class="btn_filtro_promo btn-success text-center" type="submit">
+                        <i class="fas fa-search"></i> Filtrar
                     </button>
                 </div>
             </div>
