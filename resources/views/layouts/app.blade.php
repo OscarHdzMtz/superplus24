@@ -25,6 +25,7 @@
     <!-- Styles -->
     <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard/styledash.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -744,6 +745,8 @@
             document.getElementById("charNum").innerHTML = obj.value.length + ' caracteres';
         }
     </script>
+
+    @livewireScripts
 </body>
 
 </html>
