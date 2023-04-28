@@ -4043,3 +4043,48 @@ section #services li span {
   max-width: 300px;
 }
 /* FIN ESTILO DE ICONOS REDES SOCIALES */
+
+
+
+.promociones_input{
+  width: 100%;
+  outline: none;
+  border: 2px solid #eeeeee;
+  background-color: #eeeeee;
+  padding: 0.6rem 1.2rem;
+  color: #000000;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+  border-color: #21c87a;
+  text-align: center;
+}
+.promociones_input::placeholder {
+  color: #888888;
+  font-weight: bold;
+}
+.promociones_input::selection {
+  color: #44CBC6;
+  font-weight: bold;
+}
+.promociones_input option{
+  width: 100%;
+  outline: none;
+  border: 2px solid #eeeeee;
+  /* background-color: red; */
+  padding: 0.6rem 1.2rem;
+  color: black;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+  border-color: #21c87a;
+  text-align: center;
+  margin-top: 15px;
+}
+/* .promociones_input:hover{
+background-color: #21c87a;
+} */

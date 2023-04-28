@@ -155,18 +155,18 @@
             <hr class="style6">
         </div>
     </div>
-    <div class="container">
+    {{-- <div class="container">
         <div class="row d-flex justify-content-between ml-0">
             <div class="col-lg-12">
                 <form action="{{ url('promociones') }}" method="GET" novalidate="novalidate">
                     <div class="row">
-                        {{-- <div class="col-lg-4 col-md-4 col-sm-12 p-0 mr-3 mt-3">
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-0 mr-3 mt-3">
                             <input type="text" class="form-control search-slt" id="keyboard" name="keyboard"
                                 placeholder="Buscar por:">
-                        </div> --}}
+                        </div>
                         @if (count($promo) > 0)
                             <div class="col-lg-6 col-md-6 col-sm-12 p-0 mr-3 mt-3 styleSelect">
-                                <select class="form-control search-slt" id="category_filter" name="category">
+                                <select  class="form-control search-slt" id="category_filter" name="category">
                                     <option>FILTRE POR DEPARTAMENTO</option>
                                     @foreach ($categorias as $itemCategoria)
                                         <option value="{{ $itemCategoria['id'] }}"
@@ -181,7 +181,7 @@
                             </div>
                         @endif
                         <div class="col-lg-2 col-md-1 col-sm-1 p-0 mr-2 mt-3">
-                            {{-- VALIDAMOS SI NO ESTA SELECCIONADO UNA CATEGORIA PARA MOSTRAR BOTON --}}
+                            
                             @if ($categoriaBuscar)
                                 <a class="btn_filtro_promo btn-success btn-block text-center"
                                     href="{{ url('promociones') }}">
@@ -192,47 +192,23 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>                
     </div>
-    <div {{-- data-aos="fade-up"  --}}class="container_cards_promo">
+    <div class="container_cards_promo">
         <div class="row_cards_promo">
             @foreach ($promo as $oferta)
                 <div class="col-md-3 col-sm-6 mb-3">
-                    <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
+                    <div data-aos="zoom-in" class="clic_abre_modal"> 
                         <img id="get_image_promo"
                             class="popou_img_promo"src="{{ asset('/img/ofertas/' . $oferta->image) }}"
                             alt="{{ $oferta->image }}">
                         <div class="text-contentpromo">
-                            {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
-                            {{-- <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3> --}}
-                            {{-- <hr class="style2"> --}}
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-    </div>
-
-    {{-- <div class="principal">
-    @foreach ($ofertas as $oferta)
-    <div id="contenedor" class="row_p">
-        <div id="naranja" class="">
-            <img class="popou_img"src="{{asset('/img/ofertas/'.$oferta->image)}}" alt="{{$oferta->image}}">
-        </div>       
-        <div id="verde" class="content_pagos"> 
-            <strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong>  
-            <br>    
-            <h4>{{$oferta->texto}}</h4>  
-            <button type="button" class="btnwssp btn btn-outline-success btn-lg">
-                <a target="none" href="https://wa.me/51987654321?text=Hola%2CEstoy+interesad%40+en+la+oferta%3A+{{$oferta->titulo}}">
-                   Preguntar
-                </a>
-            </button> 
-        </div>
-    </div>
-    @endforeach  
-</div> --}}
-
+    </div>     --}}
 
     {{-- MODAL DONDE SE VA MOSTRAR LAS PROMOCIONES AL DAR CLICK --}}
     <div class="modal fade" id="modalpromo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -258,7 +234,10 @@
         </div>
     </div>
 @endsection
-
+{{-- AGREGAMOS LA SECCION QUE VA MANDAR A TRAER LAS PROMOCIONES HECAS CON LIVEWIRE --}}
+@section('promocionesConLivewire')
+    @livewire('promociones-livewire.index')
+@endsection
 
 @section('footer')
     <div style="margin-top: 30px" class="footer-dark">

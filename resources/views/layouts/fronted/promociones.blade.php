@@ -24,6 +24,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
+    @livewireStyles
 </head>
 
 <body>
@@ -40,7 +41,8 @@
         @yield('navbar_top')
         @yield('navbar')
         @yield('banner')
-        @yield('title')
+        @yield('title')   
+        @yield('promocionesConLivewire')     
     </section>
     {{-- <div>
             @yield('timespace')
@@ -160,6 +162,7 @@
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>
+    @livewireScripts
 </body>
 
 </html>
