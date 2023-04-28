@@ -162,7 +162,7 @@
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>
-    <script src="{{ assets('vendor/livewire/livewire.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>
