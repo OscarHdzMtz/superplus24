@@ -29,8 +29,8 @@
     <div {{-- data-aos="fade-up"  --}}class="container_cards_promo">
         <div class="row_cards_promo">
             @foreach ($promo as $oferta)
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
+                <div {{-- data-aos="zoom-in" --}} class="col-md-3 col-sm-6 mb-3">
+                    <div class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
                         <img id="get_image_promo"
                             class="popou_img_promo"src="{{ asset('/img/ofertas/' . $oferta->image) }}"
                             alt="{{ $oferta->image }}">
