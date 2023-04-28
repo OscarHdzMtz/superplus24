@@ -746,7 +746,7 @@
         }
     </script>
 
-    @livewireScripts
+    <script src="{{ assets('vendor/livewire/livewire.js') }}"></script>
 </body>
 
 </html>
