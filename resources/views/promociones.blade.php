@@ -236,7 +236,8 @@
 @endsection
 {{-- AGREGAMOS LA SECCION QUE VA MANDAR A TRAER LAS PROMOCIONES HECAS CON LIVEWIRE --}}
 @section('promocionesConLivewire')
-    @livewire('promociones-livewire.index')
+    {{-- @livewire('promociones-livewire.index') --}}
+    <livewire:promociones-livewire.index>
 @endsection
 
 @section('footer')
