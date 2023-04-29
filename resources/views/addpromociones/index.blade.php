@@ -40,7 +40,7 @@
         <form style="border: green 1px solid" class="form-inline ml-3 float-right">                       
             <div  style="margin-left: 20px" class="input-group input-group-sm">
                 <input type="checkbox" id="descatalogados" name="descatalogados">
-                <label style="margin-right: 30px; margin-left: 5px" for="scales">Descatalogados</label>                
+                <label style="margin-right: 30px; margin-left: 5px" for="scales">Mostrar expirados</label>                
                 <input style="border: green 1px solid" class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar"
                     aria-label="Search">
                 <div class="input-group-prepend">

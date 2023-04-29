@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row {{-- d-flex justify-content-between ml-0 --}}">
             <div class="col-lg-6 col-md-6 col-sm-12 mt-3">                
-                {{-- <input wire:model="search" type="search" class="promociones_input search-slt" placeholder="Buscar">    --}}             
+                {{-- @if (!$categoriaBuscar) --}}
+                <input wire:model="search" type="search" class="promociones_input search-slt" placeholder="Buscar">   
+                {{-- @endif --}}
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 mt-3 {{-- p-0 mr-3 mt-3 styleSelect --}}">
                 {{-- @if (count($promo) > 0) --}}

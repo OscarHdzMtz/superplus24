@@ -148,7 +148,7 @@ class PublicofertController extends Controller
     public function create()
     {
         //
-        $categorias = Categorias::orderBy('id', 'desc')->pluck('name', 'id');
+        $categorias = Categorias::orderBy('name', 'ASC')->pluck('name', 'id');
         return view('addpromociones.createpromo', compact('categorias'));
     }
 

@@ -21,29 +21,32 @@
             Agregar promociones</small>
         </h1>
 
-        <div class="row text-center justify-content-md-center">
+        <div class="row text-center justify-content-md-center border border-primary">
             <div class="col-md-offset col-md-6">                
                 {!! Form::open(['route' => 'addpromociones.store', 'files' => 'true']) !!}                
                 <div class="empresa-form">
                     <form>                        
-                        <hr style="margin: 0 auto" class="style1">      
+                        {{-- <hr style="margin: 0 auto" class="style1">   --}}    
+                        <div class="form-group mt-4">                            
+                            <label for="message-text" class="col-form-label">Selecciona una Imagen * :</label>
+                            {{ Form::file('image', ['required' => 'required', 'class'=>'empresa_input', 'id'=>'seleccionArchivos']) }}
+                            <div class="mt-2 mb-0 row justify-content-center">
+                                <img id="imagenPrevisualizacion" src="#" alt="Imagen" height="200px" width="200px" />
+                            </div>                       
+                        </div>
                         <div class="form-group">
-                            <label  class="control-label" for="categoria_id">CATEGORIAS</label>
-                            {!! Form::select('categoria_id', $categorias,null,['class' => 'form-control','placeholder' => 'Elige una categoria de promocion'])!!}
+                            <label  class="control-label" for="categoria_id">CATEGORIAS *</label>
+                            {!! Form::select('categoria_id', $categorias,null,['class' => 'empresa_input','placeholder' => 'Elige una categoria de promocion'])!!}
                         </div>                    
                         <div class="input-container">
                             {{-- <input id="" type="email" class="form-control contact_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus> --}}
-                            <input type="text" name="titulo" class="empresa_input" placeholder="Titulo">
+                            <input type="text" name="titulo" class="empresa_input" placeholder="Titulo*">
                         </div>                                          
                         <div class="input-container">
-                            <textarea name="texto" class="empresa_input" id="" placeholder="Descripcion"
-                                onkeyup="countChars(this);" required></textarea>
-                            <p id="charNum" class="text-success text-center">0 caracteres</p>S
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">IMAGEN:</label>
-                            {{ Form::file('image', ['required' => 'required']) }}
-                        </div>
+                            <textarea name="texto" class="empresa_input" placeholder="Descripcion (Opcional)" cols="40" rows="5" style="resize: both;"
+                                onkeyup="countChars(this);"></textarea>
+                            <p id="charNum" class="text-success text-center">0 caracteres</p>
+                        </div>                        
                         <div class="form-group">
                             <label>FECHA INICIO</label>
                             <input type="date" name="fechaInicio" required> <br>
@@ -51,7 +54,7 @@
                             <input type="date" name="fechaFin" required>
                         </div>
                         <div class="form-group">
-                            <label for="visible">Oferta Exclusiva:</label>
+                            <label for="visible">Oferta Exclusiva: </label>
                             {!!
                                 Form::checkbox('deldia',null,array())    !!}
                         </div>
