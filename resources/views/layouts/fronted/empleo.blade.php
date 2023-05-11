@@ -18,7 +18,16 @@
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
-    <title>Empleo</title>
+    <title>Empleo | Super Plus</title>
+    {{-- nuevas metadatos agragados para que google lo reconosca mas facil --}}
+    <meta name="description" content="VEN Y FORMA PARTE DE UNA DE LAS EMPRESAS COMERCIALES MAS IMPORTANTES Y EN EXPANSION DE LA REGION MIXTECA.">
+    <link rel="canonical" href="https://superplus24horas.com/empleo">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Empleo | Super Plus">
+    <meta property="og:description" content="VEN Y FORMA PARTE DE UNA DE LAS EMPRESAS COMERCIALES MAS IMPORTANTES Y EN EXPANSION DE LA REGION MIXTECA.">
+    <meta property="og:url" content="https://superplus24horas.com/empleo">
+    <meta property="og:site_name" content="Super Plus">
 
     <!-- Fonts-->
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">

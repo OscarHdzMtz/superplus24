@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div
             class="modal-content mx-auto text-center d-flex align-items-center align-self-center card p-3 text-center cookies">                     
-            <img src="https://i.imgur.com/Tl8ZBUe.png" width="50"><span class="mt-2">Este sitio web almacena datos como cookies para habilitar la funcionalidad del sitio con el fin de ofrecerle una mejor
+            <img src="https://i.imgur.com/Tl8ZBUe.png" width="50"><span class="mt-2">Este sitio web almacena cookies para habilitar la funcionalidad del sitio con el fin de ofrecerle una mejor
                 experiencia.</span><br> <a class="d-flex align-items-center" onclick="cerrarModalCookie()">Consulte nuestro aviso de
                 Privacidad<i class="fa fa-angle-right ml-2"></i></a>
                 {!! Form::open(['url' => 'cupones', 'files' => 'true']) !!}

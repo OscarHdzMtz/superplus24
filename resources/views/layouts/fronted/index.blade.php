@@ -7,6 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="imagenes" href="{{ asset('img/estaticos/logopalomita.png') }}">
     <title>SuperPlus | ¡DALE UN PLUS A TU DIA!</title>
+    {{-- nuevas metadatos agragados para que google lo reconosca mas facil --}}
+    <meta name="description" content="Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros">
+    <link rel="canonical" href="https://superplus24horas.com/">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SuperPlus | ¡DALE UN PLUS A TU DIA!">
+    <meta property="og:description" content="Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros">
+    <meta property="og:url" content="https://superplus24horas.com/">
+    <meta property="og:site_name" content="Super Plus">
+
 
     <!--ESTILO ICONOS Y TIPOS DE LETRAS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
@@ -57,16 +67,16 @@
     @yield('navbar_top')
     @yield('navbar')
     @yield('banner')
-    @yield('title5')
-    @yield('Proveedores')
+    {{-- @yield('title5')
+    @yield('Proveedores') --}}
     {{-- </section> --}}
     @yield('cards_service')
     @yield('title')
     <div class="body_cards">
         @yield('cards')
     </div>
-    {{-- @yield('title5')
-    @yield('Proveedores') --}}
+    @yield('title5')
+    @yield('Proveedores')
     @yield('title1')
     @yield('redessociales')
     @yield('title2')
