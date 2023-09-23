@@ -15,16 +15,16 @@
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
-    <title>Nosotros | Super Plus</title>
+    <title>Nosotros | SuperPlus</title>
     {{-- nuevas metadatos agragados para que google lo reconosca mas facil --}}
-    <meta name="description" content="Super Plus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, brindado  servicio las 24 horas del día los 365 días del año,  con una experiencia de 12 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.">
+    <meta name="description" content="SuperPlus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, brindado  servicio las 24 horas del día los 365 días del año,  con una experiencia de 12 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.">
     <link rel="canonical" href="https://superplus24horas.com/nosotros">
     <meta property="og:locale" content="es_MX">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Nosotros | Super Plus">
-    <meta property="og:description" content="Super Plus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, brindado  servicio las 24 horas del día los 365 días del año,  con una experiencia de 12 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.">
+    <meta property="og:title" content="Nosotros | SuperPlus">
+    <meta property="og:description" content="SuperPlus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, brindado  servicio las 24 horas del día los 365 días del año,  con una experiencia de 12 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.">
     <meta property="og:url" content="https://superplus24horas.com/nosotros">
-    <meta property="og:site_name" content="Super Plus">
+    <meta property="og:site_name" content="SuperPlus">
 
     <!-- Fonts-->
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">

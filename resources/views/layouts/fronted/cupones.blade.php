@@ -15,16 +15,16 @@
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
 
-    <title>Cupones | Super Plus</title>
+    <title>Cupones | SuperPlus</title>
     {{-- nuevas metadatos agragados para que google lo reconosca mas facil --}}
     <meta name="description" content="Cupones Super Plus 24 Horas Contigo">
     <link rel="canonical" href="https://superplus24horas.com/cupones">
     <meta property="og:locale" content="es_MX">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Cupones | Super Plus">
+    <meta property="og:title" content="Cupones | SuperPlus">
     <meta property="og:description" content="Cupones Super Plus 24 Horas Contigo">
     <meta property="og:url" content="https://superplus24horas.com/cupones">
-    <meta property="og:site_name" content="Super Plus">
+    <meta property="og:site_name" content="SuperPlus">
 
     <!-- Fonts-->
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">

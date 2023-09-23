@@ -15,7 +15,7 @@
     <meta property="og:title" content="SuperPlus | ¡DALE UN PLUS A TU DIA!">
     <meta property="og:description" content="Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros">
     <meta property="og:url" content="https://superplus24horas.com/">
-    <meta property="og:site_name" content="Super Plus">
+    <meta property="og:site_name" content="SuperPlus">
 
 
     <!--ESTILO ICONOS Y TIPOS DE LETRAS-->
