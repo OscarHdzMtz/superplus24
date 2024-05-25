@@ -1,0 +1,1300 @@
+/* ***********************************************************
+****************estilo tarjetas de servicio backend**********
+*********************************************************** */
+.row_cards {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.container_cards{
+    width: 100%;
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.single-content{
+    position: relative;
+    transition: .3s;
+    border-radius: 15px;
+    box-shadow: 10px 20px 20px rgba(0,0,0,0.5);
+}
+.single-content .text-content,
+.single-content::after{
+    position: absolute;
+    left: 20px;
+    right: 20px;
+}
+.single-content::after{
+    content: '';
+    display: block;
+    background: #06213f;
+    top: 5px;
+    bottom: 5px;
+    opacity: 0;
+    transform: rotate3d(-1,1,0,100deg);
+    transition: 0.4s;
+    border-radius: 15px;
+}
+.single-content:hover::after{
+    opacity: 0.9;
+    transform: rotate3d(0,0,0,0deg)
+}
+.single-content img{
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+.single-content .text-content{
+    top:45%;
+    opacity: 0;
+    z-index: 1;
+    transform: translate(10%, -30%);
+    transition:0.3s;
+    text-align: center;
+    color: #fff;
+}
+.single-content .text-content h4{
+    font-family: 'Poppins', sans-serif;
+}
+.single-content:hover .text-content{
+    opacity: 1;
+    transform: translate(0,-50%);
+    transition-delay:0.3s
+}
+
+
+
+/* ***********************************************************
+****************ESTILO MODAL DELETE SERVICIOS**********
+*********************************************************** */
+.modal-confirm {
+	color: #636363;
+	/* width: 400px; */
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+}
+.modal-confirm .modal-header {
+	border-bottom: none;
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+.modal-confirm .modal-body {
+	color: #999;
+}
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+	color: #999;
+}
+.modal-confirm .icon-box {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50%;
+	z-index: 9;
+	text-align: center;
+	border: 3px solid #DB4437;
+}
+.modal-confirm .icon-box i {
+	color: #DB4437;
+	font-size: 46px;
+	display: inline-block;
+	margin-top: 13px;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+  font-weight: bold;
+	color: #fff;
+	border-radius: 4px;
+	background: #60c7c1;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	min-width: 120px;
+	border: none;
+	min-height: 40px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+.modal-confirm .btn-secondary {
+	background: #c1c1c1;
+}
+.modal-confirm .btn-warning {
+	background: #ffc107;
+}
+.modal-confirm .btn-success {
+	background: #28a745;
+}
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+	background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+	background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+	background: #ee3535;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+
+
+
+/*inicio mision vision  */
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 4.6%;
+    background: #fff;
+    /* line-height: 6.4; */
+    font-family: sans-serif;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .blog-card a {
+    color: inherit;
+  }
+
+  .blog-card a:hover {
+    color: #5ad67d;
+  }
+
+  .blog-card:hover .photo {
+    transform: scale(1.3) rotate(3deg);
+  }
+
+  .blog-card .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+  }
+
+  .blog-card .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s;
+  }
+
+  .blog-card .details,
+  .blog-card .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .blog-card .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left 0.2s;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .blog-card .details a {
+    -webkit-text-decoration: dotted underline;
+            text-decoration: dotted underline;
+  }
+
+  .blog-card .details ul li {
+    display: inline-block;
+  }
+
+  .blog-card .details .author:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "\F007";
+  }
+
+  .blog-card .details .date:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "\F133";
+  }
+
+  .blog-card .details .tags ul:before {
+    font-family: FontAwesome;
+    content: "\F02B";
+    margin-right: 10px;
+  }
+
+  .blog-card .details .tags li {
+    margin-right: 2px;
+  }
+
+  .blog-card .details .tags li:first-child {
+    margin-left: -4px;
+  }
+
+  .blog-card .description {
+    padding: 2rem;
+    background: #fff;
+    position: relative;
+    z-index: 100;
+  }
+
+  .blog-card .description h1,
+  .blog-card .description h2 {
+    font-family: Poppins, sans-serif;
+  }
+
+  .blog-card .description h1 {
+    line-height: 1;
+    margin: 0;
+    font-size: 2.7rem;
+  }
+
+  .blog-card .description h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #a2a2a2;
+    margin-top: 5px;
+  }
+  .blog-card .description p {
+    line-height: 1.2;
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: justify;
+  }
+  .blog-card .description .fas {
+    color: #ffcc00;
+  }
+  .blog-card .description ul a {
+    line-height: 1.2;
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: justify;
+  }
+
+  .blog-card .description .read-more {
+    text-align: right;
+  }
+
+  .blog-card .description .read-more a {
+    color: #5ad67d;
+    display: inline-block;
+    position: relative;
+  }
+
+  .blog-card .description .read-more a:after {
+    content: "\F061";
+    font-family: FontAwesome;
+    margin-left: -10px;
+    opacity: 0;
+    vertical-align: middle;
+    transition: margin 0.3s, opacity 0.3s;
+  }
+
+  .blog-card .description .read-more a:hover:after {
+    margin-left: 5px;
+    opacity: 1;
+  }
+
+  .blog-card p {
+    position: relative;
+    margin: 1rem 0 0;
+  }
+
+  .blog-card p:first-of-type {
+    margin-top: 1.25rem;
+  }
+
+  .blog-card p:first-of-type:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    background: #FF8525;
+    width: 95px;
+    top: -0.75rem;
+    border-radius: 3px;
+  }
+
+  .blog-card:hover .details {
+    left: 0%;
+  }
+  .blog-card .logohover{
+    background-size: 90% ;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* vuelve imagen en blanco y negro */
+    opacity: 0.8;
+    transition: 0.3s;
+    filter: grayscale(100);
+  }
+
+  @media (min-width: 640px) {
+    .blog-card {
+        margin-left: 5%;
+      flex-direction: row;
+      max-width: 1000px;
+    }
+
+    .blog-card .meta {
+      flex-basis: 50%;
+      height: auto;
+    }
+
+    .blog-card .description {
+      flex-basis: 100%;
+    }
+
+     .blog-card .description h1,
+  .blog-card .description h2 {
+    font-family: Poppins, sans-serif;
+  }
+
+  .blog-card .description h1 {
+    line-height: 1;
+    margin: 0;
+    font-size: 2.7rem;
+  }
+
+  .blog-card .description h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #a2a2a2;
+    margin-top: 5px;
+  }
+  .blog-card .description h1 {
+    font-size: 2.9rem;
+    line-height: 1.5;
+  }
+  .blog-card .description p {
+    font-size: 1.7rem;
+    line-height: 1.5;
+  }
+  .blog-card .description ul a {
+    font-size: 1.7rem;
+    line-height: 1.5;
+  }
+
+
+    .blog-card .description:before {
+      transform: skewX(-3deg);
+      content: "";
+      background: #fff;
+      width: 30px;
+      position: absolute;
+      left: -10px;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .blog-card.alt {
+      flex-direction: row-reverse;
+    }
+
+    .blog-card.alt .description:before {
+      left: inherit;
+      right: -10px;
+      transform: skew(3deg);
+    }
+
+    .blog-card.alt .details {
+      padding-left: 25px;
+    }
+    .blog-card .logohover{
+        background-image: url(../img/logop.png);
+        background-size: 100%;
+         background-repeat: no-repeat;
+         background-position: center;
+         /* vuelve imagen en blanco y negro */
+         opacity: 0.8;
+         transition: 0.3s;
+         filter: grayscale(100);
+      }
+  }
+
+/* fin */
+
+/* BANNER NOSOTROS */
+.banner_nosotros img {
+  max-height: 400px;
+  margin: 0 auto;
+  /* border-radius: 5px; */
+  }
+
+
+
+  /***********************************************
+**********FORMILARIO MI EMPRESA****************
+************************************************/
+
+.empresa-form{
+  background-color:  white;
+  position: relative;
+}
+.empresa_tittle{
+  color: black;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.input-container{
+  position: relative;
+  margin: 1rem 0;
+}
+.empresa_input{
+  width: 100%;
+  outline: none;
+  border: 2px solid #eeeeee;
+  background-color: #eeeeee;
+  padding: 0.6rem 1.2rem;
+  color: #4b4b4b;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+  border-color: #21c87a;
+  text-align: center;
+}
+.empresa_input::placeholder {
+  color: #888888;
+  font-weight: bold;
+}
+textarea.empresa_input{
+  padding: 0.8rem 1.2rem;
+  min-height: 150px;
+  border-radius: 22px;
+  resize: none;
+  overflow: auto;
+}
+
+.empresa_btn{
+  width: 100%;
+  outline: none;
+  border: 2px solid #eeeeee;  
+  padding: 0.6rem 1.2rem;
+  color: #eeeeee;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+  border-color: #21c87a;
+  text-align: center;
+}
+/* FIN EMPRESA FORM */
+
+
+
+/***********************************************
+******************TITULOS***********************
+************************************************/
+.testimonial-title{
+  margin-top: 25px;
+  margin-left: 40px;
+}
+.testimonial-title h3{
+  color: #003baa;
+  font-size: 33;
+  font-family: 'Poppins', sans-serif;
+}
+.testimonial-title-main{
+  padding-top: 35px;
+  padding-bottom: 40px
+
+}
+.testimonial-title-main h3{
+  color: #003baa;
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+.testimonial-title h3{
+  color: #000000;
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+.proveedor-title{
+  margin-top: 25px;
+  margin-left: 40px;
+}
+.proveedor-title h5{
+  color: #FF8525;
+  font-size: 33;
+  font-family: 'Poppins', sans-serif;
+}
+.proveedor-title h3{
+  color: #000000;
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+.style6{
+  background-color: #003baa;
+  height: 5px;
+  margin: 0;
+  border-radius: 11px;
+  margin-right: 0%;
+  width: 40%;
+}
+/* ********FIN TITLE*********/
+
+
+
+/* ----ESTILO FORMULARIO EMPLEO */
+.vacantes-form{
+	padding: 50px 0;
+}
+
+.vacantes-form form{
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.vacantes-form .form-icon{
+	text-align: center;
+    /* background-color: #5891ff; */
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 150px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 100px;
+}
+
+.vacantes-form .form-icon img{
+  /* border-radius: 50%; */
+  font-size: 40px;
+  color: white;
+  max-width: 100%;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 50px;
+  /* line-height: 100px; */
+}
+
+.vacantes-form .item{
+	border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+.vacantes-form .create-account{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #003baa;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+.vacantes-form .cancel{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #DB4437;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.vacantes-form .social-media{
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #9fadca;
+    border-top: 1px solid #dee9ff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.vacantes-form .social-icons{
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+
+.vacantes-form .social-icons a{
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.vacantes-form .social-icons a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+@media (max-width: 576px) {
+    .vacantes-form form{
+        padding: 50px 20px;
+    }
+
+    .vacantes-form .form-icon{
+        width:100px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
+    .vacantes-form .form-icon img{
+
+      color: white;
+      max-width: 100%;
+      height: 70px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+}
+/* ----FIN ESTILO FORMULARIO EMPLEO */
+
+/* ESTILO CARDS VACANTES */
+.container_vacan {
+  width: 90%;
+  margin: 0 auto;
+  display :flex;
+  justify-content:space-evenly;
+  flex-wrap:wrap;
+  }
+
+  .card_vacan{
+  margin : auto;
+  width: 350px;
+  overflow : hidden;
+  border-radius : 20px;
+  background : white;
+  margin-top:50px;
+  transition: all .2s;
+  box-shadow:5px 5px 15px rgba(0,0,0, .3);
+  }
+
+  .card_vacan:hover {
+  box-shadow:5px 5px 25px rgba(0,0,0, .5);
+  transform: translate(-5px, -5px);
+  }
+
+  .card_vacan:hover .icon svg{
+  animation : iconjln 1s;
+  }
+
+  .img-cover{
+  position: relative;
+  }
+
+  .card_vacan img{
+  max-width: 100%;
+  height: auto;
+  object-fit:cover;
+  }
+
+  .desc{
+  padding : 1.5em ;
+  font-family: 'Poppins', sans-serif;
+  }
+  .desc h1{
+  display:inline;
+  }
+  .tdesc{
+  margin-bottom:40px;
+  width:100%;
+  height:50px;
+  overflow: auto;
+  }
+
+  .desc a{
+  text-decoration: none;
+  background-color: dodgerblue;
+  padding: 15px 25px;
+  color:white;
+  border-radius: 15px;
+  display:block;
+  text-align: center;
+  transition: all .2s;
+  }
+  .desc a:hover{
+  background-color: SteelBlue;
+  }
+  .desc a:hover svg{
+  animation : iconjln 1s;
+  }
+
+  @keyframes iconjln{
+  0%, 100% {
+    opacity : 1;
+    transform: translateX(0%);
+  }
+  50%{
+    opacity:0;
+    transform: translateX(100%);
+  }
+  70%{
+    opacity:0;
+    transform:translateX(-100%);
+  }
+  }
+
+  /* FIN ESTILO CARDS VACANTES */
+
+/*  ESTILO SELECT SLIDER*/
+  .mselect {
+    display: inline-block;
+    padding: 4px 0;
+    margin-bottom: 9px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #555;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #BBB;
+    max-height:80px;
+    overflow-y:scroll;
+  }
+
+  .mselect-opt {
+    display:block;
+    cursor:pointer;
+    padding:0 6px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .mselect-opt.selected {
+    color:white;
+    background:dodgerblue;
+  }
+
+  .mselect-opt i {
+    display:none;
+    margin-top:2px;
+  }
+
+  .mselect-opt.selected i {
+    display:block;
+  }
+/* FIN ESTILO SELECT SLIDER*/
+
+
+/***********************************************
+************CARTAS DE SERVICIO*****************
+************************************************/
+.row_cards {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-right: -15px;
+    margin-left: -15px;
+
+}
+.container_cards{
+    width: 100%;
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.single-content_service{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+.service{
+    margin: 10px;
+    background-color: #ffcc00;
+    overflow: hidden;
+    padding: 35px 15px;
+    position: relative;
+    text-align: center;
+    transition: background-color 0.3s ease-in,
+                transform 0.3s ease-in;
+    width: 250px;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
+}
+.servicecard{
+    background-color: #ffcc00;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
+}
+.service:hover{
+    background-color: #ffcc00;
+    transform: translateY(-3px);
+    -webkit-box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    box-shadow: -25px 35px 29px -3px rgba(0,0,0,0.65);
+    border-radius: 15px;
+}
+.service::before{
+    content: '';
+    border-width: 20px;
+    border-style: solid;
+    border-color: #ffffff #ffffff rgba(0,0,0,0.4) rgba(0,0, 0, 0.4);
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    transition: right 0.3s ease-out,
+                top 0.3s ease-out;
+}
+.service:hover::before{
+    right: 0;
+    top: 0;
+}
+/* ICONOCES DE SERVCIOS DE LA PAGINA */
+.service > i{
+    display: block;
+    color: #003baa;
+    font-size: 4rem;
+    margin-bottom: 0.9rem;
+    transition: color 0.3s ease-out;
+}
+.service > .title_services{
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.55rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    transition: color 0.3s ease-out;
+}
+.service > .description_services{
+    line-height: 1.55rem;
+    margin: 0;
+    transition: color 0.3s ease-out;
+}
+.service:hover > i,
+.service:hover > .description_services,
+.service:hover > .title_services{
+    color: white;
+}
+.btn_modal_wel{
+    position: relative;
+    display: inline-block;
+    padding: 10px 30px;
+    color: black;
+    text-decoration: none;
+    text-decoration-line:none;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(90deg,white,white);
+}
+.service:hover > .btn_modal_wel{
+    background: white;
+    /* -webkit-box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0);  */
+    /* box-shadow: inset 4px 4px 15px 0px #7e4316, 5px 5px 15px 5px rgba(0,0,0,0); */
+    transition: 0.3s;
+    text-decoration: none;
+    text-decoration-line:none;
+    /* color boton servicio HOVER */
+    color: #003baa;
+}
+
+/***********************************************
+************ FIN CARTAS DE SERVICIO*****************
+************************************************/
+
+/* ************************************************
+******ESTILOS QUIENES SOMOS FOOTER**
+*********************************************** */
+.f_widget p {
+  margin-top: 20px;
+  color: #0A3782;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: right;
+  text-align: justify;
+  line-height: 40px;
+}
+/* ************************************************
+****** FIN ESTILOS QUIENES SOMOS FOOTER**
+*********************************************** */
+
+
+/* ************************************************
+****** ESTILOS PIE DE TEXTO**
+*********************************************** */
+.tituloestatico{
+    background-color: black;
+    height: 5px;
+    width: 100%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estilonaranja{
+    background-color: #ff9340;
+    height: 5px;
+    width: 50%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estiloamarillo{
+    background-color: #ffcc00;
+    height: 5px;
+    width: 50%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+.estiloazul{
+    background-color: #003baa;
+    height: 5px;
+    width: 50%;
+    margin: 0;
+    /* border-radius: 11px; */
+    margin-right: 0%;
+}
+
+
+/*************************************************************
+*******imgenes y slider de la seccion OFERTAS DE TRABAJO******
+**************************************************************/
+h5.subtitle {
+	color: #21c87a;
+	margin-bottom: 10px;
+	font-weight: 300;
+  }
+
+  .service-heading {
+	margin-bottom: 50px;
+  }
+
+  .service-images {
+	margin-bottom: -100px;
+	border: 10px solid #fff;
+	z-index: 9999;
+  }
+
+  .service-content {
+	padding-top: 60px;
+	padding-left: 0px;
+	text-align: center;
+  }
+
+  .service-content h1 {
+	margin-bottom: 20px;
+	margin-top: 15px;
+
+  }
+
+  .service-icon {
+	margin-right: 20px;
+	color: #fff;
+	font-size: 25px;
+	width: 50px;
+	height: 50px;
+	background: #21c87a;
+	text-align: center;
+	border-radius: 50%;
+	padding-top: 5px;
+  }
+  .service-icon-count {
+	/* margin-right: 20px; */
+	color: #003baa;
+	margin-top: 100px;
+	font-size: 25px;
+	/* width: 50px;
+	height: 50px;
+	background: #21c87a; */
+	/* text-align: center; */
+	border-radius: 50%;
+	/* padding-top: 5px; */
+  }
+
+  .service-block {
+	margin-bottom: 50px;
+	margin-left: 150px;
+  }
+
+  .service-inner-content h4 {
+	text-transform: uppercase;
+  }
+
+  /*----------------------
+   WEB SERVICES
+  -----------------------*/
+  #services-2 {
+	position: relative;
+	background: url("../images/bg/6.jpg") no-repeat fixed 50% 50%;
+	background-size: cover;
+  }
+
+  #services-2:before {
+	position: absolute;
+	content: "";
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(30deg, rgba(121, 110, 255, 0.95) 0%, rgba(33, 200, 122, 0.95) 100%);
+  }
+
+  .web-service-block {
+	text-align: center;
+	padding: 35px 25px;
+	transition: all .5s ease-in-out;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	margin-bottom: 10px;
+  }
+
+  .web-service-block i {
+	font-size: 70px;
+	margin-bottom: 30px;
+	display: block;
+	color: #fff;
+  }
+
+  .web-service-block h3 {
+	color: #fff;
+  }
+
+  .web-service-block p {
+	color: #eee;
+	margin-top: 15px;
+  }
+
+  .web-service-block:hover {
+	background: #fff;
+	border-color: transparent;
+  }
+
+  .web-service-block:hover i {
+	color: #21c87a;
+  }
+
+  .web-service-block:hover h3 {
+	color: #111;
+  }
+
+  .web-service-block:hover p {
+	color: #111;
+  }
+
+  .service-img {
+	margin-bottom: -200px;
+	/* border: 10px solid #fff; */
+	z-index: 9999;
+  }
+  /********************************************************
+  ************ ESTILO COUNTERS OFERTAS DE TRABAJO**********
+  *********************************************************/
+  	.containercount{
+  		background-color: #fecb00;
+  		}
+  	.containercount p{
+  		color: black;
+  	}
+
+  	.textcount1{
+  		font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.55rem;
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+      transition: color 0.3s ease-out;
+  	}
+  	.numcount{
+  		font-size: 50px;
+  		/* font-size: 55px; */
+  		font-family: 'Oswald', sans-serif;
+  		margin-top: 0px;
+  		color:#fecb00;
+  		margin-bottom: -20px;
+  		/* margin-bottom: 80px; */
+  		text-align: center;
+  	}
+  	.textcount2{
+  		font-size: 35px;
+  		/* font-size: 55px; */
+  		/* font-family: 'Oswald', sans-serif; */
+  		text-align: center;
+  	}
+
+  	.bg-grey {
+  		background: #F4F7FC;
+  	  }
+  	.bg-counter{
+  		/* background: #dfe6f2; */
+  		border-radius: 5px;
+  	}
+
+
+    /*************************************************************
+    ******* RESPONSIVO imgenes y slider de la seccion OFERTAS DE TRABAJO******
+    **************************************************************/
+    @media (max-width: 992px) {
+    	.service-img {
+    		margin-bottom: 0px;
+    	}
+    	.service-block {
+    		margin-bottom: 50px;
+    		margin-left: 50px;
+    	  }
+    }
+
+    @media (max-width: 640px) {
+    .service-img {
+      margin-bottom: 0px;
+      }
+      .service-block {
+      margin-bottom: 50px;
+      margin-left: 50px;
+      }
+      .service-content {
+      padding-top: 60px;
+      padding-left: -50px;
+      text-align: center;
+      }
+
+      .service-content h1 {
+      margin-bottom: 20px;
+      margin-top: 15px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+    	.service-img {
+    		margin-bottom: 0px;
+    	  }
+    	  .service-block {
+    		margin-bottom: 50px;
+    		margin-left: 0px;
+    	  }
+    	  .service-content {
+    		padding-top: 60px;
+    		padding-left: 0px;
+    		padding-right: 30px;
+    		text-align: center;
+    	  }
+        .service-content h1 {
+      		margin-bottom: 20px;
+      		margin: 0px auto;
+      		font-size: 9vw;
+      	  }
+          /* banner inicio */
+                  .banner img {
+                      width: 100%;
+                      height: 200px;
+                      margin: 0 auto;
+                      /* border-radius: 25px; */
+                      }
+
+                  .banner_nosotros img {
+                       width: 100%;
+                       height: 150px;
+                       margin: 0 auto;
+                          /* border-radius: 5px; */
+                   }
+                   .banner_empleo img {
+                      width: 100%;
+                      height: 150px;
+                      margin: 0 auto;
+                         /* border-radius: 5px; */
+                  }
+
+    }
+    /*************************************************************
+    *******FIN RESPONSIVO imgenes y slider de la seccion OFERTAS DE TRABAJO******
+    **************************************************************/
+
+    
+    /* BANNER index */
+    .banner_index img {
+      width: 100%;
+        height: 75vh;
+        margin: 0;
+        padding: 0;
+      /* border-radius: 5px; */
+      }
+
+    /* BANNER NOSOTROS */
+    .banner_nosotros img {
+        max-height: 400px;
+        margin: 0 auto;
+        /* border-radius: 5px; */
+        }
+
+        /* BANNER EMPLEO */
+    .banner_empleo img {
+        max-height: 400px;
+        margin: 0 auto;
+        /* border-radius: 5px; */
+        }
+
+
+        /* tamaño del logo del navabar-top */
+.imgnavbartop{
+  width: 100%;
+  height: 13vh;
+  margin: 0;
+  padding: 0;
+margin-bottom: -4px;
+}
