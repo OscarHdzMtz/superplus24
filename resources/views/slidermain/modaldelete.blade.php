@@ -13,7 +13,7 @@
 			</div> --}}
 			<div class="modal-footer justify-content-center">               
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                
-                {!! Form::open(['action' => ['SlidermainController@destroy', $slideradd->id],'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['slidermain.destroy', $slideradd->id],'method' => 'delete']) !!}
                 {{ Form::token() }}
 				<button type="submit" class="btn btn-danger">Borrar</button>
                 {!! Form::close() !!}

@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"></h1>
             </div><!-- /.col -->
@@ -16,9 +16,9 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-{!! Form::open(['action' => ['InstalacionController@update', $cliente->id],'method' => 'PATCH','files'=>'true']) !!} 
+{!! Form::open(['route' => ['instalacion.update', $cliente->id],'method' => 'PATCH','files'=>'true']) !!} 
 {{ Form::token() }}
-<div class="card text-center mx-auto" style="width: 400px;">
+<div class="mx-auto text-center card" style="width: 400px;">
     <div class="card-header">
         <input type="text" name="nombre" class="form-control" value="{{ $cliente->nombre }}">
     </div> 
@@ -31,13 +31,13 @@
     </div>
     <div class="card-footer text-muted small">
         {{ $cliente->updated_at }}
-        <a href="{{URL::action('InstalacionController@edit',$cliente->id)}}">
-            <button type="submit" class="btn btn-primary  ">
+        <a href="{{URL::route('instalacion.edit',$cliente->id)}}">
+            <button type="submit" class="btn btn-primary ">
             <i class="far fa-save"></i>
             </button> 
         </a>
-        <a href="{{URL::action('InstalacionController@index')}}">
-            <button type="button" class="btn btn-danger  float-right mr-1 ">
+        <a href="{{URL::route('instalacion.index')}}">
+            <button type="button" class="float-right mr-1 btn btn-danger ">
                 <i class="far fa-window-close"></i>
             </button> 
         </a>

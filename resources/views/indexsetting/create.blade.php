@@ -4,7 +4,7 @@
     </button>
 </div>
 
-{!! Form::open(['url' => 'configuracion', 'files' => 'true']) !!}
+{!! Form::open(['route' => 'configuracion.store', 'files' => true]) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalvacante" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
@@ -29,7 +29,7 @@
                         <div class="form-group text-cemter">
                             <input  type="text" name="label" class="form-control item" id="username"
                                 value="tarjeta" readonly>
-                                <div style="margin-top: -25px" class="d-flex flex-column text-center"> <small
+                                <div style="margin-top: -25px" class="text-center d-flex flex-column"> <small
                                     class="agree-text">tarjeta, tituloservicios, tituloproductos, titulomarcas, imagenfooter, titulofooter</small> </div>
                         </div>                        
                         <div class="form-group">
@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <input type="text" name="redireccion" class="form-control item" id="username"
                                     placeholder="Redireccionar">
-                                    <div style="margin-top: -25px" class="d-flex flex-column text-center"> <small class="agree-text">promociones, nosotros, empleo, mapa, contact. MODAL: ofertaexclusiva, delivery</small> </div>
+                                    <div style="margin-top: -25px" class="text-center d-flex flex-column"> <small class="agree-text">promociones, nosotros, empleo, mapa, contact. MODAL: ofertaexclusiva, delivery</small> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,7 +63,7 @@
                             {!!
                                 Form::checkbox('modal',null,array())    !!}
                         </div>
-                        <div class="form-group text-center justify-content-md-center">
+                        <div class="text-center form-group justify-content-md-center">
                             <button type="submit" class="btn cancel" data-dismiss="modal">cancelar</button>
                             <button type="submit" class="btn create-account">Guardar</button>
                         </div>                     

@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['PoliticaprivacidadController@update', $politica->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::open(['route' => ['politicaprivacidad.update', $politica->id], 'method' => 'PATCH', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalpoliticaedit-{{ $politica->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalslider" aria-hidden="true">
@@ -20,7 +20,7 @@
                         <div class="form-outline">
                             <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
                             <textarea size="400" type="text" name="texto"
-                                class="form-control text-justify ckeditor" id="recipient-name"
+                                class="text-justify form-control ckeditor" id="recipient-name"
                                 rows="35">{!! $politica->texto !!}</textarea>
                         </div>                     
                     </form>

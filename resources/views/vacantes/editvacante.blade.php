@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['VacanteController@update', $getvacante->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::open(['route' => ['vacantes.update', $getvacante->id], 'method' => 'PATCH', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="editvacante-{{ $getvacante->id }}" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel" aria-hidden="true">

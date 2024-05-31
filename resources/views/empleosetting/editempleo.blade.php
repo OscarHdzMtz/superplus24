@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['EmpleosettingController@update', $setempleo->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::open(['route' => ['ajustesempleo.update', $setempleo->id], 'method' => 'PATCH', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalempleoedit-{{ $setempleo->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalslider" aria-hidden="true">
@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">TITULO :</label>
                                 <textarea size="400" type="text" name="titulo"
-                                    class="form-control text-justify ckeditor" id="recipient-name"
+                                    class="text-justify form-control ckeditor" id="recipient-name"
                                     rows="5">{!! $setempleo->titulo !!}</textarea>
                             </div>
                         @endif
@@ -42,7 +42,7 @@
                         <div class="form-outline">
                             <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
                             <textarea size="400" type="text" name="description"
-                                class="form-control text-justify ckeditor" id="recipient-name"
+                                class="text-justify form-control ckeditor" id="recipient-name"
                                 rows="5">{!! $setempleo->description !!}</textarea>
                         </div>
                         @endif

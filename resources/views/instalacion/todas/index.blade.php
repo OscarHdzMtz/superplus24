@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"></h1>
             </div><!-- /.col -->
@@ -19,7 +19,7 @@
 <div class="mt-3 row-cols-1 card-columns ">
     @foreach($Instalacion as $cliente)
         @include('Instalacion.todas.modal-delete') 
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="mb-3 card" style="max-width: 540px;">
                 <div class="row no-gutters">
                         <div class="col-md-4">
                             <img src="{{asset('/img/Instalacion/'.$cliente->image)}}" alt="{{$cliente->image}}" class="card-img-top">
@@ -33,8 +33,8 @@
                         </div>
                     </div>
                 </div> 
-                    <div class="card-footer  border-success">
-                    <a href="{{URL::action('InstalacionController@edit',$cliente->id)}}">
+                    <div class="card-footer border-success">
+                    <a href="{{URL::route('instalacion.edit',$cliente->id)}}">
                         <button type="button" class="btn btn-primary btn-sm ">
                             <i class="far fa-edit"></i>
                         </button> 

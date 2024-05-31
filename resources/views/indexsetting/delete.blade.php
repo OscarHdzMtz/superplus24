@@ -12,8 +12,10 @@
 				<p>Do you really want to delete these records? This process cannot be undone.</p>
 			</div> --}}
 			<div class="modal-footer justify-content-center">               
-				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>                
-                {!! Form::open(['action' => ['IndexsettingController@destroy', $getsetting->id],'method' => 'delete']) !!}
+				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>   
+				{!! Form::model($getsetting, ['route' => ['configuracion.delete', $getsetting->id], 'method' => 'delete', 'files' => true]) !!}
+            
+                {{-- {!! Form::open(['action' => ['IndexsettingController@destroy', $getsetting->id],'method' => 'delete']) !!} --}}
                 {{ Form::token() }}
 				<button type="submit" class="btn btn-danger">Borrar</button>
                 {!! Form::close() !!}

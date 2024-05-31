@@ -13,7 +13,7 @@
 			</div> --}}
 			<div class="modal-footer justify-content-center">               
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                
-                {!! Form::open(['action' => ['MiempresaController@destroy', $getempresa->id],'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['miempresa.destroy', $getempresa->id],'method' => 'delete']) !!}
                 {{ Form::token() }}
 				<button type="submit" class="btn btn-danger">Eliminar</button>
                 {!! Form::close() !!}

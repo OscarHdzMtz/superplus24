@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['MiempresaController@update', $getempresa->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::open(['route' => ['miempresa.update', $getempresa->id], 'method' => 'PATCH', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalempresaedit-{{$getempresa->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-outline">
                         <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
-                        <textarea size="400" type="text" name="description" class="form-control text-justify" id="recipient-name" rows="5">{{ $getempresa->description }}</textarea>                        
+                        <textarea size="400" type="text" name="description" class="text-justify form-control" id="recipient-name" rows="5">{{ $getempresa->description }}</textarea>                        
                     </div>
                     <div class="form-group cold-md-6"> 
                         <label>Imagen</label>

@@ -30,6 +30,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
+        
         return view('usuarios.create',['roles' => $roles]);
     }
 
@@ -39,7 +40,7 @@ class UserController extends Controller
 
         $usuario->name = request('name'); 
         $usuario->email = request('email');
-        $usuario->celular = request('celular');
+        /* $usuario->celular = request('celular'); */
         $usuario->password = bcrypt(request('password'));
 
         $usuario->save();
@@ -68,7 +69,7 @@ class UserController extends Controller
 
         $usuario->name = $request->get('name');
         $usuario->email = $request->get('email'); 
-        $usuario->celular = $request->get('celular');
+        /* $usuario->celular = $request->get('celular'); */
 
         $pass = $request->get('password');
         if($pass !=null){

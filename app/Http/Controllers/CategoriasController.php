@@ -37,7 +37,7 @@ class CategoriasController extends Controller
         ]);
 
         $messege = $categoria ? 'Categoria agregada correctamente' : 'la cetegoria no se agrego';
-        return redirect()->route('Categorias.index')->with('messege', $messege);
+        return redirect()->route('categorias.index')->with('messege', $messege);
     }
 
     public function show(Categorias $categoria){
@@ -60,7 +60,7 @@ class CategoriasController extends Controller
 
         $categoria->update();
 
-        return redirect('/Categorias');
+        return redirect('/categorias');
     }
 
     public function destroy($id){

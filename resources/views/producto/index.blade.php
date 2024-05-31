@@ -3,7 +3,7 @@
 
 <div class="container mt-5">
     <h2>LISTA DE PRODUCTOS
-    <form class="form-inline ml-3 float-right">
+    <form class="float-right ml-3 form-inline">
         <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-prepend">
@@ -13,7 +13,7 @@
             </div>
         </div>
     </form>
-    <a href="{{ route('producto.create')}}" class="btn btn-success float-right">
+    <a href="{{ route('producto.create')}}" class="float-right btn btn-success">
         <i class="fa fa-plus-circle"> Agregar Productos</i>
     </a>
     </h2>
@@ -35,22 +35,21 @@
                 <th scope="col">Categoría</th>
                 <th scope="col">Sub titulo</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Estatus</th>
+                <th scope="col">Precio</th>                
             </tr>
         </thead>
             <tbody>
                 @foreach($productos as $producto)
                 <tr>
                     <td>
-                        <a href="{{URL::action('ProductoController@edit',$producto->id)}}">
+                        <a href="{{URL::route('producto.edit',$producto->id)}}">
                             <button type="button" class="btn btn-warning">
                                 <i class="far fa-edit"></i>
                             </button> 
                         </a> 
                     </td>
                     <td>
-                        {!! Form::open(['action' => ['ProductoController@destroy', $producto->id],'method' => 'DELETE']) !!}
+                        {!! Form::open(['route' => ['producto.destroy', $producto->id],'method' => 'DELETE']) !!}
                         {{ Form::token() }}
                             <button class="btn btn-danger" onclick="return confirm('Estas Seguro de Eliminar Esta Producto?')">
                                 <i class="far fa-trash-alt"></i>
@@ -63,9 +62,8 @@
                     <td>{{$producto->name}}</td>
                     <td>{{$producto->categoria->name}}</td>
                     <td>{{$producto->extract}}</td>
-                    <td>{{ $producto->descriptions }}</td>
-                    <td>{{ number_format( $producto->price,2)}}</td>
-                    <td>{{$producto->visible == 1 ? "En Stock":"Agotado"}}</td>
+                    <td>{!! $producto->descriptions !!}</td>
+                    <td>{{ number_format( $producto->price,2)}}</td>                    
                 </tr>
                 @endforeach
             </tbody>

@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['CardservicioController@update', $serviciosadd->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::open(['route' => ['cardservicio.update', $serviciosadd->id], 'method' => 'PATCH', 'files' => 'true']) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalservicioedit-{{$serviciosadd->id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalslider"
     aria-hidden="true">

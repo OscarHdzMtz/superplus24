@@ -16,7 +16,7 @@ class PublicidadEmergenteController extends Controller
     public function index()
     {
         //
-        $publicidad = PublicidadEmergente::all();        
+        $publicidad = PublicidadEmergente::all();
         return view('addpublicidademergente.index', compact('publicidad'));
     }
 
@@ -55,8 +55,8 @@ class PublicidadEmergenteController extends Controller
         }
         $publicidad->vigenciaCookie = request('vigenciaCookie');
         $publicidad->paginasAMostrar = request('paginasAMostrar');
-        /* $publicidad['paginasAMostrar'] = json_encode($request->paginasAMostrar); */ 
-        $publicidad['paginasAMostrar'] = implode('|', $request->paginasAMostrar);  
+        /* $publicidad['paginasAMostrar'] = json_encode($request->paginasAMostrar); */
+        $publicidad['paginasAMostrar'] = implode('|', $request->paginasAMostrar);
         $publicidad->textoDelBoton = request('textoDelBoton');
         $publicidad->paginaARedireccionar = request('paginaARedireccionar');
         $publicidad->fechaInicio = request('fechaInicio');
@@ -115,8 +115,8 @@ class PublicidadEmergenteController extends Controller
             $getPublicidadEditar->image = $file->getClientOriginalName();
         }
         $getPublicidadEditar->vigenciaCookie = request('vigenciaCookie');
-        $getPublicidadEditar->paginasAMostrar = request('paginasAMostrar');        
-        $getPublicidadEditar['paginasAMostrar'] = implode('|', $request->paginasAMostrar);  
+        $getPublicidadEditar->paginasAMostrar = request('paginasAMostrar');
+        $getPublicidadEditar['paginasAMostrar'] = implode('|', $request->paginasAMostrar);
         $getPublicidadEditar->textoDelBoton = request('textoDelBoton');
         $getPublicidadEditar->paginaARedireccionar = request('paginaARedireccionar');
         $getPublicidadEditar->fechaInicio = request('fechaInicio');

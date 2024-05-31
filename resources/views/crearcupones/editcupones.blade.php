@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -20,10 +20,10 @@
         <h1 class="text-center">
             Editar Cupones</small>
         </h1>
-        <div class="row text-center justify-content-md-center">
+        <div class="text-center row justify-content-md-center">
             <div class="col-md-offset col-md-6">
                 {!! Form::open([
-                    'action' => ['CrearCuponesController@update', $cupones->id],
+                    'route' => ['crearCupones.update', $cupones->id],
                     'method' => 'PATCH',
                     'files' => 'true',
                 ]) !!}
@@ -31,7 +31,7 @@
                 <div class="empresa-form">
                     <form>
                         {{-- <hr style="margin: 0 auto" class="style1"> --}}
-                        {{-- <div class="card text-center mx-auto" style="width: 400px;"> --}}
+                        {{-- <div class="mx-auto text-center card" style="width: 400px;"> --}}
                         <div class="form-group">
                             <label class="control-label" for="categoria_id">CATEGORIAS</label>
                             {{-- {!! Form::select('categoria_id', $categoriasEdit,null,['class' => 'form-control'],)!!} --}}
@@ -76,7 +76,7 @@
                                 <i class="far fa-save"> Actualizar</i>
                             </button>
                             {{-- </a> --}}
-                            <a href="{{ URL::action('CrearCuponesController@index') }}">
+                            <a href="{{ URL::route('crearCupones.index') }}">
                                 <button type="button" class="btn btn-outline-danger">
                                     <i class="far fa-window-close"> Cancelar</i>
                                 </button>

@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark">Productos</h1>
             </div><!-- /.col -->
@@ -17,10 +17,10 @@
     </div><!-- /.container-fluid -->
   </div>
 
-{!! Form::open(['action' => ['ProductoController@update', $producto->id],'method' => 'PATCH','files'=>'true']) !!}
+{!! Form::open(['route' => ['producto.update', $producto->id],'method' => 'PATCH','files'=>'true']) !!}
 {{ Form::token() }}
 
-<div class="card text-center mx-auto" style="width: 550px;">
+<div class="mx-auto text-center card" style="width: 550px;">
     <div class="card-header">
         <label for="name">Nombre</label>
         <input type="text" name="name" class="form-control"  value="{{ $producto->name }}">
@@ -51,13 +51,13 @@
     </div>
     <div class="card-footer text-muted small">
         {{ $producto->updated_at }}
-        <a href="{{URL::action('ProductoController@edit',$producto->id)}}">
-            <button type="submit" class="btn btn-info  ">
+        <a href="{{URL::route('producto.edit',$producto->id)}}">
+            <button type="submit" class="btn btn-info ">
             <i class="far fa-save"></i>
             </button> 
         </a>
-        <a href="{{URL::action('ProductoController@index')}}">
-            <button type="button" class="btn btn-danger  float-right mr-1 ">
+        <a href="{{URL::route('producto.index')}}">
+            <button type="button" class="float-right mr-1 btn btn-danger ">
                 <i class="far fa-window-close"></i>
             </button> 
         </a>

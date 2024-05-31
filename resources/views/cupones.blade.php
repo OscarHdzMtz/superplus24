@@ -16,7 +16,7 @@
 @section('navbar_top')
     {{-- <div class="header-top">
     <div class="container d-flex justify-content-between">
-        <div class="d-inline-flex ml-auto">
+        <div class="ml-auto d-inline-flex">
             <div class="headcont">
                 <i class="fas fa-2x fa-mobile-alt messenge"></i>
                 953 138 2693
@@ -46,10 +46,10 @@
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars text-white"></i>
+                <i class="text-white fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
+                <ul class="ml-auto navbar-nav">
                     <div class="hori-selector">
                         <div class="left"></div>
                         <div class="right"></div>
@@ -97,14 +97,14 @@
     <div data-aos="fade-up" class="container_cards_promo">
         <div class="row_cards_promo">
             @foreach ($cupones as $cupon)
-                <div class="col-md-3 col-sm-6 mb-3">
+                <div class="mb-3 col-md-3 col-sm-6">
                     <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal mx-auto"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
-                        <img id="get_image_promo" class="popou_img_promo mb-0"src="{{ asset('/img/cupones/' . $cupon->image) }}"
+                        <img id="get_image_promo" class="mb-0 popou_img_promo"src="{{ asset('/img/cupones/' . $cupon->image) }}"
                             alt="{{ $cupon->image }}">                            
                         <div class="text-contentpromo">
                         </div>                        
                         {!! Form::open([
-                            'action' => ['GenerarCuponesClientesController@update', $cupon->id],
+                            'route' => ['cupones.update', $cupon->id],
                             'method' => 'PATCH',
                             'files' => 'true',
                             'style' => 'margin-top: -20px',
@@ -157,7 +157,7 @@
                 </div>
                 <div style="margin-top: -60px" class="footer-basic">
                     <footer data-aos="fade-right">
-                        <div class="col-md-12 py-0 text-center justify-content-md-center">
+                        <div class="py-0 text-center col-md-12 justify-content-md-center">
                             <div class="mb-3 flex-center">
                                 <div class="estilo2">
                                     <ul>
@@ -210,7 +210,7 @@
                 </div>
 
                 <!-- Copyright -->
-                <div class="text-center p-3" style="background-color:#003baa; color: white">
+                <div class="p-3 text-center" style="background-color:#003baa; color: white">
                     <strong> ©{{ now()->year }} </strong>
                     <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
                 </div>

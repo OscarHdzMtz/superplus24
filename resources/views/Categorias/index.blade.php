@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"></h1>
             </div><!-- /.col -->
@@ -17,7 +17,7 @@
   </div>
 <div class="container mt-5">
     <h2>LISTA DE CATEGORÍAS DE LOS CURSOS
-    <a href="{{ route('Categorias.create')}}" class="btn btn-outline-info">
+    <a href="{{ route('categorias.create')}}" class="btn btn-outline-info">
             <i class="fa fa-plus-circle"> Categorías</i>
         </a>
     </h2>
@@ -35,12 +35,12 @@
                 @foreach($categorias as $categoria)
                 <tr>
                     <td>
-                        <a href="{{route('Categorias.edit',$categoria->id)}}" class="btn btn-outline-success">
+                        <a href="{{route('categorias.edit',$categoria->id)}}" class="btn btn-outline-success">
                             <i class="fas fa-edit"></i>
                         </a>
                     </td>
                     <td>
-                        {!! Form::open(['action' => ['CategoriasController@destroy', $categoria->id],'method' => 'DELETE']) !!}
+                        {!! Form::open(['route' => ['categorias.destroy', $categoria->id],'method' => 'DELETE']) !!}
                         {{ Form::token() }}
                             <button class="btn btn-outline-danger" onclick="return confirm('Eliminar Registro?')">
                                 <i class="fas fa-eraser"></i>
@@ -56,13 +56,12 @@
 </div>  
 </div><br><br>
 <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Hola {{ Auth::user()->name }}</h4>
+    {{-- <h4 class="alert-heading">Hola {{ Auth::user()->name }}</h4> --}}
     <h4>Si vas a Eliminar una <strong>"categoría "</strong>tener en cuenta estas recomendaciones:<br>
         1-Al momento de eliminar una categoría se va a realizar la eliminación de "</strong>.todos los productos que poseen esa categoría"</strong>.<br>
         2-Es Mejor actualizar y cambiar los datos que eliminar una categoría. <br>
         3-No Elimine una categoría a no se por motivos mayores.
     </h4>
-    <hr>
-    <p class="mb-0">Que tengas un hermoso dia Atte: SuperPlus</p>
+    <hr>    
 </div>
 @endsection

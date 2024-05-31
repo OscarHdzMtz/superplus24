@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"></h1>
             </div><!-- /.col -->
@@ -31,7 +31,7 @@
             @endif
         </div>
     </div>
-            <form action="{{route('Categorias.update', $categoria->id)}}" method="POST"  autocomplete="off">
+            <form action="{{route('categorias.update', $categoria->id)}}" method="POST"  autocomplete="off">
                 @method('PATCH')
                 @csrf
                 <div class="row">
@@ -51,7 +51,7 @@
                     <div class="form-group col-md-5">
                         <button type="submit" class="btn btn-outline-primary"><i class="far fa-save"></i></button>
                         <button type="reset" class="btn btn-outline-danger">
-                            <a href="{{ route('Categorias.index')}}"><i class="fas fa-fast-backward"></i></a>
+                            <a href="{{ route('categorias.index')}}"><i class="fas fa-fast-backward"></i></a>
                         </button>
                     </div>
                 </div>

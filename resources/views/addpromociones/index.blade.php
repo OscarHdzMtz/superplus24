@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -17,7 +17,7 @@
     </div>
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -31,20 +31,20 @@
     </div>
     <div class="container">
         <div class="row"></div>
-        <button type="button" class="btn btn-success mr-5">
+        <button type="button" class="mr-5 btn btn-success">
             Vigentes <span class="badge badge-light">{{ $countCatalogados }}</span>
           </button> 
-          <button type="button" class="btn btn-danger mr-5">
+          <button type="button" class="mr-5 btn btn-danger">
             Expirados <span class="badge badge-light">{{ $countDesatalogados }}</span>
           </button> 
-        <form style="border: green 1px solid" class="form-inline ml-3 float-right">                       
+        <form style="border: green 1px solid" class="float-right ml-3 form-inline">                       
             <div  style="margin-left: 20px" class="input-group input-group-sm">
                 <input type="checkbox" id="descatalogados" name="descatalogados">
                 <label style="margin-right: 30px; margin-left: 5px" for="scales">Mostrar expirados</label>                
                 <input style="border: green 1px solid" class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar"
                     aria-label="Search">
                 <div class="input-group-prepend">
-                    <button class="btn_filtro_promo btn-success text-center" type="submit">
+                    <button class="text-center btn_filtro_promo btn-success" type="submit">
                         <i class="fas fa-search"></i> Filtrar
                     </button>
                 </div>
@@ -52,7 +52,7 @@
         </form>
     </div>
     @if ($search)
-        <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+        <div class="mt-5 alert alert-warning alert-dismissible fade show" role="alert">
             El resultado de la busqueda de <strong>'{{ $search }}'</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -78,14 +78,14 @@
                     @foreach ($ofertas as $oferta)
                         <tr style="text-align: center" data-id="{{ $oferta->id }}">
                             <td>
-                                <a href="{{ URL::action('PublicofertController@edit', $oferta->id) }}">
+                                <a href="{{ URL::route('addpromociones.edit', $oferta->id) }}">
                                     <button type="button" class="btn btn-warning">
                                         <i class="far fa-edit"></i>
                                     </button>
                                 </a>
                             </td>
                             <td>
-                                {!! Form::open(['action' => ['PublicofertController@destroy', $oferta->id], 'method' => 'DELETE']) !!}
+                                {!! Form::open(['route' => ['addpromociones.destroy', $oferta->id], 'method' => 'DELETE']) !!}
                                 {{ Form::token() }}
                                 <button class="btn btn-danger"
                                     onclick="return confirm('Estas Seguro de Eliminar la promoción?')">

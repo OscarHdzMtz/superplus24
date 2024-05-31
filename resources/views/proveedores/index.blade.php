@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"></h1>
             </div><!-- /.col -->
@@ -20,7 +20,7 @@
 <div class="mt-3 row-cols-1 card-columns ">
     @foreach($proveedores as $proveedore)
         @include('proveedores.modal-delete') 
-        <div class="card mb-3 " style="max-width: 540px;">
+        <div class="mb-3 card " style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <img src="{{asset('/img/proveedore/'.$proveedore->image)}}" alt="{{$proveedore->image}}" class="card-img-top" height="250" >
@@ -34,7 +34,7 @@
                 </div>
             </div> 
             <div class="card-footer border-info">
-                <a href="{{URL::action('ProveedoresController@edit',$proveedore->id)}}">
+                <a href="{{URL::route('proveedores.edit',$proveedore->id)}}">
                     <button type="button" class="btn btn-primary btn-sm ">
                         <i class="far fa-edit"></i>
                     </button> 

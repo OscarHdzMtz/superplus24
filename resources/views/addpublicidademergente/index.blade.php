@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -17,7 +17,7 @@
     </div>
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -33,8 +33,8 @@
         <div class="container-fluid">
             <div class="row">
                 @foreach ($publicidad as $getpublicidad)
-                    <div class="col-md-3 col-sm-6 mb-6">
-                        <div class="card mr-3" style="width: 18rem;">
+                    <div class="mb-6 col-md-3 col-sm-6">
+                        <div class="mr-3 card" style="width: 18rem;">
                             <img src="{{ asset('/img/publicidadEmergente/' . $getpublicidad->image) }}" class="card-img-top"
                                 alt="...">
                             <div class="card-body">
@@ -48,7 +48,7 @@
                                     $str_pagina = $getpublicidad->paginasAMostrar;
                                     $arrayPaginasAMostrar = explode('|', $str_pagina);
                                 @endphp
-                                <h5 class="card-title text-center"><strong>Disponible en:</strong></h5> <br>
+                                <h5 class="text-center card-title"><strong>Disponible en:</strong></h5> <br>
                                 @foreach ($arrayPaginasAMostrar as $item)
                                     <small><strong>{{ $item }}</strong></small>
                                 @endforeach
@@ -62,16 +62,16 @@
                                 @endif
                             </div>
                             <div class="row">
-                                <div class="col-md-6 col-sm-6 mb-6">
-                                    <a href="{{ URL::action('PublicidadEmergenteController@edit', $getpublicidad->id) }}">
+                                <div class="mb-6 col-md-6 col-sm-6">
+                                    <a href="{{ URL::route('crearPublicidad.edit', $getpublicidad->id) }}">
                                         <button type="button" class="btn btn-warning">
                                             <i class="far fa-edit"></i> Editar
                                         </button>
                                     </a>
                                 </div>
-                                <div class="col-md-6 col-sm-6 mb-6">
+                                <div class="mb-6 col-md-6 col-sm-6">
                                     {!! Form::open([
-                                        'action' => ['PublicidadEmergenteController@destroy', $getpublicidad->id],
+                                        'route' => ['crearPublicidad.destroy', $getpublicidad->id],
                                         'method' => 'DELETE',
                                     ]) !!}
                                     {{ Form::token() }}

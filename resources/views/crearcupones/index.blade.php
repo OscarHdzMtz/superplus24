@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -17,7 +17,7 @@
     </div>
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <div class="container">
-        <form class="form-inline ml-3 float-right">
+        <form class="float-right ml-3 form-inline">
             <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" name="search" type="search" placeholder="Buscar"
                     aria-label="Search">
@@ -63,14 +63,14 @@
                     @foreach ($getCupones as $cupones)
                         <tr style="text-align: center">
                             <td>
-                                <a href="{{ URL::action('CrearCuponesController@edit', $cupones->id) }}">
+                                <a href="{{ URL::route('crearCupones.edit', $cupones->id) }}">
                                     <button type="button" class="btn btn-warning">
                                         <i class="far fa-edit"></i>
                                     </button>
                                 </a>
                             </td>
                             <td>
-                                {!! Form::open(['action' => ['CrearCuponesController@destroy', $cupones->id], 'method' => 'DELETE']) !!}
+                                {!! Form::open(['route' => ['crearCupones.destroy', $cupones->id], 'method' => 'DELETE']) !!}
                                 {{ Form::token() }}
                                 <button class="btn btn-danger"
                                     onclick="return confirm('Estas Seguro de Eliminar la promoción?')">
@@ -101,7 +101,7 @@
                                          src='https://barcode.tec-it.com/barcode.ashx?data={{$cupones->valorCodigoDeBarras . $cupones->contadorCodigoDeBarras}}&code=Code128'/>
                                   </div>                                
                             </td>
-                            <td><div class="badge rounded bg-success">                                
+                            <td><div class="rounded badge bg-success">                                
                                 <h5><strong>{{ $cupones->contadorCodigoDeBarras-1}}</strong></h5>
                               </div></td>
                             <td>{{ $cupones->inicioDeRangoGenerarCodigoDeBarras}} - {{ $cupones->finDeRangoGenerarCodigoDeBarras}}</td>

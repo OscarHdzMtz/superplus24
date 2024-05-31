@@ -1,5 +1,5 @@
 {!! Form::open([
-    'action' => ['FacturacionPageController@update', $setFacturacion->id],
+    'route' => ['facturacionPlus.update', $setFacturacion->id],
     'method' => 'PATCH',
     'files' => 'true',
 ]) !!}
@@ -36,7 +36,7 @@
                             </div>
                         @elseif($setFacturacion->label == 'textoImagen')
                             <div class="form-group">
-                                <textarea name="description" class="empresa_input form-control input ckeditor form-control" placeholder="Descripcion">{{ $setFacturacion->description }}</textarea>
+                                <textarea name="description" class="empresa_input form-control input ckeditor" placeholder="Descripcion">{{ $setFacturacion->description }}</textarea>
                             </div>
                             <div class="form-group cold-md-6">
                                 <label>Imagen</label>
@@ -61,7 +61,7 @@
                             </div>
                         @elseif($setFacturacion->label == 'subtitulo')
                             <div class="form-group">
-                                <textarea name="subtitulo" class="empresa_input form-control input ckeditor form-control" placeholder="Subititulo">{{ $setFacturacion->subtitulo }}</textarea>
+                                <textarea name="subtitulo" class="empresa_input form-control input ckeditor" placeholder="Subititulo">{{ $setFacturacion->subtitulo }}</textarea>
                             </div>
                         @elseif($setFacturacion->label == 'boton')
                         <div class="form-group">
@@ -69,12 +69,12 @@
                                 value="{{ $setFacturacion->titulo }}" placeholder="Titulo">
                         </div>
                         <div class="form-group">
-                            <textarea name="subtitulo" class="empresa_input form-control input form-control" placeholder="Subititulo">{{ $setFacturacion->subtitulo }}</textarea>
+                            <textarea name="subtitulo" class="empresa_input form-control input" placeholder="Subititulo">{{ $setFacturacion->subtitulo }}</textarea>
                         </div>
                         @endif
 
                         <div class="form-group">
-                            <div class="form-group text-center justify-content-md-center">
+                            <div class="text-center form-group justify-content-md-center">
                                 <button type="submit" class="btn cancel" data-dismiss="modal">cancelar</button>
                                 <button type="submit" class="btn create-account">Guardar</button>
                             </div>

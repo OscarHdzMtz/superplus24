@@ -1,4 +1,4 @@
-{!! Form::open(['action' => ['IndexsettingController@update', $getsetting->id], 'method' => 'PATCH', 'files' => 'true']) !!}
+{!! Form::model($getsetting, ['route' => ['configuracion.update', $getsetting->id], 'method' => 'PATCH', 'files' => true]) !!}
 {{ Form::token() }}
 <div class="modal fade" id="modalsetting-{{ $getsetting->id }}" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel" aria-hidden="true">
@@ -61,7 +61,7 @@
                                 <div class="form-group">
                                     <input type="text" name="redireccion" class="form-control item" id="username"
                                         value="{{ $getsetting->redireccion }}" placeholder="Pagina a redireccionar">
-                                    <div style="margin-top: -25px" class="d-flex flex-column text-center"> <small
+                                    <div style="margin-top: -25px" class="text-center d-flex flex-column"> <small
                                             class="agree-text">promociones, nosotros, empleo, mapa, contact. MODAL:
                                             ofertaexclusiva, delivery</small> </div>
                                 </div>
@@ -73,7 +73,7 @@
                             @break
                             @case($getsetting->label != 'tarjeta')
                             @if ($getsetting->label != 'imagenfooter')
-                                <select name="style" class="form-select form-select-lg mb-3"
+                                <select name="style" class="mb-3 form-select form-select-lg"
                                     aria-label=".form-select-lg example">
                                     <option selected>Selecciona un color</option>
                                     <option value="estiloamarillo" @if ($getsetting->style == 'estiloamarillo') selected @endif>estiloamarillo</option>
@@ -87,7 +87,7 @@
                             @default
                         @endswitch
                         <div class="form-group">
-                            <div class="form-group text-center justify-content-md-center">
+                            <div class="text-center form-group justify-content-md-center">
                                 <button type="submit" class="btn cancel" data-dismiss="modal">cancelar</button>
                                 <button type="submit" class="btn create-account">Guardar</button>
                             </div>

@@ -31,7 +31,7 @@ class CreateGenerarCuponesClientesTable extends Migration
             $table->string("tipoNavegador")->nullable();             
             $table->string("adicional")->nullable();
             $table->date('fechaRegistro')->nullable();
-            $table->integer("contador");
+            $table->integer("contador")->nullable();
             $table->boolean("status")->nullable(); 
             $table->string("statusCookie")->nullable() ;          
             $table->timestamps();
