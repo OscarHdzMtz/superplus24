@@ -22,6 +22,7 @@ use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\PublicidadEmergenteController;
 use App\Http\Controllers\SlidermainController;
 use App\Models\Publicoferts;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,8 +61,14 @@ Route::middleware([
     /* Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard'); */
+
+
     Route::get('/dashboard',[HomeController::class, 'dashboard_view'])->name('dashboard');
     Route::get('/perfil',[HomeController::class, 'configuser'])->name('config');
+
+     //PROTEGER RUTAS DE REGISTRO
+     Route::get('register' , [RegisteredUserController::class, 'index']);
+     Route::post('register' , [RegisteredUserController::class, 'store'])->name('register');
     
 
     Route::get('roles',[RoleController::class, 'index']);
@@ -69,12 +76,12 @@ Route::middleware([
     
     //USUARIOS
     Route::get('usuarios',[UserController::class, 'index']);    
-    Route::post('usuarios/{id}/eliminar', [UserController::class, 'destroy'])->name('usuarios.destroy');
+    Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');    
     Route::get('usuarios/{id}/show', [UserController::class, 'show'])->name('usuarios.show');
     Route::get('usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+    Route::delete('usuarios/{id}/eliminar', [UserController::class, 'destroy'])->name('usuarios.destroy');
     Route::post('usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
-    Route::put('usuarios/{id}/update', [UserController::class, 'update'])->name('usuarios.update');
-    Route::post('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+    Route::put('usuarios/{id}/update', [UserController::class, 'update'])->name('usuarios.update');    
 
     //CONFIGURACION 
     Route::get('configuracion',[IndexsettingController::class, 'index'])->name('configuracion');
@@ -120,6 +127,6 @@ Route::middleware([
     Route::resource('crearCupones', CrearCuponesController::class);
 
     //PUBLICIDAD
-    Route::resource('crearPublicidad', PublicidadEmergenteController::class);
+    Route::resource('crearPublicidad', PublicidadEmergenteController::class);    
 
 });

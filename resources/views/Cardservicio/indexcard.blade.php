@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="mb-2 row">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
                 </div><!-- /.col -->
@@ -22,7 +22,7 @@
             @foreach ($servicios as $serviciosadd)   
             @include('Cardservicio.editcard')
             @include('Cardservicio.deletcard')
-            <div class="col-md-3 col-sm-6 mb-3">                                                 
+            <div class="mb-3 col-md-3 col-sm-6">                                                 
                 <div class="single-content">
                     <img src="{{ asset('/img/servicios/' . $serviciosadd->image) }}" alt="SuperPlus">
                     <div class="text-content">

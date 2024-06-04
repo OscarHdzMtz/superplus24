@@ -96,7 +96,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         $usuario = User::findOrFail($id);
+         // Eliminar los registros relacionados en la tabla role_user
+        $usuario->roles()->detach(); 
+
         $usuario->delete();
+        
         return redirect('/usuarios');
     }
 }

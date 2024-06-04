@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Actualiza la información del perfil y la dirección de correo electrónico de tu cuenta.') }}
+        {{ __('') }}
     </x-slot>
 
     <x-slot name="form">
@@ -61,9 +61,10 @@
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="email" value="{{ __('Correo') }}" />
+            {{-- CAMBIAR CORREO ELECTRONICO DEL USUARIO LOGUEADO --}}
+            {{-- <x-label for="email" value="{{ __('Correo') }}" />
             <x-input id="email" type="email" class="block w-full mt-1" wire:model="state.email" required autocomplete="username" />
-            <x-input-error for="email" class="mt-2" />
+            <x-input-error for="email" class="mt-2" /> --}}
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="mt-2 text-sm">

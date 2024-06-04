@@ -59,10 +59,10 @@
                             @endforeach
                     </select>
             </div>  
-            <div class="form-group col-md-6">
+           {{--  <div class="form-group col-md-6">
                 <label for="celular">Celular:</label>
-                <input type="number" class="form-control" name="celular" {{-- required  --}}value="{{$user->celular}}" autocomplete="off" placeholder="Ingrese su celular">
-            </div>
+                <input type="number" class="form-control" name="celular" required value="{{$user->celular}}" autocomplete="off" placeholder="Ingrese su celular">
+            </div> --}}
         </div>
         <div class="row">
             <div class="form-group col-md-6">

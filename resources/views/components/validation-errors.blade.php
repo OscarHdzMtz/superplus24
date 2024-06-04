@@ -7,9 +7,12 @@
                 {{-- <li>{{ $error }}</li> --}}
                 @if ($error == "The provided two factor authentication code was invalid.")
                     <li>El código de autenticación de dos factores proporcionado no es válido.</li>
+                @elseif($error == "The email has already been taken.")
+                    <li>El correo ya se encuentra registrado.</li>
                 @else
                     <li>{{ $error }}</li>
                 @endif 
+                
             @endforeach
         </ul>
     </div>
