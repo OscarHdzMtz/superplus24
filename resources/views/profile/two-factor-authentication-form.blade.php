@@ -4,7 +4,8 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.') }}
+        {{-- {{ __('Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.') }} --}}
+        {{ __('') }}
     </x-slot>
 
     <x-slot name="content">
@@ -22,7 +23,7 @@
 
         <div class="max-w-xl mt-3 text-sm text-gray-600">
             <p>
-                {{ __('Cuando la autenticación de dos factores está habilitada, se le solicitará un token aleatorio seguro durante la autenticación. Puede recuperar este token desde la aplicación Google Authenticator de su teléfono.') }}
+                {{ __('Cuando la autenticación de dos factores está habilitada, se le solicitará un token aleatorio seguro durante el inicio de sesion. Este token se genera desde la aplicación de Google Authenticator.') }}
             </p>
         </div>
 
@@ -32,7 +33,7 @@
                     <p class="font-semibold">
                         @if ($showingConfirmation)
                             {{ __('
-                            Para terminar de habilitar la autenticación de dos factores, escanee el siguiente código QR usando la aplicación de autenticación de su teléfono o ingrese la clave de configuración y proporcione el código OTP generado.') }}
+                            Para terminar de habilitar la autenticación de dos factores, escanee el siguiente código QR usando la aplicación de autenticación de su teléfono o ingrese la clave de configuración. posterior a eso ingrese el código temporal generado en la aplicacion authenticador y presione confirmar.') }}
                         @else
                             {{ __('La autenticación de dos factores ahora está habilitada. Escanee el siguiente código QR usando la aplicación de autenticación de su teléfono o ingrese la clave de configuración.') }}
                         @endif
