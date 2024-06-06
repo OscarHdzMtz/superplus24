@@ -14,16 +14,16 @@
                 @if ($showingConfirmation)
                     {{ __('Termine de habilitar la autenticación de dos factores.') }}
                 @else
-                    {{ __('Ha habilitado la autenticación de dos factores.') }}
+                    {{ __('Autenticación de dos factores habilitado.') }} <i class="fa-solid fa-circle-check fa-2xl" style="color: #23cf17;"></i>
                 @endif
             @else
-                {{ __('No ha habilitado la autenticación de dos factores.') }}
+                {{ __('No ha habilitado la autenticación de dos factores.') }} <i class="fa-solid fa-circle-xmark fa-2xl" style="color: #e60a0e;"></i>
             @endif
         </h3>
 
         <div class="max-w-xl mt-3 text-sm text-gray-600">
             <p>
-                {{ __('Cuando la autenticación de dos factores está habilitada, se le solicitará un token aleatorio seguro durante el inicio de sesion. Este token se genera desde la aplicación de Google Authenticator.') }}
+                {{ __('Cuando la autenticación de dos factores está habilitada, se le solicitará un codigo temporal durante el inicio de sesion. Este codigo se genera desde la aplicación de Google Authenticator.') }}
             </p>
         </div>
 
