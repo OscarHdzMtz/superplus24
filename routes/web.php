@@ -75,7 +75,7 @@ Route::middleware([
     
     
     //USUARIOS
-    Route::get('usuarios',[UserController::class, 'index']);    
+    Route::get('usuarios',[UserController::class, 'index'])->name('usuarios.index');    
     Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');    
     Route::get('usuarios/{id}/show', [UserController::class, 'show'])->name('usuarios.show');
     Route::get('usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
