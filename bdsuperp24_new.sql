@@ -1,0 +1,6215 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-06-2024 a las 01:21:17
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.1.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `bdsuperplus24h`
+--
+CREATE DATABASE IF NOT EXISTS `bdsuperplus24h` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bdsuperplus24h`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cardservicios`
+--
+
+CREATE TABLE `cardservicios` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `imghover` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cardservicios`
+--
+
+INSERT INTO `cardservicios` (`id`, `user_id`, `name`, `description`, `image`, `imghover`, `status`, `orden`, `fechaInicio`, `fechaFin`, `created_at`, `updated_at`) VALUES
+(1, 1, 'RECARGAS', NULL, 'recargas.png', 'recargas2.png', 1, NULL, NULL, NULL, '2022-07-05 19:54:47', '2023-09-22 15:51:42'),
+(2, 1, 'SERVICIOS', NULL, 'servicios.png', 'servicios2.png', 1, NULL, NULL, NULL, '2022-07-05 19:55:17', '2023-09-22 15:51:54'),
+(3, 1, 'PINES', NULL, 'pines.png', 'pines.png', 1, NULL, NULL, NULL, '2022-07-05 19:55:49', '2023-09-22 15:52:03'),
+(4, 1, 'RETIRO DE EFECTIVO', NULL, 'retiro de efectivo.png', 'retiro de efectivo2.png', 1, NULL, NULL, NULL, '2022-07-05 19:56:25', '2023-09-22 15:52:15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `name`, `slug`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 'ABARROTES', 'abarrotes', NULL, '2022-07-05 18:38:46', '2022-07-05 18:38:46'),
+(2, 'BEBIDAS', 'bebidas', 'Jugos, refrescos, bebidas alcohólicas, energizantes', '2022-07-09 10:53:29', '2022-07-09 10:54:18'),
+(3, 'BOTANA', 'botana', NULL, '2022-07-09 10:54:35', '2022-07-09 10:54:35'),
+(4, 'CONGELADOS', 'congelados', NULL, '2022-07-09 10:54:51', '2022-07-09 10:54:51'),
+(5, 'LACTEOS', 'lacteos', NULL, '2022-07-09 10:55:04', '2022-07-09 10:55:04'),
+(6, 'PANADERÍA', 'panaderia', NULL, '2022-07-09 10:55:16', '2022-07-09 10:55:16'),
+(7, 'SNACK', 'snack', NULL, '2022-07-09 10:55:36', '2022-07-09 10:55:36'),
+(8, 'VINOS Y LICORES', 'vinos-y-licores', NULL, '2022-07-09 10:56:40', '2022-07-09 10:56:40'),
+(9, 'FARMACIA', 'farmacia', NULL, '2022-07-09 11:45:27', '2022-07-09 11:45:27'),
+(10, 'HIGIENE', 'higiene', NULL, '2022-07-09 11:46:03', '2022-07-09 11:46:03'),
+(11, 'LIMPIEZA', 'limpieza', NULL, '2022-07-09 11:46:23', '2022-07-09 11:46:23'),
+(12, 'OTROS', 'otros', NULL, '2022-07-09 11:47:35', '2022-07-09 11:47:35'),
+(13, 'DULCES', 'dulces', NULL, '2022-07-09 11:47:53', '2022-07-09 11:47:53'),
+(14, 'MASCOTAS', 'mascotas', NULL, '2022-07-09 11:48:31', '2022-07-09 11:48:31'),
+(15, 'RECARGAS', 'recargas', NULL, '2022-07-09 11:49:00', '2022-07-09 11:49:00'),
+(16, 'COMBO', 'combo', 'PRODUCTOS DIFERENTES DE LA MISMA CATEGORÍA QUE SON PROMOCIÓN', '2022-07-09 12:08:02', '2022-07-09 12:08:02'),
+(17, 'CERVEZA', 'cerveza', NULL, '2022-07-09 13:53:49', '2022-07-09 13:53:49'),
+(18, 'CARNES FRIAS', 'carnes-frias', 'JAMON, SALCHICHA, QUESILLO, QUESO AMARILLO', '2022-12-29 12:11:58', '2022-12-29 12:11:58'),
+(19, 'DESECHABLES', 'desechables', 'PLATOS, VASOS, SERVILLETAS, CUCHARAS, TENEDORES', '2022-12-29 12:12:37', '2022-12-29 12:12:37'),
+(20, 'BEBES', 'bebes', 'PAÑALES, GERBER,', '2022-12-29 12:13:00', '2022-12-29 12:13:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `configuracion_codigo_barras`
+--
+
+CREATE TABLE `configuracion_codigo_barras` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `DNS_1Do2D` varchar(255) NOT NULL,
+  `getBarcode_SVGoHTMLoPNGPATH` varchar(255) NOT NULL,
+  `NombreTipoCodigoBarras` varchar(255) NOT NULL,
+  `anchoCodigoDeBarras` int(11) DEFAULT NULL,
+  `largoCodigoDeBarras` int(11) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
+  `rutaImagen` varchar(255) DEFAULT NULL,
+  `mostrarTextoCodigoDebarras` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `crear_cupones`
+--
+
+CREATE TABLE `crear_cupones` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `configuracionCodigoBarras_id` int(11) DEFAULT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `contadorCodigoDeBarras` int(11) NOT NULL,
+  `valorCodigoDeBarras` longtext NOT NULL,
+  `inicioDeRangoGenerarCodigoDeBarras` int(11) DEFAULT NULL,
+  `finDeRangoGenerarCodigoDeBarras` int(11) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `btnCupones` varchar(255) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `rutaPagina` varchar(255) DEFAULT NULL,
+  `politicaDeUso` longtext DEFAULT NULL,
+  `reactivarGeneracionEn` varchar(255) DEFAULT NULL,
+  `mensaje` longtext DEFAULT NULL,
+  `iconoCupon` varchar(255) DEFAULT NULL,
+  `tipoDeCupon` varchar(255) DEFAULT NULL,
+  `tipoDeCodigoAGenerar` varchar(255) DEFAULT NULL,
+  `nombrePaginaCupon` varchar(255) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `prioridad` tinyint(1) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cupones`
+--
+
+CREATE TABLE `cupones` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `deldia` tinyint(1) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleosettings`
+--
+
+CREATE TABLE `empleosettings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `empleosettings`
+--
+
+INSERT INTO `empleosettings` (`id`, `user_id`, `label`, `titulo`, `numero`, `subtitulo`, `description`, `image`, `icono`, `imghover`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'banner', '<p>null</p>', '0', NULL, '<p>null</p>', 'bolsa-de-trabajo.jpg', 'null', NULL, 1, NULL, '2022-07-06 13:26:25', '2022-07-06 13:26:40'),
+(2, 8, 'imagentexto', '<p>null</p>', '0', NULL, '<h1><small><big><strong>VEN Y FORMA&nbsp;PARTE DE UNA DE LAS EMPRESAS COMERCIALES MAS IMPORTANTES Y EN EXPANSION DE LA REGION MIXTECA.</strong></big></small></h1>', 'avatar.png', 'null', NULL, 2, NULL, '2022-07-06 13:27:40', '2022-07-07 17:18:25'),
+(3, 1, 'contadores', '<p>Con presencia en la Mixteca con m&aacute;s de:</p>', '50', NULL, '<p>Tiendas distrbuidas en la regi&oacute;n</p>', NULL, 'fas fa-store', NULL, 1, NULL, '2022-07-09 13:42:31', '2023-09-22 15:55:33'),
+(4, 1, 'contadores', '<p>Contando con un equipo de m&aacute;s de:</p>', '150', NULL, '<p>Colaboradores</p>', NULL, 'fas fa-users', NULL, 2, NULL, '2022-07-09 13:44:53', '2022-07-09 13:55:31'),
+(5, 1, 'contadores', '<p>Presente en el mercado con m&aacute;s de:</p>', '12', NULL, '<p>A&ntilde;os de experiencia</p>', NULL, 'fas fa-medal', NULL, 3, NULL, '2022-07-09 13:45:20', '2022-07-09 14:53:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturacion_pages`
+--
+
+CREATE TABLE `facturacion_pages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `imgBanner` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `facturacion_pages`
+--
+
+INSERT INTO `facturacion_pages` (`id`, `user_id`, `label`, `titulo`, `numero`, `subtitulo`, `description`, `image`, `imgBanner`, `icono`, `imghover`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'banner', NULL, NULL, NULL, NULL, 'banner 4 portada facturacion .png', NULL, NULL, NULL, 1, NULL, '2022-09-06 13:51:15', '2022-09-07 16:33:52'),
+(2, 1, 'boton', 'Click para facturar', NULL, 'http://picaroscomer.dyndns.org/WebflecHJ/facturacion_01.aspx', NULL, NULL, NULL, NULL, NULL, 2, NULL, '2022-09-06 13:51:57', '2024-04-29 20:02:36'),
+(3, 1, 'titulo', 'Instrucciones para facturación electrónica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, '2022-09-06 13:52:14', '2022-09-06 13:52:14'),
+(4, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Una vez dentro de la p&aacute;gina, nos posicionamos en la pesta&ntilde;a Facturar Ticket, rellenando los datos de la siguiente manera</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 4, NULL, '2022-09-06 13:52:31', '2023-10-05 12:33:37'),
+(5, 1, 'textoImagen', NULL, NULL, NULL, '<ol>\r\n	<li><big>Ingrese el&nbsp;<strong>RFC</strong>&nbsp;de su empresa.</big></li>\r\n	<li><big>Introduzca la serie de su ticket.</big></li>\r\n	<li><big>Ingrese el No. De su ticket (Sin comas)</big></li>\r\n	<li><big>Ingrese el No. De&nbsp;<strong>TR#&nbsp;</strong>de su ticket.</big></li>\r\n</ol>\r\n\r\n<p><big>Y procedemos a darle clic en continuar</big></p>', 'fact1.PNG', NULL, NULL, NULL, 5, NULL, '2022-09-06 13:54:16', '2023-10-05 12:34:40'),
+(6, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Posteriormente nos redireccionar&aacute;&nbsp;a un&nbsp;apartado donde&nbsp;se rellenan los datos respectivos para su factura.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 6, NULL, '2022-09-06 13:54:43', '2022-09-07 16:56:34'),
+(7, 1, 'textoImagen', NULL, NULL, NULL, '<ol>\r\n	<li><big>Verifique que el&nbsp;<strong>RFC</strong>&nbsp;corresponde al de su empresa.</big></li>\r\n	<li><big>Ingrese el nombre de su&nbsp;<strong>Raz&oacute;n social sin su r&eacute;gimen capital</strong></big></li>\r\n	<li><big>Ingrese los datos de su direcci&oacute;n de acuerdo a su&nbsp;<strong>Constancia de situaci&oacute;n fiscal</strong></big></li>\r\n	<li><big>Ingrese la direcci&oacute;n&nbsp;del&nbsp;<strong>CORREO ELECTR&Oacute;NICO&nbsp;</strong>al cual se enviar&aacute; su factura en Formato&nbsp;<strong>PDF y XML</strong>.</big></li>\r\n	<li><big>Este campo se habilitar&aacute;&nbsp;<strong>si su m&eacute;todo de pago es con tarjeta</strong>&nbsp;y deber&aacute; ingresar los&nbsp;<strong>&uacute;ltimos 4 d&iacute;gitos</strong>&nbsp;de la tarjeta con la que realiz&oacute; su pago.</big></li>\r\n	<li><big><strong>Seleccione</strong>&nbsp;<strong>el</strong>&nbsp;<strong>R&eacute;gimen Fiscal</strong>&nbsp;seg&uacute;n su Constancia de Situaci&oacute;n Fiscal.</big></li>\r\n	<li><big>Seleccione el&nbsp;<strong>Uso que se le dara al&nbsp;CFDI.</strong></big></li>\r\n	<li><big>Antes de hacer clic en&nbsp;<strong>Facturar&nbsp;</strong>se le recomienda&nbsp;<strong>VERIFICAR SUS DATOS.</strong></big></li>\r\n</ol>', 'fact.PNG', NULL, NULL, NULL, 7, NULL, '2022-09-06 13:55:13', '2022-09-07 16:56:57'),
+(8, 1, 'boton', 'Click para Facturar', NULL, 'http://picaroscomer.dyndns.org/WebflecHJ/facturacion_01.aspx', NULL, NULL, NULL, NULL, NULL, 8, NULL, '2022-09-06 13:55:41', '2024-04-29 20:02:41'),
+(9, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Si presenta alg&uacute;n detalle durante el proceso, con gusto le atenderemos al tel&eacute;fono 953 530 00 87</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 20, NULL, '2022-09-06 13:56:09', '2022-12-29 16:37:00'),
+(10, 1, 'titulo', 'Consultar factura', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, NULL, '2022-09-07 14:35:17', '2022-09-07 14:35:17'),
+(13, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Puede&nbsp;consultar y descargar una copia de su factura en formato PDF y XML seleccionando&nbsp;una de estas dos opciones.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 11, NULL, '2022-09-07 16:11:52', '2022-09-07 16:11:52'),
+(14, 1, 'textoImagen', NULL, NULL, NULL, '<p><big><strong>Opcion 1 (Por ticket de compra):&nbsp;</strong></big></p>\r\n\r\n<ul>\r\n	<li><big>Ingrese la serie&nbsp;de su ticket.</big></li>\r\n	<li><big>Ingrese el No. De su ticket (Sin comas).</big></li>\r\n	<li><big>Ingrese el No. De <strong>TR# </strong>de su ticket.&nbsp;</big></li>\r\n</ul>\r\n\r\n<p><big><strong>Opcion 2 (Por factura emitida):</strong></big></p>\r\n\r\n<ul>\r\n	<li><big>Ingrese su&nbsp;RFC.</big></li>\r\n	<li><big>Ingrese su numero de factura.</big></li>\r\n</ul>\r\n\r\n<p><big>Y procedemos a darle clic en continuar.</big></p>', 'image.png', NULL, NULL, NULL, 12, NULL, '2022-09-07 16:12:18', '2023-10-05 12:35:07'),
+(15, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Posteriormente nos aparece la pantalla donde podra descargar manualmente su PDF,&nbsp;XML o ambos segun se requiera.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 13, NULL, '2022-09-07 16:12:33', '2022-09-07 16:39:45'),
+(16, 1, 'textoImagen', NULL, NULL, NULL, '<ol>\r\n	<li><big>Mostrar&aacute; su factura en formato PDF.</big></li>\r\n	<li><big>Mostrar&aacute; su factura en formato&nbsp;</big><big>XML.</big></li>\r\n	<li><big>Aqui podr&aacute;&nbsp;colocar una direcci&oacute;n de correo electr&oacute;nico para el reenvio de la factura en formato&nbsp;PDF y XML.</big></li>\r\n</ol>', 'image (1).png', NULL, NULL, NULL, 14, NULL, '2022-09-07 16:12:51', '2022-09-07 16:12:51'),
+(17, 1, 'boton', 'Consultar factura', NULL, 'http://picaroscomer.dyndns.org/WebflecHJ/cfdCons.aspx', NULL, NULL, NULL, NULL, NULL, 14, NULL, '2022-09-07 16:13:50', '2022-09-07 16:18:23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generar_cupones_clientes`
+--
+
+CREATE TABLE `generar_cupones_clientes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `cupon_id` int(11) NOT NULL,
+  `valorCodigodeBarras` longtext NOT NULL,
+  `direccionIPPublica` varchar(255) NOT NULL,
+  `direccionIPLocal` varchar(255) DEFAULT NULL,
+  `ciudad` varchar(255) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `pais` varchar(255) DEFAULT NULL,
+  `latLong` varchar(255) DEFAULT NULL,
+  `direccionMac` varchar(255) DEFAULT NULL,
+  `correo` varchar(255) DEFAULT NULL,
+  `numCelular` varchar(255) DEFAULT NULL,
+  `tipoDeDispositivo` varchar(255) DEFAULT NULL,
+  `modeloDeDispositivo` varchar(255) DEFAULT NULL,
+  `tipoNavegador` varchar(255) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `contador` int(11) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `statusCookie` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `indexsettings`
+--
+
+CREATE TABLE `indexsettings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `redireccion` varchar(255) NOT NULL,
+  `titulobtn` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `style` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `modal` tinyint(1) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `indexsettings`
+--
+
+INSERT INTO `indexsettings` (`id`, `user_id`, `label`, `titulo`, `subtitulo`, `description`, `redireccion`, `titulobtn`, `icono`, `style`, `orden`, `modal`, `status`, `image`, `created_at`, `updated_at`) VALUES
+(2, 1, 'imagenfooter', 'Quienes somos', NULL, 'Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros,  para poder ofrecer al consumidor experiencias de compras  que sean útiles y prácticas para su vida diaria.', 'null', 'null', 'null', NULL, 6, 0, NULL, 'fachada_footer.png', '2022-07-05 18:13:38', '2022-07-05 18:21:10'),
+(3, 1, 'tituloservicios', 'CONOCE', NULL, 'NUESTROS SERVICIOS', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-05 18:15:11', '2022-07-09 15:46:30'),
+(4, 1, 'tituloproductos', 'CADA DIA AGREGANDO', NULL, 'NUEVOS PRODUCTOS', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-05 18:16:22', '2022-07-05 18:47:26'),
+(5, 1, 'titulomarcas', 'TRABAJANDO', NULL, 'CON LAS MEJORES MARCAS', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-05 18:18:12', '2022-07-09 15:46:38'),
+(6, 1, 'tituloredes', 'SIGUENOS EN', NULL, 'REDES SOCIALES', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-05 18:19:30', '2022-07-09 15:46:46'),
+(7, 1, 'titulofooter', '¿Quiénes somos?', NULL, 'Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros,  para poder ofrecer al consumidor experiencias de compras  que sean útiles y prácticas para su vida diaria.', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-05 18:20:49', '2022-07-06 17:54:08'),
+(8, 1, 'tarjeta', 'PROMOCIONES', NULL, 'Conoce nuestras promociones exclusivas', 'ofertaexclusiva', 'Ver mas', 'fas fa-percent', NULL, 1, 1, NULL, NULL, '2022-07-05 18:25:56', '2022-07-09 13:28:01'),
+(9, 1, 'tarjeta', 'FACTURACION', NULL, 'Genera y descarga su Factura Electrónica.', 'http://picaroscomer.dyndns.org/WebflecHJ/facturacion_01.aspx', 'Facturar', 'fas fa-file-alt', NULL, 2, 0, NULL, NULL, '2022-07-05 18:29:27', '2022-07-05 19:52:37'),
+(10, 1, 'tarjeta', 'MAPA', NULL, 'Ubique su tienda SUPERPLUS mas cercano', 'https://www.google.com.mx/maps/search/superplus/', 'Ubicar', 'fas fa-map-marker-alt', NULL, 3, 0, NULL, NULL, '2022-07-05 18:32:10', '2022-07-05 19:53:33');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `instalacions`
+--
+
+CREATE TABLE `instalacions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `miempresas`
+--
+
+CREATE TABLE `miempresas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `miempresas`
+--
+
+INSERT INTO `miempresas` (`id`, `user_id`, `label`, `titulo`, `description`, `image`, `imghover`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 'banner', 'Banner', 'null', 'nosotros.jpg', NULL, 1, NULL, '2022-07-05 19:35:19', '2022-07-05 19:35:19'),
+(2, 1, 'historia', 'NUESTRA HISTORIA', 'Super Plus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, respaldada por la experiencia de Cervezas Modelo en la Mixteca S.A. de C.V. empresa con liderazgo en el sector cervecero.\r\nActualmente contamos con 50 tiendas  distribuidas en la mixteca Oaxaqueña, brindando  servicio las 24 horas del día los 365 días del año,  con una experiencia de 13 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.', 'fachada_cb2[1].png', 'fachada.png', 2, NULL, '2022-07-05 19:36:05', '2023-10-05 12:32:45'),
+(3, 1, 'mision', NULL, 'Satisfacer las necesidades de los clientes proporcionando un Plus a su Día.', 'mision.png', 'super plus palomita.png', 4, NULL, '2022-07-05 19:38:53', '2022-07-06 13:35:26'),
+(4, 3, 'vision', NULL, 'Ser la mejor opción en tienda de conveniencia y posicionar la marca en diferentes mercados.', 'vision.png', 'super plus palomita.png', 4, NULL, '2022-07-05 19:42:07', '2022-07-05 19:43:20'),
+(5, 1, 'valores', NULL, '<strong>El cliente es el jefe:</strong> En Super Plus el cliente es lo más importante, trabajamos para su completa satisfacción. <br>\r\n<strong>Ser mejor cada día:</strong> Fijarse objetivos día a día, con una mentalidad innovadora basándose en hechos y datos para cumplir las expectativas de nuestros clientes y de la empresa. <br>\r\n<strong>Trabajo en equipo:</strong> En un gran equipo hay unión, cada integrante hace su aporte aprovechando la diversidad de ideas, habilidades y talentos. <br>\r\n<strong>Gente con la gente:</strong> Crear un ambiente de empatía en colaboración, reconocimiento, diversidad y respeto.', 'valores.png', 'super plus palomita.png', 5, NULL, '2022-07-05 19:42:41', '2023-10-05 12:33:16'),
+(6, 1, 'titulo', 'ACERCA DE NOSOTROS', 'ACERCA DE NOSOTROS', 'super_plus.png', NULL, 3, NULL, '2022-07-06 13:35:02', '2022-07-06 13:35:16');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2020_11_16_101800_create_roles_tables', 1),
+(5, '2020_11_16_134223_create_categorias_table', 1),
+(6, '2020_11_16_134411_create_productos_table', 1),
+(7, '2020_11_26_000000_create_spammers_table', 1),
+(8, '2021_09_09_141159_create_publicoferts_table', 1),
+(9, '2021_09_09_141951_create_proveedores_table', 1),
+(10, '2021_09_09_142729_create_instalacions_table', 1),
+(11, '2021_10_01_080804_create_slidermains_table', 1),
+(12, '2021_10_05_160510_create_cardservicios_table', 1),
+(13, '2021_10_08_135852_create_textoproductos_table', 1),
+(14, '2021_11_20_173522_create_miempresas_table', 1),
+(15, '2021_11_26_141730_create_vacantes_table', 1),
+(16, '2021_12_21_115027_create_indexsettings_table', 1),
+(17, '2022_01_11_204246_create_empleosettings_table', 1),
+(18, '2022_07_04_174438_create_politicaprivacidads_table', 1),
+(19, '2022_07_04_174923_create_videos_table', 1),
+(20, '2022_07_04_175027_create_cupones_table', 1),
+(21, '2022_07_05_165333_create_responsabilidadsocials_table', 1),
+(22, '2022_09_01_135430_create_facturacion_pages_table', 2),
+(23, '2023_02_20_114003_create_crear_cupones_table', 3),
+(24, '2023_02_22_124109_create_generar_cupones_clientes_table', 3),
+(25, '2023_02_24_105530_create_configuracion_codigo_barras_table', 3),
+(26, '2023_03_14_192001_create_publicidad_emergentes_table', 3),
+(27, '2023_04_19_082358_add_orden_to_publicoferts', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `politicaprivacidads`
+--
+
+CREATE TABLE `politicaprivacidads` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `subititulo` varchar(255) DEFAULT NULL,
+  `texto` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `politicaprivacidads`
+--
+
+INSERT INTO `politicaprivacidads` (`id`, `user_id`, `titulo`, `label`, `subititulo`, `texto`, `image`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL, NULL, '<h1><small><strong>POL&Iacute;TICA DE PRIVACIDAD</strong></small></h1>\r\n\r\n<h2>Agradecemos su visita, este sitio <em><strong>superplus24horas.com</strong></em> es propiedad de Superplus. Con el objetivo de ofrecerle un sitio web seguro, se establecen&nbsp;TERMINOS Y CONDICIONES.<br />\r\nEste sitio es para mayores de 18 a&ntilde;os de edad. Si es menor de edad, puede usar el sitio solo con la participaci&oacute;n y aprobaci&oacute;n de un padre o tutor. Al acceder, consultar o utilizar nuestro sitio <strong><em>superplus24horas.com</em></strong>, aceptas todas y cada una de las condiciones que se establecen en estos t&eacute;rminos de uso, manifestando su voluntad, en t&eacute;rminos de la legislaci&oacute;n aplicable vigente.<br />\r\nCualquier modificaci&oacute;n a los presentes t&eacute;rminos y condiciones ser&aacute; realizada cuando Superplus lo considere apropiado, siendo exclusiva responsabilidad del usuario revisar las modificaciones.</h2>\r\n\r\n<h2><br />\r\n<strong>T&Eacute;RMINOS Y CONDICIONES DE USO SUPERPLUS</strong><br />\r\n<strong>I) Derechos de Propiedad.</strong><br />\r\nLos derechos de autor y/o de propiedad industrial sobre el contenido, nombres de dominio, logotipos, fotograf&iacute;as, im&aacute;genes, o en general cualquier informaci&oacute;n contenida o publicada en el sitio web, se encuentran debidamente protegidos a favor de &ldquo;Superplus&rdquo; o en su caso en favor de sus Afiliados, Proveedores y/o de sus respectivos propietarios, de conformidad con la legislaci&oacute;n aplicable en materia de derechos de autor. Por lo cual se proh&iacute;be expresamente a &ldquo;Los Clientes&rdquo; modificar, alterar o suprimir, ya sea en forma total o parcial, los avisos, marcas, nombres comerciales, anuncios, logotipos o en general cualquier indicaci&oacute;n que se refiera a la propiedad de informaci&oacute;n contenida en el sitio web.</h2>\r\n\r\n<h2><br />\r\n<strong>II) Modificaciones al sitio web</strong><br />\r\nSuperplus podr&aacute; en cualquier momento y a su conveniencia sin necesidad de dar aviso al usuario, realizar correcciones, adiciones, mejoras o modificaciones al contenido, presentaci&oacute;n, informaci&oacute;n, bases de datos y dem&aacute;s elementos del sitio <strong><em>superplus24horas.com</em></strong>, sin que ello de lugar ni derecho a ninguna reclamaci&oacute;n o indemnizaci&oacute;n, ni que lo mismo implique reconocimiento de responsabilidad alguna a favor del usuario.</h2>\r\n\r\n<h2><br />\r\n<strong>III) Marcas Comerciales.</strong><br />\r\nPor requerimientos y estrategia, en el sitio web se usan, adem&aacute;s de nuestra marca &ldquo;Superplus&rdquo;, otras marcas comerciales, logos, marcas de servicios, marcas registradas, por cuestiones de derechos de autor, esas marcas, van en &aacute;reas espec&iacute;ficas del sitio web para no causar confusi&oacute;n al p&uacute;blico que acceda el sitio web. Todas las marcas comerciales que no sean de &ldquo;Superplus&rdquo; que aparezcan en el sitio web o a trav&eacute;s de los servicios, son propiedad de sus respectivos representantes legales. El mal uso de las marcas comerciales expuestas o a trav&eacute;s de cualquiera de los servicios del sitio web est&aacute; estrictamente prohibido.</h2>\r\n\r\n<h2><br />\r\n<strong>IV) Precisi&oacute;n de los materiales.</strong><br />\r\nLos materiales que aparecen en este sitio web pueden incluir errores t&eacute;cnicos, tipogr&aacute;ficos o fotogr&aacute;ficos. Superplus no garantiza que ninguno de los materiales en su sitio web sea preciso, completo o actual y puede realizar cambios en los materiales contenidos en su sitio web en cualquier momento sin previo aviso.</h2>\r\n\r\n<h2><br />\r\n<strong>V) Licencia Limitada.</strong><br />\r\nUsted puede acceder y ver el contenido del sitio web desde su computadora o desde cualquier otro tipo de dispositivo, a menos de que se indique de otra manera en estos T&eacute;rminos y Condiciones. La reimpresi&oacute;n, publicaci&oacute;n, distribuci&oacute;n, asignaci&oacute;n, reproducci&oacute;n electr&oacute;nica o por cualquier otro medio de informaci&oacute;n donde aparezca en <strong><em>superplus24horas.com</em></strong>, para cualquier uso distinto al personal no comercial est&aacute; prohibido para el usuario. Cuando la conducta del usuario sea contraria a lo establecido en los presentes t&eacute;rminos y condiciones, &ldquo;Superplus&rdquo; se reserva el derecho de negar el acceso al sitio web a su consideraci&oacute;n.<br />\r\n&nbsp;</h2>', NULL, 2, NULL, '2022-07-05 17:36:35', '2022-07-06 17:07:15'),
+(2, 3, NULL, NULL, NULL, '<h2><strong>VI) Datos personales.</strong><br />\r\nLos datos personales que puede llegar a recabar Superplus de forma directa o indirecta consisten en los siguientes: su nombre completo, direcci&oacute;n, tel&eacute;fonos de casa o trabajo o celular, correo electr&oacute;nico y ocupaci&oacute;n. Nos comprometemos a que todos los datos obtenidos ser&aacute;n tratados bajo las m&aacute;s estrictas medidas de seguridad que garanticen su confidencialidad con&nbsp;base a la ley de protecci&oacute;n de datos.</h2>\r\n\r\n<h2><br />\r\n<strong>VII) Violaciones del sistema o bases de datos.</strong><br />\r\nEs il&iacute;cita cualquier acci&oacute;n o uso de dispositivos, software, u otros instrumentos tendientes a interferir tanto en las actividades y operatoria del sitio, as&iacute; como en las bases de datos o en los diferentes apartados del sitio. Cualquier intromisi&oacute;n, tentativa o actividad violatoria o contraria a las leyes sobre derechos de propiedad intelectual, seguridad de los sistemas y/o a las prohibiciones estipuladas en este documento, har&aacute;n posible a su responsable de las acciones legales pertinentes y a las sanciones previstas por este acuerdo.</h2>\r\n\r\n<h2><br />\r\n<strong>VIII) Legislaci&oacute;n aplicable y jurisdicci&oacute;n.</strong><br />\r\nLos presentes t&eacute;rminos y condiciones est&aacute;n sujetos de acuerdo con la legislaci&oacute;n aplicable vigente en la Rep&uacute;blica Mexicana.</h2>', NULL, 2, NULL, '2022-07-05 19:47:56', '2022-07-06 17:09:03');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `descriptions` varchar(500) NOT NULL,
+  `extract` varchar(255) DEFAULT NULL,
+  `price` decimal(5,2) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `visible` tinyint(1) NOT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `name`, `slug`, `descriptions`, `extract`, `price`, `image`, `visible`, `fechaInicio`, `fechaFin`, `status`, `orden`, `categoria_id`, `created_at`, `updated_at`) VALUES
+(28, 'MAZAPAN UNTABLE', 'mazapan-untable', '<p>&iexcl;BUSCALO EN TODAS NUESTRAS SUCURLES!</p>\r\n\r\n<p>&nbsp;</p>', '400GR', 68.00, 'PRODUCTOS NUEVOS .png', 1, NULL, NULL, NULL, NULL, 7, '2024-01-09 14:29:23', '2024-01-09 14:30:20');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`id`, `user_id`, `name`, `image`, `fechaInicio`, `fechaFin`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'alpura', 'alpura.png', NULL, NULL, NULL, NULL, '2022-07-05 20:01:33', '2022-07-05 20:01:33'),
+(2, 1, 'barcel', 'barcel.png', NULL, NULL, NULL, NULL, '2022-07-05 20:01:42', '2022-07-05 20:01:42'),
+(3, 1, 'Corona2', 'corona.png', NULL, NULL, NULL, NULL, '2022-07-05 20:02:40', '2022-07-09 15:30:38'),
+(4, 1, 'Brillante', 'brillante.png', NULL, NULL, NULL, NULL, '2022-07-05 20:04:25', '2022-07-09 15:30:52'),
+(5, 1, 'Nestle', 'nestle agua.png', NULL, NULL, NULL, NULL, '2022-07-05 20:04:36', '2022-07-09 15:31:09'),
+(6, 1, 'Bonafont', 'bonafont.png', NULL, NULL, NULL, NULL, '2022-07-05 20:04:45', '2022-07-09 15:31:55'),
+(8, 1, 'cocacola', 'coca cola.png', NULL, NULL, NULL, NULL, '2022-07-05 20:06:46', '2022-07-05 20:06:46'),
+(9, 1, 'Corona3', 'corona.png', NULL, NULL, NULL, NULL, '2022-07-05 20:07:03', '2022-07-09 15:32:18');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicidad_emergentes`
+--
+
+CREATE TABLE `publicidad_emergentes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `prioridad` varchar(255) DEFAULT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `deldia` tinyint(1) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `paginasAMostrar` varchar(255) DEFAULT NULL,
+  `textoDelBoton` varchar(255) DEFAULT NULL,
+  `paginaARedireccionar` varchar(255) DEFAULT NULL,
+  `vigenciaCookie` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `publicidad_emergentes`
+--
+
+INSERT INTO `publicidad_emergentes` (`id`, `user_id`, `titulo`, `description`, `image`, `prioridad`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `adicional`, `paginasAMostrar`, `textoDelBoton`, `paginaARedireccionar`, `vigenciaCookie`, `created_at`, `updated_at`) VALUES
+(1, 6, 'LONA OCTUBRE 23', NULL, 'LONA OCTUBRE OK.jpeg', NULL, '2023-10-04', '2023-10-31', NULL, NULL, NULL, 'index|promociones|cupones|facturacion', NULL, NULL, 1, '2023-10-05 13:16:22', '2023-10-05 13:16:22'),
+(2, 6, 'LONA BUEN FIN 23', NULL, 'lona buen fin.jpg', NULL, '2023-11-03', '2023-11-30', NULL, NULL, NULL, 'index|promociones|cupones|empleo|nosotros|contact', NULL, NULL, 1, '2023-11-03 13:26:04', '2023-11-03 13:26:04'),
+(3, 6, 'navidad 2023', NULL, 'lona navidad 2023.jpg', NULL, '2023-12-04', '2023-12-31', NULL, NULL, NULL, 'index|promociones|nosotros|facturacion', NULL, NULL, 1, '2023-12-04 16:26:07', '2023-12-04 16:26:07'),
+(4, 6, 'noche especial 2023', NULL, '2  VIDEO COLON DIC 2023.png', NULL, '2023-12-03', '2023-12-31', NULL, NULL, NULL, 'index|promociones', NULL, NULL, 1, '2023-12-04 16:34:35', '2023-12-04 16:36:04'),
+(5, 7, 'enero 2024', NULL, 'enero 2024.jpg', NULL, '2024-01-01', '2024-01-14', NULL, NULL, NULL, 'index|promociones', NULL, NULL, 1, '2024-01-02 16:21:37', '2024-01-15 09:44:10'),
+(6, 7, 'PROMOCION DE CERVEZA', NULL, '17.png', NULL, '2024-01-15', '2024-01-31', NULL, NULL, NULL, 'index|promociones', NULL, NULL, 1, '2024-01-15 09:46:39', '2024-01-15 09:46:39'),
+(7, 6, 'FEB 2024', NULL, 'lona 14 feb 2024.jpg', NULL, '2024-02-01', '2024-02-15', NULL, NULL, NULL, 'index|promociones|facturacion', NULL, NULL, 1, '2024-01-26 16:30:37', '2024-01-26 16:30:37'),
+(8, 6, 'lona marzo 2024', NULL, 'lona marzo 2024 v1.jpg', NULL, '2024-03-01', '2024-03-31', NULL, NULL, NULL, 'index|promociones|empleo|contact', NULL, NULL, 1, '2024-03-01 16:36:57', '2024-03-01 16:36:57'),
+(9, 6, 'ABRIL  LONA 2024', NULL, 'ABRIL LONA 2024.jpg', NULL, '2024-04-01', '2024-04-30', NULL, NULL, NULL, 'index|promociones|nosotros|contact', NULL, NULL, 1, '2024-04-02 14:32:14', '2024-04-02 14:32:14'),
+(10, 6, 'LONA MAYO 2024', NULL, 'LONA MAYO 2024.jpg', NULL, '2024-05-01', '2024-05-31', NULL, NULL, NULL, 'index|promociones|cupones|nosotros|contact', NULL, NULL, 1, '2024-05-03 12:20:09', '2024-05-03 12:20:09');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicoferts`
+--
+
+CREATE TABLE `publicoferts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `texto` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `deldia` tinyint(1) NOT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `publicoferts`
+--
+
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(5, 6, 'POUCH PEDIGREE', NULL, '37.png', '2022-07-09', '2022-07-31', NULL, 0, 14, '2022-07-09 12:00:28', '2022-07-09 12:00:28', NULL),
+(7, 6, 'ANTITRANSPIRANTE REXONA MEN V8', NULL, '44.png', '2022-07-09', '2022-07-31', NULL, 0, 10, '2022-07-09 12:03:24', '2022-07-09 12:03:24', NULL),
+(8, 6, 'PRESERVATIVOS MFORCE', NULL, '46.png', '2022-07-09', '2022-07-31', NULL, 0, 9, '2022-07-09 12:05:00', '2022-07-09 12:05:00', NULL),
+(10, 6, 'NUTRI LECHE 1 LITRO', NULL, '50.png', '2022-07-09', '2022-07-31', NULL, 0, 5, '2022-07-09 12:20:52', '2022-07-09 12:20:52', NULL),
+(11, 6, 'ACEITUNAS BUFALO 150GR', NULL, '45.png', '2022-07-09', '2022-07-31', NULL, 0, 1, '2022-07-09 12:22:39', '2022-07-09 12:22:39', NULL),
+(12, 6, 'SALSA BUFALO PICANTE 150GR', NULL, '42.png', '2022-07-09', '2022-07-31', NULL, 0, 13, '2022-07-09 12:29:54', '2022-07-09 12:29:54', NULL),
+(13, 6, 'YOGURTH LALA GO 170GR', NULL, '41.png', '2022-07-09', '2022-07-31', NULL, 0, 5, '2022-07-09 12:32:19', '2022-07-09 12:32:19', NULL),
+(14, 6, 'GALLETAS OREO 114GR', NULL, '40.png', '2022-07-09', '2022-07-31', NULL, 0, 6, '2022-07-09 12:37:07', '2022-07-09 12:37:07', NULL),
+(15, 6, 'HOLANDA CORNETTO', NULL, '39.png', '2022-07-09', '2022-07-31', NULL, 0, 4, '2022-07-09 12:42:25', '2022-07-09 12:42:25', NULL),
+(16, 6, 'CHICLE TRIDENT', NULL, '51.png', '2022-07-09', '2022-07-31', NULL, 0, 13, '2022-07-09 12:46:19', '2022-07-09 12:46:19', NULL),
+(17, 6, 'GANSITO MARINELA', NULL, '53.png', '2022-07-09', '2022-07-31', NULL, 0, 6, '2022-07-09 12:49:58', '2022-07-09 12:49:58', NULL),
+(18, 6, 'YOGURT LALA SABORES', NULL, '54.png', '2022-07-09', '2022-07-31', NULL, 0, 5, '2022-07-09 12:52:14', '2022-07-09 12:52:14', NULL),
+(19, 6, 'COCA COLA 2.5 L', NULL, '43.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:08:11', '2022-07-09 13:08:11', NULL),
+(20, 6, 'SUERO ELECTROLIT 625 ML', NULL, '47.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:15:04', '2022-07-09 13:15:04', NULL),
+(21, 6, 'CAFÉ OLÉ SABORES', NULL, '30.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:17:39', '2022-07-09 13:17:39', NULL),
+(22, 6, 'JUGO DEL VALLE 413 ML', NULL, '31.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:19:37', '2022-07-09 13:19:37', NULL),
+(23, 6, 'POWERADE SABORES', NULL, '33.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:22:13', '2022-07-09 13:22:13', NULL),
+(24, 6, 'JUMEX TETRAPACK 1 LT', NULL, '34.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:24:13', '2022-07-09 13:24:13', NULL),
+(26, 6, 'REFRESCO PEPSI/SANGRÍA 355ML LATA', NULL, '35.png', '2022-07-09', '2022-07-31', NULL, 0, 16, '2022-07-09 13:28:05', '2022-07-09 13:28:05', NULL),
+(27, 6, 'ICE SLUSH 20 OZ', NULL, '38.png', '2022-07-09', '2022-07-31', NULL, 0, 7, '2022-07-09 13:30:46', '2022-07-09 13:30:46', NULL),
+(28, 6, 'COCA COLA 600ML', NULL, '32.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 13:53:05', '2022-07-09 13:53:05', NULL),
+(30, 6, 'CERVEZA VICTORIA 210ML VIDRIO', NULL, '21.png', '2022-07-09', '2022-07-31', NULL, 0, 17, '2022-07-09 13:58:49', '2022-07-09 13:58:49', NULL),
+(31, 6, 'CERVEZA MODELO ESPECIAL LATA', NULL, '29.png', '2022-07-09', '2022-07-31', NULL, 0, 17, '2022-07-09 14:01:32', '2022-07-09 14:01:44', NULL),
+(40, 6, 'BEBIDA SKYY  275ML SABORES', NULL, '56.png', '2022-07-11', '2022-07-31', NULL, 0, 2, '2022-07-11 09:12:42', '2022-07-11 09:14:20', NULL),
+(41, 6, 'HELIX 355ML LATA SABORES', NULL, '55.png', '2022-07-11', '2022-07-31', NULL, 0, 2, '2022-07-11 09:13:51', '2022-07-11 09:14:07', NULL),
+(42, 6, 'RANCHO MIX 355ML', NULL, '57.png', '2022-07-11', '2022-07-31', NULL, 0, 2, '2022-07-11 09:15:47', '2022-07-11 09:15:47', NULL),
+(44, 6, 'SABRITAS PAPA 42/45GR', NULL, '52.png', '2022-07-11', '2022-07-31', NULL, 0, 3, '2022-07-11 09:18:46', '2022-07-11 09:18:55', NULL),
+(45, 6, 'WHISKY RED LABEL + BRILLANTE AGUA MINERAL + BOLSA DE HIELO', NULL, '60.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:20:20', '2022-07-11 09:20:20', NULL),
+(46, 6, 'BRANDY TORRES 5 700ML + BRILLANTE AGUA MINERAL 2L', NULL, '59.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:21:25', '2022-07-11 09:21:25', NULL),
+(47, 6, 'RON CAPITAN MORGAN 750ML + COCA COLA 2.5L', NULL, '58.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:23:27', '2022-07-11 09:23:27', NULL),
+(48, 6, 'CHILE TAJIN 142GR + JUGO KERMATO TOMATE', NULL, '63.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:25:40', '2022-07-11 09:25:40', NULL),
+(49, 6, 'PEPSI 600ML + DORITO FLAMMING HOT 52/62GR', NULL, '62.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:27:26', '2022-07-11 09:27:26', NULL),
+(50, 6, 'HARINA SAN BLAS HOT CAKES 500GR + LECHERITA 100GR', NULL, '64.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:30:28', '2022-07-11 09:30:28', NULL),
+(51, 6, 'NESTLE 16 OZ SABORES + GALLETAS POLVORONES 111/113', NULL, '65.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 09:42:56', '2022-07-11 09:42:56', NULL),
+(52, 6, 'HOT DOG + GRATIS JUGO BOING 250ML SABORES', NULL, '66.png', '2022-07-11', '2022-07-30', NULL, 0, 16, '2022-07-11 09:46:17', '2022-08-01 15:37:55', NULL),
+(57, 6, 'CORONA AGUA RIFADA', '¡DALE UN PLUS A TU DIA!', '35.png', '2022-07-11', '2022-07-31', NULL, 1, 2, '2022-07-11 13:52:06', '2022-07-16 07:58:51', NULL),
+(62, 6, 'JABÓN ESCUDO ANTIBACTERIAL', '1 X $18.00', '52 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 10, '2022-08-02 18:17:40', '2022-08-02 18:21:33', NULL),
+(63, 6, 'NUTRI LECHE 1 LITRO', '1 X 16.50', '51 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 5, '2022-08-02 18:30:54', '2022-08-02 18:30:54', NULL),
+(64, 6, 'SALSA BUFALO PICANTE 150GR', '1 PIEZA SALSA BUFALO A SOLO $17.00', '48 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-02 18:32:39', '2022-08-02 18:32:39', NULL),
+(65, 6, 'AVENA QUAKER 400GR', '1 X $29.00', '45 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-02 18:36:19', '2022-08-02 18:36:19', NULL),
+(66, 6, 'CORONA AGUA RIFADA 355 ML', '1 X 21.00', '44 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:44:48', '2022-08-02 18:44:48', NULL),
+(67, 6, 'SALSA VALENTINA 350/370 ML', '1 X 16.00', '47 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-02 18:46:07', '2022-08-02 18:46:07', NULL),
+(68, 6, 'CHICLE TRIDENT 30.6 GR SABORES', '1 X $23.00', '46 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-02 18:47:49', '2022-08-02 18:47:49', NULL),
+(69, 6, 'JUGO JUMEX 1L TETRAPACK SABORES', '2 X $48.00', '57 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:50:35', '2022-08-02 18:50:35', NULL),
+(70, 6, 'JUGO DEL VALLE 413 ML SABORES', '2 X 32.00', '56 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:51:22', '2022-08-02 18:51:22', NULL),
+(71, 6, 'COCA COLA 600ML', '2 X $29.00', '55 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:51:58', '2022-08-02 18:51:58', NULL),
+(72, 6, 'VIÑA REAL 330 ML SABORES', '3 X $59.00', '54 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:53:10', '2022-08-02 18:53:10', NULL),
+(73, 6, 'HELIX 355ML LATA SABORES', '2 X $45.00', '53 AGOATO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:53:38', '2022-08-02 18:53:38', NULL),
+(74, 6, 'ENERGETIZANTE MONSTER 473ML SABORES', '1 X 39.00', '50 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:54:44', '2022-08-02 18:54:44', NULL),
+(75, 6, 'ENERGETIZANTE VOLT 473ML SABORES', '2 X 35.00', '49 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-02 18:55:36', '2022-08-02 18:55:36', NULL),
+(76, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', '2 X $71.00', '29 AGOSTO 22.png', '2022-08-02', '2022-08-21', NULL, 0, 17, '2022-08-02 18:56:45', '2022-08-22 09:25:36', NULL),
+(77, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2L', '2 X 71.00', '28 AGOSTO 22.png', '2022-08-02', '2022-08-21', NULL, 0, 17, '2022-08-02 18:57:19', '2022-08-22 09:25:46', NULL),
+(78, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', '6 X 102.00', '41 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 18:58:37', '2022-08-02 18:58:37', NULL),
+(79, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', '6 X 102.00', '40 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 18:59:38', '2022-08-02 18:59:38', NULL),
+(80, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X 102.00', '39 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 19:00:41', '2022-08-02 19:00:41', NULL),
+(81, 6, 'CERVEZA CORONA LIGHT  473ML LATON', '2 X 40.00', '38 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 19:01:37', '2022-08-02 19:01:37', NULL),
+(82, 6, 'CERVEZA CORONA EXTRA 473ML LATON', '2 X 40.00', '37 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 19:02:45', '2022-08-02 19:02:45', NULL),
+(83, 6, 'CERVEZA MODELO ESPECIAL  473ML LATON', '2X 40.00', '36 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 19:03:30', '2022-08-02 19:03:30', NULL),
+(84, 6, 'CERVEZA VICTORIA 473ML LATON', '2 X $40.00', '35 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-02 19:04:31', '2022-08-02 19:04:31', NULL),
+(85, 6, 'RANCHO MIX 355ML', '3 X $49.00', '58 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 2, '2022-08-03 09:56:00', '2022-08-03 09:56:00', NULL),
+(86, 6, 'POUCH PEDIGREE', '3 X $35.00', '64 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 14, '2022-08-03 09:57:57', '2022-08-03 09:57:57', NULL),
+(87, 6, 'POUCH WHISKAS 85 GR', '3 X $35.00', '63 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 14, '2022-08-03 09:59:23', '2022-08-03 09:59:34', NULL),
+(88, 6, 'LIMPIADOR FABULOSO 500ML', '2 X $29.00', '71 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 11, '2022-08-03 10:00:43', '2022-08-03 10:00:43', NULL),
+(89, 6, 'PASTE DENTAL COLGATE CALCIO 75ML', '1 X $23.00', '70 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 10, '2022-08-03 10:01:41', '2022-08-03 10:01:41', NULL),
+(90, 6, 'SUERO ELECTROLIT 625 ML', '2 x $42.00', '72 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 2, '2022-08-03 10:48:51', '2022-08-03 10:48:51', NULL),
+(91, 6, 'CARAMELO MENTOS 29 / 29.7 GR SABORES', '2 x $20.00', '67 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 13, '2022-08-03 10:50:14', '2022-08-03 10:50:14', NULL),
+(92, 6, 'KINDER DELICE 39/42 GR', '1 X $13.50', '66 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 13, '2022-08-03 10:51:23', '2022-08-03 10:51:23', NULL),
+(93, 6, 'GALLETAS OREO 114GR', '1 X $15.00', '68 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 6, '2022-08-03 10:52:33', '2022-08-03 10:52:33', NULL),
+(94, 6, 'MORDISKO HOLANDA', '1 X $17.00', '69 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 4, '2022-08-03 10:53:42', '2022-08-03 10:53:42', NULL),
+(95, 6, 'REBANADAS BIMBO', '1 X $7.00', '73 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 6, '2022-08-03 10:54:28', '2022-08-03 10:54:28', NULL),
+(96, 6, 'PALOMITAS KARAMELADAS  POP 120 GR', '1 X $20.00', '65 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 3, '2022-08-03 10:59:22', '2022-08-03 10:59:22', NULL),
+(97, 6, 'GALLETA CHOKIS 75/84/90 SABORES', '2 X $29.00', '62 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 6, '2022-08-03 11:01:27', '2022-08-03 11:01:27', NULL),
+(98, 6, 'TAKIS FUEGO BARCEL 56GR', '2 X $29.00', '61 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 3, '2022-08-03 11:02:20', '2022-08-03 11:02:20', NULL),
+(99, 6, 'CHEETOS SABORES 42/52 GR', '2 X $25.00', '60 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 3, '2022-08-03 11:03:12', '2022-08-03 11:03:12', NULL),
+(100, 6, 'REFRESCO JARRITO 600ML SABORES', '2 x $29.00', '59 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 2, '2022-08-03 11:05:09', '2022-08-03 11:05:09', NULL),
+(101, 6, 'WHISKY HIGHLAND CHIEF 750ML +  HIELO 5KG + BRILLANTE MINERAL 2LTS', 'COMBO $209.00', '82 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:09:36', '2022-08-03 11:09:36', NULL),
+(102, 6, 'WHISKY BUCHAN\'S 750ML + BRILLANTE MINERAL 2LT  + BOLSA DE HIELO 5KG', 'COMBO $865.00', '80 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:12:04', '2022-08-03 11:12:04', NULL),
+(103, 6, 'VODKA ABSOLUT AZUL 750ML + JUGO JUMEX 1LT TETRAPACK SABORES', 'COMBO $275.00', '81 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:16:38', '2022-08-03 11:16:38', NULL),
+(104, 6, 'RON CAPITAN MORGAN 750ML + COCA COLA 2.5L', 'COMBO $209.00', '79 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:17:22', '2022-08-03 11:17:22', NULL),
+(105, 6, 'REFRESCO PEPSI/SANGRIA 3LT', 'COMBO $75.00', '75 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:18:43', '2022-08-03 11:18:43', NULL),
+(106, 6, 'TAJIN 142GR / JUGO KERMATO 445/470ML', 'COMBO $49.00', '76 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:21:25', '2022-08-03 11:21:25', NULL),
+(107, 6, 'DORITOS SABORES  52/62 GR + REFRESCO PEPSI 600ML', 'COMBO $29.00', '74 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:27:00', '2022-08-03 11:27:00', NULL),
+(108, 6, 'LECHE YOMI 190ML SABORES + NITO BIMBO', 'COMBO $23.00', '77 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 11:28:32', '2022-08-03 11:28:32', NULL),
+(109, 6, 'NESTLE 16 ONZAS + BIMBUÑUELOS 6PZS', 'COMBO $39.00', '78 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 1, 16, '2022-08-03 11:31:54', '2022-08-03 11:37:23', NULL),
+(110, 6, 'ICEE SLUSH 20 ONZAS SABORES', '2 X $55.00', '84 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 1, 16, '2022-08-03 11:35:40', '2022-08-03 11:37:32', NULL),
+(111, 6, 'HOT DOG + GRATIS JUGO BOING 250ML SABORES', 'COMBO $18.00', '83 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 1, 16, '2022-08-03 11:36:25', '2022-08-03 11:37:15', NULL),
+(113, 6, 'POUCH WISKAS 85 GR', 'PROMOCIÓN\r\n3 X $35.00', '56 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 14, '2022-09-02 12:36:20', '2022-09-02 12:36:20', NULL),
+(114, 6, 'POUCH PEDIGREE 100GR', 'PROMOCIOÓN\r\n3 X $35.00', '55 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 14, '2022-09-02 12:38:18', '2022-09-02 12:38:18', NULL),
+(115, 6, 'DETERGENTE AXION LIMON 500 GR', '¡OFERTA!\r\n1 X $20.00', '66 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 11, '2022-09-02 12:42:55', '2022-09-02 12:42:55', NULL),
+(116, 6, 'LIMPIADOR CLORALEX 950ML', '¡OFERTA!\r\n1 X $12.00', '65 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 11, '2022-09-02 12:43:56', '2022-09-02 12:43:56', NULL),
+(117, 6, 'NIVEA PEARL & BEAUTY ROLL ON 50ML', '1 X $36.00', '60 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 10, '2022-09-02 12:46:47', '2022-09-02 12:46:47', NULL),
+(118, 6, 'LECHE NUTRI 1 LT', '¡OFERTA!\r\n1 X $17.00', '67 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 5, '2022-09-02 13:00:19', '2022-09-02 13:00:19', NULL),
+(119, 6, 'AVENA QUAKER 400GR', '¡OFERTA! 1 X $29.00', '62 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 13:01:49', '2022-09-02 13:01:49', NULL),
+(120, 6, 'LA LECHERA NESTLE SIRVE FACIL 335 GR', '¡OFERTA!\r\n1 X $39.00', '68 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 13:03:24', '2022-09-02 13:03:24', NULL),
+(121, 6, 'SALSA HABANERO NARANJA / VERDE', '¡OFERTA!\r\n1 X $22.00', 'PROMOPLUS 59  SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 13:12:58', '2022-09-02 13:12:58', NULL),
+(122, 6, 'SALSA VALENTINA 350/370 ML', '¡OFERTA!\r\n1 X $16.00', '61 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 13:14:52', '2022-09-02 13:14:52', NULL),
+(123, 6, 'CHILE MIGUELITO TARRO 250 ML', '¡OFERTA! 1 X $25.00', '63 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 13:15:55', '2022-09-02 13:15:55', NULL),
+(124, 6, 'PALETA LAPIZ COLOR NESTLE', '¡OFERTA!\r\n1 X $10.00', '58 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 4, '2022-09-02 13:28:24', '2022-09-02 13:28:24', NULL),
+(125, 6, 'REFRESCO COCA COLA 2.5 LT RETORNABLE', '¡OFERTA!\r\n1 X $28.00', '64 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 13:33:25', '2022-09-02 13:33:25', NULL),
+(126, 6, 'HOLANDA CHOCO CREM VAINILLA / ALMENDRAS 78ML', '¡PROMO!\r\n2 X $35.00', '57 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 4, '2022-09-02 15:44:52', '2022-09-02 15:44:52', NULL),
+(127, 6, 'SUERO ELECTROLIT 625ML SABORES', '¡COMBO!\r\n3 X $59.00', '75 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 15:46:53', '2022-09-02 15:46:53', NULL),
+(128, 6, 'CHOCOLATE KIT KAT CLASICO, DARK, WHITE 41.5 GR', '¡OFERTA!\r\n2 X $34.00', '71 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 13, '2022-09-02 15:47:59', '2022-09-02 15:47:59', NULL),
+(129, 6, 'GALLETAS CHOKIS 84/90 GR', '¡PROMO!\r\n2 X $29.00', '51 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 6, '2022-09-02 15:49:31', '2022-09-02 15:49:31', NULL),
+(130, 6, 'LICOR MEXGAVIA 440ML', '¡OFERTA!\r\n1 X $23.00', '76 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 8, '2022-09-02 16:00:50', '2022-09-02 16:00:50', NULL),
+(131, 6, 'JUGO DEL VALLE 413ML SABORES', '¡PROMO!\r\n2 X $32.00', '54 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 16:54:50', '2022-09-02 16:54:50', NULL),
+(132, 6, 'REFRESCO COCA COLA 355 ML', '¡COMBO!\r\n2 X $32.00', '74 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 16:56:44', '2022-09-02 16:56:44', NULL),
+(133, 6, 'BEBIDA NEW MIX JIMADOR 350 ML SABORES', '¡COMBO!\r\n3 X $59.00', '73 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 16:59:16', '2022-09-02 16:59:16', NULL),
+(134, 6, 'HELIX 355ML LATA SABORES', '¡PROMO!\r\n2 X $45.00', '72 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 17:01:36', '2022-09-02 17:01:36', NULL),
+(135, 6, 'REFRESCO PEPSI / SANGRIA CASERA 600 ML', '¡PROMO! \r\n2 X $29.00', '70 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 17:03:50', '2022-09-02 17:03:50', NULL),
+(136, 6, 'TAKIS FUEGO BARCEL 56GR', '¡PROMO!\r\n2 X $29.00', '69 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 3, '2022-09-02 17:04:48', '2022-09-02 17:04:48', NULL),
+(137, 6, 'ENERGETIZANTE VOLT 473ML SABORES', '¡PROMO!\r\n2 X $35.00', '53 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 17:05:54', '2022-09-02 17:05:54', NULL),
+(138, 6, 'CHEETOS SABORES 42/52 GR', '¡PROMO!\r\n2 X $25.00', '52 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 3, '2022-09-02 17:06:42', '2022-09-02 17:06:42', NULL),
+(139, 6, 'CHILE TAJIN 142GR + JUGO KERMATO TOMATE 445/470 ML', '¡COMBO!\r\n$49.00', '42 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:17:56', '2022-09-02 17:17:56', NULL),
+(140, 6, 'TEQUILA 100 AÑOS 750 ML + BRILLANTE 2 LT SABORES', '¡COMBO!\r\n$229.00', '43 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:32:10', '2022-09-02 17:32:10', NULL),
+(141, 6, 'TEQUILA CAZADORES 700/750 ML +BRILLANTE 2LT SABORES', '¡COMBO!\r\n$299.00', '45 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:40:10', '2022-09-02 17:40:10', NULL),
+(142, 6, 'CABRITO 750 ML + BRILLANTE SABORES 2 LT SABORES', '¡COMBO!\r\n$180.00', '44 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:42:40', '2022-09-02 17:42:40', NULL),
+(143, 6, 'RON CAPITAN MORGAN 750 ML + COCA COLA 2.75', '¡COMBO!\r\n$209.00', '46 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:48:09', '2022-09-02 17:48:09', NULL),
+(144, 6, 'LICOR RANCHO ESCONDIDO 750 ML + BRILLANTE 2 LT SABORES', '¡COMBO!\r\n$89.00', '47 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:51:05', '2022-09-02 17:51:05', NULL),
+(145, 6, 'SABRITOS 60 GR + REFRESCO COCA COLA 600 ML PET', '¡COMBO!\r\n$30.00', '49 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:54:58', '2022-09-02 17:54:58', NULL),
+(146, 6, 'FRIJOL LA SIERRA 580 GR + TOSTADAS MILPA REAL ONDULADAS 360 GR', '¡COMBO!\r\n$42.00', '41 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 17:58:01', '2022-09-02 17:58:01', NULL),
+(147, 6, 'NESTLE 16 OZ SABORES + SPONCH  PZA', '¡COMBO!\r\n$40.00', '40 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 18:00:18', '2022-09-02 18:00:18', NULL),
+(148, 6, 'ICEE SLUSH 20OZ SABORES', '2 X $55.00', '50 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 18:01:18', '2022-09-02 18:01:18', NULL),
+(149, 6, 'HOT DOG + JUGO BOING 250ML SABORES', '¡COMBO!\r\n$18.00', '48 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 18:02:14', '2022-09-02 18:02:14', NULL),
+(155, 7, 'CERVEZA VICTORIA CEMPASUCHIL', 'CERVEZA VICTORIA CEMPASUCHIL', 'PROMOPLUS  (18).png', '2022-10-31', '2022-10-30', NULL, 0, 17, '2022-10-01 18:34:15', '2022-10-31 10:46:30', NULL),
+(157, 7, 'CERVEZA CORONA LIGHT 355ML BOTE', 'CERVEZA CORONA LIGHT 355ML BOTE', '79.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-01 18:36:16', '2022-10-01 18:36:16', NULL),
+(158, 7, 'CERVEZA CORONA EXTRA 355ML BOTE', 'SIX CERVEZA CORONA EXTRA 355ML BOTE', '78.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-01 18:37:12', '2022-10-01 18:37:12', NULL),
+(159, 7, 'CERVEZA MODELO LATON 473ML', 'CERVEZA MODELO LATON 473ML', '77.png', '2022-10-01', '2022-10-03', NULL, 0, 17, '2022-10-01 18:38:03', '2022-10-04 15:54:33', NULL),
+(160, 7, 'CERVEZA VICTORIA LATON 473ML', 'CERVEZA VICTORIA LATON 473ML', '76.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-01 18:39:14', '2022-10-01 18:39:14', NULL),
+(161, 7, 'AGUA RIFADA CORONA SABORES 355ML', 'AGUA RIFADA CORONA SABORES 355ML', '82.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-01 18:40:03', '2022-10-01 18:40:03', NULL),
+(162, 6, 'LIMPIADOR CLOROX  930 ML', '1 X $14.00', 'OCTUBRE PROMO 22  (11).png', '2022-10-04', '2022-10-31', NULL, 0, 11, '2022-10-04 15:58:03', '2022-10-04 15:58:03', NULL),
+(163, 6, 'DETERGENTE ROMA 500GR', '1 X $19.00', 'OCTUBRE PROMO 22  (10).png', '2022-10-04', '2022-10-31', NULL, 0, 11, '2022-10-04 15:59:03', '2022-10-04 15:59:03', NULL),
+(164, 6, 'DETERGENTE BLANCA NIEVES 500 GR  + LIMPIADOR CLARASOL 1LT', 'COMBO $29.00', 'OCTUBRE PROMO 22  (26).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 16:01:45', '2022-10-04 16:01:45', NULL),
+(165, 6, 'SUAVITEL 4580 ML', '1 X $18.00', 'OCTUBRE PROMO 22  (17).png', '2022-10-04', '2022-10-31', NULL, 0, 11, '2022-10-04 16:03:36', '2022-10-04 16:03:36', NULL),
+(166, 6, 'MASCOTA FELIX SARDINA 85GR', '2 X $22.00', 'OCTUBRE PROMO 22  (22).png', '2022-10-04', '2022-10-31', NULL, 0, 14, '2022-10-04 16:07:22', '2022-10-04 16:07:22', NULL),
+(167, 6, 'POUCH WISKAS 85 GR', '4 X $45.00', 'OCTUBRE PROMO 22  (23).png', '2022-10-04', '2022-10-31', NULL, 0, 14, '2022-10-04 16:08:17', '2022-10-04 16:08:17', NULL),
+(168, 6, 'VINAGRE CLEMENTE BLANCO 500ML', '1 X $13.00', 'OCTUBRE PROMO 22  (12).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 16:18:33', '2022-10-04 16:18:33', NULL),
+(169, 6, 'HARINA SAN BLAS 1KG', '1 X $22.00', 'OCTUBRE PROMO 22  (13).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 16:26:48', '2022-10-04 16:26:48', NULL),
+(170, 6, 'NUTRI LECHE 1 LITRO', '1 X $17.50', 'OCTUBRE PROMO 22  (18).png', '2022-10-04', '2022-10-31', NULL, 0, 5, '2022-10-04 16:40:57', '2022-10-04 16:40:57', NULL),
+(171, 6, 'SALSA CATSUP CLEMENTE 340G', '1 X $19.00', 'OCTUBRE PROMO 22  (7).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 16:51:59', '2022-10-04 16:51:59', NULL),
+(172, 6, 'SALSA TAMPICO EXTRA PICANTE 60ML', '1 X $39.00', 'OCTUBRE PROMO 22  (21).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 16:53:51', '2022-10-04 16:53:51', NULL),
+(173, 6, 'SALSA HABANERO 148ML SABORES', '1 X $22.00', 'OCTUBRE PROMO 22  (20).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 16:54:55', '2022-10-04 16:54:55', NULL),
+(174, 6, 'ATUN DOLORES 133GR/140GR', '2 X $38.00', 'OCTUBRE PROMO 22  (19).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 16:58:26', '2022-10-04 16:58:26', NULL),
+(175, 6, 'CHILE MIGUELITO TARRO 250 ML', '1 X $25', 'OCTUBRE PROMO 22  (4).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 17:06:53', '2022-10-04 17:06:53', NULL),
+(176, 6, 'SUERO ELECTROLIT 625ML SABORES', '2 X $40.00', 'OCTUBRE PROMO 22  (3).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 17:08:17', '2022-10-04 17:08:17', NULL),
+(177, 6, 'PALETA HOLANDA LIMÓN CITRUS', '2 X $27.00', 'OCTUBRE PROMO 22  (16).png', '2022-10-04', '2022-10-31', NULL, 0, 4, '2022-10-04 17:10:10', '2022-10-04 17:10:10', NULL),
+(178, 6, 'LALA LECHE YOMI 960ML SABORES', '1 X $27.00', 'OCTUBRE PROMO 22  (5).png', '2022-10-04', '2022-10-31', NULL, 0, 5, '2022-10-04 17:13:09', '2022-10-04 17:13:09', NULL),
+(179, 6, 'CHOCOLATE REESES 39.6GR', '1 X $18.00', 'OCTUBRE PROMO 22  (6).png', '2022-10-04', '2022-10-31', NULL, 0, 13, '2022-10-04 17:17:27', '2022-10-04 17:17:27', NULL),
+(180, 6, 'BOCANIKA MAICITO  SABORES', '1 X $16.00', 'OCTUBRE PROMO 22  (8).png', '2022-10-04', '2022-10-31', NULL, 0, 3, '2022-10-04 17:19:03', '2022-10-04 17:19:03', NULL),
+(181, 6, 'BOCANIKA CUBOS DE FRUTA ENCHILADA 50GR', '1 X $18.50', 'OCTUBRE PROMO 22  (9).png', '2022-10-04', '2022-10-31', NULL, 0, 3, '2022-10-04 17:20:04', '2022-10-04 17:20:20', NULL),
+(182, 6, 'COCA COLA 2.5 L', '1 X $29.00', 'OCTUBRE PROMO 22  (14).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 17:21:36', '2022-10-04 17:21:36', NULL),
+(183, 6, 'ENERGETIZANTE AMPER  473ML SABORES', '2 X $35.00', 'OCTUBRE PROMO 22  (15).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 17:24:54', '2022-10-04 17:24:54', NULL),
+(184, 6, 'BEBIDA SKYY  275ML SABORES', '2 X $49.00', 'OCTUBRE PROMO 22  (33).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 17:26:52', '2022-10-04 17:26:52', NULL),
+(185, 6, 'BRANDY TORRES 5 700ML + COCA -COLA 2.75 L NR', 'COMBO $249.00', 'OCTUBRE PROMO 22  (28).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 17:29:39', '2022-10-04 17:29:39', NULL),
+(186, 6, 'WISKY BLACK & WHITE 700ML + BRILLANTE MINERAL 2L', 'COMBO $235.00', 'OCTUBRE PROMO 22  (29).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 17:31:04', '2022-10-04 17:31:04', NULL),
+(187, 6, 'RON CAPITAN MORGAN 750ML + COCA COLA 2.75 LT', 'COMBO $ 199.00', 'OCTUBRE PROMO 22  (30).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 17:32:03', '2022-10-04 17:32:03', NULL),
+(188, 6, 'VODKA ABSOLUT AZUL 750ML + JUGO JUMEX 1LT TETRAPACK SABORES', 'COMBO $275.00', 'OCTUBRE PROMO 22  (31).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 17:32:51', '2022-10-04 17:32:51', NULL),
+(189, 6, 'CERVEZA CORONA LIGHT  355ML BOTE', '6 X $102.00', 'OCTUBRE PROMO 22  (37).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 17:35:03', '2022-10-31 10:21:35', NULL),
+(190, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', '6 X $102.00', 'OCTUBRE PROMO 22  (36).png', '2022-10-04', '2022-10-31', NULL, 0, 17, '2022-10-04 17:36:09', '2022-10-04 17:36:09', NULL),
+(192, 6, 'CERVEZA MODELO LATON 473ML', '2 X $42.00', 'OCTUBRE PROMO 22  (35).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 17:38:42', '2022-10-31 10:21:23', NULL),
+(193, 6, 'CERVEZA VICTORIA 473ML LATON', '2 X $42.00', 'OCTUBRE PROMO 22  (34).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 17:39:22', '2022-10-31 10:20:33', NULL),
+(194, 6, 'HELIX 355ML LATA SABORES', '3 X $58.00', 'OCTUBRE PROMO 22  (32).png', '2022-10-04', '2022-10-31', NULL, 0, 17, '2022-10-04 17:40:15', '2022-10-04 17:41:21', NULL),
+(195, 6, 'CORONA AGUA RIFADA 355 ML', '1 X $21.00', 'OCTUBRE PROMO 22  (33).png', '2022-10-04', '2022-10-31', NULL, 0, 17, '2022-10-04 17:41:07', '2022-10-04 17:41:07', NULL),
+(196, 6, 'BARCEL TOREADAS HABANERO 55GR + PEPSI 600ML', 'COMBO $33.00', 'OCTUBRE PROMO 22  (25).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 17:42:41', '2022-10-04 17:42:41', NULL),
+(197, 6, 'NESTLE 16 OZ + REBANADAS BIMBO', 'COMBO $30.00', 'OCTUBRE PROMO 22  (24).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 17:43:54', '2022-10-04 17:43:54', NULL),
+(198, 6, 'ICEE SLUSH 20 ONZAS SABORES', '2 X $55.00', 'OCTUBRE PROMO 22  (1).png', '2022-10-04', '2022-10-31', NULL, 0, 7, '2022-10-04 17:44:52', '2022-10-04 17:44:52', NULL),
+(199, 6, 'VELADORA LIMON FAMA CON AROMA', '3 X$49.00', 'OCTUBRE PROMO 22  (2).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 17:45:51', '2022-10-04 17:45:51', NULL),
+(200, 6, 'HOT DOG + COCA COLA CHOBBY 355 ML', 'COMBO $25.00', 'OCTUBRE PROMO 22  (27).png', '2022-10-04', '2022-10-31', NULL, 0, 7, '2022-10-04 17:47:11', '2022-10-04 17:47:11', NULL),
+(201, 6, 'VICTORIA CEMPASUCHIL 473ML', '2 X $35.00', 'OCTUBRE PROMO 22  (38).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 17:53:47', '2022-10-31 10:20:06', NULL),
+(202, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2L', '1 x $41.00', '68 oct 22 (1).png', '2022-10-10', '2022-11-04', NULL, 0, 17, '2022-10-10 16:47:32', '2022-10-31 09:54:01', NULL),
+(203, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', '1 x $41.00', '68 oct 22 (2).png', '2022-10-10', '2022-11-04', NULL, 0, 17, '2022-10-10 17:07:45', '2022-10-31 09:54:11', NULL),
+(204, 6, 'CERVEZA NEGRA MODELO 1LT', '1 X $42.00', '68 oct 22 (3).png', '2022-10-10', '2022-11-04', NULL, 0, 17, '2022-10-10 17:09:25', '2022-10-31 10:19:55', NULL),
+(205, 6, 'DETERGENTE BLANCA NIEVES 500G + LIMPIADOR CLARASOL 1 LT', 'COMBO $30.00', 'NOV 2022 (40).png', '2022-11-05', '2022-11-30', NULL, 0, 11, '2022-11-05 09:58:38', '2022-11-05 09:58:38', NULL),
+(206, 6, 'SUAVITEL 450ML', '1 X $18.00', 'NOV 2022  (28).png', '2022-11-05', '2022-11-30', NULL, 0, 11, '2022-11-05 10:05:01', '2022-11-05 10:05:01', NULL),
+(207, 6, 'DETERGENTE ROMA 500 GR', '1 X $19.00', 'NOV 2022  (29).png', '2022-11-05', '2022-11-30', NULL, 0, 11, '2022-11-05 10:06:07', '2022-11-05 10:06:07', NULL),
+(208, 6, 'INSECTICIDA RAIDOLITO', '2 X $35.00', 'NOV 2022  (30).png', '2022-11-05', '2022-11-30', NULL, 0, 12, '2022-11-05 10:08:08', '2022-11-05 10:08:08', NULL),
+(209, 6, 'POUCH PEDIGREE 100 GR PRESENTACIONES', '4 X $45.00', 'NOV 2022  (19).png', '2022-11-05', '2022-11-30', NULL, 0, 14, '2022-11-05 10:10:00', '2022-11-05 10:10:00', NULL),
+(210, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', '4 X $45.00', 'NOV 2022  (18).png', '2022-11-05', '2022-11-30', NULL, 0, 14, '2022-11-05 10:11:12', '2022-11-05 10:11:12', NULL),
+(211, 6, 'PASTA DENTAL CREST 75 ML', '1 X $20.00', 'NOV 2022  (26).png', '2022-11-05', '2022-11-30', NULL, 0, 10, '2022-11-05 10:16:50', '2022-11-05 10:16:50', NULL),
+(212, 6, 'HARINA DE TRIGO SAN BLAS 1 KG', '1 X $22.00', 'NOV 2022  (31).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:20:37', '2022-11-05 10:20:37', NULL),
+(213, 6, 'ACEITE PURELA DE SOYA 800 ML', '1 X $45.00', 'NOV 2022  (32).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:24:11', '2022-11-05 10:24:11', NULL),
+(214, 6, 'NUTRI LECHE 1LT', '1 X 17.50', 'NOV 2022  (35).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:26:47', '2022-11-05 10:26:47', NULL),
+(215, 6, 'GRANOS DE ELOTES HERDEZ 220 GR', '1 X $12.00', 'NOV 2022  (34).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:29:42', '2022-11-05 10:29:42', NULL),
+(216, 6, 'COCA COLA 2.5 LT RETORNABLE', '1 X $29.00', 'NOV 2022  (36).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 10:30:47', '2022-11-05 10:30:47', NULL),
+(217, 6, 'SALSA CATSUP CLEMENTE 340 GR', '1 X $19.00', 'NOV 2022  (25).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:35:41', '2022-11-05 10:35:41', NULL),
+(218, 6, 'CREMA CALAHUA COCO 480 GR', '1 x $32.00', 'NOV 2022  (27).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:39:30', '2022-11-05 10:39:30', NULL),
+(219, 6, 'HARINA PRONTO HOT CAKES 500 GR', '1 X $25.00', 'NOV 2022  (22).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:40:39', '2022-11-05 10:40:39', NULL),
+(220, 6, 'NESCAFE CAFE DE OLLA 46 GR', '1 X $29.00', 'NOV 2022  (44).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:41:33', '2022-11-05 10:41:33', NULL),
+(221, 6, 'CREMA COFFE MATE 160 GR', '1 X $29.00', 'NOV 2022  (23).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 10:43:52', '2022-11-05 10:43:52', NULL),
+(222, 6, 'CHOCOLATE CARLOS V 18 GR / 22 GR', '1 X $10.00', 'NOV 2022  (33).png', '2022-11-05', '2022-11-30', NULL, 0, 13, '2022-11-05 10:47:26', '2022-11-05 10:47:26', NULL),
+(223, 6, 'CHOCOLATE KINDER DELICE 39/42 GR', '1 X 16.00', 'NOV 2022  (24).png', '2022-11-05', '2022-11-30', NULL, 0, 13, '2022-11-05 10:50:17', '2022-11-05 10:50:17', NULL),
+(224, 6, 'ENERGETIZANTE VOLT 473ML SABORES', '2 X $35.00', 'NOV 2022  (13).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 10:57:08', '2022-11-05 10:57:08', NULL),
+(225, 6, 'SUERO ELECTROLIT 625 ML', '2 X $44.00', 'NOV 2022  (12).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 11:00:01', '2022-11-05 11:00:01', NULL),
+(226, 6, 'HELIX 355 ML LATA SABORES', '2 X $29.00', 'NOV 2022  (11).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 11:00:51', '2022-11-05 11:00:51', NULL),
+(227, 6, 'VODKA ABSOLUT AZUL 750 ML + JUGO TETRAPACK 1LT', 'COMBO $287.00', 'NOV 2022  (43).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 11:03:27', '2022-11-05 11:03:27', NULL),
+(228, 6, 'WHISKY BLACK AND WHITE 700ML + BRILLANTE MINERAL 2LT', 'COMBO $235.00', 'NOV 2022  (42).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 11:04:55', '2022-11-05 11:04:55', NULL),
+(229, 6, 'CERVEZA VICTORIA MEGAFAMILIAR 1.2LT', '2 X $72.00', 'NOV 2022  (10).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 11:06:04', '2022-11-05 11:06:04', NULL),
+(230, 6, 'CERVEZA CORONA MEGAFAMILAIR 1.2 LT', '2 X $72.00', 'NOV 2022  (8).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 11:06:49', '2022-11-05 11:06:49', NULL),
+(231, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', '6 X $109.00', 'NOV 2022  (2).png', '2022-11-05', '2022-11-15', NULL, 0, 17, '2022-11-05 11:08:14', '2022-11-05 11:08:14', NULL),
+(232, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355 ML', '6 X $109.00', 'NOV 2022  (3).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 11:09:32', '2022-11-05 11:09:32', NULL),
+(233, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 x $102.00', 'NOV 2022  (4).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 11:11:38', '2022-11-14 10:42:21', NULL),
+(234, 6, 'CERVEZA CORONA  BOTE 355ML', '6 X $102.00', 'NOV 2022  (5).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 11:12:13', '2022-11-14 10:37:16', NULL),
+(235, 6, 'CERVEZA MODELO ESPECIAL LATON 473 ML', '2 X$42.00', 'NOV 2022  (7).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 11:14:00', '2022-11-14 10:36:33', NULL),
+(236, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $42.00', 'NOV 2022  (6).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 11:15:16', '2022-11-14 10:36:00', NULL),
+(237, 6, 'CERVEZA MODELO NOCHE ESPECIAL 355ML', '3 X $53.00', 'NOV 2022  (9).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 11:16:27', '2022-11-05 11:16:27', NULL),
+(238, 6, 'AGUA RIFADA CORONA SABORES 355ML', '1 X $21.00', 'NOV 2022  (1).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 11:17:23', '2022-11-05 11:17:23', NULL),
+(239, 6, 'HOLANDA MAGNUM 90/ 100 ML  CLASICA/ ALMENDRA', '1 X $30.00', 'NOV 2022  (21).png', '2022-11-05', '2022-11-30', NULL, 0, 4, '2022-11-05 11:19:17', '2022-11-05 11:19:17', NULL),
+(240, 6, 'SUAVICREMAS 102GR SABORES', '1 X $15.00', 'NOV 2022  (17).png', '2022-11-05', '2022-11-30', NULL, 0, 6, '2022-11-05 11:20:31', '2022-11-05 11:20:31', NULL),
+(241, 6, 'YOGURT LALA 220/250 GR SABORES', '2 X $27.00', 'NOV 2022  (16).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 11:34:44', '2022-11-05 11:34:44', NULL),
+(242, 6, 'PAN BIMBO TOSTADO 210GR + LECHERITA NESTLE 100GR', 'combo $40.00', 'NOV 2022  (41).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 11:37:40', '2022-11-05 11:37:40', NULL),
+(243, 6, 'LECHE YOMI LALA 190ML CHOCOLATE + BARRA BRAN FRUT 58GR', 'COMBO $23.00', 'NOV 2022  (40).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 11:54:41', '2022-11-05 11:54:41', NULL),
+(244, 6, 'CHIPS 60GR JALAPEÑO + COCA COLA 600ML', 'COMBO $35.00', 'NOV 2022  (39).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 12:01:21', '2022-11-05 12:01:21', NULL),
+(245, 6, 'SABRITAS PAPA 42/45GR SABORES', '2 X $32.00', 'NOV 2022  (15).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 12:02:39', '2022-11-05 12:02:39', NULL),
+(246, 6, 'NESTLE 16 ONZAS SABORES + GALLETAS OREO 45.6GR', 'COMBO $31.00', 'NOV 2022  (38).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 12:05:08', '2022-11-05 12:05:08', NULL),
+(247, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', 'COMBO $25.00', 'NOV 2022  (37).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 12:06:07', '2022-11-05 12:06:07', NULL),
+(248, 6, 'ICE SLUSH 20 OZ SABORES', '2 X $55.00', 'NOV 2022  (20).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 12:07:34', '2022-11-05 12:07:34', NULL),
+(249, 6, 'NESCAFE 8 OZ SABORES', '2 X $29.00', 'NOV 2022  (14).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 12:09:13', '2022-11-05 12:09:13', NULL),
+(250, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $108.00', 'correcion nov 22 26 (1).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 13:53:41', '2022-12-01 13:57:59', NULL),
+(251, 6, 'CERVEZA CORONA  BOTE 355ML', '6 X $108.00', 'correcion nov 22 26 (2).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 13:54:29', '2022-12-01 13:57:48', NULL),
+(252, 6, 'CERVEZA CORONA LATON 473 ML', '2 X $44.00', 'correcion nov 22 26 (5).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 13:55:43', '2022-12-01 13:57:34', NULL),
+(253, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $44.00', 'correcion nov 22 26 (3).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 13:57:55', '2022-12-01 13:57:23', NULL),
+(255, 6, 'DETERGENTE AXION LIMON 500 GR', '$25.00', 'DIC 22  (4).png', '2022-12-01', '2022-12-31', NULL, 0, 11, '2022-12-01 14:08:31', '2022-12-01 14:09:10', NULL),
+(256, 6, 'PASTA DENTAL COLGATE TRIPLE ACCION 75ML', 'A SOLO $20.00', 'DIC 22  (13).png', '2022-12-01', '2022-12-31', NULL, 0, 10, '2022-12-01 14:11:40', '2022-12-01 14:11:40', NULL),
+(257, 6, 'SHAMPOO SAVILE SABILA 180ML', '$17.00', 'DIC 22  (10).png', '2022-12-01', '2022-12-31', NULL, 0, 10, '2022-12-01 14:12:56', '2022-12-01 14:12:56', NULL),
+(258, 6, 'LECHE NUTRI 1 LITRO', '$17.50', 'DIC 22  (2).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 14:15:35', '2022-12-01 14:15:35', NULL),
+(259, 6, 'SALSA VALENTINA 350/370 ML', '$16.00', 'DIC 22  (3).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 14:17:12', '2022-12-01 14:17:12', NULL),
+(260, 6, 'TE MC CORMICK MANZANILLA O LIMÓN', '$25.00', 'DIC 22  (14).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 14:19:40', '2022-12-01 14:19:40', NULL),
+(261, 6, 'CREMA COFFE MATE 160 GR', '$39.00', 'DIC 22  (16).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 14:21:11', '2022-12-01 14:21:11', NULL),
+(262, 6, 'CAFÉ OLE 281 SABORES', '$29.00', 'DIC 22  (1).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 14:23:32', '2022-12-01 14:23:32', NULL),
+(263, 6, 'HOLANDA PALETA CONEJO TURIN 70 ML', '$38.00', 'DIC 22  (22).png', '2022-12-01', '2022-12-31', NULL, 0, 4, '2022-12-01 14:25:09', '2022-12-01 14:25:09', NULL),
+(264, 6, 'CHOCO MILK BOLSA 160 GR', '$25.00', 'DIC 22  (11).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 14:26:42', '2022-12-01 14:26:42', NULL),
+(265, 6, 'GALLETA CHOKIS 84/90 GR', '2 X $30.00', 'DIC 22  (5).png', '2022-12-01', '2022-12-31', NULL, 0, 6, '2022-12-01 14:28:14', '2022-12-01 14:28:14', NULL),
+(266, 6, 'KINDER DELICE 29/42 GR', '$16.00', 'DIC 22  (15).png', '2022-12-01', '2022-12-31', NULL, 0, 13, '2022-12-01 14:32:13', '2022-12-01 14:32:13', NULL),
+(267, 6, 'PALETA XTREME BUBALOO 16.5/20.5 GR', '$12.00', 'DIC 22  (19).png', '2022-12-01', '2022-12-31', NULL, 0, 13, '2022-12-01 14:33:53', '2022-12-01 14:33:53', NULL),
+(268, 6, 'REFRESCO COCA COLA 2.5 L RETORNABLE', 'A SOLO $29.00', 'DIC 22  (12).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 14:34:59', '2022-12-01 14:34:59', NULL),
+(269, 6, 'SUERO ELECTROLIT 625 ML', '3 x $59.00', 'DIC 22  (20).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 16:52:21', '2022-12-01 16:52:21', NULL),
+(270, 6, 'SABRITAS PAPA 170/171GR SABORES', '2 x $95.00', 'DIC 22  (21).png', '2022-12-01', '2022-12-31', NULL, 0, 3, '2022-12-01 17:10:33', '2022-12-01 17:10:33', NULL),
+(271, 6, 'CERVEZA NEGRA MODELO 355 ML', '6 X $109.00', 'DIC 22  (39).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:17:38', '2022-12-29 12:57:36', NULL),
+(272, 6, 'CEVEZA MODELO ESPECIAL CRISTAL 355 ML', '6 X $109.00', 'DIC 22  (38).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:18:44', '2022-12-29 12:58:08', NULL),
+(273, 6, 'CERVEZA CORONA LIGHT BOTE 355 ML', '6 X $108.00', 'DIC 22  (37).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:19:44', '2022-12-29 12:58:31', NULL),
+(274, 6, 'CERVEZA CORONA EXTRA BOTE 355 ML', '6 X $108.00', 'DIC 22  (36).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:21:00', '2022-12-29 12:57:50', NULL),
+(275, 6, 'WHISKY RED LABEL 700 ML + BRILLANTE MINERAL 2 LT + HIELO 5KG', 'COMBO $385.00', 'DIC 22  (28).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:23:21', '2022-12-01 17:23:21', NULL),
+(276, 6, 'WHISKY BLACK AND WHITE 700 ML + BRILLANTE MINERAL', '$235.00', 'DIC 22  (27).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:24:35', '2022-12-01 17:24:35', NULL),
+(277, 6, 'VODKA ABSOLUT AZUL 750 ML + JUGO JUMEX TETRAPACK', '1 X $287.00', 'DIC 22  (26).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:26:38', '2022-12-01 17:26:38', NULL),
+(278, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML + JUGO JUMEX TETRAPACK', '1 X $286.00', 'DIC 22  (25).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:27:49', '2022-12-01 17:27:49', NULL),
+(279, 6, 'RON BACARDI 750 ML', '1 X $245.00', 'DIC 22  (42).png', '2022-12-01', '2022-12-31', NULL, 0, 8, '2022-12-01 17:29:35', '2022-12-01 17:29:35', NULL),
+(280, 6, 'CERVEZA CORONA MEGAFAMILIAR 1.2 LT', '2 X $72.00', 'MEGA CORONA DIC 2022.png', '2022-12-02', '2022-12-16', NULL, 0, 17, '2022-12-01 17:33:37', '2022-12-17 10:29:19', NULL),
+(282, 6, 'CERVEZA CORONA EXTRA 355 ML VIDRIO', 'A SOLO $29.00', 'DIC 22  (40).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:36:23', '2022-12-29 12:58:52', NULL),
+(283, 6, 'CERVEZA CORONA EXTRA 473 ML', '2 X $44.00', 'DIC 22  (33).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:40:18', '2022-12-29 12:59:07', NULL),
+(284, 6, 'CERVEZA VICTORIA LATON 473 ML', '2 X $44.00', 'DIC 22  (32).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:41:54', '2022-12-29 12:56:03', NULL),
+(285, 6, 'CERVEZA MODELO ESPECIAL LATON 473ML', '2 X $44.00', 'DIC 22  (31).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 17:43:03', '2022-12-29 12:55:44', NULL),
+(286, 6, 'BEBIDA CARIBE COOLER 300 ML', '5 PIEZAS X $98.00', 'DIC 22  (24).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 17:49:24', '2022-12-01 17:49:24', NULL),
+(287, 6, 'ENERGETIZANTE VOLT 473 ML PRESENTACIONES', '2 X $35.00', 'DIC 22  (18).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 17:51:05', '2022-12-01 17:51:05', NULL),
+(288, 6, 'VINO BOONES 750 ML', '1 X $64.00', 'DIC 22  (29).png', '2022-12-01', '2022-12-14', NULL, 0, 8, '2022-12-01 17:52:00', '2022-12-15 16:49:29', NULL),
+(289, 6, 'VINO SINSET 750 ML', '2 PIEZAS X $120.00', 'DIC 22  (41).png', '2022-12-01', '2022-12-31', NULL, 0, 8, '2022-12-01 17:52:50', '2022-12-01 17:52:50', NULL),
+(290, 6, 'CHIPS 60GR JALAPEÑO + COCA COLA 600ML', 'COMBO $35.00', 'DIC 22  (8).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:54:07', '2022-12-01 17:54:07', NULL),
+(291, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', 'COMBO $25.00', 'DIC 22  (6).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:55:29', '2022-12-01 17:55:29', NULL),
+(292, 6, 'ICE SLUSH 20 OZ SABORES', '2 X $55.00', 'DIC 22  (17).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:56:26', '2022-12-01 17:56:26', NULL),
+(293, 6, 'HOT DOG + BOING 250 ML', 'A SOLO $18.00', 'DIC 22  (7).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:58:06', '2022-12-01 17:58:06', NULL),
+(294, 6, 'TRIKI TRAKES 85G + NESTLE 16 OZ', 'A SOLO $39.00', 'dic 2022.png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 17:59:23', '2022-12-15 19:40:17', NULL),
+(295, 6, 'CERVEZA MODELO NOCHE ESPECIAL 355 ML NR', '3 X $53.00', 'DIC 22  (30).png', '2022-12-01', '2022-12-31', NULL, 0, 17, '2022-12-01 18:01:58', '2022-12-01 18:01:58', NULL),
+(296, 6, 'SIDRA CAMPANARIO ROSADA 700ML + 2 CERVEZA MODELO NOCHE ESPECIAL CRISTAL 355 ML', 'COMBO $120.00', 'DIC 22  (23).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 18:03:36', '2022-12-01 18:03:36', NULL),
+(297, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', 'Llévatelo por $45.00', 'DIC 2 2022 (3).png', '2022-12-02', '2022-12-31', NULL, 0, 14, '2022-12-02 13:46:37', '2022-12-02 13:46:37', NULL),
+(298, 6, 'POUCH PEDIGREE 100 GR PRESENTACIONES', '1 x $45.00', 'DIC 2 2022 (2).png', '2022-12-02', '2022-12-31', NULL, 0, 14, '2022-12-02 13:47:25', '2022-12-02 13:47:25', NULL),
+(299, 6, 'CEREAL KELLOGS CORN FLAKES 150 GR', '1 X $27.00', 'DIC 2 2022 (11).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 13:52:29', '2022-12-02 13:52:29', NULL),
+(300, 6, 'VINAGRE BLANCO 500 ML', 'A SOLO $13.00', 'DIC 2 2022 (9).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 13:54:06', '2022-12-02 13:54:06', NULL),
+(301, 6, 'CHOCOLATE ABUELITA 1 PZ', 'A SOLO $16.00', 'DIC 2 2022 (12).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 13:57:14', '2022-12-02 13:57:14', NULL),
+(302, 6, '1 PZ MANTEQUILLA LALA 90 GR', 'LLEVATELA POR $17.00', 'DIC 2 2022 (4).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 13:58:18', '2022-12-02 13:58:18', NULL),
+(303, 6, 'GALLETAS MARIAS 170 / 177 GR', '$15.00', 'DIC 2 2022 (5).png', '2022-12-02', '2022-12-31', NULL, 0, 6, '2022-12-02 13:59:35', '2022-12-02 13:59:35', NULL),
+(304, 6, 'VICK VAPORUB 12 GR', '$33.00', 'DIC 2 2022 (8).png', '2022-12-02', '2022-12-31', NULL, 0, 9, '2022-12-02 14:00:36', '2022-12-02 14:00:36', NULL),
+(305, 6, 'ENERGETIZANTE VOLT 473ML SABORES', 'A SOLO $39.00', 'DIC 2 2022 (10).png', '2022-12-02', '2022-12-31', NULL, 0, 2, '2022-12-02 14:05:17', '2022-12-02 14:05:17', NULL),
+(306, 6, 'VICTORIA MEGAFAMILIAR 1.2 LT', '$72.00', 'DIC 2 2022 (1).png', '2022-12-02', '2022-12-16', NULL, 0, 17, '2022-12-02 14:06:33', '2022-12-17 10:29:33', NULL),
+(307, 6, 'JUMEX UNICO FRESCO ARANDANO 1 LT', '2 X $65.00', 'DIC 2 2022 (6).png', '2022-12-02', '2022-12-31', NULL, 0, 2, '2022-12-02 14:07:31', '2022-12-02 14:07:31', NULL),
+(308, 6, 'NACHOS PLUS PREPARADOS', '2 X $25.00', 'DIC 2 2022 (7).png', '2022-12-02', '2022-12-31', NULL, 0, 7, '2022-12-02 14:08:48', '2022-12-02 14:08:48', NULL),
+(309, 6, 'DETERGENTE ARIEL ORIGINAL 250 GR', '1 PIEZA X $10.00', 'ENERO 2023 5 (13).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-29 10:55:14', '2023-01-09 10:55:36', NULL),
+(310, 6, 'JABON ZOTE ROSA PASTA 200GR', '1 X $12.00', 'ENERO 2023 5 (14).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-29 10:57:31', '2023-01-09 10:56:20', NULL),
+(311, 6, 'DETERGENTE AXION LIMON 500 GR', '1 X $25.00', 'ENERO 2023 5 (17).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-29 11:03:55', '2023-01-09 10:56:54', NULL),
+(312, 6, 'SERVILLETA DELSEY 100 PIEZAS', '1 X $11.00', 'ENERO 2023 5 (16).png', '2023-01-01', '2022-12-31', NULL, 0, 12, '2022-12-29 11:08:04', '2023-01-09 10:57:22', NULL),
+(313, 6, 'ENJUAGUE BUCAL LISTERINE 250 ML', 'FRESH MMINT/COOL\r\n1 X $49.00', 'ENERO 2023 5 (63).png', '2023-01-01', '2023-01-19', NULL, 0, 10, '2022-12-29 11:09:49', '2023-01-20 13:48:28', NULL),
+(314, 6, 'SHAMPOO SAVILE SABILA 180ML', '1 X $17.00', 'ENERO 2023 5 (1).png', '2023-01-01', '2023-01-31', NULL, 0, 10, '2022-12-29 11:10:51', '2023-01-09 10:58:59', NULL),
+(315, 6, 'ACEITE MENEN 50ML', '1 X $26.00', 'ENERO 2023 5 (3).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 11:12:49', '2023-01-09 10:59:22', NULL),
+(316, 6, 'CREMA CORPORAL HINDS 90 ML', '1 X $18.00', 'ENERO 2023 5 (5).png', '2023-01-01', '2023-01-31', NULL, 0, 10, '2022-12-29 11:14:00', '2023-01-09 10:59:50', NULL),
+(317, 6, 'NESCAFE SOBRE 20/22GR CAPPUCCINO O MOKACCINO', '1 X $10.00', 'ENERO 2023 5 (6).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-29 12:07:41', '2023-01-09 11:00:09', NULL),
+(318, 6, 'ATUN TUNY 140/170 GR', '2 X $32.00\r\nAPLICA EN ACEITE Y AGUA', 'ENERO 2023 5 (10).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-29 12:09:03', '2023-01-09 11:02:28', NULL),
+(319, 6, 'SALCHICHA NUTRI PAVO 250GR', '1 X $19.00', 'ENERO 2023 5 (15).png', '2023-01-01', '2023-01-31', NULL, 0, 18, '2022-12-29 12:14:21', '2023-01-09 11:02:56', NULL),
+(320, 6, 'MERMELADA MCCORNICK 270 GR', 'FRESA Y PIÑA  1 X $27.00', 'ENERO 2023 5 (12).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-29 12:18:56', '2023-01-09 11:03:25', NULL),
+(321, 6, 'COCA COLA 2.5 LT RETORNABLE', '1 x $29.00', 'ENERO 2023 5 (2).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-29 12:22:23', '2023-01-09 11:11:14', NULL),
+(322, 6, 'MANTECADAS BIMBO  6 PZAS', 'VAINILLA, NUEZ, CHISPAS \r\n1 X $25.00', 'ENERO 2023 5 (11).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-29 12:28:32', '2023-01-09 11:11:47', NULL),
+(323, 6, 'GALLETA EMPERADOR SENZO 93GR', '1 X $16.00', 'ENERO 2023 5 (4).png', '2023-01-01', '2023-01-19', NULL, 0, 6, '2022-12-29 12:32:22', '2023-01-20 13:47:22', NULL),
+(324, 6, 'JUGO BOING 1 LT', '1 X $28.00', 'ENERO 2023 5 (7).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-29 12:36:14', '2023-01-09 11:12:10', NULL),
+(325, 6, 'HOLANDA PALETA CHOCO MILK 35 ML', '2 X $22.00', 'ENERO 2023 5 (8).png', '2023-01-01', '2023-01-31', NULL, 0, 4, '2022-12-29 12:44:02', '2023-01-09 11:12:57', NULL),
+(326, 6, 'NACHOS PREPARADOS', '2 X $25.00', 'ENERO 2023 5 (9).png', '2023-01-01', '2023-01-31', NULL, 0, 7, '2022-12-29 12:46:33', '2023-01-09 11:13:20', NULL),
+(327, 6, 'BEBIDA VIÑA REAL 330ML', 'DURAZNO, PIÑA COLADA, BLUE BERRY, MANGO Y MARACUYA\r\n3 X $68.00', 'ENERO 2023 5 (62).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-29 12:50:43', '2023-01-09 12:05:17', NULL);
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(328, 6, 'PILA DURACELL AA', 'LLEVA 2 X $39.00', 'ENERO 2023 5 (18).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 12:51:47', '2023-01-09 12:23:10', NULL),
+(329, 6, 'PILA DURACELL AAA', 'LLEVA 2 X $39.00', 'ENERO 2023 5 (19).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 12:53:09', '2023-01-09 12:22:27', NULL),
+(330, 6, 'PILA PANASONIC EVOLTA AA', 'LLEVA 2 X $29.00', 'ENERO 2023 5 (20).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 12:54:18', '2023-01-09 12:19:50', NULL),
+(331, 6, 'PILA PANASONIC EVOLTA AAA', '2 X $29.00.', 'ENERO 2023 5 (21).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-30 10:08:45', '2023-01-09 12:19:32', NULL),
+(332, 6, 'LIMPIADOR CLARASOL 1LT', '1 X $10.00', 'ENERO 2023 5 (23).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-30 10:10:39', '2023-01-09 10:55:54', NULL),
+(333, 6, 'ACIDO MURIATICO SULTAN LIMON 400ML', '1 X $15.00', 'ENERO 2023 5 (24).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-30 10:11:57', '2023-01-09 10:57:45', NULL),
+(334, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', '4 X $45.00', 'ENERO 2023 5 (40).png', '2023-01-01', '2023-01-31', NULL, 0, 14, '2022-12-30 10:17:15', '2023-01-09 11:01:36', NULL),
+(335, 6, 'POUCH PEDIGREE 100 GR PRESENTACIONES', '4 x $45.00', 'ENERO 2023 5 (39).png', '2023-01-01', '2023-01-31', NULL, 0, 14, '2022-12-30 10:18:20', '2023-01-09 11:02:02', NULL),
+(336, 6, 'PASTA DENTAL COLGATE TRIPLE ACCION 75ML', '1 x $20.00', 'ENERO 2023 5 (26).png', '2023-01-01', '2023-01-31', NULL, 0, 10, '2022-12-30 10:20:51', '2023-01-09 11:00:43', NULL),
+(337, 6, 'GELATINA D GARI PRESENTACIÓN AGUA 120GR', '2 X $20.00', 'ENERO 2023 5 (22).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-30 10:22:18', '2023-01-09 11:03:52', NULL),
+(338, 6, 'NUTRI LECHE 1LT', '1 X $17.50', 'ENERO 2023 5 (34).png', '2023-01-01', '2023-01-31', NULL, 0, 5, '2022-12-30 10:23:04', '2023-01-09 16:44:07', NULL),
+(339, 6, 'CHOCO MILK BOLSA 160 GR', '1 X $25.00', 'ENERO 2023 5 (27).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-30 10:26:59', '2023-01-09 11:08:05', NULL),
+(340, 6, 'SALSA VALENTINA 350/370 ML + SALSA CAPSUP CLEMENTE 340 GR', 'COMBO $32.00', 'ENERO 2023 5 (54).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 10:29:26', '2023-01-09 16:44:45', NULL),
+(341, 6, 'MANTEQUILLA LALA 90 GR', '1 X $17.00', 'ENERO 2023 5 (25).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-30 10:30:48', '2023-01-09 11:09:58', NULL),
+(342, 6, 'VODKA ABSOLUT AZUL 750ML+ JUGO JUMEX 1 LT', 'COMBO $287.00', 'ENERO 2023 5 (60).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 10:36:37', '2023-01-09 11:17:12', NULL),
+(343, 6, 'WHISKY BLACK AND WHITE 700ML + BRILLANTE MINERAL 2LT', 'COMBO $235.00', 'ENERO 2023 5 (61).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 10:37:47', '2023-01-09 11:17:42', NULL),
+(344, 6, 'LICOR RANCHO ESCONDIDO 750 ML + BRILLANTE TORONJA 2LT', 'COMBO $95.00', 'ENERO 2023 5 (59).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 10:39:42', '2023-01-09 11:18:29', NULL),
+(345, 6, 'SUERO ELECTROLIT 625 ML', '3 X $59.00', 'ENERO 2023 5 (29).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-30 10:41:34', '2023-01-09 11:52:04', NULL),
+(346, 6, 'ENERGETIZANTE VIVE 100 500ML', '2 X $29.00', 'ENERO 2023 5 (30).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-30 10:48:00', '2023-01-09 11:52:27', NULL),
+(347, 6, 'HUEVO KINDER 20 GR', '1 X $23.00', 'ENERO 2023 5 (28).png', '2023-01-01', '2023-01-31', NULL, 0, 13, '2022-12-30 10:54:50', '2023-01-09 11:16:24', NULL),
+(348, 6, 'DORITOS SABORES', 'NACHOS, DIABLO, PIZZEROLA, FLAMIN HOT, 3DS, INCOGNITA, DIANMITA\r\n2 X $32.00', 'ENERO 2023 5 (32).png', '2023-01-01', '2023-01-19', NULL, 0, 3, '2022-12-30 10:57:12', '2023-01-20 13:46:52', NULL),
+(349, 6, 'PALOMITAS ACT II', '2 X $26.00', 'ENERO 2023 5 (31).png', '2023-01-01', '2023-01-31', NULL, 0, 3, '2022-12-30 10:58:08', '2023-01-09 11:54:24', NULL),
+(350, 6, 'RANCHERITOS 60 GR', '1 X $12.00', 'ENERO 2023 5 (33).png', '2023-01-01', '2023-01-19', NULL, 0, 3, '2022-12-30 11:00:36', '2023-01-20 13:46:33', NULL),
+(351, 6, 'GALLETA CHOKIS 84/90 GR', '2 X $30.00', 'ENERO 2023 5 (37).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-30 11:03:04', '2023-01-09 11:57:32', NULL),
+(352, 6, 'SUBMARINOS MARINELA 105 GR', '2 X $34.00', 'ENERO 2023 5 (36).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-30 11:04:09', '2023-01-09 11:58:01', NULL),
+(353, 6, 'GALLETA CREMAX NIEVE 90GR', '2 X $31.00', 'ENERO 2023 5 (38).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-30 11:05:40', '2023-01-09 11:58:30', NULL),
+(354, 6, 'YOGURT LALA GO', '2 X $34.00', 'ENERO 2023 5 (35).png', '2023-01-01', '2023-01-31', NULL, 0, 5, '2022-12-30 11:27:33', '2023-01-09 11:59:24', NULL),
+(355, 6, 'ICEE SLUSH SABORES 20 ONZAS', '2 X $55.00', 'ENERO 2023 5 (42).png', '2023-01-01', '2023-01-31', NULL, 0, 7, '2022-12-30 11:29:11', '2023-01-09 12:00:05', NULL),
+(356, 6, 'COCA COLA 600 + CHIPS JALAPEÑO / SAL', 'COMBO $35.00', 'ENERO 2023 5 (56).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 11:31:11', '2023-01-09 12:02:27', NULL),
+(357, 6, 'COCA COLA 355ML LATA + CHEETOS TORCIDITOS 52GR', 'COMBO $29.00', 'ENERO 2023 5 (55).png', '2023-01-01', '2023-01-19', NULL, 0, 16, '2022-12-30 11:33:25', '2023-01-20 13:45:19', NULL),
+(358, 6, 'COCA COLA CHOBBY 355ML PET + HOT DOG', 'COMBO A SOLO $25.00', 'ENERO 2023 5 (58).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 11:34:43', '2023-01-09 12:04:51', NULL),
+(359, 6, 'NESTLE SABORES 16 ONZAS + NEGRITO BIMBO', 'COMBO A SOLO  $37.00', 'ENERO 2023 5 (53).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 11:36:55', '2023-01-09 12:04:18', NULL),
+(360, 6, 'JUGO BOING 250ML +HOT DOG', '1 X$18.00', 'ENERO 2023 5 (57).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 11:38:02', '2023-01-09 12:03:46', NULL),
+(361, 6, 'CERVEZA CORONA BOTE 355 ML', '6 X $108.00', 'ENERO 2023 5 (45).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:15:56', '2023-01-09 11:19:03', NULL),
+(362, 6, 'CERVEZA CORONA LIGHT BOTE 355 ML', '6 X $108.00', 'ENERO 2023 5 (46).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:22:12', '2023-01-09 11:19:37', NULL),
+(363, 6, 'CERVEZA CORONA VIDRIO 355ML', '2 X  $29.00', 'ENERO 2023 5 (47).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:23:20', '2023-01-09 11:19:59', NULL),
+(364, 6, 'CERVEZA VICTORIA VIDRIO 355 ML', '2 X $29.00', 'ENERO 2023 5 (48).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:26:22', '2023-01-09 11:22:30', NULL),
+(365, 6, 'CERVEZA VICTORIA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'ENERO 2023 5 (49).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:28:09', '2023-01-09 11:22:54', NULL),
+(366, 6, 'CERVEZA CORONA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'ENERO 2023 5 (50).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:28:52', '2023-01-09 11:23:19', NULL),
+(367, 6, 'CERVEZA MODELO LATON 473 ML', '2 X $44.00', 'ENERO 2023 5 (43).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:29:51', '2023-01-09 11:23:51', NULL),
+(368, 6, 'CERVEZA VICTORIA LATON 473 ML', '2 X $44.00', 'ENERO 2023 5 (44).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 17:30:43', '2023-01-09 11:24:13', NULL),
+(369, 6, 'DETERGENTE ARIEL ORIGINAL 250 GR', '1 X $10.00', 'FEB 2 2023 (54).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 10:51:54', '2023-02-21 09:33:31', NULL),
+(370, 6, 'LIMPIADOR PINOL 500ML', '1 X $18.00', 'FEB 2 2023 (53).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 10:53:08', '2023-02-21 09:35:00', NULL),
+(371, 6, 'LIMPIADOR CLARASOL 1LT', '1 X $10.00', 'FEB 2 2023 (52).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 12:31:12', '2023-02-21 09:38:20', NULL),
+(372, 6, 'ACIDO MURIATICO SULTAN LIMON 400ML', '1 X $15.00', 'FEB 2 2023 (55).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 12:31:58', '2023-02-21 09:38:53', NULL),
+(373, 6, 'ARROZ ITALRISO  1KG', '1 PIEZA X $ 26.00', 'FEB 2 2023 (27).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:34:31', '2023-02-21 09:39:26', NULL),
+(374, 6, 'ACEITE 123 500ML', '1 X $28.00', 'FEB 2 2023 (25).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:35:28', '2023-02-21 09:39:54', NULL),
+(375, 6, 'AVENA 3 MINUTOS 400GR', '1 X $31.00', 'FEB 2 2023 (30).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:36:38', '2023-02-21 09:46:17', NULL),
+(376, 6, 'SAL LA FINA 1KG', '1 X $20.00', 'FEB 2 2023 (50).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:37:35', '2023-02-21 09:49:13', NULL),
+(377, 6, 'GELATINA D\'GARI 120 GR', '2 X $20.00', 'FEB 2 2023 (46).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:39:05', '2023-02-21 09:49:51', NULL),
+(378, 6, 'ATUN TUNY 140/170 GR', '2 X $32.00', 'FEB 2 2023 (37).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:40:08', '2023-02-21 09:50:15', NULL),
+(379, 6, 'JAMON NUTRI DELI AMERICANO 250 GR', 'A SOLO $25.00', 'FEB 2 2023 (24).png', '2023-02-01', '2023-02-28', NULL, 0, 18, '2023-01-30 12:45:53', '2023-02-21 09:50:37', NULL),
+(380, 6, 'NESCAFE SOBRE 20/22 GR', '1 X $10.00', 'FEB 2 2023 (26).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:48:20', '2023-02-21 09:51:18', NULL),
+(381, 6, 'SALSA VALENTINA 350/370 ML + SALSA CAPSUP CLEMENTE 340 GR', 'COMBO POR $32.00', 'FEB 2 2023 (6).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:49:06', '2023-02-21 09:51:36', NULL),
+(382, 6, 'MERMELADA MCCORNICK 270 GR', '1 X $27.00', 'FEB 2 2023 (49).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:50:29', '2023-02-21 09:52:08', NULL),
+(383, 6, 'PURE DE TOMATE DEL FUERTE 210GR + SOPA ITALPASTA SPAGHETTI 200GR', 'COMBO A SOLO $15.00', 'FEB 2 2023 (5).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 12:52:23', '2023-02-21 09:52:26', NULL),
+(384, 6, 'ALPURA LECHE 200 ML', '1 X $19.00', 'FEB 2 2023 (34).png', '2023-02-01', '2023-02-28', NULL, 0, 5, '2023-01-30 12:56:07', '2023-02-21 09:53:25', NULL),
+(385, 6, 'YOGURT LALA GO', '2 X $34.00', 'FEB 2 2023 (31).png', '2023-02-01', '2023-02-28', NULL, 0, 5, '2023-01-30 12:57:16', '2023-02-21 09:53:44', NULL),
+(386, 6, 'YOGURT NUTRI 450 GR', '1 X $15.00', 'FEB 2 2023 (28).png', '2023-02-01', '2023-02-28', NULL, 0, 5, '2023-01-30 12:58:32', '2023-02-21 09:54:03', NULL),
+(387, 6, 'POUCH PEDIGREE 100 GR SABORES', '4 X $45.00', 'FEB 2 2023 (38).png', '2023-02-01', '2023-02-28', NULL, 0, 14, '2023-01-30 12:59:55', '2023-02-21 09:54:23', NULL),
+(388, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', '4 X $45.00', 'FEB 2 2023 (39).png', '2023-02-01', '2023-02-28', NULL, 0, 14, '2023-01-30 13:00:38', '2023-02-21 09:54:42', NULL),
+(389, 6, 'CHICLE HUBBA HUBBA 56.7 GR', '1 X $27.00', 'FEB 2 2023 (51).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 13:03:06', '2023-02-21 09:55:02', NULL),
+(390, 6, 'HUEVO KINDER 20 GR', '1 X $23.00', 'FEB 2 2023 (29).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 13:04:18', '2023-02-21 09:55:16', NULL),
+(391, 6, 'CORNETTO HOLANDA 120ML', '2 X $59.00', 'FEB 2 2023 (36).png', '2023-02-01', '2023-02-28', NULL, 0, 4, '2023-01-30 16:50:58', '2023-02-21 09:55:34', NULL),
+(392, 6, 'VODKA WYBOROWA 750 ML', '1 X $165.00', 'FEB 2 2023 (8).png', '2023-02-01', '2023-02-28', NULL, 0, 8, '2023-01-30 16:52:19', '2023-02-21 09:56:01', NULL),
+(393, 6, 'VINO TINTO EL CIRCO SEMIDULCE 750 ML', '1 X $164', 'FEB 2 2023 (9).png', '2023-02-01', '2023-02-28', NULL, 0, 8, '2023-01-30 16:53:42', '2023-02-21 09:56:16', NULL),
+(394, 6, 'LICOR RANCHO ESCONDIDO 750 ML + BRILLANTE TORONJA 2LT', 'A SOLO $95.00', 'FEB 2 2023 (1).png', '2023-02-01', '2023-02-28', NULL, 0, 8, '2023-01-30 17:07:43', '2023-02-21 09:56:34', NULL),
+(395, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', '6 X $119.00', 'FEB 2 2023 (11).png', '2023-02-01', '2023-02-15', NULL, 0, 17, '2023-01-30 17:09:16', '2023-02-21 09:56:52', NULL),
+(396, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355 ML', '6 X $119.00', 'FEB 2 2023 (12).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:12:45', '2023-02-21 09:57:11', NULL),
+(397, 6, 'CERVEZA CORONA BOTE 355 ML', '6 X $108.00', 'FEB 2 2023 (14).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:16:15', '2023-02-21 09:57:36', NULL),
+(398, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $108.00', 'FEB 2 2023 (15).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:16:50', '2023-02-21 09:57:54', NULL),
+(399, 6, 'CERVEZA CORONA LATON 473 ML', '4 X $85.00', 'FEB 2 2023 (18).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:17:47', '2023-02-21 09:58:30', NULL),
+(400, 6, 'CERVEZA MODELO ESPECIAL LATON 473 ML', '4 X $85.00', 'FEB 2 2023 (17).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:19:01', '2023-02-21 09:58:47', NULL),
+(401, 6, 'CERVEZA VICTORIA LATON 473 ML', '4 X $85.00', 'FEB 2 2023 (16).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:20:43', '2023-02-21 09:59:10', NULL),
+(402, 6, 'CERVEZA VICTORIA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'FEB 2 2023 (19).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:24:02', '2023-02-21 09:59:43', NULL),
+(403, 6, 'CERVEZA CORONA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'FEB 2 2023 (20).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:24:38', '2023-02-21 10:00:16', NULL),
+(404, 6, 'CERVEZA VICTORIA VIDRIO 355 ML', '2 X $29.50', 'FEB 2 2023 (10).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:25:19', '2023-02-21 10:00:39', NULL),
+(405, 6, 'CERVEZA CORONA 355 ML VIDRIO', '2 X $29.50', 'FEB 2 2023 (13).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 17:26:20', '2023-02-21 10:01:00', NULL),
+(406, 6, 'BEBIDA SKYY 275 ML', '3 X $84.00', 'FEB 2 2023 (35).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 17:28:48', '2023-02-21 10:01:20', NULL),
+(407, 6, 'ENERGETIZANTE VIVE 100 500ML', '2 X 29.00', 'FEB 2 2023 (47).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 17:30:07', '2023-02-21 10:01:35', NULL),
+(408, 6, 'SUERO ELECTROLIT 625 ML', '3 X $59.00', 'FEB 2 2023 (48).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 17:31:43', '2023-02-21 10:02:10', NULL),
+(409, 6, 'REFRESCOS 600ML SABORES', '2 X $30.00', 'FEB 2 2023 (33).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 17:32:44', '2023-02-21 10:03:19', NULL),
+(410, 6, 'GALLETA CREMAX NIEVE 90GR', '2 X $31.00', 'FEB 2 2023 (41).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 17:35:23', '2023-02-21 10:03:42', NULL),
+(411, 6, 'MANTECADAS BIMBO  6 PZAS', '1 X $25.00', 'FEB 2 2023 (21).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 17:36:02', '2023-02-21 10:04:03', NULL),
+(412, 6, 'SUBMARINOS MARINELA 105 GR', '2 X $34.00', 'FEB 2 2023 (42).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 17:37:22', '2023-02-21 10:04:23', NULL),
+(413, 6, 'GALLETA TRIKI TRAKES 8P 68GR', '2 X $30', 'FEB 2 2023 (43).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 17:38:28', '2023-02-21 10:04:42', NULL),
+(414, 6, 'GALLETA PRINCIPE CHOCOLATE 85GR', '2 X $30.00', 'FEB 2 2023 (44).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 17:39:37', '2023-02-21 10:05:00', NULL),
+(415, 6, 'ICEE SLUSH SABORES 20 ONZAS', '2 X $59.00', 'FEB 2 2023 (32).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 17:41:01', '2023-02-21 10:05:22', NULL),
+(416, 6, 'PALOMITAS ACT II', '2 x $26.00', 'FEB 2 2023 (40).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 17:43:21', '2023-02-21 10:05:48', NULL),
+(417, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', 'A SOLO $25.00', '48 PROM FEB 2023  (4).png', '2023-02-01', '2023-02-20', NULL, 0, 7, '2023-01-30 17:45:12', '2023-02-21 10:06:14', NULL),
+(418, 6, 'HOT DOG + BOING 250 ML', 'A SOLO $20.00', 'FEB 2 2023 (3).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 17:46:36', '2023-02-21 10:06:43', NULL),
+(419, 6, 'CAPUCCINO SABORES + BARRITAS MARINELA  67 GR', 'A SOLO $37.00', 'FEB 2 2023 (2).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 17:49:02', '2023-02-21 10:07:02', NULL),
+(420, 6, 'COCA COLA 355 ML + PALOMITAS ACT II', 'PROMOCIÓN EN $30.00', 'FEB 2 2023 (7).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 17:50:31', '2023-02-21 10:07:16', NULL),
+(421, 6, 'CHOCOLATE FERRERO ROCHER/ RAFAELLO COCO 3PZAS', '1 PAQUETE A $30.00', 'FEB 2 2023 (22).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 17:52:12', '2023-02-21 10:07:46', NULL),
+(422, 6, 'CHOCOLATE HERSHEY´S', '2 X $30.00', 'FEB 2 2023 (23).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 17:53:17', '2023-02-21 10:08:12', NULL),
+(423, 6, 'CHOCOLATE KIT KAT 41.5 GR', '2 X $30.00', 'FEB 2 2023 (45).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 17:53:57', '2023-02-21 10:08:41', NULL),
+(424, 6, 'LIMPIADOR CLARASOL 1 LT', '1 X $10.00', '1 MARZO 2 2023.png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 13:31:46', '2023-02-28 13:31:46', NULL),
+(425, 6, 'LIMPIADOR PINOL 500ML', '1 X $18.00', '2 MARZO 2 2023.png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 13:32:53', '2023-02-28 13:32:53', NULL),
+(426, 6, 'DETERGENTE ARIEL ORIGINAL 250 GR', '1X $10.00', '3 MARZO 2 2023.png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 13:33:43', '2023-02-28 13:33:43', NULL),
+(427, 6, 'DETERGENTE LIQUIDO AXION LIMON', '1 X $19.00', '4 MARZO 2 2023 (44).png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 13:34:24', '2023-02-28 13:34:24', NULL),
+(428, 6, 'JABON ZEST SENSACION HIDRATADA 150GR', '1 X $18.00', '5 MARZO 2 2023 (46).png', '2023-03-01', '2023-03-31', NULL, 0, 10, '2023-02-28 13:35:29', '2023-02-28 13:35:29', NULL),
+(429, 6, 'CEPILLO DENTAL COLGATE PREMIER', '1 X $14.00', '6 MARZO 2 2023 (45).png', '2023-03-01', '2023-03-31', NULL, 0, 10, '2023-02-28 13:39:09', '2023-02-28 13:39:09', NULL),
+(430, 6, 'POUCH WHISKAS 85 GR', '4 X $45.00', '7 MARZO 2 2023 (31).png', '2023-03-01', '2023-03-31', NULL, 0, 14, '2023-02-28 13:42:24', '2023-02-28 13:42:24', NULL),
+(431, 6, 'POUCH PEDIGREE 100GR', '4 X $45.00', '8 MARZO 2 2023 (30).png', '2023-03-01', '2023-03-31', NULL, 0, 14, '2023-02-28 13:43:10', '2023-02-28 13:43:10', NULL),
+(432, 6, 'SERVITOALLA PETALO 180 HOJAS', '1 X $29.00', '9.1 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 19, '2023-02-28 13:47:03', '2023-02-28 17:10:22', NULL),
+(433, 6, 'ACEITE EL FARO 900 ML', '1 X $44.00', '10 MARZO 2 2023 (47).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 13:48:28', '2023-02-28 13:48:28', NULL),
+(434, 6, 'ADEREZO CLEMENTE RANCH 237ML', '1 X $34.00', '11 MARZO 2 2023 (40).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 17:12:55', '2023-02-28 17:12:55', NULL),
+(435, 6, 'ACEITE VEGETAL 123 500ML', '1 X $28.00', '12 MARZO 2 2023 (24).png', '2023-02-01', '2023-03-31', NULL, 0, 1, '2023-02-28 17:13:42', '2023-02-28 17:13:42', NULL),
+(436, 6, 'ARROZ SUPER EXTRA ITALRISO 1KG', '1 X $26.00', '13 MARZO 2 2023 (25).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 17:19:05', '2023-02-28 17:19:05', NULL),
+(437, 6, 'JAMON NUTRI DELI AMERICANOS 250GR', '1 X $25.00', '14 MARZO 2 2023 (23).png', '2023-03-01', '2023-03-31', NULL, 0, 18, '2023-02-28 17:33:32', '2023-02-28 17:33:32', NULL),
+(438, 6, 'PINGUINOS MARINELA 80 GR', '1 X $18.00', '15 MARZO 2 2023 (52).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 17:34:53', '2023-02-28 17:34:53', NULL),
+(439, 6, 'VODKA WYBOROWA', '1 X $165.00', '16 MARZO 2 2023 (7).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 17:36:49', '2023-02-28 17:36:49', NULL),
+(440, 6, 'RANCHO ESCONDIDO 750ML + BRILLANTE TORONJA 2 LT', 'COMBO $95.00', '17 MARZO 2 2023 (55).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 17:37:47', '2023-02-28 17:37:47', NULL),
+(441, 6, 'TEQUILA CABRITO 750ML + 250ML + BRILLANTE TORONJA', 'COMBO $188.00', '18 MARZO 2 2023 (9).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 17:39:16', '2023-02-28 17:39:16', NULL),
+(442, 6, 'COCA COLA 25. LT + RON BACARDI BLANCO 750ML', 'COMBO $244.00', '19 MARZO 2 2023 (8).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 17:40:53', '2023-02-28 17:40:53', NULL),
+(443, 6, 'CERVEZA NEGRA MODELO 355 ML CRISTAL', '6 X $119.00', '20 MARZO 2 2023 (13).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:41:44', '2023-02-28 17:41:44', NULL),
+(444, 6, 'CERVEZA MODELO ESPECIAL 355ML CRISTAL', '6 X $119.00', '21 MARZO 2 2023 (14).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:43:01', '2023-02-28 17:43:01', NULL),
+(445, 6, 'CERVEZA VICTORIA MEGA 1.2 LT', '2 X $75.00', '22 MARZO 2 2023 (21).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:44:24', '2023-02-28 17:44:24', NULL),
+(446, 6, 'CERVEZA CORONA MEGA 1.2 LT', '2 X $75.00', '23 MARZO 2 2023 (22).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:45:05', '2023-02-28 17:45:05', NULL),
+(447, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', '6 X $108.00', '24 MARZO 2 2023 (16).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:45:58', '2023-02-28 17:45:58', NULL),
+(448, 6, 'CERVEZA CORONA LIGHT 355 ML BOTE', '6 X $108.00', '25 MARZO 2 2023 (17).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:46:57', '2023-02-28 17:46:57', NULL),
+(449, 6, 'CERVEZA VICTORIA VIDRIO 355ML', '2 X $29.50', '26 MARZO 2 2023 (12).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:48:29', '2023-02-28 17:48:29', NULL),
+(450, 6, 'CERVEZA CORONA EXTRA VIDEIO 355ML', '2 X $29.50', '27 MARZO 2 2023 (15).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:49:25', '2023-02-28 17:49:25', NULL),
+(451, 6, 'CERVEZA CORONA LATÓN 473 ML', '4 X $85.00', '28 MARZO 2 2023 (20).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:50:16', '2023-02-28 17:50:16', NULL),
+(452, 6, 'CERVEZA VICTORIA LATON 473ML', '4 X $85.00', '29 MARZO 2 2023 (18).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:51:09', '2023-02-28 17:51:09', NULL),
+(453, 6, 'CERVEZA MODELO LATON 473ML', '4 X $85.00', '30 MARZO 2 2023 (19).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 17:51:57', '2023-02-28 17:51:57', NULL),
+(454, 6, 'LICOR MEXGAVIA SABORES 440ML', '3 X $59.00', '31 MARZO 2 2023 (10).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 17:53:16', '2023-02-28 17:53:16', NULL),
+(455, 6, 'BEBIDA NEW MIX 350 ML', 'PALOMA, VAMPIRO, MARGARITA 3 X $69.00', '32 MARZO 2 2023 (11).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:42:34', '2023-02-28 18:42:34', NULL),
+(456, 6, 'ENERGIZANTE AMPER 473ML', '2X $36.00', '33 MARZO 2 2023 (37).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:43:53', '2023-02-28 18:43:53', NULL),
+(457, 6, 'BEBIDA VITALOE 320 ML', '2 X $29.00', '34 MARZO 2 2023 (36).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:45:19', '2023-02-28 18:45:19', NULL),
+(458, 6, 'BRILLANTE SABORES PET 2LT', '5 X $54.00', '35 MARZO 2 2023 (39).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:46:24', '2023-02-28 18:46:24', NULL),
+(459, 6, 'JUGO DEL VALLE FRUT CITRICOS 2LT', '1 X $29.00', '36 MARZO 2 2023 (38).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:47:22', '2023-02-28 18:47:22', NULL),
+(460, 6, 'SUERO ELECTROLIT 625 ML', '3 X $59.00', '37 MARZO 2 2023 (41).png', '2023-03-01', '2023-03-31', NULL, 0, 9, '2023-02-28 18:49:20', '2023-02-28 18:49:20', NULL),
+(461, 6, 'COCA COLA 2.5 LT RETORNABLE + REFRESCOS SABORES PET', 'COMBO $59.00', '38 MARZO 2 2023 (1).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:50:31', '2023-02-28 18:50:31', NULL),
+(462, 6, 'ATUN EL DORADO EN ACEITE 140 GR', '2 X $26.00', '39 MARZO 2 2023 (29).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 18:51:14', '2023-02-28 18:51:14', NULL),
+(463, 6, 'SOPA  ITALPASTA SPAGHETTI 200 GR + PURE DE TOMATE DEL FUERTE 210GR', 'COMBO POR $15.00', '40 MARZO 2 2023 (5).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 18:52:44', '2023-02-28 18:52:44', NULL),
+(464, 6, 'GALLETAS TRIKI TRAKES 85 GR', '2 X $30.00', '41 MARZO 2 2023 (33).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 18:53:38', '2023-02-28 18:53:38', NULL),
+(465, 6, 'GANSITO MARINELA', '2 X $29.00', '41.1 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 18:54:19', '2023-02-28 18:54:19', NULL),
+(466, 6, 'GALLETAS PRINCIPE CHOCOLATE 85 GR', '2 X $30.00', '42 MARZO 2 2023 (34).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 18:55:24', '2023-02-28 18:55:24', NULL),
+(467, 6, 'REFRESCOS 600ML', '2 X $30.00', '43 MARZO 2 2023 (27).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 18:56:18', '2023-02-28 18:56:18', NULL),
+(468, 6, 'GALLETA EMPERADOR + 2 GALLETAS', '2 X $32.00', '44 MARZO 2 2023 (35).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 18:57:10', '2023-02-28 18:57:10', NULL),
+(469, 6, 'CUERNITOS TIA ROSA', '1 X $16.00', '45 MARZO 2 2023 (48).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 18:58:22', '2023-02-28 18:58:22', NULL),
+(470, 6, 'LECHE ALPURA SABORES 200 ML', '2 X $19.00', '47 MARZO 2 2023 (28).png', '2023-03-01', '2023-03-31', NULL, 0, 5, '2023-02-28 18:59:18', '2023-02-28 18:59:18', NULL),
+(471, 6, 'PALOMITAS ACT II SABORES', '2 X $26.00', '48 MARZO 2 2023 (32).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-02-28 19:00:18', '2023-02-28 19:00:18', NULL),
+(472, 6, 'GELATINA LALA 125/130GR', '2 X $14.00', '49 MARZO 2 2023 (51).png', '2023-03-01', '2023-03-31', NULL, 0, 5, '2023-02-28 19:01:09', '2023-02-28 19:01:09', NULL),
+(473, 6, 'FLAN LALA', '2 X $19.00', '50 MARZO 2 2023 (50).png', '2023-03-01', '2023-03-31', NULL, 0, 5, '2023-02-28 19:01:39', '2023-02-28 19:01:39', NULL),
+(474, 6, 'COCA COLA LATA 355ML + PALOMITAS ACT II', 'COMBO $30.00', '51 MARZO 2 2023 (6).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-02-28 19:02:36', '2023-02-28 19:02:36', NULL),
+(475, 6, 'ICEE SLUSH SABORES 20 OZ', '2 X $59.00', '52 MARZO 2 2023 (26).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-02-28 19:03:13', '2023-02-28 19:03:13', NULL),
+(476, 6, 'BIGOTE TIA ROSA + NESTLE SABORES', 'COMBO $37.00', '53 MARZO 2 2023 (2).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-02-28 19:04:46', '2023-02-28 19:04:46', NULL),
+(477, 6, 'HOT DOG PLUS + JUGO BOING 250 ML', 'COMBO $20.00', '54 MARZO 2 2023 (3).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-02-28 19:05:29', '2023-02-28 19:05:29', NULL),
+(478, 6, 'RICOLINO BUBULUBU SABORES', '2 X $19.00', '56 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 13, '2023-02-28 19:06:17', '2023-02-28 19:06:17', NULL),
+(479, 6, 'CHOCOLATE /CACAHUATE M&M', '2 X $39.00', '57 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 13, '2023-02-28 19:07:05', '2023-02-28 19:07:05', NULL),
+(480, 6, 'HOT DOG PLUS', 'A SOLO $17.00', '55 MARZO 2 2023 (4).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-02-28 19:07:41', '2023-02-28 19:07:41', NULL),
+(481, 6, 'SUERO ELECTROLIT SABORES 625ML', '3 x $59.00', 'OCT 2023 PART 1 (69).png', '2023-10-07', '2023-10-31', NULL, 0, 9, '2023-10-07 11:12:47', '2023-10-07 11:12:47', NULL),
+(482, 6, 'REFRESCO BRILLANTE 600ML', '2 x $25.00', 'OCT 2023 PART 1 (68).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 11:13:52', '2023-10-07 11:13:52', NULL),
+(483, 6, 'TAKIS FUEGO ORIGINAL 56GR', '2 x $31.00', 'OCT 2023 PART 1 (67).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 11:18:08', '2023-10-07 11:18:08', NULL),
+(484, 6, 'HOT DOG + JUGO BOING 250ML', 'COMBO A SOLO $20.00', 'OCT 2023 PART 1 (66).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 11:18:52', '2023-10-07 11:18:52', NULL),
+(485, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', 'A SOLO $27.00', 'OCT 2023 PART 1 (65).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 11:20:13', '2023-10-07 11:20:13', NULL),
+(486, 6, 'NESTLE 16OZ SABORES + CANELITAS/TRIKI BITES', 'COMBO A SOLO $37.00', 'OCT 2023 PART 1 (64).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 11:21:59', '2023-10-07 11:21:59', NULL),
+(487, 6, 'TOSTADAS MILPA REAL + FRIJOL LA SIERRA', 'A SOLO $45.00', 'OCT 2023 PART 1 (63).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 11:23:03', '2023-10-07 11:23:03', NULL),
+(488, 6, 'PAPAS TOREADAS + COCA COLA 255ML', 'A SOLO $32.00', 'OCT 2023 PART 1 (62).png', '2023-10-07', '2023-10-31', NULL, 0, 16, '2023-10-07 11:23:58', '2023-10-07 11:23:58', NULL),
+(489, 6, 'NESCAFE + COFFE MATE', 'COMBO A SOLO $ 69.00', 'OCT 2023 PART 1 (61).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 11:28:28', '2023-10-07 11:28:28', NULL),
+(490, 6, 'DETERGENTE FOCA 500 GR + LIMPIADOR CLARASOL 500ML', 'COMBO A SOLO $30.00', 'OCT 2023 PART 1 (60).png', '2023-10-07', '2023-10-31', NULL, 0, 11, '2023-10-07 11:29:42', '2023-10-07 11:29:42', NULL),
+(491, 6, 'DETERGENTE  MAS COLOR LIQUIDO + SUAVITEL', 'COMBO A SOLO $39.00', 'OCT 2023 PART 1 (59).png', '2023-10-07', '2023-10-31', NULL, 0, 11, '2023-10-07 11:30:58', '2023-10-07 11:30:58', NULL),
+(492, 6, 'PINGUINOS MARINELA', '2 X $38.00', 'OCT 2023 PART 1 (58).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 11:31:35', '2023-10-07 11:31:35', NULL),
+(493, 6, 'SUBMARINOS', '2 X $36.00', 'OCT 2023 PART 1 (57).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 11:32:12', '2023-10-07 11:32:12', NULL),
+(494, 6, 'JUGO BOING 500ML', '2 X $30.00', 'OCT 2023 PART 1 (56).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 11:33:48', '2023-10-07 11:33:48', NULL),
+(495, 6, 'MORDISKO CLASICO O FRESA', '2 X $40.00', 'OCT 2023 PART 1 (55).png', '2023-10-07', '2023-10-31', NULL, 0, 4, '2023-10-07 11:34:56', '2023-10-07 11:34:56', NULL),
+(496, 6, 'VASO COVERMEX UNICEL 16 OZ 25 PZ', '1 X $20.00', 'OCT 2023 PART 1 (54).png', '2023-10-07', '2023-10-31', NULL, 0, 19, '2023-10-07 11:36:04', '2023-10-07 11:36:04', NULL),
+(497, 6, 'CHOCOLATE KIT KAT 41.56GR', '2 X $34.00', 'OCT 2023 PART 1 (53).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 11:37:04', '2023-10-07 11:37:04', NULL),
+(498, 6, 'GALLETAS POLVORONES / CANELITAS 111 / 90 GR', '2 X $38.00', 'OCT 2023 PART 1 (52).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 11:41:40', '2023-10-07 11:41:40', NULL),
+(499, 6, 'SABRITAS SABORES', '2 X $36.00', 'OCT 2023 PART 1 (51).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 11:43:53', '2023-10-07 11:43:53', NULL),
+(500, 6, 'PULMARINDO 14 GR', '3 X $10.00', 'OCT 2023 PART 1 (50).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 11:58:16', '2023-10-07 11:58:16', NULL),
+(501, 6, 'CHOCOLATE CREMINO', '3 X $12.00', 'OCT 2023 PART 1 (49).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 11:58:58', '2023-10-07 11:58:58', NULL),
+(502, 6, 'PALETA TUTSI POP', '3 X $12.00', 'OCT 2023 PART 1 (48).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 11:59:40', '2023-10-07 11:59:40', NULL),
+(503, 6, 'KACANG CACAHUATE 84/71 GR', '2 X $30.00', 'OCT 2023 PART 1 (47).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 12:00:27', '2023-10-07 12:00:27', NULL),
+(504, 6, 'BIG MIX 185 GR', '1 X $41.00', 'OCT 2023 PART 1 (46).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 12:01:16', '2023-10-07 12:01:16', NULL),
+(505, 6, 'DORITOS SABORES 42/52/62GR', '2 x $35.00', 'OCT 2023 PART 1 (45).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 12:06:35', '2023-10-07 12:06:35', NULL),
+(506, 6, 'POUCH PEDIGREE 85GR', '3 x $34.00', 'OCT 2023 PART 1 (44).png', '2023-10-07', '2023-10-31', NULL, 0, 14, '2023-10-07 12:07:10', '2023-10-07 12:07:10', NULL),
+(507, 6, 'POUCH PEDIGREE 85GR', '3 x $34.00', 'OCT 2023 PART 1 (43).png', '2023-10-07', '2023-10-31', NULL, 0, 14, '2023-10-07 12:07:41', '2023-10-07 12:07:41', NULL),
+(508, 6, 'MAZAPAN CUBIERTO DE CHOCOLATE', '1 x $10.00', 'OCT 2023 PART 1 (42).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 12:08:22', '2023-10-07 12:08:22', NULL),
+(509, 6, 'ICEE SLUSH 20 OZ SABORES', '2 X $59.00', 'OCT 2023 PART 1 (41).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 12:08:55', '2023-10-07 12:08:55', NULL),
+(510, 6, 'CHICHARRON SABRITAS', '1 X $19.00', 'OCT 2023 PART 1 (40).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 12:09:39', '2023-10-07 12:09:39', NULL),
+(511, 6, 'CHOCOLATE ABUELITA', '2 X $26.00', 'OCT 2023 PART 1 (39).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 12:10:42', '2023-10-07 12:10:42', NULL),
+(512, 6, 'CREMA LALA 200 GR', '1 X $17.00', 'OCT 2023 PART 1 (38).png', '2023-10-07', '2023-10-31', NULL, 0, 5, '2023-10-07 12:15:30', '2023-10-07 12:15:30', NULL),
+(513, 6, 'LECHE ALPURA 1 LT', '1 X $29.00', 'OCT 2023 PART 1 (37).png', '2023-10-07', '2023-10-31', NULL, 0, 5, '2023-10-07 12:16:17', '2023-10-07 12:16:17', NULL),
+(514, 6, 'MANTECADAS BIMBO 6 PZAS', '1 X $27.00', 'OCT 2023 PART 1 (36).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 12:17:05', '2023-10-07 12:17:05', NULL),
+(515, 6, 'CREMA NIVEA', '1 X $20.00', 'OCT 2023 PART 1 (35).png', '2023-10-07', '2023-10-31', NULL, 0, 10, '2023-10-07 12:28:29', '2023-10-07 12:28:29', NULL),
+(516, 6, 'GEL EGO DIEZ TARRO', '1 X $16.00', 'OCT 2023 PART 1 (34).png', '2023-10-07', '2023-10-31', NULL, 0, 10, '2023-10-07 12:29:40', '2023-10-07 12:29:40', NULL),
+(517, 6, 'AROMATIZANTE GLADE 70 GR', '2 X $34.00', 'OCT 2023 PART 1 (33).png', '2023-10-07', '2023-10-31', NULL, 0, 11, '2023-10-07 12:30:23', '2023-10-07 12:30:23', NULL),
+(518, 6, 'CREMA NIVEA 100 ML', '1 X $27.00', 'OCT 2023 PART 1 (32).png', '2023-10-07', '2023-10-31', NULL, 0, 10, '2023-10-07 12:31:33', '2023-10-07 12:31:33', NULL),
+(519, 6, 'JUMEX TETRA 473ML', '2 X $32.00', 'OCT 2023 PART 1 (31).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 12:32:04', '2023-10-07 12:32:04', NULL),
+(520, 6, 'ENERGIZANTE VIVE 100', '2 X $30.00', 'OCT 2023 PART 1 (30).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 12:32:47', '2023-10-07 12:32:47', NULL),
+(521, 6, 'YOGURTH BREAK', '2 X $32.00', 'OCT 2023 PART 1 (29).png', '2023-10-07', '2023-10-31', NULL, 0, 5, '2023-10-07 12:33:48', '2023-10-07 12:33:48', NULL),
+(522, 6, 'VELADORA ARAMO LMONERO', '3 X $40.00', 'OCT 2023 PART 1 (28).png', '2023-10-07', '2023-10-31', NULL, 0, 12, '2023-10-07 12:34:41', '2023-10-07 12:34:41', NULL),
+(523, 6, 'MICHEMIX 240ML', '1 X $33.00', 'OCT 2023 PART 1 (27).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 12:35:42', '2023-10-07 12:35:42', NULL),
+(524, 6, 'CHAMOY MIGUELITO', '1 X $21.00', 'OCT 2023 PART 1 (26).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 12:37:02', '2023-10-07 12:37:02', NULL),
+(525, 6, 'PASTILLA ALKA SELTZER', '2 X $12.00', 'OCT 2023 PART 1 (25).png', '2023-10-07', '2023-10-31', NULL, 0, 9, '2023-10-07 12:37:47', '2023-10-07 12:37:47', NULL),
+(526, 6, 'VALLE FRUT PONCH CITRUS 600ML', '2 X $32.00', 'OCT 2023 PART 1 (24).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 12:38:28', '2023-10-07 12:38:28', NULL),
+(527, 6, 'ENERGIZANTE AMPER 473ML', '2 X $40.00', 'OCT 2023 PART 1 (23).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 12:39:22', '2023-10-07 12:39:22', NULL),
+(528, 6, 'GALLETA FLORENTINAS 83 GR', '2 X $36.00', 'OCT 2023 PART 1 (22).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 12:40:20', '2023-10-07 12:40:20', NULL),
+(529, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML+ BOLSA DE HIELO', 'COMBO $285.00', 'OCT 2023 PART 1 (21).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:41:24', '2023-10-07 12:41:24', NULL),
+(530, 6, 'WHISKY HIGHLAND CHIEF + BRILLANTE MINERAL', 'A SOLO $205.00', 'OCT 2023 PART 1 (20).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:42:33', '2023-10-07 12:42:33', NULL),
+(531, 6, 'TEQUILA JIMADOR + BRILLANTE TORONJA', 'A SOLO $128.00', 'OCT 2023 PART 1 (19).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:43:28', '2023-10-07 12:43:28', NULL),
+(532, 6, 'TEQUILA HORNITOS + BRILLANTE TORONJA', 'A SOLO $155.00', 'OCT 2023 PART 1 (18).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:44:26', '2023-10-07 12:44:26', NULL),
+(533, 6, 'BRANDY TORRES 10 750ML + COCA COLA 1.25L', 'A SOLO $392.00', 'OCT 2023 PART 1 (17).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:45:12', '2023-10-07 12:45:12', NULL),
+(534, 6, 'RON BACARDI BLANCO 750 ML', '1 X $219.00', 'OCT 2023 PART 1 (16).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:45:49', '2023-10-07 12:45:49', NULL),
+(535, 6, 'CAPITAN MORGAN', '1 X $179.00', 'OCT 2023 PART 1 (15).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 12:46:23', '2023-10-07 12:46:23', NULL),
+(536, 6, 'BEBIDA SKYY 275ML', '4 X $99.00', 'OCT 2023 PART 1 (14).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 12:47:14', '2023-10-07 12:47:14', NULL),
+(537, 6, 'MUECAS SABORES', '2 X $18.00', 'OCT 2023 PART 1 (1).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 12:48:05', '2023-10-07 12:48:05', NULL),
+(540, 6, 'CERVEZA MODELO CORONA MEGA FAMILIAR 1.2L', '2 X  $80.00', 'OCT 2023 PART 1 (10).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:50:49', '2023-10-07 12:50:49', NULL),
+(541, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 L', '2 X $80.00', 'OCT 2023 PART 1 (9).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:51:18', '2023-10-07 12:51:18', NULL),
+(543, 6, 'CERVEZA CORONA EXTRA BOTE', '6 X $112.00', 'OCT 2023 PART 1 (8).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:52:48', '2023-10-07 12:54:59', NULL),
+(544, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $112.00', 'OCT 2023 PART 1 (7).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:53:15', '2023-10-07 12:55:17', NULL),
+(545, 6, 'CERVEZA MODELO ESPECIAL BOTE', '6 X $112.00', 'OCT 2023 PART 1 (6).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:54:08', '2023-10-07 12:54:08', NULL),
+(546, 6, 'CERVEZA MODELO ESPECIAL LATON', '2 X $45.00', 'OCT 2023 PART 1 (5).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:56:07', '2023-10-07 12:56:07', NULL),
+(547, 6, 'CERVEZA CORONA EXTRA LATÓN', '2 X $45.00', 'OCT 2023 PART 1 (4).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:56:44', '2023-10-07 12:56:44', NULL),
+(548, 6, 'CERVEZA CORONA EXTRA LATÓN', '2 X $45.00', 'OCT 2023 PART 1 (3).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:57:11', '2023-10-07 12:57:11', NULL),
+(549, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $45.00', 'OCT 2023 PART 1 (2).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 12:57:47', '2023-10-07 12:57:47', NULL),
+(550, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $45.00', 'BUEN FIN 03 NOV (1).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:31:00', '2023-11-04 10:08:36', 46),
+(551, 6, 'CERVEZA CORONA EXTRA LATÓN', '2 X $45.00', '31.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:32:01', '2023-11-14 15:57:42', 32),
+(552, 6, 'CERVEZA CORONA LIGHT LATON', '2 X $45.00', '30.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:32:45', '2023-11-14 15:57:58', 33),
+(553, 6, 'CERVEZA MODELO ESPECIAL LATON', '2 X $45.00', '32.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:33:23', '2023-11-14 16:00:32', 34),
+(554, 6, 'CERVEZA MODELO ESPECIAL BOTE', '6 X $112.00', '34.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:34:19', '2023-11-14 16:04:38', 35),
+(555, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $112.00', '35.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:43:05', '2023-11-14 16:04:57', 36),
+(556, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', '6 X $112.00', '36.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:43:57', '2023-11-14 16:05:15', 37),
+(557, 6, 'CERVEZA VICTORIA MEGAFAMILIAR', '2 X $80.00', 'BUEN FIN 03 NOV (8).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:45:47', '2023-11-04 10:08:36', 38),
+(558, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', '2 X $80.00', 'BUEN FIN 03 NOV (9).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:49:30', '2023-11-04 10:08:36', 39),
+(559, 6, 'CERVEZA CORONA VIDRIO 355 ML', '2 X $32.00', 'BUEN FIN 03 NOV (10).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:51:14', '2023-11-04 10:08:36', 40),
+(560, 6, 'CERVEZA CORONA LIGHT VIDRIO', '2 X $32.00', 'BUEN FIN 03 NOV (11).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:51:50', '2023-11-04 10:08:36', 41),
+(561, 6, 'CERVEZA NEGRA MODELO CRISTAL 355 ML', '6 X $132.00', 'BUEN FIN 03 NOV (13).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:52:55', '2023-11-04 10:08:36', 42),
+(562, 6, 'CERVEZA MODELO ESPECIAL CRISTAL', '6 X $132.00', 'BUEN FIN 03 NOV (14).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 11:53:40', '2023-11-04 10:08:36', 43),
+(563, 6, 'RON BACARDI BLANCO 750 ML', '1 X $219.00', 'BUEN FIN 03 NOV (15).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 12:18:48', '2023-11-04 10:08:36', 44),
+(564, 6, 'VINO BOONES 750 ML', '1 X $89.00', 'BUEN FIN 03 NOV (16).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 12:19:29', '2023-11-04 10:08:36', 45),
+(565, 6, 'TEQUILA HORNITOS + BRILLANTE TORONJA', 'COMBO A SOLO $155.00', 'BUEN FIN 03 NOV (17).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 12:20:19', '2023-11-04 10:08:36', 31),
+(566, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML+ BOLSA DE HIELO', 'COMBO A SOLO $285.00', 'BUEN FIN 03 NOV (18).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 12:23:45', '2023-11-04 10:08:36', 47),
+(567, 6, 'BEBIDA VIÑA RELA 330 ML', '4 X $86.00', 'BUEN FIN 03 NOV (19).png', '2023-11-03', '2023-11-30', NULL, 0, 2, '2023-11-03 12:26:45', '2023-11-04 10:08:36', 48),
+(568, 6, 'PULPARINDO 14 GR', '3 X $10.00', 'BUEN FIN 03 NOV (20).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 12:27:49', '2023-11-04 10:08:36', 49),
+(569, 6, 'POUCH PEDIGREE 85GR', '3 X $34.00', 'BUEN FIN 03 NOV (21).png', '2023-11-03', '2023-11-30', NULL, 0, 14, '2023-11-03 12:28:37', '2023-11-04 10:08:36', 50),
+(571, 6, 'POUCH WHISKAS 85 GR', '3 X $34.00', 'BUEN FIN 03 NOV (22).png', '2023-11-03', '2023-11-30', NULL, 0, 14, '2023-11-03 12:31:00', '2023-11-04 10:08:36', 52),
+(572, 6, 'CREMA NIVEA LATA', '1 X $20.00', 'BUEN FIN 03 NOV (23).png', '2023-11-03', '2023-11-30', NULL, 0, 10, '2023-11-03 12:32:52', '2023-11-04 10:08:36', 53),
+(573, 6, 'VASO COVERMEX UNICEL 16 OZ 25 PZ', '1 X $20.00', 'BUEN FIN 03 NOV (24).png', '2023-11-03', '2023-11-30', NULL, 0, 19, '2023-11-03 12:33:39', '2023-11-04 10:08:36', 54),
+(574, 6, 'ACEITE 123 1 LT', '1 X $54.00', 'BUEN FIN 03 NOV (25).png', '2023-11-02', '2023-11-30', NULL, 0, 1, '2023-11-03 13:42:52', '2023-11-04 10:08:36', 55),
+(575, 6, 'ATUN TUNY 140/ 170 GR', '2 X $35.00', 'BUEN FIN 03 NOV (26).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 13:45:42', '2023-11-04 10:08:36', 56),
+(576, 6, 'CHILE MORENA 210 GR', '2 X $29.00', 'BUEN FIN 03 NOV (27).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 13:50:21', '2023-11-04 10:08:36', 57),
+(577, 6, 'MAYONESA MCCORMICK 190GR', '1 X $29.00', 'BUEN FIN 03 NOV (28).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 13:52:09', '2023-11-04 10:08:36', 58),
+(578, 6, 'CHOCOLATE CREMINO', '3 X $12.00', 'BUEN FIN 03 NOV (29).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 13:55:12', '2023-11-04 10:08:36', 59),
+(579, 6, 'CHOCOLATE KIT KAT 41.5 GR', '2 x $34.00', 'BUEN FIN 03 NOV (30).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 13:58:45', '2023-11-04 10:08:36', 60),
+(580, 6, 'CHOCOLATE /CACAHUATE M&M 47.9 GR', '2 X $40.00', 'BUEN FIN 03 NOV (31).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 14:06:39', '2023-11-04 10:08:04', 23),
+(581, 6, 'JABON CORONA C/ENVOLTURA 400 GR', '1 X $25.00', 'BUEN FIN 03 NOV (32).png', '2023-11-03', '2023-11-30', NULL, 0, 11, '2023-11-03 14:08:47', '2023-11-04 10:08:04', 8),
+(582, 6, 'GALLETAS POLVORONES 111GR /CANELITAS 90 GR', '2 X $38.00', 'BUEN FIN 03 NOV (33).png', '2023-11-03', '2023-11-30', NULL, 0, 6, '2023-11-03 14:14:15', '2023-11-04 10:08:04', 9),
+(583, 6, 'MICHEMIX 240ML', '1 X $33.00', 'BUEN FIN 03 NOV (34).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 14:16:38', '2023-11-04 10:08:04', 10),
+(584, 6, 'PAÑO SCOTH BRITE', '1 X $20.00', 'BUEN FIN 03 NOV (35).png', '2023-11-03', '2023-11-30', NULL, 0, 12, '2023-11-03 14:54:24', '2023-11-04 10:08:04', 11),
+(585, 6, 'AROMATIZANTE GLADE 70 GR', '2 X $34.00', 'BUEN FIN 03 NOV (36).png', '2023-11-03', '2023-11-30', NULL, 0, 11, '2023-11-03 14:58:41', '2023-11-04 10:08:04', 12),
+(587, 6, 'CHOCOLATE ABUELITA', '2 X $26.00', 'BUEN FIN 03 NOV (37).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 15:18:54', '2023-11-04 10:08:04', 13),
+(588, 6, 'PALETA CHOCOMILK / APOLO ESTELAR 500 ML', '2 X $25.00', 'BUEN FIN 03 NOV (38).png', '2023-11-03', '2023-11-30', NULL, 0, 4, '2023-11-03 15:19:37', '2023-11-04 10:08:04', 14),
+(589, 6, 'CHOCOLATE MILKY WAY /SNICKERS', '2 X $36.00', 'BUEN FIN 03 NOV (39).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 15:20:47', '2023-11-04 10:08:04', 15),
+(590, 6, 'VICK VAPORUB', '1 X $31.00', 'BUEN FIN 03 NOV (40).png', '2023-11-03', '2023-11-30', NULL, 0, 9, '2023-11-03 15:21:29', '2023-11-04 10:08:04', 16),
+(591, 6, '2 X $59.00', 'ICEE SLUSH 20 ONZAS SABORES', 'BUEN FIN 03 NOV (41).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 09:45:09', '2023-11-04 10:08:04', 17),
+(592, 6, 'ENERGY VIVE 100 500ml', '2 x $30.00', 'BUEN FIN 03 NOV (42).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 09:46:52', '2023-11-04 10:08:04', 18),
+(593, 6, 'REFRESCO BRILLANTE 600ML', '2 X $25.00', 'BUEN FIN 03 NOV (43).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 09:47:37', '2023-11-04 10:08:04', 19),
+(594, 6, 'SUAVICREMAS 102GR', '2 X $32.00', 'BUEN FIN 03 NOV (44).png', '2023-11-04', '2023-11-30', NULL, 0, 6, '2023-11-04 09:48:14', '2023-11-04 10:08:04', 20),
+(595, 6, 'JUMEX  XOT FRUTAS MIXTAS', '2 X $40.00', 'BUEN FIN 03 NOV (45).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 09:49:38', '2023-11-04 10:08:04', 21),
+(596, 6, 'BOTANA BIG MIX', '1 X $41.00', 'BUEN FIN 03 NOV (46).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 09:50:09', '2023-11-04 10:08:04', 22),
+(597, 6, 'SABRITAS PAKETAXO 70 GR', '1 X $18.00', 'BUEN FIN 03 NOV (47).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 09:50:51', '2023-11-04 10:08:04', 7),
+(598, 6, 'BARCEL CHIPS 60 GT', '2 X $42.00', 'BUEN FIN 03 NOV (48).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 09:51:26', '2023-11-04 10:08:04', 24),
+(599, 6, 'CACAHUATES KACANG 66-69 GR', '2 X $30.00', 'BUEN FIN 03 NOV (49).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 09:52:08', '2023-11-04 10:08:04', 25),
+(600, 6, 'CHURRUMAIS 56 GR', '1 X $13.00', 'BUEN FIN 03 NOV (50).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 09:52:40', '2023-11-04 10:08:04', 26),
+(601, 6, 'YOGURT ALPURA 220 GR', '2 X $30.00', 'BUEN FIN 03 NOV (51).png', '2023-11-04', '2023-11-30', NULL, 0, 5, '2023-11-04 09:53:23', '2023-11-04 10:08:04', 27),
+(602, 6, 'BEBUDA LEVITE 1.4 LT', '2 X $38.00', 'BUEN FIN 03 NOV (52).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 09:54:02', '2023-11-04 10:08:04', 28),
+(603, 6, 'JUGO DEL VALLE 413ML', '2 x $33.00', 'BUEN FIN 03 NOV (53).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 09:56:12', '2023-11-04 10:08:04', 29),
+(604, 6, 'SUERO ELECTROLIT SABORES 625ML', '3 X $59.00', 'BUEN FIN 03 NOV (54).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 09:56:47', '2023-11-04 10:08:05', 30),
+(605, 6, 'DETERGENTE FOCA 300 GR + LIMPIADOR CLARASOL 500ML', 'COMBO $30.00', 'BUEN FIN 03 NOV (55).png', '2023-11-04', '2023-11-30', NULL, 0, 11, '2023-11-04 10:00:56', '2023-11-04 10:08:36', 61),
+(606, 6, 'NITO BIMBO + NESTLE 16 OZ SABORES', 'COMBO A SOLO $37.00', 'BUEN FIN 03 NOV (56).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 10:01:34', '2023-11-04 10:07:44', 3),
+(607, 6, 'ICEE SLUSH SABORES + PALOMITAS SABORES', 'COMBO A SOLO $49.00', 'BUEN FIN 03 NOV (57).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 10:02:26', '2023-11-04 10:06:43', 1),
+(608, 6, 'NACHOS PREPARADOS + PEPSI 295ML', 'COMBO A SOLO $26.00', 'BUEN FIN 03 NOV (58).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 10:03:19', '2023-11-04 10:07:44', 2),
+(609, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', 'COMBO A SOLO $27.00', 'BUEN FIN 03 NOV (59).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 10:03:54', '2023-11-04 10:07:40', 5),
+(610, 6, 'HOT DOG + JUGO BOING 250ML', 'COMBO A SOLO $20.00', 'BUEN FIN 03 NOV (61).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 10:04:29', '2023-11-04 10:07:44', 4),
+(611, 6, 'PAN BLANCO CHICO + JAMON NUTRI DELI AMERICANO', 'COMBO A SOLO $64.00', 'BUEN FIN 03 NOV (60).png', '2023-11-04', '2023-11-30', NULL, 0, 16, '2023-11-04 10:05:25', '2023-11-04 10:08:04', 6),
+(612, 6, 'CORONA LIGHT', NULL, '26.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:36:56', '2023-12-04 16:36:56', NULL),
+(613, 6, 'CERVEZA CORONA EXTRA LATÓN', NULL, '27.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:37:31', '2023-12-04 16:37:31', NULL),
+(614, 6, 'CERVEZA NEGRA MODELO ESPECIAL LATON', NULL, '28.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:38:06', '2023-12-04 16:38:06', NULL),
+(615, 6, 'CERVEZA VICTORIA LATON 473ML', NULL, '29.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:38:36', '2023-12-04 16:38:36', NULL),
+(616, 6, 'CERVEZA CORONA 710ML LATON', '2 X $69.00', '30.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:39:23', '2023-12-04 16:39:23', NULL),
+(617, 6, 'CERVEZA MODELO BOTE 355ML', NULL, 'NAVIDAD 2023 (7).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:41:06', '2023-12-04 16:41:06', NULL),
+(619, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', NULL, 'NAVIDAD 2023 (8).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:42:49', '2023-12-04 16:42:49', NULL),
+(620, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', NULL, 'NAVIDAD 2023 (9).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:43:24', '2023-12-04 16:43:24', NULL),
+(621, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', NULL, 'NAVIDAD 2023 (9).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:45:00', '2023-12-04 16:45:00', NULL),
+(622, 6, 'CERVEZA PACIFICO SUAVE 355ML BOTE', NULL, 'NAVIDAD 2023 (10).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:45:38', '2023-12-04 16:45:38', NULL);
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(623, 6, 'CREVEZA STELLA AROIT 330ML NR', '6 X $138.00', 'NAVIDAD 2023 (11).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:46:28', '2023-12-04 16:46:28', NULL),
+(624, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 L', NULL, 'NAVIDAD 2023 (12).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:47:44', '2023-12-04 16:47:44', NULL),
+(625, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', NULL, 'NAVIDAD 2023 (13).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:48:15', '2023-12-04 16:48:15', NULL),
+(626, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'NAVIDAD 2023 (14).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:48:49', '2023-12-04 16:48:49', NULL),
+(627, 6, 'CERVEZA CORONA VIDRIO 355 ML', NULL, 'NAVIDAD 2023 (15).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:51:30', '2023-12-04 16:51:30', NULL),
+(628, 6, 'CERVEZA CORONA LIGHT VIDRIO', NULL, 'NAVIDAD 2023 (16).png', '2023-12-03', '2023-12-31', NULL, 0, 17, '2023-12-04 16:52:26', '2023-12-04 16:52:26', NULL),
+(629, 6, 'CERVEZA NEGRA MODELO CRISTAL 355 ML', NULL, 'NAVIDAD 2023 (17).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:52:57', '2023-12-04 16:52:57', NULL),
+(630, 6, 'CERVEZA MODELO ESPECIAL CRISTAL', NULL, 'NAVIDAD 2023 (18).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:53:40', '2023-12-04 16:53:40', NULL),
+(631, 6, 'VINO BOONES 750 ML', NULL, 'NAVIDAD 2023 (19).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 16:54:20', '2023-12-04 16:54:20', NULL),
+(632, 6, 'VINO TINTO MARQUEZ 750 ML', NULL, 'NAVIDAD 2023 (20).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 16:55:00', '2023-12-04 16:55:00', NULL),
+(633, 6, 'SIDRA CAMPANARIO ROSADA 700ML', NULL, 'NAVIDAD 2023 (21).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 16:55:40', '2023-12-04 16:55:40', NULL),
+(634, 6, 'BRANDY TORRES 5  700ML', NULL, 'NAVIDAD 2023 (22).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 17:02:17', '2023-12-04 17:02:17', NULL),
+(635, 6, 'WHISKY RED LABEL 750ML + BRILLANTE MINERAL 2LT', NULL, 'NAVIDAD 2023 (23).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 17:05:11', '2023-12-04 17:05:11', NULL),
+(636, 6, 'TEQUILA 100 AÑOS 750ML + BRILLANTE TORONJA 2LT', NULL, 'NAVIDAD 2023 (24).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 17:05:46', '2023-12-04 17:05:46', NULL),
+(637, 6, 'WHISKY WILLIAM LAWSON´S 750ML + BRILLANTE MINERAL 2 LT', NULL, 'NAVIDAD 2023 (25).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 17:07:37', '2023-12-04 17:07:37', NULL),
+(638, 6, 'VODKA ABOSLUT AZUL 750ML + JUMEX UNICO ARANDANO 960ML', NULL, 'NAVIDAD 2023 (26).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 17:08:37', '2023-12-04 17:08:37', NULL),
+(639, 6, 'BEBIDA VIÑA REAL 330ML', NULL, 'NAVIDAD 2023 (27).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 17:09:44', '2023-12-04 17:09:44', NULL),
+(640, 6, 'CARIBE COOLER 300ML', NULL, 'NAVIDAD 2023 (28).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 17:10:41', '2023-12-04 17:10:41', NULL),
+(641, 6, 'BEBIDA JACK DANIELS', NULL, 'NAVIDAD 2023 (29).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 17:12:03', '2023-12-04 17:12:03', NULL),
+(642, 6, 'POUCH PEDIGREE 85GR', NULL, 'NAVIDAD 2023 (30).png', '2023-12-04', '2023-12-31', NULL, 0, 14, '2023-12-04 17:12:34', '2023-12-04 17:12:34', NULL),
+(643, 6, 'POUCH WHISKAS 85 GR', NULL, 'NAVIDAD 2023 (31).png', '2023-12-04', '2023-12-31', NULL, 0, 14, '2023-12-04 17:13:12', '2023-12-04 17:13:12', NULL),
+(644, 6, 'ACEITE 123 1 LT', NULL, 'NAVIDAD 2023 (32).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 17:13:35', '2023-12-04 17:13:35', NULL),
+(645, 6, 'ATUN TUNY 140/ 170 GR', NULL, 'NAVIDAD 2023 (33).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 17:13:58', '2023-12-04 17:13:58', NULL),
+(646, 6, 'CHILE MORENA 210 GR', NULL, 'NAVIDAD 2023 (34).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 17:14:35', '2023-12-04 17:14:35', NULL),
+(647, 6, 'MAYONESA MCCORMICK 190GR', NULL, 'NAVIDAD 2023 (35).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 17:14:57', '2023-12-04 17:14:57', NULL),
+(648, 6, 'LECHE CARNATION', NULL, 'NAVIDAD 2023 (36).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 17:15:39', '2023-12-04 17:15:39', NULL),
+(649, 6, 'CHOCOLATE /CACAHUATE M&M 47.9 GR', NULL, 'NAVIDAD 2023 (37).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 17:16:17', '2023-12-04 17:16:17', NULL),
+(650, 6, 'JABON CORONA C/ENVOLTURA 400 GR', NULL, 'NAVIDAD 2023 (38).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 17:16:45', '2023-12-04 17:16:45', NULL),
+(651, 6, 'DETERGENTE ROMA 500GR', NULL, 'NAVIDAD 2023 (39).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 17:17:20', '2023-12-04 17:17:20', NULL),
+(652, 6, 'LIMPIADO FABULOSO 500ML', NULL, 'NAVIDAD 2023 (40).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 17:17:50', '2023-12-04 17:17:50', NULL),
+(653, 6, 'PAÑO SCOTH BRITE', NULL, 'NAVIDAD 2023 (41).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 17:19:12', '2023-12-04 17:19:12', NULL),
+(654, 6, 'TOALLA SABA BUENAS NOCHES 8PZAS', NULL, 'NAVIDAD 2023 (42).png', '2023-12-04', '2023-12-31', NULL, 0, 10, '2023-12-04 17:19:51', '2023-12-04 17:19:51', NULL),
+(655, 6, 'CHOCOLATE MILKY WAY /SNICKERS', NULL, 'NAVIDAD 2023 (43).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 17:20:24', '2023-12-04 17:20:24', NULL),
+(656, 6, 'CHOCOLATE CARLOS V 18/22GR', NULL, 'NAVIDAD 2023 (45).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 17:20:56', '2023-12-04 17:20:56', NULL),
+(657, 6, 'RAFAELLO COCO / FERRERO ROCHER 3PZAS', NULL, 'NAVIDAD 2023 (46).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 17:21:35', '2023-12-04 17:21:35', NULL),
+(658, 6, 'PALETA RICALETA 20GR', NULL, 'NAVIDAD 2023 (47).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 17:22:49', '2023-12-04 17:22:49', NULL),
+(659, 6, 'VICK VAPORUB', NULL, 'NAVIDAD 2023 (48).png', '2023-12-04', '2023-12-31', NULL, 0, 9, '2023-12-04 17:23:19', '2023-12-04 17:23:19', NULL),
+(660, 6, 'ICEE SLUSH 20 OZ SABORES', NULL, 'NAVIDAD 2023 (49).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 17:23:45', '2023-12-04 17:23:45', NULL),
+(661, 6, 'SUAVICREMAS 102GR', NULL, 'NAVIDAD 2023 (50).png', '2023-12-04', '2023-12-31', NULL, 0, 6, '2023-12-04 17:24:18', '2023-12-04 17:24:18', NULL),
+(662, 6, 'GALLETAS CREMAX', NULL, 'NAVIDAD 2023 (51).png', '2023-12-04', '2023-12-31', NULL, 0, 6, '2023-12-04 17:24:47', '2023-12-04 17:24:47', NULL),
+(663, 6, 'ITALPASTA 180/200GR', NULL, 'NAVIDAD 2023 (52).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 17:25:20', '2023-12-04 17:25:20', NULL),
+(664, 6, 'YOGURT LALA 220 GR', NULL, 'NAVIDAD 2023 (53).png', '2023-12-04', '2023-12-31', NULL, 0, 5, '2023-12-04 17:25:57', '2023-12-04 17:25:57', NULL),
+(665, 6, 'REFRESCO 600ML', NULL, 'NAVIDAD 2023 (54).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 17:26:38', '2023-12-04 17:26:38', NULL),
+(666, 6, 'JUMEX  XOT FRUTAS MIXTAS', NULL, 'NAVIDAD 2023 (55).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 17:27:04', '2023-12-04 17:27:04', NULL),
+(667, 6, 'BEBIDA KOOL 355ML', NULL, 'NAVIDAD 2023 (56).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 17:30:59', '2023-12-04 17:30:59', NULL),
+(668, 6, 'SABRITAS PAKETAXO 70 GR', NULL, 'NAVIDAD 2023 (57).png', '2023-12-04', '2023-12-31', NULL, 0, 3, '2023-12-04 17:31:29', '2023-12-04 17:31:29', NULL),
+(669, 6, 'BARCEL CHIPS 60 GR', NULL, 'NAVIDAD 2023 (58).png', '2023-12-04', '2023-12-31', NULL, 0, 3, '2023-12-04 17:32:05', '2023-12-04 17:32:05', NULL),
+(670, 6, 'MARUCHAN + PEPSI', NULL, 'NAVIDAD 2023 (70).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 17:32:35', '2023-12-04 17:32:35', NULL),
+(671, 6, 'NESTLE 16OZ SABORES + REBANADAS BIMBO', NULL, 'NAVIDAD 2023 (69).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 17:33:10', '2023-12-04 17:33:10', NULL),
+(672, 6, 'NACHOS + PEPSI', NULL, 'NAVIDAD 2023 (71).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 17:33:38', '2023-12-04 17:33:38', NULL),
+(673, 6, 'VIENNETTA CAPUCCINO 650ML', NULL, 'NAVIDAD 2023 (65).png', '2023-12-04', '2023-12-31', NULL, 0, 4, '2023-12-04 17:34:09', '2023-12-04 17:34:09', NULL),
+(674, 6, 'ICEE SLUSH SABORES + PALOMITAS SABORES', NULL, 'NAVIDAD 2023 (72).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 17:34:58', '2023-12-04 17:34:58', NULL),
+(746, 7, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, '25.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 14:52:15', '2024-01-09 14:52:15', NULL),
+(747, 7, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, '26.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 14:53:32', '2024-01-09 14:53:32', NULL),
+(748, 7, 'CERVEZA MODELO LATON 473ML', NULL, '27.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 14:54:13', '2024-01-09 14:54:13', NULL),
+(749, 7, 'CERVEZA VICTORIA LATON 473ML', NULL, '28.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 14:55:03', '2024-01-09 14:55:03', NULL),
+(750, 7, 'CERVEZA CORONA LATON 710ML', NULL, '29.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 14:55:43', '2024-01-09 14:55:43', NULL),
+(751, 7, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, '30.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:17:40', '2024-01-09 15:17:40', NULL),
+(752, 7, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, '31.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:19:33', '2024-01-09 15:19:33', NULL),
+(753, 7, 'CERVEZA CORONA EXTRA 355ML BOTE', NULL, '32.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:20:34', '2024-01-09 15:20:34', NULL),
+(754, 7, 'CERVEZA PACIFICO SUAVE 355ML BOTE', NULL, '33.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:22:08', '2024-01-09 15:22:08', NULL),
+(755, 7, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2LT', NULL, '34.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:25:07', '2024-01-09 15:25:07', NULL),
+(756, 7, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, '35.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:26:36', '2024-01-09 15:26:36', NULL),
+(757, 7, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, '36.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:27:44', '2024-01-09 15:27:44', NULL),
+(758, 7, 'CERVEZA CORONA VIDRIO 355ML', NULL, '37.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:29:05', '2024-01-09 15:29:05', NULL),
+(759, 7, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, '38.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:32:24', '2024-01-09 15:32:24', NULL),
+(760, 7, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, '39.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:33:39', '2024-01-09 15:33:39', NULL),
+(761, 7, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, '40.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 15:34:47', '2024-01-09 15:34:47', NULL),
+(762, 7, 'VINO TINTO CALIFORNIA 1LT', NULL, '41.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 15:36:17', '2024-01-09 15:36:17', NULL),
+(763, 7, 'VINO TINTO MARQUEZ 750ML', NULL, '42.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 15:37:23', '2024-01-09 15:37:23', NULL),
+(764, 7, '1PZ WHISKY RED LABEL 700ML+ 1PZ COR BRILLANTE 2LT', NULL, '43.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 15:38:28', '2024-01-09 15:45:46', NULL),
+(765, 7, '1PZ TEQUILA 100 AÑOS +  1PZ REFRESCO BRILLANTE 2LT', NULL, '44.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 15:42:24', '2024-01-09 15:45:35', NULL),
+(766, 7, '1PZ VODKA ABSOLUT AZUL 750ML + 1 PZ JUM UNICO ARANDANO 960ML', NULL, '45.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 15:43:36', '2024-01-09 15:45:27', NULL),
+(767, 7, 'LICOR MEXGAVIA 440ML', NULL, '46.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 15:45:10', '2024-01-09 15:45:10', NULL),
+(768, 7, 'BEBIDA SKYY 275ML', NULL, '47.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 15:47:17', '2024-01-09 15:47:17', NULL),
+(769, 7, 'BEBIDA JACK DANIEL\'S 350ML', NULL, '48.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 15:48:12', '2024-01-09 15:48:12', NULL),
+(770, 7, 'POUCH PEDIGREE 100GR', NULL, '49.png', '2024-01-09', '2024-01-31', NULL, 0, 14, '2024-01-09 15:50:01', '2024-01-09 15:50:01', NULL),
+(771, 7, 'LIMPIADOR FABULOSO 500ML', NULL, '55.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 15:51:27', '2024-01-09 15:51:27', NULL),
+(772, 7, 'SUAVIZANTE DOWNY FLORAL 360ML', NULL, '56.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 15:52:13', '2024-01-09 15:52:13', NULL),
+(773, 7, 'SHAMPOO HEAD & SHOULDER 90ML', NULL, '57.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 15:53:08', '2024-01-09 15:53:08', NULL),
+(774, 7, 'PAPEL HIGIENICO PREMIER 4PZ/400 HOJAS', NULL, '58.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 15:54:13', '2024-01-09 15:54:13', NULL),
+(775, 7, 'JABON PALMOLIVE NEUTRO ANTIBACTERIAL 120GR', NULL, '59.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 15:55:10', '2024-01-09 15:55:10', NULL),
+(776, 7, 'TOALLA SABA BUENAS NOCHES PAQUETE 8PZ', NULL, '60.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 15:55:59', '2024-01-09 15:55:59', NULL),
+(777, 7, 'CHOCOLATE CARLOS V 18/22GR', NULL, '61.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 15:57:08', '2024-01-09 15:57:08', NULL),
+(778, 7, 'RICOLINO PANDITAS 60GR', NULL, '62.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 15:59:29', '2024-01-09 15:59:29', NULL),
+(779, 7, 'RAFFAELLO COCO/FERRERO ROCHER 3PZ', NULL, '63.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 16:02:15', '2024-01-09 16:02:15', NULL),
+(780, 7, 'PALETA RICALETA 20GR', NULL, '64.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 16:04:08', '2024-01-09 16:04:08', NULL),
+(781, 7, 'ICEE SLUSH SABORES 20OZ', NULL, '65.png', '2024-01-09', '2024-01-31', NULL, 0, 7, '2024-01-09 16:12:54', '2024-01-09 16:12:54', NULL),
+(782, 7, 'GALLETA CREMAX  90GR', NULL, '66.png', '2024-01-09', '2024-01-31', NULL, 0, 6, '2024-01-09 16:17:33', '2024-01-09 16:17:33', NULL),
+(783, 7, 'GALLETA CHOKIS 57/73/84GR', NULL, '67.png', '2024-01-09', '2024-01-31', NULL, 0, 6, '2024-01-09 16:18:33', '2024-01-09 16:18:33', NULL),
+(784, 7, 'SOPA ITALPASTA 180/200GR', NULL, '68.png', '2024-01-09', '2024-01-31', NULL, 0, 1, '2024-01-09 16:19:23', '2024-01-09 16:19:23', NULL),
+(785, 7, 'YOGURT LALA SABORES 220/250GR', NULL, '69.png', '2024-01-09', '2024-01-31', NULL, 0, 5, '2024-01-09 16:30:48', '2024-01-09 16:30:48', NULL),
+(786, 7, 'BONDY MEGA HUEVO', NULL, '80.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 16:44:53', '2024-01-09 16:44:53', NULL),
+(787, 7, 'PALETA PAYASO RICOLINO 45GR', NULL, '81.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 16:47:22', '2024-01-09 16:47:22', NULL),
+(788, 7, 'HOLANDA PALETA MAGNUM 90ML', NULL, '82.png', '2024-01-09', '2024-01-31', NULL, 0, 4, '2024-01-09 16:48:56', '2024-01-09 16:48:56', NULL),
+(789, 7, 'BEBIDA KOOL SABORES 355ML', NULL, '83.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 16:50:10', '2024-01-09 16:50:10', NULL),
+(790, 7, 'SUERO ELECTROLIT 625ML', NULL, '84.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 16:52:46', '2024-01-09 16:52:46', NULL),
+(791, 7, '1PZ ICEE SLUSH 20OZ + 1 PZ PALOMITAS ACT II', NULL, '90.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 16:55:19', '2024-01-09 16:55:19', NULL),
+(792, 7, '1PZ LECHE NUTRI 1LT+ 1PAQ. CEREAL CORN FLAKES 150GR.', NULL, '91.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:04:39', '2024-01-09 17:04:39', NULL),
+(793, 7, '1PZ SALSA VALENTINA 350ML + 1PZ SALSA  CATSUP CLEMENTE 340GR', NULL, '92.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:06:01', '2024-01-09 17:06:01', NULL),
+(794, 7, '1PZ LA LECHERITA 100GR + 1PZ HARINA PRONTO HOT CAKES 50GR', NULL, '93.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:06:52', '2024-01-09 17:06:52', NULL),
+(795, 7, '1PZ HOT DOG + 1PZ COCA COLA CHOBY 55ML', NULL, '94.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:08:00', '2024-01-09 17:08:00', NULL),
+(796, 7, 'POUCH WHISKAS 85GR', NULL, '50.png', '2024-01-09', '2024-01-31', NULL, 0, 14, '2024-01-09 17:08:53', '2024-01-09 17:08:53', NULL),
+(797, 7, 'LECHE CARNATION CLAVEL 360ML', NULL, '51.png', '2024-01-09', '2024-01-31', NULL, 0, 1, '2024-01-09 17:09:31', '2024-01-09 17:09:31', NULL),
+(798, 7, 'DETERGENTE ROMA 500GR', NULL, '52.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 17:10:33', '2024-01-09 17:10:33', NULL),
+(799, 7, 'DETERGENTE ARIEL ORIGINAL 250GR', NULL, '53.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 17:11:32', '2024-01-09 17:11:32', NULL),
+(800, 7, 'DETERGENTE LIQUIDO AXION 280ML', NULL, '54.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 17:12:17', '2024-01-09 17:12:17', NULL),
+(801, 7, 'YOGURT LALA GO 170GR', NULL, '70.png', '2024-01-09', '2024-01-31', NULL, 0, 5, '2024-01-09 17:13:13', '2024-01-09 17:13:13', NULL),
+(802, 7, 'GERBER 100GR', NULL, '71.png', '2024-01-09', '2024-01-31', NULL, 0, 20, '2024-01-09 17:13:54', '2024-01-09 17:13:54', NULL),
+(803, 7, 'REFRESCOS DE SABORES 600ML', NULL, '72.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 17:14:35', '2024-01-09 17:14:35', NULL),
+(804, 7, 'JUGO JUMEX 355ML', NULL, '73.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 17:15:03', '2024-01-09 17:15:03', NULL),
+(805, 7, 'JUMEX ARIZONA 460ML', NULL, '74.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 17:15:32', '2024-01-09 17:15:32', NULL),
+(806, 7, 'JUGO BOING 1LT SABORES', NULL, '75.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 17:16:12', '2024-01-09 17:16:12', NULL),
+(807, 7, 'SABRITAS RUFFLES 53/55GR', NULL, '76.png', '2024-01-09', '2024-01-31', NULL, 0, 3, '2024-01-09 17:16:46', '2024-01-09 17:16:46', NULL),
+(808, 7, 'SABRITAS FRITOS 65GR', NULL, '77.png', '2024-01-09', '2024-01-31', NULL, 0, 3, '2024-01-09 17:17:39', '2024-01-09 17:17:39', NULL),
+(809, 7, 'SABRITAS CHEETOS 27-52GR', NULL, '78.png', '2024-01-09', '2024-01-31', NULL, 0, 3, '2024-01-09 17:18:20', '2024-01-09 17:18:20', NULL),
+(810, 7, 'HUEVO KINDER', NULL, '79.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 17:18:45', '2024-01-09 17:18:45', NULL),
+(811, 7, 'PILA DURACELL AA/AAA', NULL, '85.png', '2024-01-09', '2024-01-31', NULL, 0, 12, '2024-01-09 17:19:35', '2024-01-09 17:19:35', NULL),
+(812, 7, 'PILA PANASONIC EVOLTA AA/AAA', NULL, '86.png', '2024-01-09', '2024-01-31', NULL, 0, 12, '2024-01-09 17:20:17', '2024-01-09 17:20:17', NULL),
+(813, 7, '1PZ BARRITAS + 1PZ NESTLE 16OZ', NULL, '87.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:20:51', '2024-01-09 17:20:51', NULL),
+(814, 7, '1PZ PEPSI 296ML + 1PZ SOPA MARUCHAN 54GR', NULL, '88.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:22:11', '2024-01-09 17:22:11', NULL),
+(815, 7, '1PZ PZ PEPSI 296ML LATA + 1 PZ NACHOS PREPARADOS', NULL, '89.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:25:48', '2024-01-09 17:25:48', NULL),
+(816, 7, '1PZ HOT DOG + 1PZ JUGO BOING 250ML', NULL, '95.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 17:31:21', '2024-01-09 17:31:21', NULL),
+(817, 6, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, 'PAGWEB FEB 2024 (1).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 10:51:36', '2024-02-02 10:51:36', NULL),
+(818, 6, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, 'PAGWEB FEB 2024 (2).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 10:52:11', '2024-02-02 10:52:11', NULL),
+(819, 6, 'CERVEZA MODELO LATON 473ML', NULL, 'PAGWEB FEB 2024 (3).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 10:57:42', '2024-02-02 10:57:42', NULL),
+(820, 6, 'CERVEZA VICTORIA LATON 473ML', NULL, 'PAGWEB FEB 2024 (4).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 10:58:08', '2024-02-02 10:58:08', NULL),
+(821, 6, 'CERVEZA CORONA LATON 710ML', NULL, 'PAGWEB FEB 2024 (5).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 10:58:44', '2024-02-02 10:58:44', NULL),
+(822, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, 'PAGWEB FEB 2024 (6).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:13:54', '2024-02-02 11:13:54', NULL),
+(823, 6, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, 'PAGWEB FEB 2024 (7).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:18:48', '2024-02-02 11:18:48', NULL),
+(824, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', NULL, 'PAGWEB FEB 2024 (8).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:20:27', '2024-02-02 11:20:27', NULL),
+(826, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2LT', NULL, 'PAGWEB FEB 2024 (9).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:21:52', '2024-02-02 11:21:52', NULL),
+(827, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, 'PAGWEB FEB 2024 (10).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:22:38', '2024-02-02 11:22:38', NULL),
+(828, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'PAGWEB FEB 2024 (11).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:23:56', '2024-02-02 11:23:56', NULL),
+(829, 6, 'CERVEZA CORONA VIDRIO 355ML', NULL, 'PAGWEB FEB 2024 (12).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:26:21', '2024-02-02 11:26:21', NULL),
+(830, 6, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, 'PAGWEB FEB 2024 (13).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:27:15', '2024-02-02 11:27:15', NULL),
+(831, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, 'PAGWEB FEB 2024 (14).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:27:59', '2024-02-02 11:27:59', NULL),
+(832, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'PAGWEB FEB 2024 (15).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 11:28:36', '2024-02-02 11:28:36', NULL),
+(833, 6, 'WHISKY PASSPORT 700ML', NULL, 'PAGWEB FEB 2024 (16).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 11:29:06', '2024-02-02 11:29:06', NULL),
+(834, 6, 'VINO TINTO CALIFORNIA 1LT', NULL, 'PAGWEB FEB 2024 (17).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 11:29:39', '2024-02-02 11:29:39', NULL),
+(835, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML', NULL, 'PAGWEB FEB 2024 (18).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 11:30:30', '2024-02-02 11:30:30', NULL),
+(836, 6, 'WJISKY RED LABEL 700ML + REFRESCO BRILLANTE 2LT', NULL, 'PAGWEB FEB 2024 (19).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 11:31:16', '2024-02-02 11:31:16', NULL),
+(837, 6, 'LICOR RANCHO ESCONDIDO 750ML', NULL, 'PAGWEB FEB 2024 (20).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 11:31:52', '2024-02-02 11:31:52', NULL),
+(838, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'PAGWEB FEB 2024 (21).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 11:32:25', '2024-02-02 11:32:25', NULL),
+(839, 6, 'LICOR MEXGAVIA 440ML', NULL, 'PAGWEB FEB 2024 (22).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 11:34:51', '2024-02-02 11:34:51', NULL),
+(840, 6, 'BEBIDA SKYY 275ML', NULL, 'PAGWEB FEB 2024 (23).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 11:35:40', '2024-02-02 11:35:40', NULL),
+(841, 6, 'POUCH PEDIGREE 85GR', NULL, 'PAGWEB FEB 2024 (24).jpg', '2024-02-01', '2024-02-29', NULL, 0, 14, '2024-02-02 11:36:59', '2024-02-02 11:36:59', NULL),
+(842, 6, 'POUCH WHISKAS 85GR', NULL, 'PAGWEB FEB 2024 (25).jpg', '2024-02-01', '2024-02-29', NULL, 0, 14, '2024-02-02 11:37:31', '2024-02-02 11:37:31', NULL),
+(843, 6, 'FIBRA SCOTCH BRITE VERDE + DETERGENTE AXION LIMON 500GR', NULL, 'PAGWEB FEB 2024 (26).jpg', '2024-02-01', '2024-02-29', NULL, 0, 16, '2024-02-02 11:38:30', '2024-02-02 11:38:30', NULL),
+(844, 6, 'DETERGENTE ARIEL ORIGINAL 250GR', NULL, 'PAGWEB FEB 2024 (27).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 11:39:19', '2024-02-02 11:39:19', NULL),
+(845, 6, 'DETERGENTE LIQUIDO AXION LIMON 280ML', NULL, 'PAGWEB FEB 2024 (28).jpg', '2024-02-01', '2024-02-29', NULL, 0, 11, '2024-02-02 11:40:15', '2024-02-02 11:40:15', NULL),
+(846, 6, 'SUAVIZANTE DOWNY FLORAL 360ML', NULL, 'PAGWEB FEB 2024 (29).jpg', '2024-02-01', '2024-02-29', NULL, 0, 11, '2024-02-02 11:40:49', '2024-02-02 11:40:49', NULL),
+(847, 6, 'JABON ZOTE ROSA 200GR', NULL, 'PAGWEB FEB 2024 (30).jpg', '2024-02-01', '2024-02-29', NULL, 0, 11, '2024-02-02 11:41:26', '2024-02-02 11:41:26', NULL),
+(848, 6, 'SHAMPOO HEAD & SHOULDER 90ML', NULL, 'PAGWEB FEB 2024 (31).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 11:42:29', '2024-02-02 11:42:29', NULL),
+(849, 6, 'CREMA HINDS 90ML', NULL, 'PAGWEB FEB 2024 (32).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 11:42:55', '2024-02-02 11:42:55', NULL),
+(850, 6, 'PRESERVATIVO PRUDENCE 3PZ', NULL, 'PAGWEB FEB 2024 (33).jpg', '2024-02-01', '2024-02-29', NULL, 0, 9, '2024-02-02 11:43:31', '2024-02-02 11:43:31', NULL),
+(851, 6, 'PAPEL HIGIÉNICO PREMIER 4PZ/400 HOJAS', NULL, 'PAGWEB FEB 2024 (34).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 11:44:31', '2024-02-02 11:44:31', NULL),
+(852, 6, 'JABÓN PALMOLIVE NEUTRO ANTIBACTERIAL', NULL, 'PAGWEB FEB 2024 (35).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 11:52:51', '2024-02-02 11:52:51', NULL),
+(853, 6, 'M&M CHOCOLATE / CACAHUATE 42GR', NULL, 'PAGWEB FEB 2024 (36).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 11:53:50', '2024-02-02 11:53:50', NULL),
+(854, 6, 'CHOCOLATE SNICKERS/ MILKYWAY', NULL, 'PAGWEB FEB 2024 (37).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 12:16:09', '2024-02-02 12:16:09', NULL),
+(855, 6, 'CHOCOLATE CARLOS V / CARLOS V AMARGO', NULL, 'PAGWEB FEB 2024 (38).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 12:16:57', '2024-02-02 12:16:57', NULL),
+(856, 6, 'CHOCOLATE KIT KAT 41.5G', NULL, 'PAGWEB FEB 2024 (39).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 12:17:33', '2024-02-02 12:17:33', NULL),
+(857, 6, 'RICOLINO PANDITAS', NULL, 'PAGWEB FEB 2024 (40).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 12:18:11', '2024-02-02 12:18:11', NULL),
+(858, 6, 'ICEE SLUSH 20 OZ SABORES', NULL, 'PAGWEB FEB 2024 (41).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 12:18:44', '2024-02-02 12:18:44', NULL),
+(859, 6, 'BIGOTE TIA ROSA 60GR + CAPUCCINO SABORES', NULL, 'PAGWEB FEB 2024 (42).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 12:19:47', '2024-02-02 12:19:47', NULL),
+(860, 6, 'MARUCHAN + PEPSI', NULL, 'PAGWEB FEB 2024 (43).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 12:20:14', '2024-02-02 12:20:14', NULL),
+(861, 6, 'PEPSI + NACHOS PREPARADOS', NULL, 'PAGWEB FEB 2024 (44).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 12:20:43', '2024-02-02 12:20:43', NULL),
+(862, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'PAGWEB FEB 2024 (45).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 12:21:33', '2024-02-02 12:21:33', NULL),
+(863, 6, 'CEREAL KELLOGS  CORN FLAKES + leche nutri', NULL, 'PAGWEB FEB 2024 (46).jpg', '2024-02-01', '2024-02-29', NULL, 0, 16, '2024-02-02 12:34:10', '2024-02-02 12:34:10', NULL),
+(864, 6, 'SALSA VALENTINA + SALSA CATSUP CLEMENTE', NULL, 'PAGWEB FEB 2024 (47).jpg', '2024-02-01', '2024-02-29', NULL, 0, 16, '2024-02-02 12:35:05', '2024-02-02 12:35:05', NULL),
+(865, 6, 'HOT DOG + JUGO BOING 250ML', NULL, 'PAGWEB FEB 2024 (48).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 12:35:29', '2024-02-02 12:35:29', NULL),
+(866, 6, 'YOGURT LALA GO 170GR', NULL, 'PAGWEB FEB 2024 (49).jpg', '2024-02-01', '2024-02-29', NULL, 0, 5, '2024-02-02 12:36:15', '2024-02-02 12:36:15', NULL),
+(867, 6, 'TE LIPTON 600ML', NULL, 'PAGWEB FEB 2024 (50).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 12:36:58', '2024-02-02 12:36:58', NULL),
+(868, 6, 'MERMELADA MC CORMICK FRESA/PIÑA', NULL, 'PAGWEB FEB 2024 (51).jpg', '2024-02-01', '2024-02-29', NULL, 0, 1, '2024-02-02 12:41:24', '2024-02-02 12:41:24', NULL),
+(869, 6, 'MAZAPAN UNTABLE 400GR', NULL, 'PAGWEB FEB 2024 (52).jpg', '2024-02-01', '2024-02-29', NULL, 0, 1, '2024-02-02 12:43:47', '2024-02-02 12:43:47', NULL),
+(870, 6, 'JUGO JUMEX 355ML', NULL, 'PAGWEB FEB 2024 (53).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 12:44:18', '2024-02-02 12:44:18', NULL),
+(871, 6, 'GALLETA CHOKIS 57 -84GR', NULL, 'PAGWEB FEB 2024 (54).jpg', '2024-02-01', '2024-02-29', NULL, 0, 6, '2024-02-02 12:47:05', '2024-02-02 12:47:05', NULL),
+(872, 6, 'BARRA BRAN FRUT 58 GR', NULL, 'PAGWEB FEB 2024 (55).jpg', '2024-02-01', '2024-02-29', NULL, 0, 6, '2024-02-02 12:48:07', '2024-02-02 12:48:07', NULL),
+(873, 6, 'GANSITO MARINELA', NULL, 'PAGWEB FEB 2024 (56).jpg', '2024-02-01', '2024-02-29', NULL, 0, 6, '2024-02-02 12:49:09', '2024-02-02 12:49:09', NULL),
+(874, 6, 'LECHE ALPURA FRESA, VAINILLA, CHOCOLATE 200ML', NULL, 'PAGWEB FEB 2024 (57).jpg', '2024-02-01', '2024-02-29', NULL, 0, 5, '2024-02-02 12:49:58', '2024-02-02 12:49:58', NULL),
+(875, 6, 'JUMEX ARIZONA 460ML', NULL, 'PAGWEB FEB 2024 (58).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 12:50:31', '2024-02-02 12:50:31', NULL),
+(876, 6, 'JUMEX UNIXO 475ML', NULL, 'PAGWEB FEB 2024 (59).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 12:51:02', '2024-02-02 12:51:02', NULL),
+(877, 6, 'JUGO BOING 1LT SABORES', NULL, 'PAGWEB FEB 2024 (60).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 13:17:03', '2024-02-02 13:17:03', NULL),
+(878, 6, 'SABRITAS FRITOS 65GR', NULL, 'PAGWEB FEB 2024 (61).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 13:22:21', '2024-02-02 13:22:21', NULL),
+(879, 6, 'DORITOS 45 - 65 GR', NULL, 'PAGWEB FEB 2024 (62).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 13:23:06', '2024-02-02 13:23:06', NULL),
+(880, 6, 'PRINGLES 37/40GR', NULL, 'PAGWEB FEB 2024 (63).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 13:24:41', '2024-02-02 13:24:41', NULL),
+(881, 6, 'SABRITAS CHEETOS', NULL, 'PAGWEB FEB 2024 (64).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 13:25:17', '2024-02-02 13:25:17', NULL),
+(882, 6, 'HOLANDA PALETA CHEMISSE 65ML', NULL, 'PAGWEB FEB 2024 (65).jpg', '2024-02-01', '2024-02-29', NULL, 0, 4, '2024-02-02 13:26:01', '2024-02-02 13:26:01', NULL),
+(883, 6, 'HUEVO KINDER 20GR', NULL, 'PAGWEB FEB 2024 (66).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 13:26:26', '2024-02-02 13:26:26', NULL),
+(884, 6, 'BONDY MEGA HUEVO PRESENTACIONES', NULL, 'PAGWEB FEB 2024 (67).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 13:26:50', '2024-02-02 13:26:50', NULL),
+(885, 6, 'PALETA PAYASO RICOLINO 45GR', NULL, 'PAGWEB FEB 2024 (68).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 13:27:25', '2024-02-02 13:27:25', NULL),
+(886, 6, 'SUERO ELECTROLIT SABORES 625ML', NULL, 'PAGWEB FEB 2024 (69).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 13:27:49', '2024-02-02 13:27:49', NULL),
+(887, 6, 'SUERO ELECTROLIT SABORES 625ML', NULL, 'marzo 2024 v1 (1).jpg', '2024-03-01', '2024-03-31', NULL, 0, 9, '2024-03-02 12:45:19', '2024-03-02 12:45:19', NULL),
+(888, 6, 'CERVEZA CORONA LIGHT LATON 473ML', '4 X $88.00', 'marzo 2024 v1 (2).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 12:46:57', '2024-03-02 12:46:57', NULL),
+(889, 6, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, 'marzo 2024 v1 (3).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 12:59:59', '2024-03-02 12:59:59', NULL),
+(890, 6, 'CERVEZA MODELO ESPECIAL LATON 473ML', NULL, 'marzo 2024 v1 (4).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:01:02', '2024-03-02 13:01:02', NULL),
+(891, 6, 'CERVEZA VICTORIA LATON 473ML', NULL, 'marzo 2024 v1 (5).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:02:23', '2024-03-02 13:02:23', NULL),
+(892, 6, 'CERVEZA CORONA LATON 710ML', NULL, 'marzo 2024 v1 (6).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:03:05', '2024-03-02 13:03:05', NULL),
+(893, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, 'marzo 2024 v1 (7).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:03:40', '2024-03-02 13:03:40', NULL),
+(894, 6, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, 'marzo 2024 v1 (8).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:04:13', '2024-03-02 13:04:13', NULL),
+(895, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', NULL, 'marzo 2024 v1 (9).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:09:49', '2024-03-02 13:09:49', NULL),
+(896, 6, 'CERVEZA VICTORIA MEGAFAMILIAR', NULL, 'marzo 2024 v1 (10).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:25:43', '2024-03-02 13:25:43', NULL),
+(897, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, 'marzo 2024 v1 (11).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:26:19', '2024-03-02 13:26:19', NULL),
+(898, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'marzo 2024 v1 (12).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:27:04', '2024-03-02 13:27:04', NULL),
+(899, 6, 'CERVEZA CORONA EXTRA VIDRIO 355ML', NULL, 'marzo 2024 v1 (13).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:27:32', '2024-03-02 13:27:32', NULL),
+(900, 6, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, 'marzo 2024 v1 (14).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:28:27', '2024-03-02 13:28:27', NULL),
+(901, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, 'marzo 2024 v1 (15).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:32:43', '2024-03-02 13:32:43', NULL),
+(902, 6, 'CERVEZA MODELO ESPECIAL CRISTAL', NULL, 'marzo 2024 v1 (16).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:37:15', '2024-03-02 13:37:15', NULL),
+(903, 6, 'CERVEZA MEGA FAMILIAR + VICKY VASO ESCARCHADO', NULL, 'marzo 2024 v1 (17).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 13:38:40', '2024-03-02 13:38:40', NULL),
+(904, 6, 'WHISKY PASSPORT 700ML', NULL, 'marzo 2024 v1 (18).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 13:39:30', '2024-03-02 13:39:30', NULL),
+(905, 6, 'VODKA SMIRNOFF TAMARINDO 750ML', '1 X $265.00', 'marzo 2024 v1 (19).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 13:40:49', '2024-03-02 13:40:49', NULL),
+(906, 6, 'VODKA ABOSLUT AZUL 750ML + JUMEX UNICO ARANDANO 960ML', NULL, 'marzo 2024 v1 (20).jpg', '2024-03-01', '2024-03-31', NULL, 0, 16, '2024-03-02 13:41:18', '2024-03-02 13:41:18', NULL),
+(907, 6, 'BRANDY TORRES 10 700ML + COCA COLA 1.25L', NULL, 'marzo 2024 v1 (21).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 13:43:33', '2024-03-02 13:43:33', NULL),
+(908, 6, 'RON BACARDI BLANCO 750 ML + JUGO ARIZONA 460ML', NULL, 'marzo 2024 v1 (22).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 13:47:27', '2024-03-02 13:47:27', NULL),
+(909, 6, 'LICOR RANCHO ESCONDIDO 750ML + BRILLANTE 2LT', NULL, 'marzo 2024 v1 (23).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 14:13:19', '2024-03-02 14:13:19', NULL),
+(910, 6, 'TEQUILA CABRITO REPOSADO 750ML + BRILLANTE 2LT', NULL, 'marzo 2024 v1 (24).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 14:13:42', '2024-03-02 14:13:42', NULL),
+(911, 6, 'POUCH PEDIGREE 85GR', NULL, 'marzo 2024 v1 (25).jpg', '2024-03-01', '2024-03-31', NULL, 0, 14, '2024-03-02 14:14:15', '2024-03-02 14:14:15', NULL),
+(912, 6, 'POUCH WHISKAS 85 GR', NULL, 'marzo 2024 v1 (26).jpg', '2024-03-01', '2024-03-31', NULL, 0, 14, '2024-03-02 14:14:49', '2024-03-02 14:14:49', NULL),
+(913, 6, 'JABON ZOTE ROSA PASTA 200GR', NULL, 'marzo 2024 v1 (27).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 14:15:28', '2024-03-02 14:15:28', NULL),
+(914, 6, 'LIMPIADOR CLARASOL 1LT', NULL, 'marzo 2024 v1 (28).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 14:16:12', '2024-03-02 14:16:12', NULL),
+(915, 6, 'GALLETAS TARTINAS TIA ROSA 6PZ', NULL, 'marzo 2024 v1 (29).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 14:18:40', '2024-03-02 14:18:40', NULL),
+(916, 6, 'SARDINA CLAMEX 425GR', NULL, 'marzo 2024 v1 (30).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:19:11', '2024-03-02 14:19:11', NULL),
+(917, 6, 'CREMA CALAHUA COCO 480ML', NULL, 'marzo 2024 v1 (31).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:20:03', '2024-03-02 14:20:03', NULL),
+(918, 6, 'ATUN DOLOES 133/140GR', NULL, 'marzo 2024 v1 (32).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:20:50', '2024-03-02 14:20:50', NULL),
+(919, 6, 'CREMA HINDS 90 ML', NULL, 'marzo 2024 v1 (33).jpg', '2024-03-01', '2024-03-31', NULL, 0, 10, '2024-03-02 14:21:55', '2024-03-02 14:21:55', NULL),
+(920, 6, 'ACETE DE OLIVO JALOMA 60ML', NULL, 'marzo 2024 v1 (34).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:22:28', '2024-03-02 14:22:28', NULL),
+(921, 6, 'VICK VAPORUB', NULL, 'marzo 2024 v1 (35).jpg', '2024-03-01', '2024-03-31', NULL, 0, 9, '2024-03-02 14:22:53', '2024-03-02 14:22:53', NULL),
+(922, 6, 'CHICLE TRIDENT 13.6GR', NULL, 'marzo 2024 v1 (36).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 14:24:34', '2024-03-02 14:24:34', NULL),
+(923, 6, 'BUBBALOO ROLLO 56.7GR', NULL, 'marzo 2024 v1 (37).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 14:25:24', '2024-03-02 14:25:24', NULL),
+(924, 6, 'PELON PELONAZO TAMARINDO 80GR', NULL, 'marzo 2024 v1 (38).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 14:26:02', '2024-03-02 14:26:02', NULL),
+(925, 6, 'DETERGENTE  MAS COLOR LIQUIDO', NULL, 'marzo 2024 v1 (39).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 14:26:35', '2024-03-02 14:26:35', NULL),
+(926, 6, 'HOLANDA MORDISKO 105 GR', NULL, 'marzo 2024 v1 (40).jpg', '2024-03-01', '2024-03-31', NULL, 0, 4, '2024-03-02 14:32:16', '2024-03-02 14:32:16', NULL),
+(927, 6, 'PINGUINOS MARINELA', NULL, 'marzo 2024 v1 (41).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 14:32:41', '2024-03-02 14:32:41', NULL),
+(928, 6, 'LECHE NITO /HERSHEYS 200/236ML', NULL, 'marzo 2024 v1 (42).jpg', '2024-03-01', '2024-03-31', NULL, 0, 5, '2024-03-02 14:33:36', '2024-03-02 14:33:36', NULL),
+(929, 6, 'BRAN FRUT 58 GR', NULL, 'marzo 2024 v1 (43).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 14:34:40', '2024-03-02 14:34:40', NULL),
+(930, 6, 'GANSITO MARINELA', NULL, 'marzo 2024 v1 (44).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 14:35:08', '2024-03-02 14:35:08', NULL),
+(931, 6, 'SUAVICREMAS 102 GR', NULL, 'marzo 2024 v1 (45).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 14:36:08', '2024-03-02 14:36:08', NULL),
+(932, 6, 'ENERGIZANTE MONSTER 473ML', NULL, 'marzo 2024 v1 (46).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 14:36:46', '2024-03-02 14:36:46', NULL),
+(933, 6, 'REFRESCO VARIEDADES 3LT', NULL, 'marzo 2024 v1 (47).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 14:37:23', '2024-03-02 14:37:23', NULL),
+(934, 6, 'JABÓN PALMOLIVE NEUTRO ANTIBACTERIAL 120GR', NULL, 'marzo 2024 v1 (48).jpg', '2024-03-01', '2024-03-31', NULL, 0, 10, '2024-03-02 14:38:06', '2024-03-02 14:38:06', NULL),
+(935, 6, 'M&M CHOCOLATE / CACAHUATE 42GR', NULL, 'marzo 2024 v1 (49).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 14:38:51', '2024-03-02 14:38:51', NULL),
+(936, 6, 'ICEE SLUSH SABORES 20 OZ', NULL, 'marzo 2024 v1 (51).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 14:39:26', '2024-03-02 14:39:26', NULL),
+(937, 6, 'NITO BIMBO + NESTLE 16 OZ SABORES', NULL, 'marzo 2024 v1 (52).jpg', '2024-03-01', '2024-03-31', NULL, 0, 16, '2024-03-02 14:39:57', '2024-03-02 14:39:57', NULL),
+(938, 6, 'PEPSI 295ML + MARUCHAN SABORES', NULL, 'marzo 2024 v1 (53).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 14:40:42', '2024-03-02 14:40:42', NULL),
+(939, 6, 'PEPSI LATA 295ML + NACHOS PREPARADOS', NULL, 'marzo 2024 v1 (54).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 14:41:07', '2024-03-02 14:41:07', NULL),
+(940, 6, 'ICEE SLUSH SABORES + PALOMITAS SABORES', NULL, 'marzo 2024 v1 (55).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 14:41:40', '2024-03-02 14:41:40', NULL),
+(941, 6, 'FIBRA SCOTCH BRITE VERDE + DETERGENTE AXION LIMON 500GR', NULL, 'marzo 2024 v1 (56).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 14:42:29', '2024-03-02 14:42:29', NULL),
+(942, 6, 'SOPA ITALPASTA SPAGUETTI 200GR + PURÉ DE TOMATE DEL FUERTE 210GR', NULL, 'marzo 2024 v1 (57).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:43:33', '2024-03-02 14:43:33', NULL),
+(943, 6, 'PAN BIMBO TOSTADO 210 GR + LA LECHERITA  NESTLE  100GR', NULL, 'marzo 2024 v1 (58).jpg', '2024-03-01', '2024-03-31', NULL, 0, 16, '2024-03-02 14:44:38', '2024-03-02 14:44:38', NULL),
+(944, 6, 'SAZONADOR MAGGY JUGO 100ML + SALSA INGLESA C&B 145ML', NULL, 'marzo 2024 v1 (59).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:45:34', '2024-03-02 14:45:34', NULL),
+(945, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'marzo 2024 v1 (60).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 14:46:03', '2024-03-02 14:46:03', NULL),
+(946, 6, 'HOT DOG + JUGO BOING 250ML', NULL, 'marzo 2024 v1 (61).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 14:48:43', '2024-03-02 14:48:43', NULL),
+(947, 6, 'TE LIPTON 600ML', NULL, 'marzo 2024 v1 (62).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 14:49:16', '2024-03-02 14:49:16', NULL),
+(948, 6, 'CLAMATO TOMATO 1.89LT', NULL, 'marzo 2024 v1 (63).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 14:49:55', '2024-03-02 14:49:55', NULL),
+(949, 6, 'MERMELADA MC CORMICK FRESA/PIÑA', NULL, 'marzo 2024 v1 (64).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 14:50:40', '2024-03-02 14:50:40', NULL),
+(950, 6, 'JUMEX  XOT FRUTAS MIXTAS 470 ML', NULL, 'marzo 2024 v1 (66).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 14:51:23', '2024-03-02 14:51:23', NULL),
+(951, 6, 'JUMEX UNICO 475ML', NULL, 'marzo 2024 v1 (67).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 14:54:00', '2024-03-02 14:54:00', NULL),
+(952, 6, 'BARCEL TAKIS 56GR', NULL, 'marzo 2024 v1 (68).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 15:00:12', '2024-03-02 15:00:12', NULL),
+(953, 6, 'SABRITAS RANCHERITOS 60GR', NULL, 'marzo 2024 v1 (69).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 15:05:15', '2024-03-02 15:05:15', NULL),
+(954, 6, 'BARCEL PAPAS CHIPS 60GR', NULL, 'marzo 2024 v1 (70).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 15:06:20', '2024-03-02 15:06:20', NULL),
+(955, 6, 'DORITOS 45 - 65 GR', NULL, 'marzo 2024 v1 (71).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 15:06:53', '2024-03-02 15:06:53', NULL),
+(956, 6, 'CHOCOLATE KIT KAT 41.56GR', NULL, 'marzo 2024 v1 (72).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 15:08:13', '2024-03-02 15:08:13', NULL),
+(957, 6, 'PRINGLES 37/40GR', NULL, 'marzo 2024 v1 (73).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 15:08:43', '2024-03-02 15:08:43', NULL),
+(958, 6, 'BEBIDAS CARIBE COOLER 300ML', NULL, 'marzo 2024 v2 (1).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 15:09:17', '2024-03-02 15:09:17', NULL),
+(959, 6, 'MAZAPAN UNTABLE 400GR', NULL, 'marzo 2024 v2 (2).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 15:09:43', '2024-03-02 15:09:43', NULL),
+(960, 6, 'CERVEZA CORONA LATON 710 ML', NULL, 'ABRIL 2024 (2).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 17:00:41', '2024-04-04 15:11:04', 62),
+(961, 6, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, 'ABRIL 2024 (3).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 17:01:16', '2024-04-04 15:12:11', 52),
+(962, 6, 'CERVEZA CORONA EXTRA LATÓN 473ML', NULL, 'ABRIL 2024 (4).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 17:01:57', '2024-04-04 15:12:11', 51),
+(963, 6, 'CERVEZA MODELO LATON 473ML', NULL, 'ABRIL 2024 (5).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 17:14:37', '2024-04-04 15:12:11', 50),
+(964, 6, 'CERVEZA VICTORIA LATON 473 ML', NULL, 'ABRIL 2024 (6).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 17:28:50', '2024-04-04 15:12:11', 49),
+(972, 6, 'CERVEZA NEGRA MODELO VIDRIO 355ML', NULL, 'ABRIL 2024 (14).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-04 10:29:00', '2024-04-29 20:04:04', 47),
+(973, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'ABRIL 2024 (15).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-04 10:29:44', '2024-04-29 20:04:04', 46),
+(974, 6, 'BEBIDA VIÑA REAL 330ML', '4 X $78.00', 'ABRIL 2024 (61).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-04 10:33:08', '2024-04-29 20:04:04', 45),
+(975, 6, 'VINO SUNSET PASSSION BERRY 750 ML', NULL, 'ABRIL 2024 (62).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 10:33:51', '2024-04-29 20:04:04', 44),
+(976, 6, 'VODKA SMIRNOFF 1LT', NULL, 'ABRIL 2024 (63).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 10:34:41', '2024-04-29 20:04:04', 43),
+(977, 6, 'BRANDY TORRES 10 100ML + COCA COLA 2.7LT', NULL, 'ABRIL 2024 (64).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 10:35:57', '2024-04-29 20:04:04', 48),
+(978, 6, 'RON BARCARDI BLANCO 750ML + JUGO ARIZONA 460ML', NULL, 'ABRIL 2024 (65).png', '2024-04-01', '2024-04-30', NULL, 0, 16, '2024-04-04 10:36:58', '2024-04-04 15:11:04', 69),
+(979, 6, 'TEQUILA CABRITO 750ML + 250ML + REFRESCO BRILLANTE 2LT', NULL, 'ABRIL 2024 (66).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 10:37:53', '2024-04-04 15:11:04', 68),
+(980, 6, 'WHISKY HIHGLAND CHIEF 750ML + REFRESCO BRILLANTE 2LT', NULL, 'ABRIL 2024 (67).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 10:42:09', '2024-04-04 15:11:04', 67),
+(981, 6, 'VIDKA ABSOLUT AZUL 750ML + JUMEX UNICO ARANDANO 960ML', NULL, 'ABRIL 2024 (68).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 10:42:57', '2024-04-04 15:11:04', 66),
+(982, 6, 'POUCH WHISKAS 85GR', NULL, 'ABRIL 2024 (58).png', '2024-04-01', '2024-04-30', NULL, 0, 14, '2024-04-04 10:44:01', '2024-04-04 15:11:04', 65),
+(983, 6, 'POUCH PEDIGREE 100 GR', NULL, 'ABRIL 2024 (59).png', '2024-04-01', '2024-04-30', NULL, 0, 14, '2024-04-04 11:19:39', '2024-04-04 15:11:04', 64),
+(984, 6, 'DETERGENTE LIQUIDO MAS COLOR 415ML', NULL, 'ABRIL 2024 (57).png', '2024-04-01', '2024-04-30', NULL, 0, 11, '2024-04-04 11:23:26', '2024-04-04 15:11:04', 63),
+(985, 6, 'DETERGENTE BLANCA NIEVES 500GR + LIMPIADOR CLARASOL 500 ML', NULL, 'ABRIL 2024 (70).png', '2024-04-01', '2024-04-30', NULL, 0, 11, '2024-04-04 11:24:52', '2024-04-04 15:12:11', 54),
+(986, 6, 'CEPILLO DENTAL COLGATE + PASTA DENTAL COLGATE CALCIO 22ML', NULL, 'ABRIL 2024 (71).png', '2024-04-01', '2024-04-30', NULL, 0, 11, '2024-04-04 11:26:56', '2024-04-04 15:11:04', 61),
+(987, 6, 'VICK VAPORUB 12 GR', NULL, 'ABRIL 2024 (60).png', '2024-04-01', '2024-04-30', NULL, 0, 9, '2024-04-04 11:27:44', '2024-04-04 15:11:04', 60),
+(988, 6, 'CLAMTO TOMATO 1.89LT', NULL, 'ABRIL 2024 (47).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 11:29:00', '2024-04-04 15:11:04', 59),
+(989, 6, 'SARDINA CALMEX 425 GR', NULL, 'ABRIL 2024 (46).png', '2024-04-01', '2024-04-30', NULL, 0, 1, '2024-04-04 11:30:39', '2024-04-04 15:11:04', 58),
+(990, 6, 'ATUN DOLORES 133/140GR', NULL, 'ABRIL 2024 (45).png', '2024-04-01', '2024-04-30', NULL, 0, 1, '2024-04-04 11:31:10', '2024-04-04 15:11:04', 57),
+(991, 6, 'PAN BIMBO TOSTADO 210GR + LA LECHERITA NESTLE 100GR', NULL, 'ABRIL 2024 (74).png', '2024-04-01', '2024-04-30', NULL, 0, 16, '2024-04-04 11:31:58', '2024-04-04 15:11:04', 56),
+(992, 6, 'SABRITAS 45GR + SALSA VALENTINA ROJA 350 ML', NULL, 'ABRIL 2024 (1).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 11:46:10', '2024-04-29 20:04:04', 38),
+(993, 6, 'JABON PALMOLIVE NEUTRO ANTIBACTERIAL 120 GR', NULL, 'ABRIL 2024 (54).png', '2024-04-01', '2024-04-30', NULL, 0, 10, '2024-04-04 11:55:00', '2024-04-04 15:12:11', 55),
+(994, 6, 'TE MCCOMICK 30 GR', NULL, 'ABRIL 2024 (55).png', '2024-04-01', '2024-04-30', NULL, 0, 1, '2024-04-04 11:55:37', '2024-04-29 20:04:04', 34),
+(995, 6, 'INSECTICIDA RAIDOLITO', NULL, 'ABRIL 2024 (56).png', '2024-04-01', '2024-04-30', NULL, 0, 12, '2024-04-04 11:56:22', '2024-04-04 15:12:11', 53),
+(996, 6, 'CAFE OLE 281 ML', NULL, 'ABRIL 2024 (48).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 11:57:18', '2024-04-29 20:04:03', 26),
+(997, 6, 'JUMEX XOT FRUTAS MIXTAS 470 ML', NULL, 'ABRIL 2024 (49).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 11:58:39', '2024-04-29 20:04:03', 25),
+(998, 6, 'ENERGIZANTE MONSTER 473 ML', NULL, 'ABRIL 2024 (50).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 12:00:33', '2024-04-29 20:04:03', 24),
+(999, 6, 'ENERGIZANTE BOOST ACTIVE 235 ML', NULL, 'ABRIL 2024 (51).png', '2024-04-01', '2024-04-30', NULL, 0, 16, '2024-04-04 12:01:13', '2024-04-29 20:04:03', 23),
+(1000, 6, 'REFRESCO VARIEDADES 3LT', NULL, 'ABRIL 2024 (52).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 12:03:08', '2024-04-29 20:04:03', 22),
+(1001, 6, 'JUGO DEL VALLE 1LT', NULL, 'ABRIL 2024 (53).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 12:03:56', '2024-04-29 20:04:03', 21),
+(1002, 6, 'SUERO ELECTROLIT 625 ML', NULL, 'ABRIL 2024 (44).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 12:05:06', '2024-04-29 20:04:03', 20),
+(1003, 6, 'RANCHERITOS', NULL, 'ABRIL 2024 (16).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 12:07:38', '2024-04-29 20:04:03', 10),
+(1004, 6, 'GOLDEN NUTS 90/100GR', NULL, 'ABRIL 2024 (17).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 12:08:38', '2024-04-29 20:04:03', 18),
+(1005, 6, 'BARCEL PAPAS CHIPS  60/24 GR', NULL, 'ABRIL 2024 (18).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 12:09:19', '2024-04-29 20:04:03', 17),
+(1006, 6, 'SKITTLES 22/24GR', NULL, 'ABRIL 2024 (19).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 12:11:21', '2024-04-29 20:04:03', 16),
+(1007, 6, 'BONDY ROL LIPS ICEE 35 GR', NULL, 'ABRIL 2024 (20).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 12:14:17', '2024-04-29 20:04:03', 15),
+(1008, 6, 'BONDY MEGA HUEVO', NULL, 'ABRIL 2024 (21).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 12:14:43', '2024-04-29 20:04:03', 14),
+(1009, 6, 'CHOCOLATE BON BON 15GR', NULL, 'ABRIL 2024 (22).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 12:28:53', '2024-04-29 20:04:03', 13),
+(1010, 6, 'PELON PELONAZO TAMARINDO 80 GR', NULL, 'ABRIL 2024 (23).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 12:44:36', '2024-04-29 20:04:03', 12);
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(1011, 6, 'PULPARINDO 14 GR', NULL, 'ABRIL 2024 (24).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 12:45:26', '2024-04-29 20:04:03', 11),
+(1012, 6, 'BUBBALOO ROLLO 56.7GR', NULL, 'ABRIL 2024 (25).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 13:09:16', '2024-04-29 20:04:03', 19),
+(1013, 6, 'CHICLE TRIDENT 13.6GR', NULL, 'ABRIL 2024 (26).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 14:27:37', '2024-04-29 20:04:04', 42),
+(1014, 6, 'LECHE SABORES 200/236ML', NULL, 'ABRIL 2024 (27).png', '2024-04-01', '2024-04-30', NULL, 0, 5, '2024-04-04 14:33:31', '2024-04-29 20:04:04', 41),
+(1015, 6, 'SUBMARINOS MARINELA 105GR', NULL, 'ABRIL 2024 (28).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 14:34:22', '2024-04-29 20:04:04', 40),
+(1016, 6, 'GALLETA ROCKO 44GR', NULL, 'ABRIL 2024 (29).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 14:36:40', '2024-04-29 20:04:04', 39),
+(1017, 6, 'YOGURT LALA 220/250GR', NULL, 'ABRIL 2024 (30).png', '2024-04-01', '2024-04-30', NULL, 0, 5, '2024-04-04 14:55:47', '2024-04-29 20:04:04', 37),
+(1018, 6, 'MARINELA BARRITAS 75GR', NULL, 'ABRIL 2024 (31).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 14:56:34', '2024-04-29 20:04:04', 36),
+(1019, 6, 'GALLETAS FLORENTINAS 83GR', NULL, 'ABRIL 2024 (32).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 14:57:05', '2024-04-29 20:04:04', 35),
+(1020, 6, 'HOT DOG PLUS + JUGO BOING 250ML', NULL, 'ABRIL 2024 (33).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 14:58:05', '2024-04-29 20:04:03', 9),
+(1021, 6, 'PALETA PAYASO 45GR + CARLOS V 17GR', NULL, 'ABRIL 2024 (34).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 14:59:33', '2024-04-29 20:04:04', 33),
+(1022, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'ABRIL 2024 (36).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 15:05:14', '2024-04-29 20:04:04', 32),
+(1023, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'ABRIL 2024 (37).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 15:06:33', '2024-04-29 20:04:04', 31),
+(1024, 6, 'SUAVICREMAS 102 GR', NULL, 'ABRIL 2024 (38).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 15:06:59', '2024-04-29 20:04:04', 30),
+(1025, 6, 'HOLANDA MORDISKO 105 GR', NULL, 'ABRIL 2024 (39).png', '2024-04-01', '2024-04-30', NULL, 0, 4, '2024-04-04 15:07:37', '2024-04-29 20:04:04', 29),
+(1026, 6, 'HOLANDA CHOCO CREAM 78 ML', NULL, 'ABRIL 2024 (40).png', '2024-04-01', '2024-04-30', NULL, 0, 4, '2024-04-04 15:08:09', '2024-04-29 20:04:04', 28),
+(1027, 6, 'ICEE SLUSH 20 OZ', NULL, 'ABRIL 2024 (41).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 15:08:49', '2024-04-29 20:04:03', 8),
+(1028, 6, 'PINGUINOS MARINELA 80 GR', NULL, 'ABRIL 2024 (42).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 15:09:36', '2024-04-29 20:04:04', 27),
+(1029, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', '6 X $112.00', 'abril v2 2024  (1).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:36:15', '2024-04-29 20:04:03', 7),
+(1030, 6, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, 'ABBRIL V3 2024 (1).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:41:25', '2024-04-29 20:04:03', 6),
+(1031, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2LT', '2 X $81.00', 'ABBRIL V3 2024 (2).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:42:12', '2024-04-29 20:04:03', 5),
+(1032, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', '2 X $81.00', 'ABBRIL V3 2024 (3).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:42:51', '2024-04-29 20:04:03', 4),
+(1033, 6, 'CERVEZA VCTORIA VIDRIO 355ML', NULL, 'ABBRIL V3 2024 (4).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:43:30', '2024-04-29 20:04:14', 3),
+(1034, 6, 'CERVEZA CORONA VIDRIO 355ML', '2 X $32.00', 'ABBRIL V3 2024 (5).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:44:11', '2024-04-29 20:04:14', 2),
+(1035, 6, 'CERVEZA CORONA LIGHT VIDRO 355 ML', '2 X $32.50', 'ABBRIL V3 2024 (6).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 16:44:57', '2024-04-29 20:04:10', 1),
+(1036, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, 'mayo v1 2024 (66).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:32:52', '2024-05-03 12:32:52', NULL),
+(1037, 6, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, 'mayo v1 2024 (65).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:33:25', '2024-05-03 12:33:25', NULL),
+(1038, 6, 'CERVEZA CORONA EXTRA LATÓN 473ML', NULL, 'mayo v1 2024 (64).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:34:22', '2024-05-03 12:34:22', NULL),
+(1039, 6, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, 'mayo v1 2024 (63).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:42:38', '2024-05-03 12:42:38', NULL),
+(1040, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'mayo v1 2024 (60).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:43:23', '2024-05-03 12:43:23', NULL),
+(1041, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 LT', NULL, 'mayo v1 2024 (59).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:44:23', '2024-05-03 12:44:23', NULL),
+(1042, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, 'mayo v1 2024 (58).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:47:13', '2024-05-03 12:47:13', NULL),
+(1043, 6, 'CERVEZA CORONA VIDRIO 355ML', NULL, 'mayo v1 2024 (57).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:48:40', '2024-05-03 12:48:40', NULL),
+(1044, 6, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, 'mayo v1 2024 (56).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:49:57', '2024-05-03 12:49:57', NULL),
+(1045, 6, 'CERVEZA NEGRA MODELO VIDRIO 355ML', NULL, 'mayo v1 2024 (55).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:50:41', '2024-05-03 12:50:41', NULL),
+(1046, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'mayo v1 2024 (1).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:54:22', '2024-05-03 12:54:22', NULL),
+(1047, 6, 'GEL EGO 200ML', NULL, 'mayo v1 2024 (54).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:55:51', '2024-05-03 12:55:51', NULL),
+(1048, 6, 'DESODORANTE AXE  150/160ML', NULL, 'mayo v1 2024 (53).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:56:38', '2024-05-03 12:56:38', NULL),
+(1049, 6, 'DETERGENTE LIQUIDO AXION 280ML', NULL, 'mayo v1 2024 (52).jpg', '2024-05-01', '2024-05-31', NULL, 0, 11, '2024-05-03 12:58:03', '2024-05-03 12:58:03', NULL),
+(1050, 6, 'INSECTICIDA RAIDOLITO', NULL, 'mayo v1 2024 (51).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:59:03', '2024-05-03 12:59:03', NULL),
+(1051, 6, 'BONDY MEGA HUEVO', NULL, 'mayo v1 2024 (50).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 12:59:42', '2024-05-03 12:59:42', NULL),
+(1052, 6, 'YOGURT LALA 220/250GR', NULL, 'mayo v1 2024 (49).jpg', '2024-05-01', '2024-05-31', NULL, 0, 5, '2024-05-03 13:00:59', '2024-05-03 13:00:59', NULL),
+(1053, 6, 'SUERO ELECTROLIT 625ML', NULL, 'mayo v1 2024 (48).jpg', '2024-05-01', '2024-05-31', NULL, 0, 9, '2024-05-03 13:04:05', '2024-05-03 13:04:05', NULL),
+(1054, 6, 'HUEVO', NULL, 'mayo v1 2024 (47).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 13:04:58', '2024-05-03 13:04:58', NULL),
+(1055, 6, 'AZCAR A GRANEL 900GR', NULL, 'mayo v1 2024 (46).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 13:05:30', '2024-05-03 13:05:30', NULL),
+(1056, 6, 'DETERGENTE BLANCA NIEVES 500GR', NULL, 'mayo v1 2024 (45).jpg', '2024-05-01', '2024-05-31', NULL, 0, 11, '2024-05-03 13:06:29', '2024-05-03 13:06:29', NULL),
+(1057, 6, 'POUCH PEDIGREE 100GR', NULL, 'mayo v1 2024 (44).jpg', '2024-05-01', '2024-05-31', NULL, 0, 14, '2024-05-03 13:08:30', '2024-05-03 13:08:30', NULL),
+(1058, 6, 'POUCH WHISKAS 85GR', NULL, 'mayo v1 2024 (43).jpg', '2024-05-01', '2024-05-31', NULL, 0, 14, '2024-05-03 13:09:37', '2024-05-03 13:09:37', NULL),
+(1059, 6, 'BEBIDA VIÑA REAL', NULL, 'mayo v1 2024 (42).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 13:10:33', '2024-05-03 13:10:33', NULL),
+(1060, 6, 'BEBIDA SKYY 275ML', NULL, 'mayo v1 2024 (41).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 13:11:30', '2024-05-03 13:11:30', NULL),
+(1061, 6, 'ENERGZANTE BOOST ACTIVE 235ML', NULL, 'mayo v1 2024 (40).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 13:12:13', '2024-05-03 13:12:13', NULL),
+(1062, 6, 'NITO BIMBO + ALPURA LECHE 200ML', NULL, 'mayo v1 2024 (39).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 13:12:51', '2024-05-03 13:12:51', NULL),
+(1063, 6, 'PEPSI LATA 295ML + MARUCHAN 64GR', NULL, 'mayo v1 2024 (38).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 13:13:39', '2024-05-03 13:13:39', NULL),
+(1064, 6, 'CEPILLA DENTAL COLGATE + PASTA DENTAL COLGATE 22ML', NULL, 'mayo v1 2024 (37).jpg', '2024-05-01', '2024-05-31', NULL, 0, 10, '2024-05-03 13:14:40', '2024-05-03 13:14:40', NULL),
+(1065, 6, 'SABRITAS 45GR + SALSA CALENTINA ROJA 350ML', NULL, 'mayo v1 2024 (36).jpg', '2024-05-01', '2024-05-31', NULL, 0, 3, '2024-05-03 13:30:39', '2024-05-03 13:30:39', NULL),
+(1066, 6, 'DETERGENTE BLANCA NIEVES 500GR + LIMPIADOR CLARASOL 500ML', NULL, 'mayo v1 2024 (35).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 13:31:25', '2024-05-03 13:31:25', NULL),
+(1067, 6, 'HOT DOG + JUGO BOING 250 ML', NULL, 'mayo v1 2024 (34).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 14:03:24', '2024-05-03 14:03:24', NULL),
+(1068, 6, 'PEPSI 400ML + CHEETOS', NULL, 'mayo v1 2024 (33).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 14:04:29', '2024-05-03 14:04:29', NULL),
+(1069, 6, 'PEPSI LATA 295ML + NACHOS PREPARADOS', NULL, 'mayo v1 2024 (32).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 14:15:57', '2024-05-03 14:15:57', NULL),
+(1070, 6, 'BIMBO DONAS 6PZS + NESTLE 16 OZ SABORES', NULL, 'mayo v1 2024 (31).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 14:16:37', '2024-05-03 14:16:37', NULL),
+(1071, 6, 'BIMBO TOSTADO 210 GR + LECHERA NESTLE 100GR', NULL, 'mayo v1 2024 (30).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 14:17:35', '2024-05-03 14:17:35', NULL),
+(1072, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'mayo v1 2024 (29).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 15:04:02', '2024-05-03 15:04:02', NULL),
+(1073, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'mayo v1 2024 (28).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 15:04:56', '2024-05-03 15:04:56', NULL),
+(1074, 6, 'GALLETA FLORENTINAS 83 GR', NULL, 'mayo v1 2024 (27).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 15:05:37', '2024-05-03 15:05:37', NULL),
+(1075, 6, 'REFRESCO 600 ML', NULL, 'mayo v1 2024 (26).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 15:06:13', '2024-05-03 15:06:13', NULL),
+(1076, 6, 'REFRESCOS 600ML (PEPSI - MANZANITA - SANGRIA)', NULL, 'mayo v1 2024 (25).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 15:39:57', '2024-05-03 15:39:57', NULL),
+(1077, 6, 'CEREAL CHOCOKRISPIS / FROOT LOPS 290 GR', NULL, 'mayo v1 2024 (24).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 15:40:50', '2024-05-03 15:40:50', NULL),
+(1078, 6, 'BARCEL CACAHUATES GOLDEN NUTS 90/100GR', NULL, 'mayo v1 2024 (23).jpg', '2024-05-01', '2024-05-31', NULL, 0, 3, '2024-05-03 15:41:29', '2024-05-03 15:41:29', NULL),
+(1079, 6, 'TE MC CORMICK 30 GR', NULL, 'mayo v1 2024 (22).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 15:42:16', '2024-05-03 15:42:16', NULL),
+(1080, 6, 'HOLANDA PALETA CONEJO TURIN 70ML', NULL, 'mayo v1 2024 (21).jpg', '2024-05-01', '2024-05-31', NULL, 0, 4, '2024-05-03 15:43:12', '2024-05-03 15:43:12', NULL),
+(1081, 6, 'GALLETA ROCKO 44GR', NULL, 'mayo v1 2024 (20).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 15:43:46', '2024-05-03 15:43:46', NULL),
+(1082, 6, 'HOLANDA MORDISKO OREO 115ML', NULL, 'mayo v1 2024 (19).jpg', '2024-05-01', '2024-05-31', NULL, 0, 4, '2024-05-03 15:44:16', '2024-05-03 15:44:16', NULL),
+(1083, 6, 'SUBMARINOS MARINELA 105GR', NULL, 'mayo v1 2024 (18).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 15:45:45', '2024-05-03 15:45:45', NULL),
+(1084, 6, 'GANSITO MARINELA', NULL, 'mayo v1 2024 (17).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 15:46:08', '2024-05-03 15:46:08', NULL),
+(1085, 6, 'BARRITAS MARINELA', NULL, 'mayo v1 2024 (16).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 15:46:33', '2024-05-03 15:46:33', NULL),
+(1086, 6, 'COCA COLA 355 ML LATA', NULL, 'mayo v1 2024 (15).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 15:47:07', '2024-05-03 15:47:07', NULL),
+(1087, 6, 'BONDY ROL LIPS ICEE 35GR', NULL, 'mayo v1 2024 (14).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 15:48:02', '2024-05-03 15:48:02', NULL),
+(1088, 6, 'CHOCOLATE HERSHEYS ALMOND 38GR', NULL, 'mayo v1 2024 (13).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 15:48:36', '2024-05-03 15:48:36', NULL),
+(1089, 6, 'SKITTLES 22/24GR', NULL, 'mayo v1 2024 (12).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 15:49:10', '2024-05-03 15:49:10', NULL),
+(1090, 6, 'PULPARINDO 14 GR', NULL, 'mayo v1 2024 (11).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 15:49:45', '2024-05-03 15:49:45', NULL),
+(1091, 6, 'CHOCOLATE BON BON 15GR', NULL, 'mayo v1 2024 (10).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 15:50:22', '2024-05-03 15:50:22', NULL),
+(1092, 6, 'ICEE SLUSH 20 OZ', NULL, 'mayo v1 2024 (9).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 15:50:57', '2024-05-03 15:50:57', NULL),
+(1093, 6, 'DETERGENTE LIQUIDO MAS COLOR OSCURA 415ML', NULL, 'mayo v1 2024 (8).jpg', '2024-05-01', '2024-05-31', NULL, 0, 11, '2024-05-03 15:51:46', '2024-05-03 15:51:46', NULL),
+(1094, 6, 'VODKA SMIRNOFF', NULL, 'mayo v1 2024 (7).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 15:52:56', '2024-05-03 15:52:56', NULL),
+(1095, 6, 'LICOR RANCHO ESCONDIDO 750ML + BRILLANTE MINERAL 2LT', NULL, 'mayo v1 2024 (6).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 15:53:52', '2024-05-03 15:53:52', NULL),
+(1096, 6, 'WHISKY WARRIOR 750ML + BRILANTE MINERAL 2LT', NULL, 'mayo v1 2024 (5).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 15:54:28', '2024-05-03 15:54:28', NULL),
+(1097, 6, 'VINO SUNSET PASSION BERRY 750ML', NULL, 'mayo v1 2024 (4).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 15:55:59', '2024-05-03 15:55:59', NULL),
+(1098, 6, 'CAFE OLE 281ML', NULL, 'mayo v1 2024 (3).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 15:56:29', '2024-05-03 15:56:29', NULL),
+(1099, 6, 'JUGO DEL VALLE 1LT', NULL, 'mayo v1 2024 (2).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 15:58:06', '2024-05-03 15:58:06', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `responsabilidadsocials`
+--
+
+CREATE TABLE `responsabilidadsocials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `label`, `created_at`, `updated_at`) VALUES
+(1, 'RecursosHumanos', NULL, '2022-07-05 17:24:47', '2022-07-05 17:24:47'),
+(2, 'Administrador', NULL, '2022-07-05 17:24:47', '2022-07-05 17:24:47'),
+(3, 'Marketing', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role_user`
+--
+
+CREATE TABLE `role_user` (
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `role_user`
+--
+
+INSERT INTO `role_user` (`user_id`, `role_id`, `created_at`, `updated_at`) VALUES
+(1, 2, '2022-07-05 17:33:52', '2023-09-22 15:43:48'),
+(3, 3, '2022-07-05 19:29:38', '2023-09-22 15:50:10'),
+(4, 3, '2022-07-07 16:42:01', '2023-09-22 15:50:02'),
+(5, 3, '2022-07-07 16:42:57', '2023-09-22 15:49:58'),
+(6, 3, '2022-07-07 16:45:58', '2023-09-22 15:47:10'),
+(7, 3, '2022-07-07 16:47:26', '2023-09-22 15:46:42'),
+(8, 1, '2022-07-07 17:05:30', '2023-09-22 15:49:52');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `slidermains`
+--
+
+CREATE TABLE `slidermains` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` varchar(255) NOT NULL,
+  `fechaFin` varchar(255) NOT NULL,
+  `pagina` varchar(255) NOT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `slidermains`
+--
+
+INSERT INTO `slidermains` (`id`, `user_id`, `name`, `description`, `image`, `fechaInicio`, `fechaFin`, `pagina`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'BannerPrincipal', NULL, 'inicio.jpg', '2022-07-01', '2024-12-30', '\"[\\\"index\\\"]\"', NULL, NULL, '2022-07-05 18:09:02', '2024-04-05 16:28:39'),
+(3, 6, 'ANIVERSARIO PLUS', NULL, 'NOTIPLUS FRASE DE LA SEM 05.png', '2022-08-02', '2022-08-31', '\"null\"', NULL, NULL, '2022-08-02 18:06:46', '2024-01-31 10:44:42'),
+(5, 6, 'OCTUBRE 22 PORTADA', NULL, 'PORTADAS FACEBOOK  (12).png', '2022-10-05', '2022-11-03', '\"null\"', NULL, NULL, '2022-10-05 08:45:31', '2022-11-04 12:36:30'),
+(6, 6, 'PORTADA NOVIEMBRE', NULL, '39.png', '2022-11-04', '2022-11-30', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2022-11-04 12:36:17', '2022-11-04 12:37:07'),
+(7, 6, 'NAVIDAD', NULL, 'PORTADA 2  NAVIDAD 22.png', '2022-12-02', '2023-01-01', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2022-12-02 18:01:10', '2022-12-06 12:13:59'),
+(8, 6, 'DIA DE REYES', NULL, 'PORTADA ENERO 2023.png', '2023-01-02', '2023-01-06', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-01-02 18:10:13', '2023-01-07 12:55:39'),
+(9, 6, 'ENERO 2023 1', NULL, '324352849_529172192610008_2437886884814285668_n.jpg', '2023-01-09', '2023-01-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-01-09 12:28:54', '2023-01-09 12:29:16'),
+(10, 6, 'PORTADA FEBRERO 2023', NULL, 'PORTADAS FEB 2023.png', '2023-02-01', '2023-02-20', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-01-28 14:20:01', '2023-02-21 09:19:30'),
+(11, 6, 'FEBRERO 2023 2', NULL, 'PORTADAS RDS feb 2023 2.png', '2023-02-21', '2023-03-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-02-21 09:15:26', '2023-02-28 11:15:59'),
+(12, 6, 'octubre', NULL, 'PORTADAS RDS.png', '2023-10-04', '2023-10-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-10-05 14:08:37', '2023-10-05 14:08:37'),
+(13, 6, 'PORTADA NOVIEMBRE 2023', NULL, 'PORTADA NOV 2023.png', '2023-11-06', '2023-11-30', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-11-06 14:11:12', '2023-11-06 14:11:12'),
+(14, 6, 'navidad 2023', NULL, 'WhatsApp Image 2023-12-04 at 3.04.23 PM.jpeg', '2023-12-03', '2023-12-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-12-04 16:18:28', '2023-12-04 16:18:28'),
+(15, 6, 'dia de reyes sp', NULL, '06 de reyes 24.png', '2024-01-01', '2024-01-07', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-01-02 10:37:15', '2024-01-02 10:37:15'),
+(16, 6, 'SEGUNDO FEB 2024', NULL, 'PORTADA MARZO 2023.png', '2024-01-08', '2024-01-15', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-01-08 14:23:18', '2024-01-08 14:23:18'),
+(17, 6, '14 de feb 2024', NULL, '2024 02 amor 2.jpeg', '2024-01-31', '2024-02-15', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-01-31 10:45:58', '2024-01-31 10:45:58'),
+(18, 6, 'SNACKS', NULL, 'PORTADA SNACK 2024.jpg', '2024-03-01', '2024-03-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-03-02 15:11:50', '2024-03-02 15:11:50'),
+(19, 7, 'ABRIL 2024 PORTADA', NULL, 'PORTADAS RDS (1).jpg', '2024-04-05', '2024-04-30', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-04-05 16:21:49', '2024-04-08 17:43:37'),
+(20, 6, 'MAYO 2024', NULL, 'PORTADASMAYO 2024.jpg', '2024-05-01', '2024-05-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-05-03 15:59:39', '2024-05-03 15:59:39');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `spammers`
+--
+
+CREATE TABLE `spammers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `attempts` int(11) NOT NULL,
+  `blocked_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `textoproductos`
+--
+
+CREATE TABLE `textoproductos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `celular` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `celular`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', 'sistemas@superplus24horas.com', '9531551502', '2022-07-05 17:24:47', '$2y$10$y7X67nq5KVQZrj5VkBqybef9JOjnf87sdcFHcxTfrpQXAVfOZDsAW', 'Cp7mCi7KWCSYrSDIvCCVNddWSEr91HmX760xzUqjHPxv6KZyxRQqE5E9RURX', '2022-07-05 17:24:47', '2023-09-22 15:43:48'),
+(3, 'Marketing', 'marketing@gmail.com', '95315515023', NULL, '$2y$10$cmACLYlF2RUvYvBT7CVrTOJtPbvPTycGYF.xUQCpjnEDeDhx4NCve', NULL, '2022-07-05 19:29:38', '2023-09-22 15:50:10'),
+(4, 'Carlos Rojas Rosario', 'carlos.marketing@superplus24horas.com', '9531438749', NULL, '$2y$10$4SJ.01FMOsK.Hdkt7yqJBeDosoqrYJolVR4Thlt3gAIxqvEV9JGcm', NULL, '2022-07-07 16:42:01', '2023-09-22 15:50:02'),
+(5, 'Alma Gabriela Primo Somera', 'analista@superplus24horas.com', '9531615971', NULL, '$2y$10$0SSyUstMxSoH0n/HtvyHW.pWK2119pFeAAiH9uezu4ebhE8IcQoq.', NULL, '2022-07-07 16:42:57', '2023-09-22 15:49:58'),
+(6, 'Ana Lidia Ramírez', 'mercadotecnia@superplus24horas.com', '2224074257', NULL, '$2y$10$7j.io42uSp7aU/5kPSxtBuLw.Wo16VHcbUQaW6SmXGNggYnEPuwZ2', NULL, '2022-07-07 16:45:58', '2023-09-22 15:47:10'),
+(7, 'Wendy Lizet Elías Ramírez', 'wendy.mercadotecnia@superplus24horas.com', '9531035070', NULL, '$2y$10$853n7DjDxrGDF7tdFgXZS.naaF7VAG7C0VPkiFLIhD6f727LlhT2m', NULL, '2022-07-07 16:47:26', '2023-09-22 15:46:42'),
+(8, 'Azucena Reyes González', 'rh@superplus24horas.com', '9532297422', NULL, '$2y$10$f39iDneMv7wP1d/7S4AdquPlEiBvQwK8uHtgGCW4Xv7woiPJfC9ie', NULL, '2022-07-07 17:05:30', '2023-09-22 15:49:52');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vacantes`
+--
+
+CREATE TABLE `vacantes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `texto` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `vacantes`
+--
+
+INSERT INTO `vacantes` (`id`, `user_id`, `titulo`, `texto`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(2, 8, 'AUXILIAR DE TIENDA', NULL, 'VACANTE.jpg', 1, '2022-07-07 17:24:32', '2022-07-07 17:24:32');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cardservicios`
+--
+ALTER TABLE `cardservicios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `configuracion_codigo_barras`
+--
+ALTER TABLE `configuracion_codigo_barras`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `crear_cupones_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cupones_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `empleosettings`
+--
+ALTER TABLE `empleosettings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `facturacion_pages`
+--
+ALTER TABLE `facturacion_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indices de la tabla `generar_cupones_clientes`
+--
+ALTER TABLE `generar_cupones_clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `indexsettings`
+--
+ALTER TABLE `indexsettings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `instalacions`
+--
+ALTER TABLE `instalacions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `miempresas`
+--
+ALTER TABLE `miempresas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indices de la tabla `politicaprivacidads`
+--
+ALTER TABLE `politicaprivacidads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `productos_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publicidad_emergentes`
+--
+ALTER TABLE `publicidad_emergentes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `publicoferts_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `responsabilidadsocials`
+--
+ALTER TABLE `responsabilidadsocials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `role_user`
+--
+ALTER TABLE `role_user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `role_user_role_id_foreign` (`role_id`);
+
+--
+-- Indices de la tabla `slidermains`
+--
+ALTER TABLE `slidermains`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `spammers`
+--
+ALTER TABLE `spammers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `textoproductos`
+--
+ALTER TABLE `textoproductos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_celular_unique` (`celular`);
+
+--
+-- Indices de la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cardservicios`
+--
+ALTER TABLE `cardservicios`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `configuracion_codigo_barras`
+--
+ALTER TABLE `configuracion_codigo_barras`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `empleosettings`
+--
+ALTER TABLE `empleosettings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `facturacion_pages`
+--
+ALTER TABLE `facturacion_pages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `generar_cupones_clientes`
+--
+ALTER TABLE `generar_cupones_clientes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `indexsettings`
+--
+ALTER TABLE `indexsettings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `instalacions`
+--
+ALTER TABLE `instalacions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `miempresas`
+--
+ALTER TABLE `miempresas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `politicaprivacidads`
+--
+ALTER TABLE `politicaprivacidads`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `publicidad_emergentes`
+--
+ALTER TABLE `publicidad_emergentes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1100;
+
+--
+-- AUTO_INCREMENT de la tabla `responsabilidadsocials`
+--
+ALTER TABLE `responsabilidadsocials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `slidermains`
+--
+ALTER TABLE `slidermains`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `spammers`
+--
+ALTER TABLE `spammers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `textoproductos`
+--
+ALTER TABLE `textoproductos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  ADD CONSTRAINT `crear_cupones_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD CONSTRAINT `cupones_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  ADD CONSTRAINT `publicoferts_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `role_user`
+--
+ALTER TABLE `role_user`
+  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+--
+-- Base de datos: `bd_superp24`
+--
+CREATE DATABASE IF NOT EXISTS `bd_superp24` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bd_superp24`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cardservicios`
+--
+
+CREATE TABLE `cardservicios` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `imghover` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cardservicios`
+--
+
+INSERT INTO `cardservicios` (`id`, `user_id`, `name`, `description`, `image`, `imghover`, `status`, `orden`, `fechaInicio`, `fechaFin`, `created_at`, `updated_at`) VALUES
+(1, 1, 'RECARGAS', NULL, 'recargas.png', 'recargas2.png', 1, NULL, NULL, NULL, '2022-07-06 01:54:47', '2023-09-22 21:51:42'),
+(2, 1, 'SERVICIOS', NULL, 'servicios.png', 'servicios2.png', 1, NULL, NULL, NULL, '2022-07-06 01:55:17', '2023-09-22 21:51:54'),
+(3, 4, 'PINES', NULL, 'pines.png', 'pines2.png', 1, NULL, NULL, NULL, '2022-07-06 01:55:49', '2024-05-31 01:06:37'),
+(4, 1, 'RETIRO DE EFECTIVO', NULL, 'retiro de efectivo.png', 'retiro de efectivo2.png', 1, NULL, NULL, NULL, '2022-07-06 01:56:25', '2023-09-22 21:52:15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `name`, `slug`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 'ABARROTES', 'abarrotes', NULL, '2022-07-06 00:38:46', '2022-07-06 00:38:46'),
+(2, 'BEBIDAS', 'bebidas', 'Jugos, refrescos, bebidas alcohólicas, energizantes', '2022-07-09 16:53:29', '2022-07-09 16:54:18'),
+(3, 'BOTANA', 'botana', NULL, '2022-07-09 16:54:35', '2022-07-09 16:54:35'),
+(4, 'CONGELADOS', 'congelados', NULL, '2022-07-09 16:54:51', '2022-07-09 16:54:51'),
+(5, 'LACTEOS', 'lacteos', NULL, '2022-07-09 16:55:04', '2022-07-09 16:55:04'),
+(6, 'PANADERÍA', 'panaderia', NULL, '2022-07-09 16:55:16', '2022-07-09 16:55:16'),
+(7, 'SNACK', 'snack', NULL, '2022-07-09 16:55:36', '2022-07-09 16:55:36'),
+(8, 'VINOS Y LICORES', 'vinos-y-licores', NULL, '2022-07-09 16:56:40', '2022-07-09 16:56:40'),
+(9, 'FARMACIA', 'farmacia', NULL, '2022-07-09 17:45:27', '2022-07-09 17:45:27'),
+(10, 'HIGIENE', 'higiene', NULL, '2022-07-09 17:46:03', '2022-07-09 17:46:03'),
+(11, 'LIMPIEZA', 'limpieza', NULL, '2022-07-09 17:46:23', '2022-07-09 17:46:23'),
+(12, 'OTROS', 'otros', NULL, '2022-07-09 17:47:35', '2022-07-09 17:47:35'),
+(13, 'DULCES', 'dulces', NULL, '2022-07-09 17:47:53', '2022-07-09 17:47:53'),
+(14, 'MASCOTAS', 'mascotas', NULL, '2022-07-09 17:48:31', '2022-07-09 17:48:31'),
+(15, 'RECARGAS', 'recargas', NULL, '2022-07-09 17:49:00', '2022-07-09 17:49:00'),
+(16, 'COMBO', 'combo', 'PRODUCTOS DIFERENTES DE LA MISMA CATEGORÍA QUE SON PROMOCIÓN', '2022-07-09 18:08:02', '2022-07-09 18:08:02'),
+(17, 'CERVEZA', 'cerveza', NULL, '2022-07-09 19:53:49', '2022-07-09 19:53:49'),
+(18, 'CARNES FRIAS', 'carnes-frias', 'JAMON, SALCHICHA, QUESILLO, QUESO AMARILLO', '2022-12-29 18:11:58', '2022-12-29 18:11:58'),
+(19, 'DESECHABLES', 'desechables', 'PLATOS, VASOS, SERVILLETAS, CUCHARAS, TENEDORES', '2022-12-29 18:12:37', '2022-12-29 18:12:37'),
+(20, 'BEBES', 'bebes', 'PAÑALES, GERBER,', '2022-12-29 18:13:00', '2022-12-29 18:13:00'),
+(22, 'Temp1', 'temp1', 'Categoria tempo', '2024-05-31 01:33:31', '2024-05-31 01:34:31');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `configuracion_codigo_barras`
+--
+
+CREATE TABLE `configuracion_codigo_barras` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `DNS_1Do2D` varchar(255) NOT NULL,
+  `getBarcode_SVGoHTMLoPNGPATH` varchar(255) NOT NULL,
+  `NombreTipoCodigoBarras` varchar(255) NOT NULL,
+  `anchoCodigoDeBarras` int(11) DEFAULT NULL,
+  `largoCodigoDeBarras` int(11) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
+  `rutaImagen` varchar(255) DEFAULT NULL,
+  `mostrarTextoCodigoDebarras` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `crear_cupones`
+--
+
+CREATE TABLE `crear_cupones` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `configuracionCodigoBarras_id` int(11) DEFAULT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `contadorCodigoDeBarras` int(11) NOT NULL,
+  `valorCodigoDeBarras` longtext NOT NULL,
+  `inicioDeRangoGenerarCodigoDeBarras` int(11) DEFAULT NULL,
+  `finDeRangoGenerarCodigoDeBarras` int(11) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `btnCupones` varchar(255) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `rutaPagina` varchar(255) DEFAULT NULL,
+  `politicaDeUso` longtext DEFAULT NULL,
+  `reactivarGeneracionEn` varchar(255) DEFAULT NULL,
+  `mensaje` longtext DEFAULT NULL,
+  `iconoCupon` varchar(255) DEFAULT NULL,
+  `tipoDeCupon` varchar(255) DEFAULT NULL,
+  `tipoDeCodigoAGenerar` varchar(255) DEFAULT NULL,
+  `nombrePaginaCupon` varchar(255) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `prioridad` tinyint(1) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `crear_cupones`
+--
+
+INSERT INTO `crear_cupones` (`id`, `user_id`, `configuracionCodigoBarras_id`, `titulo`, `subtitulo`, `description`, `image`, `fechaInicio`, `fechaFin`, `contadorCodigoDeBarras`, `valorCodigoDeBarras`, `inicioDeRangoGenerarCodigoDeBarras`, `finDeRangoGenerarCodigoDeBarras`, `orden`, `status`, `btnCupones`, `adicional`, `rutaPagina`, `politicaDeUso`, `reactivarGeneracionEn`, `mensaje`, `iconoCupon`, `tipoDeCupon`, `tipoDeCodigoAGenerar`, `nombrePaginaCupon`, `fechaRegistro`, `prioridad`, `categoria_id`, `created_at`, `updated_at`) VALUES
+(1, 4, NULL, 'TEMPORAL', NULL, NULL, '11111.png', '2024-05-30', '2024-05-31', 3, '255786145677', 1, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 20, '2024-05-31 04:32:38', '2024-05-31 06:53:23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cupones`
+--
+
+CREATE TABLE `cupones` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `deldia` tinyint(1) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleosettings`
+--
+
+CREATE TABLE `empleosettings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `empleosettings`
+--
+
+INSERT INTO `empleosettings` (`id`, `user_id`, `label`, `titulo`, `numero`, `subtitulo`, `description`, `image`, `icono`, `imghover`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'banner', '<p>null</p>', '0', NULL, '<p>null</p>', 'bolsa-de-trabajo.jpg', 'null', NULL, 1, NULL, '2022-07-06 19:26:25', '2022-07-06 19:26:40'),
+(2, 4, 'imagentexto', '<p>null</p>', '0', NULL, '<h1><small><big><strong>VEN Y FORMA&nbsp;PARTE DE UNA DE LAS EMPRESAS COMERCIALES MAS IMPORTANTES Y EN EXPANSION DE LA REGION MIXTECA</strong></big></small></h1>', 'avatar.png', 'null', NULL, 2, NULL, '2022-07-06 19:27:40', '2024-05-31 04:04:13'),
+(3, 1, 'contadores', '<p>Con presencia en la Mixteca con m&aacute;s de:</p>', '50', NULL, '<p>Tiendas distrbuidas en la regi&oacute;n</p>', NULL, 'fas fa-store', NULL, 1, NULL, '2022-07-09 19:42:31', '2023-09-22 21:55:33'),
+(4, 1, 'contadores', '<p>Contando con un equipo de m&aacute;s de:</p>', '150', NULL, '<p>Colaboradores</p>', NULL, 'fas fa-users', NULL, 2, NULL, '2022-07-09 19:44:53', '2022-07-09 19:55:31'),
+(5, 1, 'contadores', '<p>Presente en el mercado con m&aacute;s de:</p>', '12', NULL, '<p>A&ntilde;os de experiencia</p>', NULL, 'fas fa-medal', NULL, 3, NULL, '2022-07-09 19:45:20', '2022-07-09 20:53:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturacion_pages`
+--
+
+CREATE TABLE `facturacion_pages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `imgBanner` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `facturacion_pages`
+--
+
+INSERT INTO `facturacion_pages` (`id`, `user_id`, `label`, `titulo`, `numero`, `subtitulo`, `description`, `image`, `imgBanner`, `icono`, `imghover`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 4, 'banner', NULL, NULL, NULL, NULL, 'facturacionPlus.PNG', NULL, NULL, NULL, 1, NULL, '2022-09-06 19:51:15', '2024-05-31 04:30:40'),
+(2, 1, 'boton', 'Click para facturar', NULL, 'http://picaroscomer.dyndns.org/WebflecHJ/facturacion_01.aspx', NULL, NULL, NULL, NULL, NULL, 2, NULL, '2022-09-06 19:51:57', '2024-04-30 02:02:36'),
+(3, 4, 'titulo', 'Instrucciones para facturación electrónica.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL, '2022-09-06 19:52:14', '2024-05-31 04:29:58'),
+(4, 4, 'subtitulo', NULL, NULL, '<p><big><strong>Una vez dentro de la p&aacute;gina, nos posicionamos en la pesta&ntilde;a Facturar Ticket, rellenando los datos de la siguiente manera.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 4, NULL, '2022-09-06 19:52:31', '2024-05-31 04:28:29'),
+(5, 1, 'textoImagen', NULL, NULL, NULL, '<ol>\r\n	<li><big>Ingrese el&nbsp;<strong>RFC</strong>&nbsp;de su empresa.</big></li>\r\n	<li><big>Introduzca la serie de su ticket.</big></li>\r\n	<li><big>Ingrese el No. De su ticket (Sin comas)</big></li>\r\n	<li><big>Ingrese el No. De&nbsp;<strong>TR#&nbsp;</strong>de su ticket.</big></li>\r\n</ol>\r\n\r\n<p><big>Y procedemos a darle clic en continuar</big></p>', 'fact1.PNG', NULL, NULL, NULL, 5, NULL, '2022-09-06 19:54:16', '2023-10-05 18:34:40'),
+(6, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Posteriormente nos redireccionar&aacute;&nbsp;a un&nbsp;apartado donde&nbsp;se rellenan los datos respectivos para su factura.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 6, NULL, '2022-09-06 19:54:43', '2022-09-07 22:56:34'),
+(7, 1, 'textoImagen', NULL, NULL, NULL, '<ol>\r\n	<li><big>Verifique que el&nbsp;<strong>RFC</strong>&nbsp;corresponde al de su empresa.</big></li>\r\n	<li><big>Ingrese el nombre de su&nbsp;<strong>Raz&oacute;n social sin su r&eacute;gimen capital</strong></big></li>\r\n	<li><big>Ingrese los datos de su direcci&oacute;n de acuerdo a su&nbsp;<strong>Constancia de situaci&oacute;n fiscal</strong></big></li>\r\n	<li><big>Ingrese la direcci&oacute;n&nbsp;del&nbsp;<strong>CORREO ELECTR&Oacute;NICO&nbsp;</strong>al cual se enviar&aacute; su factura en Formato&nbsp;<strong>PDF y XML</strong>.</big></li>\r\n	<li><big>Este campo se habilitar&aacute;&nbsp;<strong>si su m&eacute;todo de pago es con tarjeta</strong>&nbsp;y deber&aacute; ingresar los&nbsp;<strong>&uacute;ltimos 4 d&iacute;gitos</strong>&nbsp;de la tarjeta con la que realiz&oacute; su pago.</big></li>\r\n	<li><big><strong>Seleccione</strong>&nbsp;<strong>el</strong>&nbsp;<strong>R&eacute;gimen Fiscal</strong>&nbsp;seg&uacute;n su Constancia de Situaci&oacute;n Fiscal.</big></li>\r\n	<li><big>Seleccione el&nbsp;<strong>Uso que se le dara al&nbsp;CFDI.</strong></big></li>\r\n	<li><big>Antes de hacer clic en&nbsp;<strong>Facturar&nbsp;</strong>se le recomienda&nbsp;<strong>VERIFICAR SUS DATOS.</strong></big></li>\r\n</ol>', 'fact.PNG', NULL, NULL, NULL, 7, NULL, '2022-09-06 19:55:13', '2022-09-07 22:56:57'),
+(8, 1, 'boton', 'Click para Facturar', NULL, 'http://picaroscomer.dyndns.org/WebflecHJ/facturacion_01.aspx', NULL, NULL, NULL, NULL, NULL, 8, NULL, '2022-09-06 19:55:41', '2024-04-30 02:02:41'),
+(9, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Si presenta alg&uacute;n detalle durante el proceso, con gusto le atenderemos al tel&eacute;fono 953 530 00 87</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 20, NULL, '2022-09-06 19:56:09', '2022-12-29 22:37:00'),
+(10, 1, 'titulo', 'Consultar factura', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, NULL, '2022-09-07 20:35:17', '2022-09-07 20:35:17'),
+(13, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Puede&nbsp;consultar y descargar una copia de su factura en formato PDF y XML seleccionando&nbsp;una de estas dos opciones.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 11, NULL, '2022-09-07 22:11:52', '2022-09-07 22:11:52'),
+(14, 1, 'textoImagen', NULL, NULL, NULL, '<p><big><strong>Opcion 1 (Por ticket de compra):&nbsp;</strong></big></p>\r\n\r\n<ul>\r\n	<li><big>Ingrese la serie&nbsp;de su ticket.</big></li>\r\n	<li><big>Ingrese el No. De su ticket (Sin comas).</big></li>\r\n	<li><big>Ingrese el No. De <strong>TR# </strong>de su ticket.&nbsp;</big></li>\r\n</ul>\r\n\r\n<p><big><strong>Opcion 2 (Por factura emitida):</strong></big></p>\r\n\r\n<ul>\r\n	<li><big>Ingrese su&nbsp;RFC.</big></li>\r\n	<li><big>Ingrese su numero de factura.</big></li>\r\n</ul>\r\n\r\n<p><big>Y procedemos a darle clic en continuar.</big></p>', 'image.png', NULL, NULL, NULL, 12, NULL, '2022-09-07 22:12:18', '2023-10-05 18:35:07'),
+(15, 1, 'subtitulo', NULL, NULL, '<p><big><strong>Posteriormente nos aparece la pantalla donde podra descargar manualmente su PDF,&nbsp;XML o ambos segun se requiera.</strong></big></p>', NULL, NULL, NULL, NULL, NULL, 13, NULL, '2022-09-07 22:12:33', '2022-09-07 22:39:45'),
+(16, 1, 'textoImagen', NULL, NULL, NULL, '<ol>\r\n	<li><big>Mostrar&aacute; su factura en formato PDF.</big></li>\r\n	<li><big>Mostrar&aacute; su factura en formato&nbsp;</big><big>XML.</big></li>\r\n	<li><big>Aqui podr&aacute;&nbsp;colocar una direcci&oacute;n de correo electr&oacute;nico para el reenvio de la factura en formato&nbsp;PDF y XML.</big></li>\r\n</ol>', 'image (1).png', NULL, NULL, NULL, 14, NULL, '2022-09-07 22:12:51', '2022-09-07 22:12:51'),
+(17, 1, 'boton', 'Consultar factura', NULL, 'http://picaroscomer.dyndns.org/WebflecHJ/cfdCons.aspx', NULL, NULL, NULL, NULL, NULL, 14, NULL, '2022-09-07 22:13:50', '2022-09-07 22:18:23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generar_cupones_clientes`
+--
+
+CREATE TABLE `generar_cupones_clientes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `cupon_id` int(11) NOT NULL,
+  `valorCodigodeBarras` longtext NOT NULL,
+  `direccionIPPublica` varchar(255) NOT NULL,
+  `direccionIPLocal` varchar(255) DEFAULT NULL,
+  `ciudad` varchar(255) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `pais` varchar(255) DEFAULT NULL,
+  `latLong` varchar(255) DEFAULT NULL,
+  `direccionMac` varchar(255) DEFAULT NULL,
+  `correo` varchar(255) DEFAULT NULL,
+  `numCelular` varchar(255) DEFAULT NULL,
+  `tipoDeDispositivo` varchar(255) DEFAULT NULL,
+  `modeloDeDispositivo` varchar(255) DEFAULT NULL,
+  `tipoNavegador` varchar(255) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `contador` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `statusCookie` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `generar_cupones_clientes`
+--
+
+INSERT INTO `generar_cupones_clientes` (`id`, `cupon_id`, `valorCodigodeBarras`, `direccionIPPublica`, `direccionIPLocal`, `ciudad`, `region`, `pais`, `latLong`, `direccionMac`, `correo`, `numCelular`, `tipoDeDispositivo`, `modeloDeDispositivo`, `tipoNavegador`, `adicional`, `fechaRegistro`, `contador`, `status`, `statusCookie`, `created_at`, `updated_at`) VALUES
+(1, 1, '255786145677002', '189.252.54.24', '127.0.0.1', 'La Crucecita', 'Oaxaca', 'MX', '15.8444,-96.7489', '34-6F-24-13-8A-03', NULL, NULL, NULL, NULL, 'Navegador: Google Chrome', NULL, '2024-05-30', NULL, NULL, NULL, '2024-05-31 05:11:18', '2024-05-31 05:11:18');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `indexsettings`
+--
+
+CREATE TABLE `indexsettings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `redireccion` varchar(255) NOT NULL,
+  `titulobtn` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `style` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `modal` tinyint(1) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `indexsettings`
+--
+
+INSERT INTO `indexsettings` (`id`, `user_id`, `label`, `titulo`, `subtitulo`, `description`, `redireccion`, `titulobtn`, `icono`, `style`, `orden`, `modal`, `status`, `image`, `created_at`, `updated_at`) VALUES
+(2, 1, 'imagenfooter', 'Quienes somos', NULL, 'Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros,  para poder ofrecer al consumidor experiencias de compras  que sean útiles y prácticas para su vida diaria.', 'null', 'null', 'null', NULL, 6, 0, NULL, 'fachada_footer.png', '2022-07-06 00:13:38', '2022-07-06 00:21:10'),
+(3, 1, 'tituloservicios', 'CONOCE', NULL, 'NUESTROS SERVICIOS', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-06 00:15:11', '2024-05-31 00:41:12'),
+(4, 1, 'tituloproductos', 'CADA DIA AGREGANDO', NULL, 'NUEVOS PRODUCTOS', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-06 00:16:22', '2022-07-06 00:47:26'),
+(5, 1, 'titulomarcas', 'TRABAJANDO', NULL, 'CON LAS MEJORES MARCAS', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-06 00:18:12', '2022-07-09 21:46:38'),
+(6, 1, 'tituloredes', 'SIGUENOS EN', NULL, 'REDES SOCIALES', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-06 00:19:30', '2022-07-09 21:46:46'),
+(7, 1, 'titulofooter', '¿Quiénes somos?', NULL, 'Somos tiendas de conveniencia cuya finalidad es satisfacer las necesidades de nuestros clientes, con una amplia oferta de productos y servicios  de calidad, en espacios limpios y seguros,  para poder ofrecer al consumidor experiencias de compras  que sean útiles y prácticas para su vida diaria.', 'null', 'null', 'null', 'estiloamarillo', NULL, 0, NULL, NULL, '2022-07-06 00:20:49', '2022-07-06 23:54:08'),
+(8, 1, 'tarjeta', 'PROMOCIONES', NULL, 'Conoce nuestras promociones exclusivas', 'ofertaexclusiva', 'Ver mas', 'fas fa-percent', NULL, 1, 1, NULL, NULL, '2022-07-06 00:25:56', '2022-07-09 19:28:01'),
+(9, 1, 'tarjeta', 'FACTURACION', NULL, 'Genera y descarga su Factura Electrónica.', 'http://picaroscomer.dyndns.org/WebflecHJ/facturacion_01.aspx', 'Facturar', 'fas fa-file-alt', NULL, 2, 0, NULL, NULL, '2022-07-06 00:29:27', '2022-07-06 01:52:37'),
+(10, 1, 'tarjeta', 'MAPA', NULL, 'Ubique su tienda SUPERPLUS mas cercano', 'https://www.google.com.mx/maps/search/superplus/', 'Ubicar', 'fas fa-map-marker-alt', NULL, 3, 0, NULL, NULL, '2022-07-06 00:32:10', '2022-07-06 01:53:33'),
+(12, 4, 'tarjeta', 'PRUEBA', NULL, 'fas fa-map-marker-alt', '/sdsfd', 'prueba', 'fas fa-map-marker-alt', NULL, 8, 1, NULL, NULL, '2024-05-31 00:40:09', '2024-05-31 00:40:26');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `instalacions`
+--
+
+CREATE TABLE `instalacions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `miempresas`
+--
+
+CREATE TABLE `miempresas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `miempresas`
+--
+
+INSERT INTO `miempresas` (`id`, `user_id`, `label`, `titulo`, `description`, `image`, `imghover`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 'banner', 'Banner', 'null', 'nosotros.jpg', NULL, 1, NULL, '2022-07-06 01:35:19', '2022-07-06 01:35:19'),
+(2, 1, 'historia', 'NUESTRA HISTORIA', 'Super Plus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, respaldada por la experiencia de Cervezas Modelo en la Mixteca S.A. de C.V. empresa con liderazgo en el sector cervecero.\r\nActualmente contamos con 50 tiendas  distribuidas en la mixteca Oaxaqueña, brindando  servicio las 24 horas del día los 365 días del año,  con una experiencia de 13 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.', 'fachada_cb2[1].png', 'fachada.png', 2, NULL, '2022-07-06 01:36:05', '2023-10-05 18:32:45'),
+(3, 1, 'mision', NULL, 'Satisfacer las necesidades de los clientes proporcionando un Plus a su Día.', 'mision.png', 'super plus palomita.png', 4, NULL, '2022-07-06 01:38:53', '2022-07-06 19:35:26'),
+(4, 4, 'vision', NULL, 'Ser la mejor opción en tienda de conveniencia y posicionar la marca en diferentes mercados.', 'vision.png', 'super plus palomita.png', 4, NULL, '2022-07-06 01:42:07', '2024-05-31 04:11:01'),
+(5, 1, 'valores', NULL, '<strong>El cliente es el jefe:</strong> En Super Plus el cliente es lo más importante, trabajamos para su completa satisfacción. <br>\r\n<strong>Ser mejor cada día:</strong> Fijarse objetivos día a día, con una mentalidad innovadora basándose en hechos y datos para cumplir las expectativas de nuestros clientes y de la empresa. <br>\r\n<strong>Trabajo en equipo:</strong> En un gran equipo hay unión, cada integrante hace su aporte aprovechando la diversidad de ideas, habilidades y talentos. <br>\r\n<strong>Gente con la gente:</strong> Crear un ambiente de empatía en colaboración, reconocimiento, diversidad y respeto.', 'valores.png', 'super plus palomita.png', 5, NULL, '2022-07-06 01:42:41', '2023-10-05 18:33:16'),
+(6, 1, 'titulo', 'ACERCA DE NOSOTROS', 'ACERCA DE NOSOTROS', 'super_plus.png', NULL, 3, NULL, '2022-07-06 19:35:02', '2022-07-06 19:35:16');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2020_05_21_100000_create_teams_table', 1),
+(7, '2020_05_21_200000_create_team_user_table', 1),
+(8, '2020_05_21_300000_create_team_invitations_table', 1),
+(9, '2024_05_16_194744_create_sessions_table', 1),
+(13, '2020_11_16_134223_create_categorias_table', 2),
+(14, '2020_11_16_134411_create_productos_table', 2),
+(15, '2021_09_09_141159_create_publicoferts_table', 2),
+(16, '2021_09_09_141951_create_proveedores_table', 2),
+(17, '2021_09_09_142729_create_instalacions_table', 2),
+(18, '2021_10_01_080804_create_slidermains_table', 2),
+(19, '2021_10_05_160510_create_cardservicios_table', 2),
+(20, '2021_10_08_135852_create_textoproductos_table', 2),
+(21, '2021_11_20_173522_create_miempresas_table', 2),
+(22, '2021_11_26_141730_create_vacantes_table', 2),
+(23, '2021_12_21_115027_create_indexsettings_table', 2),
+(24, '2022_01_11_204246_create_empleosettings_table', 2),
+(25, '2022_07_04_174438_create_politicaprivacidads_table', 2),
+(26, '2022_07_04_174923_create_videos_table', 2),
+(27, '2022_07_04_175027_create_cupones_table', 2),
+(28, '2022_07_05_165333_create_responsabilidadsocials_table', 2),
+(29, '2022_09_01_135430_create_facturacion_pages_table', 2),
+(30, '2023_02_20_114003_create_crear_cupones_table', 2),
+(32, '2023_02_24_105530_create_configuracion_codigo_barras_table', 2),
+(33, '2023_03_14_192001_create_publicidad_emergentes_table', 2),
+(34, '2023_04_19_082358_add_orden_to_publicoferts', 2),
+(35, '2020_11_26_000000_create_spammers_table', 3),
+(36, '2020_11_16_101800_create_roles_tables', 4),
+(37, '2023_02_22_124109_create_generar_cupones_clientes_table', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `password_reset_tokens`
+--
+
+INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
+('temp@gmail.com', '$2y$12$r2axM3ss7GjD93sY/JiukurFbwFlZA8M0QNYfXGJ1fbfy5NHmzube', '2024-05-26 02:28:02');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `politicaprivacidads`
+--
+
+CREATE TABLE `politicaprivacidads` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `subititulo` varchar(255) DEFAULT NULL,
+  `texto` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `politicaprivacidads`
+--
+
+INSERT INTO `politicaprivacidads` (`id`, `user_id`, `titulo`, `label`, `subititulo`, `texto`, `image`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL, NULL, '<h1><small><strong>POL&Iacute;TICA DE PRIVACIDAD</strong></small></h1>\r\n\r\n<h2>Agradecemos su visita, este sitio <em><strong>superplus24horas.com</strong></em> es propiedad de Superplus. Con el objetivo de ofrecerle un sitio web seguro, se establecen&nbsp;TERMINOS Y CONDICIONES.<br />\r\nEste sitio es para mayores de 18 a&ntilde;os de edad. Si es menor de edad, puede usar el sitio solo con la participaci&oacute;n y aprobaci&oacute;n de un padre o tutor. Al acceder, consultar o utilizar nuestro sitio <strong><em>superplus24horas.com</em></strong>, aceptas todas y cada una de las condiciones que se establecen en estos t&eacute;rminos de uso, manifestando su voluntad, en t&eacute;rminos de la legislaci&oacute;n aplicable vigente.<br />\r\nCualquier modificaci&oacute;n a los presentes t&eacute;rminos y condiciones ser&aacute; realizada cuando Superplus lo considere apropiado, siendo exclusiva responsabilidad del usuario revisar las modificaciones.</h2>\r\n\r\n<h2><br />\r\n<strong>T&Eacute;RMINOS Y CONDICIONES DE USO SUPERPLUS</strong><br />\r\n<strong>I) Derechos de Propiedad.</strong><br />\r\nLos derechos de autor y/o de propiedad industrial sobre el contenido, nombres de dominio, logotipos, fotograf&iacute;as, im&aacute;genes, o en general cualquier informaci&oacute;n contenida o publicada en el sitio web, se encuentran debidamente protegidos a favor de &ldquo;Superplus&rdquo; o en su caso en favor de sus Afiliados, Proveedores y/o de sus respectivos propietarios, de conformidad con la legislaci&oacute;n aplicable en materia de derechos de autor. Por lo cual se proh&iacute;be expresamente a &ldquo;Los Clientes&rdquo; modificar, alterar o suprimir, ya sea en forma total o parcial, los avisos, marcas, nombres comerciales, anuncios, logotipos o en general cualquier indicaci&oacute;n que se refiera a la propiedad de informaci&oacute;n contenida en el sitio web.</h2>\r\n\r\n<h2><br />\r\n<strong>II) Modificaciones al sitio web.</strong><br />\r\nSuperplus podr&aacute; en cualquier momento y a su conveniencia sin necesidad de dar aviso al usuario, realizar correcciones, adiciones, mejoras o modificaciones al contenido, presentaci&oacute;n, informaci&oacute;n, bases de datos y dem&aacute;s elementos del sitio <strong><em>superplus24horas.com</em></strong>, sin que ello de lugar ni derecho a ninguna reclamaci&oacute;n o indemnizaci&oacute;n, ni que lo mismo implique reconocimiento de responsabilidad alguna a favor del usuario.</h2>\r\n\r\n<h2><br />\r\n<strong>III) Marcas Comerciales.</strong><br />\r\nPor requerimientos y estrategia, en el sitio web se usan, adem&aacute;s de nuestra marca &ldquo;Superplus&rdquo;, otras marcas comerciales, logos, marcas de servicios, marcas registradas, por cuestiones de derechos de autor, esas marcas, van en &aacute;reas espec&iacute;ficas del sitio web para no causar confusi&oacute;n al p&uacute;blico que acceda el sitio web. Todas las marcas comerciales que no sean de &ldquo;Superplus&rdquo; que aparezcan en el sitio web o a trav&eacute;s de los servicios, son propiedad de sus respectivos representantes legales. El mal uso de las marcas comerciales expuestas o a trav&eacute;s de cualquiera de los servicios del sitio web est&aacute; estrictamente prohibido.</h2>\r\n\r\n<h2><br />\r\n<strong>IV) Precisi&oacute;n de los materiales.</strong><br />\r\nLos materiales que aparecen en este sitio web pueden incluir errores t&eacute;cnicos, tipogr&aacute;ficos o fotogr&aacute;ficos. Superplus no garantiza que ninguno de los materiales en su sitio web sea preciso, completo o actual y puede realizar cambios en los materiales contenidos en su sitio web en cualquier momento sin previo aviso.</h2>\r\n\r\n<h2><br />\r\n<strong>V) Licencia Limitada.</strong><br />\r\nUsted puede acceder y ver el contenido del sitio web desde su computadora o desde cualquier otro tipo de dispositivo, a menos de que se indique de otra manera en estos T&eacute;rminos y Condiciones. La reimpresi&oacute;n, publicaci&oacute;n, distribuci&oacute;n, asignaci&oacute;n, reproducci&oacute;n electr&oacute;nica o por cualquier otro medio de informaci&oacute;n donde aparezca en <strong><em>superplus24horas.com</em></strong>, para cualquier uso distinto al personal no comercial est&aacute; prohibido para el usuario. Cuando la conducta del usuario sea contraria a lo establecido en los presentes t&eacute;rminos y condiciones, &ldquo;Superplus&rdquo; se reserva el derecho de negar el acceso al sitio web a su consideraci&oacute;n.<br />\r\n&nbsp;</h2>', NULL, 2, NULL, '2022-07-05 23:36:35', '2024-05-31 03:55:24'),
+(2, 3, NULL, NULL, NULL, '<h2><strong>VI) Datos personales.</strong><br />\r\nLos datos personales que puede llegar a recabar Superplus de forma directa o indirecta consisten en los siguientes: su nombre completo, direcci&oacute;n, tel&eacute;fonos de casa o trabajo o celular, correo electr&oacute;nico y ocupaci&oacute;n. Nos comprometemos a que todos los datos obtenidos ser&aacute;n tratados bajo las m&aacute;s estrictas medidas de seguridad que garanticen su confidencialidad con&nbsp;base a la ley de protecci&oacute;n de datos.</h2>\r\n\r\n<h2><br />\r\n<strong>VII) Violaciones del sistema o bases de datos.</strong><br />\r\nEs il&iacute;cita cualquier acci&oacute;n o uso de dispositivos, software, u otros instrumentos tendientes a interferir tanto en las actividades y operatoria del sitio, as&iacute; como en las bases de datos o en los diferentes apartados del sitio. Cualquier intromisi&oacute;n, tentativa o actividad violatoria o contraria a las leyes sobre derechos de propiedad intelectual, seguridad de los sistemas y/o a las prohibiciones estipuladas en este documento, har&aacute;n posible a su responsable de las acciones legales pertinentes y a las sanciones previstas por este acuerdo.</h2>\r\n\r\n<h2><br />\r\n<strong>VIII) Legislaci&oacute;n aplicable y jurisdicci&oacute;n.</strong><br />\r\nLos presentes t&eacute;rminos y condiciones est&aacute;n sujetos de acuerdo con la legislaci&oacute;n aplicable vigente en la Rep&uacute;blica Mexicana.</h2>', NULL, 2, NULL, '2022-07-06 01:47:56', '2024-05-31 03:55:31');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `descriptions` varchar(500) NOT NULL,
+  `extract` varchar(255) DEFAULT NULL,
+  `price` decimal(5,2) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `visible` tinyint(1) NOT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `name`, `slug`, `descriptions`, `extract`, `price`, `image`, `visible`, `fechaInicio`, `fechaFin`, `status`, `orden`, `categoria_id`, `created_at`, `updated_at`) VALUES
+(28, 'MAZAPAN UNTABLE', 'mazapan-untable', '<p><strong>&iexcl;BUSCALO EN TODAS NUESTRAS SUCURLES!</strong></p>\r\n\r\n<p>&nbsp;</p>', '400GR', 68.00, '2.PNG', 1, NULL, NULL, NULL, NULL, 4, '2024-01-09 20:29:23', '2024-05-31 01:16:33');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`id`, `user_id`, `name`, `image`, `fechaInicio`, `fechaFin`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'alpura', 'alpura.png', NULL, NULL, NULL, NULL, '2022-07-06 02:01:33', '2022-07-06 02:01:33'),
+(2, 1, 'barcel', 'barcel.png', NULL, NULL, NULL, NULL, '2022-07-06 02:01:42', '2022-07-06 02:01:42'),
+(3, 1, 'Corona2', 'corona.png', NULL, NULL, NULL, NULL, '2022-07-06 02:02:40', '2022-07-09 21:30:38'),
+(4, 1, 'Brillante', 'brillante.png', NULL, NULL, NULL, NULL, '2022-07-06 02:04:25', '2022-07-09 21:30:52'),
+(5, 1, 'Nestle', 'nestle agua.png', NULL, NULL, NULL, NULL, '2022-07-06 02:04:36', '2022-07-09 21:31:09'),
+(8, 1, 'cocacola', 'coca cola.png', NULL, NULL, NULL, NULL, '2022-07-06 02:06:46', '2022-07-06 02:06:46'),
+(9, 1, 'Corona3', 'corona.png', NULL, NULL, NULL, NULL, '2022-07-06 02:07:03', '2022-07-09 21:32:18'),
+(10, 4, 'Bonafont', 'bonafont.png', NULL, NULL, NULL, NULL, '2024-05-31 01:24:42', '2024-05-31 01:24:42');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicidad_emergentes`
+--
+
+CREATE TABLE `publicidad_emergentes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `prioridad` varchar(255) DEFAULT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `deldia` tinyint(1) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `paginasAMostrar` varchar(255) DEFAULT NULL,
+  `textoDelBoton` varchar(255) DEFAULT NULL,
+  `paginaARedireccionar` varchar(255) DEFAULT NULL,
+  `vigenciaCookie` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `publicidad_emergentes`
+--
+
+INSERT INTO `publicidad_emergentes` (`id`, `user_id`, `titulo`, `description`, `image`, `prioridad`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `adicional`, `paginasAMostrar`, `textoDelBoton`, `paginaARedireccionar`, `vigenciaCookie`, `created_at`, `updated_at`) VALUES
+(1, 6, 'LONA OCTUBRE 23', NULL, 'LONA OCTUBRE OK.jpeg', NULL, '2023-10-04', '2023-10-31', NULL, NULL, NULL, 'index|promociones|cupones|facturacion', NULL, NULL, 1, '2023-10-05 19:16:22', '2023-10-05 19:16:22'),
+(2, 6, 'LONA BUEN FIN 23', NULL, 'lona buen fin.jpg', NULL, '2023-11-03', '2023-11-30', NULL, NULL, NULL, 'index|promociones|cupones|empleo|nosotros|contact', NULL, NULL, 1, '2023-11-03 19:26:04', '2023-11-03 19:26:04'),
+(3, 6, 'navidad 2023', NULL, 'lona navidad 2023.jpg', NULL, '2023-12-04', '2023-12-31', NULL, NULL, NULL, 'index|promociones|nosotros|facturacion', NULL, NULL, 1, '2023-12-04 22:26:07', '2023-12-04 22:26:07'),
+(4, 6, 'noche especial 2023', NULL, '2  VIDEO COLON DIC 2023.png', NULL, '2023-12-03', '2023-12-31', NULL, NULL, NULL, 'index|promociones', NULL, NULL, 1, '2023-12-04 22:34:35', '2023-12-04 22:36:04'),
+(5, 7, 'enero 2024', NULL, 'enero 2024.jpg', NULL, '2024-01-01', '2024-01-14', NULL, NULL, NULL, 'index|promociones', NULL, NULL, 1, '2024-01-02 22:21:37', '2024-01-15 15:44:10'),
+(6, 7, 'PROMOCION DE CERVEZA', NULL, '17.png', NULL, '2024-01-15', '2024-01-31', NULL, NULL, NULL, 'index|promociones', NULL, NULL, 1, '2024-01-15 15:46:39', '2024-01-15 15:46:39'),
+(7, 6, 'FEB 2024', NULL, 'lona 14 feb 2024.jpg', NULL, '2024-02-01', '2024-02-15', NULL, NULL, NULL, 'index|promociones|facturacion', NULL, NULL, 1, '2024-01-26 22:30:37', '2024-01-26 22:30:37'),
+(8, 6, 'lona marzo 2024', NULL, 'lona marzo 2024 v1.jpg', NULL, '2024-03-01', '2024-03-31', NULL, NULL, NULL, 'index|promociones|empleo|contact', NULL, NULL, 1, '2024-03-01 22:36:57', '2024-03-01 22:36:57'),
+(9, 6, 'ABRIL  LONA 2024', NULL, 'ABRIL LONA 2024.jpg', NULL, '2024-04-01', '2024-04-30', NULL, NULL, NULL, 'index|promociones|nosotros|contact', NULL, NULL, 1, '2024-04-02 20:32:14', '2024-04-02 20:32:14'),
+(10, 6, 'LONA MAYO 2024', NULL, 'LONA MAYO 2024.jpg', NULL, '2024-05-01', '2024-05-31', NULL, NULL, NULL, 'index|promociones|cupones|nosotros|contact', NULL, NULL, 1, '2024-05-03 18:20:09', '2024-05-03 18:20:09'),
+(11, 6, 'LONA JUN 2024', NULL, 'LONA JUNIO 24.jpeg', NULL, '2024-06-01', '2024-06-30', NULL, NULL, NULL, 'index|promociones|nosotros|contact', NULL, NULL, 1, '2024-06-03 20:35:10', '2024-06-03 20:35:10');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicoferts`
+--
+
+CREATE TABLE `publicoferts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `texto` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `deldia` tinyint(1) NOT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `publicoferts`
+--
+
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(5, 6, 'POUCH PEDIGREE', NULL, '37.png', '2022-07-09', '2022-07-31', NULL, 0, 14, '2022-07-09 18:00:28', '2022-07-09 18:00:28', NULL),
+(7, 6, 'ANTITRANSPIRANTE REXONA MEN V8', NULL, '44.png', '2022-07-09', '2022-07-31', NULL, 0, 10, '2022-07-09 18:03:24', '2022-07-09 18:03:24', NULL),
+(8, 6, 'PRESERVATIVOS MFORCE', NULL, '46.png', '2022-07-09', '2022-07-31', NULL, 0, 9, '2022-07-09 18:05:00', '2022-07-09 18:05:00', NULL),
+(10, 6, 'NUTRI LECHE 1 LITRO', NULL, '50.png', '2022-07-09', '2022-07-31', NULL, 0, 5, '2022-07-09 18:20:52', '2022-07-09 18:20:52', NULL),
+(11, 6, 'ACEITUNAS BUFALO 150GR', NULL, '45.png', '2022-07-09', '2022-07-31', NULL, 0, 1, '2022-07-09 18:22:39', '2022-07-09 18:22:39', NULL),
+(12, 6, 'SALSA BUFALO PICANTE 150GR', NULL, '42.png', '2022-07-09', '2022-07-31', NULL, 0, 13, '2022-07-09 18:29:54', '2022-07-09 18:29:54', NULL),
+(13, 6, 'YOGURTH LALA GO 170GR', NULL, '41.png', '2022-07-09', '2022-07-31', NULL, 0, 5, '2022-07-09 18:32:19', '2022-07-09 18:32:19', NULL),
+(14, 6, 'GALLETAS OREO 114GR', NULL, '40.png', '2022-07-09', '2022-07-31', NULL, 0, 6, '2022-07-09 18:37:07', '2022-07-09 18:37:07', NULL),
+(15, 6, 'HOLANDA CORNETTO', NULL, '39.png', '2022-07-09', '2022-07-31', NULL, 0, 4, '2022-07-09 18:42:25', '2022-07-09 18:42:25', NULL),
+(16, 6, 'CHICLE TRIDENT', NULL, '51.png', '2022-07-09', '2022-07-31', NULL, 0, 13, '2022-07-09 18:46:19', '2022-07-09 18:46:19', NULL),
+(17, 6, 'GANSITO MARINELA', NULL, '53.png', '2022-07-09', '2022-07-31', NULL, 0, 6, '2022-07-09 18:49:58', '2022-07-09 18:49:58', NULL),
+(18, 6, 'YOGURT LALA SABORES', NULL, '54.png', '2022-07-09', '2022-07-31', NULL, 0, 5, '2022-07-09 18:52:14', '2022-07-09 18:52:14', NULL),
+(19, 6, 'COCA COLA 2.5 L', NULL, '43.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:08:11', '2022-07-09 19:08:11', NULL),
+(20, 6, 'SUERO ELECTROLIT 625 ML', NULL, '47.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:15:04', '2022-07-09 19:15:04', NULL),
+(21, 6, 'CAFÉ OLÉ SABORES', NULL, '30.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:17:39', '2022-07-09 19:17:39', NULL),
+(22, 6, 'JUGO DEL VALLE 413 ML', NULL, '31.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:19:37', '2022-07-09 19:19:37', NULL),
+(23, 6, 'POWERADE SABORES', NULL, '33.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:22:13', '2022-07-09 19:22:13', NULL),
+(24, 6, 'JUMEX TETRAPACK 1 LT', NULL, '34.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:24:13', '2022-07-09 19:24:13', NULL),
+(26, 6, 'REFRESCO PEPSI/SANGRÍA 355ML LATA', NULL, '35.png', '2022-07-09', '2022-07-31', NULL, 0, 16, '2022-07-09 19:28:05', '2022-07-09 19:28:05', NULL),
+(27, 6, 'ICE SLUSH 20 OZ', NULL, '38.png', '2022-07-09', '2022-07-31', NULL, 0, 7, '2022-07-09 19:30:46', '2022-07-09 19:30:46', NULL),
+(28, 6, 'COCA COLA 600ML', NULL, '32.png', '2022-07-09', '2022-07-31', NULL, 0, 2, '2022-07-09 19:53:05', '2022-07-09 19:53:05', NULL),
+(30, 6, 'CERVEZA VICTORIA 210ML VIDRIO', NULL, '21.png', '2022-07-09', '2022-07-31', NULL, 0, 17, '2022-07-09 19:58:49', '2022-07-09 19:58:49', NULL),
+(31, 6, 'CERVEZA MODELO ESPECIAL LATA', NULL, '29.png', '2022-07-09', '2022-07-31', NULL, 0, 17, '2022-07-09 20:01:32', '2022-07-09 20:01:44', NULL),
+(40, 6, 'BEBIDA SKYY  275ML SABORES', NULL, '56.png', '2022-07-11', '2022-07-31', NULL, 0, 2, '2022-07-11 15:12:42', '2022-07-11 15:14:20', NULL),
+(41, 6, 'HELIX 355ML LATA SABORES', NULL, '55.png', '2022-07-11', '2022-07-31', NULL, 0, 2, '2022-07-11 15:13:51', '2022-07-11 15:14:07', NULL),
+(42, 6, 'RANCHO MIX 355ML', NULL, '57.png', '2022-07-11', '2022-07-31', NULL, 0, 2, '2022-07-11 15:15:47', '2022-07-11 15:15:47', NULL),
+(44, 6, 'SABRITAS PAPA 42/45GR', NULL, '52.png', '2022-07-11', '2022-07-31', NULL, 0, 3, '2022-07-11 15:18:46', '2022-07-11 15:18:55', NULL),
+(45, 6, 'WHISKY RED LABEL + BRILLANTE AGUA MINERAL + BOLSA DE HIELO', NULL, '60.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:20:20', '2022-07-11 15:20:20', NULL),
+(46, 6, 'BRANDY TORRES 5 700ML + BRILLANTE AGUA MINERAL 2L', NULL, '59.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:21:25', '2022-07-11 15:21:25', NULL),
+(47, 6, 'RON CAPITAN MORGAN 750ML + COCA COLA 2.5L', NULL, '58.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:23:27', '2022-07-11 15:23:27', NULL),
+(48, 6, 'CHILE TAJIN 142GR + JUGO KERMATO TOMATE', NULL, '63.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:25:40', '2022-07-11 15:25:40', NULL),
+(49, 6, 'PEPSI 600ML + DORITO FLAMMING HOT 52/62GR', NULL, '62.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:27:26', '2022-07-11 15:27:26', NULL),
+(50, 6, 'HARINA SAN BLAS HOT CAKES 500GR + LECHERITA 100GR', NULL, '64.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:30:28', '2022-07-11 15:30:28', NULL),
+(51, 6, 'NESTLE 16 OZ SABORES + GALLETAS POLVORONES 111/113', NULL, '65.png', '2022-07-11', '2022-07-31', NULL, 0, 16, '2022-07-11 15:42:56', '2022-07-11 15:42:56', NULL),
+(52, 6, 'HOT DOG + GRATIS JUGO BOING 250ML SABORES', NULL, '66.png', '2022-07-11', '2022-07-30', NULL, 0, 16, '2022-07-11 15:46:17', '2022-08-01 21:37:55', NULL),
+(57, 6, 'CORONA AGUA RIFADA', '¡DALE UN PLUS A TU DIA!', '35.png', '2022-07-11', '2022-07-31', NULL, 1, 2, '2022-07-11 19:52:06', '2022-07-16 13:58:51', NULL),
+(62, 6, 'JABÓN ESCUDO ANTIBACTERIAL', '1 X $18.00', '52 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 10, '2022-08-03 00:17:40', '2022-08-03 00:21:33', NULL),
+(63, 6, 'NUTRI LECHE 1 LITRO', '1 X 16.50', '51 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 5, '2022-08-03 00:30:54', '2022-08-03 00:30:54', NULL),
+(64, 6, 'SALSA BUFALO PICANTE 150GR', '1 PIEZA SALSA BUFALO A SOLO $17.00', '48 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-03 00:32:39', '2022-08-03 00:32:39', NULL),
+(65, 6, 'AVENA QUAKER 400GR', '1 X $29.00', '45 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-03 00:36:19', '2022-08-03 00:36:19', NULL),
+(66, 6, 'CORONA AGUA RIFADA 355 ML', '1 X 21.00', '44 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:44:48', '2022-08-03 00:44:48', NULL),
+(67, 6, 'SALSA VALENTINA 350/370 ML', '1 X 16.00', '47 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-03 00:46:07', '2022-08-03 00:46:07', NULL),
+(68, 6, 'CHICLE TRIDENT 30.6 GR SABORES', '1 X $23.00', '46 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 1, '2022-08-03 00:47:49', '2022-08-03 00:47:49', NULL),
+(69, 6, 'JUGO JUMEX 1L TETRAPACK SABORES', '2 X $48.00', '57 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:50:35', '2022-08-03 00:50:35', NULL),
+(70, 6, 'JUGO DEL VALLE 413 ML SABORES', '2 X 32.00', '56 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:51:22', '2022-08-03 00:51:22', NULL),
+(71, 6, 'COCA COLA 600ML', '2 X $29.00', '55 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:51:58', '2022-08-03 00:51:58', NULL),
+(72, 6, 'VIÑA REAL 330 ML SABORES', '3 X $59.00', '54 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:53:10', '2022-08-03 00:53:10', NULL),
+(73, 6, 'HELIX 355ML LATA SABORES', '2 X $45.00', '53 AGOATO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:53:38', '2022-08-03 00:53:38', NULL),
+(74, 6, 'ENERGETIZANTE MONSTER 473ML SABORES', '1 X 39.00', '50 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:54:44', '2022-08-03 00:54:44', NULL),
+(75, 6, 'ENERGETIZANTE VOLT 473ML SABORES', '2 X 35.00', '49 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 2, '2022-08-03 00:55:36', '2022-08-03 00:55:36', NULL),
+(76, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', '2 X $71.00', '29 AGOSTO 22.png', '2022-08-02', '2022-08-21', NULL, 0, 17, '2022-08-03 00:56:45', '2022-08-22 15:25:36', NULL),
+(77, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2L', '2 X 71.00', '28 AGOSTO 22.png', '2022-08-02', '2022-08-21', NULL, 0, 17, '2022-08-03 00:57:19', '2022-08-22 15:25:46', NULL),
+(78, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', '6 X 102.00', '41 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 00:58:37', '2022-08-03 00:58:37', NULL),
+(79, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', '6 X 102.00', '40 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 00:59:38', '2022-08-03 00:59:38', NULL),
+(80, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X 102.00', '39 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 01:00:41', '2022-08-03 01:00:41', NULL),
+(81, 6, 'CERVEZA CORONA LIGHT  473ML LATON', '2 X 40.00', '38 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 01:01:37', '2022-08-03 01:01:37', NULL),
+(82, 6, 'CERVEZA CORONA EXTRA 473ML LATON', '2 X 40.00', '37 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 01:02:45', '2022-08-03 01:02:45', NULL),
+(83, 6, 'CERVEZA MODELO ESPECIAL  473ML LATON', '2X 40.00', '36 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 01:03:30', '2022-08-03 01:03:30', NULL),
+(84, 6, 'CERVEZA VICTORIA 473ML LATON', '2 X $40.00', '35 AGOSTO 22.png', '2022-08-02', '2022-08-31', NULL, 0, 17, '2022-08-03 01:04:31', '2022-08-03 01:04:31', NULL),
+(85, 6, 'RANCHO MIX 355ML', '3 X $49.00', '58 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 2, '2022-08-03 15:56:00', '2022-08-03 15:56:00', NULL),
+(86, 6, 'POUCH PEDIGREE', '3 X $35.00', '64 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 14, '2022-08-03 15:57:57', '2022-08-03 15:57:57', NULL),
+(87, 6, 'POUCH WHISKAS 85 GR', '3 X $35.00', '63 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 14, '2022-08-03 15:59:23', '2022-08-03 15:59:34', NULL),
+(88, 6, 'LIMPIADOR FABULOSO 500ML', '2 X $29.00', '71 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 11, '2022-08-03 16:00:43', '2022-08-03 16:00:43', NULL),
+(89, 6, 'PASTE DENTAL COLGATE CALCIO 75ML', '1 X $23.00', '70 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 10, '2022-08-03 16:01:41', '2022-08-03 16:01:41', NULL),
+(90, 6, 'SUERO ELECTROLIT 625 ML', '2 x $42.00', '72 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 2, '2022-08-03 16:48:51', '2022-08-03 16:48:51', NULL),
+(91, 6, 'CARAMELO MENTOS 29 / 29.7 GR SABORES', '2 x $20.00', '67 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 13, '2022-08-03 16:50:14', '2022-08-03 16:50:14', NULL),
+(92, 6, 'KINDER DELICE 39/42 GR', '1 X $13.50', '66 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 13, '2022-08-03 16:51:23', '2022-08-03 16:51:23', NULL),
+(93, 6, 'GALLETAS OREO 114GR', '1 X $15.00', '68 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 6, '2022-08-03 16:52:33', '2022-08-03 16:52:33', NULL),
+(94, 6, 'MORDISKO HOLANDA', '1 X $17.00', '69 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 4, '2022-08-03 16:53:42', '2022-08-03 16:53:42', NULL),
+(95, 6, 'REBANADAS BIMBO', '1 X $7.00', '73 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 6, '2022-08-03 16:54:28', '2022-08-03 16:54:28', NULL),
+(96, 6, 'PALOMITAS KARAMELADAS  POP 120 GR', '1 X $20.00', '65 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 3, '2022-08-03 16:59:22', '2022-08-03 16:59:22', NULL),
+(97, 6, 'GALLETA CHOKIS 75/84/90 SABORES', '2 X $29.00', '62 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 6, '2022-08-03 17:01:27', '2022-08-03 17:01:27', NULL),
+(98, 6, 'TAKIS FUEGO BARCEL 56GR', '2 X $29.00', '61 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 3, '2022-08-03 17:02:20', '2022-08-03 17:02:20', NULL),
+(99, 6, 'CHEETOS SABORES 42/52 GR', '2 X $25.00', '60 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 3, '2022-08-03 17:03:12', '2022-08-03 17:03:12', NULL),
+(100, 6, 'REFRESCO JARRITO 600ML SABORES', '2 x $29.00', '59 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 2, '2022-08-03 17:05:09', '2022-08-03 17:05:09', NULL),
+(101, 6, 'WHISKY HIGHLAND CHIEF 750ML +  HIELO 5KG + BRILLANTE MINERAL 2LTS', 'COMBO $209.00', '82 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:09:36', '2022-08-03 17:09:36', NULL),
+(102, 6, 'WHISKY BUCHAN\'S 750ML + BRILLANTE MINERAL 2LT  + BOLSA DE HIELO 5KG', 'COMBO $865.00', '80 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:12:04', '2022-08-03 17:12:04', NULL),
+(103, 6, 'VODKA ABSOLUT AZUL 750ML + JUGO JUMEX 1LT TETRAPACK SABORES', 'COMBO $275.00', '81 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:16:38', '2022-08-03 17:16:38', NULL),
+(104, 6, 'RON CAPITAN MORGAN 750ML + COCA COLA 2.5L', 'COMBO $209.00', '79 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:17:22', '2022-08-03 17:17:22', NULL),
+(105, 6, 'REFRESCO PEPSI/SANGRIA 3LT', 'COMBO $75.00', '75 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:18:43', '2022-08-03 17:18:43', NULL),
+(106, 6, 'TAJIN 142GR / JUGO KERMATO 445/470ML', 'COMBO $49.00', '76 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:21:25', '2022-08-03 17:21:25', NULL),
+(107, 6, 'DORITOS SABORES  52/62 GR + REFRESCO PEPSI 600ML', 'COMBO $29.00', '74 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:27:00', '2022-08-03 17:27:00', NULL),
+(108, 6, 'LECHE YOMI 190ML SABORES + NITO BIMBO', 'COMBO $23.00', '77 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 0, 16, '2022-08-03 17:28:32', '2022-08-03 17:28:32', NULL),
+(109, 6, 'NESTLE 16 ONZAS + BIMBUÑUELOS 6PZS', 'COMBO $39.00', '78 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 1, 16, '2022-08-03 17:31:54', '2022-08-03 17:37:23', NULL),
+(110, 6, 'ICEE SLUSH 20 ONZAS SABORES', '2 X $55.00', '84 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 1, 16, '2022-08-03 17:35:40', '2022-08-03 17:37:32', NULL),
+(111, 6, 'HOT DOG + GRATIS JUGO BOING 250ML SABORES', 'COMBO $18.00', '83 AGOSTO 22.png', '2022-08-03', '2022-08-31', NULL, 1, 16, '2022-08-03 17:36:25', '2022-08-03 17:37:15', NULL),
+(113, 6, 'POUCH WISKAS 85 GR', 'PROMOCIÓN\r\n3 X $35.00', '56 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 14, '2022-09-02 18:36:20', '2022-09-02 18:36:20', NULL),
+(114, 6, 'POUCH PEDIGREE 100GR', 'PROMOCIOÓN\r\n3 X $35.00', '55 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 14, '2022-09-02 18:38:18', '2022-09-02 18:38:18', NULL),
+(115, 6, 'DETERGENTE AXION LIMON 500 GR', '¡OFERTA!\r\n1 X $20.00', '66 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 11, '2022-09-02 18:42:55', '2022-09-02 18:42:55', NULL),
+(116, 6, 'LIMPIADOR CLORALEX 950ML', '¡OFERTA!\r\n1 X $12.00', '65 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 11, '2022-09-02 18:43:56', '2022-09-02 18:43:56', NULL),
+(117, 6, 'NIVEA PEARL & BEAUTY ROLL ON 50ML', '1 X $36.00', '60 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 10, '2022-09-02 18:46:47', '2022-09-02 18:46:47', NULL),
+(118, 6, 'LECHE NUTRI 1 LT', '¡OFERTA!\r\n1 X $17.00', '67 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 5, '2022-09-02 19:00:19', '2022-09-02 19:00:19', NULL),
+(119, 6, 'AVENA QUAKER 400GR', '¡OFERTA! 1 X $29.00', '62 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 19:01:49', '2022-09-02 19:01:49', NULL),
+(120, 6, 'LA LECHERA NESTLE SIRVE FACIL 335 GR', '¡OFERTA!\r\n1 X $39.00', '68 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 19:03:24', '2022-09-02 19:03:24', NULL),
+(121, 6, 'SALSA HABANERO NARANJA / VERDE', '¡OFERTA!\r\n1 X $22.00', 'PROMOPLUS 59  SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 19:12:58', '2022-09-02 19:12:58', NULL),
+(122, 6, 'SALSA VALENTINA 350/370 ML', '¡OFERTA!\r\n1 X $16.00', '61 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 19:14:52', '2022-09-02 19:14:52', NULL),
+(123, 6, 'CHILE MIGUELITO TARRO 250 ML', '¡OFERTA! 1 X $25.00', '63 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 1, '2022-09-02 19:15:55', '2022-09-02 19:15:55', NULL),
+(124, 6, 'PALETA LAPIZ COLOR NESTLE', '¡OFERTA!\r\n1 X $10.00', '58 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 4, '2022-09-02 19:28:24', '2022-09-02 19:28:24', NULL),
+(125, 6, 'REFRESCO COCA COLA 2.5 LT RETORNABLE', '¡OFERTA!\r\n1 X $28.00', '64 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 19:33:25', '2022-09-02 19:33:25', NULL),
+(126, 6, 'HOLANDA CHOCO CREM VAINILLA / ALMENDRAS 78ML', '¡PROMO!\r\n2 X $35.00', '57 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 4, '2022-09-02 21:44:52', '2022-09-02 21:44:52', NULL),
+(127, 6, 'SUERO ELECTROLIT 625ML SABORES', '¡COMBO!\r\n3 X $59.00', '75 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 21:46:53', '2022-09-02 21:46:53', NULL),
+(128, 6, 'CHOCOLATE KIT KAT CLASICO, DARK, WHITE 41.5 GR', '¡OFERTA!\r\n2 X $34.00', '71 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 13, '2022-09-02 21:47:59', '2022-09-02 21:47:59', NULL),
+(129, 6, 'GALLETAS CHOKIS 84/90 GR', '¡PROMO!\r\n2 X $29.00', '51 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 6, '2022-09-02 21:49:31', '2022-09-02 21:49:31', NULL),
+(130, 6, 'LICOR MEXGAVIA 440ML', '¡OFERTA!\r\n1 X $23.00', '76 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 8, '2022-09-02 22:00:50', '2022-09-02 22:00:50', NULL),
+(131, 6, 'JUGO DEL VALLE 413ML SABORES', '¡PROMO!\r\n2 X $32.00', '54 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 22:54:50', '2022-09-02 22:54:50', NULL),
+(132, 6, 'REFRESCO COCA COLA 355 ML', '¡COMBO!\r\n2 X $32.00', '74 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 22:56:44', '2022-09-02 22:56:44', NULL),
+(133, 6, 'BEBIDA NEW MIX JIMADOR 350 ML SABORES', '¡COMBO!\r\n3 X $59.00', '73 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 22:59:16', '2022-09-02 22:59:16', NULL),
+(134, 6, 'HELIX 355ML LATA SABORES', '¡PROMO!\r\n2 X $45.00', '72 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 23:01:36', '2022-09-02 23:01:36', NULL),
+(135, 6, 'REFRESCO PEPSI / SANGRIA CASERA 600 ML', '¡PROMO! \r\n2 X $29.00', '70 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 23:03:50', '2022-09-02 23:03:50', NULL),
+(136, 6, 'TAKIS FUEGO BARCEL 56GR', '¡PROMO!\r\n2 X $29.00', '69 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 3, '2022-09-02 23:04:48', '2022-09-02 23:04:48', NULL),
+(137, 6, 'ENERGETIZANTE VOLT 473ML SABORES', '¡PROMO!\r\n2 X $35.00', '53 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 2, '2022-09-02 23:05:54', '2022-09-02 23:05:54', NULL),
+(138, 6, 'CHEETOS SABORES 42/52 GR', '¡PROMO!\r\n2 X $25.00', '52 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 3, '2022-09-02 23:06:42', '2022-09-02 23:06:42', NULL),
+(139, 6, 'CHILE TAJIN 142GR + JUGO KERMATO TOMATE 445/470 ML', '¡COMBO!\r\n$49.00', '42 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:17:56', '2022-09-02 23:17:56', NULL),
+(140, 6, 'TEQUILA 100 AÑOS 750 ML + BRILLANTE 2 LT SABORES', '¡COMBO!\r\n$229.00', '43 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:32:10', '2022-09-02 23:32:10', NULL),
+(141, 6, 'TEQUILA CAZADORES 700/750 ML +BRILLANTE 2LT SABORES', '¡COMBO!\r\n$299.00', '45 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:40:10', '2022-09-02 23:40:10', NULL),
+(142, 6, 'CABRITO 750 ML + BRILLANTE SABORES 2 LT SABORES', '¡COMBO!\r\n$180.00', '44 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:42:40', '2022-09-02 23:42:40', NULL),
+(143, 6, 'RON CAPITAN MORGAN 750 ML + COCA COLA 2.75', '¡COMBO!\r\n$209.00', '46 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:48:09', '2022-09-02 23:48:09', NULL),
+(144, 6, 'LICOR RANCHO ESCONDIDO 750 ML + BRILLANTE 2 LT SABORES', '¡COMBO!\r\n$89.00', '47 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:51:05', '2022-09-02 23:51:05', NULL),
+(145, 6, 'SABRITOS 60 GR + REFRESCO COCA COLA 600 ML PET', '¡COMBO!\r\n$30.00', '49 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:54:58', '2022-09-02 23:54:58', NULL),
+(146, 6, 'FRIJOL LA SIERRA 580 GR + TOSTADAS MILPA REAL ONDULADAS 360 GR', '¡COMBO!\r\n$42.00', '41 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-02 23:58:01', '2022-09-02 23:58:01', NULL),
+(147, 6, 'NESTLE 16 OZ SABORES + SPONCH  PZA', '¡COMBO!\r\n$40.00', '40 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-03 00:00:18', '2022-09-03 00:00:18', NULL),
+(148, 6, 'ICEE SLUSH 20OZ SABORES', '2 X $55.00', '50 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-03 00:01:18', '2022-09-03 00:01:18', NULL),
+(149, 6, 'HOT DOG + JUGO BOING 250ML SABORES', '¡COMBO!\r\n$18.00', '48 SEP 22.png', '2022-09-02', '2022-09-30', NULL, 0, 16, '2022-09-03 00:02:14', '2022-09-03 00:02:14', NULL),
+(155, 7, 'CERVEZA VICTORIA CEMPASUCHIL', 'CERVEZA VICTORIA CEMPASUCHIL', 'PROMOPLUS  (18).png', '2022-10-31', '2022-10-30', NULL, 0, 17, '2022-10-02 00:34:15', '2022-10-31 16:46:30', NULL),
+(157, 7, 'CERVEZA CORONA LIGHT 355ML BOTE', 'CERVEZA CORONA LIGHT 355ML BOTE', '79.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-02 00:36:16', '2022-10-02 00:36:16', NULL),
+(158, 7, 'CERVEZA CORONA EXTRA 355ML BOTE', 'SIX CERVEZA CORONA EXTRA 355ML BOTE', '78.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-02 00:37:12', '2022-10-02 00:37:12', NULL),
+(159, 7, 'CERVEZA MODELO LATON 473ML', 'CERVEZA MODELO LATON 473ML', '77.png', '2022-10-01', '2022-10-03', NULL, 0, 17, '2022-10-02 00:38:03', '2022-10-04 21:54:33', NULL),
+(160, 7, 'CERVEZA VICTORIA LATON 473ML', 'CERVEZA VICTORIA LATON 473ML', '76.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-02 00:39:14', '2022-10-02 00:39:14', NULL),
+(161, 7, 'AGUA RIFADA CORONA SABORES 355ML', 'AGUA RIFADA CORONA SABORES 355ML', '82.png', '2022-10-01', '2022-10-01', NULL, 0, 17, '2022-10-02 00:40:03', '2022-10-02 00:40:03', NULL),
+(162, 6, 'LIMPIADOR CLOROX  930 ML', '1 X $14.00', 'OCTUBRE PROMO 22  (11).png', '2022-10-04', '2022-10-31', NULL, 0, 11, '2022-10-04 21:58:03', '2022-10-04 21:58:03', NULL),
+(163, 6, 'DETERGENTE ROMA 500GR', '1 X $19.00', 'OCTUBRE PROMO 22  (10).png', '2022-10-04', '2022-10-31', NULL, 0, 11, '2022-10-04 21:59:03', '2022-10-04 21:59:03', NULL),
+(164, 6, 'DETERGENTE BLANCA NIEVES 500 GR  + LIMPIADOR CLARASOL 1LT', 'COMBO $29.00', 'OCTUBRE PROMO 22  (26).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 22:01:45', '2022-10-04 22:01:45', NULL),
+(165, 6, 'SUAVITEL 4580 ML', '1 X $18.00', 'OCTUBRE PROMO 22  (17).png', '2022-10-04', '2022-10-31', NULL, 0, 11, '2022-10-04 22:03:36', '2022-10-04 22:03:36', NULL),
+(166, 6, 'MASCOTA FELIX SARDINA 85GR', '2 X $22.00', 'OCTUBRE PROMO 22  (22).png', '2022-10-04', '2022-10-31', NULL, 0, 14, '2022-10-04 22:07:22', '2022-10-04 22:07:22', NULL),
+(167, 6, 'POUCH WISKAS 85 GR', '4 X $45.00', 'OCTUBRE PROMO 22  (23).png', '2022-10-04', '2022-10-31', NULL, 0, 14, '2022-10-04 22:08:17', '2022-10-04 22:08:17', NULL),
+(168, 6, 'VINAGRE CLEMENTE BLANCO 500ML', '1 X $13.00', 'OCTUBRE PROMO 22  (12).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 22:18:33', '2022-10-04 22:18:33', NULL),
+(169, 6, 'HARINA SAN BLAS 1KG', '1 X $22.00', 'OCTUBRE PROMO 22  (13).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 22:26:48', '2022-10-04 22:26:48', NULL),
+(170, 6, 'NUTRI LECHE 1 LITRO', '1 X $17.50', 'OCTUBRE PROMO 22  (18).png', '2022-10-04', '2022-10-31', NULL, 0, 5, '2022-10-04 22:40:57', '2022-10-04 22:40:57', NULL),
+(171, 6, 'SALSA CATSUP CLEMENTE 340G', '1 X $19.00', 'OCTUBRE PROMO 22  (7).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 22:51:59', '2022-10-04 22:51:59', NULL),
+(172, 6, 'SALSA TAMPICO EXTRA PICANTE 60ML', '1 X $39.00', 'OCTUBRE PROMO 22  (21).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 22:53:51', '2022-10-04 22:53:51', NULL),
+(173, 6, 'SALSA HABANERO 148ML SABORES', '1 X $22.00', 'OCTUBRE PROMO 22  (20).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 22:54:55', '2022-10-04 22:54:55', NULL),
+(174, 6, 'ATUN DOLORES 133GR/140GR', '2 X $38.00', 'OCTUBRE PROMO 22  (19).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 22:58:26', '2022-10-04 22:58:26', NULL),
+(175, 6, 'CHILE MIGUELITO TARRO 250 ML', '1 X $25', 'OCTUBRE PROMO 22  (4).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 23:06:53', '2022-10-04 23:06:53', NULL),
+(176, 6, 'SUERO ELECTROLIT 625ML SABORES', '2 X $40.00', 'OCTUBRE PROMO 22  (3).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 23:08:17', '2022-10-04 23:08:17', NULL),
+(177, 6, 'PALETA HOLANDA LIMÓN CITRUS', '2 X $27.00', 'OCTUBRE PROMO 22  (16).png', '2022-10-04', '2022-10-31', NULL, 0, 4, '2022-10-04 23:10:10', '2022-10-04 23:10:10', NULL),
+(178, 6, 'LALA LECHE YOMI 960ML SABORES', '1 X $27.00', 'OCTUBRE PROMO 22  (5).png', '2022-10-04', '2022-10-31', NULL, 0, 5, '2022-10-04 23:13:09', '2022-10-04 23:13:09', NULL),
+(179, 6, 'CHOCOLATE REESES 39.6GR', '1 X $18.00', 'OCTUBRE PROMO 22  (6).png', '2022-10-04', '2022-10-31', NULL, 0, 13, '2022-10-04 23:17:27', '2022-10-04 23:17:27', NULL),
+(180, 6, 'BOCANIKA MAICITO  SABORES', '1 X $16.00', 'OCTUBRE PROMO 22  (8).png', '2022-10-04', '2022-10-31', NULL, 0, 3, '2022-10-04 23:19:03', '2022-10-04 23:19:03', NULL),
+(181, 6, 'BOCANIKA CUBOS DE FRUTA ENCHILADA 50GR', '1 X $18.50', 'OCTUBRE PROMO 22  (9).png', '2022-10-04', '2022-10-31', NULL, 0, 3, '2022-10-04 23:20:04', '2022-10-04 23:20:20', NULL),
+(182, 6, 'COCA COLA 2.5 L', '1 X $29.00', 'OCTUBRE PROMO 22  (14).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 23:21:36', '2022-10-04 23:21:36', NULL),
+(183, 6, 'ENERGETIZANTE AMPER  473ML SABORES', '2 X $35.00', 'OCTUBRE PROMO 22  (15).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 23:24:54', '2022-10-04 23:24:54', NULL),
+(184, 6, 'BEBIDA SKYY  275ML SABORES', '2 X $49.00', 'OCTUBRE PROMO 22  (33).png', '2022-10-04', '2022-10-31', NULL, 0, 2, '2022-10-04 23:26:52', '2022-10-04 23:26:52', NULL),
+(185, 6, 'BRANDY TORRES 5 700ML + COCA -COLA 2.75 L NR', 'COMBO $249.00', 'OCTUBRE PROMO 22  (28).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 23:29:39', '2022-10-04 23:29:39', NULL),
+(186, 6, 'WISKY BLACK & WHITE 700ML + BRILLANTE MINERAL 2L', 'COMBO $235.00', 'OCTUBRE PROMO 22  (29).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 23:31:04', '2022-10-04 23:31:04', NULL),
+(187, 6, 'RON CAPITAN MORGAN 750ML + COCA COLA 2.75 LT', 'COMBO $ 199.00', 'OCTUBRE PROMO 22  (30).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 23:32:03', '2022-10-04 23:32:03', NULL),
+(188, 6, 'VODKA ABSOLUT AZUL 750ML + JUGO JUMEX 1LT TETRAPACK SABORES', 'COMBO $275.00', 'OCTUBRE PROMO 22  (31).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 23:32:51', '2022-10-04 23:32:51', NULL),
+(189, 6, 'CERVEZA CORONA LIGHT  355ML BOTE', '6 X $102.00', 'OCTUBRE PROMO 22  (37).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 23:35:03', '2022-10-31 16:21:35', NULL),
+(190, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', '6 X $102.00', 'OCTUBRE PROMO 22  (36).png', '2022-10-04', '2022-10-31', NULL, 0, 17, '2022-10-04 23:36:09', '2022-10-04 23:36:09', NULL),
+(192, 6, 'CERVEZA MODELO LATON 473ML', '2 X $42.00', 'OCTUBRE PROMO 22  (35).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 23:38:42', '2022-10-31 16:21:23', NULL),
+(193, 6, 'CERVEZA VICTORIA 473ML LATON', '2 X $42.00', 'OCTUBRE PROMO 22  (34).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 23:39:22', '2022-10-31 16:20:33', NULL),
+(194, 6, 'HELIX 355ML LATA SABORES', '3 X $58.00', 'OCTUBRE PROMO 22  (32).png', '2022-10-04', '2022-10-31', NULL, 0, 17, '2022-10-04 23:40:15', '2022-10-04 23:41:21', NULL),
+(195, 6, 'CORONA AGUA RIFADA 355 ML', '1 X $21.00', 'OCTUBRE PROMO 22  (33).png', '2022-10-04', '2022-10-31', NULL, 0, 17, '2022-10-04 23:41:07', '2022-10-04 23:41:07', NULL),
+(196, 6, 'BARCEL TOREADAS HABANERO 55GR + PEPSI 600ML', 'COMBO $33.00', 'OCTUBRE PROMO 22  (25).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 23:42:41', '2022-10-04 23:42:41', NULL),
+(197, 6, 'NESTLE 16 OZ + REBANADAS BIMBO', 'COMBO $30.00', 'OCTUBRE PROMO 22  (24).png', '2022-10-04', '2022-10-31', NULL, 0, 16, '2022-10-04 23:43:54', '2022-10-04 23:43:54', NULL),
+(198, 6, 'ICEE SLUSH 20 ONZAS SABORES', '2 X $55.00', 'OCTUBRE PROMO 22  (1).png', '2022-10-04', '2022-10-31', NULL, 0, 7, '2022-10-04 23:44:52', '2022-10-04 23:44:52', NULL),
+(199, 6, 'VELADORA LIMON FAMA CON AROMA', '3 X$49.00', 'OCTUBRE PROMO 22  (2).png', '2022-10-04', '2022-10-31', NULL, 0, 1, '2022-10-04 23:45:51', '2022-10-04 23:45:51', NULL),
+(200, 6, 'HOT DOG + COCA COLA CHOBBY 355 ML', 'COMBO $25.00', 'OCTUBRE PROMO 22  (27).png', '2022-10-04', '2022-10-31', NULL, 0, 7, '2022-10-04 23:47:11', '2022-10-04 23:47:11', NULL),
+(201, 6, 'VICTORIA CEMPASUCHIL 473ML', '2 X $35.00', 'OCTUBRE PROMO 22  (38).png', '2022-10-04', '2022-11-04', NULL, 0, 17, '2022-10-04 23:53:47', '2022-10-31 16:20:06', NULL),
+(202, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2L', '1 x $41.00', '68 oct 22 (1).png', '2022-10-10', '2022-11-04', NULL, 0, 17, '2022-10-10 22:47:32', '2022-10-31 15:54:01', NULL),
+(203, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', '1 x $41.00', '68 oct 22 (2).png', '2022-10-10', '2022-11-04', NULL, 0, 17, '2022-10-10 23:07:45', '2022-10-31 15:54:11', NULL),
+(204, 6, 'CERVEZA NEGRA MODELO 1LT', '1 X $42.00', '68 oct 22 (3).png', '2022-10-10', '2022-11-04', NULL, 0, 17, '2022-10-10 23:09:25', '2022-10-31 16:19:55', NULL),
+(205, 6, 'DETERGENTE BLANCA NIEVES 500G + LIMPIADOR CLARASOL 1 LT', 'COMBO $30.00', 'NOV 2022 (40).png', '2022-11-05', '2022-11-30', NULL, 0, 11, '2022-11-05 15:58:38', '2022-11-05 15:58:38', NULL),
+(206, 6, 'SUAVITEL 450ML', '1 X $18.00', 'NOV 2022  (28).png', '2022-11-05', '2022-11-30', NULL, 0, 11, '2022-11-05 16:05:01', '2022-11-05 16:05:01', NULL),
+(207, 6, 'DETERGENTE ROMA 500 GR', '1 X $19.00', 'NOV 2022  (29).png', '2022-11-05', '2022-11-30', NULL, 0, 11, '2022-11-05 16:06:07', '2022-11-05 16:06:07', NULL),
+(208, 6, 'INSECTICIDA RAIDOLITO', '2 X $35.00', 'NOV 2022  (30).png', '2022-11-05', '2022-11-30', NULL, 0, 12, '2022-11-05 16:08:08', '2022-11-05 16:08:08', NULL),
+(209, 6, 'POUCH PEDIGREE 100 GR PRESENTACIONES', '4 X $45.00', 'NOV 2022  (19).png', '2022-11-05', '2022-11-30', NULL, 0, 14, '2022-11-05 16:10:00', '2022-11-05 16:10:00', NULL),
+(210, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', '4 X $45.00', 'NOV 2022  (18).png', '2022-11-05', '2022-11-30', NULL, 0, 14, '2022-11-05 16:11:12', '2022-11-05 16:11:12', NULL),
+(211, 6, 'PASTA DENTAL CREST 75 ML', '1 X $20.00', 'NOV 2022  (26).png', '2022-11-05', '2022-11-30', NULL, 0, 10, '2022-11-05 16:16:50', '2022-11-05 16:16:50', NULL),
+(212, 6, 'HARINA DE TRIGO SAN BLAS 1 KG', '1 X $22.00', 'NOV 2022  (31).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:20:37', '2022-11-05 16:20:37', NULL),
+(213, 6, 'ACEITE PURELA DE SOYA 800 ML', '1 X $45.00', 'NOV 2022  (32).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:24:11', '2022-11-05 16:24:11', NULL),
+(214, 6, 'NUTRI LECHE 1LT', '1 X 17.50', 'NOV 2022  (35).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:26:47', '2022-11-05 16:26:47', NULL),
+(215, 6, 'GRANOS DE ELOTES HERDEZ 220 GR', '1 X $12.00', 'NOV 2022  (34).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:29:42', '2022-11-05 16:29:42', NULL),
+(216, 6, 'COCA COLA 2.5 LT RETORNABLE', '1 X $29.00', 'NOV 2022  (36).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 16:30:47', '2022-11-05 16:30:47', NULL),
+(217, 6, 'SALSA CATSUP CLEMENTE 340 GR', '1 X $19.00', 'NOV 2022  (25).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:35:41', '2022-11-05 16:35:41', NULL),
+(218, 6, 'CREMA CALAHUA COCO 480 GR', '1 x $32.00', 'NOV 2022  (27).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:39:30', '2022-11-05 16:39:30', NULL),
+(219, 6, 'HARINA PRONTO HOT CAKES 500 GR', '1 X $25.00', 'NOV 2022  (22).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:40:39', '2022-11-05 16:40:39', NULL),
+(220, 6, 'NESCAFE CAFE DE OLLA 46 GR', '1 X $29.00', 'NOV 2022  (44).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:41:33', '2022-11-05 16:41:33', NULL),
+(221, 6, 'CREMA COFFE MATE 160 GR', '1 X $29.00', 'NOV 2022  (23).png', '2022-11-05', '2022-11-30', NULL, 0, 1, '2022-11-05 16:43:52', '2022-11-05 16:43:52', NULL),
+(222, 6, 'CHOCOLATE CARLOS V 18 GR / 22 GR', '1 X $10.00', 'NOV 2022  (33).png', '2022-11-05', '2022-11-30', NULL, 0, 13, '2022-11-05 16:47:26', '2022-11-05 16:47:26', NULL),
+(223, 6, 'CHOCOLATE KINDER DELICE 39/42 GR', '1 X 16.00', 'NOV 2022  (24).png', '2022-11-05', '2022-11-30', NULL, 0, 13, '2022-11-05 16:50:17', '2022-11-05 16:50:17', NULL),
+(224, 6, 'ENERGETIZANTE VOLT 473ML SABORES', '2 X $35.00', 'NOV 2022  (13).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 16:57:08', '2022-11-05 16:57:08', NULL),
+(225, 6, 'SUERO ELECTROLIT 625 ML', '2 X $44.00', 'NOV 2022  (12).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 17:00:01', '2022-11-05 17:00:01', NULL),
+(226, 6, 'HELIX 355 ML LATA SABORES', '2 X $29.00', 'NOV 2022  (11).png', '2022-11-05', '2022-11-30', NULL, 0, 2, '2022-11-05 17:00:51', '2022-11-05 17:00:51', NULL),
+(227, 6, 'VODKA ABSOLUT AZUL 750 ML + JUGO TETRAPACK 1LT', 'COMBO $287.00', 'NOV 2022  (43).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 17:03:27', '2022-11-05 17:03:27', NULL),
+(228, 6, 'WHISKY BLACK AND WHITE 700ML + BRILLANTE MINERAL 2LT', 'COMBO $235.00', 'NOV 2022  (42).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 17:04:55', '2022-11-05 17:04:55', NULL),
+(229, 6, 'CERVEZA VICTORIA MEGAFAMILIAR 1.2LT', '2 X $72.00', 'NOV 2022  (10).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 17:06:04', '2022-11-05 17:06:04', NULL),
+(230, 6, 'CERVEZA CORONA MEGAFAMILAIR 1.2 LT', '2 X $72.00', 'NOV 2022  (8).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 17:06:49', '2022-11-05 17:06:49', NULL),
+(231, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', '6 X $109.00', 'NOV 2022  (2).png', '2022-11-05', '2022-11-15', NULL, 0, 17, '2022-11-05 17:08:14', '2022-11-05 17:08:14', NULL),
+(232, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355 ML', '6 X $109.00', 'NOV 2022  (3).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 17:09:32', '2022-11-05 17:09:32', NULL),
+(233, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 x $102.00', 'NOV 2022  (4).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 17:11:38', '2022-11-14 16:42:21', NULL),
+(234, 6, 'CERVEZA CORONA  BOTE 355ML', '6 X $102.00', 'NOV 2022  (5).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 17:12:13', '2022-11-14 16:37:16', NULL),
+(235, 6, 'CERVEZA MODELO ESPECIAL LATON 473 ML', '2 X$42.00', 'NOV 2022  (7).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 17:14:00', '2022-11-14 16:36:33', NULL),
+(236, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $42.00', 'NOV 2022  (6).png', '2022-11-05', '2022-11-13', NULL, 0, 17, '2022-11-05 17:15:16', '2022-11-14 16:36:00', NULL),
+(237, 6, 'CERVEZA MODELO NOCHE ESPECIAL 355ML', '3 X $53.00', 'NOV 2022  (9).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 17:16:27', '2022-11-05 17:16:27', NULL),
+(238, 6, 'AGUA RIFADA CORONA SABORES 355ML', '1 X $21.00', 'NOV 2022  (1).png', '2022-11-05', '2022-11-30', NULL, 0, 17, '2022-11-05 17:17:23', '2022-11-05 17:17:23', NULL),
+(239, 6, 'HOLANDA MAGNUM 90/ 100 ML  CLASICA/ ALMENDRA', '1 X $30.00', 'NOV 2022  (21).png', '2022-11-05', '2022-11-30', NULL, 0, 4, '2022-11-05 17:19:17', '2022-11-05 17:19:17', NULL),
+(240, 6, 'SUAVICREMAS 102GR SABORES', '1 X $15.00', 'NOV 2022  (17).png', '2022-11-05', '2022-11-30', NULL, 0, 6, '2022-11-05 17:20:31', '2022-11-05 17:20:31', NULL),
+(241, 6, 'YOGURT LALA 220/250 GR SABORES', '2 X $27.00', 'NOV 2022  (16).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 17:34:44', '2022-11-05 17:34:44', NULL),
+(242, 6, 'PAN BIMBO TOSTADO 210GR + LECHERITA NESTLE 100GR', 'combo $40.00', 'NOV 2022  (41).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 17:37:40', '2022-11-05 17:37:40', NULL),
+(243, 6, 'LECHE YOMI LALA 190ML CHOCOLATE + BARRA BRAN FRUT 58GR', 'COMBO $23.00', 'NOV 2022  (40).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 17:54:41', '2022-11-05 17:54:41', NULL),
+(244, 6, 'CHIPS 60GR JALAPEÑO + COCA COLA 600ML', 'COMBO $35.00', 'NOV 2022  (39).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 18:01:21', '2022-11-05 18:01:21', NULL),
+(245, 6, 'SABRITAS PAPA 42/45GR SABORES', '2 X $32.00', 'NOV 2022  (15).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 18:02:39', '2022-11-05 18:02:39', NULL),
+(246, 6, 'NESTLE 16 ONZAS SABORES + GALLETAS OREO 45.6GR', 'COMBO $31.00', 'NOV 2022  (38).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 18:05:08', '2022-11-05 18:05:08', NULL),
+(247, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', 'COMBO $25.00', 'NOV 2022  (37).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 18:06:07', '2022-11-05 18:06:07', NULL),
+(248, 6, 'ICE SLUSH 20 OZ SABORES', '2 X $55.00', 'NOV 2022  (20).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 18:07:34', '2022-11-05 18:07:34', NULL),
+(249, 6, 'NESCAFE 8 OZ SABORES', '2 X $29.00', 'NOV 2022  (14).png', '2022-11-05', '2022-11-30', NULL, 0, 16, '2022-11-05 18:09:13', '2022-11-05 18:09:13', NULL),
+(250, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $108.00', 'correcion nov 22 26 (1).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 19:53:41', '2022-12-01 19:57:59', NULL),
+(251, 6, 'CERVEZA CORONA  BOTE 355ML', '6 X $108.00', 'correcion nov 22 26 (2).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 19:54:29', '2022-12-01 19:57:48', NULL),
+(252, 6, 'CERVEZA CORONA LATON 473 ML', '2 X $44.00', 'correcion nov 22 26 (5).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 19:55:43', '2022-12-01 19:57:34', NULL),
+(253, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $44.00', 'correcion nov 22 26 (3).png', '2022-11-15', '2022-11-30', NULL, 0, 17, '2022-11-15 19:57:55', '2022-12-01 19:57:23', NULL),
+(255, 6, 'DETERGENTE AXION LIMON 500 GR', '$25.00', 'DIC 22  (4).png', '2022-12-01', '2022-12-31', NULL, 0, 11, '2022-12-01 20:08:31', '2022-12-01 20:09:10', NULL),
+(256, 6, 'PASTA DENTAL COLGATE TRIPLE ACCION 75ML', 'A SOLO $20.00', 'DIC 22  (13).png', '2022-12-01', '2022-12-31', NULL, 0, 10, '2022-12-01 20:11:40', '2022-12-01 20:11:40', NULL),
+(257, 6, 'SHAMPOO SAVILE SABILA 180ML', '$17.00', 'DIC 22  (10).png', '2022-12-01', '2022-12-31', NULL, 0, 10, '2022-12-01 20:12:56', '2022-12-01 20:12:56', NULL),
+(258, 6, 'LECHE NUTRI 1 LITRO', '$17.50', 'DIC 22  (2).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 20:15:35', '2022-12-01 20:15:35', NULL),
+(259, 6, 'SALSA VALENTINA 350/370 ML', '$16.00', 'DIC 22  (3).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 20:17:12', '2022-12-01 20:17:12', NULL),
+(260, 6, 'TE MC CORMICK MANZANILLA O LIMÓN', '$25.00', 'DIC 22  (14).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 20:19:40', '2022-12-01 20:19:40', NULL),
+(261, 6, 'CREMA COFFE MATE 160 GR', '$39.00', 'DIC 22  (16).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 20:21:11', '2022-12-01 20:21:11', NULL),
+(262, 6, 'CAFÉ OLE 281 SABORES', '$29.00', 'DIC 22  (1).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 20:23:32', '2022-12-01 20:23:32', NULL),
+(263, 6, 'HOLANDA PALETA CONEJO TURIN 70 ML', '$38.00', 'DIC 22  (22).png', '2022-12-01', '2022-12-31', NULL, 0, 4, '2022-12-01 20:25:09', '2022-12-01 20:25:09', NULL),
+(264, 6, 'CHOCO MILK BOLSA 160 GR', '$25.00', 'DIC 22  (11).png', '2022-12-01', '2022-12-31', NULL, 0, 1, '2022-12-01 20:26:42', '2022-12-01 20:26:42', NULL),
+(265, 6, 'GALLETA CHOKIS 84/90 GR', '2 X $30.00', 'DIC 22  (5).png', '2022-12-01', '2022-12-31', NULL, 0, 6, '2022-12-01 20:28:14', '2022-12-01 20:28:14', NULL),
+(266, 6, 'KINDER DELICE 29/42 GR', '$16.00', 'DIC 22  (15).png', '2022-12-01', '2022-12-31', NULL, 0, 13, '2022-12-01 20:32:13', '2022-12-01 20:32:13', NULL),
+(267, 6, 'PALETA XTREME BUBALOO 16.5/20.5 GR', '$12.00', 'DIC 22  (19).png', '2022-12-01', '2022-12-31', NULL, 0, 13, '2022-12-01 20:33:53', '2022-12-01 20:33:53', NULL),
+(268, 6, 'REFRESCO COCA COLA 2.5 L RETORNABLE', 'A SOLO $29.00', 'DIC 22  (12).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 20:34:59', '2022-12-01 20:34:59', NULL),
+(269, 6, 'SUERO ELECTROLIT 625 ML', '3 x $59.00', 'DIC 22  (20).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 22:52:21', '2022-12-01 22:52:21', NULL),
+(270, 6, 'SABRITAS PAPA 170/171GR SABORES', '2 x $95.00', 'DIC 22  (21).png', '2022-12-01', '2022-12-31', NULL, 0, 3, '2022-12-01 23:10:33', '2022-12-01 23:10:33', NULL),
+(271, 6, 'CERVEZA NEGRA MODELO 355 ML', '6 X $109.00', 'DIC 22  (39).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:17:38', '2022-12-29 18:57:36', NULL),
+(272, 6, 'CEVEZA MODELO ESPECIAL CRISTAL 355 ML', '6 X $109.00', 'DIC 22  (38).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:18:44', '2022-12-29 18:58:08', NULL),
+(273, 6, 'CERVEZA CORONA LIGHT BOTE 355 ML', '6 X $108.00', 'DIC 22  (37).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:19:44', '2022-12-29 18:58:31', NULL),
+(274, 6, 'CERVEZA CORONA EXTRA BOTE 355 ML', '6 X $108.00', 'DIC 22  (36).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:21:00', '2022-12-29 18:57:50', NULL),
+(275, 6, 'WHISKY RED LABEL 700 ML + BRILLANTE MINERAL 2 LT + HIELO 5KG', 'COMBO $385.00', 'DIC 22  (28).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:23:21', '2022-12-01 23:23:21', NULL),
+(276, 6, 'WHISKY BLACK AND WHITE 700 ML + BRILLANTE MINERAL', '$235.00', 'DIC 22  (27).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:24:35', '2022-12-01 23:24:35', NULL),
+(277, 6, 'VODKA ABSOLUT AZUL 750 ML + JUGO JUMEX TETRAPACK', '1 X $287.00', 'DIC 22  (26).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:26:38', '2022-12-01 23:26:38', NULL),
+(278, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML + JUGO JUMEX TETRAPACK', '1 X $286.00', 'DIC 22  (25).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:27:49', '2022-12-01 23:27:49', NULL),
+(279, 6, 'RON BACARDI 750 ML', '1 X $245.00', 'DIC 22  (42).png', '2022-12-01', '2022-12-31', NULL, 0, 8, '2022-12-01 23:29:35', '2022-12-01 23:29:35', NULL),
+(280, 6, 'CERVEZA CORONA MEGAFAMILIAR 1.2 LT', '2 X $72.00', 'MEGA CORONA DIC 2022.png', '2022-12-02', '2022-12-16', NULL, 0, 17, '2022-12-01 23:33:37', '2022-12-17 16:29:19', NULL),
+(282, 6, 'CERVEZA CORONA EXTRA 355 ML VIDRIO', 'A SOLO $29.00', 'DIC 22  (40).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:36:23', '2022-12-29 18:58:52', NULL),
+(283, 6, 'CERVEZA CORONA EXTRA 473 ML', '2 X $44.00', 'DIC 22  (33).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:40:18', '2022-12-29 18:59:07', NULL),
+(284, 6, 'CERVEZA VICTORIA LATON 473 ML', '2 X $44.00', 'DIC 22  (32).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:41:54', '2022-12-29 18:56:03', NULL),
+(285, 6, 'CERVEZA MODELO ESPECIAL LATON 473ML', '2 X $44.00', 'DIC 22  (31).png', '2022-12-01', '2022-12-30', NULL, 0, 17, '2022-12-01 23:43:03', '2022-12-29 18:55:44', NULL),
+(286, 6, 'BEBIDA CARIBE COOLER 300 ML', '5 PIEZAS X $98.00', 'DIC 22  (24).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 23:49:24', '2022-12-01 23:49:24', NULL),
+(287, 6, 'ENERGETIZANTE VOLT 473 ML PRESENTACIONES', '2 X $35.00', 'DIC 22  (18).png', '2022-12-01', '2022-12-31', NULL, 0, 2, '2022-12-01 23:51:05', '2022-12-01 23:51:05', NULL),
+(288, 6, 'VINO BOONES 750 ML', '1 X $64.00', 'DIC 22  (29).png', '2022-12-01', '2022-12-14', NULL, 0, 8, '2022-12-01 23:52:00', '2022-12-15 22:49:29', NULL),
+(289, 6, 'VINO SINSET 750 ML', '2 PIEZAS X $120.00', 'DIC 22  (41).png', '2022-12-01', '2022-12-31', NULL, 0, 8, '2022-12-01 23:52:50', '2022-12-01 23:52:50', NULL),
+(290, 6, 'CHIPS 60GR JALAPEÑO + COCA COLA 600ML', 'COMBO $35.00', 'DIC 22  (8).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:54:07', '2022-12-01 23:54:07', NULL),
+(291, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', 'COMBO $25.00', 'DIC 22  (6).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:55:29', '2022-12-01 23:55:29', NULL),
+(292, 6, 'ICE SLUSH 20 OZ SABORES', '2 X $55.00', 'DIC 22  (17).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:56:26', '2022-12-01 23:56:26', NULL),
+(293, 6, 'HOT DOG + BOING 250 ML', 'A SOLO $18.00', 'DIC 22  (7).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:58:06', '2022-12-01 23:58:06', NULL),
+(294, 6, 'TRIKI TRAKES 85G + NESTLE 16 OZ', 'A SOLO $39.00', 'dic 2022.png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-01 23:59:23', '2022-12-16 01:40:17', NULL),
+(295, 6, 'CERVEZA MODELO NOCHE ESPECIAL 355 ML NR', '3 X $53.00', 'DIC 22  (30).png', '2022-12-01', '2022-12-31', NULL, 0, 17, '2022-12-02 00:01:58', '2022-12-02 00:01:58', NULL),
+(296, 6, 'SIDRA CAMPANARIO ROSADA 700ML + 2 CERVEZA MODELO NOCHE ESPECIAL CRISTAL 355 ML', 'COMBO $120.00', 'DIC 22  (23).png', '2022-12-01', '2022-12-31', NULL, 0, 16, '2022-12-02 00:03:36', '2022-12-02 00:03:36', NULL),
+(297, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', 'Llévatelo por $45.00', 'DIC 2 2022 (3).png', '2022-12-02', '2022-12-31', NULL, 0, 14, '2022-12-02 19:46:37', '2022-12-02 19:46:37', NULL),
+(298, 6, 'POUCH PEDIGREE 100 GR PRESENTACIONES', '1 x $45.00', 'DIC 2 2022 (2).png', '2022-12-02', '2022-12-31', NULL, 0, 14, '2022-12-02 19:47:25', '2022-12-02 19:47:25', NULL),
+(299, 6, 'CEREAL KELLOGS CORN FLAKES 150 GR', '1 X $27.00', 'DIC 2 2022 (11).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 19:52:29', '2022-12-02 19:52:29', NULL),
+(300, 6, 'VINAGRE BLANCO 500 ML', 'A SOLO $13.00', 'DIC 2 2022 (9).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 19:54:06', '2022-12-02 19:54:06', NULL),
+(301, 6, 'CHOCOLATE ABUELITA 1 PZ', 'A SOLO $16.00', 'DIC 2 2022 (12).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 19:57:14', '2022-12-02 19:57:14', NULL),
+(302, 6, '1 PZ MANTEQUILLA LALA 90 GR', 'LLEVATELA POR $17.00', 'DIC 2 2022 (4).png', '2022-12-02', '2022-12-31', NULL, 0, 1, '2022-12-02 19:58:18', '2022-12-02 19:58:18', NULL),
+(303, 6, 'GALLETAS MARIAS 170 / 177 GR', '$15.00', 'DIC 2 2022 (5).png', '2022-12-02', '2022-12-31', NULL, 0, 6, '2022-12-02 19:59:35', '2022-12-02 19:59:35', NULL),
+(304, 6, 'VICK VAPORUB 12 GR', '$33.00', 'DIC 2 2022 (8).png', '2022-12-02', '2022-12-31', NULL, 0, 9, '2022-12-02 20:00:36', '2022-12-02 20:00:36', NULL),
+(305, 6, 'ENERGETIZANTE VOLT 473ML SABORES', 'A SOLO $39.00', 'DIC 2 2022 (10).png', '2022-12-02', '2022-12-31', NULL, 0, 2, '2022-12-02 20:05:17', '2022-12-02 20:05:17', NULL),
+(306, 6, 'VICTORIA MEGAFAMILIAR 1.2 LT', '$72.00', 'DIC 2 2022 (1).png', '2022-12-02', '2022-12-16', NULL, 0, 17, '2022-12-02 20:06:33', '2022-12-17 16:29:33', NULL),
+(307, 6, 'JUMEX UNICO FRESCO ARANDANO 1 LT', '2 X $65.00', 'DIC 2 2022 (6).png', '2022-12-02', '2022-12-31', NULL, 0, 2, '2022-12-02 20:07:31', '2022-12-02 20:07:31', NULL),
+(308, 6, 'NACHOS PLUS PREPARADOS', '2 X $25.00', 'DIC 2 2022 (7).png', '2022-12-02', '2022-12-31', NULL, 0, 7, '2022-12-02 20:08:48', '2022-12-02 20:08:48', NULL),
+(309, 6, 'DETERGENTE ARIEL ORIGINAL 250 GR', '1 PIEZA X $10.00', 'ENERO 2023 5 (13).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-29 16:55:14', '2023-01-09 16:55:36', NULL),
+(310, 6, 'JABON ZOTE ROSA PASTA 200GR', '1 X $12.00', 'ENERO 2023 5 (14).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-29 16:57:31', '2023-01-09 16:56:20', NULL),
+(311, 6, 'DETERGENTE AXION LIMON 500 GR', '1 X $25.00', 'ENERO 2023 5 (17).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-29 17:03:55', '2023-01-09 16:56:54', NULL),
+(312, 6, 'SERVILLETA DELSEY 100 PIEZAS', '1 X $11.00', 'ENERO 2023 5 (16).png', '2023-01-01', '2022-12-31', NULL, 0, 12, '2022-12-29 17:08:04', '2023-01-09 16:57:22', NULL),
+(313, 6, 'ENJUAGUE BUCAL LISTERINE 250 ML', 'FRESH MMINT/COOL\r\n1 X $49.00', 'ENERO 2023 5 (63).png', '2023-01-01', '2023-01-19', NULL, 0, 10, '2022-12-29 17:09:49', '2023-01-20 19:48:28', NULL),
+(314, 6, 'SHAMPOO SAVILE SABILA 180ML', '1 X $17.00', 'ENERO 2023 5 (1).png', '2023-01-01', '2023-01-31', NULL, 0, 10, '2022-12-29 17:10:51', '2023-01-09 16:58:59', NULL),
+(315, 6, 'ACEITE MENEN 50ML', '1 X $26.00', 'ENERO 2023 5 (3).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 17:12:49', '2023-01-09 16:59:22', NULL),
+(316, 6, 'CREMA CORPORAL HINDS 90 ML', '1 X $18.00', 'ENERO 2023 5 (5).png', '2023-01-01', '2023-01-31', NULL, 0, 10, '2022-12-29 17:14:00', '2023-01-09 16:59:50', NULL),
+(317, 6, 'NESCAFE SOBRE 20/22GR CAPPUCCINO O MOKACCINO', '1 X $10.00', 'ENERO 2023 5 (6).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-29 18:07:41', '2023-01-09 17:00:09', NULL),
+(318, 6, 'ATUN TUNY 140/170 GR', '2 X $32.00\r\nAPLICA EN ACEITE Y AGUA', 'ENERO 2023 5 (10).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-29 18:09:03', '2023-01-09 17:02:28', NULL),
+(319, 6, 'SALCHICHA NUTRI PAVO 250GR', '1 X $19.00', 'ENERO 2023 5 (15).png', '2023-01-01', '2023-01-31', NULL, 0, 18, '2022-12-29 18:14:21', '2023-01-09 17:02:56', NULL),
+(320, 6, 'MERMELADA MCCORNICK 270 GR', 'FRESA Y PIÑA  1 X $27.00', 'ENERO 2023 5 (12).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-29 18:18:56', '2023-01-09 17:03:25', NULL),
+(321, 6, 'COCA COLA 2.5 LT RETORNABLE', '1 x $29.00', 'ENERO 2023 5 (2).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-29 18:22:23', '2023-01-09 17:11:14', NULL),
+(322, 6, 'MANTECADAS BIMBO  6 PZAS', 'VAINILLA, NUEZ, CHISPAS \r\n1 X $25.00', 'ENERO 2023 5 (11).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-29 18:28:32', '2023-01-09 17:11:47', NULL),
+(323, 6, 'GALLETA EMPERADOR SENZO 93GR', '1 X $16.00', 'ENERO 2023 5 (4).png', '2023-01-01', '2023-01-19', NULL, 0, 6, '2022-12-29 18:32:22', '2023-01-20 19:47:22', NULL),
+(324, 6, 'JUGO BOING 1 LT', '1 X $28.00', 'ENERO 2023 5 (7).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-29 18:36:14', '2023-01-09 17:12:10', NULL),
+(325, 6, 'HOLANDA PALETA CHOCO MILK 35 ML', '2 X $22.00', 'ENERO 2023 5 (8).png', '2023-01-01', '2023-01-31', NULL, 0, 4, '2022-12-29 18:44:02', '2023-01-09 17:12:57', NULL),
+(326, 6, 'NACHOS PREPARADOS', '2 X $25.00', 'ENERO 2023 5 (9).png', '2023-01-01', '2023-01-31', NULL, 0, 7, '2022-12-29 18:46:33', '2023-01-09 17:13:20', NULL),
+(327, 6, 'BEBIDA VIÑA REAL 330ML', 'DURAZNO, PIÑA COLADA, BLUE BERRY, MANGO Y MARACUYA\r\n3 X $68.00', 'ENERO 2023 5 (62).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-29 18:50:43', '2023-01-09 18:05:17', NULL);
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(328, 6, 'PILA DURACELL AA', 'LLEVA 2 X $39.00', 'ENERO 2023 5 (18).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 18:51:47', '2023-01-09 18:23:10', NULL),
+(329, 6, 'PILA DURACELL AAA', 'LLEVA 2 X $39.00', 'ENERO 2023 5 (19).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 18:53:09', '2023-01-09 18:22:27', NULL),
+(330, 6, 'PILA PANASONIC EVOLTA AA', 'LLEVA 2 X $29.00', 'ENERO 2023 5 (20).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-29 18:54:18', '2023-01-09 18:19:50', NULL),
+(331, 6, 'PILA PANASONIC EVOLTA AAA', '2 X $29.00.', 'ENERO 2023 5 (21).png', '2023-01-01', '2023-01-31', NULL, 0, 12, '2022-12-30 16:08:45', '2023-01-09 18:19:32', NULL),
+(332, 6, 'LIMPIADOR CLARASOL 1LT', '1 X $10.00', 'ENERO 2023 5 (23).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-30 16:10:39', '2023-01-09 16:55:54', NULL),
+(333, 6, 'ACIDO MURIATICO SULTAN LIMON 400ML', '1 X $15.00', 'ENERO 2023 5 (24).png', '2023-01-01', '2023-01-31', NULL, 0, 11, '2022-12-30 16:11:57', '2023-01-09 16:57:45', NULL),
+(334, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', '4 X $45.00', 'ENERO 2023 5 (40).png', '2023-01-01', '2023-01-31', NULL, 0, 14, '2022-12-30 16:17:15', '2023-01-09 17:01:36', NULL),
+(335, 6, 'POUCH PEDIGREE 100 GR PRESENTACIONES', '4 x $45.00', 'ENERO 2023 5 (39).png', '2023-01-01', '2023-01-31', NULL, 0, 14, '2022-12-30 16:18:20', '2023-01-09 17:02:02', NULL),
+(336, 6, 'PASTA DENTAL COLGATE TRIPLE ACCION 75ML', '1 x $20.00', 'ENERO 2023 5 (26).png', '2023-01-01', '2023-01-31', NULL, 0, 10, '2022-12-30 16:20:51', '2023-01-09 17:00:43', NULL),
+(337, 6, 'GELATINA D GARI PRESENTACIÓN AGUA 120GR', '2 X $20.00', 'ENERO 2023 5 (22).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-30 16:22:18', '2023-01-09 17:03:52', NULL),
+(338, 6, 'NUTRI LECHE 1LT', '1 X $17.50', 'ENERO 2023 5 (34).png', '2023-01-01', '2023-01-31', NULL, 0, 5, '2022-12-30 16:23:04', '2023-01-09 22:44:07', NULL),
+(339, 6, 'CHOCO MILK BOLSA 160 GR', '1 X $25.00', 'ENERO 2023 5 (27).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-30 16:26:59', '2023-01-09 17:08:05', NULL),
+(340, 6, 'SALSA VALENTINA 350/370 ML + SALSA CAPSUP CLEMENTE 340 GR', 'COMBO $32.00', 'ENERO 2023 5 (54).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 16:29:26', '2023-01-09 22:44:45', NULL),
+(341, 6, 'MANTEQUILLA LALA 90 GR', '1 X $17.00', 'ENERO 2023 5 (25).png', '2023-01-01', '2023-01-31', NULL, 0, 1, '2022-12-30 16:30:48', '2023-01-09 17:09:58', NULL),
+(342, 6, 'VODKA ABSOLUT AZUL 750ML+ JUGO JUMEX 1 LT', 'COMBO $287.00', 'ENERO 2023 5 (60).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 16:36:37', '2023-01-09 17:17:12', NULL),
+(343, 6, 'WHISKY BLACK AND WHITE 700ML + BRILLANTE MINERAL 2LT', 'COMBO $235.00', 'ENERO 2023 5 (61).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 16:37:47', '2023-01-09 17:17:42', NULL),
+(344, 6, 'LICOR RANCHO ESCONDIDO 750 ML + BRILLANTE TORONJA 2LT', 'COMBO $95.00', 'ENERO 2023 5 (59).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 16:39:42', '2023-01-09 17:18:29', NULL),
+(345, 6, 'SUERO ELECTROLIT 625 ML', '3 X $59.00', 'ENERO 2023 5 (29).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-30 16:41:34', '2023-01-09 17:52:04', NULL),
+(346, 6, 'ENERGETIZANTE VIVE 100 500ML', '2 X $29.00', 'ENERO 2023 5 (30).png', '2023-01-01', '2023-01-31', NULL, 0, 2, '2022-12-30 16:48:00', '2023-01-09 17:52:27', NULL),
+(347, 6, 'HUEVO KINDER 20 GR', '1 X $23.00', 'ENERO 2023 5 (28).png', '2023-01-01', '2023-01-31', NULL, 0, 13, '2022-12-30 16:54:50', '2023-01-09 17:16:24', NULL),
+(348, 6, 'DORITOS SABORES', 'NACHOS, DIABLO, PIZZEROLA, FLAMIN HOT, 3DS, INCOGNITA, DIANMITA\r\n2 X $32.00', 'ENERO 2023 5 (32).png', '2023-01-01', '2023-01-19', NULL, 0, 3, '2022-12-30 16:57:12', '2023-01-20 19:46:52', NULL),
+(349, 6, 'PALOMITAS ACT II', '2 X $26.00', 'ENERO 2023 5 (31).png', '2023-01-01', '2023-01-31', NULL, 0, 3, '2022-12-30 16:58:08', '2023-01-09 17:54:24', NULL),
+(350, 6, 'RANCHERITOS 60 GR', '1 X $12.00', 'ENERO 2023 5 (33).png', '2023-01-01', '2023-01-19', NULL, 0, 3, '2022-12-30 17:00:36', '2023-01-20 19:46:33', NULL),
+(351, 6, 'GALLETA CHOKIS 84/90 GR', '2 X $30.00', 'ENERO 2023 5 (37).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-30 17:03:04', '2023-01-09 17:57:32', NULL),
+(352, 6, 'SUBMARINOS MARINELA 105 GR', '2 X $34.00', 'ENERO 2023 5 (36).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-30 17:04:09', '2023-01-09 17:58:01', NULL),
+(353, 6, 'GALLETA CREMAX NIEVE 90GR', '2 X $31.00', 'ENERO 2023 5 (38).png', '2023-01-01', '2023-01-31', NULL, 0, 6, '2022-12-30 17:05:40', '2023-01-09 17:58:30', NULL),
+(354, 6, 'YOGURT LALA GO', '2 X $34.00', 'ENERO 2023 5 (35).png', '2023-01-01', '2023-01-31', NULL, 0, 5, '2022-12-30 17:27:33', '2023-01-09 17:59:24', NULL),
+(355, 6, 'ICEE SLUSH SABORES 20 ONZAS', '2 X $55.00', 'ENERO 2023 5 (42).png', '2023-01-01', '2023-01-31', NULL, 0, 7, '2022-12-30 17:29:11', '2023-01-09 18:00:05', NULL),
+(356, 6, 'COCA COLA 600 + CHIPS JALAPEÑO / SAL', 'COMBO $35.00', 'ENERO 2023 5 (56).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 17:31:11', '2023-01-09 18:02:27', NULL),
+(357, 6, 'COCA COLA 355ML LATA + CHEETOS TORCIDITOS 52GR', 'COMBO $29.00', 'ENERO 2023 5 (55).png', '2023-01-01', '2023-01-19', NULL, 0, 16, '2022-12-30 17:33:25', '2023-01-20 19:45:19', NULL),
+(358, 6, 'COCA COLA CHOBBY 355ML PET + HOT DOG', 'COMBO A SOLO $25.00', 'ENERO 2023 5 (58).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 17:34:43', '2023-01-09 18:04:51', NULL),
+(359, 6, 'NESTLE SABORES 16 ONZAS + NEGRITO BIMBO', 'COMBO A SOLO  $37.00', 'ENERO 2023 5 (53).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 17:36:55', '2023-01-09 18:04:18', NULL),
+(360, 6, 'JUGO BOING 250ML +HOT DOG', '1 X$18.00', 'ENERO 2023 5 (57).png', '2023-01-01', '2023-01-31', NULL, 0, 16, '2022-12-30 17:38:02', '2023-01-09 18:03:46', NULL),
+(361, 6, 'CERVEZA CORONA BOTE 355 ML', '6 X $108.00', 'ENERO 2023 5 (45).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:15:56', '2023-01-09 17:19:03', NULL),
+(362, 6, 'CERVEZA CORONA LIGHT BOTE 355 ML', '6 X $108.00', 'ENERO 2023 5 (46).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:22:12', '2023-01-09 17:19:37', NULL),
+(363, 6, 'CERVEZA CORONA VIDRIO 355ML', '2 X  $29.00', 'ENERO 2023 5 (47).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:23:20', '2023-01-09 17:19:59', NULL),
+(364, 6, 'CERVEZA VICTORIA VIDRIO 355 ML', '2 X $29.00', 'ENERO 2023 5 (48).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:26:22', '2023-01-09 17:22:30', NULL),
+(365, 6, 'CERVEZA VICTORIA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'ENERO 2023 5 (49).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:28:09', '2023-01-09 17:22:54', NULL),
+(366, 6, 'CERVEZA CORONA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'ENERO 2023 5 (50).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:28:52', '2023-01-09 17:23:19', NULL),
+(367, 6, 'CERVEZA MODELO LATON 473 ML', '2 X $44.00', 'ENERO 2023 5 (43).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:29:51', '2023-01-09 17:23:51', NULL),
+(368, 6, 'CERVEZA VICTORIA LATON 473 ML', '2 X $44.00', 'ENERO 2023 5 (44).png', '2023-01-02', '2023-01-15', NULL, 0, 17, '2023-01-02 23:30:43', '2023-01-09 17:24:13', NULL),
+(369, 6, 'DETERGENTE ARIEL ORIGINAL 250 GR', '1 X $10.00', 'FEB 2 2023 (54).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 16:51:54', '2023-02-21 15:33:31', NULL),
+(370, 6, 'LIMPIADOR PINOL 500ML', '1 X $18.00', 'FEB 2 2023 (53).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 16:53:08', '2023-02-21 15:35:00', NULL),
+(371, 6, 'LIMPIADOR CLARASOL 1LT', '1 X $10.00', 'FEB 2 2023 (52).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 18:31:12', '2023-02-21 15:38:20', NULL),
+(372, 6, 'ACIDO MURIATICO SULTAN LIMON 400ML', '1 X $15.00', 'FEB 2 2023 (55).png', '2023-02-01', '2023-02-28', NULL, 0, 11, '2023-01-30 18:31:58', '2023-02-21 15:38:53', NULL),
+(373, 6, 'ARROZ ITALRISO  1KG', '1 PIEZA X $ 26.00', 'FEB 2 2023 (27).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:34:31', '2023-02-21 15:39:26', NULL),
+(374, 6, 'ACEITE 123 500ML', '1 X $28.00', 'FEB 2 2023 (25).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:35:28', '2023-02-21 15:39:54', NULL),
+(375, 6, 'AVENA 3 MINUTOS 400GR', '1 X $31.00', 'FEB 2 2023 (30).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:36:38', '2023-02-21 15:46:17', NULL),
+(376, 6, 'SAL LA FINA 1KG', '1 X $20.00', 'FEB 2 2023 (50).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:37:35', '2023-02-21 15:49:13', NULL),
+(377, 6, 'GELATINA D\'GARI 120 GR', '2 X $20.00', 'FEB 2 2023 (46).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:39:05', '2023-02-21 15:49:51', NULL),
+(378, 6, 'ATUN TUNY 140/170 GR', '2 X $32.00', 'FEB 2 2023 (37).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:40:08', '2023-02-21 15:50:15', NULL),
+(379, 6, 'JAMON NUTRI DELI AMERICANO 250 GR', 'A SOLO $25.00', 'FEB 2 2023 (24).png', '2023-02-01', '2023-02-28', NULL, 0, 18, '2023-01-30 18:45:53', '2023-02-21 15:50:37', NULL),
+(380, 6, 'NESCAFE SOBRE 20/22 GR', '1 X $10.00', 'FEB 2 2023 (26).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:48:20', '2023-02-21 15:51:18', NULL),
+(381, 6, 'SALSA VALENTINA 350/370 ML + SALSA CAPSUP CLEMENTE 340 GR', 'COMBO POR $32.00', 'FEB 2 2023 (6).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:49:06', '2023-02-21 15:51:36', NULL),
+(382, 6, 'MERMELADA MCCORNICK 270 GR', '1 X $27.00', 'FEB 2 2023 (49).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:50:29', '2023-02-21 15:52:08', NULL),
+(383, 6, 'PURE DE TOMATE DEL FUERTE 210GR + SOPA ITALPASTA SPAGHETTI 200GR', 'COMBO A SOLO $15.00', 'FEB 2 2023 (5).png', '2023-02-01', '2023-02-28', NULL, 0, 1, '2023-01-30 18:52:23', '2023-02-21 15:52:26', NULL),
+(384, 6, 'ALPURA LECHE 200 ML', '1 X $19.00', 'FEB 2 2023 (34).png', '2023-02-01', '2023-02-28', NULL, 0, 5, '2023-01-30 18:56:07', '2023-02-21 15:53:25', NULL),
+(385, 6, 'YOGURT LALA GO', '2 X $34.00', 'FEB 2 2023 (31).png', '2023-02-01', '2023-02-28', NULL, 0, 5, '2023-01-30 18:57:16', '2023-02-21 15:53:44', NULL),
+(386, 6, 'YOGURT NUTRI 450 GR', '1 X $15.00', 'FEB 2 2023 (28).png', '2023-02-01', '2023-02-28', NULL, 0, 5, '2023-01-30 18:58:32', '2023-02-21 15:54:03', NULL),
+(387, 6, 'POUCH PEDIGREE 100 GR SABORES', '4 X $45.00', 'FEB 2 2023 (38).png', '2023-02-01', '2023-02-28', NULL, 0, 14, '2023-01-30 18:59:55', '2023-02-21 15:54:23', NULL),
+(388, 6, 'POUCH WHISKAS 85GR PRESENTACIONES', '4 X $45.00', 'FEB 2 2023 (39).png', '2023-02-01', '2023-02-28', NULL, 0, 14, '2023-01-30 19:00:38', '2023-02-21 15:54:42', NULL),
+(389, 6, 'CHICLE HUBBA HUBBA 56.7 GR', '1 X $27.00', 'FEB 2 2023 (51).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 19:03:06', '2023-02-21 15:55:02', NULL),
+(390, 6, 'HUEVO KINDER 20 GR', '1 X $23.00', 'FEB 2 2023 (29).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 19:04:18', '2023-02-21 15:55:16', NULL),
+(391, 6, 'CORNETTO HOLANDA 120ML', '2 X $59.00', 'FEB 2 2023 (36).png', '2023-02-01', '2023-02-28', NULL, 0, 4, '2023-01-30 22:50:58', '2023-02-21 15:55:34', NULL),
+(392, 6, 'VODKA WYBOROWA 750 ML', '1 X $165.00', 'FEB 2 2023 (8).png', '2023-02-01', '2023-02-28', NULL, 0, 8, '2023-01-30 22:52:19', '2023-02-21 15:56:01', NULL),
+(393, 6, 'VINO TINTO EL CIRCO SEMIDULCE 750 ML', '1 X $164', 'FEB 2 2023 (9).png', '2023-02-01', '2023-02-28', NULL, 0, 8, '2023-01-30 22:53:42', '2023-02-21 15:56:16', NULL),
+(394, 6, 'LICOR RANCHO ESCONDIDO 750 ML + BRILLANTE TORONJA 2LT', 'A SOLO $95.00', 'FEB 2 2023 (1).png', '2023-02-01', '2023-02-28', NULL, 0, 8, '2023-01-30 23:07:43', '2023-02-21 15:56:34', NULL),
+(395, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', '6 X $119.00', 'FEB 2 2023 (11).png', '2023-02-01', '2023-02-15', NULL, 0, 17, '2023-01-30 23:09:16', '2023-02-21 15:56:52', NULL),
+(396, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355 ML', '6 X $119.00', 'FEB 2 2023 (12).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:12:45', '2023-02-21 15:57:11', NULL),
+(397, 6, 'CERVEZA CORONA BOTE 355 ML', '6 X $108.00', 'FEB 2 2023 (14).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:16:15', '2023-02-21 15:57:36', NULL),
+(398, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $108.00', 'FEB 2 2023 (15).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:16:50', '2023-02-21 15:57:54', NULL),
+(399, 6, 'CERVEZA CORONA LATON 473 ML', '4 X $85.00', 'FEB 2 2023 (18).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:17:47', '2023-02-21 15:58:30', NULL),
+(400, 6, 'CERVEZA MODELO ESPECIAL LATON 473 ML', '4 X $85.00', 'FEB 2 2023 (17).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:19:01', '2023-02-21 15:58:47', NULL),
+(401, 6, 'CERVEZA VICTORIA LATON 473 ML', '4 X $85.00', 'FEB 2 2023 (16).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:20:43', '2023-02-21 15:59:10', NULL),
+(402, 6, 'CERVEZA VICTORIA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'FEB 2 2023 (19).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:24:02', '2023-02-21 15:59:43', NULL),
+(403, 6, 'CERVEZA CORONA MEGAFAMILIAR 1.2 LT', '2 X $75.00', 'FEB 2 2023 (20).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:24:38', '2023-02-21 16:00:16', NULL),
+(404, 6, 'CERVEZA VICTORIA VIDRIO 355 ML', '2 X $29.50', 'FEB 2 2023 (10).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:25:19', '2023-02-21 16:00:39', NULL),
+(405, 6, 'CERVEZA CORONA 355 ML VIDRIO', '2 X $29.50', 'FEB 2 2023 (13).png', '2023-02-01', '2023-02-28', NULL, 0, 17, '2023-01-30 23:26:20', '2023-02-21 16:01:00', NULL),
+(406, 6, 'BEBIDA SKYY 275 ML', '3 X $84.00', 'FEB 2 2023 (35).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 23:28:48', '2023-02-21 16:01:20', NULL),
+(407, 6, 'ENERGETIZANTE VIVE 100 500ML', '2 X 29.00', 'FEB 2 2023 (47).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 23:30:07', '2023-02-21 16:01:35', NULL),
+(408, 6, 'SUERO ELECTROLIT 625 ML', '3 X $59.00', 'FEB 2 2023 (48).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 23:31:43', '2023-02-21 16:02:10', NULL),
+(409, 6, 'REFRESCOS 600ML SABORES', '2 X $30.00', 'FEB 2 2023 (33).png', '2023-02-01', '2023-02-28', NULL, 0, 2, '2023-01-30 23:32:44', '2023-02-21 16:03:19', NULL),
+(410, 6, 'GALLETA CREMAX NIEVE 90GR', '2 X $31.00', 'FEB 2 2023 (41).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 23:35:23', '2023-02-21 16:03:42', NULL),
+(411, 6, 'MANTECADAS BIMBO  6 PZAS', '1 X $25.00', 'FEB 2 2023 (21).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 23:36:02', '2023-02-21 16:04:03', NULL),
+(412, 6, 'SUBMARINOS MARINELA 105 GR', '2 X $34.00', 'FEB 2 2023 (42).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 23:37:22', '2023-02-21 16:04:23', NULL),
+(413, 6, 'GALLETA TRIKI TRAKES 8P 68GR', '2 X $30', 'FEB 2 2023 (43).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 23:38:28', '2023-02-21 16:04:42', NULL),
+(414, 6, 'GALLETA PRINCIPE CHOCOLATE 85GR', '2 X $30.00', 'FEB 2 2023 (44).png', '2023-02-01', '2023-02-28', NULL, 0, 6, '2023-01-30 23:39:37', '2023-02-21 16:05:00', NULL),
+(415, 6, 'ICEE SLUSH SABORES 20 ONZAS', '2 X $59.00', 'FEB 2 2023 (32).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 23:41:01', '2023-02-21 16:05:22', NULL),
+(416, 6, 'PALOMITAS ACT II', '2 x $26.00', 'FEB 2 2023 (40).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 23:43:21', '2023-02-21 16:05:48', NULL),
+(417, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', 'A SOLO $25.00', '48 PROM FEB 2023  (4).png', '2023-02-01', '2023-02-20', NULL, 0, 7, '2023-01-30 23:45:12', '2023-02-21 16:06:14', NULL),
+(418, 6, 'HOT DOG + BOING 250 ML', 'A SOLO $20.00', 'FEB 2 2023 (3).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 23:46:36', '2023-02-21 16:06:43', NULL),
+(419, 6, 'CAPUCCINO SABORES + BARRITAS MARINELA  67 GR', 'A SOLO $37.00', 'FEB 2 2023 (2).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 23:49:02', '2023-02-21 16:07:02', NULL),
+(420, 6, 'COCA COLA 355 ML + PALOMITAS ACT II', 'PROMOCIÓN EN $30.00', 'FEB 2 2023 (7).png', '2023-02-01', '2023-02-28', NULL, 0, 7, '2023-01-30 23:50:31', '2023-02-21 16:07:16', NULL),
+(421, 6, 'CHOCOLATE FERRERO ROCHER/ RAFAELLO COCO 3PZAS', '1 PAQUETE A $30.00', 'FEB 2 2023 (22).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 23:52:12', '2023-02-21 16:07:46', NULL),
+(422, 6, 'CHOCOLATE HERSHEY´S', '2 X $30.00', 'FEB 2 2023 (23).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 23:53:17', '2023-02-21 16:08:12', NULL),
+(423, 6, 'CHOCOLATE KIT KAT 41.5 GR', '2 X $30.00', 'FEB 2 2023 (45).png', '2023-02-01', '2023-02-28', NULL, 0, 13, '2023-01-30 23:53:57', '2023-02-21 16:08:41', NULL),
+(424, 6, 'LIMPIADOR CLARASOL 1 LT', '1 X $10.00', '1 MARZO 2 2023.png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 19:31:46', '2023-02-28 19:31:46', NULL),
+(425, 6, 'LIMPIADOR PINOL 500ML', '1 X $18.00', '2 MARZO 2 2023.png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 19:32:53', '2023-02-28 19:32:53', NULL),
+(426, 6, 'DETERGENTE ARIEL ORIGINAL 250 GR', '1X $10.00', '3 MARZO 2 2023.png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 19:33:43', '2023-02-28 19:33:43', NULL),
+(427, 6, 'DETERGENTE LIQUIDO AXION LIMON', '1 X $19.00', '4 MARZO 2 2023 (44).png', '2023-03-01', '2023-03-31', NULL, 0, 11, '2023-02-28 19:34:24', '2023-02-28 19:34:24', NULL),
+(428, 6, 'JABON ZEST SENSACION HIDRATADA 150GR', '1 X $18.00', '5 MARZO 2 2023 (46).png', '2023-03-01', '2023-03-31', NULL, 0, 10, '2023-02-28 19:35:29', '2023-02-28 19:35:29', NULL),
+(429, 6, 'CEPILLO DENTAL COLGATE PREMIER', '1 X $14.00', '6 MARZO 2 2023 (45).png', '2023-03-01', '2023-03-31', NULL, 0, 10, '2023-02-28 19:39:09', '2023-02-28 19:39:09', NULL),
+(430, 6, 'POUCH WHISKAS 85 GR', '4 X $45.00', '7 MARZO 2 2023 (31).png', '2023-03-01', '2023-03-31', NULL, 0, 14, '2023-02-28 19:42:24', '2023-02-28 19:42:24', NULL),
+(431, 6, 'POUCH PEDIGREE 100GR', '4 X $45.00', '8 MARZO 2 2023 (30).png', '2023-03-01', '2023-03-31', NULL, 0, 14, '2023-02-28 19:43:10', '2023-02-28 19:43:10', NULL),
+(432, 6, 'SERVITOALLA PETALO 180 HOJAS', '1 X $29.00', '9.1 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 19, '2023-02-28 19:47:03', '2023-02-28 23:10:22', NULL),
+(433, 6, 'ACEITE EL FARO 900 ML', '1 X $44.00', '10 MARZO 2 2023 (47).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 19:48:28', '2023-02-28 19:48:28', NULL),
+(434, 6, 'ADEREZO CLEMENTE RANCH 237ML', '1 X $34.00', '11 MARZO 2 2023 (40).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 23:12:55', '2023-02-28 23:12:55', NULL),
+(435, 6, 'ACEITE VEGETAL 123 500ML', '1 X $28.00', '12 MARZO 2 2023 (24).png', '2023-02-01', '2023-03-31', NULL, 0, 1, '2023-02-28 23:13:42', '2023-02-28 23:13:42', NULL),
+(436, 6, 'ARROZ SUPER EXTRA ITALRISO 1KG', '1 X $26.00', '13 MARZO 2 2023 (25).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-02-28 23:19:05', '2023-02-28 23:19:05', NULL),
+(437, 6, 'JAMON NUTRI DELI AMERICANOS 250GR', '1 X $25.00', '14 MARZO 2 2023 (23).png', '2023-03-01', '2023-03-31', NULL, 0, 18, '2023-02-28 23:33:32', '2023-02-28 23:33:32', NULL),
+(438, 6, 'PINGUINOS MARINELA 80 GR', '1 X $18.00', '15 MARZO 2 2023 (52).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-02-28 23:34:53', '2023-02-28 23:34:53', NULL),
+(439, 6, 'VODKA WYBOROWA', '1 X $165.00', '16 MARZO 2 2023 (7).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 23:36:49', '2023-02-28 23:36:49', NULL),
+(440, 6, 'RANCHO ESCONDIDO 750ML + BRILLANTE TORONJA 2 LT', 'COMBO $95.00', '17 MARZO 2 2023 (55).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 23:37:47', '2023-02-28 23:37:47', NULL),
+(441, 6, 'TEQUILA CABRITO 750ML + 250ML + BRILLANTE TORONJA', 'COMBO $188.00', '18 MARZO 2 2023 (9).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 23:39:16', '2023-02-28 23:39:16', NULL),
+(442, 6, 'COCA COLA 25. LT + RON BACARDI BLANCO 750ML', 'COMBO $244.00', '19 MARZO 2 2023 (8).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 23:40:53', '2023-02-28 23:40:53', NULL),
+(443, 6, 'CERVEZA NEGRA MODELO 355 ML CRISTAL', '6 X $119.00', '20 MARZO 2 2023 (13).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:41:44', '2023-02-28 23:41:44', NULL),
+(444, 6, 'CERVEZA MODELO ESPECIAL 355ML CRISTAL', '6 X $119.00', '21 MARZO 2 2023 (14).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:43:01', '2023-02-28 23:43:01', NULL),
+(445, 6, 'CERVEZA VICTORIA MEGA 1.2 LT', '2 X $75.00', '22 MARZO 2 2023 (21).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:44:24', '2023-02-28 23:44:24', NULL),
+(446, 6, 'CERVEZA CORONA MEGA 1.2 LT', '2 X $75.00', '23 MARZO 2 2023 (22).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:45:05', '2023-02-28 23:45:05', NULL),
+(447, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', '6 X $108.00', '24 MARZO 2 2023 (16).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:45:58', '2023-02-28 23:45:58', NULL),
+(448, 6, 'CERVEZA CORONA LIGHT 355 ML BOTE', '6 X $108.00', '25 MARZO 2 2023 (17).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:46:57', '2023-02-28 23:46:57', NULL),
+(449, 6, 'CERVEZA VICTORIA VIDRIO 355ML', '2 X $29.50', '26 MARZO 2 2023 (12).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:48:29', '2023-02-28 23:48:29', NULL),
+(450, 6, 'CERVEZA CORONA EXTRA VIDEIO 355ML', '2 X $29.50', '27 MARZO 2 2023 (15).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:49:25', '2023-02-28 23:49:25', NULL),
+(451, 6, 'CERVEZA CORONA LATÓN 473 ML', '4 X $85.00', '28 MARZO 2 2023 (20).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:50:16', '2023-02-28 23:50:16', NULL),
+(452, 6, 'CERVEZA VICTORIA LATON 473ML', '4 X $85.00', '29 MARZO 2 2023 (18).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:51:09', '2023-02-28 23:51:09', NULL),
+(453, 6, 'CERVEZA MODELO LATON 473ML', '4 X $85.00', '30 MARZO 2 2023 (19).png', '2023-03-01', '2023-03-31', NULL, 0, 17, '2023-02-28 23:51:57', '2023-02-28 23:51:57', NULL),
+(454, 6, 'LICOR MEXGAVIA SABORES 440ML', '3 X $59.00', '31 MARZO 2 2023 (10).png', '2023-03-01', '2023-03-31', NULL, 0, 8, '2023-02-28 23:53:16', '2023-02-28 23:53:16', NULL),
+(455, 6, 'BEBIDA NEW MIX 350 ML', 'PALOMA, VAMPIRO, MARGARITA 3 X $69.00', '32 MARZO 2 2023 (11).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:42:34', '2023-03-01 00:42:34', NULL),
+(456, 6, 'ENERGIZANTE AMPER 473ML', '2X $36.00', '33 MARZO 2 2023 (37).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:43:53', '2023-03-01 00:43:53', NULL),
+(457, 6, 'BEBIDA VITALOE 320 ML', '2 X $29.00', '34 MARZO 2 2023 (36).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:45:19', '2023-03-01 00:45:19', NULL),
+(458, 6, 'BRILLANTE SABORES PET 2LT', '5 X $54.00', '35 MARZO 2 2023 (39).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:46:24', '2023-03-01 00:46:24', NULL),
+(459, 6, 'JUGO DEL VALLE FRUT CITRICOS 2LT', '1 X $29.00', '36 MARZO 2 2023 (38).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:47:22', '2023-03-01 00:47:22', NULL),
+(460, 6, 'SUERO ELECTROLIT 625 ML', '3 X $59.00', '37 MARZO 2 2023 (41).png', '2023-03-01', '2023-03-31', NULL, 0, 9, '2023-03-01 00:49:20', '2023-03-01 00:49:20', NULL),
+(461, 6, 'COCA COLA 2.5 LT RETORNABLE + REFRESCOS SABORES PET', 'COMBO $59.00', '38 MARZO 2 2023 (1).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:50:31', '2023-03-01 00:50:31', NULL),
+(462, 6, 'ATUN EL DORADO EN ACEITE 140 GR', '2 X $26.00', '39 MARZO 2 2023 (29).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-03-01 00:51:14', '2023-03-01 00:51:14', NULL),
+(463, 6, 'SOPA  ITALPASTA SPAGHETTI 200 GR + PURE DE TOMATE DEL FUERTE 210GR', 'COMBO POR $15.00', '40 MARZO 2 2023 (5).png', '2023-03-01', '2023-03-31', NULL, 0, 1, '2023-03-01 00:52:44', '2023-03-01 00:52:44', NULL),
+(464, 6, 'GALLETAS TRIKI TRAKES 85 GR', '2 X $30.00', '41 MARZO 2 2023 (33).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-03-01 00:53:38', '2023-03-01 00:53:38', NULL),
+(465, 6, 'GANSITO MARINELA', '2 X $29.00', '41.1 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-03-01 00:54:19', '2023-03-01 00:54:19', NULL),
+(466, 6, 'GALLETAS PRINCIPE CHOCOLATE 85 GR', '2 X $30.00', '42 MARZO 2 2023 (34).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-03-01 00:55:24', '2023-03-01 00:55:24', NULL),
+(467, 6, 'REFRESCOS 600ML', '2 X $30.00', '43 MARZO 2 2023 (27).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 00:56:18', '2023-03-01 00:56:18', NULL),
+(468, 6, 'GALLETA EMPERADOR + 2 GALLETAS', '2 X $32.00', '44 MARZO 2 2023 (35).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-03-01 00:57:10', '2023-03-01 00:57:10', NULL),
+(469, 6, 'CUERNITOS TIA ROSA', '1 X $16.00', '45 MARZO 2 2023 (48).png', '2023-03-01', '2023-03-31', NULL, 0, 6, '2023-03-01 00:58:22', '2023-03-01 00:58:22', NULL),
+(470, 6, 'LECHE ALPURA SABORES 200 ML', '2 X $19.00', '47 MARZO 2 2023 (28).png', '2023-03-01', '2023-03-31', NULL, 0, 5, '2023-03-01 00:59:18', '2023-03-01 00:59:18', NULL),
+(471, 6, 'PALOMITAS ACT II SABORES', '2 X $26.00', '48 MARZO 2 2023 (32).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-03-01 01:00:18', '2023-03-01 01:00:18', NULL),
+(472, 6, 'GELATINA LALA 125/130GR', '2 X $14.00', '49 MARZO 2 2023 (51).png', '2023-03-01', '2023-03-31', NULL, 0, 5, '2023-03-01 01:01:09', '2023-03-01 01:01:09', NULL),
+(473, 6, 'FLAN LALA', '2 X $19.00', '50 MARZO 2 2023 (50).png', '2023-03-01', '2023-03-31', NULL, 0, 5, '2023-03-01 01:01:39', '2023-03-01 01:01:39', NULL),
+(474, 6, 'COCA COLA LATA 355ML + PALOMITAS ACT II', 'COMBO $30.00', '51 MARZO 2 2023 (6).png', '2023-03-01', '2023-03-31', NULL, 0, 2, '2023-03-01 01:02:36', '2023-03-01 01:02:36', NULL),
+(475, 6, 'ICEE SLUSH SABORES 20 OZ', '2 X $59.00', '52 MARZO 2 2023 (26).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-03-01 01:03:13', '2023-03-01 01:03:13', NULL),
+(476, 6, 'BIGOTE TIA ROSA + NESTLE SABORES', 'COMBO $37.00', '53 MARZO 2 2023 (2).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-03-01 01:04:46', '2023-03-01 01:04:46', NULL),
+(477, 6, 'HOT DOG PLUS + JUGO BOING 250 ML', 'COMBO $20.00', '54 MARZO 2 2023 (3).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-03-01 01:05:29', '2023-03-01 01:05:29', NULL),
+(478, 6, 'RICOLINO BUBULUBU SABORES', '2 X $19.00', '56 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 13, '2023-03-01 01:06:17', '2023-03-01 01:06:17', NULL),
+(479, 6, 'CHOCOLATE /CACAHUATE M&M', '2 X $39.00', '57 MARZO 2 2023 (49).png', '2023-03-01', '2023-03-31', NULL, 0, 13, '2023-03-01 01:07:05', '2023-03-01 01:07:05', NULL),
+(480, 6, 'HOT DOG PLUS', 'A SOLO $17.00', '55 MARZO 2 2023 (4).png', '2023-03-01', '2023-03-31', NULL, 0, 7, '2023-03-01 01:07:41', '2023-03-01 01:07:41', NULL),
+(481, 6, 'SUERO ELECTROLIT SABORES 625ML', '3 x $59.00', 'OCT 2023 PART 1 (69).png', '2023-10-07', '2023-10-31', NULL, 0, 9, '2023-10-07 17:12:47', '2023-10-07 17:12:47', NULL),
+(482, 6, 'REFRESCO BRILLANTE 600ML', '2 x $25.00', 'OCT 2023 PART 1 (68).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 17:13:52', '2023-10-07 17:13:52', NULL),
+(483, 6, 'TAKIS FUEGO ORIGINAL 56GR', '2 x $31.00', 'OCT 2023 PART 1 (67).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 17:18:08', '2023-10-07 17:18:08', NULL),
+(484, 6, 'HOT DOG + JUGO BOING 250ML', 'COMBO A SOLO $20.00', 'OCT 2023 PART 1 (66).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 17:18:52', '2023-10-07 17:18:52', NULL),
+(485, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', 'A SOLO $27.00', 'OCT 2023 PART 1 (65).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 17:20:13', '2023-10-07 17:20:13', NULL),
+(486, 6, 'NESTLE 16OZ SABORES + CANELITAS/TRIKI BITES', 'COMBO A SOLO $37.00', 'OCT 2023 PART 1 (64).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 17:21:59', '2023-10-07 17:21:59', NULL),
+(487, 6, 'TOSTADAS MILPA REAL + FRIJOL LA SIERRA', 'A SOLO $45.00', 'OCT 2023 PART 1 (63).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 17:23:03', '2023-10-07 17:23:03', NULL),
+(488, 6, 'PAPAS TOREADAS + COCA COLA 255ML', 'A SOLO $32.00', 'OCT 2023 PART 1 (62).png', '2023-10-07', '2023-10-31', NULL, 0, 16, '2023-10-07 17:23:58', '2023-10-07 17:23:58', NULL),
+(489, 6, 'NESCAFE + COFFE MATE', 'COMBO A SOLO $ 69.00', 'OCT 2023 PART 1 (61).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 17:28:28', '2023-10-07 17:28:28', NULL),
+(490, 6, 'DETERGENTE FOCA 500 GR + LIMPIADOR CLARASOL 500ML', 'COMBO A SOLO $30.00', 'OCT 2023 PART 1 (60).png', '2023-10-07', '2023-10-31', NULL, 0, 11, '2023-10-07 17:29:42', '2023-10-07 17:29:42', NULL),
+(491, 6, 'DETERGENTE  MAS COLOR LIQUIDO + SUAVITEL', 'COMBO A SOLO $39.00', 'OCT 2023 PART 1 (59).png', '2023-10-07', '2023-10-31', NULL, 0, 11, '2023-10-07 17:30:58', '2023-10-07 17:30:58', NULL),
+(492, 6, 'PINGUINOS MARINELA', '2 X $38.00', 'OCT 2023 PART 1 (58).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 17:31:35', '2023-10-07 17:31:35', NULL),
+(493, 6, 'SUBMARINOS', '2 X $36.00', 'OCT 2023 PART 1 (57).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 17:32:12', '2023-10-07 17:32:12', NULL),
+(494, 6, 'JUGO BOING 500ML', '2 X $30.00', 'OCT 2023 PART 1 (56).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 17:33:48', '2023-10-07 17:33:48', NULL),
+(495, 6, 'MORDISKO CLASICO O FRESA', '2 X $40.00', 'OCT 2023 PART 1 (55).png', '2023-10-07', '2023-10-31', NULL, 0, 4, '2023-10-07 17:34:56', '2023-10-07 17:34:56', NULL),
+(496, 6, 'VASO COVERMEX UNICEL 16 OZ 25 PZ', '1 X $20.00', 'OCT 2023 PART 1 (54).png', '2023-10-07', '2023-10-31', NULL, 0, 19, '2023-10-07 17:36:04', '2023-10-07 17:36:04', NULL),
+(497, 6, 'CHOCOLATE KIT KAT 41.56GR', '2 X $34.00', 'OCT 2023 PART 1 (53).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 17:37:04', '2023-10-07 17:37:04', NULL),
+(498, 6, 'GALLETAS POLVORONES / CANELITAS 111 / 90 GR', '2 X $38.00', 'OCT 2023 PART 1 (52).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 17:41:40', '2023-10-07 17:41:40', NULL),
+(499, 6, 'SABRITAS SABORES', '2 X $36.00', 'OCT 2023 PART 1 (51).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 17:43:53', '2023-10-07 17:43:53', NULL),
+(500, 6, 'PULMARINDO 14 GR', '3 X $10.00', 'OCT 2023 PART 1 (50).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 17:58:16', '2023-10-07 17:58:16', NULL),
+(501, 6, 'CHOCOLATE CREMINO', '3 X $12.00', 'OCT 2023 PART 1 (49).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 17:58:58', '2023-10-07 17:58:58', NULL),
+(502, 6, 'PALETA TUTSI POP', '3 X $12.00', 'OCT 2023 PART 1 (48).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 17:59:40', '2023-10-07 17:59:40', NULL),
+(503, 6, 'KACANG CACAHUATE 84/71 GR', '2 X $30.00', 'OCT 2023 PART 1 (47).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 18:00:27', '2023-10-07 18:00:27', NULL),
+(504, 6, 'BIG MIX 185 GR', '1 X $41.00', 'OCT 2023 PART 1 (46).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 18:01:16', '2023-10-07 18:01:16', NULL),
+(505, 6, 'DORITOS SABORES 42/52/62GR', '2 x $35.00', 'OCT 2023 PART 1 (45).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 18:06:35', '2023-10-07 18:06:35', NULL),
+(506, 6, 'POUCH PEDIGREE 85GR', '3 x $34.00', 'OCT 2023 PART 1 (44).png', '2023-10-07', '2023-10-31', NULL, 0, 14, '2023-10-07 18:07:10', '2023-10-07 18:07:10', NULL),
+(507, 6, 'POUCH PEDIGREE 85GR', '3 x $34.00', 'OCT 2023 PART 1 (43).png', '2023-10-07', '2023-10-31', NULL, 0, 14, '2023-10-07 18:07:41', '2023-10-07 18:07:41', NULL),
+(508, 6, 'MAZAPAN CUBIERTO DE CHOCOLATE', '1 x $10.00', 'OCT 2023 PART 1 (42).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 18:08:22', '2023-10-07 18:08:22', NULL),
+(509, 6, 'ICEE SLUSH 20 OZ SABORES', '2 X $59.00', 'OCT 2023 PART 1 (41).png', '2023-10-07', '2023-10-31', NULL, 0, 7, '2023-10-07 18:08:55', '2023-10-07 18:08:55', NULL),
+(510, 6, 'CHICHARRON SABRITAS', '1 X $19.00', 'OCT 2023 PART 1 (40).png', '2023-10-07', '2023-10-31', NULL, 0, 3, '2023-10-07 18:09:39', '2023-10-07 18:09:39', NULL),
+(511, 6, 'CHOCOLATE ABUELITA', '2 X $26.00', 'OCT 2023 PART 1 (39).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 18:10:42', '2023-10-07 18:10:42', NULL),
+(512, 6, 'CREMA LALA 200 GR', '1 X $17.00', 'OCT 2023 PART 1 (38).png', '2023-10-07', '2023-10-31', NULL, 0, 5, '2023-10-07 18:15:30', '2023-10-07 18:15:30', NULL),
+(513, 6, 'LECHE ALPURA 1 LT', '1 X $29.00', 'OCT 2023 PART 1 (37).png', '2023-10-07', '2023-10-31', NULL, 0, 5, '2023-10-07 18:16:17', '2023-10-07 18:16:17', NULL),
+(514, 6, 'MANTECADAS BIMBO 6 PZAS', '1 X $27.00', 'OCT 2023 PART 1 (36).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 18:17:05', '2023-10-07 18:17:05', NULL),
+(515, 6, 'CREMA NIVEA', '1 X $20.00', 'OCT 2023 PART 1 (35).png', '2023-10-07', '2023-10-31', NULL, 0, 10, '2023-10-07 18:28:29', '2023-10-07 18:28:29', NULL),
+(516, 6, 'GEL EGO DIEZ TARRO', '1 X $16.00', 'OCT 2023 PART 1 (34).png', '2023-10-07', '2023-10-31', NULL, 0, 10, '2023-10-07 18:29:40', '2023-10-07 18:29:40', NULL),
+(517, 6, 'AROMATIZANTE GLADE 70 GR', '2 X $34.00', 'OCT 2023 PART 1 (33).png', '2023-10-07', '2023-10-31', NULL, 0, 11, '2023-10-07 18:30:23', '2023-10-07 18:30:23', NULL),
+(518, 6, 'CREMA NIVEA 100 ML', '1 X $27.00', 'OCT 2023 PART 1 (32).png', '2023-10-07', '2023-10-31', NULL, 0, 10, '2023-10-07 18:31:33', '2023-10-07 18:31:33', NULL),
+(519, 6, 'JUMEX TETRA 473ML', '2 X $32.00', 'OCT 2023 PART 1 (31).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 18:32:04', '2023-10-07 18:32:04', NULL),
+(520, 6, 'ENERGIZANTE VIVE 100', '2 X $30.00', 'OCT 2023 PART 1 (30).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 18:32:47', '2023-10-07 18:32:47', NULL),
+(521, 6, 'YOGURTH BREAK', '2 X $32.00', 'OCT 2023 PART 1 (29).png', '2023-10-07', '2023-10-31', NULL, 0, 5, '2023-10-07 18:33:48', '2023-10-07 18:33:48', NULL),
+(522, 6, 'VELADORA ARAMO LMONERO', '3 X $40.00', 'OCT 2023 PART 1 (28).png', '2023-10-07', '2023-10-31', NULL, 0, 12, '2023-10-07 18:34:41', '2023-10-07 18:34:41', NULL),
+(523, 6, 'MICHEMIX 240ML', '1 X $33.00', 'OCT 2023 PART 1 (27).png', '2023-10-07', '2023-10-31', NULL, 0, 1, '2023-10-07 18:35:42', '2023-10-07 18:35:42', NULL),
+(524, 6, 'CHAMOY MIGUELITO', '1 X $21.00', 'OCT 2023 PART 1 (26).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 18:37:02', '2023-10-07 18:37:02', NULL),
+(525, 6, 'PASTILLA ALKA SELTZER', '2 X $12.00', 'OCT 2023 PART 1 (25).png', '2023-10-07', '2023-10-31', NULL, 0, 9, '2023-10-07 18:37:47', '2023-10-07 18:37:47', NULL),
+(526, 6, 'VALLE FRUT PONCH CITRUS 600ML', '2 X $32.00', 'OCT 2023 PART 1 (24).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 18:38:28', '2023-10-07 18:38:28', NULL),
+(527, 6, 'ENERGIZANTE AMPER 473ML', '2 X $40.00', 'OCT 2023 PART 1 (23).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 18:39:22', '2023-10-07 18:39:22', NULL),
+(528, 6, 'GALLETA FLORENTINAS 83 GR', '2 X $36.00', 'OCT 2023 PART 1 (22).png', '2023-10-07', '2023-10-31', NULL, 0, 6, '2023-10-07 18:40:20', '2023-10-07 18:40:20', NULL),
+(529, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML+ BOLSA DE HIELO', 'COMBO $285.00', 'OCT 2023 PART 1 (21).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:41:24', '2023-10-07 18:41:24', NULL),
+(530, 6, 'WHISKY HIGHLAND CHIEF + BRILLANTE MINERAL', 'A SOLO $205.00', 'OCT 2023 PART 1 (20).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:42:33', '2023-10-07 18:42:33', NULL),
+(531, 6, 'TEQUILA JIMADOR + BRILLANTE TORONJA', 'A SOLO $128.00', 'OCT 2023 PART 1 (19).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:43:28', '2023-10-07 18:43:28', NULL),
+(532, 6, 'TEQUILA HORNITOS + BRILLANTE TORONJA', 'A SOLO $155.00', 'OCT 2023 PART 1 (18).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:44:26', '2023-10-07 18:44:26', NULL),
+(533, 6, 'BRANDY TORRES 10 750ML + COCA COLA 1.25L', 'A SOLO $392.00', 'OCT 2023 PART 1 (17).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:45:12', '2023-10-07 18:45:12', NULL),
+(534, 6, 'RON BACARDI BLANCO 750 ML', '1 X $219.00', 'OCT 2023 PART 1 (16).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:45:49', '2023-10-07 18:45:49', NULL),
+(535, 6, 'CAPITAN MORGAN', '1 X $179.00', 'OCT 2023 PART 1 (15).png', '2023-10-07', '2023-10-31', NULL, 0, 8, '2023-10-07 18:46:23', '2023-10-07 18:46:23', NULL),
+(536, 6, 'BEBIDA SKYY 275ML', '4 X $99.00', 'OCT 2023 PART 1 (14).png', '2023-10-07', '2023-10-31', NULL, 0, 2, '2023-10-07 18:47:14', '2023-10-07 18:47:14', NULL),
+(537, 6, 'MUECAS SABORES', '2 X $18.00', 'OCT 2023 PART 1 (1).png', '2023-10-07', '2023-10-31', NULL, 0, 13, '2023-10-07 18:48:05', '2023-10-07 18:48:05', NULL),
+(540, 6, 'CERVEZA MODELO CORONA MEGA FAMILIAR 1.2L', '2 X  $80.00', 'OCT 2023 PART 1 (10).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:50:49', '2023-10-07 18:50:49', NULL),
+(541, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 L', '2 X $80.00', 'OCT 2023 PART 1 (9).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:51:18', '2023-10-07 18:51:18', NULL),
+(543, 6, 'CERVEZA CORONA EXTRA BOTE', '6 X $112.00', 'OCT 2023 PART 1 (8).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:52:48', '2023-10-07 18:54:59', NULL),
+(544, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $112.00', 'OCT 2023 PART 1 (7).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:53:15', '2023-10-07 18:55:17', NULL),
+(545, 6, 'CERVEZA MODELO ESPECIAL BOTE', '6 X $112.00', 'OCT 2023 PART 1 (6).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:54:08', '2023-10-07 18:54:08', NULL),
+(546, 6, 'CERVEZA MODELO ESPECIAL LATON', '2 X $45.00', 'OCT 2023 PART 1 (5).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:56:07', '2023-10-07 18:56:07', NULL),
+(547, 6, 'CERVEZA CORONA EXTRA LATÓN', '2 X $45.00', 'OCT 2023 PART 1 (4).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:56:44', '2023-10-07 18:56:44', NULL),
+(548, 6, 'CERVEZA CORONA EXTRA LATÓN', '2 X $45.00', 'OCT 2023 PART 1 (3).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:57:11', '2023-10-07 18:57:11', NULL),
+(549, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $45.00', 'OCT 2023 PART 1 (2).png', '2023-10-07', '2023-10-31', NULL, 0, 17, '2023-10-07 18:57:47', '2023-10-07 18:57:47', NULL),
+(550, 6, 'CERVEZA VICTORIA LATON 473ML', '2 X $45.00', 'BUEN FIN 03 NOV (1).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:31:00', '2023-11-04 16:08:36', 46),
+(551, 6, 'CERVEZA CORONA EXTRA LATÓN', '2 X $45.00', '31.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:32:01', '2023-11-14 21:57:42', 32),
+(552, 6, 'CERVEZA CORONA LIGHT LATON', '2 X $45.00', '30.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:32:45', '2023-11-14 21:57:58', 33),
+(553, 6, 'CERVEZA MODELO ESPECIAL LATON', '2 X $45.00', '32.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:33:23', '2023-11-14 22:00:32', 34),
+(554, 6, 'CERVEZA MODELO ESPECIAL BOTE', '6 X $112.00', '34.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:34:19', '2023-11-14 22:04:38', 35),
+(555, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', '6 X $112.00', '35.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:43:05', '2023-11-14 22:04:57', 36),
+(556, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', '6 X $112.00', '36.png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:43:57', '2023-11-14 22:05:15', 37),
+(557, 6, 'CERVEZA VICTORIA MEGAFAMILIAR', '2 X $80.00', 'BUEN FIN 03 NOV (8).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:45:47', '2023-11-04 16:08:36', 38),
+(558, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', '2 X $80.00', 'BUEN FIN 03 NOV (9).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:49:30', '2023-11-04 16:08:36', 39),
+(559, 6, 'CERVEZA CORONA VIDRIO 355 ML', '2 X $32.00', 'BUEN FIN 03 NOV (10).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:51:14', '2023-11-04 16:08:36', 40),
+(560, 6, 'CERVEZA CORONA LIGHT VIDRIO', '2 X $32.00', 'BUEN FIN 03 NOV (11).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:51:50', '2023-11-04 16:08:36', 41),
+(561, 6, 'CERVEZA NEGRA MODELO CRISTAL 355 ML', '6 X $132.00', 'BUEN FIN 03 NOV (13).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:52:55', '2023-11-04 16:08:36', 42),
+(562, 6, 'CERVEZA MODELO ESPECIAL CRISTAL', '6 X $132.00', 'BUEN FIN 03 NOV (14).png', '2023-11-03', '2023-11-30', NULL, 0, 17, '2023-11-03 17:53:40', '2023-11-04 16:08:36', 43),
+(563, 6, 'RON BACARDI BLANCO 750 ML', '1 X $219.00', 'BUEN FIN 03 NOV (15).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 18:18:48', '2023-11-04 16:08:36', 44),
+(564, 6, 'VINO BOONES 750 ML', '1 X $89.00', 'BUEN FIN 03 NOV (16).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 18:19:29', '2023-11-04 16:08:36', 45),
+(565, 6, 'TEQUILA HORNITOS + BRILLANTE TORONJA', 'COMBO A SOLO $155.00', 'BUEN FIN 03 NOV (17).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 18:20:19', '2023-11-04 16:08:36', 31),
+(566, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML+ BOLSA DE HIELO', 'COMBO A SOLO $285.00', 'BUEN FIN 03 NOV (18).png', '2023-11-03', '2023-11-30', NULL, 0, 8, '2023-11-03 18:23:45', '2023-11-04 16:08:36', 47),
+(567, 6, 'BEBIDA VIÑA RELA 330 ML', '4 X $86.00', 'BUEN FIN 03 NOV (19).png', '2023-11-03', '2023-11-30', NULL, 0, 2, '2023-11-03 18:26:45', '2023-11-04 16:08:36', 48),
+(568, 6, 'PULPARINDO 14 GR', '3 X $10.00', 'BUEN FIN 03 NOV (20).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 18:27:49', '2023-11-04 16:08:36', 49),
+(569, 6, 'POUCH PEDIGREE 85GR', '3 X $34.00', 'BUEN FIN 03 NOV (21).png', '2023-11-03', '2023-11-30', NULL, 0, 14, '2023-11-03 18:28:37', '2023-11-04 16:08:36', 50),
+(571, 6, 'POUCH WHISKAS 85 GR', '3 X $34.00', 'BUEN FIN 03 NOV (22).png', '2023-11-03', '2023-11-30', NULL, 0, 14, '2023-11-03 18:31:00', '2023-11-04 16:08:36', 52),
+(572, 6, 'CREMA NIVEA LATA', '1 X $20.00', 'BUEN FIN 03 NOV (23).png', '2023-11-03', '2023-11-30', NULL, 0, 10, '2023-11-03 18:32:52', '2023-11-04 16:08:36', 53),
+(573, 6, 'VASO COVERMEX UNICEL 16 OZ 25 PZ', '1 X $20.00', 'BUEN FIN 03 NOV (24).png', '2023-11-03', '2023-11-30', NULL, 0, 19, '2023-11-03 18:33:39', '2023-11-04 16:08:36', 54),
+(574, 6, 'ACEITE 123 1 LT', '1 X $54.00', 'BUEN FIN 03 NOV (25).png', '2023-11-02', '2023-11-30', NULL, 0, 1, '2023-11-03 19:42:52', '2023-11-04 16:08:36', 55),
+(575, 6, 'ATUN TUNY 140/ 170 GR', '2 X $35.00', 'BUEN FIN 03 NOV (26).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 19:45:42', '2023-11-04 16:08:36', 56),
+(576, 6, 'CHILE MORENA 210 GR', '2 X $29.00', 'BUEN FIN 03 NOV (27).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 19:50:21', '2023-11-04 16:08:36', 57),
+(577, 6, 'MAYONESA MCCORMICK 190GR', '1 X $29.00', 'BUEN FIN 03 NOV (28).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 19:52:09', '2023-11-04 16:08:36', 58),
+(578, 6, 'CHOCOLATE CREMINO', '3 X $12.00', 'BUEN FIN 03 NOV (29).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 19:55:12', '2023-11-04 16:08:36', 59),
+(579, 6, 'CHOCOLATE KIT KAT 41.5 GR', '2 x $34.00', 'BUEN FIN 03 NOV (30).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 19:58:45', '2023-11-04 16:08:36', 60),
+(580, 6, 'CHOCOLATE /CACAHUATE M&M 47.9 GR', '2 X $40.00', 'BUEN FIN 03 NOV (31).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 20:06:39', '2023-11-04 16:08:04', 23),
+(581, 6, 'JABON CORONA C/ENVOLTURA 400 GR', '1 X $25.00', 'BUEN FIN 03 NOV (32).png', '2023-11-03', '2023-11-30', NULL, 0, 11, '2023-11-03 20:08:47', '2023-11-04 16:08:04', 8),
+(582, 6, 'GALLETAS POLVORONES 111GR /CANELITAS 90 GR', '2 X $38.00', 'BUEN FIN 03 NOV (33).png', '2023-11-03', '2023-11-30', NULL, 0, 6, '2023-11-03 20:14:15', '2023-11-04 16:08:04', 9),
+(583, 6, 'MICHEMIX 240ML', '1 X $33.00', 'BUEN FIN 03 NOV (34).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 20:16:38', '2023-11-04 16:08:04', 10),
+(584, 6, 'PAÑO SCOTH BRITE', '1 X $20.00', 'BUEN FIN 03 NOV (35).png', '2023-11-03', '2023-11-30', NULL, 0, 12, '2023-11-03 20:54:24', '2023-11-04 16:08:04', 11),
+(585, 6, 'AROMATIZANTE GLADE 70 GR', '2 X $34.00', 'BUEN FIN 03 NOV (36).png', '2023-11-03', '2023-11-30', NULL, 0, 11, '2023-11-03 20:58:41', '2023-11-04 16:08:04', 12),
+(587, 6, 'CHOCOLATE ABUELITA', '2 X $26.00', 'BUEN FIN 03 NOV (37).png', '2023-11-03', '2023-11-30', NULL, 0, 1, '2023-11-03 21:18:54', '2023-11-04 16:08:04', 13),
+(588, 6, 'PALETA CHOCOMILK / APOLO ESTELAR 500 ML', '2 X $25.00', 'BUEN FIN 03 NOV (38).png', '2023-11-03', '2023-11-30', NULL, 0, 4, '2023-11-03 21:19:37', '2023-11-04 16:08:04', 14),
+(589, 6, 'CHOCOLATE MILKY WAY /SNICKERS', '2 X $36.00', 'BUEN FIN 03 NOV (39).png', '2023-11-03', '2023-11-30', NULL, 0, 13, '2023-11-03 21:20:47', '2023-11-04 16:08:04', 15),
+(590, 6, 'VICK VAPORUB', '1 X $31.00', 'BUEN FIN 03 NOV (40).png', '2023-11-03', '2023-11-30', NULL, 0, 9, '2023-11-03 21:21:29', '2023-11-04 16:08:04', 16),
+(591, 6, '2 X $59.00', 'ICEE SLUSH 20 ONZAS SABORES', 'BUEN FIN 03 NOV (41).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 15:45:09', '2023-11-04 16:08:04', 17),
+(592, 6, 'ENERGY VIVE 100 500ml', '2 x $30.00', 'BUEN FIN 03 NOV (42).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 15:46:52', '2023-11-04 16:08:04', 18),
+(593, 6, 'REFRESCO BRILLANTE 600ML', '2 X $25.00', 'BUEN FIN 03 NOV (43).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 15:47:37', '2023-11-04 16:08:04', 19),
+(594, 6, 'SUAVICREMAS 102GR', '2 X $32.00', 'BUEN FIN 03 NOV (44).png', '2023-11-04', '2023-11-30', NULL, 0, 6, '2023-11-04 15:48:14', '2023-11-04 16:08:04', 20),
+(595, 6, 'JUMEX  XOT FRUTAS MIXTAS', '2 X $40.00', 'BUEN FIN 03 NOV (45).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 15:49:38', '2023-11-04 16:08:04', 21),
+(596, 6, 'BOTANA BIG MIX', '1 X $41.00', 'BUEN FIN 03 NOV (46).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 15:50:09', '2023-11-04 16:08:04', 22),
+(597, 6, 'SABRITAS PAKETAXO 70 GR', '1 X $18.00', 'BUEN FIN 03 NOV (47).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 15:50:51', '2023-11-04 16:08:04', 7),
+(598, 6, 'BARCEL CHIPS 60 GT', '2 X $42.00', 'BUEN FIN 03 NOV (48).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 15:51:26', '2023-11-04 16:08:04', 24),
+(599, 6, 'CACAHUATES KACANG 66-69 GR', '2 X $30.00', 'BUEN FIN 03 NOV (49).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 15:52:08', '2023-11-04 16:08:04', 25),
+(600, 6, 'CHURRUMAIS 56 GR', '1 X $13.00', 'BUEN FIN 03 NOV (50).png', '2023-11-04', '2023-11-30', NULL, 0, 3, '2023-11-04 15:52:40', '2023-11-04 16:08:04', 26),
+(601, 6, 'YOGURT ALPURA 220 GR', '2 X $30.00', 'BUEN FIN 03 NOV (51).png', '2023-11-04', '2023-11-30', NULL, 0, 5, '2023-11-04 15:53:23', '2023-11-04 16:08:04', 27),
+(602, 6, 'BEBUDA LEVITE 1.4 LT', '2 X $38.00', 'BUEN FIN 03 NOV (52).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 15:54:02', '2023-11-04 16:08:04', 28),
+(603, 6, 'JUGO DEL VALLE 413ML', '2 x $33.00', 'BUEN FIN 03 NOV (53).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 15:56:12', '2023-11-04 16:08:04', 29),
+(604, 6, 'SUERO ELECTROLIT SABORES 625ML', '3 X $59.00', 'BUEN FIN 03 NOV (54).png', '2023-11-04', '2023-11-30', NULL, 0, 2, '2023-11-04 15:56:47', '2023-11-04 16:08:05', 30),
+(605, 6, 'DETERGENTE FOCA 300 GR + LIMPIADOR CLARASOL 500ML', 'COMBO $30.00', 'BUEN FIN 03 NOV (55).png', '2023-11-04', '2023-11-30', NULL, 0, 11, '2023-11-04 16:00:56', '2023-11-04 16:08:36', 61),
+(606, 6, 'NITO BIMBO + NESTLE 16 OZ SABORES', 'COMBO A SOLO $37.00', 'BUEN FIN 03 NOV (56).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 16:01:34', '2023-11-04 16:07:44', 3),
+(607, 6, 'ICEE SLUSH SABORES + PALOMITAS SABORES', 'COMBO A SOLO $49.00', 'BUEN FIN 03 NOV (57).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 16:02:26', '2023-11-04 16:06:43', 1),
+(608, 6, 'NACHOS PREPARADOS + PEPSI 295ML', 'COMBO A SOLO $26.00', 'BUEN FIN 03 NOV (58).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 16:03:19', '2023-11-04 16:07:44', 2),
+(609, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', 'COMBO A SOLO $27.00', 'BUEN FIN 03 NOV (59).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 16:03:54', '2023-11-04 16:07:40', 5),
+(610, 6, 'HOT DOG + JUGO BOING 250ML', 'COMBO A SOLO $20.00', 'BUEN FIN 03 NOV (61).png', '2023-11-04', '2023-11-30', NULL, 0, 7, '2023-11-04 16:04:29', '2023-11-04 16:07:44', 4),
+(611, 6, 'PAN BLANCO CHICO + JAMON NUTRI DELI AMERICANO', 'COMBO A SOLO $64.00', 'BUEN FIN 03 NOV (60).png', '2023-11-04', '2023-11-30', NULL, 0, 16, '2023-11-04 16:05:25', '2023-11-04 16:08:04', 6),
+(612, 6, 'CORONA LIGHT', NULL, '26.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:36:56', '2023-12-04 22:36:56', NULL),
+(613, 6, 'CERVEZA CORONA EXTRA LATÓN', NULL, '27.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:37:31', '2023-12-04 22:37:31', NULL),
+(614, 6, 'CERVEZA NEGRA MODELO ESPECIAL LATON', NULL, '28.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:38:06', '2023-12-04 22:38:06', NULL),
+(615, 6, 'CERVEZA VICTORIA LATON 473ML', NULL, '29.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:38:36', '2023-12-04 22:38:36', NULL),
+(616, 6, 'CERVEZA CORONA 710ML LATON', '2 X $69.00', '30.png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:39:23', '2023-12-04 22:39:23', NULL),
+(617, 6, 'CERVEZA MODELO BOTE 355ML', NULL, 'NAVIDAD 2023 (7).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:41:06', '2023-12-04 22:41:06', NULL),
+(619, 6, 'CERVEZA CORONA LIGHT BOTE 355ML', NULL, 'NAVIDAD 2023 (8).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:42:49', '2023-12-04 22:42:49', NULL),
+(620, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', NULL, 'NAVIDAD 2023 (9).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:43:24', '2023-12-04 22:43:24', NULL),
+(621, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', NULL, 'NAVIDAD 2023 (9).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:45:00', '2023-12-04 22:45:00', NULL),
+(622, 6, 'CERVEZA PACIFICO SUAVE 355ML BOTE', NULL, 'NAVIDAD 2023 (10).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:45:38', '2023-12-04 22:45:38', NULL);
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(623, 6, 'CREVEZA STELLA AROIT 330ML NR', '6 X $138.00', 'NAVIDAD 2023 (11).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:46:28', '2023-12-04 22:46:28', NULL),
+(624, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 L', NULL, 'NAVIDAD 2023 (12).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:47:44', '2023-12-04 22:47:44', NULL),
+(625, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 L', NULL, 'NAVIDAD 2023 (13).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:48:15', '2023-12-04 22:48:15', NULL),
+(626, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'NAVIDAD 2023 (14).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:48:49', '2023-12-04 22:48:49', NULL),
+(627, 6, 'CERVEZA CORONA VIDRIO 355 ML', NULL, 'NAVIDAD 2023 (15).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:51:30', '2023-12-04 22:51:30', NULL),
+(628, 6, 'CERVEZA CORONA LIGHT VIDRIO', NULL, 'NAVIDAD 2023 (16).png', '2023-12-03', '2023-12-31', NULL, 0, 17, '2023-12-04 22:52:26', '2023-12-04 22:52:26', NULL),
+(629, 6, 'CERVEZA NEGRA MODELO CRISTAL 355 ML', NULL, 'NAVIDAD 2023 (17).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:52:57', '2023-12-04 22:52:57', NULL),
+(630, 6, 'CERVEZA MODELO ESPECIAL CRISTAL', NULL, 'NAVIDAD 2023 (18).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:53:40', '2023-12-04 22:53:40', NULL),
+(631, 6, 'VINO BOONES 750 ML', NULL, 'NAVIDAD 2023 (19).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 22:54:20', '2023-12-04 22:54:20', NULL),
+(632, 6, 'VINO TINTO MARQUEZ 750 ML', NULL, 'NAVIDAD 2023 (20).png', '2023-12-04', '2023-12-31', NULL, 0, 17, '2023-12-04 22:55:00', '2023-12-04 22:55:00', NULL),
+(633, 6, 'SIDRA CAMPANARIO ROSADA 700ML', NULL, 'NAVIDAD 2023 (21).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 22:55:40', '2023-12-04 22:55:40', NULL),
+(634, 6, 'BRANDY TORRES 5  700ML', NULL, 'NAVIDAD 2023 (22).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 23:02:17', '2023-12-04 23:02:17', NULL),
+(635, 6, 'WHISKY RED LABEL 750ML + BRILLANTE MINERAL 2LT', NULL, 'NAVIDAD 2023 (23).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 23:05:11', '2023-12-04 23:05:11', NULL),
+(636, 6, 'TEQUILA 100 AÑOS 750ML + BRILLANTE TORONJA 2LT', NULL, 'NAVIDAD 2023 (24).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 23:05:46', '2023-12-04 23:05:46', NULL),
+(637, 6, 'WHISKY WILLIAM LAWSON´S 750ML + BRILLANTE MINERAL 2 LT', NULL, 'NAVIDAD 2023 (25).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 23:07:37', '2023-12-04 23:07:37', NULL),
+(638, 6, 'VODKA ABOSLUT AZUL 750ML + JUMEX UNICO ARANDANO 960ML', NULL, 'NAVIDAD 2023 (26).png', '2023-12-04', '2023-12-31', NULL, 0, 8, '2023-12-04 23:08:37', '2023-12-04 23:08:37', NULL),
+(639, 6, 'BEBIDA VIÑA REAL 330ML', NULL, 'NAVIDAD 2023 (27).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 23:09:44', '2023-12-04 23:09:44', NULL),
+(640, 6, 'CARIBE COOLER 300ML', NULL, 'NAVIDAD 2023 (28).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 23:10:41', '2023-12-04 23:10:41', NULL),
+(641, 6, 'BEBIDA JACK DANIELS', NULL, 'NAVIDAD 2023 (29).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 23:12:03', '2023-12-04 23:12:03', NULL),
+(642, 6, 'POUCH PEDIGREE 85GR', NULL, 'NAVIDAD 2023 (30).png', '2023-12-04', '2023-12-31', NULL, 0, 14, '2023-12-04 23:12:34', '2023-12-04 23:12:34', NULL),
+(643, 6, 'POUCH WHISKAS 85 GR', NULL, 'NAVIDAD 2023 (31).png', '2023-12-04', '2023-12-31', NULL, 0, 14, '2023-12-04 23:13:12', '2023-12-04 23:13:12', NULL),
+(644, 6, 'ACEITE 123 1 LT', NULL, 'NAVIDAD 2023 (32).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 23:13:35', '2023-12-04 23:13:35', NULL),
+(645, 6, 'ATUN TUNY 140/ 170 GR', NULL, 'NAVIDAD 2023 (33).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 23:13:58', '2023-12-04 23:13:58', NULL),
+(646, 6, 'CHILE MORENA 210 GR', NULL, 'NAVIDAD 2023 (34).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 23:14:35', '2023-12-04 23:14:35', NULL),
+(647, 6, 'MAYONESA MCCORMICK 190GR', NULL, 'NAVIDAD 2023 (35).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 23:14:57', '2023-12-04 23:14:57', NULL),
+(648, 6, 'LECHE CARNATION', NULL, 'NAVIDAD 2023 (36).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 23:15:39', '2023-12-04 23:15:39', NULL),
+(649, 6, 'CHOCOLATE /CACAHUATE M&M 47.9 GR', NULL, 'NAVIDAD 2023 (37).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 23:16:17', '2023-12-04 23:16:17', NULL),
+(650, 6, 'JABON CORONA C/ENVOLTURA 400 GR', NULL, 'NAVIDAD 2023 (38).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 23:16:45', '2023-12-04 23:16:45', NULL),
+(651, 6, 'DETERGENTE ROMA 500GR', NULL, 'NAVIDAD 2023 (39).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 23:17:20', '2023-12-04 23:17:20', NULL),
+(652, 6, 'LIMPIADO FABULOSO 500ML', NULL, 'NAVIDAD 2023 (40).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 23:17:50', '2023-12-04 23:17:50', NULL),
+(653, 6, 'PAÑO SCOTH BRITE', NULL, 'NAVIDAD 2023 (41).png', '2023-12-04', '2023-12-31', NULL, 0, 11, '2023-12-04 23:19:12', '2023-12-04 23:19:12', NULL),
+(654, 6, 'TOALLA SABA BUENAS NOCHES 8PZAS', NULL, 'NAVIDAD 2023 (42).png', '2023-12-04', '2023-12-31', NULL, 0, 10, '2023-12-04 23:19:51', '2023-12-04 23:19:51', NULL),
+(655, 6, 'CHOCOLATE MILKY WAY /SNICKERS', NULL, 'NAVIDAD 2023 (43).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 23:20:24', '2023-12-04 23:20:24', NULL),
+(656, 6, 'CHOCOLATE CARLOS V 18/22GR', NULL, 'NAVIDAD 2023 (45).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 23:20:56', '2023-12-04 23:20:56', NULL),
+(657, 6, 'RAFAELLO COCO / FERRERO ROCHER 3PZAS', NULL, 'NAVIDAD 2023 (46).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 23:21:35', '2023-12-04 23:21:35', NULL),
+(658, 6, 'PALETA RICALETA 20GR', NULL, 'NAVIDAD 2023 (47).png', '2023-12-04', '2023-12-31', NULL, 0, 13, '2023-12-04 23:22:49', '2023-12-04 23:22:49', NULL),
+(659, 6, 'VICK VAPORUB', NULL, 'NAVIDAD 2023 (48).png', '2023-12-04', '2023-12-31', NULL, 0, 9, '2023-12-04 23:23:19', '2023-12-04 23:23:19', NULL),
+(660, 6, 'ICEE SLUSH 20 OZ SABORES', NULL, 'NAVIDAD 2023 (49).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 23:23:45', '2023-12-04 23:23:45', NULL),
+(661, 6, 'SUAVICREMAS 102GR', NULL, 'NAVIDAD 2023 (50).png', '2023-12-04', '2023-12-31', NULL, 0, 6, '2023-12-04 23:24:18', '2023-12-04 23:24:18', NULL),
+(662, 6, 'GALLETAS CREMAX', NULL, 'NAVIDAD 2023 (51).png', '2023-12-04', '2023-12-31', NULL, 0, 6, '2023-12-04 23:24:47', '2023-12-04 23:24:47', NULL),
+(663, 6, 'ITALPASTA 180/200GR', NULL, 'NAVIDAD 2023 (52).png', '2023-12-04', '2023-12-31', NULL, 0, 1, '2023-12-04 23:25:20', '2023-12-04 23:25:20', NULL),
+(664, 6, 'YOGURT LALA 220 GR', NULL, 'NAVIDAD 2023 (53).png', '2023-12-04', '2023-12-31', NULL, 0, 5, '2023-12-04 23:25:57', '2023-12-04 23:25:57', NULL),
+(665, 6, 'REFRESCO 600ML', NULL, 'NAVIDAD 2023 (54).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 23:26:38', '2023-12-04 23:26:38', NULL),
+(666, 6, 'JUMEX  XOT FRUTAS MIXTAS', NULL, 'NAVIDAD 2023 (55).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 23:27:04', '2023-12-04 23:27:04', NULL),
+(667, 6, 'BEBIDA KOOL 355ML', NULL, 'NAVIDAD 2023 (56).png', '2023-12-04', '2023-12-31', NULL, 0, 2, '2023-12-04 23:30:59', '2023-12-04 23:30:59', NULL),
+(668, 6, 'SABRITAS PAKETAXO 70 GR', NULL, 'NAVIDAD 2023 (57).png', '2023-12-04', '2023-12-31', NULL, 0, 3, '2023-12-04 23:31:29', '2023-12-04 23:31:29', NULL),
+(669, 6, 'BARCEL CHIPS 60 GR', NULL, 'NAVIDAD 2023 (58).png', '2023-12-04', '2023-12-31', NULL, 0, 3, '2023-12-04 23:32:05', '2023-12-04 23:32:05', NULL),
+(670, 6, 'MARUCHAN + PEPSI', NULL, 'NAVIDAD 2023 (70).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 23:32:35', '2023-12-04 23:32:35', NULL),
+(671, 6, 'NESTLE 16OZ SABORES + REBANADAS BIMBO', NULL, 'NAVIDAD 2023 (69).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 23:33:10', '2023-12-04 23:33:10', NULL),
+(672, 6, 'NACHOS + PEPSI', NULL, 'NAVIDAD 2023 (71).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 23:33:38', '2023-12-04 23:33:38', NULL),
+(673, 6, 'VIENNETTA CAPUCCINO 650ML', NULL, 'NAVIDAD 2023 (65).png', '2023-12-04', '2023-12-31', NULL, 0, 4, '2023-12-04 23:34:09', '2023-12-04 23:34:09', NULL),
+(674, 6, 'ICEE SLUSH SABORES + PALOMITAS SABORES', NULL, 'NAVIDAD 2023 (72).png', '2023-12-04', '2023-12-31', NULL, 0, 7, '2023-12-04 23:34:58', '2023-12-04 23:34:58', NULL),
+(746, 7, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, '25.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 20:52:15', '2024-01-09 20:52:15', NULL),
+(747, 7, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, '26.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 20:53:32', '2024-01-09 20:53:32', NULL),
+(748, 7, 'CERVEZA MODELO LATON 473ML', NULL, '27.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 20:54:13', '2024-01-09 20:54:13', NULL),
+(749, 7, 'CERVEZA VICTORIA LATON 473ML', NULL, '28.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 20:55:03', '2024-01-09 20:55:03', NULL),
+(750, 7, 'CERVEZA CORONA LATON 710ML', NULL, '29.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 20:55:43', '2024-01-09 20:55:43', NULL),
+(751, 7, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, '30.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:17:40', '2024-01-09 21:17:40', NULL),
+(752, 7, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, '31.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:19:33', '2024-01-09 21:19:33', NULL),
+(753, 7, 'CERVEZA CORONA EXTRA 355ML BOTE', NULL, '32.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:20:34', '2024-01-09 21:20:34', NULL),
+(754, 7, 'CERVEZA PACIFICO SUAVE 355ML BOTE', NULL, '33.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:22:08', '2024-01-09 21:22:08', NULL),
+(755, 7, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2LT', NULL, '34.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:25:07', '2024-01-09 21:25:07', NULL),
+(756, 7, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, '35.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:26:36', '2024-01-09 21:26:36', NULL),
+(757, 7, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, '36.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:27:44', '2024-01-09 21:27:44', NULL),
+(758, 7, 'CERVEZA CORONA VIDRIO 355ML', NULL, '37.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:29:05', '2024-01-09 21:29:05', NULL),
+(759, 7, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, '38.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:32:24', '2024-01-09 21:32:24', NULL),
+(760, 7, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, '39.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:33:39', '2024-01-09 21:33:39', NULL),
+(761, 7, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, '40.png', '2024-01-09', '2024-01-15', NULL, 0, 17, '2024-01-09 21:34:47', '2024-01-09 21:34:47', NULL),
+(762, 7, 'VINO TINTO CALIFORNIA 1LT', NULL, '41.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 21:36:17', '2024-01-09 21:36:17', NULL),
+(763, 7, 'VINO TINTO MARQUEZ 750ML', NULL, '42.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 21:37:23', '2024-01-09 21:37:23', NULL),
+(764, 7, '1PZ WHISKY RED LABEL 700ML+ 1PZ COR BRILLANTE 2LT', NULL, '43.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 21:38:28', '2024-01-09 21:45:46', NULL),
+(765, 7, '1PZ TEQUILA 100 AÑOS +  1PZ REFRESCO BRILLANTE 2LT', NULL, '44.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 21:42:24', '2024-01-09 21:45:35', NULL),
+(766, 7, '1PZ VODKA ABSOLUT AZUL 750ML + 1 PZ JUM UNICO ARANDANO 960ML', NULL, '45.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 21:43:36', '2024-01-09 21:45:27', NULL),
+(767, 7, 'LICOR MEXGAVIA 440ML', NULL, '46.png', '2024-01-09', '2024-01-31', NULL, 0, 8, '2024-01-09 21:45:10', '2024-01-09 21:45:10', NULL),
+(768, 7, 'BEBIDA SKYY 275ML', NULL, '47.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 21:47:17', '2024-01-09 21:47:17', NULL),
+(769, 7, 'BEBIDA JACK DANIEL\'S 350ML', NULL, '48.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 21:48:12', '2024-01-09 21:48:12', NULL),
+(770, 7, 'POUCH PEDIGREE 100GR', NULL, '49.png', '2024-01-09', '2024-01-31', NULL, 0, 14, '2024-01-09 21:50:01', '2024-01-09 21:50:01', NULL),
+(771, 7, 'LIMPIADOR FABULOSO 500ML', NULL, '55.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 21:51:27', '2024-01-09 21:51:27', NULL),
+(772, 7, 'SUAVIZANTE DOWNY FLORAL 360ML', NULL, '56.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 21:52:13', '2024-01-09 21:52:13', NULL),
+(773, 7, 'SHAMPOO HEAD & SHOULDER 90ML', NULL, '57.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 21:53:08', '2024-01-09 21:53:08', NULL),
+(774, 7, 'PAPEL HIGIENICO PREMIER 4PZ/400 HOJAS', NULL, '58.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 21:54:13', '2024-01-09 21:54:13', NULL),
+(775, 7, 'JABON PALMOLIVE NEUTRO ANTIBACTERIAL 120GR', NULL, '59.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 21:55:10', '2024-01-09 21:55:10', NULL),
+(776, 7, 'TOALLA SABA BUENAS NOCHES PAQUETE 8PZ', NULL, '60.png', '2024-01-09', '2024-01-31', NULL, 0, 10, '2024-01-09 21:55:59', '2024-01-09 21:55:59', NULL),
+(777, 7, 'CHOCOLATE CARLOS V 18/22GR', NULL, '61.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 21:57:08', '2024-01-09 21:57:08', NULL),
+(778, 7, 'RICOLINO PANDITAS 60GR', NULL, '62.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 21:59:29', '2024-01-09 21:59:29', NULL),
+(779, 7, 'RAFFAELLO COCO/FERRERO ROCHER 3PZ', NULL, '63.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 22:02:15', '2024-01-09 22:02:15', NULL),
+(780, 7, 'PALETA RICALETA 20GR', NULL, '64.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 22:04:08', '2024-01-09 22:04:08', NULL),
+(781, 7, 'ICEE SLUSH SABORES 20OZ', NULL, '65.png', '2024-01-09', '2024-01-31', NULL, 0, 7, '2024-01-09 22:12:54', '2024-01-09 22:12:54', NULL),
+(782, 7, 'GALLETA CREMAX  90GR', NULL, '66.png', '2024-01-09', '2024-01-31', NULL, 0, 6, '2024-01-09 22:17:33', '2024-01-09 22:17:33', NULL),
+(783, 7, 'GALLETA CHOKIS 57/73/84GR', NULL, '67.png', '2024-01-09', '2024-01-31', NULL, 0, 6, '2024-01-09 22:18:33', '2024-01-09 22:18:33', NULL),
+(784, 7, 'SOPA ITALPASTA 180/200GR', NULL, '68.png', '2024-01-09', '2024-01-31', NULL, 0, 1, '2024-01-09 22:19:23', '2024-01-09 22:19:23', NULL),
+(785, 7, 'YOGURT LALA SABORES 220/250GR', NULL, '69.png', '2024-01-09', '2024-01-31', NULL, 0, 5, '2024-01-09 22:30:48', '2024-01-09 22:30:48', NULL),
+(786, 7, 'BONDY MEGA HUEVO', NULL, '80.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 22:44:53', '2024-01-09 22:44:53', NULL),
+(787, 7, 'PALETA PAYASO RICOLINO 45GR', NULL, '81.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 22:47:22', '2024-01-09 22:47:22', NULL),
+(788, 7, 'HOLANDA PALETA MAGNUM 90ML', NULL, '82.png', '2024-01-09', '2024-01-31', NULL, 0, 4, '2024-01-09 22:48:56', '2024-01-09 22:48:56', NULL),
+(789, 7, 'BEBIDA KOOL SABORES 355ML', NULL, '83.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 22:50:10', '2024-01-09 22:50:10', NULL),
+(790, 7, 'SUERO ELECTROLIT 625ML', NULL, '84.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 22:52:46', '2024-01-09 22:52:46', NULL),
+(791, 7, '1PZ ICEE SLUSH 20OZ + 1 PZ PALOMITAS ACT II', NULL, '90.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 22:55:19', '2024-01-09 22:55:19', NULL),
+(792, 7, '1PZ LECHE NUTRI 1LT+ 1PAQ. CEREAL CORN FLAKES 150GR.', NULL, '91.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:04:39', '2024-01-09 23:04:39', NULL),
+(793, 7, '1PZ SALSA VALENTINA 350ML + 1PZ SALSA  CATSUP CLEMENTE 340GR', NULL, '92.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:06:01', '2024-01-09 23:06:01', NULL),
+(794, 7, '1PZ LA LECHERITA 100GR + 1PZ HARINA PRONTO HOT CAKES 50GR', NULL, '93.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:06:52', '2024-01-09 23:06:52', NULL),
+(795, 7, '1PZ HOT DOG + 1PZ COCA COLA CHOBY 55ML', NULL, '94.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:08:00', '2024-01-09 23:08:00', NULL),
+(796, 7, 'POUCH WHISKAS 85GR', NULL, '50.png', '2024-01-09', '2024-01-31', NULL, 0, 14, '2024-01-09 23:08:53', '2024-01-09 23:08:53', NULL),
+(797, 7, 'LECHE CARNATION CLAVEL 360ML', NULL, '51.png', '2024-01-09', '2024-01-31', NULL, 0, 1, '2024-01-09 23:09:31', '2024-01-09 23:09:31', NULL),
+(798, 7, 'DETERGENTE ROMA 500GR', NULL, '52.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 23:10:33', '2024-01-09 23:10:33', NULL),
+(799, 7, 'DETERGENTE ARIEL ORIGINAL 250GR', NULL, '53.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 23:11:32', '2024-01-09 23:11:32', NULL),
+(800, 7, 'DETERGENTE LIQUIDO AXION 280ML', NULL, '54.png', '2024-01-09', '2024-01-31', NULL, 0, 11, '2024-01-09 23:12:17', '2024-01-09 23:12:17', NULL),
+(801, 7, 'YOGURT LALA GO 170GR', NULL, '70.png', '2024-01-09', '2024-01-31', NULL, 0, 5, '2024-01-09 23:13:13', '2024-01-09 23:13:13', NULL),
+(802, 7, 'GERBER 100GR', NULL, '71.png', '2024-01-09', '2024-01-31', NULL, 0, 20, '2024-01-09 23:13:54', '2024-01-09 23:13:54', NULL),
+(803, 7, 'REFRESCOS DE SABORES 600ML', NULL, '72.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 23:14:35', '2024-01-09 23:14:35', NULL),
+(804, 7, 'JUGO JUMEX 355ML', NULL, '73.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 23:15:03', '2024-01-09 23:15:03', NULL),
+(805, 7, 'JUMEX ARIZONA 460ML', NULL, '74.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 23:15:32', '2024-01-09 23:15:32', NULL),
+(806, 7, 'JUGO BOING 1LT SABORES', NULL, '75.png', '2024-01-09', '2024-01-31', NULL, 0, 2, '2024-01-09 23:16:12', '2024-01-09 23:16:12', NULL),
+(807, 7, 'SABRITAS RUFFLES 53/55GR', NULL, '76.png', '2024-01-09', '2024-01-31', NULL, 0, 3, '2024-01-09 23:16:46', '2024-01-09 23:16:46', NULL),
+(808, 7, 'SABRITAS FRITOS 65GR', NULL, '77.png', '2024-01-09', '2024-01-31', NULL, 0, 3, '2024-01-09 23:17:39', '2024-01-09 23:17:39', NULL),
+(809, 7, 'SABRITAS CHEETOS 27-52GR', NULL, '78.png', '2024-01-09', '2024-01-31', NULL, 0, 3, '2024-01-09 23:18:20', '2024-01-09 23:18:20', NULL),
+(810, 7, 'HUEVO KINDER', NULL, '79.png', '2024-01-09', '2024-01-31', NULL, 0, 13, '2024-01-09 23:18:45', '2024-01-09 23:18:45', NULL),
+(811, 7, 'PILA DURACELL AA/AAA', NULL, '85.png', '2024-01-09', '2024-01-31', NULL, 0, 12, '2024-01-09 23:19:35', '2024-01-09 23:19:35', NULL),
+(812, 7, 'PILA PANASONIC EVOLTA AA/AAA', NULL, '86.png', '2024-01-09', '2024-01-31', NULL, 0, 12, '2024-01-09 23:20:17', '2024-01-09 23:20:17', NULL),
+(813, 7, '1PZ BARRITAS + 1PZ NESTLE 16OZ', NULL, '87.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:20:51', '2024-01-09 23:20:51', NULL),
+(814, 7, '1PZ PEPSI 296ML + 1PZ SOPA MARUCHAN 54GR', NULL, '88.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:22:11', '2024-01-09 23:22:11', NULL),
+(815, 7, '1PZ PZ PEPSI 296ML LATA + 1 PZ NACHOS PREPARADOS', NULL, '89.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:25:48', '2024-01-09 23:25:48', NULL),
+(816, 7, '1PZ HOT DOG + 1PZ JUGO BOING 250ML', NULL, '95.png', '2024-01-09', '2024-01-31', NULL, 0, 16, '2024-01-09 23:31:21', '2024-01-09 23:31:21', NULL),
+(817, 6, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, 'PAGWEB FEB 2024 (1).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 16:51:36', '2024-02-02 16:51:36', NULL),
+(818, 6, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, 'PAGWEB FEB 2024 (2).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 16:52:11', '2024-02-02 16:52:11', NULL),
+(819, 6, 'CERVEZA MODELO LATON 473ML', NULL, 'PAGWEB FEB 2024 (3).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 16:57:42', '2024-02-02 16:57:42', NULL),
+(820, 6, 'CERVEZA VICTORIA LATON 473ML', NULL, 'PAGWEB FEB 2024 (4).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 16:58:08', '2024-02-02 16:58:08', NULL),
+(821, 6, 'CERVEZA CORONA LATON 710ML', NULL, 'PAGWEB FEB 2024 (5).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 16:58:44', '2024-02-02 16:58:44', NULL),
+(822, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, 'PAGWEB FEB 2024 (6).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:13:54', '2024-02-02 17:13:54', NULL),
+(823, 6, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, 'PAGWEB FEB 2024 (7).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:18:48', '2024-02-02 17:18:48', NULL),
+(824, 6, 'CERVEZA CORONA EXTRA 355ML BOTE', NULL, 'PAGWEB FEB 2024 (8).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:20:27', '2024-02-02 17:20:27', NULL),
+(826, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2LT', NULL, 'PAGWEB FEB 2024 (9).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:21:52', '2024-02-02 17:21:52', NULL),
+(827, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, 'PAGWEB FEB 2024 (10).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:22:38', '2024-02-02 17:22:38', NULL),
+(828, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'PAGWEB FEB 2024 (11).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:23:56', '2024-02-02 17:23:56', NULL),
+(829, 6, 'CERVEZA CORONA VIDRIO 355ML', NULL, 'PAGWEB FEB 2024 (12).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:26:21', '2024-02-02 17:26:21', NULL),
+(830, 6, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, 'PAGWEB FEB 2024 (13).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:27:15', '2024-02-02 17:27:15', NULL),
+(831, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, 'PAGWEB FEB 2024 (14).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:27:59', '2024-02-02 17:27:59', NULL),
+(832, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'PAGWEB FEB 2024 (15).jpg', '2024-02-01', '2024-02-29', NULL, 0, 17, '2024-02-02 17:28:36', '2024-02-02 17:28:36', NULL),
+(833, 6, 'WHISKY PASSPORT 700ML', NULL, 'PAGWEB FEB 2024 (16).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 17:29:06', '2024-02-02 17:29:06', NULL),
+(834, 6, 'VINO TINTO CALIFORNIA 1LT', NULL, 'PAGWEB FEB 2024 (17).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 17:29:39', '2024-02-02 17:29:39', NULL),
+(835, 6, 'VODKA SMIRNOFF TAMARINDO 750 ML', NULL, 'PAGWEB FEB 2024 (18).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 17:30:30', '2024-02-02 17:30:30', NULL),
+(836, 6, 'WJISKY RED LABEL 700ML + REFRESCO BRILLANTE 2LT', NULL, 'PAGWEB FEB 2024 (19).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 17:31:16', '2024-02-02 17:31:16', NULL),
+(837, 6, 'LICOR RANCHO ESCONDIDO 750ML', NULL, 'PAGWEB FEB 2024 (20).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 17:31:52', '2024-02-02 17:31:52', NULL),
+(838, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'PAGWEB FEB 2024 (21).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 17:32:25', '2024-02-02 17:32:25', NULL),
+(839, 6, 'LICOR MEXGAVIA 440ML', NULL, 'PAGWEB FEB 2024 (22).jpg', '2024-02-01', '2024-02-29', NULL, 0, 8, '2024-02-02 17:34:51', '2024-02-02 17:34:51', NULL),
+(840, 6, 'BEBIDA SKYY 275ML', NULL, 'PAGWEB FEB 2024 (23).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 17:35:40', '2024-02-02 17:35:40', NULL),
+(841, 6, 'POUCH PEDIGREE 85GR', NULL, 'PAGWEB FEB 2024 (24).jpg', '2024-02-01', '2024-02-29', NULL, 0, 14, '2024-02-02 17:36:59', '2024-02-02 17:36:59', NULL),
+(842, 6, 'POUCH WHISKAS 85GR', NULL, 'PAGWEB FEB 2024 (25).jpg', '2024-02-01', '2024-02-29', NULL, 0, 14, '2024-02-02 17:37:31', '2024-02-02 17:37:31', NULL),
+(843, 6, 'FIBRA SCOTCH BRITE VERDE + DETERGENTE AXION LIMON 500GR', NULL, 'PAGWEB FEB 2024 (26).jpg', '2024-02-01', '2024-02-29', NULL, 0, 16, '2024-02-02 17:38:30', '2024-02-02 17:38:30', NULL),
+(844, 6, 'DETERGENTE ARIEL ORIGINAL 250GR', NULL, 'PAGWEB FEB 2024 (27).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 17:39:19', '2024-02-02 17:39:19', NULL),
+(845, 6, 'DETERGENTE LIQUIDO AXION LIMON 280ML', NULL, 'PAGWEB FEB 2024 (28).jpg', '2024-02-01', '2024-02-29', NULL, 0, 11, '2024-02-02 17:40:15', '2024-02-02 17:40:15', NULL),
+(846, 6, 'SUAVIZANTE DOWNY FLORAL 360ML', NULL, 'PAGWEB FEB 2024 (29).jpg', '2024-02-01', '2024-02-29', NULL, 0, 11, '2024-02-02 17:40:49', '2024-02-02 17:40:49', NULL),
+(847, 6, 'JABON ZOTE ROSA 200GR', NULL, 'PAGWEB FEB 2024 (30).jpg', '2024-02-01', '2024-02-29', NULL, 0, 11, '2024-02-02 17:41:26', '2024-02-02 17:41:26', NULL),
+(848, 6, 'SHAMPOO HEAD & SHOULDER 90ML', NULL, 'PAGWEB FEB 2024 (31).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 17:42:29', '2024-02-02 17:42:29', NULL),
+(849, 6, 'CREMA HINDS 90ML', NULL, 'PAGWEB FEB 2024 (32).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 17:42:55', '2024-02-02 17:42:55', NULL),
+(850, 6, 'PRESERVATIVO PRUDENCE 3PZ', NULL, 'PAGWEB FEB 2024 (33).jpg', '2024-02-01', '2024-02-29', NULL, 0, 9, '2024-02-02 17:43:31', '2024-02-02 17:43:31', NULL),
+(851, 6, 'PAPEL HIGIÉNICO PREMIER 4PZ/400 HOJAS', NULL, 'PAGWEB FEB 2024 (34).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 17:44:31', '2024-02-02 17:44:31', NULL),
+(852, 6, 'JABÓN PALMOLIVE NEUTRO ANTIBACTERIAL', NULL, 'PAGWEB FEB 2024 (35).jpg', '2024-02-01', '2024-02-29', NULL, 0, 10, '2024-02-02 17:52:51', '2024-02-02 17:52:51', NULL),
+(853, 6, 'M&M CHOCOLATE / CACAHUATE 42GR', NULL, 'PAGWEB FEB 2024 (36).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 17:53:50', '2024-02-02 17:53:50', NULL),
+(854, 6, 'CHOCOLATE SNICKERS/ MILKYWAY', NULL, 'PAGWEB FEB 2024 (37).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 18:16:09', '2024-02-02 18:16:09', NULL),
+(855, 6, 'CHOCOLATE CARLOS V / CARLOS V AMARGO', NULL, 'PAGWEB FEB 2024 (38).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 18:16:57', '2024-02-02 18:16:57', NULL),
+(856, 6, 'CHOCOLATE KIT KAT 41.5G', NULL, 'PAGWEB FEB 2024 (39).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 18:17:33', '2024-02-02 18:17:33', NULL),
+(857, 6, 'RICOLINO PANDITAS', NULL, 'PAGWEB FEB 2024 (40).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 18:18:11', '2024-02-02 18:18:11', NULL),
+(858, 6, 'ICEE SLUSH 20 OZ SABORES', NULL, 'PAGWEB FEB 2024 (41).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 18:18:44', '2024-02-02 18:18:44', NULL),
+(859, 6, 'BIGOTE TIA ROSA 60GR + CAPUCCINO SABORES', NULL, 'PAGWEB FEB 2024 (42).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 18:19:47', '2024-02-02 18:19:47', NULL),
+(860, 6, 'MARUCHAN + PEPSI', NULL, 'PAGWEB FEB 2024 (43).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 18:20:14', '2024-02-02 18:20:14', NULL),
+(861, 6, 'PEPSI + NACHOS PREPARADOS', NULL, 'PAGWEB FEB 2024 (44).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 18:20:43', '2024-02-02 18:20:43', NULL),
+(862, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'PAGWEB FEB 2024 (45).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 18:21:33', '2024-02-02 18:21:33', NULL),
+(863, 6, 'CEREAL KELLOGS  CORN FLAKES + leche nutri', NULL, 'PAGWEB FEB 2024 (46).jpg', '2024-02-01', '2024-02-29', NULL, 0, 16, '2024-02-02 18:34:10', '2024-02-02 18:34:10', NULL),
+(864, 6, 'SALSA VALENTINA + SALSA CATSUP CLEMENTE', NULL, 'PAGWEB FEB 2024 (47).jpg', '2024-02-01', '2024-02-29', NULL, 0, 16, '2024-02-02 18:35:05', '2024-02-02 18:35:05', NULL),
+(865, 6, 'HOT DOG + JUGO BOING 250ML', NULL, 'PAGWEB FEB 2024 (48).jpg', '2024-02-01', '2024-02-29', NULL, 0, 7, '2024-02-02 18:35:29', '2024-02-02 18:35:29', NULL),
+(866, 6, 'YOGURT LALA GO 170GR', NULL, 'PAGWEB FEB 2024 (49).jpg', '2024-02-01', '2024-02-29', NULL, 0, 5, '2024-02-02 18:36:15', '2024-02-02 18:36:15', NULL),
+(867, 6, 'TE LIPTON 600ML', NULL, 'PAGWEB FEB 2024 (50).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 18:36:58', '2024-02-02 18:36:58', NULL),
+(868, 6, 'MERMELADA MC CORMICK FRESA/PIÑA', NULL, 'PAGWEB FEB 2024 (51).jpg', '2024-02-01', '2024-02-29', NULL, 0, 1, '2024-02-02 18:41:24', '2024-02-02 18:41:24', NULL),
+(869, 6, 'MAZAPAN UNTABLE 400GR', NULL, 'PAGWEB FEB 2024 (52).jpg', '2024-02-01', '2024-02-29', NULL, 0, 1, '2024-02-02 18:43:47', '2024-02-02 18:43:47', NULL),
+(870, 6, 'JUGO JUMEX 355ML', NULL, 'PAGWEB FEB 2024 (53).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 18:44:18', '2024-02-02 18:44:18', NULL),
+(871, 6, 'GALLETA CHOKIS 57 -84GR', NULL, 'PAGWEB FEB 2024 (54).jpg', '2024-02-01', '2024-02-29', NULL, 0, 6, '2024-02-02 18:47:05', '2024-02-02 18:47:05', NULL),
+(872, 6, 'BARRA BRAN FRUT 58 GR', NULL, 'PAGWEB FEB 2024 (55).jpg', '2024-02-01', '2024-02-29', NULL, 0, 6, '2024-02-02 18:48:07', '2024-02-02 18:48:07', NULL),
+(873, 6, 'GANSITO MARINELA', NULL, 'PAGWEB FEB 2024 (56).jpg', '2024-02-01', '2024-02-29', NULL, 0, 6, '2024-02-02 18:49:09', '2024-02-02 18:49:09', NULL),
+(874, 6, 'LECHE ALPURA FRESA, VAINILLA, CHOCOLATE 200ML', NULL, 'PAGWEB FEB 2024 (57).jpg', '2024-02-01', '2024-02-29', NULL, 0, 5, '2024-02-02 18:49:58', '2024-02-02 18:49:58', NULL),
+(875, 6, 'JUMEX ARIZONA 460ML', NULL, 'PAGWEB FEB 2024 (58).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 18:50:31', '2024-02-02 18:50:31', NULL),
+(876, 6, 'JUMEX UNIXO 475ML', NULL, 'PAGWEB FEB 2024 (59).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 18:51:02', '2024-02-02 18:51:02', NULL),
+(877, 6, 'JUGO BOING 1LT SABORES', NULL, 'PAGWEB FEB 2024 (60).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 19:17:03', '2024-02-02 19:17:03', NULL),
+(878, 6, 'SABRITAS FRITOS 65GR', NULL, 'PAGWEB FEB 2024 (61).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 19:22:21', '2024-02-02 19:22:21', NULL),
+(879, 6, 'DORITOS 45 - 65 GR', NULL, 'PAGWEB FEB 2024 (62).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 19:23:06', '2024-02-02 19:23:06', NULL),
+(880, 6, 'PRINGLES 37/40GR', NULL, 'PAGWEB FEB 2024 (63).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 19:24:41', '2024-02-02 19:24:41', NULL),
+(881, 6, 'SABRITAS CHEETOS', NULL, 'PAGWEB FEB 2024 (64).jpg', '2024-02-01', '2024-02-29', NULL, 0, 3, '2024-02-02 19:25:17', '2024-02-02 19:25:17', NULL),
+(882, 6, 'HOLANDA PALETA CHEMISSE 65ML', NULL, 'PAGWEB FEB 2024 (65).jpg', '2024-02-01', '2024-02-29', NULL, 0, 4, '2024-02-02 19:26:01', '2024-02-02 19:26:01', NULL),
+(883, 6, 'HUEVO KINDER 20GR', NULL, 'PAGWEB FEB 2024 (66).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 19:26:26', '2024-02-02 19:26:26', NULL),
+(884, 6, 'BONDY MEGA HUEVO PRESENTACIONES', NULL, 'PAGWEB FEB 2024 (67).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 19:26:50', '2024-02-02 19:26:50', NULL),
+(885, 6, 'PALETA PAYASO RICOLINO 45GR', NULL, 'PAGWEB FEB 2024 (68).jpg', '2024-02-01', '2024-02-29', NULL, 0, 13, '2024-02-02 19:27:25', '2024-02-02 19:27:25', NULL),
+(886, 6, 'SUERO ELECTROLIT SABORES 625ML', NULL, 'PAGWEB FEB 2024 (69).jpg', '2024-02-01', '2024-02-29', NULL, 0, 2, '2024-02-02 19:27:49', '2024-02-02 19:27:49', NULL),
+(887, 6, 'SUERO ELECTROLIT SABORES 625ML', NULL, 'marzo 2024 v1 (1).jpg', '2024-03-01', '2024-03-31', NULL, 0, 9, '2024-03-02 18:45:19', '2024-03-02 18:45:19', NULL),
+(888, 6, 'CERVEZA CORONA LIGHT LATON 473ML', '4 X $88.00', 'marzo 2024 v1 (2).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 18:46:57', '2024-03-02 18:46:57', NULL),
+(889, 6, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, 'marzo 2024 v1 (3).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 18:59:59', '2024-03-02 18:59:59', NULL),
+(890, 6, 'CERVEZA MODELO ESPECIAL LATON 473ML', NULL, 'marzo 2024 v1 (4).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:01:02', '2024-03-02 19:01:02', NULL),
+(891, 6, 'CERVEZA VICTORIA LATON 473ML', NULL, 'marzo 2024 v1 (5).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:02:23', '2024-03-02 19:02:23', NULL),
+(892, 6, 'CERVEZA CORONA LATON 710ML', NULL, 'marzo 2024 v1 (6).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:03:05', '2024-03-02 19:03:05', NULL),
+(893, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, 'marzo 2024 v1 (7).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:03:40', '2024-03-02 19:03:40', NULL),
+(894, 6, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, 'marzo 2024 v1 (8).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:04:13', '2024-03-02 19:04:13', NULL),
+(895, 6, 'CERVEZA CORONA EXTRA BOTE 355ML', NULL, 'marzo 2024 v1 (9).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:09:49', '2024-03-02 19:09:49', NULL),
+(896, 6, 'CERVEZA VICTORIA MEGAFAMILIAR', NULL, 'marzo 2024 v1 (10).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:25:43', '2024-03-02 19:25:43', NULL),
+(897, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, 'marzo 2024 v1 (11).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:26:19', '2024-03-02 19:26:19', NULL),
+(898, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'marzo 2024 v1 (12).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:27:04', '2024-03-02 19:27:04', NULL),
+(899, 6, 'CERVEZA CORONA EXTRA VIDRIO 355ML', NULL, 'marzo 2024 v1 (13).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:27:32', '2024-03-02 19:27:32', NULL),
+(900, 6, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, 'marzo 2024 v1 (14).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:28:27', '2024-03-02 19:28:27', NULL),
+(901, 6, 'CERVEZA NEGRA MODELO CRISTAL 355ML', NULL, 'marzo 2024 v1 (15).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:32:43', '2024-03-02 19:32:43', NULL),
+(902, 6, 'CERVEZA MODELO ESPECIAL CRISTAL', NULL, 'marzo 2024 v1 (16).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:37:15', '2024-03-02 19:37:15', NULL),
+(903, 6, 'CERVEZA MEGA FAMILIAR + VICKY VASO ESCARCHADO', NULL, 'marzo 2024 v1 (17).jpg', '2024-03-01', '2024-03-31', NULL, 0, 17, '2024-03-02 19:38:40', '2024-03-02 19:38:40', NULL),
+(904, 6, 'WHISKY PASSPORT 700ML', NULL, 'marzo 2024 v1 (18).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 19:39:30', '2024-03-02 19:39:30', NULL),
+(905, 6, 'VODKA SMIRNOFF TAMARINDO 750ML', '1 X $265.00', 'marzo 2024 v1 (19).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 19:40:49', '2024-03-02 19:40:49', NULL),
+(906, 6, 'VODKA ABOSLUT AZUL 750ML + JUMEX UNICO ARANDANO 960ML', NULL, 'marzo 2024 v1 (20).jpg', '2024-03-01', '2024-03-31', NULL, 0, 16, '2024-03-02 19:41:18', '2024-03-02 19:41:18', NULL),
+(907, 6, 'BRANDY TORRES 10 700ML + COCA COLA 1.25L', NULL, 'marzo 2024 v1 (21).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 19:43:33', '2024-03-02 19:43:33', NULL),
+(908, 6, 'RON BACARDI BLANCO 750 ML + JUGO ARIZONA 460ML', NULL, 'marzo 2024 v1 (22).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 19:47:27', '2024-03-02 19:47:27', NULL),
+(909, 6, 'LICOR RANCHO ESCONDIDO 750ML + BRILLANTE 2LT', NULL, 'marzo 2024 v1 (23).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 20:13:19', '2024-03-02 20:13:19', NULL),
+(910, 6, 'TEQUILA CABRITO REPOSADO 750ML + BRILLANTE 2LT', NULL, 'marzo 2024 v1 (24).jpg', '2024-03-01', '2024-03-31', NULL, 0, 8, '2024-03-02 20:13:42', '2024-03-02 20:13:42', NULL),
+(911, 6, 'POUCH PEDIGREE 85GR', NULL, 'marzo 2024 v1 (25).jpg', '2024-03-01', '2024-03-31', NULL, 0, 14, '2024-03-02 20:14:15', '2024-03-02 20:14:15', NULL),
+(912, 6, 'POUCH WHISKAS 85 GR', NULL, 'marzo 2024 v1 (26).jpg', '2024-03-01', '2024-03-31', NULL, 0, 14, '2024-03-02 20:14:49', '2024-03-02 20:14:49', NULL),
+(913, 6, 'JABON ZOTE ROSA PASTA 200GR', NULL, 'marzo 2024 v1 (27).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 20:15:28', '2024-03-02 20:15:28', NULL),
+(914, 6, 'LIMPIADOR CLARASOL 1LT', NULL, 'marzo 2024 v1 (28).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 20:16:12', '2024-03-02 20:16:12', NULL),
+(915, 6, 'GALLETAS TARTINAS TIA ROSA 6PZ', NULL, 'marzo 2024 v1 (29).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 20:18:40', '2024-03-02 20:18:40', NULL),
+(916, 6, 'SARDINA CLAMEX 425GR', NULL, 'marzo 2024 v1 (30).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:19:11', '2024-03-02 20:19:11', NULL),
+(917, 6, 'CREMA CALAHUA COCO 480ML', NULL, 'marzo 2024 v1 (31).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:20:03', '2024-03-02 20:20:03', NULL),
+(918, 6, 'ATUN DOLOES 133/140GR', NULL, 'marzo 2024 v1 (32).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:20:50', '2024-03-02 20:20:50', NULL),
+(919, 6, 'CREMA HINDS 90 ML', NULL, 'marzo 2024 v1 (33).jpg', '2024-03-01', '2024-03-31', NULL, 0, 10, '2024-03-02 20:21:55', '2024-03-02 20:21:55', NULL),
+(920, 6, 'ACETE DE OLIVO JALOMA 60ML', NULL, 'marzo 2024 v1 (34).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:22:28', '2024-03-02 20:22:28', NULL),
+(921, 6, 'VICK VAPORUB', NULL, 'marzo 2024 v1 (35).jpg', '2024-03-01', '2024-03-31', NULL, 0, 9, '2024-03-02 20:22:53', '2024-03-02 20:22:53', NULL),
+(922, 6, 'CHICLE TRIDENT 13.6GR', NULL, 'marzo 2024 v1 (36).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 20:24:34', '2024-03-02 20:24:34', NULL),
+(923, 6, 'BUBBALOO ROLLO 56.7GR', NULL, 'marzo 2024 v1 (37).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 20:25:24', '2024-03-02 20:25:24', NULL),
+(924, 6, 'PELON PELONAZO TAMARINDO 80GR', NULL, 'marzo 2024 v1 (38).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 20:26:02', '2024-03-02 20:26:02', NULL),
+(925, 6, 'DETERGENTE  MAS COLOR LIQUIDO', NULL, 'marzo 2024 v1 (39).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 20:26:35', '2024-03-02 20:26:35', NULL),
+(926, 6, 'HOLANDA MORDISKO 105 GR', NULL, 'marzo 2024 v1 (40).jpg', '2024-03-01', '2024-03-31', NULL, 0, 4, '2024-03-02 20:32:16', '2024-03-02 20:32:16', NULL),
+(927, 6, 'PINGUINOS MARINELA', NULL, 'marzo 2024 v1 (41).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 20:32:41', '2024-03-02 20:32:41', NULL),
+(928, 6, 'LECHE NITO /HERSHEYS 200/236ML', NULL, 'marzo 2024 v1 (42).jpg', '2024-03-01', '2024-03-31', NULL, 0, 5, '2024-03-02 20:33:36', '2024-03-02 20:33:36', NULL),
+(929, 6, 'BRAN FRUT 58 GR', NULL, 'marzo 2024 v1 (43).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 20:34:40', '2024-03-02 20:34:40', NULL),
+(930, 6, 'GANSITO MARINELA', NULL, 'marzo 2024 v1 (44).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 20:35:08', '2024-03-02 20:35:08', NULL),
+(931, 6, 'SUAVICREMAS 102 GR', NULL, 'marzo 2024 v1 (45).jpg', '2024-03-01', '2024-03-31', NULL, 0, 6, '2024-03-02 20:36:08', '2024-03-02 20:36:08', NULL),
+(932, 6, 'ENERGIZANTE MONSTER 473ML', NULL, 'marzo 2024 v1 (46).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 20:36:46', '2024-03-02 20:36:46', NULL),
+(933, 6, 'REFRESCO VARIEDADES 3LT', NULL, 'marzo 2024 v1 (47).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 20:37:23', '2024-03-02 20:37:23', NULL),
+(934, 6, 'JABÓN PALMOLIVE NEUTRO ANTIBACTERIAL 120GR', NULL, 'marzo 2024 v1 (48).jpg', '2024-03-01', '2024-03-31', NULL, 0, 10, '2024-03-02 20:38:06', '2024-03-02 20:38:06', NULL),
+(935, 6, 'M&M CHOCOLATE / CACAHUATE 42GR', NULL, 'marzo 2024 v1 (49).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 20:38:51', '2024-03-02 20:38:51', NULL),
+(936, 6, 'ICEE SLUSH SABORES 20 OZ', NULL, 'marzo 2024 v1 (51).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 20:39:26', '2024-03-02 20:39:26', NULL),
+(937, 6, 'NITO BIMBO + NESTLE 16 OZ SABORES', NULL, 'marzo 2024 v1 (52).jpg', '2024-03-01', '2024-03-31', NULL, 0, 16, '2024-03-02 20:39:57', '2024-03-02 20:39:57', NULL),
+(938, 6, 'PEPSI 295ML + MARUCHAN SABORES', NULL, 'marzo 2024 v1 (53).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 20:40:42', '2024-03-02 20:40:42', NULL),
+(939, 6, 'PEPSI LATA 295ML + NACHOS PREPARADOS', NULL, 'marzo 2024 v1 (54).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 20:41:07', '2024-03-02 20:41:07', NULL),
+(940, 6, 'ICEE SLUSH SABORES + PALOMITAS SABORES', NULL, 'marzo 2024 v1 (55).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 20:41:40', '2024-03-02 20:41:40', NULL),
+(941, 6, 'FIBRA SCOTCH BRITE VERDE + DETERGENTE AXION LIMON 500GR', NULL, 'marzo 2024 v1 (56).jpg', '2024-03-01', '2024-03-31', NULL, 0, 11, '2024-03-02 20:42:29', '2024-03-02 20:42:29', NULL),
+(942, 6, 'SOPA ITALPASTA SPAGUETTI 200GR + PURÉ DE TOMATE DEL FUERTE 210GR', NULL, 'marzo 2024 v1 (57).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:43:33', '2024-03-02 20:43:33', NULL),
+(943, 6, 'PAN BIMBO TOSTADO 210 GR + LA LECHERITA  NESTLE  100GR', NULL, 'marzo 2024 v1 (58).jpg', '2024-03-01', '2024-03-31', NULL, 0, 16, '2024-03-02 20:44:38', '2024-03-02 20:44:38', NULL),
+(944, 6, 'SAZONADOR MAGGY JUGO 100ML + SALSA INGLESA C&B 145ML', NULL, 'marzo 2024 v1 (59).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:45:34', '2024-03-02 20:45:34', NULL),
+(945, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'marzo 2024 v1 (60).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 20:46:03', '2024-03-02 20:46:03', NULL),
+(946, 6, 'HOT DOG + JUGO BOING 250ML', NULL, 'marzo 2024 v1 (61).jpg', '2024-03-01', '2024-03-31', NULL, 0, 7, '2024-03-02 20:48:43', '2024-03-02 20:48:43', NULL),
+(947, 6, 'TE LIPTON 600ML', NULL, 'marzo 2024 v1 (62).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 20:49:16', '2024-03-02 20:49:16', NULL),
+(948, 6, 'CLAMATO TOMATO 1.89LT', NULL, 'marzo 2024 v1 (63).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 20:49:55', '2024-03-02 20:49:55', NULL),
+(949, 6, 'MERMELADA MC CORMICK FRESA/PIÑA', NULL, 'marzo 2024 v1 (64).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 20:50:40', '2024-03-02 20:50:40', NULL),
+(950, 6, 'JUMEX  XOT FRUTAS MIXTAS 470 ML', NULL, 'marzo 2024 v1 (66).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 20:51:23', '2024-03-02 20:51:23', NULL),
+(951, 6, 'JUMEX UNICO 475ML', NULL, 'marzo 2024 v1 (67).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 20:54:00', '2024-03-02 20:54:00', NULL),
+(952, 6, 'BARCEL TAKIS 56GR', NULL, 'marzo 2024 v1 (68).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 21:00:12', '2024-03-02 21:00:12', NULL),
+(953, 6, 'SABRITAS RANCHERITOS 60GR', NULL, 'marzo 2024 v1 (69).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 21:05:15', '2024-03-02 21:05:15', NULL),
+(954, 6, 'BARCEL PAPAS CHIPS 60GR', NULL, 'marzo 2024 v1 (70).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 21:06:20', '2024-03-02 21:06:20', NULL),
+(955, 6, 'DORITOS 45 - 65 GR', NULL, 'marzo 2024 v1 (71).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 21:06:53', '2024-03-02 21:06:53', NULL),
+(956, 6, 'CHOCOLATE KIT KAT 41.56GR', NULL, 'marzo 2024 v1 (72).jpg', '2024-03-01', '2024-03-31', NULL, 0, 13, '2024-03-02 21:08:13', '2024-03-02 21:08:13', NULL),
+(957, 6, 'PRINGLES 37/40GR', NULL, 'marzo 2024 v1 (73).jpg', '2024-03-01', '2024-03-31', NULL, 0, 3, '2024-03-02 21:08:43', '2024-03-02 21:08:43', NULL),
+(958, 6, 'BEBIDAS CARIBE COOLER 300ML', NULL, 'marzo 2024 v2 (1).jpg', '2024-03-01', '2024-03-31', NULL, 0, 2, '2024-03-02 21:09:17', '2024-03-02 21:09:17', NULL),
+(959, 6, 'MAZAPAN UNTABLE 400GR', NULL, 'marzo 2024 v2 (2).jpg', '2024-03-01', '2024-03-31', NULL, 0, 1, '2024-03-02 21:09:43', '2024-03-02 21:09:43', NULL),
+(960, 6, 'CERVEZA CORONA LATON 710 ML', NULL, 'ABRIL 2024 (2).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 23:00:41', '2024-04-04 21:11:04', 62),
+(961, 6, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, 'ABRIL 2024 (3).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 23:01:16', '2024-04-04 21:12:11', 52),
+(962, 6, 'CERVEZA CORONA EXTRA LATÓN 473ML', NULL, 'ABRIL 2024 (4).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 23:01:57', '2024-04-04 21:12:11', 51),
+(963, 6, 'CERVEZA MODELO LATON 473ML', NULL, 'ABRIL 2024 (5).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 23:14:37', '2024-04-04 21:12:11', 50),
+(964, 6, 'CERVEZA VICTORIA LATON 473 ML', NULL, 'ABRIL 2024 (6).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-03 23:28:50', '2024-04-04 21:12:11', 49),
+(972, 6, 'CERVEZA NEGRA MODELO VIDRIO 355ML', NULL, 'ABRIL 2024 (14).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-04 16:29:00', '2024-04-30 02:04:04', 47),
+(973, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'ABRIL 2024 (15).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-04 16:29:44', '2024-04-30 02:04:04', 46),
+(974, 6, 'BEBIDA VIÑA REAL 330ML', '4 X $78.00', 'ABRIL 2024 (61).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-04 16:33:08', '2024-04-30 02:04:04', 45),
+(975, 6, 'VINO SUNSET PASSSION BERRY 750 ML', NULL, 'ABRIL 2024 (62).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 16:33:51', '2024-04-30 02:04:04', 44),
+(976, 6, 'VODKA SMIRNOFF 1LT', NULL, 'ABRIL 2024 (63).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 16:34:41', '2024-04-30 02:04:04', 43),
+(977, 6, 'BRANDY TORRES 10 100ML + COCA COLA 2.7LT', NULL, 'ABRIL 2024 (64).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 16:35:57', '2024-04-30 02:04:04', 48),
+(978, 6, 'RON BARCARDI BLANCO 750ML + JUGO ARIZONA 460ML', NULL, 'ABRIL 2024 (65).png', '2024-04-01', '2024-04-30', NULL, 0, 16, '2024-04-04 16:36:58', '2024-04-04 21:11:04', 69),
+(979, 6, 'TEQUILA CABRITO 750ML + 250ML + REFRESCO BRILLANTE 2LT', NULL, 'ABRIL 2024 (66).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 16:37:53', '2024-04-04 21:11:04', 68),
+(980, 6, 'WHISKY HIHGLAND CHIEF 750ML + REFRESCO BRILLANTE 2LT', NULL, 'ABRIL 2024 (67).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 16:42:09', '2024-04-04 21:11:04', 67),
+(981, 6, 'VIDKA ABSOLUT AZUL 750ML + JUMEX UNICO ARANDANO 960ML', NULL, 'ABRIL 2024 (68).png', '2024-04-01', '2024-04-30', NULL, 0, 8, '2024-04-04 16:42:57', '2024-04-04 21:11:04', 66),
+(982, 6, 'POUCH WHISKAS 85GR', NULL, 'ABRIL 2024 (58).png', '2024-04-01', '2024-04-30', NULL, 0, 14, '2024-04-04 16:44:01', '2024-04-04 21:11:04', 65),
+(983, 6, 'POUCH PEDIGREE 100 GR', NULL, 'ABRIL 2024 (59).png', '2024-04-01', '2024-04-30', NULL, 0, 14, '2024-04-04 17:19:39', '2024-04-04 21:11:04', 64),
+(984, 6, 'DETERGENTE LIQUIDO MAS COLOR 415ML', NULL, 'ABRIL 2024 (57).png', '2024-04-01', '2024-04-30', NULL, 0, 11, '2024-04-04 17:23:26', '2024-04-04 21:11:04', 63),
+(985, 6, 'DETERGENTE BLANCA NIEVES 500GR + LIMPIADOR CLARASOL 500 ML', NULL, 'ABRIL 2024 (70).png', '2024-04-01', '2024-04-30', NULL, 0, 11, '2024-04-04 17:24:52', '2024-04-04 21:12:11', 54),
+(986, 6, 'CEPILLO DENTAL COLGATE + PASTA DENTAL COLGATE CALCIO 22ML', NULL, 'ABRIL 2024 (71).png', '2024-04-01', '2024-04-30', NULL, 0, 11, '2024-04-04 17:26:56', '2024-04-04 21:11:04', 61),
+(987, 6, 'VICK VAPORUB 12 GR', NULL, 'ABRIL 2024 (60).png', '2024-04-01', '2024-04-30', NULL, 0, 9, '2024-04-04 17:27:44', '2024-04-04 21:11:04', 60),
+(988, 6, 'CLAMTO TOMATO 1.89LT', NULL, 'ABRIL 2024 (47).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 17:29:00', '2024-04-04 21:11:04', 59),
+(989, 6, 'SARDINA CALMEX 425 GR', NULL, 'ABRIL 2024 (46).png', '2024-04-01', '2024-04-30', NULL, 0, 1, '2024-04-04 17:30:39', '2024-04-04 21:11:04', 58),
+(990, 6, 'ATUN DOLORES 133/140GR', NULL, 'ABRIL 2024 (45).png', '2024-04-01', '2024-04-30', NULL, 0, 1, '2024-04-04 17:31:10', '2024-04-04 21:11:04', 57),
+(991, 6, 'PAN BIMBO TOSTADO 210GR + LA LECHERITA NESTLE 100GR', NULL, 'ABRIL 2024 (74).png', '2024-04-01', '2024-04-30', NULL, 0, 16, '2024-04-04 17:31:58', '2024-04-04 21:11:04', 56),
+(992, 6, 'SABRITAS 45GR + SALSA VALENTINA ROJA 350 ML', NULL, 'ABRIL 2024 (1).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 17:46:10', '2024-04-30 02:04:04', 38),
+(993, 6, 'JABON PALMOLIVE NEUTRO ANTIBACTERIAL 120 GR', NULL, 'ABRIL 2024 (54).png', '2024-04-01', '2024-04-30', NULL, 0, 10, '2024-04-04 17:55:00', '2024-04-04 21:12:11', 55),
+(994, 6, 'TE MCCOMICK 30 GR', NULL, 'ABRIL 2024 (55).png', '2024-04-01', '2024-04-30', NULL, 0, 1, '2024-04-04 17:55:37', '2024-04-30 02:04:04', 34),
+(995, 6, 'INSECTICIDA RAIDOLITO', NULL, 'ABRIL 2024 (56).png', '2024-04-01', '2024-04-30', NULL, 0, 12, '2024-04-04 17:56:22', '2024-04-04 21:12:11', 53),
+(996, 6, 'CAFE OLE 281 ML', NULL, 'ABRIL 2024 (48).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 17:57:18', '2024-04-30 02:04:03', 26),
+(997, 6, 'JUMEX XOT FRUTAS MIXTAS 470 ML', NULL, 'ABRIL 2024 (49).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 17:58:39', '2024-04-30 02:04:03', 25),
+(998, 6, 'ENERGIZANTE MONSTER 473 ML', NULL, 'ABRIL 2024 (50).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 18:00:33', '2024-04-30 02:04:03', 24),
+(999, 6, 'ENERGIZANTE BOOST ACTIVE 235 ML', NULL, 'ABRIL 2024 (51).png', '2024-04-01', '2024-04-30', NULL, 0, 16, '2024-04-04 18:01:13', '2024-04-30 02:04:03', 23),
+(1000, 6, 'REFRESCO VARIEDADES 3LT', NULL, 'ABRIL 2024 (52).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 18:03:08', '2024-04-30 02:04:03', 22),
+(1001, 6, 'JUGO DEL VALLE 1LT', NULL, 'ABRIL 2024 (53).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 18:03:56', '2024-04-30 02:04:03', 21),
+(1002, 6, 'SUERO ELECTROLIT 625 ML', NULL, 'ABRIL 2024 (44).png', '2024-04-01', '2024-04-30', NULL, 0, 2, '2024-04-04 18:05:06', '2024-04-30 02:04:03', 20),
+(1003, 6, 'RANCHERITOS', NULL, 'ABRIL 2024 (16).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 18:07:38', '2024-04-30 02:04:03', 10),
+(1004, 6, 'GOLDEN NUTS 90/100GR', NULL, 'ABRIL 2024 (17).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 18:08:38', '2024-04-30 02:04:03', 18),
+(1005, 6, 'BARCEL PAPAS CHIPS  60/24 GR', NULL, 'ABRIL 2024 (18).png', '2024-04-01', '2024-04-30', NULL, 0, 3, '2024-04-04 18:09:19', '2024-04-30 02:04:03', 17),
+(1006, 6, 'SKITTLES 22/24GR', NULL, 'ABRIL 2024 (19).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 18:11:21', '2024-04-30 02:04:03', 16),
+(1007, 6, 'BONDY ROL LIPS ICEE 35 GR', NULL, 'ABRIL 2024 (20).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 18:14:17', '2024-04-30 02:04:03', 15),
+(1008, 6, 'BONDY MEGA HUEVO', NULL, 'ABRIL 2024 (21).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 18:14:43', '2024-04-30 02:04:03', 14),
+(1009, 6, 'CHOCOLATE BON BON 15GR', NULL, 'ABRIL 2024 (22).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 18:28:53', '2024-04-30 02:04:03', 13),
+(1010, 6, 'PELON PELONAZO TAMARINDO 80 GR', NULL, 'ABRIL 2024 (23).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 18:44:36', '2024-04-30 02:04:03', 12);
+INSERT INTO `publicoferts` (`id`, `user_id`, `titulo`, `texto`, `image`, `fechaInicio`, `fechaFin`, `status`, `deldia`, `categoria_id`, `created_at`, `updated_at`, `orden`) VALUES
+(1011, 6, 'PULPARINDO 14 GR', NULL, 'ABRIL 2024 (24).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 18:45:26', '2024-04-30 02:04:03', 11),
+(1012, 6, 'BUBBALOO ROLLO 56.7GR', NULL, 'ABRIL 2024 (25).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 19:09:16', '2024-04-30 02:04:03', 19),
+(1013, 6, 'CHICLE TRIDENT 13.6GR', NULL, 'ABRIL 2024 (26).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 20:27:37', '2024-04-30 02:04:04', 42),
+(1014, 6, 'LECHE SABORES 200/236ML', NULL, 'ABRIL 2024 (27).png', '2024-04-01', '2024-04-30', NULL, 0, 5, '2024-04-04 20:33:31', '2024-04-30 02:04:04', 41),
+(1015, 6, 'SUBMARINOS MARINELA 105GR', NULL, 'ABRIL 2024 (28).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 20:34:22', '2024-04-30 02:04:04', 40),
+(1016, 6, 'GALLETA ROCKO 44GR', NULL, 'ABRIL 2024 (29).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 20:36:40', '2024-04-30 02:04:04', 39),
+(1017, 6, 'YOGURT LALA 220/250GR', NULL, 'ABRIL 2024 (30).png', '2024-04-01', '2024-04-30', NULL, 0, 5, '2024-04-04 20:55:47', '2024-04-30 02:04:04', 37),
+(1018, 6, 'MARINELA BARRITAS 75GR', NULL, 'ABRIL 2024 (31).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 20:56:34', '2024-04-30 02:04:04', 36),
+(1019, 6, 'GALLETAS FLORENTINAS 83GR', NULL, 'ABRIL 2024 (32).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 20:57:05', '2024-04-30 02:04:04', 35),
+(1020, 6, 'HOT DOG PLUS + JUGO BOING 250ML', NULL, 'ABRIL 2024 (33).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 20:58:05', '2024-04-30 02:04:03', 9),
+(1021, 6, 'PALETA PAYASO 45GR + CARLOS V 17GR', NULL, 'ABRIL 2024 (34).png', '2024-04-01', '2024-04-30', NULL, 0, 13, '2024-04-04 20:59:33', '2024-04-30 02:04:04', 33),
+(1022, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'ABRIL 2024 (36).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 21:05:14', '2024-04-30 02:04:04', 32),
+(1023, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'ABRIL 2024 (37).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 21:06:33', '2024-04-30 02:04:04', 31),
+(1024, 6, 'SUAVICREMAS 102 GR', NULL, 'ABRIL 2024 (38).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 21:06:59', '2024-04-30 02:04:04', 30),
+(1025, 6, 'HOLANDA MORDISKO 105 GR', NULL, 'ABRIL 2024 (39).png', '2024-04-01', '2024-04-30', NULL, 0, 4, '2024-04-04 21:07:37', '2024-04-30 02:04:04', 29),
+(1026, 6, 'HOLANDA CHOCO CREAM 78 ML', NULL, 'ABRIL 2024 (40).png', '2024-04-01', '2024-04-30', NULL, 0, 4, '2024-04-04 21:08:09', '2024-04-30 02:04:04', 28),
+(1027, 6, 'ICEE SLUSH 20 OZ', NULL, 'ABRIL 2024 (41).png', '2024-04-01', '2024-04-30', NULL, 0, 7, '2024-04-04 21:08:49', '2024-04-30 02:04:03', 8),
+(1028, 6, 'PINGUINOS MARINELA 80 GR', NULL, 'ABRIL 2024 (42).png', '2024-04-01', '2024-04-30', NULL, 0, 6, '2024-04-04 21:09:36', '2024-04-30 02:04:04', 27),
+(1029, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', '6 X $112.00', 'abril v2 2024  (1).png', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:36:15', '2024-04-30 02:04:03', 7),
+(1030, 6, 'CERVEZA CORONA LIGHT 355ML BOTE', NULL, 'ABBRIL V3 2024 (1).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:41:25', '2024-04-30 02:04:03', 6),
+(1031, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2LT', '2 X $81.00', 'ABBRIL V3 2024 (2).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:42:12', '2024-04-30 02:04:03', 5),
+(1032, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', '2 X $81.00', 'ABBRIL V3 2024 (3).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:42:51', '2024-04-30 02:04:03', 4),
+(1033, 6, 'CERVEZA VCTORIA VIDRIO 355ML', NULL, 'ABBRIL V3 2024 (4).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:43:30', '2024-04-30 02:04:14', 3),
+(1034, 6, 'CERVEZA CORONA VIDRIO 355ML', '2 X $32.00', 'ABBRIL V3 2024 (5).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:44:11', '2024-04-30 02:04:14', 2),
+(1035, 6, 'CERVEZA CORONA LIGHT VIDRO 355 ML', '2 X $32.50', 'ABBRIL V3 2024 (6).jpg', '2024-04-01', '2024-04-30', NULL, 0, 17, '2024-04-08 22:44:57', '2024-04-30 02:04:10', 1),
+(1036, 6, 'CERVEZA MODELO ESPECIAL 355ML BOTE', NULL, 'mayo v1 2024 (66).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:32:52', '2024-05-03 18:32:52', NULL),
+(1037, 6, 'CERVEZA CORONA EXTRA LATON 473ML', NULL, 'mayo v1 2024 (65).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:33:25', '2024-05-03 18:33:25', NULL),
+(1038, 6, 'CERVEZA CORONA EXTRA LATÓN 473ML', NULL, 'mayo v1 2024 (64).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:34:22', '2024-05-03 18:34:22', NULL),
+(1039, 6, 'CERVEZA CORONA LIGHT LATON 473ML', NULL, 'mayo v1 2024 (63).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:42:38', '2024-05-03 18:42:38', NULL),
+(1040, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'mayo v1 2024 (60).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:43:23', '2024-05-03 18:43:23', NULL),
+(1041, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 LT', NULL, 'mayo v1 2024 (59).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:44:23', '2024-05-03 18:44:23', NULL),
+(1042, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2LT', NULL, 'mayo v1 2024 (58).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:47:13', '2024-05-03 18:47:13', NULL),
+(1043, 6, 'CERVEZA CORONA VIDRIO 355ML', NULL, 'mayo v1 2024 (57).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:48:40', '2024-05-03 18:48:40', NULL),
+(1044, 6, 'CERVEZA CORONA LIGHT VIDRIO 355ML', NULL, 'mayo v1 2024 (56).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:49:57', '2024-05-03 18:49:57', NULL),
+(1045, 6, 'CERVEZA NEGRA MODELO VIDRIO 355ML', NULL, 'mayo v1 2024 (55).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:50:41', '2024-05-03 18:50:41', NULL),
+(1046, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'mayo v1 2024 (1).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:54:22', '2024-05-03 18:54:22', NULL),
+(1047, 6, 'GEL EGO 200ML', NULL, 'mayo v1 2024 (54).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:55:51', '2024-05-03 18:55:51', NULL),
+(1048, 6, 'DESODORANTE AXE  150/160ML', NULL, 'mayo v1 2024 (53).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:56:38', '2024-05-03 18:56:38', NULL),
+(1049, 6, 'DETERGENTE LIQUIDO AXION 280ML', NULL, 'mayo v1 2024 (52).jpg', '2024-05-01', '2024-05-31', NULL, 0, 11, '2024-05-03 18:58:03', '2024-05-03 18:58:03', NULL),
+(1050, 6, 'INSECTICIDA RAIDOLITO', NULL, 'mayo v1 2024 (51).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:59:03', '2024-05-03 18:59:03', NULL),
+(1051, 6, 'BONDY MEGA HUEVO', NULL, 'mayo v1 2024 (50).jpg', '2024-05-01', '2024-05-31', NULL, 0, 17, '2024-05-03 18:59:42', '2024-05-03 18:59:42', NULL),
+(1052, 6, 'YOGURT LALA 220/250GR', NULL, 'mayo v1 2024 (49).jpg', '2024-05-01', '2024-05-31', NULL, 0, 5, '2024-05-03 19:00:59', '2024-05-03 19:00:59', NULL),
+(1053, 6, 'SUERO ELECTROLIT 625ML', NULL, 'mayo v1 2024 (48).jpg', '2024-05-01', '2024-05-31', NULL, 0, 9, '2024-05-03 19:04:05', '2024-05-03 19:04:05', NULL),
+(1054, 6, 'HUEVO', NULL, 'mayo v1 2024 (47).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 19:04:58', '2024-05-03 19:04:58', NULL),
+(1055, 6, 'AZCAR A GRANEL 900GR', NULL, 'mayo v1 2024 (46).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 19:05:30', '2024-05-03 19:05:30', NULL),
+(1056, 6, 'DETERGENTE BLANCA NIEVES 500GR', NULL, 'mayo v1 2024 (45).jpg', '2024-05-01', '2024-05-31', NULL, 0, 11, '2024-05-03 19:06:29', '2024-05-03 19:06:29', NULL),
+(1057, 6, 'POUCH PEDIGREE 100GR', NULL, 'mayo v1 2024 (44).jpg', '2024-05-01', '2024-05-31', NULL, 0, 14, '2024-05-03 19:08:30', '2024-05-03 19:08:30', NULL),
+(1058, 6, 'POUCH WHISKAS 85GR', NULL, 'mayo v1 2024 (43).jpg', '2024-05-01', '2024-05-31', NULL, 0, 14, '2024-05-03 19:09:37', '2024-05-03 19:09:37', NULL),
+(1059, 6, 'BEBIDA VIÑA REAL', NULL, 'mayo v1 2024 (42).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 19:10:33', '2024-05-03 19:10:33', NULL),
+(1060, 6, 'BEBIDA SKYY 275ML', NULL, 'mayo v1 2024 (41).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 19:11:30', '2024-05-03 19:11:30', NULL),
+(1061, 6, 'ENERGZANTE BOOST ACTIVE 235ML', NULL, 'mayo v1 2024 (40).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 19:12:13', '2024-05-03 19:12:13', NULL),
+(1062, 6, 'NITO BIMBO + ALPURA LECHE 200ML', NULL, 'mayo v1 2024 (39).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 19:12:51', '2024-05-03 19:12:51', NULL),
+(1063, 6, 'PEPSI LATA 295ML + MARUCHAN 64GR', NULL, 'mayo v1 2024 (38).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 19:13:39', '2024-05-03 19:13:39', NULL),
+(1064, 6, 'CEPILLA DENTAL COLGATE + PASTA DENTAL COLGATE 22ML', NULL, 'mayo v1 2024 (37).jpg', '2024-05-01', '2024-05-31', NULL, 0, 10, '2024-05-03 19:14:40', '2024-05-03 19:14:40', NULL),
+(1065, 6, 'SABRITAS 45GR + SALSA CALENTINA ROJA 350ML', NULL, 'mayo v1 2024 (36).jpg', '2024-05-01', '2024-05-31', NULL, 0, 3, '2024-05-03 19:30:39', '2024-05-03 19:30:39', NULL),
+(1066, 6, 'DETERGENTE BLANCA NIEVES 500GR + LIMPIADOR CLARASOL 500ML', NULL, 'mayo v1 2024 (35).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 19:31:25', '2024-05-03 19:31:25', NULL),
+(1067, 6, 'HOT DOG + JUGO BOING 250 ML', NULL, 'mayo v1 2024 (34).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 20:03:24', '2024-05-03 20:03:24', NULL),
+(1068, 6, 'PEPSI 400ML + CHEETOS', NULL, 'mayo v1 2024 (33).jpg', '2024-05-01', '2024-05-31', NULL, 0, 16, '2024-05-03 20:04:29', '2024-05-03 20:04:29', NULL),
+(1069, 6, 'PEPSI LATA 295ML + NACHOS PREPARADOS', NULL, 'mayo v1 2024 (32).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 20:15:57', '2024-05-03 20:15:57', NULL),
+(1070, 6, 'BIMBO DONAS 6PZS + NESTLE 16 OZ SABORES', NULL, 'mayo v1 2024 (31).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 20:16:37', '2024-05-03 20:16:37', NULL),
+(1071, 6, 'BIMBO TOSTADO 210 GR + LECHERA NESTLE 100GR', NULL, 'mayo v1 2024 (30).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 20:17:35', '2024-05-03 20:17:35', NULL),
+(1072, 6, 'HOT DOG PLUS + COCA COLA CHOBBY 355ML', NULL, 'mayo v1 2024 (29).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 21:04:02', '2024-05-03 21:04:02', NULL),
+(1073, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'mayo v1 2024 (28).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 21:04:56', '2024-05-03 21:04:56', NULL),
+(1074, 6, 'GALLETA FLORENTINAS 83 GR', NULL, 'mayo v1 2024 (27).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 21:05:37', '2024-05-03 21:05:37', NULL),
+(1075, 6, 'REFRESCO 600 ML', NULL, 'mayo v1 2024 (26).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 21:06:13', '2024-05-03 21:06:13', NULL),
+(1076, 6, 'REFRESCOS 600ML (PEPSI - MANZANITA - SANGRIA)', NULL, 'mayo v1 2024 (25).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 21:39:57', '2024-05-03 21:39:57', NULL),
+(1077, 6, 'CEREAL CHOCOKRISPIS / FROOT LOPS 290 GR', NULL, 'mayo v1 2024 (24).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 21:40:50', '2024-05-03 21:40:50', NULL),
+(1078, 6, 'BARCEL CACAHUATES GOLDEN NUTS 90/100GR', NULL, 'mayo v1 2024 (23).jpg', '2024-05-01', '2024-05-31', NULL, 0, 3, '2024-05-03 21:41:29', '2024-05-03 21:41:29', NULL),
+(1079, 6, 'TE MC CORMICK 30 GR', NULL, 'mayo v1 2024 (22).jpg', '2024-05-01', '2024-05-31', NULL, 0, 1, '2024-05-03 21:42:16', '2024-05-03 21:42:16', NULL),
+(1080, 6, 'HOLANDA PALETA CONEJO TURIN 70ML', NULL, 'mayo v1 2024 (21).jpg', '2024-05-01', '2024-05-31', NULL, 0, 4, '2024-05-03 21:43:12', '2024-05-03 21:43:12', NULL),
+(1081, 6, 'GALLETA ROCKO 44GR', NULL, 'mayo v1 2024 (20).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 21:43:46', '2024-05-03 21:43:46', NULL),
+(1082, 6, 'HOLANDA MORDISKO OREO 115ML', NULL, 'mayo v1 2024 (19).jpg', '2024-05-01', '2024-05-31', NULL, 0, 4, '2024-05-03 21:44:16', '2024-05-03 21:44:16', NULL),
+(1083, 6, 'SUBMARINOS MARINELA 105GR', NULL, 'mayo v1 2024 (18).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 21:45:45', '2024-05-03 21:45:45', NULL),
+(1084, 6, 'GANSITO MARINELA', NULL, 'mayo v1 2024 (17).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 21:46:08', '2024-05-03 21:46:08', NULL),
+(1085, 6, 'BARRITAS MARINELA', NULL, 'mayo v1 2024 (16).jpg', '2024-05-01', '2024-05-31', NULL, 0, 6, '2024-05-03 21:46:33', '2024-05-03 21:46:33', NULL),
+(1086, 6, 'COCA COLA 355 ML LATA', NULL, 'mayo v1 2024 (15).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 21:47:07', '2024-05-03 21:47:07', NULL),
+(1087, 6, 'BONDY ROL LIPS ICEE 35GR', NULL, 'mayo v1 2024 (14).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 21:48:02', '2024-05-03 21:48:02', NULL),
+(1088, 6, 'CHOCOLATE HERSHEYS ALMOND 38GR', NULL, 'mayo v1 2024 (13).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 21:48:36', '2024-05-03 21:48:36', NULL),
+(1089, 6, 'SKITTLES 22/24GR', NULL, 'mayo v1 2024 (12).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 21:49:10', '2024-05-03 21:49:10', NULL),
+(1090, 6, 'PULPARINDO 14 GR', NULL, 'mayo v1 2024 (11).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 21:49:45', '2024-05-03 21:49:45', NULL),
+(1091, 6, 'CHOCOLATE BON BON 15GR', NULL, 'mayo v1 2024 (10).jpg', '2024-05-01', '2024-05-31', NULL, 0, 13, '2024-05-03 21:50:22', '2024-05-03 21:50:22', NULL),
+(1092, 6, 'ICEE SLUSH 20 OZ', NULL, 'mayo v1 2024 (9).jpg', '2024-05-01', '2024-05-31', NULL, 0, 7, '2024-05-03 21:50:57', '2024-05-03 21:50:57', NULL),
+(1093, 6, 'DETERGENTE LIQUIDO MAS COLOR OSCURA 415ML', NULL, 'mayo v1 2024 (8).jpg', '2024-05-01', '2024-05-31', NULL, 0, 11, '2024-05-03 21:51:46', '2024-05-03 21:51:46', NULL),
+(1094, 6, 'VODKA SMIRNOFF', NULL, 'mayo v1 2024 (7).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 21:52:56', '2024-05-03 21:52:56', NULL),
+(1095, 6, 'LICOR RANCHO ESCONDIDO 750ML + BRILLANTE MINERAL 2LT', NULL, 'mayo v1 2024 (6).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 21:53:52', '2024-05-03 21:53:52', NULL),
+(1096, 6, 'WHISKY WARRIOR 750ML + BRILANTE MINERAL 2LT', NULL, 'mayo v1 2024 (5).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 21:54:28', '2024-05-03 21:54:28', NULL),
+(1097, 6, 'VINO SUNSET PASSION BERRY 750ML', NULL, 'mayo v1 2024 (4).jpg', '2024-05-01', '2024-05-31', NULL, 0, 8, '2024-05-03 21:55:59', '2024-05-03 21:55:59', NULL),
+(1098, 6, 'CAFE OLE 281ML', NULL, 'mayo v1 2024 (3).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 21:56:29', '2024-05-03 21:56:29', NULL),
+(1099, 6, 'JUGO DEL VALLE 1LT', NULL, 'mayo v1 2024 (2).jpg', '2024-05-01', '2024-05-31', NULL, 0, 2, '2024-05-03 21:58:06', '2024-05-03 21:58:06', NULL),
+(1100, 6, 'SUERO ELECTROLIT SABORES 625ML', NULL, 'promo jun 2024 (1).jpg', '2024-06-01', '2024-06-30', NULL, 0, 9, '2024-06-03 16:23:00', '2024-06-03 16:23:00', NULL),
+(1101, 6, 'DESODORANTE AXE  150/160ML', NULL, 'promo jun 2024 (2).jpg', '2024-06-01', '2024-06-30', NULL, 0, 10, '2024-06-03 16:23:36', '2024-06-03 16:23:36', NULL),
+(1102, 6, 'GEL EGO 200ML', NULL, 'promo jun 2024 (3).jpg', '2024-06-01', '2024-06-30', NULL, 0, 10, '2024-06-03 17:32:38', '2024-06-03 17:32:38', NULL),
+(1103, 6, 'RASTRILLO ASTRO LADY / RASTRILLO ASTRO SR III', NULL, 'promo jun 2024 (4).jpg', '2024-06-01', '2024-06-30', NULL, 0, 10, '2024-06-03 17:33:44', '2024-06-03 17:33:44', NULL),
+(1104, 6, 'DETERGENTE LIQUIDO MAS COLOR / OSCURA 415ML', NULL, 'promo jun 2024 (5).jpg', '2024-06-01', '2024-06-30', NULL, 0, 11, '2024-06-03 17:35:11', '2024-06-03 17:35:11', NULL),
+(1105, 6, 'POUCH WHISKAS 85 GR', NULL, 'promo jun 2024 (6).jpg', '2024-06-01', '2024-06-30', NULL, 0, 14, '2024-06-03 17:35:42', '2024-06-03 17:35:42', NULL),
+(1106, 6, 'POUCH PEDIGREE 100GR', NULL, 'promo jun 2024 (7).jpg', '2024-06-01', '2024-06-30', NULL, 0, 14, '2024-06-03 17:36:18', '2024-06-03 17:36:18', NULL),
+(1107, 6, 'DETERGENTE LIQUIDO AXION 280ML', NULL, 'promo jun 2024 (8).jpg', '2024-06-01', '2024-06-30', NULL, 0, 11, '2024-06-03 17:37:08', '2024-06-03 17:37:08', NULL),
+(1108, 6, 'DETERGENTE BLACA NIEVES 500 GR + LIMPIADOR CLARASOL 1LT', NULL, 'promo jun 2024 (9).jpg', '2024-06-01', '2024-06-30', NULL, 0, 11, '2024-06-03 17:43:09', '2024-06-03 17:43:09', NULL),
+(1109, 6, 'PAPEL HIGIENICO SUAVEL 200 HOJAS 4 PIEZAS', NULL, 'promo jun 2024 (11).jpg', '2024-06-01', '2024-06-30', NULL, 0, 10, '2024-06-03 17:51:08', '2024-06-03 17:51:08', NULL),
+(1110, 6, 'AZUCAR A GRANEL 900 GR', NULL, 'promo jun 2024 (12).jpg', '2024-06-01', '2024-06-30', NULL, 0, 1, '2024-06-03 17:51:33', '2024-06-03 17:51:33', NULL),
+(1111, 6, 'DULCE BONDY ICEE LATA SABORES', NULL, 'promo jun 2024 (13).jpg', '2024-06-01', '2024-06-30', NULL, 0, 13, '2024-06-03 17:53:36', '2024-06-03 17:53:36', NULL),
+(1112, 6, 'CHOCOLATE MILKY WAY 48 GR / CHOCOLATE SNICKERS 48GR', NULL, 'promo jun 2024 (14).jpg', '2024-06-01', '2024-06-30', NULL, 0, 13, '2024-06-03 17:54:38', '2024-06-03 17:54:38', NULL),
+(1113, 6, 'HARINA PRONTO HOT CAKES 500 GR + MERMELADA MCCORMICK 270GR', NULL, 'promo jun 2024 (15).jpg', '2024-06-01', '2024-06-30', NULL, 0, 1, '2024-06-03 17:57:20', '2024-06-03 17:57:20', NULL),
+(1114, 6, 'SALSA BOTANERA 370ML + 2 PALOMITAS ACT II', NULL, 'promo jun 2024 (16).jpg', '2024-06-01', '2024-06-30', NULL, 0, 7, '2024-06-03 18:46:25', '2024-06-03 18:46:25', NULL),
+(1115, 6, 'FRIJOL LA SIERRA 440GR + NESCAFE SOBRE 14 GR', NULL, 'promo jun 2024 (17).jpg', '2024-06-01', '2024-06-30', NULL, 0, 1, '2024-06-03 18:49:45', '2024-06-03 18:49:45', NULL),
+(1116, 6, 'PASTA COLGATE CALCIO 22ML + CEPILLO DENTAL VALCAM MUUS IKK PLUS', NULL, 'promo jun 2024 (18).jpg', '2024-06-01', '2024-06-30', NULL, 0, 10, '2024-06-03 19:25:01', '2024-06-03 19:25:01', NULL),
+(1117, 6, 'PAN BIMBO TOSTADO 210GR + LA LECHERA NESTLE 397GR', NULL, 'promo jun 2024 (19).jpg', '2024-06-01', '2024-06-30', NULL, 0, 1, '2024-06-03 19:25:41', '2024-06-03 19:25:41', NULL),
+(1118, 6, 'COCA COLA 355ML LATA', NULL, 'promo jun 2024 (20).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:30:26', '2024-06-03 19:30:26', NULL),
+(1119, 6, 'REFRESCOS 600ML PEPSI SANDRIA MIRINDA MANZANITA', NULL, 'promo jun 2024 (21).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:43:43', '2024-06-03 19:43:43', NULL),
+(1120, 6, 'HELADO HOLANDA SABORES 900ML', NULL, 'promo jun 2024 (22).jpg', '2024-06-01', '2024-06-30', NULL, 0, 4, '2024-06-03 19:45:45', '2024-06-03 19:45:45', NULL),
+(1121, 6, 'REFRESCOS 600ML FANTA, SIDRAL', NULL, 'promo jun 2024 (23).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:46:46', '2024-06-03 19:46:46', NULL),
+(1122, 6, 'JUGO ARIZONA SABORES 680ML', NULL, 'promo jun 2024 (24).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:47:47', '2024-06-03 19:47:47', NULL),
+(1123, 6, 'ENERGIZANTE AMPER 473ML', NULL, 'promo jun 2024 (25).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:48:31', '2024-06-03 19:48:31', NULL),
+(1124, 6, 'BEBIDA SKYY 275ML', NULL, 'promo jun 2024 (26).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:49:23', '2024-06-03 19:49:23', NULL),
+(1125, 6, 'BEBIDA JACK DANIELS 350 ML', NULL, 'promo jun 2024 (27).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 19:54:04', '2024-06-03 19:54:04', NULL),
+(1126, 6, 'ICEE SLUSH SABORES + PALOMITAS ACT II', NULL, 'promo jun 2024 (28).jpg', '2024-06-01', '2024-06-30', NULL, 0, 7, '2024-06-03 19:55:31', '2024-06-03 19:55:31', NULL),
+(1127, 6, 'HOT DOG + JUGO BOING 250ML', NULL, 'promo jun 2024 (29).jpg', '2024-06-01', '2024-06-30', NULL, 0, 16, '2024-06-03 19:59:37', '2024-06-03 19:59:37', NULL),
+(1128, 6, 'HOT DOG + COCA COLA CHOBBY 355ML', NULL, 'promo jun 2024 (30).jpg', '2024-06-01', '2024-06-30', NULL, 0, 16, '2024-06-03 20:00:17', '2024-06-03 20:00:17', NULL),
+(1129, 6, 'NECAFE 16 ONZAS SABORES + GALLETA PRINCIPE CHOCOLATE 126GR', NULL, 'promo jun 2024 (31).jpg', '2024-06-01', '2024-06-30', NULL, 0, 7, '2024-06-03 20:01:18', '2024-06-03 20:01:18', NULL),
+(1130, 6, 'LICOR RANCHO ESCONDIDO 750ML + BRILLANTE MINERAL 2LT', NULL, 'promo jun 2024 (32).jpg', '2024-06-01', '2024-06-30', NULL, 0, 8, '2024-06-03 20:02:13', '2024-06-03 20:02:13', NULL),
+(1131, 6, 'VICKY VASO ESCARCHADO 42 ONZAS + CERVEZA 940ML FAMILIAR VIDRIO', NULL, 'promo jun 2024 (33).jpg', '2024-06-01', '2024-06-30', NULL, 0, 16, '2024-06-03 20:07:25', '2024-06-03 20:07:25', NULL),
+(1132, 6, 'PEPSI LATA 295ML + MARUCHAN 64GR', NULL, 'promo jun 2024 (34).jpg', '2024-06-01', '2024-06-30', NULL, 0, 7, '2024-06-03 20:08:19', '2024-06-03 20:08:19', NULL),
+(1133, 6, 'PEPSI LATA 295ML + NACHOS PREPARADOS', NULL, 'promo jun 2024 (35).jpg', '2024-06-01', '2024-06-30', NULL, 0, 7, '2024-06-03 20:09:04', '2024-06-03 20:09:04', NULL),
+(1134, 6, 'CHEETOS PRESENTACIONES + BOING 250ML', NULL, 'promo jun 2024 (36).jpg', '2024-06-01', '2024-06-30', NULL, 0, 3, '2024-06-03 20:14:46', '2024-06-03 20:14:46', NULL),
+(1135, 6, 'NITO BIMBO + ALPURA LECHE 200ML', NULL, 'promo jun 2024 (37).jpg', '2024-06-01', '2024-06-30', NULL, 0, 16, '2024-06-03 20:15:09', '2024-06-03 20:15:09', NULL),
+(1136, 6, 'GANSITO MARINELA', NULL, 'promo jun 2024 (38).jpg', '2024-06-01', '2024-06-30', NULL, 0, 6, '2024-06-03 20:15:43', '2024-06-03 20:15:43', NULL),
+(1137, 6, 'ICEE SLUSH 20 OZ SABORES', NULL, 'promo jun 2024 (39).jpg', '2024-06-01', '2024-06-30', NULL, 0, 7, '2024-06-03 20:16:16', '2024-06-03 20:16:16', NULL),
+(1138, 6, 'CERVEZA MODELO ESPECIAL CRISTAL 355ML', NULL, 'promo jun 2024 (41).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:19:52', '2024-06-03 20:19:52', NULL),
+(1139, 6, 'CERVEZA VICTORIA VIDRIO 355ML', NULL, 'promo jun 2024 (42).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:20:28', '2024-06-03 20:20:28', NULL),
+(1140, 6, 'CERVEZA CORONA LIGHT VIDRIO 355 ML', NULL, 'promo jun 2024 (43).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:21:18', '2024-06-03 20:21:18', NULL),
+(1141, 6, 'CERVEZA CORONA EXTRA VIDRIO 355 ML', NULL, 'promo jun 2024 (44).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:21:48', '2024-06-03 20:21:48', NULL),
+(1142, 6, 'CERVEZA CORONA LIGHT LATÓN 473ML', NULL, 'promo jun 2024 (47).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:22:30', '2024-06-03 20:22:30', NULL),
+(1143, 6, 'CERVEZA CORONA EXTRA LATÓN 473', NULL, 'promo jun 2024 (48).jpg', '2024-06-01', '2024-06-30', NULL, 0, 2, '2024-06-03 20:23:12', '2024-06-03 20:23:12', NULL),
+(1144, 6, 'CERVEZA MODELO ESPECIAL 355 ML BOTE', NULL, 'promo jun 2024 (50).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:23:49', '2024-06-03 20:23:49', NULL),
+(1145, 6, 'CERVEZA CORONA MEGA FAMILIAR 1.2 LT', NULL, 'promo jun 2024 (51).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:24:25', '2024-06-03 20:24:25', NULL),
+(1146, 6, 'CERVEZA NEGRA MODELO CRISTAL 355 ML', NULL, 'promo jun 2 2024 (1).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:26:59', '2024-06-03 20:26:59', NULL),
+(1147, 6, 'CERVEZA MODELO LATÓN 473 ML', NULL, 'promo jun 2 2024 (2).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:27:47', '2024-06-03 20:27:47', NULL),
+(1148, 6, 'CERVEZA MODELO ESPECIAL LATON', NULL, 'promo jun 2 2024 (2).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:28:16', '2024-06-03 20:28:16', NULL),
+(1149, 6, 'CERVEZA VICTORIA MEGA FAMILIAR 1.2 L', NULL, 'promo jun 2 2024 (3).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:29:12', '2024-06-03 20:29:12', NULL),
+(1150, 6, 'CERVEZA CORONA IGHT LIGHT 355ML LATA', NULL, 'promo jun 2 2024 (4).jpg', '2024-06-01', '2024-06-30', NULL, 0, 17, '2024-06-03 20:30:04', '2024-06-03 20:30:04', NULL),
+(1151, 6, 'LIMPIADOR PINOL 500ML + DETERGANTE ROMA 500GR', NULL, 'promo jun 2 2024 (5).jpg', '2024-06-01', '2024-06-30', NULL, 0, 10, '2024-06-03 20:33:38', '2024-06-03 20:33:38', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `responsabilidadsocials`
+--
+
+CREATE TABLE `responsabilidadsocials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `label`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', NULL, NULL, NULL),
+(2, 'Marketing', NULL, NULL, NULL),
+(3, 'RecursosHumanos', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role_user`
+--
+
+CREATE TABLE `role_user` (
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `role_user`
+--
+
+INSERT INTO `role_user` (`user_id`, `role_id`, `created_at`, `updated_at`) VALUES
+(7, 1, '2024-06-02 06:08:58', '2024-06-07 04:48:46');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('hPRef7gyTMveGhV9ZkqF85c2V6iLpp1jwxnqPYSa', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiU0VXUkp5dU5kQjZoTHRCTXRwTW1qZGVJZEVDNmpySWVwdnlKT1BpZiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjU6ImxvZ2luIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo3O3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEyJEtidFVBYXJqeXpXUkdKUkVWN2xkenVrRDhOWUJJQW94YkFlTVl4RlZYdko0c3RlVlIxeXYuIjtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MTc3MTUyMDA7fX0=', 1717715335),
+('LE5RgcOfBJMDYCVsdoBYnZXzom1qIQXDXVYspoLB', 19, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVkE5NjdneHM1YTFDeWNlY0ZOUEE3T1pleXBZYW1Mdnh4dXJTb0hCViI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9kYXNoYm9hcmQiO31zOjU6ImxvZ2luIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxOTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMiRTZFhlaVljRkhKNkZJc2l5cS9obDNlUDIxbW5xUGp2T3RlUFNkTnp3M2xhTW5Rc2RwZmR3cSI7fQ==', 1717713193),
+('oXjTlRUWUtzCuV073JLOhOBzdhA3LGG8X6NvlZSk', NULL, '192.168.1.69', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieUxMa1kxNEwyMWllbGVYa1ZiTlczQWFFOGtUbzdEa3Zwc1Y4NDBFMiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly8xOTIuMTY4LjEuNDM6ODAwMCI7fX0=', 1717705249),
+('R8AQBbcnNMnIsusAJM7VvIKE7QIaVxqAToUeDFRm', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoibnAybWhCek5GclVsclpZdTNLWnFGNUVZVWNQak9CT0pZd0RyZWUyMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9wZXJmaWwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjU6ImxvZ2luIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo3O3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEyJDBQbkFWNFVqeE4ySWlzRFJYQnpZck8wUEVkUTZIaGptaEVoM1dFTVdoV3IzVC5SZDdlYnZ1Ijt9', 1717707583),
+('rt85PCEwBlVafKvjI7iE3btGnqP6wywPlD0T1Sgk', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvdXN1YXJpb3MiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0MjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3R3by1mYWN0b3ItY2hhbGxlbmdlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6Imd2UGlKcTdGR3JBak10RlVNT2E5Qmo2V2IxdTRoSWVyUzNZanYxd0kiO3M6NToibG9naW4iO2E6Mjp7czoyOiJpZCI7aTo3O3M6ODoicmVtZW1iZXIiO2I6MDt9fQ==', 1717714138);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `slidermains`
+--
+
+CREATE TABLE `slidermains` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` varchar(255) NOT NULL,
+  `fechaFin` varchar(255) NOT NULL,
+  `pagina` varchar(255) NOT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `slidermains`
+--
+
+INSERT INTO `slidermains` (`id`, `user_id`, `name`, `description`, `image`, `fechaInicio`, `fechaFin`, `pagina`, `orden`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'BannerPrincipal', NULL, 'inicio.jpg', '2022-07-01', '2024-12-30', '\"[\\\"index\\\"]\"', NULL, NULL, '2022-07-06 00:09:02', '2024-04-05 22:28:39'),
+(5, 6, 'OCTUBRE 22 PORTADA', NULL, 'PORTADAS FACEBOOK  (12).png', '2022-10-05', '2022-11-03', '\"null\"', NULL, NULL, '2022-10-05 14:45:31', '2022-11-04 18:36:30'),
+(6, 6, 'PORTADA NOVIEMBRE', NULL, '39.png', '2022-11-04', '2022-11-30', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2022-11-04 18:36:17', '2022-11-04 18:37:07'),
+(7, 6, 'NAVIDAD', NULL, 'PORTADA 2  NAVIDAD 22.png', '2022-12-02', '2023-01-01', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2022-12-03 00:01:10', '2022-12-06 18:13:59'),
+(8, 6, 'DIA DE REYES', NULL, 'PORTADA ENERO 2023.png', '2023-01-02', '2023-01-06', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-01-03 00:10:13', '2023-01-07 18:55:39'),
+(9, 6, 'ENERO 2023 1', NULL, '324352849_529172192610008_2437886884814285668_n.jpg', '2023-01-09', '2023-01-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-01-09 18:28:54', '2023-01-09 18:29:16'),
+(10, 6, 'PORTADA FEBRERO 2023', NULL, 'PORTADAS FEB 2023.png', '2023-02-01', '2023-02-20', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-01-28 20:20:01', '2023-02-21 15:19:30'),
+(11, 6, 'FEBRERO 2023 2', NULL, 'PORTADAS RDS feb 2023 2.png', '2023-02-21', '2023-03-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-02-21 15:15:26', '2023-02-28 17:15:59'),
+(12, 6, 'octubre', NULL, 'PORTADAS RDS.png', '2023-10-04', '2023-10-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-10-05 20:08:37', '2023-10-05 20:08:37'),
+(13, 6, 'PORTADA NOVIEMBRE 2023', NULL, 'PORTADA NOV 2023.png', '2023-11-06', '2023-11-30', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-11-06 20:11:12', '2023-11-06 20:11:12'),
+(14, 6, 'navidad 2023', NULL, 'WhatsApp Image 2023-12-04 at 3.04.23 PM.jpeg', '2023-12-03', '2023-12-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2023-12-04 22:18:28', '2023-12-04 22:18:28'),
+(15, 6, 'dia de reyes sp', NULL, '06 de reyes 24.png', '2024-01-01', '2024-01-07', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-01-02 16:37:15', '2024-01-02 16:37:15'),
+(16, 6, 'SEGUNDO FEB 2024', NULL, 'PORTADA MARZO 2023.png', '2024-01-08', '2024-01-15', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-01-08 20:23:18', '2024-01-08 20:23:18'),
+(17, 6, '14 de feb 2024', NULL, '2024 02 amor 2.jpeg', '2024-01-31', '2024-02-15', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-01-31 16:45:58', '2024-01-31 16:45:58'),
+(18, 6, 'SNACKS', NULL, 'PORTADA SNACK 2024.jpg', '2024-03-01', '2024-03-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-03-02 21:11:50', '2024-03-02 21:11:50'),
+(19, 7, 'ABRIL 2024 PORTADA', NULL, 'PORTADAS RDS (1).jpg', '2024-04-05', '2024-04-30', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-04-05 22:21:49', '2024-04-08 23:43:37'),
+(20, 6, 'MAYO 2024', NULL, 'PORTADASMAYO 2024.jpg', '2024-05-01', '2024-05-31', '\"[\\\"promociones\\\"]\"', NULL, NULL, '2024-05-03 21:59:39', '2024-05-03 21:59:39'),
+(21, 4, 'prueba', NULL, '24-horas.jpg', '2024-05-30', '2024-06-01', '\"[\\\"index\\\"]\"', NULL, NULL, '2024-05-31 01:00:15', '2024-05-31 01:00:15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `spammers`
+--
+
+CREATE TABLE `spammers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `attempts` int(11) NOT NULL,
+  `blocked_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `teams`
+--
+
+CREATE TABLE `teams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `personal_team` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `team_invitations`
+--
+
+CREATE TABLE `team_invitations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `team_id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `team_user`
+--
+
+CREATE TABLE `team_user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `team_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `textoproductos`
+--
+
+CREATE TABLE `textoproductos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `two_factor_secret` text DEFAULT NULL,
+  `two_factor_recovery_codes` text DEFAULT NULL,
+  `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(7, 'ADMINISTRADOR1', 'admin@gmail.com', NULL, '$2y$12$KbtUAarjyzWRGJREV7ldzukD8NYBIAoxbAeMYxFVXvJ4steVR1yv.', NULL, NULL, NULL, NULL, NULL, NULL, '2024-06-02 06:08:58', '2024-06-07 05:06:41');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vacantes`
+--
+
+CREATE TABLE `vacantes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `texto` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `vacantes`
+--
+
+INSERT INTO `vacantes` (`id`, `user_id`, `titulo`, `texto`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(2, 8, 'OFERTA DE TRABAJO', NULL, 'VACANTE.jpg', 1, '2022-07-07 23:24:32', '2024-05-31 04:07:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cardservicios`
+--
+ALTER TABLE `cardservicios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `configuracion_codigo_barras`
+--
+ALTER TABLE `configuracion_codigo_barras`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `crear_cupones_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cupones_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `empleosettings`
+--
+ALTER TABLE `empleosettings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `facturacion_pages`
+--
+ALTER TABLE `facturacion_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indices de la tabla `generar_cupones_clientes`
+--
+ALTER TABLE `generar_cupones_clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `indexsettings`
+--
+ALTER TABLE `indexsettings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `instalacions`
+--
+ALTER TABLE `instalacions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `miempresas`
+--
+ALTER TABLE `miempresas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indices de la tabla `politicaprivacidads`
+--
+ALTER TABLE `politicaprivacidads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `productos_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publicidad_emergentes`
+--
+ALTER TABLE `publicidad_emergentes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `publicoferts_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `responsabilidadsocials`
+--
+ALTER TABLE `responsabilidadsocials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `role_user`
+--
+ALTER TABLE `role_user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `role_user_role_id_foreign` (`role_id`);
+
+--
+-- Indices de la tabla `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indices de la tabla `slidermains`
+--
+ALTER TABLE `slidermains`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `spammers`
+--
+ALTER TABLE `spammers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `teams_user_id_index` (`user_id`);
+
+--
+-- Indices de la tabla `team_invitations`
+--
+ALTER TABLE `team_invitations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `team_invitations_team_id_email_unique` (`team_id`,`email`);
+
+--
+-- Indices de la tabla `team_user`
+--
+ALTER TABLE `team_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `team_user_team_id_user_id_unique` (`team_id`,`user_id`);
+
+--
+-- Indices de la tabla `textoproductos`
+--
+ALTER TABLE `textoproductos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indices de la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cardservicios`
+--
+ALTER TABLE `cardservicios`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `configuracion_codigo_barras`
+--
+ALTER TABLE `configuracion_codigo_barras`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `empleosettings`
+--
+ALTER TABLE `empleosettings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `facturacion_pages`
+--
+ALTER TABLE `facturacion_pages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `generar_cupones_clientes`
+--
+ALTER TABLE `generar_cupones_clientes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `indexsettings`
+--
+ALTER TABLE `indexsettings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `instalacions`
+--
+ALTER TABLE `instalacions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `miempresas`
+--
+ALTER TABLE `miempresas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de la tabla `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `politicaprivacidads`
+--
+ALTER TABLE `politicaprivacidads`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `publicidad_emergentes`
+--
+ALTER TABLE `publicidad_emergentes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1152;
+
+--
+-- AUTO_INCREMENT de la tabla `responsabilidadsocials`
+--
+ALTER TABLE `responsabilidadsocials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `slidermains`
+--
+ALTER TABLE `slidermains`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT de la tabla `spammers`
+--
+ALTER TABLE `spammers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `teams`
+--
+ALTER TABLE `teams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `team_invitations`
+--
+ALTER TABLE `team_invitations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `team_user`
+--
+ALTER TABLE `team_user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `textoproductos`
+--
+ALTER TABLE `textoproductos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  ADD CONSTRAINT `crear_cupones_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD CONSTRAINT `cupones_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  ADD CONSTRAINT `publicoferts_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `role_user`
+--
+ALTER TABLE `role_user`
+  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `team_invitations`
+--
+ALTER TABLE `team_invitations`
+  ADD CONSTRAINT `team_invitations_team_id_foreign` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE;
+--
+-- Base de datos: `bd_superp24_new`
+--
+CREATE DATABASE IF NOT EXISTS `bd_superp24_new` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bd_superp24_new`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cardservicios`
+--
+
+CREATE TABLE `cardservicios` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `imghover` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `configuracion_codigo_barras`
+--
+
+CREATE TABLE `configuracion_codigo_barras` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `DNS_1Do2D` varchar(255) NOT NULL,
+  `getBarcode_SVGoHTMLoPNGPATH` varchar(255) NOT NULL,
+  `NombreTipoCodigoBarras` varchar(255) NOT NULL,
+  `anchoCodigoDeBarras` int(11) DEFAULT NULL,
+  `largoCodigoDeBarras` int(11) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
+  `rutaImagen` varchar(255) DEFAULT NULL,
+  `mostrarTextoCodigoDebarras` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `crear_cupones`
+--
+
+CREATE TABLE `crear_cupones` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `configuracionCodigoBarras_id` int(11) DEFAULT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `contadorCodigoDeBarras` int(11) NOT NULL,
+  `valorCodigoDeBarras` longtext NOT NULL,
+  `inicioDeRangoGenerarCodigoDeBarras` int(11) DEFAULT NULL,
+  `finDeRangoGenerarCodigoDeBarras` int(11) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `btnCupones` varchar(255) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `rutaPagina` varchar(255) DEFAULT NULL,
+  `politicaDeUso` longtext DEFAULT NULL,
+  `reactivarGeneracionEn` varchar(255) DEFAULT NULL,
+  `mensaje` longtext DEFAULT NULL,
+  `iconoCupon` varchar(255) DEFAULT NULL,
+  `tipoDeCupon` varchar(255) DEFAULT NULL,
+  `tipoDeCodigoAGenerar` varchar(255) DEFAULT NULL,
+  `nombrePaginaCupon` varchar(255) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `prioridad` tinyint(1) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cupones`
+--
+
+CREATE TABLE `cupones` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `deldia` tinyint(1) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleosettings`
+--
+
+CREATE TABLE `empleosettings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturacion_pages`
+--
+
+CREATE TABLE `facturacion_pages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `imgBanner` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generar_cupones_clientes`
+--
+
+CREATE TABLE `generar_cupones_clientes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `cupon_id` int(11) NOT NULL,
+  `valorCodigodeBarras` longtext NOT NULL,
+  `direccionIPPublica` varchar(255) NOT NULL,
+  `direccionIPLocal` varchar(255) DEFAULT NULL,
+  `ciudad` varchar(255) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `pais` varchar(255) DEFAULT NULL,
+  `latLong` varchar(255) DEFAULT NULL,
+  `direccionMac` varchar(255) DEFAULT NULL,
+  `correo` varchar(255) DEFAULT NULL,
+  `numCelular` varchar(255) DEFAULT NULL,
+  `tipoDeDispositivo` varchar(255) DEFAULT NULL,
+  `modeloDeDispositivo` varchar(255) DEFAULT NULL,
+  `tipoNavegador` varchar(255) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `contador` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `statusCookie` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `indexsettings`
+--
+
+CREATE TABLE `indexsettings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `subtitulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `redireccion` varchar(255) NOT NULL,
+  `titulobtn` varchar(255) DEFAULT NULL,
+  `icono` varchar(255) DEFAULT NULL,
+  `style` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `modal` tinyint(1) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `instalacions`
+--
+
+CREATE TABLE `instalacions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `miempresas`
+--
+
+CREATE TABLE `miempresas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `imghover` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2020_05_21_100000_create_teams_table', 1),
+(7, '2020_05_21_200000_create_team_user_table', 1),
+(8, '2020_05_21_300000_create_team_invitations_table', 1),
+(9, '2020_11_16_101800_create_roles_tables', 1),
+(10, '2020_11_16_134223_create_categorias_table', 1),
+(11, '2020_11_16_134411_create_productos_table', 1),
+(12, '2020_11_26_000000_create_spammers_table', 1),
+(13, '2021_09_09_141159_create_publicoferts_table', 1),
+(14, '2021_09_09_141951_create_proveedores_table', 1),
+(15, '2021_09_09_142729_create_instalacions_table', 1),
+(16, '2021_10_01_080804_create_slidermains_table', 1),
+(17, '2021_10_05_160510_create_cardservicios_table', 1),
+(18, '2021_10_08_135852_create_textoproductos_table', 1),
+(19, '2021_11_20_173522_create_miempresas_table', 1),
+(20, '2021_11_26_141730_create_vacantes_table', 1),
+(21, '2021_12_21_115027_create_indexsettings_table', 1),
+(22, '2022_01_11_204246_create_empleosettings_table', 1),
+(23, '2022_07_04_174438_create_politicaprivacidads_table', 1),
+(24, '2022_07_04_174923_create_videos_table', 1),
+(25, '2022_07_04_175027_create_cupones_table', 1),
+(26, '2022_07_05_165333_create_responsabilidadsocials_table', 1),
+(27, '2022_09_01_135430_create_facturacion_pages_table', 1),
+(28, '2023_02_20_114003_create_crear_cupones_table', 1),
+(29, '2023_02_22_124109_create_generar_cupones_clientes_table', 1),
+(30, '2023_02_24_105530_create_configuracion_codigo_barras_table', 1),
+(31, '2023_03_14_192001_create_publicidad_emergentes_table', 1),
+(32, '2023_04_19_082358_add_orden_to_publicoferts', 1),
+(33, '2024_05_16_194744_create_sessions_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `politicaprivacidads`
+--
+
+CREATE TABLE `politicaprivacidads` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `subititulo` varchar(255) DEFAULT NULL,
+  `texto` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `descriptions` varchar(500) NOT NULL,
+  `extract` varchar(255) DEFAULT NULL,
+  `price` decimal(5,2) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `visible` tinyint(1) NOT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicidad_emergentes`
+--
+
+CREATE TABLE `publicidad_emergentes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `prioridad` varchar(255) DEFAULT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `deldia` tinyint(1) DEFAULT NULL,
+  `adicional` varchar(255) DEFAULT NULL,
+  `paginasAMostrar` varchar(255) DEFAULT NULL,
+  `textoDelBoton` varchar(255) DEFAULT NULL,
+  `paginaARedireccionar` varchar(255) DEFAULT NULL,
+  `vigenciaCookie` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicoferts`
+--
+
+CREATE TABLE `publicoferts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `texto` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `deldia` tinyint(1) NOT NULL,
+  `categoria_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `responsabilidadsocials`
+--
+
+CREATE TABLE `responsabilidadsocials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `label`, `created_at`, `updated_at`) VALUES
+(1, 'Marketing', NULL, '2024-06-07 04:56:34', '2024-06-07 04:56:34'),
+(2, 'Administrador', NULL, '2024-06-07 04:56:34', '2024-06-07 04:56:34');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role_user`
+--
+
+CREATE TABLE `role_user` (
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('wMI1EvHHojg6QCoZOl2NioTQrY7QSlduJvk5Sb12', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibjVkZDNsWUN1QTdPNFV0MzBEZU05dmNkV0xkUTI0OWc3UmYwMzR2cSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC91c3VhcmlvcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTIkS2J0VUFhcmp5eldSR0pSRVY3bGR6dWtEOE5ZQklBb3hiQWVNWXhGVlh2SjRzdGVWUjF5di4iO30=', 1717714614);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `slidermains`
+--
+
+CREATE TABLE `slidermains` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `fechaInicio` varchar(255) NOT NULL,
+  `fechaFin` varchar(255) NOT NULL,
+  `pagina` varchar(255) NOT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `spammers`
+--
+
+CREATE TABLE `spammers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `attempts` int(11) NOT NULL,
+  `blocked_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `teams`
+--
+
+CREATE TABLE `teams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `personal_team` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `team_invitations`
+--
+
+CREATE TABLE `team_invitations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `team_id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `team_user`
+--
+
+CREATE TABLE `team_user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `team_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `textoproductos`
+--
+
+CREATE TABLE `textoproductos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `two_factor_secret` text DEFAULT NULL,
+  `two_factor_recovery_codes` text DEFAULT NULL,
+  `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', 'admin@gmail.com', '2024-06-07 04:56:34', '$2y$12$KbtUAarjyzWRGJREV7ldzukD8NYBIAoxbAeMYxFVXvJ4steVR1yv.', NULL, NULL, NULL, '2QSVjeLFSM', NULL, NULL, '2024-06-07 04:56:34', '2024-06-07 04:56:34');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vacantes`
+--
+
+CREATE TABLE `vacantes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `texto` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cardservicios`
+--
+ALTER TABLE `cardservicios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `configuracion_codigo_barras`
+--
+ALTER TABLE `configuracion_codigo_barras`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `crear_cupones_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cupones_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `empleosettings`
+--
+ALTER TABLE `empleosettings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `facturacion_pages`
+--
+ALTER TABLE `facturacion_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indices de la tabla `generar_cupones_clientes`
+--
+ALTER TABLE `generar_cupones_clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `indexsettings`
+--
+ALTER TABLE `indexsettings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `instalacions`
+--
+ALTER TABLE `instalacions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `miempresas`
+--
+ALTER TABLE `miempresas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indices de la tabla `politicaprivacidads`
+--
+ALTER TABLE `politicaprivacidads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `productos_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publicidad_emergentes`
+--
+ALTER TABLE `publicidad_emergentes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `publicoferts_categoria_id_foreign` (`categoria_id`);
+
+--
+-- Indices de la tabla `responsabilidadsocials`
+--
+ALTER TABLE `responsabilidadsocials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `role_user`
+--
+ALTER TABLE `role_user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `role_user_role_id_foreign` (`role_id`);
+
+--
+-- Indices de la tabla `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indices de la tabla `slidermains`
+--
+ALTER TABLE `slidermains`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `spammers`
+--
+ALTER TABLE `spammers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `teams_user_id_index` (`user_id`);
+
+--
+-- Indices de la tabla `team_invitations`
+--
+ALTER TABLE `team_invitations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `team_invitations_team_id_email_unique` (`team_id`,`email`);
+
+--
+-- Indices de la tabla `team_user`
+--
+ALTER TABLE `team_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `team_user_team_id_user_id_unique` (`team_id`,`user_id`);
+
+--
+-- Indices de la tabla `textoproductos`
+--
+ALTER TABLE `textoproductos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indices de la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cardservicios`
+--
+ALTER TABLE `cardservicios`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `configuracion_codigo_barras`
+--
+ALTER TABLE `configuracion_codigo_barras`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `empleosettings`
+--
+ALTER TABLE `empleosettings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `facturacion_pages`
+--
+ALTER TABLE `facturacion_pages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `generar_cupones_clientes`
+--
+ALTER TABLE `generar_cupones_clientes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `indexsettings`
+--
+ALTER TABLE `indexsettings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `instalacions`
+--
+ALTER TABLE `instalacions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `miempresas`
+--
+ALTER TABLE `miempresas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT de la tabla `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `politicaprivacidads`
+--
+ALTER TABLE `politicaprivacidads`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `publicidad_emergentes`
+--
+ALTER TABLE `publicidad_emergentes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `responsabilidadsocials`
+--
+ALTER TABLE `responsabilidadsocials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `slidermains`
+--
+ALTER TABLE `slidermains`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `spammers`
+--
+ALTER TABLE `spammers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `teams`
+--
+ALTER TABLE `teams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `team_invitations`
+--
+ALTER TABLE `team_invitations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `team_user`
+--
+ALTER TABLE `team_user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `textoproductos`
+--
+ALTER TABLE `textoproductos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `crear_cupones`
+--
+ALTER TABLE `crear_cupones`
+  ADD CONSTRAINT `crear_cupones_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `cupones`
+--
+ALTER TABLE `cupones`
+  ADD CONSTRAINT `cupones_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `publicoferts`
+--
+ALTER TABLE `publicoferts`
+  ADD CONSTRAINT `publicoferts_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `role_user`
+--
+ALTER TABLE `role_user`
+  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `team_invitations`
+--
+ALTER TABLE `team_invitations`
+  ADD CONSTRAINT `team_invitations_team_id_foreign` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE;
+--
+-- Base de datos: `phpmyadmin`
+--
+CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `phpmyadmin`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__bookmark`
+--
+
+CREATE TABLE `pma__bookmark` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `dbase` varchar(255) NOT NULL DEFAULT '',
+  `user` varchar(255) NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `query` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__central_columns`
+--
+
+CREATE TABLE `pma__central_columns` (
+  `db_name` varchar(64) NOT NULL,
+  `col_name` varchar(64) NOT NULL,
+  `col_type` varchar(64) NOT NULL,
+  `col_length` text DEFAULT NULL,
+  `col_collation` varchar(64) NOT NULL,
+  `col_isNull` tinyint(1) NOT NULL,
+  `col_extra` varchar(255) DEFAULT '',
+  `col_default` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__column_info`
+--
+
+CREATE TABLE `pma__column_info` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `column_name` varchar(64) NOT NULL DEFAULT '',
+  `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `mimetype` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `transformation` varchar(255) NOT NULL DEFAULT '',
+  `transformation_options` varchar(255) NOT NULL DEFAULT '',
+  `input_transformation` varchar(255) NOT NULL DEFAULT '',
+  `input_transformation_options` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__designer_settings`
+--
+
+CREATE TABLE `pma__designer_settings` (
+  `username` varchar(64) NOT NULL,
+  `settings_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__export_templates`
+--
+
+CREATE TABLE `pma__export_templates` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `export_type` varchar(10) NOT NULL,
+  `template_name` varchar(64) NOT NULL,
+  `template_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
+
+--
+-- Volcado de datos para la tabla `pma__export_templates`
+--
+
+INSERT INTO `pma__export_templates` (`id`, `username`, `export_type`, `template_name`, `template_data`) VALUES
+(1, 'root', 'database', 'publicoferts', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"structure_or_data_forced\":\"0\",\"table_select[]\":[\"cardservicios\",\"categorias\",\"configuracion_codigo_barras\",\"crear_cupones\",\"cupones\",\"empleosettings\",\"facturacion_pages\",\"failed_jobs\",\"generar_cupones_clientes\",\"indexsettings\",\"instalacions\",\"miempresas\",\"migrations\",\"password_resets\",\"politicaprivacidads\",\"productos\",\"proveedores\",\"publicidad_emergentes\",\"publicoferts\",\"responsabilidadsocials\",\"roles\",\"role_user\",\"slidermains\",\"spammers\",\"textoproductos\",\"users\",\"vacantes\",\"videos\"],\"table_structure[]\":[\"cardservicios\",\"categorias\",\"configuracion_codigo_barras\",\"crear_cupones\",\"cupones\",\"empleosettings\",\"facturacion_pages\",\"failed_jobs\",\"generar_cupones_clientes\",\"indexsettings\",\"instalacions\",\"miempresas\",\"migrations\",\"password_resets\",\"politicaprivacidads\",\"productos\",\"proveedores\",\"publicidad_emergentes\",\"publicoferts\",\"responsabilidadsocials\",\"roles\",\"role_user\",\"slidermains\",\"spammers\",\"textoproductos\",\"users\",\"vacantes\",\"videos\"],\"table_data[]\":[\"cardservicios\",\"categorias\",\"configuracion_codigo_barras\",\"crear_cupones\",\"cupones\",\"empleosettings\",\"facturacion_pages\",\"failed_jobs\",\"generar_cupones_clientes\",\"indexsettings\",\"instalacions\",\"miempresas\",\"migrations\",\"password_resets\",\"politicaprivacidads\",\"productos\",\"proveedores\",\"publicidad_emergentes\",\"publicoferts\",\"responsabilidadsocials\",\"roles\",\"role_user\",\"slidermains\",\"spammers\",\"textoproductos\",\"users\",\"vacantes\",\"videos\"],\"aliases_new\":\"\",\"output_format\":\"sendit\",\"filename_template\":\"@DATABASE@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_columns\":\"something\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"json_structure_or_data\":\"data\",\"json_unicode\":\"something\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Estructura de la tabla @TABLE@\",\"latex_structure_continued_caption\":\"Estructura de la tabla @TABLE@ (continúa)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"Contenido de la tabla @TABLE@\",\"latex_data_continued_caption\":\"Contenido de la tabla @TABLE@ (continúa)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"structure_and_data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"structure_and_data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_procedure_function\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"xml_structure_or_data\":\"data\",\"xml_export_events\":\"something\",\"xml_export_functions\":\"something\",\"xml_export_procedures\":\"something\",\"xml_export_tables\":\"something\",\"xml_export_triggers\":\"something\",\"xml_export_views\":\"something\",\"xml_export_contents\":\"something\",\"yaml_structure_or_data\":\"data\",\"\":null,\"lock_tables\":null,\"as_separate_files\":null,\"csv_removeCRLF\":null,\"excel_removeCRLF\":null,\"json_pretty_print\":null,\"htmlword_columns\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_create_database\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_simple_view_export\":null,\"sql_view_current_user\":null,\"sql_or_replace_view\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__favorite`
+--
+
+CREATE TABLE `pma__favorite` (
+  `username` varchar(64) NOT NULL,
+  `tables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__history`
+--
+
+CREATE TABLE `pma__history` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `db` varchar(64) NOT NULL DEFAULT '',
+  `table` varchar(64) NOT NULL DEFAULT '',
+  `timevalue` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sqlquery` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__navigationhiding`
+--
+
+CREATE TABLE `pma__navigationhiding` (
+  `username` varchar(64) NOT NULL,
+  `item_name` varchar(64) NOT NULL,
+  `item_type` varchar(64) NOT NULL,
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__pdf_pages`
+--
+
+CREATE TABLE `pma__pdf_pages` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `page_nr` int(10) UNSIGNED NOT NULL,
+  `page_descr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__recent`
+--
+
+CREATE TABLE `pma__recent` (
+  `username` varchar(64) NOT NULL,
+  `tables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
+
+--
+-- Volcado de datos para la tabla `pma__recent`
+--
+
+INSERT INTO `pma__recent` (`username`, `tables`) VALUES
+('root', '[{\"db\":\"bd_superp24\",\"table\":\"roles\"},{\"db\":\"bd_superp24\",\"table\":\"publicidad_emergentes\"},{\"db\":\"bd_superp24\",\"table\":\"publicoferts\"},{\"db\":\"bd_superp24_new\",\"table\":\"roles\"},{\"db\":\"bd_superp24_new\",\"table\":\"role_user\"},{\"db\":\"bd_superp24_new\",\"table\":\"users\"},{\"db\":\"bd_superp24\",\"table\":\"users\"},{\"db\":\"bd_superp24\",\"table\":\"sessions\"},{\"db\":\"bd_superp24\",\"table\":\"cardservicios\"},{\"db\":\"bd_superp24\",\"table\":\"role_user\"}]');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__relation`
+--
+
+CREATE TABLE `pma__relation` (
+  `master_db` varchar(64) NOT NULL DEFAULT '',
+  `master_table` varchar(64) NOT NULL DEFAULT '',
+  `master_field` varchar(64) NOT NULL DEFAULT '',
+  `foreign_db` varchar(64) NOT NULL DEFAULT '',
+  `foreign_table` varchar(64) NOT NULL DEFAULT '',
+  `foreign_field` varchar(64) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__savedsearches`
+--
+
+CREATE TABLE `pma__savedsearches` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `search_name` varchar(64) NOT NULL DEFAULT '',
+  `search_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__table_coords`
+--
+
+CREATE TABLE `pma__table_coords` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `pdf_page_number` int(11) NOT NULL DEFAULT 0,
+  `x` float UNSIGNED NOT NULL DEFAULT 0,
+  `y` float UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__table_info`
+--
+
+CREATE TABLE `pma__table_info` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `display_field` varchar(64) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__table_uiprefs`
+--
+
+CREATE TABLE `pma__table_uiprefs` (
+  `username` varchar(64) NOT NULL,
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL,
+  `prefs` text NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__tracking`
+--
+
+CREATE TABLE `pma__tracking` (
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL,
+  `version` int(10) UNSIGNED NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  `schema_snapshot` text NOT NULL,
+  `schema_sql` text DEFAULT NULL,
+  `data_sql` longtext DEFAULT NULL,
+  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') DEFAULT NULL,
+  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__userconfig`
+--
+
+CREATE TABLE `pma__userconfig` (
+  `username` varchar(64) NOT NULL,
+  `timevalue` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `config_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
+
+--
+-- Volcado de datos para la tabla `pma__userconfig`
+--
+
+INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
+('root', '2024-06-06 22:58:06', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"es\"}');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__usergroups`
+--
+
+CREATE TABLE `pma__usergroups` (
+  `usergroup` varchar(64) NOT NULL,
+  `tab` varchar(64) NOT NULL,
+  `allowed` enum('Y','N') NOT NULL DEFAULT 'N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pma__users`
+--
+
+CREATE TABLE `pma__users` (
+  `username` varchar(64) NOT NULL,
+  `usergroup` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pma__central_columns`
+--
+ALTER TABLE `pma__central_columns`
+  ADD PRIMARY KEY (`db_name`,`col_name`);
+
+--
+-- Indices de la tabla `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
+
+--
+-- Indices de la tabla `pma__designer_settings`
+--
+ALTER TABLE `pma__designer_settings`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indices de la tabla `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
+
+--
+-- Indices de la tabla `pma__favorite`
+--
+ALTER TABLE `pma__favorite`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indices de la tabla `pma__history`
+--
+ALTER TABLE `pma__history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
+
+--
+-- Indices de la tabla `pma__navigationhiding`
+--
+ALTER TABLE `pma__navigationhiding`
+  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
+
+--
+-- Indices de la tabla `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  ADD PRIMARY KEY (`page_nr`),
+  ADD KEY `db_name` (`db_name`);
+
+--
+-- Indices de la tabla `pma__recent`
+--
+ALTER TABLE `pma__recent`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indices de la tabla `pma__relation`
+--
+ALTER TABLE `pma__relation`
+  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
+  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
+
+--
+-- Indices de la tabla `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
+
+--
+-- Indices de la tabla `pma__table_coords`
+--
+ALTER TABLE `pma__table_coords`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
+
+--
+-- Indices de la tabla `pma__table_info`
+--
+ALTER TABLE `pma__table_info`
+  ADD PRIMARY KEY (`db_name`,`table_name`);
+
+--
+-- Indices de la tabla `pma__table_uiprefs`
+--
+ALTER TABLE `pma__table_uiprefs`
+  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
+
+--
+-- Indices de la tabla `pma__tracking`
+--
+ALTER TABLE `pma__tracking`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
+
+--
+-- Indices de la tabla `pma__userconfig`
+--
+ALTER TABLE `pma__userconfig`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indices de la tabla `pma__usergroups`
+--
+ALTER TABLE `pma__usergroups`
+  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
+
+--
+-- Indices de la tabla `pma__users`
+--
+ALTER TABLE `pma__users`
+  ADD PRIMARY KEY (`username`,`usergroup`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `pma__history`
+--
+ALTER TABLE `pma__history`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- Base de datos: `test`
+--
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `test`;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

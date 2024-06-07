@@ -5,6 +5,8 @@
 /public/storage
 /storage/*.key
 /vendor
+#no excluir carpeta jetstream para que suban los cambios que realizamos al two factor en github
+!/vendor/Jetstream/
 .env
 .env.backup
 .env.production
