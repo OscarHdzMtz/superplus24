@@ -13,12 +13,13 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="{{ asset('resources/css/additional-styles/utility-patterns.css') }}">
 
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
+    <body class="premium-gradient min-h-screen">
+        <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
         </div>
 
