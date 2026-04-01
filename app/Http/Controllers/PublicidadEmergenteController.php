@@ -49,9 +49,7 @@ class PublicidadEmergenteController extends Controller
         $publicidad->titulo = request('titulo');
         $publicidad->description = request('description');
         if ($request->hasFile('image')) {
-            $file = $request->image;
-            $file->move(public_path() . '/img/publicidadEmergente', $file->getClientOriginalName());
-            $publicidad->image = $file->getClientOriginalName();
+            $publicidad->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/publicidadEmergente');
         }
         $publicidad->vigenciaCookie = request('vigenciaCookie');
         $publicidad->paginasAMostrar = request('paginasAMostrar');
@@ -110,9 +108,7 @@ class PublicidadEmergenteController extends Controller
         $getPublicidadEditar->titulo = request('titulo');
         $getPublicidadEditar->description = request('description');
         if ($request->hasFile('image')) {
-            $file = $request->image;
-            $file->move(public_path() . '/img/publicidadEmergente', $file->getClientOriginalName());
-            $getPublicidadEditar->image = $file->getClientOriginalName();
+            $getPublicidadEditar->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/publicidadEmergente');
         }
         $getPublicidadEditar->vigenciaCookie = request('vigenciaCookie');
         $getPublicidadEditar->paginasAMostrar = request('paginasAMostrar');

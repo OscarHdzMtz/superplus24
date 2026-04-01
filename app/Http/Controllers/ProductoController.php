@@ -36,12 +36,10 @@ class ProductoController extends Controller
         $producto->descriptions  = request('descriptions');
         $producto->extract       = request('extract');
         $producto->price         = request('price');
-            if($request->hasFile('image')){
-                $file = $request->image;
-                $file->move(public_path(). '/img/productos', $file->getClientOriginalName());
-                $producto->image = $file->getClientOriginalName();
-        $producto->visible       = request('visible') ? 1 : 0;
-    }
+        if ($request->hasFile('image')) {
+            $producto->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/productos');
+        }
+        $producto->visible = request('visible') ? 1 : 0;
         $producto->save();
         return redirect('producto/');
     } 
@@ -60,18 +58,19 @@ class ProductoController extends Controller
         $producto->descriptions  = $request->get('descriptions');
         $producto->extract       = $request->get('extract');
         $producto->price         = $request->get('price');
-            if($request->hasFile('image')){
-                $file = $request->image;
-                $file->move(public_path(). '/img/productos', $file->getClientOriginalName());
-                $producto->image = $file->getClientOriginalName();
-            }
+        if ($request->hasFile('image')) {
+            $producto->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/productos');
+        }
         $producto->visible       = $request->get('visible') ? 1 : 0;
         $producto->update(); 
         return redirect('producto/');
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         $producto = Productos::find($id);
-        unlink(public_path('img/productos/'.$producto->image));
+        if ($producto->image && file_exists(public_path('img/productos/' . $producto->image))) {
+            unlink(public_path('img/productos/' . $producto->image));
+        }
         $producto->delete();
         return redirect('producto/');
     }

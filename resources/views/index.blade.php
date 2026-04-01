@@ -33,7 +33,7 @@
         </div>
     </div> --}}
     {{-- <div data-aos="zoom-in-down" class="header-top">
-        <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">        
+        <img class="imgnavbartop" src="{{ asset('img/estaticos/1.png') }}" alt="SuperPlus">
     </div> --}}
 @endsection
 
@@ -45,8 +45,8 @@
         </div>
         <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
             {{-- <a href="#" class="logo">
-            <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
-        </a> --}}
+                <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
+            </a> --}}
             <a href="#" class="logo">
                 <img class="imgtamaño">
             </a>
@@ -61,28 +61,22 @@
                         <div class="right"></div>
                     </div>
                     <li class="nav-item active">
-                        <a href="/" class="nav-link" href="javascript:void(0);"><i
-                                class="fas fa-tachometer-alt"></i>INICIO</a>
+                        <a href="/" class="nav-link"><i class="fas fa-tachometer-alt"></i>INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/promociones" class="nav-link" href="javascript:void(0);"><i
-                                class="fas fa-percentage"></i>PROMOCIONES</a>
+                        <a href="/promociones" class="nav-link"><i class="fas fa-percentage"></i>PROMOCIONES</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i
-                                class="fas fa-check-circle"></i>NOSOTROS</a>
+                        <a href="/nosotros" class="nav-link"><i class="fas fa-check-circle"></i>NOSOTROS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA
-                            DE TRABAJO</a>
+                        <a href="/empleo" class="nav-link"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/contact" class="nav-link" href="javascript:void(0);"><i
-                                class="fas fa-phone"></i>CONTACTANOS</a>
+                        <a href="/contact" class="nav-link"><i class="fas fa-phone"></i>CONTACTANOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/facturacion" class="nav-link" href="javascript:void(0);"><i
-                                class="far fa-copy"></i>FACTURACION</a>
+                        <a href="/facturacion" class="nav-link"><i class="far fa-copy"></i>FACTURACION</a>
                     </li>
                 </ul>
             </div>
@@ -106,7 +100,7 @@
             @foreach ($sliderindex as $slider)
                 <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                     @php $i++ @endphp
-                    <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide" {{ $i > 2 ? ' loading="lazy"' : '' }}>
                     @if ($slider->description != '')
                         <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
                             <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
@@ -148,7 +142,7 @@
                 @foreach ($getimagen as $setimagen)
                     <div data-aos="fade-right" class="col-md-6 order-2 order-md-1">
                         <img class="img-fluid w-100" src="{{ asset('/img/imagenfooter/' . $setimagen->image) }}"
-                            alt="about image">
+                            alt="about image" loading="lazy">
                     </div>
                 @endforeach
 
@@ -166,8 +160,7 @@
                             <h4 class="title_services">{{ $settarjeta->titulo }}</h4>
                             <p class="description_services">{{ $settarjeta->description }}</p><br>
                             @if ($settarjeta->modal != '1')
-                                <a href="{{ $settarjeta->redireccion }}"
-                                    class="btn_modal_wel mt-5">{{ $settarjeta->titulobtn }}</a>
+                                <a href="{{ $settarjeta->redireccion }}" class="btn_modal_wel mt-5">{{ $settarjeta->titulobtn }}</a>
                             @else
                                 <a href="" class="btn_modal_wel mt-5" data-toggle="modal"
                                     data-target=".{{ $settarjeta->redireccion }}">{{ $settarjeta->titulobtn }}</a>
@@ -201,9 +194,9 @@
             @foreach ($servicios as $servicios)
                 <div data-aos="fade-up" class="col-md-3 col-sm-6 mb-3">
                     <div class="single-content">
-                        <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus">
+                        <img src="{{ asset('/img/servicios/' . $servicios->image) }}" alt="ServiciosPlus" loading="lazy">
                         <div style="padding-top: 20px" class="text-content">
-                            <img src="{{ asset('/img/servicios/' . $servicios->imghover) }}" alt="ServiciosPlus">
+                            <img src="{{ asset('/img/servicios/' . $servicios->imghover) }}" alt="ServiciosPlus" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -214,9 +207,9 @@
 
 {{-- PRODUCTOS NUEVOS --}}
 @section('title5')
-{{-- TEXTO EN MOVIMIENTO --}}
-{{-- <h1 class="textmov"><span class="type"></span></h1> --}}
-{{-- EMPIEZA LA SECCION QUIENES SOMOS --}}
+    {{-- TEXTO EN MOVIMIENTO --}}
+    {{-- <h1 class="textmov"><span class="type"></span></h1> --}}
+    {{-- EMPIEZA LA SECCION QUIENES SOMOS --}}
     @if (count($productos) > 0)
         @foreach ($getitulo as $settitulo)
             @if ($settitulo->label == 'tituloproductos')
@@ -247,8 +240,8 @@
                                         <h5 style="color: black; margin-bottom: 30px">{!! $productos->descriptions !!}</h5>
                                     </div>
                                     <div class="col-md-6 col-12 order-md-1 order-1"><img
-                                            src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto"
-                                            alt="slide">
+                                            src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto" alt="slide"
+                                            loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -285,49 +278,49 @@
 
 @section('redessociales')
     {{-- <div class="col-md-12 py-5 text-center justify-content-md-center">
-    <div class="mb-3 flex-center">
-        <div class="estilo3">
-            <ul>
-                <li>
-                    <a href="instragram" class="" target="_blank">
-                        <span class="fa-stack fa-lg fa-5x">
-                            <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                            <div class="icono">
-                                <span class="fa fa-facebook fa-stack-1x"></span>
-                            </div>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="instragram" class="" target="_blank">
-                        <span class="fa-stack fa-lg fa-5x">
-                            <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                            <div class="icono">
-                                <span class="fa fa-whatsapp fa-stack-1x"></span>
-                            </div>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="instragram" class="" target="_blank">
-                        <span class="fa-stack fa-lg fa-5x">
-                            <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                            <div class="icono">
-                                <span class="fa fa-whatsapp fa-tiktok fa-stack-1x"></span>
-                            </div>
-                        </span>
-                    </a>
-                </li>
+        <div class="mb-3 flex-center">
+            <div class="estilo3">
                 <ul>
+                    <li>
+                        <a href="instragram" class="" target="_blank">
+                            <span class="fa-stack fa-lg fa-5x">
+                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                <div class="icono">
+                                    <span class="fa fa-facebook fa-stack-1x"></span>
+                                </div>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="instragram" class="" target="_blank">
+                            <span class="fa-stack fa-lg fa-5x">
+                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                <div class="icono">
+                                    <span class="fa fa-whatsapp fa-stack-1x"></span>
+                                </div>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="instragram" class="" target="_blank">
+                            <span class="fa-stack fa-lg fa-5x">
+                                <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                <div class="icono">
+                                    <span class="fa fa-whatsapp fa-tiktok fa-stack-1x"></span>
+                                </div>
+                            </span>
+                        </a>
+                    </li>
+                    <ul>
+            </div>
         </div>
-    </div>
-</div> --}}
+    </div> --}}
     <section>
         <ul id="services">
             <li>
                 <div class="facebook">
                     <a href="https://www.facebook.com/superplus24horas/">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
                     </a>
                 </div>
                 <span>Facebook</span>
@@ -335,7 +328,7 @@
             <li>
                 <div class="instagram">
                     <a href="https://www.instagram.com/superplus24hrs/">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
                     </a>
                 </div>
                 <span>Instagram</span>
@@ -369,41 +362,41 @@
 
 @section('products')
     {{-- <div class="producst_body autoplay ">
-    @foreach ($productos as $producto)
-    <div class="wrapper">
-        <div class="container">
-            <img class="top"src="{{asset('/img/productos/'.$producto->image)}}" alt="{{$producto->image}}">
-          <div class="bottom">
-            <div class="left">
-              <div class="details">
-                <h2 class="txt_products">{{$producto->name}}</h2>
-                <p>MXN {{$producto->price}}</p>
-              </div>
-              <div class="buy text-center">
-                <a href="{{route('product-details', $producto->slug)}}">
-                    <i class="fas fa-eye"></i>
-                </a>  
+        @foreach ($productos as $producto)
+        <div class="wrapper">
+            <div class="container">
+                <img class="top" src="{{asset('/img/productos/'.$producto->image)}}" alt="{{$producto->image}}">
+                <div class="bottom">
+                    <div class="left">
+                        <div class="details">
+                            <h2 class="txt_products">{{$producto->name}}</h2>
+                            <p>MXN {{$producto->price}}</p>
+                        </div>
+                        <div class="buy text-center">
+                            <a href="{{route('product-details', $producto->slug)}}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="inside">
+                <div class="icon"><i class="fas fa-plus"></i></div>
+                <div class="contents">
+                    <h1>{{$producto->extract}}</h1>
+                    <h5 style="color: white">{{$producto->descriptions}}</h5>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="inside">
-          <div class="icon"><i class="fas fa-plus"></i></div>
-          <div class="contents">
-            <h1>{{$producto->extract}}</h1>
-            <h5 style="color: white">{{$producto->descriptions}}</h5>
-          </div>
-        </div>
-      </div>
-    @endforeach 
-</div> --}}
+        @endforeach
+    </div> --}}
     {{-- <div class="slider">
         <div class="slide-track">
             @foreach ($proveedores as $proveedores)
-                <div class="slide">
-                    <img src="{{ asset('/img/proveedore/' . $proveedores->image) }}" height="100" width="250"
-                        alt="{{ $proveedores->image }}" />
-                </div>
+            <div class="slide">
+                <img src="{{ asset('/img/proveedore/' . $proveedores->image) }}" height="100" width="250"
+                    alt="{{ $proveedores->image }}" />
+            </div>
             @endforeach
         </div>
     </div> --}}
@@ -415,7 +408,7 @@
                 <div class="swiper-wrapper align-items-center">
                     @foreach ($proveedores as $proveedores)
                         <div class="swiper-slide"><img src="{{ asset('/img/proveedore/' . $proveedores->image) }}"
-                                class="img-fluid" alt=""></div>
+                                class="img-fluid" alt="" loading="lazy"></div>
                     @endforeach
                 </div>
 
@@ -473,8 +466,8 @@
     </div>
     @include('modalPoliticaPrivacidad')
     {{-- <footer class="footer">
-   
-</footer> --}}
+
+    </footer> --}}
 @endsection
 
 <!--MODALS-->
@@ -494,8 +487,7 @@
                     <div id="contenedor" class="row_p">
                         <div id="naranja" class="">
                             <img class="
-                            popou_img" src="{{ asset('img/pagos.jpg') }}"
-                                alt="">
+                                popou_img" src="{{ asset('img/pagos.jpg') }}" alt="">
                         </div>
                         <div id="verde" class="content_pagos">
                             <h2 class=" frm_pagos text-center">FORMAS DE PAGO</h2>
@@ -578,16 +570,18 @@
                 <div id="verde" class="content_pagos">
                     <h2 style="color: black" class=" frm_pagos text-center">SUPERPLUS A DOMICILIO</h2>
                     <hr class="style3">
-                    <h5>{{-- Primero se envía la cotización al cliente, luego de ello el cliente envía la orden de compra por medio de nuestro correo y a las 24 horas 
-                    se le realiza el envío de los productos dentro de Lima sin costo alguno, a provincia se aplica un adicional. --}}</h5>
+                    <h5>{{-- Primero se envía la cotización al cliente, luego de ello el cliente envía la orden de compra
+                        por medio de nuestro correo y a las 24 horas
+                        se le realiza el envío de los productos dentro de Lima sin costo alguno, a provincia se aplica un
+                        adicional. --}}</h5>
                 </div>
             </div>
         </div>
     </div>
 
     {{-- promociones en modal --}}
-    <div class="modal fade modal fade ofertaexclusiva" tabindex="-1" role="dialog"
-        aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal fade modal fade ofertaexclusiva" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -605,9 +599,8 @@
                                     <div class="col-md-4 col-sm-6 mb-4">
                                         @if ($oferta->texto != '')
                                             <div class="single-content">
-                                                <img class="popou_img"
-                                                    src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                                                    alt="{{ $oferta->image }}">
+                                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                    alt="{{ $oferta->image }}" loading="lazy">
                                                 <div class="text-content">
 
                                                     <h2 class="frm_pagos text-center">{{ $oferta->texto }}</h2>
@@ -615,9 +608,8 @@
                                             </div>
                                         @else
                                             <div class="">
-                                                <img class="popou_img"
-                                                    src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                                                    alt="{{ $oferta->image }}">
+                                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                                    alt="{{ $oferta->image }}" loading="lazy">
                                             </div>
                                         @endif
                                     </div>
@@ -636,25 +628,25 @@
                 </div>
                 {{-- <div class="principal">
                     @foreach ($ofertas as $oferta)
-                        <div id="contenedor" class="row_p">
-                            <div id="naranja" class="">
-                                <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                                    alt="{{ $oferta->image }}">
-                            </div>
-                            <div id="verde" class="content_pagos">
-                                <strong>
-                                    <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2>
-                                </strong>
-                                <br>
-                                <h4>{{ $oferta->texto }}</h4>
-                                <button type="button" class="btnwssp btn btn-outline-success btn-lg">
-                                    <a target="none"
-                                        href="https://wa.me/51987654321?text=Hola%2CEstoy+interesad%40+en+la+oferta%3A+{{ $oferta->titulo }}">
-                                        Preguntar
-                                    </a>
-                                </button>
-                            </div>
+                    <div id="contenedor" class="row_p">
+                        <div id="naranja" class="">
+                            <img class="popou_img" src="{{ asset('/img/ofertas/' . $oferta->image) }}"
+                                alt="{{ $oferta->image }}">
                         </div>
+                        <div id="verde" class="content_pagos">
+                            <strong>
+                                <h2 class=" frm_pagos text-center">{{ $oferta->titulo }}</h2>
+                            </strong>
+                            <br>
+                            <h4>{{ $oferta->texto }}</h4>
+                            <button type="button" class="btnwssp btn btn-outline-success btn-lg">
+                                <a target="none"
+                                    href="https://wa.me/51987654321?text=Hola%2CEstoy+interesad%40+en+la+oferta%3A+{{ $oferta->titulo }}">
+                                    Preguntar
+                                </a>
+                            </button>
+                        </div>
+                    </div>
                     @endforeach
                 </div> --}}
             </div>
@@ -689,8 +681,7 @@
         </div>
         <div id='get-number'>529531339127</div><a class='close-chat' onclick="cerrar_chat();" href='#'>×</a>
     </div>
-    <a class='blantershow-chat' onclick="mostrar_chat();" href='#' title='Show Chat'><svg width="20"
-            viewBox="0 0 24 24">
+    <a class='blantershow-chat' onclick="mostrar_chat();" href='#' title='Show Chat'><svg width="20" viewBox="0 0 24 24">
             <defs />
             <path fill="#eceff1"
                 d="M20.5 3.4A12.1 12.1 0 0012 0 12 12 0 001.7 17.8L0 24l6.3-1.7c2.8 1.5 5 1.4 5.8 1.5a12 12 0 008.4-20.3z" />

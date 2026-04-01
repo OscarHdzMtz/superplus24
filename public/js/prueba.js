@@ -1,75 +1,43 @@
 // ---------Responsive-navbar-active-animation-----------
 function test(){
-    var tabsNewAnim = $('#navbarSupportedContent');
-    var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-    var activeItemNewAnim = tabsNewAnim.find('.active');
-    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-    var itemPosNewAnimTop = activeItemNewAnim.position();
-    var itemPosNewAnimLeft = activeItemNewAnim.position();
-    $(".hori-selector").css({
-      "top":itemPosNewAnimTop.top + "px", 
-      "left":itemPosNewAnimLeft.left + "px",
-      "height": activeWidthNewAnimHeight + "px",
-      "width": activeWidthNewAnimWidth + "px"
-    });
-    $("#navbarSupportedContent").on("click","li",function(e){
-      $('#navbarSupportedContent ul li').removeClass("active");
-      $(this).addClass('active');
-      var activeWidthNewAnimHeight = $(this).innerHeight();
-      var activeWidthNewAnimWidth = $(this).innerWidth();
-      var itemPosNewAnimTop = $(this).position();
-      var itemPosNewAnimLeft = $(this).position();
-      $(".hori-selector").css({
-        "top":itemPosNewAnimTop.top + "px", 
-        "left":itemPosNewAnimLeft.left + "px",
-        "height": activeWidthNewAnimHeight + "px",
-        "width": activeWidthNewAnimWidth + "px"
-      });
-    });
-  }
-  $(document).ready(function(){
-    setTimeout(function(){ test(); });
-  });
-  $(window).on('resize', function(){
-    setTimeout(function(){ test(); }, 500);
-  });
-  $(".navbar-toggler").click(function(){
-    setTimeout(function(){ test(); });
+  var tabsNewAnim = $('#navbarSupportedContent');
+  var activeItemNewAnim = tabsNewAnim.find('.active');
+  
+  // VALIDACIÓN: Si no hay un elemento activo, no intentar posicionar
+  if (activeItemNewAnim.length === 0) return;
+
+  var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+  var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+  var itemPosNewAnim = activeItemNewAnim.position();
+
+  if (!itemPosNewAnim) return;
+
+  $(".hori-selector").css({
+    "top": itemPosNewAnim.top + "px",
+    "left": itemPosNewAnim.left + "px",
+    "height": activeWidthNewAnimHeight + "px",
+    "width": activeWidthNewAnimWidth + "px"
   });
 
+  // Mostrar el selector tras el primer posicionamiento
+  $(".hori-selector").addClass("ready");
+}
 
+$(document).ready(function(){
+  test();
+});
 
-/* SCRIP DE COUNTER OFERTAS DE TRABAJO */
-var a = 0;
-$(window).scroll(function() {
+$(window).on('resize', function(){
+  setTimeout(function(){ test(); }, 500);
+});
 
-  var oTop = $('#counter').offset().top - window.innerHeight;
-  if (a == 0 && $(window).scrollTop() > oTop) {
-    $('.counter-value').each(function() {
-      var $this = $(this),
-        countTo = $this.attr('data-count');
-      $({
-        countNum: $this.text()
-      }).animate({
-          countNum: countTo
-        },
+$(".navbar-toggler").click(function(){
+  setTimeout(function(){ test(); }, 10);
+});
 
-        {
-
-          duration: 5000,
-          easing: 'swing',
-          step: function() {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function() {
-            $this.text(this.countNum);
-            //alert('finished');
-          }
-
-        });
-    });
-    a = 1;
-  }
-
+// Listener para cambios de clic (si se usa en la misma vista)
+$("#navbarSupportedContent").on("click","li",function(e){
+  $('#navbarSupportedContent ul li').removeClass("active");
+  $(this).addClass('active');
+  test();
 });

@@ -25,9 +25,7 @@ class SlidermainController extends Controller
         $slideradd->name = request('name');
         $slideradd->description = request('description');
         if ($request->hasFile('image')) {
-            $file = $request->image;
-            $file->move(public_path() . '/img/slider', $file->getClientOriginalName());
-            $slideradd->image = $file->getClientOriginalName();
+            $slideradd->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/slider');
         }
         $slideradd->fechaInicio = request('fechaInicio');
         $slideradd->fechaFin = request('fechaFin');
@@ -47,9 +45,7 @@ class SlidermainController extends Controller
         $slideradd->name = request('name');
         $slideradd->description = request('description');
         if ($request->hasFile('image')) {
-            $file = $request->image;
-            $file->move(public_path() . '/img/slider', $file->getClientOriginalName());
-            $slideradd->image = $file->getClientOriginalName();
+            $slideradd->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/slider');
         }
         $slideradd->fechaInicio = request('fechaInicio');
         $slideradd->fechaFin = request('fechaFin');
@@ -63,7 +59,9 @@ class SlidermainController extends Controller
     public function destroy($id)
     {
         $slideradd = Slidermain::findOrFail($id);
-        unlink(public_path('img/slider/' .$slideradd->image));
+        if ($slideradd->image && file_exists(public_path('img/slider/' . $slideradd->image))) {
+            unlink(public_path('img/slider/' . $slideradd->image));
+        }
         $slideradd->delete();
         return redirect('slidermain');
     }

@@ -55,28 +55,22 @@
                         <div class="right"></div>
                     </div>
                     <li class="nav-item">
-                        <a href="/" class="nav-link" href="javascript:void(0);"><i
-                                class="fas fa-tachometer-alt"></i>INICIO</a>
+                        <a href="/" class="nav-link"><i class="fas fa-tachometer-alt"></i>INICIO</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/promociones" class="nav-link" href="javascript:void(0);"><i
-                                class="fas fa-percentage"></i>PROMOCIONES</a>
+                        <a href="/promociones" class="nav-link"><i class="fas fa-percentage"></i>PROMOCIONES</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/nosotros" class="nav-link" href="javascript:void(1);"><i
-                                class="fas fa-check-circle"></i>NOSOTROS</a>
+                        <a href="/nosotros" class="nav-link"><i class="fas fa-check-circle"></i>NOSOTROS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/empleo" class="nav-link" href="javascript:void(0);"><i class="fas fa-building"></i>BOLSA
-                            DE TRABAJO</a>
+                        <a href="/empleo" class="nav-link"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/contact" class="nav-link" href="javascript:void(0);"><i
-                                class="fas fa-phone"></i>CONTACTANOS</a>
+                        <a href="/contact" class="nav-link"><i class="fas fa-phone"></i>CONTACTANOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/facturacion" class="nav-link" href="javascript:void(0);"><i
-                                class="far fa-copy"></i>FACTURACION</a>
+                        <a href="/facturacion" class="nav-link"><i class="far fa-copy"></i>FACTURACION</a>
                     </li>
                 </ul>
             </div>

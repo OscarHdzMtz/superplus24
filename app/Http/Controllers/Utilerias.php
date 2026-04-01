@@ -141,4 +141,61 @@ class Utilerias extends Controller
         }
         return $idPublicidadSeleccionado;
     }
+
+    public static function optimizeAndSaveImage($file, $destinationPath, $maxWidth = 1920)
+    {
+        $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.webp';
+        $fullPath = public_path($destinationPath . '/' . $filename);
+
+        // Si GD no está cargado, guardamos el original (fallback para evitar errores)
+        if (!extension_loaded('gd')) {
+            $file->move(public_path($destinationPath), $file->getClientOriginalName());
+            return $file->getClientOriginalName();
+        }
+
+        $imageInfo = getimagesize($file->getRealPath());
+        if (!$imageInfo) {
+            $file->move(public_path($destinationPath), $file->getClientOriginalName());
+            return $file->getClientOriginalName();
+        }
+
+        $width = $imageInfo[0];
+        $height = $imageInfo[1];
+        $mime = $imageInfo['mime'];
+
+        switch ($mime) {
+            case 'image/jpeg': $img = imagecreatefromjpeg($file->getRealPath()); break;
+            case 'image/png': $img = imagecreatefrompng($file->getRealPath()); break;
+            case 'image/gif': $img = imagecreatefromgif($file->getRealPath()); break;
+            default:
+                $file->move(public_path($destinationPath), $file->getClientOriginalName());
+                return $file->getClientOriginalName();
+        }
+
+        if (!$img) {
+            $file->move(public_path($destinationPath), $file->getClientOriginalName());
+            return $file->getClientOriginalName();
+        }
+
+        // Redimensionar si es necesario
+        if ($width > $maxWidth) {
+            $newHeight = ($height * $maxWidth) / $width;
+            $newImg = imagecreatetruecolor($maxWidth, $newHeight);
+
+            if ($mime == 'image/png' || $mime == 'image/gif') {
+                imagealphablending($newImg, false);
+                imagesavealpha($newImg, true);
+            }
+
+            imagecopyresampled($newImg, $img, 0, 0, 0, 0, $maxWidth, $newHeight, $width, $height);
+            imagedestroy($img);
+            $img = $newImg;
+        }
+
+        // Guardar como WebP
+        imagewebp($img, $fullPath, 80);
+        imagedestroy($img);
+
+        return $filename;
+    }
 }

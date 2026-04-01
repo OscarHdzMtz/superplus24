@@ -1,33 +1,32 @@
 /* SCRIP DE COUNTER OFERTAS DE TRABAJO */
-var a = 0;
-$(window).scroll(function() {
+$(document).ready(function() {
+  var a = 0;
+  $(window).scroll(function() {
+    var counterEl = $('#counter');
+    if (!counterEl.length) return;
 
-  var oTop = $('#counter').offset().top - window.innerHeight;
-  if (a == 0 && $(window).scrollTop() > oTop) {
-    $('.counter-value').each(function() {
-      var $this = $(this),
-        countTo = $this.attr('data-count');
-      $({
-        countNum: $this.text()
-      }).animate({
-          countNum: countTo
-        },
-
-        {
-
-          duration: 5000,
-          easing: 'swing',
-          step: function() {
-            $this.text(Math.floor(this.countNum));
+    var oTop = counterEl.offset().top - window.innerHeight;
+    if (a == 0 && $(window).scrollTop() > oTop) {
+      $('.counter-value').each(function() {
+        var $this = $(this),
+          countTo = $this.attr('data-count');
+        $({
+          countNum: $this.text()
+        }).animate({
+            countNum: countTo
           },
-          complete: function() {
-            $this.text(this.countNum);
-            //alert('finished');
-          }
-
-        });
-    });
-    a = 1;
-  }
-
+          {
+            duration: 3500,
+            easing: 'swing',
+            step: function() {
+              $this.text(Math.floor(this.countNum));
+            },
+            complete: function() {
+              $this.text(this.countNum);
+            }
+          });
+      });
+      a = 1;
+    }
+  });
 });
