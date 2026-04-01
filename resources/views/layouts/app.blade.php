@@ -730,8 +730,11 @@
     <script src="{{ asset('js/dashboard/counter.js') }}"></script>
 
     <script>
-        function countChars(obj) {
-            document.getElementById("charNum").innerHTML = obj.value.length + ' caracteres';
+        function countChars(obj, targetId = 'charNum') {
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.innerHTML = obj.value.length + ' caracteres';
+            }
         }
     </script>
     <script>

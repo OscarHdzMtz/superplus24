@@ -11,33 +11,40 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">NOMBRE :</label>
                         <input type="text" name="name" class="form-control" id="recipient-name"
                             value="{{ $slideradd->name }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
-                        <textarea type="text" name="description" class="ckeditor form-control" id="recipient-name"
-                            onkeyup="countChars(this);" maxlength="300"
-                            {{-- required --}}>{{ $slideradd->description }}</textarea>
-                        Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
+                        <label for="description-edit-{{ $slideradd->id }}" class="col-form-label">DESCRIPCION:</label>
+                        <textarea name="description" class="ckeditor form-control" id="description-edit-{{ $slideradd->id }}"
+                            onkeyup="countChars(this, 'charNum-edit-{{ $slideradd->id }}');" maxlength="300"
+                            >{{ $slideradd->description }}</textarea>
+                        Máximo de caracteres 300<p id="charNum-edit-{{ $slideradd->id }}" class="text-success">0 caracteres</p>
                     </div>
                     <div class="form-group cold-md-6">
                         <label>Imagen</label>
                         <br>
                         {{ Form::file('image') }}
-                        @if ($slideradd->image != '')
+                        @if ($slideradd->image != '' && file_exists(public_path('img/slider/' . $slideradd->image)))
                             <img src="{{ asset('/img/slider/' . $slideradd->image) }}" alt="{{ $slideradd->name }}"
                                 height="300px" width="50px" class="card-img-top">
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label>FECHA INICIO</label>
-                        <input type="date" name="fechaInicio" value="{{ $slideradd->fechaInicio }}" required> <br>
-                        <label>FECHA FIN </label>
-                        <input type="date" name="fechaFin" value="{{ $slideradd->fechaFin }}" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>FECHA INICIO</label>
+                                <input type="date" name="fechaInicio" class="form-control" value="{{ $slideradd->fechaInicio }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>FECHA FIN</label>
+                                <input type="date" name="fechaFin" class="form-control" value="{{ $slideradd->fechaFin }}" required>
+                            </div>
+                        </div>
                     </div>
                     <hr width="85%" color=”black” />
                     <div class="control-group">
@@ -49,7 +56,6 @@
                             </select>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>

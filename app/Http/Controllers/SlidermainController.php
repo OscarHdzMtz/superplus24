@@ -10,7 +10,7 @@ class SlidermainController extends Controller
     //
     public function index()
     {
-        $slider = Slidermain::all();
+        $slider = Slidermain::latest()->get();
         return view('slidermain.index', compact('slider'));
     }
     public function create()

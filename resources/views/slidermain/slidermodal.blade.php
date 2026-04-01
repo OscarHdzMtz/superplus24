@@ -17,26 +17,33 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">NOMBRE :</label>
                         <input type="text" name="name" class="form-control" id="recipient-name" required>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">DESCRIPCION:</label>
-                        <textarea type="text" name="description" class="ckeditor form-control" id="recipient-name"
-                            onkeyup="countChars(this);" maxlength="300" {{-- required --}}></textarea>
-                        Maximo de caracteres 300 caracteres<p id="charNum" class="text-success">0 caracteres</p>
+                        <label for="description-create" class="col-form-label">DESCRIPCION:</label>
+                        <textarea name="description" class="ckeditor form-control" id="description-create"
+                            onkeyup="countChars(this, 'charNum-create');" maxlength="300"></textarea>
+                        Máximo de caracteres 300<p id="charNum-create" class="text-success">0 caracteres</p>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">IMAGEN:</label>
                         {{ Form::file('image', ['required' => 'required']) }}
                     </div>
-                    <div class="form-group">
-                        <label>FECHA INICIO</label>
-                        <input type="date" name="fechaInicio" required> <br>
-                        <label>FECHA FIN </label>
-                        <input type="date" name="fechaFin" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>FECHA INICIO</label>
+                                <input type="date" name="fechaInicio" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>FECHA FIN</label>
+                                <input type="date" name="fechaFin" class="form-control" required>
+                            </div>
+                        </div>
                     </div>
                     <hr width="85%" height="10px" color=”black”/>
                     <div class="control-group">
@@ -48,8 +55,6 @@
                             </select>
                         </div>
                     </div>
-
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
@@ -60,11 +65,3 @@
 </div>
 {!! Form::close() !!}
 
-<section>
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.ckeditor').ckeditor();
-        });
-    </script>
-</section>
