@@ -147,7 +147,7 @@
 @endsection
 
 @section('title')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h1 class="textmov"><span class="type"></span></h1>
@@ -215,25 +215,18 @@
     </div>     --}}
 
     {{-- MODAL DONDE SE VA MOSTRAR LAS PROMOCIONES AL DAR CLICK --}}
-    <div class="modal fade" id="modalpromo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal" id="modalpromo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" data-dismiss="modal">
-            <div class="modal-content">
-                {{-- <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          </div> --}}
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="" class="set_imagen_promo" style="max-width: 100%; padding-top: 10px">
-                    {{-- <input style="color: #003baa" type="text" id="textmodal"/><br> --}}
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content modal-promo-content">
+                <div class="modal-body p-0 text-center" style="position: relative;">
+                    <button type="button" class="close" data-dismiss="modal" 
+                        style="position: absolute; right: 15px; top: 15px; z-index: 10; font-size: 2.2rem; color: #fff; text-shadow: 0 0 15px rgba(0,0,0,0.8); opacity: 0.9;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <img src="" class="set_imagen_promo" 
+                        style="max-width: 100%; max-height: 90vh; width: auto; object-fit: contain; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
                 </div>
-                {{-- <div class="modal-footer">            
-            <div class="form-group input-group"> --}}
-                {{-- <label style="color: #003baa" for="nombre">Nombre</label><input style="color: #003baa" type="text" id="textmodal"/><br>
-                 <span id="textmodal"></span> --}}
-                {{--  </div>
-        </div>     --}}
             </div>
         </div>
     </div>

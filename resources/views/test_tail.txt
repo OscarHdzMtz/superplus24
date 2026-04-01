@@ -1,0 +1,10 @@
+                    @endforeach
+                </div> --}}
+            </div>
+        </div>
+        {{-- <div class='icon-scroll'></div>
+        <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6> --}}
+    </div>
+@endsection
+/script>
+@endsection

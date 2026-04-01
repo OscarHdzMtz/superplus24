@@ -2,38 +2,47 @@ const items = document.querySelectorAll(".item");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 
-const total = items.length;
-const lastItem = total - 1; //3
-let current = 0;
+if (items.length > 0) {
+    const total = items.length;
+    const lastItem = total - 1; //3
+    let current = 0;
 
-items[0].classList.add("active");
+    items[0].classList.add("active");
 
-next.addEventListener("click", (e) => {
-    let next = current; //0
-    current++;
-    setActive(next, current); //0   1
-});
-
-prev.addEventListener("click", (e) => {
-    let prev = current; //0
-    current--;
-    setActive(prev, current); //0   -1
-});
-
-function setActive(prev, next) {
-    let active = current;
-
-    if (next > lastItem) {
-        active = 0;
-        current = 0;
+    if (next) {
+        next.addEventListener("click", (e) => {
+            let nextIndex = current;
+            current++;
+            setActive(nextIndex, current);
+        });
     }
 
-    if (next < 0) {
-        //-1
-        active = lastItem;
-        current = lastItem;
+    if (prev) {
+        prev.addEventListener("click", (e) => {
+            let prevIndex = current;
+            current--;
+            setActive(prevIndex, current);
+        });
     }
 
-    items[prev].classList.remove("active");
-    items[active].classList.add("active");
+    function setActive(prevIndex, nextIndex) {
+        let active = current;
+
+        if (nextIndex > lastItem) {
+            active = 0;
+            current = 0;
+        }
+
+        if (nextIndex < 0) {
+            active = lastItem;
+            current = lastItem;
+        }
+
+        if (items[prevIndex]) {
+            items[prevIndex].classList.remove("active");
+        }
+        if (items[active]) {
+            items[active].classList.add("active");
+        }
+    }
 }

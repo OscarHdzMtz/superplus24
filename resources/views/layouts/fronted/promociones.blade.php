@@ -98,9 +98,23 @@
 
     <script>
         $(function() {
-            $(document).on('click', '.clic_abre_modal', function() {
-                $('.set_imagen_promo').attr('src', $(this).find('img').attr('src'));
-                $('#modalpromo').modal('show');
+            $(document).on('click', '.clic_abre_modal', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                var imgSrc = $this.find('img').attr('src');
+                var $modalImg = $('.set_imagen_promo');
+                
+                // 1. Limpiar y ocultar imagen previa
+                $modalImg.removeClass('loaded').attr('src', '');
+                
+                // 2. Crear objeto de imagen para pre-carga
+                var imgPreload = new Image();
+                imgPreload.onload = function() {
+                    // 3. Cuando esté cargada, asignar y mostrar de inmediato
+                    $modalImg.attr('src', imgSrc);
+                    $('#modalpromo').modal('show');
+                };
+                imgPreload.src = imgSrc;
             });
         });
     </script>

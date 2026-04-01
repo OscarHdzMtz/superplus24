@@ -249,13 +249,12 @@
                         <div class="mask flex-center">
                             <div class="container">
                                 <div class="row align-items-center mt-1">
-                                    <div class="col-md-6 col-12 order-md-1 order-2 mt-2">
-                                        <h4 style="color: black; text-transform: uppercase; ">{{ $productos->name }}</h4>
-                                        <h5 style="color: black; margin-bottom: 30px">{!! $productos->descriptions !!}</h5>
+                                    <div class="col-md-6 col-12 mt-2 product-info-column text-left">
+                                        <h4 class="product-name-modern">{{ $productos->name }}</h4>
+                                        <div class="product-desc-modern">{!! $productos->descriptions !!}</div>
                                     </div>
-                                    <div class="col-md-6 col-12 order-md-1 order-1"><img
-                                            src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto" alt="slide"
-                                            loading="lazy">
+                                    <div class="col-md-6 col-12">
+                                        <img src="{{ asset('/img/productos/' . $productos->image) }}" class="mx-auto img-fluid" alt="slide" loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -361,9 +360,10 @@
 
 {{-- MARCA PROVEDORES --}}
 @section('title2')
-    @foreach ($getitulo as $settitulo)
-        @if ($settitulo->label == 'titulomarcas')
-            <div class="col-12">
+    <div style="margin-top: 40px; margin-bottom: 10px;">
+        @foreach ($getitulo as $settitulo)
+            @if ($settitulo->label == 'titulomarcas')
+                <div class="col-12">
                 <div class="testimonial-title">
                     <h5>{{ $settitulo->titulo }}</h5>
                     <h3>{{ $settitulo->description }}</h3>
@@ -372,6 +372,7 @@
             </div>
         @endif
     @endforeach
+    </div>
 @endsection
 
 @section('products')
@@ -435,23 +436,14 @@
 
 @section('footer')
     <div style="margin-top: 30px" data-aos="fade-up" class="footer-dark">
-        <footer>
-            <footer class="new_footer_area bg_color">
+        <footer class="new_footer_area bg_color">
                 <div class="box">
-                    {{-- <div class="box-sm red"></div> --}}
-                    {{-- <div class="box-sm orange"></div> --}}
                     <div class="box-sm blue "></div>
-                    {{-- <div class="box-sm green "></div> --}}
                     <div class="box-sm blue "></div>
-                    {{-- <div class="box-sm purple"></div> --}}
                     <div class="box-sm blue "></div>
                     <div class="box-sm blue "></div>
                     <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px"
                         src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
                 </div>
                 {{-- pie de pagina --}}
                 <div style="margin-top: -60px" class="footer-basic">
@@ -476,7 +468,6 @@
                 <!-- Copyright -->
 
             </footer>
-        </footer>
     </div>
     @include('modalPoliticaPrivacidad')
     {{-- <footer class="footer">
@@ -668,70 +659,4 @@
         {{-- <div class='icon-scroll'></div>
         <h6 style="color: white" class="text-center">Si hay más promociones por favor siga bajando</h6> --}}
     </div>
-@endsection
-
-
-{{-- SECCION DE PLUGIN DE WHATSAPP --}}
-@section('whats')
-    <div id='whatsapp-chat' class='hide'>
-        <div class='header-chat'>
-            <div align="center" class='head-home'>
-                <h3>SuperPlus</h3>
-                <div class='info-avatar'><img
-                        src='https://sistemadecotizaciones.files.wordpress.com/2020/08/supportmale.png' /></div>
-            </div>
-            <div class='get-new'>
-                {{-- <div id='get-label'>Soporte</div> --}}
-                <div id='get-nama'>Servicio al cliente</div>
-            </div>
-        </div>
-        <div class='start-chat'>
-            <div class='first-msg'><span>¡DALE UN PLUS A TU DIA!</span></div>
-            <div class='first-msg'><span>¡Hola! ¿En que podemos ayudarte?</span></div>
-            <div class='blanter-msg'>
-                <textarea id='chat-input' placeholder='Escribe un mensaje' maxlength='120' row='1'></textarea>
-                <a href='#' onclick="enviar_mensaje();" id='send-it'>Enviar</a>
-            </div>
-        </div>
-        <div id='get-number'>529531339127</div><a class='close-chat' onclick="cerrar_chat();" href='#'>×</a>
-    </div>
-    <a class='blantershow-chat' onclick="mostrar_chat();" href='#' title='Show Chat'><svg width="20" viewBox="0 0 24 24">
-            <defs />
-            <path fill="#eceff1"
-                d="M20.5 3.4A12.1 12.1 0 0012 0 12 12 0 001.7 17.8L0 24l6.3-1.7c2.8 1.5 5 1.4 5.8 1.5a12 12 0 008.4-20.3z" />
-            <path fill="#4caf50"
-                d="M12 21.8c-3.1 0-5.2-1.6-5.4-1.6l-3.7 1 1-3.7-.3-.4A9.9 9.9 0 012.1 12a10 10 0 0117-7 9.9 9.9 0 01-7 16.9z" />
-            <path fill="#fafafa"
-                d="M17.5 14.3c-.3 0-1.8-.8-2-.9-.7-.2-.5 0-1.7 1.3-.1.2-.3.2-.6.1s-1.3-.5-2.4-1.5a9 9 0 01-1.7-2c-.3-.6.4-.6 1-1.7l-.1-.5-1-2.2c-.2-.6-.4-.5-.6-.5-.6 0-1 0-1.4.3-1.6 1.8-1.2 3.6.2 5.6 2.7 3.5 4.2 4.2 6.8 5 .7.3 1.4.3 1.9.2.6 0 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z" />
-        </svg>
-        Chatea con nosotros</a>
-
-
-    <script>
-        function enviar_mensaje() {
-            var a = document.getElementById("chat-input");
-            if ("" != a.value) {
-                var b = document.getElementById("get-number").innerHTML,
-                    c = document.getElementById("chat-input").value,
-                    d = "https://web.whatsapp.com/send",
-                    e = b,
-                    f = "&text=" + c;
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) var d =
-                    "whatsapp://send";
-                var g = d + "?phone=" + e + f;
-                window.open(g, "_blank");
-            }
-        }
-        const whatsapp_chat = document.getElementById("whatsapp-chat");
-
-        function cerrar_chat() {
-            whatsapp_chat.classList.add("hide");
-            whatsapp_chat.classList.remove("show");
-        }
-
-        function mostrar_chat() {
-            whatsapp_chat.classList.add("show");
-            whatsapp_chat.classList.remove("hide");
-        }
-    </script>
 @endsection
