@@ -148,8 +148,15 @@
                 @endforeach
                 @foreach ($getimagen as $setimagen)
                     <div data-aos="fade-right" class="col-md-6 order-2 order-md-1">
-                        <img class="img-fluid w-100" src="{{ asset('/img/imagenfooter/' . $setimagen->image) }}"
-                            alt="about image" loading="lazy">
+                        @php $webpFooterImg = pathinfo($setimagen->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/imagenfooter/' . $webpFooterImg)))
+                            <picture>
+                                <source srcset="{{ asset('/img/imagenfooter/' . $webpFooterImg) }}" type="image/webp">
+                                <img class="img-fluid w-100" src="{{ asset('/img/imagenfooter/' . $setimagen->image) }}" alt="about image" default-loading="lazy">
+                            </picture>
+                        @else
+                            <img class="img-fluid w-100" src="{{ asset('/img/imagenfooter/' . $setimagen->image) }}" alt="about image" loading="lazy">
+                        @endif
                     </div>
                 @endforeach
 

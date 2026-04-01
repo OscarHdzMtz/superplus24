@@ -107,8 +107,15 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ asset('/img/empleo/' . $setempleo->image) }}"
-                            alt="First slide">
+                        @php $webpEmpleoBanner = pathinfo($setempleo->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/empleo/' . $webpEmpleoBanner)))
+                            <picture>
+                                <source srcset="{{ asset('/img/empleo/' . $webpEmpleoBanner) }}" type="image/webp">
+                                <img class="d-block w-100" src="{{ asset('/img/empleo/' . $setempleo->image) }}" alt="First slide">
+                            </picture>
+                        @else
+                            <img class="d-block w-100" src="{{ asset('/img/empleo/' . $setempleo->image) }}" alt="First slide">
+                        @endif
                     </div>
                 </div>
             </div>
@@ -123,7 +130,15 @@
                     <div class="row ">
                         <div class="col-lg-4">
                             <div class="service-img">
-                                <img src="{{ asset('/img/empleo/' . $setempleo->image) }}" alt="" class="img-fluid">
+                                @php $webpEmpleoImage = pathinfo($setempleo->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                                @if(file_exists(public_path('img/empleo/' . $webpEmpleoImage)))
+                                    <picture>
+                                        <source srcset="{{ asset('/img/empleo/' . $webpEmpleoImage) }}" type="image/webp">
+                                        <img src="{{ asset('/img/empleo/' . $setempleo->image) }}" alt="about image" class="img-fluid">
+                                    </picture>
+                                @else
+                                    <img src="{{ asset('/img/empleo/' . $setempleo->image) }}" alt="about image" class="img-fluid">
+                                @endif
                             </div>
                         </div>
 
@@ -233,7 +248,17 @@
     <div style="margin-bottom: 50px" data-aos="fade-up" class="container_vacan">
         @foreach ($addvacante as $setvacante)
             <div class="card">
-                <div class="img-cover"><img src="{{ asset('/img/vacantes/' . $setvacante->image) }}"></div>
+                <div class="img-cover">
+                    @php $webpVacante = pathinfo($setvacante->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                    @if(file_exists(public_path('img/vacantes/' . $webpVacante)))
+                        <picture>
+                            <source srcset="{{ asset('/img/vacantes/' . $webpVacante) }}" type="image/webp">
+                            <img src="{{ asset('/img/vacantes/' . $setvacante->image) }}" alt="vacante">
+                        </picture>
+                    @else
+                        <img src="{{ asset('/img/vacantes/' . $setvacante->image) }}">
+                    @endif
+                </div>
                 {{-- <div class="desc">                    
                     <a style="color: white" data-toggle="modal" data-target="#modalContactForm">POSTULARME<svg width="19"
                             height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">

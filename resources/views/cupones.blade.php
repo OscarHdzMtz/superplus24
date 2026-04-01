@@ -102,8 +102,15 @@
             @foreach ($cupones as $cupon)
                 <div class="mb-3 col-md-3 col-sm-6">
                     <div data-aos="zoom-in" class="{{-- single-contentpromo --}} clic_abre_modal mx-auto"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
-                        <img id="get_image_promo" class="mb-0 popou_img_promo"src="{{ asset('/img/cupones/' . $cupon->image) }}"
-                            alt="{{ $cupon->image }}">                            
+                        @php $webpPathCupon = pathinfo($cupon->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/cupones/' . $webpPathCupon)))
+                            <picture>
+                                <source srcset="{{ asset('/img/cupones/' . $webpPathCupon) }}" type="image/webp">
+                                <img id="get_image_promo" class="mb-0 popou_img_promo" src="{{ asset('/img/cupones/' . $cupon->image) }}" alt="{{ $cupon->image }}">
+                            </picture>
+                        @else
+                            <img id="get_image_promo" class="mb-0 popou_img_promo" src="{{ asset('/img/cupones/' . $cupon->image) }}" alt="{{ $cupon->image }}">
+                        @endif                            
                         <div class="text-contentpromo">
                         </div>                        
                         {!! Form::open([

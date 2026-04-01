@@ -28,18 +28,22 @@ class Promocioneslivewire extends Component
 
         //ELIMINAMOS LOS ID_CATEGORIA REPETIDOS en el array        
         $categorias = array_unique($arrayCategoria, SORT_REGULAR);           
-        $actualInicio = Carbon::today();
-        if ($this->categoriaBuscar <> "" && $this->categoriaBuscar <> "FILTRE POR DEPARTAMENTO" && $this->categoriaBuscar <> "TODOS" && $this->search == "") {
-            $promo = Publicoferts::OrderBy('orden', 'ASC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $this->categoriaBuscar)->get();
-        }elseif($this->search <> "" && $this->categoriaBuscar == null || $this->categoriaBuscar == 'TODOS'){
-            $promo = Publicoferts::OrderBy('orden', 'ASC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('titulo', 'like', '%' . $this->search . '%')->get();
+        $cat = $this->categoriaBuscar;
+        $isAllCategories = empty($cat) || $cat == "FILTRE POR DEPARTAMENTO" || $cat == "TODOS";
+
+        $query = Publicoferts::OrderBy('orden', 'ASC')
+            ->where('fechaInicio', '<=', $actualInicio)
+            ->where('fechaFin', '>', $actualFin);
+
+        if (!$isAllCategories) {
+            $query->where('categoria_id', $cat);
         }
-        elseif($this->search <> "" && $this->categoriaBuscar <> null){
-            $promo = Publicoferts::OrderBy('orden', 'ASC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->where('categoria_id', $this->categoriaBuscar)->where('titulo', 'like', '%' . $this->search . '%')->get();
+
+        if ($this->search !== "") {
+            $query->where('titulo', 'like', '%' . $this->search . '%');
         }
-        else {
-            $promo = Publicoferts::OrderBy('orden', 'ASC')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->get();
-        }                  
+
+        $promo = $query->get();
 
         return view('livewire.promocioneslivewire', compact('categorias', 'promo'));
     }

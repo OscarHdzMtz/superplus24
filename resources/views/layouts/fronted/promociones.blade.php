@@ -22,7 +22,7 @@
     <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- Turbo Drive: navegación sin recarga. Livewire requiere recarga completa en esta página -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwire/turbo@7.3.0/dist/turbo.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
     <meta name="turbo-visit-control" content="reload">
     @livewireStyles
 </head>

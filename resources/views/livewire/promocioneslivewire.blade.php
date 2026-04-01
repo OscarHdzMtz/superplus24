@@ -3,7 +3,7 @@
         <div class="row {{-- d-flex justify-content-between ml-0 --}}">
             <div class="col-lg-6 col-md-6 col-sm-12 mt-3">                
                 {{-- @if (!$categoriaBuscar) --}}
-                <input wire:model.live="search" type="search" class="promociones_input search-slt" placeholder="Buscar">   
+                <input wire:model.live.debounce.300ms="search" type="search" class="promociones_input search-slt" placeholder="Buscar">   
                 <h1>{{ $search }}</h1>
                 {{-- @endif --}}
             </div>
@@ -34,7 +34,7 @@
             @foreach ($promo as $oferta)
                 <div {{-- data-aos="zoom-in" --}} class="col-md-3 col-sm-6 mb-3">
                     <div class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
-                        <img id="get_image_promo"
+                        <img id="get_image_promo" loading="lazy"
                             class="popou_img_promo"src="{{ asset('/img/ofertas/' . $oferta->image) }}"
                             alt="{{ $oferta->image }}">
                         <div class="text-contentpromo">

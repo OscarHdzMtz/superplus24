@@ -11,14 +11,20 @@ function test(){
 
   if (!itemPosNewAnim) return;
 
-  $(".hori-selector").css({
+  var selector = $(".hori-selector");
+  var isFirstLoad = !selector.hasClass("ready");
+
+  selector.css({
     "top": itemPosNewAnim.top + "px",
     "left": itemPosNewAnim.left + "px",
     "height": activeWidthNewAnimHeight + "px",
     "width": activeWidthNewAnimWidth + "px"
   });
 
-  $(".hori-selector").addClass("ready");
+  if (isFirstLoad) {
+    selector[0].offsetHeight; // forzar repintado del DOM sin animación
+    selector.addClass("ready"); // añadir la clase que habilita transition
+  }
 }
 
 $(document).ready(function(){

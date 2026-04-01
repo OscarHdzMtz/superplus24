@@ -138,8 +138,15 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}"
-                            alt="FacturacionPlus">
+                        @php $webpFactBanner = pathinfo($setFacturacion->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/facturacion/' . $webpFactBanner)))
+                            <picture>
+                                <source srcset="{{ asset('/img/facturacion/' . $webpFactBanner) }}" type="image/webp">
+                                <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="FacturacionPlus">
+                            </picture>
+                        @else
+                            <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="FacturacionPlus">
+                        @endif
                     </div>
                 </div>
             </div>            
@@ -158,8 +165,15 @@
                         </div>
                     </div>
                     <div class="col-md-6 order-2 order-md-1">
-                        <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}"
-                            alt="about image">
+                        @php $webpFactImage = pathinfo($setFacturacion->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/facturacion/' . $webpFactImage)))
+                            <picture>
+                                <source srcset="{{ asset('/img/facturacion/' . $webpFactImage) }}" type="image/webp">
+                                <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="about image">
+                            </picture>
+                        @else
+                            <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="about image">
+                        @endif
                     </div>
                 </div>
             </div>

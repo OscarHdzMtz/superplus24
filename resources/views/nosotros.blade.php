@@ -91,8 +91,15 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}"
-                            alt="First slide">
+                        @php $webpPath = pathinfo($empresa->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/miempresa/' . $webpPath)))
+                            <picture>
+                                <source srcset="{{ asset('/img/miempresa/' . $webpPath) }}" type="image/webp">
+                                <img class="d-block w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}" alt="First slide">
+                            </picture>
+                        @else
+                            <img class="d-block w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}" alt="First slide">
+                        @endif
                     </div>
                 </div>
             </div>        
@@ -108,7 +115,15 @@
                         <p class="historia-text">{{ $empresa->description }}</p>
                     </div>
                     <div data-aos="fade-right" class="col-md-6 order-2 order-md-1">
-                        <img class="img-fluid w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}" alt="about image">
+                        @php $webpPathHistoria = pathinfo($empresa->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @if(file_exists(public_path('img/miempresa/' . $webpPathHistoria)))
+                            <picture>
+                                <source srcset="{{ asset('/img/miempresa/' . $webpPathHistoria) }}" type="image/webp">
+                                <img class="img-fluid w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}" alt="about image">
+                            </picture>
+                        @else
+                            <img class="img-fluid w-100" src="{{ asset('/img/miempresa/' . $empresa->image) }}" alt="about image">
+                        @endif
                     </div>
                 </div>
             </div>   
