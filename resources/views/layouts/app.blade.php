@@ -8,17 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>    
-    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('dist/js/adminlte.js') }}"></script>    
-
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free-6.3.0-web/css/all.min.css') }}">    
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free-6.3.0-web/css/all.min.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    
+
     <!-- Styles -->
     <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard/styledash.css') }}" rel="stylesheet">
@@ -27,7 +23,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-    
+
     <div {{-- id="app" --}}>
         <div class="wrapper">
             <!-- Navbar -->
@@ -139,7 +135,6 @@
                                         <i class="text-warning fas fa-users"></i>
                                         <p>
                                             Usuarios
-                                            <?php $users_count = DB::table('users')->count(); ?>
                                             <span class="right badge badge-danger">{{ $users_count ?? '0' }}</span>
                                         </p>
                                     </a>
@@ -179,7 +174,6 @@
                                                 <i class="nav-icon fas fa-image"></i>
                                                 <p>
                                                     Slider Principal
-                                                    <?php $slider_count = DB::table('slidermains')->count(); ?>
                                                     <span
                                                         class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
                                                 </p>
@@ -200,7 +194,6 @@
                                                 <i class="nav-icon fas fa-file-image"></i>
                                                 <p>
                                                     Productos Nuevos
-                                                    <?php $producto_count = DB::table('productos')->count(); ?>
                                                     <span
                                                         class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
                                                 </p>
@@ -248,7 +241,6 @@
                                             {{-- Cursos del dia --}}
 
                                             Promociones
-                                            <?php $promo_count = DB::table('publicoferts')->count(); ?>
                                             <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
                                         </p>
                                     </a>
@@ -415,7 +407,6 @@
                                                 <i class="nav-icon fas fa-image"></i>
                                                 <p>
                                                     Slider Principal
-                                                    <?php $slider_count = DB::table('slidermains')->count(); ?>
                                                     <span
                                                         class="right badge badge-success">{{ $slider_count ?? '0' }}</span>
                                                 </p>
@@ -436,7 +427,6 @@
                                                 <i class="nav-icon fas fa-file-image"></i>
                                                 <p>
                                                     Productos Nuevos
-                                                    <?php $producto_count = DB::table('productos')->count(); ?>
                                                     <span
                                                         class="right badge badge-success">{{ $producto_count ?? '0' }}</span>
                                                 </p>
@@ -484,7 +474,6 @@
                                             {{-- Cursos del dia --}}
 
                                             Promociones
-                                            <?php $promo_count = DB::table('publicoferts')->count(); ?>
                                             <span class="right badge badge-success">{{ $promo_count ?? '0' }}</span>
                                         </p>
                                     </a>
@@ -733,6 +722,10 @@
         </div>
     </div>
     
+    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="{{ asset('js/dashboard/counter.js') }}"></script>
 
@@ -742,29 +735,25 @@
         }
     </script>
     <script>
-            const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
-        $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
-        
-        // Escuchar cuando cambie
-        $seleccionArchivos.addEventListener("change", () => {
-        // Los archivos seleccionados, pueden ser muchos o uno
-        const archivos = $seleccionArchivos.files;
-        // Si no hay archivos salimos de la función y quitamos la imagen
-        if (!archivos || !archivos.length) {
-            $imagenPrevisualizacion.src = "";
-            return;
+        var $seleccionArchivos = document.querySelector("#seleccionArchivos"),
+            $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
+        if ($seleccionArchivos) {
+            $seleccionArchivos.addEventListener("change", function() {
+                var archivos = $seleccionArchivos.files;
+                if (!archivos || !archivos.length) {
+                    $imagenPrevisualizacion.src = "";
+                    return;
+                }
+                var primerArchivo = archivos[0];
+                var objectURL = URL.createObjectURL(primerArchivo);
+                $imagenPrevisualizacion.src = objectURL;
+            });
         }
-        // Ahora tomamos el primer archivo, el cual vamos a previsualizar
-        const primerArchivo = archivos[0];
-        // Lo convertimos a un objeto de tipo objectURL
-        const objectURL = URL.createObjectURL(primerArchivo);
-        // Y a la fuente de la imagen le ponemos el objectURL
-        $imagenPrevisualizacion.src = objectURL;
-        });
     </script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireScripts
+    @yield('scripts')
 </body>
 
 </html>

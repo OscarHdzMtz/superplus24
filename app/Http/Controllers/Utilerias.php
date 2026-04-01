@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 class Utilerias extends Controller
 {
@@ -144,19 +145,28 @@ class Utilerias extends Controller
 
     public static function optimizeAndSaveImage($file, $destinationPath, $maxWidth = 1920)
     {
-        $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.webp';
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        // Generar un nombre único y limpio (Slug y Timestamp) para evitar problemas con espacios y sobreescrituras
+        $safeName = Str::slug($originalName) . '_' . time();
+        $originalExt = $file->getClientOriginalExtension();
+        
+        // Decidir extensión destino (WebP si se soporta, si no la original)
+        $useWebp = function_exists('imagewebp') && extension_loaded('gd');
+        $extension = $useWebp ? 'webp' : $originalExt;
+        $filename = $safeName . '.' . $extension;
+        
         $fullPath = public_path($destinationPath . '/' . $filename);
 
-        // Si GD no está cargado, guardamos el original (fallback para evitar errores)
+        // Si GD no está cargado o no queremos/podemos procesar, guardamos el original con nombre seguro
         if (!extension_loaded('gd')) {
-            $file->move(public_path($destinationPath), $file->getClientOriginalName());
-            return $file->getClientOriginalName();
+            $file->move(public_path($destinationPath), $filename);
+            return $filename;
         }
 
         $imageInfo = getimagesize($file->getRealPath());
         if (!$imageInfo) {
-            $file->move(public_path($destinationPath), $file->getClientOriginalName());
-            return $file->getClientOriginalName();
+            $file->move(public_path($destinationPath), $filename);
+            return $filename;
         }
 
         $width = $imageInfo[0];
@@ -168,19 +178,25 @@ class Utilerias extends Controller
             case 'image/png': $img = imagecreatefrompng($file->getRealPath()); break;
             case 'image/gif': $img = imagecreatefromgif($file->getRealPath()); break;
             default:
-                $file->move(public_path($destinationPath), $file->getClientOriginalName());
-                return $file->getClientOriginalName();
+                $file->move(public_path($destinationPath), $filename);
+                return $filename;
         }
 
         if (!$img) {
-            $file->move(public_path($destinationPath), $file->getClientOriginalName());
-            return $file->getClientOriginalName();
+            $file->move(public_path($destinationPath), $filename);
+            return $filename;
         }
 
         // Redimensionar si es necesario
         if ($width > $maxWidth) {
             $newHeight = ($height * $maxWidth) / $width;
             $newImg = imagecreatetruecolor($maxWidth, $newHeight);
+
+            if (!$newImg) {
+                imagedestroy($img);
+                $file->move(public_path($destinationPath), $filename);
+                return $filename;
+            }
 
             if ($mime == 'image/png' || $mime == 'image/gif') {
                 imagealphablending($newImg, false);
@@ -192,10 +208,21 @@ class Utilerias extends Controller
             $img = $newImg;
         }
 
-        // Guardar como WebP
-        imagewebp($img, $fullPath, 80);
+        // Guardar según soporte
+        $success = false;
+        if ($useWebp) {
+            $success = imagewebp($img, $fullPath, 80);
+        } else {
+            // Fallback a JPG o PNG según el original si no hay WebP
+            if ($mime == 'image/png' || $mime == 'image/gif') {
+                $success = imagepng($img, $fullPath);
+            } else {
+                $success = imagejpeg($img, $fullPath, 85);
+            }
+        }
+        
         imagedestroy($img);
 
-        return $filename;
+        return $success ? $filename : $filename;
     }
 }

@@ -29,20 +29,51 @@ class PublicofertController extends Controller
     {
         $actualInicio = Carbon::today();
         $actualFin = Carbon::yesterday();
-        $countCatalogados = Publicoferts::where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->count();
-        $countDesatalogados = Publicoferts::where('fechaInicio', '<', $actualInicio)->where('fechaFin', '<', $actualFin)->count();
+        $countCatalogados = Cache::remember('promos_catalogadas_count', 300, function () use ($actualInicio, $actualFin) {
+            return Publicoferts::where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)->count();
+        });
+        $countDesatalogados = Cache::remember('promos_descatalogadas_count', 300, function () use ($actualInicio, $actualFin) {
+            return Publicoferts::where('fechaInicio', '<', $actualInicio)->where('fechaFin', '<', $actualFin)->count();
+        });
+        $categorias = Categorias::orderBy('name', 'ASC')->pluck('name', 'id');
+
         if ($request) {
             $query = trim($request->get('search'));
             $descatalogados = $request->get('descatalogados');
-            if ($descatalogados <> null) {
-                $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')
-                ->orderBy('orden', 'ASC')->get();
+            $fecha_desde = $request->get('fecha_desde');
+            $fecha_hasta = $request->get('fecha_hasta');
+            
+            $ofertasQuery = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%');
+
+            if ($descatalogados == null) {
+                $ofertasQuery->where('fechaInicio', '<=', $actualInicio)
+                             ->where('fechaFin', '>', $actualFin);
             }
-            else {
-                $ofertas = Publicoferts::where('titulo', 'LIKE', '%' . $query . '%')->where('fechaInicio', '<=', $actualInicio)->where('fechaFin', '>', $actualFin)
-                ->orderBy('orden', 'ASC')->get();
+
+            if ($fecha_desde) {
+                $ofertasQuery->where('fechaFin', '>=', $fecha_desde);
             }
-            return view('addpromociones.index', ['ofertas' => $ofertas, 'search' => $query, 'countCatalogados' => $countCatalogados, 'countDesatalogados' => $countDesatalogados]);
+            if ($fecha_hasta) {
+                $ofertasQuery->where('fechaFin', '<=', $fecha_hasta);
+            }
+
+            $ofertas = $ofertasQuery->orderBy('orden', 'ASC')->paginate(50);
+
+            if ($request->ajax()) {
+                return response()->json([
+                    'table' => view('addpromociones.table_partial', compact('ofertas'))->render()
+                ]);
+            }
+
+            return view('addpromociones.index', [
+                'ofertas' => $ofertas, 
+                'search' => $query, 
+                'countCatalogados' => $countCatalogados, 
+                'countDesatalogados' => $countDesatalogados,
+                'categorias' => $categorias,
+                'fecha_desde' => $fecha_desde,
+                'fecha_hasta' => $fecha_hasta
+            ]);
         }
     }
     public function ofertas()
@@ -156,23 +187,41 @@ class PublicofertController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'titulo' => 'required|max:255',
+            'categoria_id' => 'required|exists:categorias,id',
+            'fechaInicio' => 'required|date',
+            'fechaFin' => 'required|date|after_or_equal:fechaInicio',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
         $oferta = new Publicoferts();
 
         $oferta->user_id = auth()->id();
         $oferta->categoria_id  = $request->get('categoria_id');
-        $oferta->titulo = request('titulo');
-        $oferta->texto = request('texto');
+        $oferta->titulo = $request->get('titulo');
+        $oferta->texto = $request->get('texto');
         
         if ($request->hasFile('image')) {
             $oferta->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/ofertas');
         }
 
-        $oferta->fechaInicio = request('fechaInicio');
-        $oferta->fechaFin = request('fechaFin');
-        $oferta->deldia = request('deldia') ? 1 : 0;
+        $oferta->fechaInicio = $request->get('fechaInicio');
+        $oferta->fechaFin = $request->get('fechaFin');
+        $oferta->deldia = $request->get('deldia') ? 1 : 0;
         $oferta->save();
 
-        return redirect('addpromociones');
+        $this->clearPromosCache();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Promoción creada correctamente.',
+                'data' => $oferta
+            ]);
+        }
+
+        return redirect('addpromociones')->with('success', 'Promoción creada correctamente.');
     }
     public function edit($id)
     {
@@ -180,20 +229,33 @@ class PublicofertController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'titulo' => 'required|max:255',
+            'fechaInicio' => 'required|date',
+            'fechaFin' => 'required|date|after_or_equal:fechaInicio',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
         $oferta = Publicoferts::findOrFail($id);
-        $oferta->titulo = request('titulo');
-        $oferta->texto = request('texto');
+        $oferta->titulo = $request->get('titulo');
+        $oferta->texto = $request->get('texto');
 
         if ($request->hasFile('image')) {
+            // Eliminar imagen anterior si existe
+            if ($oferta->image && File::exists(public_path('img/ofertas/' . $oferta->image))) {
+                File::delete(public_path('img/ofertas/' . $oferta->image));
+            }
             $oferta->image = Utilerias::optimizeAndSaveImage($request->file('image'), 'img/ofertas');
         }
 
-        $oferta->fechaInicio = request('fechaInicio');
-        $oferta->fechaFin = request('fechaFin');
+        $oferta->fechaInicio = $request->get('fechaInicio');
+        $oferta->fechaFin = $request->get('fechaFin');
         $oferta->deldia       = $request->get('deldia') ? 1 : 0;
         $oferta->update();
 
-        return redirect('addpromociones');
+        $this->clearPromosCache();
+
+        return redirect('addpromociones')->with('success', 'Promoción actualizada correctamente.');
     }
 
     public function destroy($id)
@@ -206,10 +268,20 @@ class PublicofertController extends Controller
 
         try {
             $oferta->delete();
+            $this->clearPromosCache();
         } catch (\Exception $e) {
             return "error";
         }
 
-        return redirect('addpromociones');
+        return redirect('addpromociones')->with('success', 'Promoción eliminada correctamente.');
+    }
+
+    private function clearPromosCache()
+    {
+        Cache::forget('admin_stats');
+        Cache::forget('promos_catalogadas_count');
+        Cache::forget('promos_descatalogadas_count');
+        $actualInicio = Carbon::today()->toDateString();
+        Cache::forget('landing_index_' . $actualInicio);
     }
 }

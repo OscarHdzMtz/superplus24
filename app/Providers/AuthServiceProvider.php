@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::before(function($user,$role)
         {
-            return $user->tieneRol()->contains($role);
+            return $user->tieneRolNombre($role);
         });
     }
 }

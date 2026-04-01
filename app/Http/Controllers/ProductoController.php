@@ -14,7 +14,8 @@ class ProductoController extends Controller
     public function index(Request $request){ 
         if($request){
             $query = trim($request->get('search'));
-            $productos = Productos::where('name','LIKE','%'. $query.'%')
+            $productos = Productos::with('categoria')
+            ->where('name','LIKE','%'. $query.'%')
             ->orderBy('id','asc')
             ->simplePaginate(5);
             return view('producto.index',['productos' => $productos , 'search' => $query]);

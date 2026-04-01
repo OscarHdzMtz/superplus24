@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UserEditFormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -15,89 +16,51 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index(Request $request)
+
+    private function checkAdmin()
     {
-
-        $roles = Role::all();
-
-        // Obtener el usuario autenticado
-        $userlogued = Auth::user();
-
-        // Realizar la consulta para obtener los roles del usuario
-        $userRoles = $userlogued->roles->pluck('name');
-
-        // Verificar si el usuario tiene el rol 'Administrador'
-        if ($userRoles->contains('Administrador')) {
-
-            if ($request) {
-
-                $query = trim($request->get('search'));
-
-                $users = User::where('name', 'LIKE', '%' . $query . '%')
-                    ->orderBy('id', 'asc')
-                    ->simplePaginate(5);
-
-                return view('usuarios.index', ['users' => $users, 'search' => $query]);
-            }
-            
-        } else {
-            // El usuario no tiene el rol 'Administrador', mostrar un error de permiso
+        if (!Auth::user()->tieneRolNombre('Administrador')) {
             abort(403, 'No tiene permiso para acceder a esta página.');
         }
+    }
 
-        /*$users = User::all();
-        return view('usuarios.index',['users' => $users]);*/
+    private function getCachedRoles()
+    {
+        return Cache::remember('all_roles', 600, fn() => Role::all());
+    }
+
+    public function index(Request $request)
+    {
+        $this->checkAdmin();
+
+        $query = trim($request->get('search'));
+
+        $users = User::with('roles')
+            ->where('name', 'LIKE', '%' . $query . '%')
+            ->orderBy('id', 'asc')
+            ->simplePaginate(5);
+
+        return view('usuarios.index', ['users' => $users, 'search' => $query]);
     }
 
     public function create()
     {
-        $roles = Role::all();
-
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-
-        // Realizar la consulta para obtener los roles del usuario
-        $userRoles = $user->roles->pluck('name');
-
-        // Verificar si el usuario tiene el rol 'Administrador'
-        if ($userRoles->contains('Administrador')) {
-
-            return view('usuarios.create', ['roles' => $roles]);
-        } else {
-            // El usuario no tiene el rol 'Administrador', mostrar un error de permiso
-            abort(403, 'No tiene permiso para acceder a esta página.');
-        }
+        $this->checkAdmin();
+        return view('usuarios.create', ['roles' => $this->getCachedRoles()]);
     }
 
     public function store(UserFormRequest $request)
     {
+        $this->checkAdmin();
 
-        $roles = Role::all();
+        $usuario = new User();
+        $usuario->name = request('name');
+        $usuario->email = request('email');
+        $usuario->password = bcrypt(request('password'));
+        $usuario->save();
+        $usuario->asignarRol($request->get('rol'));
 
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-
-        // Realizar la consulta para obtener los roles del usuario
-        $userRoles = $user->roles->pluck('name');
-
-        // Verificar si el usuario tiene el rol 'Administrador'
-        if ($userRoles->contains('Administrador')) {
-
-            $usuario = new User();
-
-            $usuario->name = request('name');
-            $usuario->email = request('email');
-            $usuario->password = bcrypt(request('password'));
-
-            $usuario->save();
-
-            $usuario->asignarRol($request->get('rol'));
-
-            return redirect('usuarios');
-        } else {
-            // El usuario no tiene el rol 'Administrador', mostrar un error de permiso
-            abort(403, 'No tiene permiso para acceder a esta página.');
-        }
+        return redirect('usuarios');
     }
 
     public function show($id)
@@ -107,108 +70,50 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $this->checkAdmin();
 
-        $roles = Role::all();
-
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-
-        // Realizar la consulta para obtener los roles del usuario
-        $userRoles = $user->roles->pluck('name');
-
-        // Verificar si el usuario tiene el rol 'Administrador'
-        if ($userRoles->contains('Administrador')) {
-
-            $user = User::findOrFail($id);
-
-            $roles = Role::all();
-
-            return view('usuarios.edit', ['user' => $user, 'roles' => $roles]);
-        } else {
-            // El usuario no tiene el rol 'Administrador', mostrar un error de permiso
-            abort(403, 'No tiene permiso para acceder a esta página.');
-        }
+        $user = User::findOrFail($id);
+        return view('usuarios.edit', ['user' => $user, 'roles' => $this->getCachedRoles()]);
     }
 
     public function update(UserEditFormRequest $request, $id)
     {
+        $this->checkAdmin();
 
-        $roles = Role::all();
+        $this->validate(request(), ['email' => ['required', 'email', 'max:225', 'unique:users,email,' . $id]]);
 
-        // Obtener el usuario autenticado
-        $user = Auth::user();
+        $usuario = User::findOrFail($id);
+        $usuario->name = $request->get('name');
+        $usuario->email = $request->get('email');
 
-        // Realizar la consulta para obtener los roles del usuario
-        $userRoles = $user->roles->pluck('name');
-
-        // Verificar si el usuario tiene el rol 'Administrador'
-        if ($userRoles->contains('Administrador')) {
-
-            $this->validate(request(), ['email' => ['required', 'email', 'max:225', 'unique:users,email,' . $id]]);
-
-            $usuario = User::findOrFail($id);
-
-            $usuario->name = $request->get('name');
-
-            $usuario->email = $request->get('email');
-
-            $pass = $request->get('password');
-
-            if ($pass != null) {
-
-                $usuario->password = bcrypt($request->get('password'));
-            } else {
-
-                unset($usuario->password);
-            }
-            //modiificamos esta parte paar que actualice roles y usuarios
-            //si tiene rol actualizamos 
-            //si no tiene rol se le asigna uno
-            $role = $usuario->roles;
-
-            if (count($role) > 0) {
-
-                $role_id = $role[0]->id;
-
-                User::find($id)->roles()->updateExistingPivot($role_id, ['role_id' => $request->get('rol')]);
-            } else {
-
-                $usuario->asignarRol($request->get('rol'));
-            }
-
-            $usuario->update();
-
-            return redirect('/usuarios');
+        $pass = $request->get('password');
+        if ($pass != null) {
+            $usuario->password = bcrypt($request->get('password'));
         } else {
-            // El usuario no tiene el rol 'Administrador', mostrar un error de permiso
-            abort(403, 'No tiene permiso para acceder a esta página.');
+            unset($usuario->password);
         }
+
+        $role = $usuario->roles;
+        if (count($role) > 0) {
+            $role_id = $role[0]->id;
+            User::find($id)->roles()->updateExistingPivot($role_id, ['role_id' => $request->get('rol')]);
+        } else {
+            $usuario->asignarRol($request->get('rol'));
+        }
+
+        $usuario->update();
+
+        return redirect('/usuarios');
     }
 
     public function destroy($id)
     {
+        $this->checkAdmin();
 
-        $roles = Role::all();
+        $usuario = User::findOrFail($id);
+        $usuario->roles()->detach();
+        $usuario->delete();
 
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-
-        // Realizar la consulta para obtener los roles del usuario
-        $userRoles = $user->roles->pluck('name');
-
-        // Verificar si el usuario tiene el rol 'Administrador'
-        if ($userRoles->contains('Administrador')) {
-
-            $usuario = User::findOrFail($id);
-            // Eliminar los registros relacionados en la tabla role_user
-            $usuario->roles()->detach();
-
-            $usuario->delete();
-
-            return redirect('/usuarios');
-        } else {
-            // El usuario no tiene el rol 'Administrador', mostrar un error de permiso
-            abort(403, 'No tiene permiso para acceder a esta página.');
-        }
+        return redirect('/usuarios');
     }
 }

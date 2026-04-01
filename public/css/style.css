@@ -792,10 +792,9 @@ h2 {
 .style6{
     background-color: #003baa;
     height: 5px;
-    width: 40%;
-    margin: 0;
+    width: 80px;
+    margin: 10px auto 0;
     border-radius: 11px;
-    margin-right: 0%;
 }
 .stylefooter{
     background-color: #ffcc00;
@@ -810,8 +809,7 @@ h2 {
 ************************************************/
 .testimonial-title{
     margin-top: 25px;
-    margin-left: 40px;
-
+    text-align: center;
 }
 .testimonial-title-padding {
   padding-bottom: 50px;
@@ -819,27 +817,35 @@ h2 {
 
 .testimonial-title h5{
     color: #003baa;
-    font-size: 33;
+    font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 .testimonial-title h3{
     color: #000000;
-    font-size: 40px;
+    font-size: 2.2rem;
     font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
 .proveedor-title{
     margin-top: 25px;
-    margin-left: 40px;
+    text-align: center;
 }
 .proveedor-title h5{
     color: #FF8525;
-    font-size: 33;
+    font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 .proveedor-title h3{
     color: #000000;
-    font-size: 40px;
+    font-size: 2.2rem;
     font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
 
 /***********************************************
@@ -2948,21 +2954,20 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 ************************************************/
   .container_cards_promo{
     width: 100%;
-    padding-right: 35px;
-    padding-left: 55px;
+    max-width: 1200px;
+    padding-right: 15px;
+    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
 
 .row_cards_promo {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    justify-content: center;
     margin-top: 25px;
     margin-right: -15px;
     margin-left: -15px;
-
 }
 
 .single-contentpromo{
@@ -3023,8 +3028,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     color: white;
 }
 .popou_img_promo{
-    height: 100%;
     width: 100%;
+    display: block;
 }
 
 
@@ -4095,3 +4100,72 @@ section #services li span {
 /* .promociones_input:hover{
 background-color: #21c87a;
 } */
+
+/* RESPONSIVE - PROMOCIONES */
+@media (max-width: 991px) {
+  .testimonial-title h3 {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 767px) {
+  .testimonial-title h3 {
+    font-size: 1.5rem;
+  }
+  .testimonial-title h5 {
+    font-size: 0.9rem;
+  }
+}
+
+/* LIVEWIRE PROMOCIONES COMPONENT */
+.promo-search-wrap { position: relative; }
+.promo-search-wrap .promo-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #21c87a;
+  font-size: 0.85rem;
+  pointer-events: none;
+  z-index: 2;
+}
+.promo-search-input {
+  border-radius: 25px !important;
+  border: 2px solid #eeeeee !important;
+  padding-left: 2.5rem !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: #fff !important;
+}
+.promo-search-input:focus {
+  border-color: #21c87a !important;
+  box-shadow: 0 0 0 0.15rem rgba(33,200,122,0.25) !important;
+}
+.promo-select-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 16px center;
+  background-size: 16px;
+}
+.promo-img-card {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.promo-card-wrap {
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.promo-card-wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.promo-card-wrap:hover .promo-img-card {
+  transform: scale(1.03);
+}

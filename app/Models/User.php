@@ -71,6 +71,19 @@ class User extends Authenticatable
     }
     public function tieneRol()
     {
-        return $this->roles->flatten()->pluck('name')->unique();
+        return $this->roles->pluck('name')->unique();
+    }
+
+    public function tieneRolNombre(string $role): bool
+    {
+        if (!isset($this->rolesCache)) {
+            // If the relationship is already loaded, use it to avoid additional queries
+            if ($this->relationLoaded('roles')) {
+                $this->rolesCache = $this->roles->pluck('name');
+            } else {
+                $this->rolesCache = $this->roles()->pluck('name');
+            }
+        }
+        return $this->rolesCache->contains($role);
     }
 }

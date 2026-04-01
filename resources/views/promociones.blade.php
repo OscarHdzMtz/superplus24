@@ -117,18 +117,17 @@
         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 @php $i = 1 @endphp
-                @foreach ($slider as $slider)
+                @foreach ($slider as $slide)
                     <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                         @php $i++ @endphp
-                        @php $webpImage = pathinfo($slider->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @php $webpImage = pathinfo($slide->image, PATHINFO_FILENAME) . '.webp'; @endphp
                         <picture>
                             <source srcset="{{ asset('/img/slider/' . $webpImage) }}" type="image/webp">
-                            <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide" {{ $i > 1 ? 'loading="lazy"' : '' }}>
+                            <img class="d-block w-100" src="{{ asset('/img/slider/' . $slide->image) }}" alt="First slide" {{ $i > 1 ? 'loading="lazy"' : '' }}>
                         </picture>
-                        @if ($slider->description != null)
+                        @if ($slide->description != null)
                             <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
-                                <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>
-                                {{-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                                <h5 style="color: white"><strong>{!! $slide->description !!}</strong></h5>
                             </div>
                         @endif
                     </div>
@@ -147,13 +146,17 @@
     </div>
 @endsection
 
-@section('title')   
-    <div class="col-12">
-        <h1 align="center" class="textmov"><span class="type"></span></h1>
-        <div class="testimonial-title">
-            <h5>CONOCE</h5>
-            <h3>NUESTRAS PROMOCIONES</h3>
-            <hr class="style6">
+@section('title')
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="textmov"><span class="type"></span></h1>
+                <div class="testimonial-title">
+                    <h5>CONOCE</h5>
+                    <h3>NUESTRAS PROMOCIONES</h3>
+                    <hr class="style6">
+                </div>
+            </div>
         </div>
     </div>
     {{-- <div class="container">

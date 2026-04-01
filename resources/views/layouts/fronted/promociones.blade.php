@@ -16,20 +16,20 @@
     <meta property="og:site_name" content="SuperPlus">
 
     <!--CSS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link type="text/css" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Turbo Drive: navegación sin recarga. Livewire requiere recarga completa en esta página -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
-    <meta name="turbo-visit-control" content="reload">
     @livewireStyles
 </head>
 
-<body>
+<body style="overflow-x:hidden">
     @yield('redes')
-    <section>
+    <div>
         @if ($getPublicidadSeleccionado)
             @include('modals.publicidadEmergente')
         @endif
@@ -38,7 +38,7 @@
         @yield('banner')
         @yield('title')
         @yield('promocionesConLivewire')
-    </section>
+    </div>
     @yield('foda')
     @yield('footer')
 
@@ -61,24 +61,26 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 20,
-                stretch: 0,
-                depth: 200,
-                modifier: 1,
-                slideShadows: true,
-            },
-            loop: true,
-            autoplay: {
-                delay: 3500,
-                disableOnInteraction: false,
-            },
-        });
+        if (document.querySelector('.swiper-container')) {
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 20,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                loop: true,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+            });
+        }
     </script>
 
     <script>
@@ -96,7 +98,7 @@
 
     <script>
         $(function() {
-            $('.clic_abre_modal').on('click', function() {
+            $(document).on('click', '.clic_abre_modal', function() {
                 $('.set_imagen_promo').attr('src', $(this).find('img').attr('src'));
                 $('#modalpromo').modal('show');
             });

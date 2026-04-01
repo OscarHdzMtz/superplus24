@@ -42,19 +42,33 @@
     <script>
         (function(){
             var p = document.getElementById('preloader');
+            if(!p) return;
+
+            var hide = function(){
+                if(p.style.display !== 'none'){ 
+                    p.style.transition='opacity 0.6s ease'; 
+                    p.style.opacity='0'; 
+                    setTimeout(function(){ 
+                        p.style.display='none'; 
+                    }, 600); 
+                }
+            };
+
+            // Primer carga (Legacy window.load)
+            window.addEventListener('load', hide);
+            
+            // Soporte para Turbo Drive
+            document.addEventListener('turbo:load', hide);
+            document.addEventListener('turbo:render', hide);
+
+            // Failsafe: ocultar después de 4s pase lo que pase
+            setTimeout(hide, 4000);
+
+            // Si ya se mostró en esta sesión, ocultar inmediatamente pero permitir que Turbo lo maneje
             if(sessionStorage.getItem('preloader_shown')){
-                if(p) p.style.display='none';
+                p.style.display='none';
             } else {
                 sessionStorage.setItem('preloader_shown','1');
-                var hide = function(){
-                    if(p && p.style.display !== 'none'){ 
-                        p.style.transition='opacity 0.5s'; 
-                        p.style.opacity='0'; 
-                        setTimeout(function(){ p.style.display='none'; }, 500); 
-                    }
-                };
-                window.addEventListener('load', hide);
-                setTimeout(hide, 3000); // Failsafe: hide after 3s anyway
             }
         })();
     </script>

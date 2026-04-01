@@ -10,7 +10,7 @@ class StoreController extends Controller
 {
     public function index(){
         $categorias = Categorias::all();
-        $productos = Productos::all();
+        $productos = Productos::with('categoria')->paginate(12);
                 
         return view('categorias', compact('categorias' , 'productos'));
         

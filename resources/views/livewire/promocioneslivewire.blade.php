@@ -1,50 +1,55 @@
-<div style="text-align: center">    
-    <div class="container">
-        <div class="row {{-- d-flex justify-content-between ml-0 --}}">
-            <div class="col-lg-6 col-md-6 col-sm-12 mt-3">                
-                {{-- @if (!$categoriaBuscar) --}}
-                <input wire:model.live.debounce.300ms="search" type="search" class="promociones_input search-slt" placeholder="Buscar">   
-                <h1>{{ $search }}</h1>
-                {{-- @endif --}}
+<div>
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-6 mb-3">
+                <div class="promo-search-wrap">
+                    <i class="fas fa-search promo-icon"></i>
+                    <input wire:model.live.debounce.300ms="search" type="search"
+                        class="form-control form-control-lg promo-search-input"
+                        placeholder="Buscar promoci&oacute;n...">
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mt-3 {{-- p-0 mr-3 mt-3 styleSelect --}}">
-                {{-- @if (count($promo) > 0) --}}
-                {{-- <div class="col-lg-6 col-md-6 col-sm-12 p-0 mr-3 mt-3 styleSelect"> --}}
-                    <select wire:model.live='categoriaBuscar' class="promociones_input search-slt" id="category_filter"
-                        name="category">
-                        @if ($categoriaBuscar)
-                            <option>TODOS</option>
-                        @else
-                            <option>FILTRE POR DEPARTAMENTO</option>
-                        @endif
+            <div class="col-lg-5 col-md-6 mb-3">
+                <div class="promo-search-wrap">
+                    <i class="fas fa-th-large promo-icon"></i>
+                    <select wire:model.live='categoriaBuscar'
+                        class="form-control form-control-lg promo-search-input promo-select-input">
+                        <option value="">{{ $categoriaBuscar ? 'TODOS' : 'FILTRE POR DEPARTAMENTO' }}</option>
                         @foreach ($categorias as $itemCategoria)
-                            <option {{-- class="promociones_input" --}} value="{{ $itemCategoria['id'] }}"
-                                {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected="selected"' : '' }}>
-                                {{ $itemCategoria['name'] }}</option>
+                            <option value="{{ $itemCategoria['id'] }}"
+                                {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected' : '' }}>
+                                {{ $itemCategoria['name'] }}
+                            </option>
                         @endforeach
                     </select>
-                {{-- </div> --}}
-                {{-- @endif --}}
-            </div>           
+                </div>
+            </div>
         </div>
     </div>
 
-    <div {{-- data-aos="fade-up"  --}}class="container_cards_promo">
-        <div class="row_cards_promo">
-            @foreach ($promo as $oferta)
-                <div {{-- data-aos="zoom-in" --}} class="col-md-3 col-sm-6 mb-3">
-                    <div class="{{-- single-contentpromo --}} clic_abre_modal"> {{-- la parte comentada borde la tarjeta y le pone sombra --}}
-                        <img id="get_image_promo" loading="lazy"
-                            class="popou_img_promo"src="{{ asset('/img/ofertas/' . $oferta->image) }}"
-                            alt="{{ $oferta->image }}">
-                        <div class="text-contentpromo">
-                            {{-- <h3><strong><h2 class=" frm_pagos text-center">{{$oferta->titulo}}</h2></strong> </h3> --}}
-                            {{-- <h3><strong><h2 class="frm_pagos_promo text-center">{{$oferta->texto}}</h2></strong> </h3> --}}
-                            {{-- <hr class="style2"> --}}
+    @if (count($promo) > 0)
+        <div class="container pb-4">
+            <div class="row">
+                @foreach ($promo as $oferta)
+                    <div class="col-lg-3 col-md-4 col-6 mb-4">
+                        <div class="promo-card-wrap clic_abre_modal">
+                            <img loading="lazy" class="promo-img-card"
+                                src="{{ asset('img/ofertas/' . str_replace(' ', '%20', $oferta->image)) }}"
+                                alt="{{ $oferta->titulo ?? 'Promoci&oacute;n' }}">
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
+    @else
+        <div class="container">
+            <div class="text-center py-5">
+                <i class="fas fa-search fa-3x text-muted mb-3 d-block"></i>
+                <h5 class="text-muted">No se encontraron promociones</h5>
+                @if ($search || $categoriaBuscar)
+                    <p class="text-muted">Intenta con otros filtros de b&uacute;squeda</p>
+                @endif
+            </div>
+        </div>
+    @endif
 </div>
