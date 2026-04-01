@@ -37,7 +37,10 @@
 @section('navbar')
 <div class="img-fixed">
     <div {{-- data-aos="zoom-in-down" --}}>
-        <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        <picture>
+            <source srcset="{{ asset('img/estaticos/navbar.webp') }}" type="image/webp">
+            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        </picture>
     </div>
     <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
         {{-- <a href="#" class="logo">
@@ -120,7 +123,10 @@
     <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('/img/estaticos/contactanos.png') }}" alt="First slide">
+                    <picture>
+                        <source srcset="{{ asset('/img/estaticos/contactanos.webp') }}" type="image/webp">
+                        <img class="d-block w-100" src="{{ asset('/img/estaticos/contactanos.png') }}" alt="First slide" loading="lazy">
+                    </picture>
             </div>
         </div>
     </div>

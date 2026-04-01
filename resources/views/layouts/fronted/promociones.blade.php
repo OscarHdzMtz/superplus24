@@ -21,6 +21,9 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- Turbo Drive: navegación sin recarga. Livewire requiere recarga completa en esta página -->
+    <script src="https://cdn.jsdelivr.net/npm/@hotwire/turbo@7.3.0/dist/turbo.umd.js"></script>
+    <meta name="turbo-visit-control" content="reload">
     @livewireStyles
 </head>
 
@@ -79,14 +82,16 @@
     </script>
 
     <script>
-        var typed = new Typed('.type', {
-            strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
-                '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
-            ],
-            typeSpeed: 60,
-            backSpeed: 60,
-            loop: true
-        });
+        if (document.querySelector('.type')) {
+            var typed = new Typed('.type', {
+                strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
+                    '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'
+                ],
+                typeSpeed: 60,
+                backSpeed: 60,
+                loop: true
+            });
+        }
     </script>
 
     <script>
@@ -98,7 +103,7 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(function() {
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>

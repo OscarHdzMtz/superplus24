@@ -2,8 +2,7 @@
 function test(){
   var tabsNewAnim = $('#navbarSupportedContent');
   var activeItemNewAnim = tabsNewAnim.find('.active');
-  
-  // VALIDACIÓN: Si no hay un elemento activo, no intentar posicionar
+
   if (activeItemNewAnim.length === 0) return;
 
   var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
@@ -19,11 +18,15 @@ function test(){
     "width": activeWidthNewAnimWidth + "px"
   });
 
-  // Mostrar el selector tras el primer posicionamiento
   $(".hori-selector").addClass("ready");
 }
 
 $(document).ready(function(){
+  test();
+});
+
+// Soporte Turbo Drive: re-posicionar selector al navegar entre páginas
+document.addEventListener('turbo:load', function() {
   test();
 });
 
@@ -35,7 +38,6 @@ $(".navbar-toggler").click(function(){
   setTimeout(function(){ test(); }, 10);
 });
 
-// Listener para cambios de clic (si se usa en la misma vista)
 $("#navbarSupportedContent").on("click","li",function(e){
   $('#navbarSupportedContent ul li').removeClass("active");
   $(this).addClass('active');

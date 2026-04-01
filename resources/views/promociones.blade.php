@@ -35,7 +35,10 @@
 @section('navbar')
     <div class="img-fixed">
         <div {{-- data-aos="zoom-in-down" --}}>
+        <picture>
+            <source srcset="{{ asset('img/estaticos/navbar.webp') }}" type="image/webp">
             <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        </picture>
         </div>
         <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
             {{-- <a href="#" class="logo">            
@@ -117,7 +120,11 @@
                 @foreach ($slider as $slider)
                     <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                         @php $i++ @endphp
-                        <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide">
+                        @php $webpImage = pathinfo($slider->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        <picture>
+                            <source srcset="{{ asset('/img/slider/' . $webpImage) }}" type="image/webp">
+                            <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide" {{ $i > 1 ? 'loading="lazy"' : '' }}>
+                        </picture>
                         @if ($slider->description != null)
                             <div style="background-color: rgba(0, 0, 0, .5)" class="carousel-caption d-none d-md-block">
                                 <h5 style="color: white"><strong>{!! $slider->description !!}</strong></h5>

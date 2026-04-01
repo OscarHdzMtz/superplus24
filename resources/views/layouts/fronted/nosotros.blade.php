@@ -21,6 +21,8 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- Turbo Drive: navegación sin recarga completa de página -->
+    <script src="https://cdn.jsdelivr.net/npm/@hotwire/turbo@7.3.0/dist/turbo.umd.js"></script>
 </head>
 
 <body>
@@ -67,7 +69,7 @@
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(function() {
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>

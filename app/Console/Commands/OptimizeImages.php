@@ -62,6 +62,37 @@ class OptimizeImages extends Command
             }
         }
 
+        // --- PROCESAR IMÁGENES COMO ESTÁTICAS (Sin modificar DB) ---
+        $staticFolders = [
+            'img/estaticos',
+            'img/cupones',
+            'img/empleo',
+            'img/facturacion',
+            'img/imagenfooter',
+            'img/Instalacion',
+            'img/miempresa',
+            'img/vacantes'
+        ];
+
+        foreach ($staticFolders as $folder) {
+            $this->info("Procesando imágenes en: {$folder}...");
+            $folderPath = public_path($folder);
+            if (File::exists($folderPath)) {
+                $files = glob($folderPath . '/*.{png,jpg,jpeg,PNG,JPG,JPEG}', GLOB_BRACE);
+                foreach ($files as $file) {
+                    $filename = basename($file);
+                    $newName = pathinfo($filename, PATHINFO_FILENAME) . '.webp';
+                    $newPath = $folderPath . '/' . $newName;
+
+                    if (!file_exists($newPath)) {
+                        if ($this->optimizeAndConvert($file, $newPath)) {
+                            $this->line("Optimizado [{$folder}]: {$filename} -> {$newName}");
+                        }
+                    }
+                }
+            }
+        }
+
         $this->info('Proceso de optimización finalizado.');
         return 0;
     }
@@ -77,9 +108,9 @@ class OptimizeImages extends Command
 
         // Crear imagen desde origen
         switch ($mime) {
-            case 'image/jpeg': $img = imagecreatefromjpeg($source); break;
-            case 'image/png': $img = imagecreatefrompng($source); break;
-            case 'image/gif': $img = imagecreatefromgif($source); break;
+            case 'image/jpeg': $img = @imagecreatefromjpeg($source); break;
+            case 'image/png': $img = @imagecreatefrompng($source); break;
+            case 'image/gif': $img = @imagecreatefromgif($source); break;
             default: return false;
         }
 
@@ -103,6 +134,10 @@ class OptimizeImages extends Command
         }
 
         // Guardar como WebP
+        if (!imageistruecolor($img)) {
+            imagepalettetotruecolor($img);
+        }
+        
         $result = imagewebp($img, $destination, 80);
         imagedestroy($img);
 

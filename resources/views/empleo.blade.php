@@ -38,7 +38,10 @@
 @section('navbar')
 <div class="img-fixed">
     <div {{-- data-aos="zoom-in-down" --}}>
-        <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        <picture>
+            <source srcset="{{ asset('img/estaticos/navbar.webp') }}" type="image/webp">
+            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+        </picture>
     </div>
     <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
         {{-- <a href="#" class="logo">
