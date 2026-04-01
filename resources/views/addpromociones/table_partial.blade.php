@@ -2,6 +2,12 @@
     <table class="table table-striped table-bordered table-hover w-100">
         <thead>
             <tr style="text-align: center">
+                <th style="width: 40px" scope="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="select-all-promos">
+                        <label class="custom-control-label" for="select-all-promos"></label>
+                    </div>
+                </th>
                 <th style="width: 80px" scope="col">Editar</th>
                 <th style="width: 80px" scope="col">Eliminar</th>
                 <th style="width: 170px" scope="col">Imagen</th>
@@ -15,6 +21,12 @@
         <tbody class="lista" id="lista">
             @foreach ($ofertas as $oferta)
                 <tr style="text-align: center" data-id="{{ $oferta->id }}">
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input promo-checkbox" id="check-{{ $oferta->id }}" value="{{ $oferta->id }}">
+                            <label class="custom-control-label" for="check-{{ $oferta->id }}"></label>
+                        </div>
+                    </td>
                     <td>
                         <a href="{{ URL::route('addpromociones.edit', $oferta->id) }}">
                             <button type="button" class="btn btn-warning">

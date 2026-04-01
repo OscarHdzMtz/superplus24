@@ -31,13 +31,18 @@
     </div>
     <div class="container-fluid px-4 mb-4">
         <div class="row align-items-center">
-            <div class="col-md-6 mb-2 mb-md-0">
+            <div class="col-md-6 mb-2 mb-md-0 d-flex align-items-center">
                 <button type="button" class="btn btn-success mr-2">
                     Vigentes <span class="badge badge-light">{{ $countCatalogados }}</span>
                 </button> 
-                <button type="button" class="btn btn-danger">
+                <button type="button" class="btn btn-danger mr-3">
                     Expirados <span class="badge badge-light">{{ $countDesatalogados }}</span>
                 </button> 
+                
+                {{-- Botón de Eliminación Masiva (Oculto inicialmente) --}}
+                <button type="button" id="btnMassDelete" class="btn btn-outline-danger d-none" data-toggle="modal" data-target="#modalMassDelete">
+                    <i class="fas fa-trash-alt mr-1"></i> Eliminar seleccionados (<span id="selectedCount">0</span>)
+                </button>
             </div>
             <div class="col-md-6">
                 <form action="{{ route('addpromociones.index') }}" method="GET" class="form-inline justify-content-md-end" id="formFiltros">                       
@@ -85,6 +90,33 @@
         @include('addpromociones.table_partial')
     </div>
 
+    {{-- Modal para Confirmación de Eliminación Masiva --}}
+    <div class="modal fade" id="modalMassDelete" tabindex="-1" role="dialog" aria-labelledby="modalMassDeleteTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content border-danger">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modalMassDeleteTitle">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> Confirmar Eliminación Masiva
+                    </h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <h4 class="text-danger mb-3">¿Estás seguro?</h4>
+                    <p class="mb-0">Vas a eliminar de forma permanente <strong id="modalSelectedCount">0</strong> promociones.</p>
+                    <p class="text-muted small">Esta acción no se puede deshacer y borrará también las imágenes del servidor.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="confirmMassDelete" class="btn btn-danger px-4">
+                        <span id="btnDeleteText">Sí, Eliminar Todo</span>
+                        <span id="btnDeleteLoader" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -412,6 +444,73 @@
                                 li.innerText = 'Ocurrió un error inesperado.';
                                 errorList.appendChild(li);
                             }
+                        });
+                });
+            }
+
+            // Lógica para Eliminación Masiva
+            const btnMassDelete = document.getElementById('btnMassDelete');
+            const selectedCountSpan = document.getElementById('selectedCount');
+            const modalSelectedCountSpan = document.getElementById('modalSelectedCount');
+            const confirmMassDeleteBtn = document.getElementById('confirmMassDelete');
+            const btnDeleteText = document.getElementById('btnDeleteText');
+            const btnDeleteLoader = document.getElementById('btnDeleteLoader');
+
+            function updateMassDeleteButton() {
+                const checkedCount = document.querySelectorAll('.promo-checkbox:checked').length;
+                if (checkedCount > 0) {
+                    btnMassDelete.classList.remove('d-none');
+                    selectedCountSpan.innerText = checkedCount;
+                    modalSelectedCountSpan.innerText = checkedCount;
+                } else {
+                    btnMassDelete.classList.add('d-none');
+                    const selectAll = document.getElementById('select-all-promos');
+                    if(selectAll) selectAll.checked = false;
+                }
+            }
+
+            // Delegación de eventos para checkboxes (importante por el AJAX de la tabla)
+            $(document).on('change', '#select-all-promos', function() {
+                const isChecked = this.checked;
+                document.querySelectorAll('.promo-checkbox').forEach(cb => {
+                    cb.checked = isChecked;
+                });
+                updateMassDeleteButton();
+            });
+
+            $(document).on('change', '.promo-checkbox', function() {
+                updateMassDeleteButton();
+                
+                // Si uno se desmarca, desmarcar el "seleccionar todo"
+                if (!this.checked) {
+                    const selectAll = document.getElementById('select-all-promos');
+                    if(selectAll) selectAll.checked = false;
+                }
+            });
+
+            // Confirmar y Ejecutar Eliminación Masiva
+            if(confirmMassDeleteBtn) {
+                confirmMassDeleteBtn.addEventListener('click', function() {
+                    const selectedIds = Array.from(document.querySelectorAll('.promo-checkbox:checked')).map(cb => cb.value);
+                    
+                    if (selectedIds.length === 0) return;
+
+                    confirmMassDeleteBtn.disabled = true;
+                    btnDeleteText.innerText = 'Eliminando...';
+                    btnDeleteLoader.classList.remove('d-none');
+
+                    axios.post("{{ route('addpromociones.massDestroy') }}", { ids: selectedIds })
+                        .then(res => {
+                            if(res.data.success) {
+                                window.location.reload();
+                            }
+                        })
+                        .catch(err => {
+                            console.error('Error en eliminación masiva:', err);
+                            confirmMassDeleteBtn.disabled = false;
+                            btnDeleteText.innerText = 'Sí, Eliminar Todo';
+                            btnDeleteLoader.classList.add('d-none');
+                            alert('Ocurrió un error al intentar eliminar las promociones.');
                         });
                 });
             }

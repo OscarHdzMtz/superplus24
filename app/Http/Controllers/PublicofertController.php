@@ -276,6 +276,35 @@ class PublicofertController extends Controller
         return redirect('addpromociones')->with('success', 'Promoción eliminada correctamente.');
     }
 
+    public function massDestroy(Request $request)
+    {
+        $ids = $request->get('ids');
+
+        if (!$ids || !is_array($ids)) {
+            return response()->json(['success' => false, 'message' => 'No se seleccionaron promociones.'], 400);
+        }
+
+        $ofertas = Publicoferts::whereIn('id', $ids)->get();
+
+        foreach ($ofertas as $oferta) {
+            // Eliminar imagen del servidor
+            if ($oferta->image && File::exists(public_path('img/ofertas/' . $oferta->image))) {
+                File::delete(public_path('img/ofertas/' . $oferta->image));
+            }
+            // Eliminar registro
+            $oferta->delete();
+        }
+
+        $this->clearPromosCache();
+
+        session()->flash('success', count($ids) . ' promociones eliminadas correctamente.');
+
+        return response()->json([
+            'success' => true,
+            'message' => count($ids) . ' promociones eliminadas correctamente.'
+        ]);
+    }
+
     private function clearPromosCache()
     {
         Cache::forget('admin_stats');

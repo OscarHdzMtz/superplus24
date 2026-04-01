@@ -108,6 +108,7 @@ Route::middleware([
     Route::resource('politicaprivacidad', PoliticaprivacidadController::class);
 
     //PROMOCIONES
+    Route::post('addpromociones/mass-destroy', [PublicofertController::class, 'massDestroy'])->name('addpromociones.massDestroy');
     Route::resource('addpromociones', PublicofertController::class);
 
     Route::post('dragandrop/post', [PublicofertController::class, 'posts'])->name('dragandrop.sort');
