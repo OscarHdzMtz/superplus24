@@ -24,7 +24,7 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
-    @livewireStyles
+    {{-- @livewireStyles --}}
 </head>
 
 <body style="overflow-x:hidden">
@@ -123,7 +123,7 @@
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>
-    @livewireScripts
+    {{-- @livewireScripts --}}
 </body>
 
 </html>
