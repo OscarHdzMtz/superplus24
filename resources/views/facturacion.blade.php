@@ -299,17 +299,8 @@
 
         // Mostrar preloader al hacer click en el botón de facturación
         $(document).on('click', '.btn_modal_wel', function() {
-            var $preloader = $('#preloader');
-            var $text = $('#preloader-text');
-            if ($preloader.length) {
-                if ($text.length) {
-                    $text.text('Cargando portal de facturación...').css('visibility', 'visible');
-                }
-                $preloader.css({
-                    'display': 'block',
-                    'opacity': '1',
-                    'transition': 'none'
-                });
+            if (typeof window.showPreloader === 'function') {
+                window.showPreloader('Cargando portal de facturación...');
             }
         });
     </script>
