@@ -50,7 +50,7 @@
             // 1. AOS
             if (typeof AOS !== 'undefined') {
                 AOS.init({ easing: 'ease-in-out-sine', duration: 1000, once: true });
-                setTimeout(function() { AOS.refresh(); }, 200);
+                setTimeout(function () { AOS.refresh(); }, 200);
             }
 
             // 2. Carousels
@@ -62,7 +62,7 @@
             if (document.querySelector('.type') && typeof Typed !== 'undefined') {
                 new Typed('.type', {
                     strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
-                              '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'],
+                        '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'],
                     typeSpeed: 60, backSpeed: 60, loop: true
                 });
             }
@@ -75,7 +75,7 @@
 
         document.addEventListener('DOMContentLoaded', initializeComponents);
         document.addEventListener('turbo:load', initializeComponents);
-        document.addEventListener('turbo:render', function() { if (typeof AOS !== 'undefined') AOS.refresh(); });
+        document.addEventListener('turbo:render', function () { if (typeof AOS !== 'undefined') AOS.refresh(); });
     </script>
 </body>
 

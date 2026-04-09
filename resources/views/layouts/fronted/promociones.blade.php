@@ -88,7 +88,7 @@
         document.addEventListener('DOMContentLoaded', initializeComponents);
         document.addEventListener('turbo:load', initializeComponents);
         document.addEventListener('turbo:render', function() { if (typeof AOS !== 'undefined') AOS.refresh(); });
-    </script>
+
 
         // Click Abre Modal (fuera de turbo:load para usar delegación de eventos)
         $(document).on('click', '.clic_abre_modal', function(e) {
