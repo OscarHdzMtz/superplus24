@@ -51,7 +51,23 @@ class OptimizeImages extends Command
 
                 foreach ($items as $item) {
                     $oldName = $item->{$column};
-                    if (!$oldName || str_ends_with(strtolower($oldName), '.webp')) continue;
+                    if (!$oldName) continue;
+
+                    // Si ya es .webp, verificamos si necesita limpieza (slugify)
+                    if (str_ends_with(strtolower($oldName), '.webp')) {
+                        $baseWebp = pathinfo($oldName, PATHINFO_FILENAME);
+                        $slugWebp = Str::slug($baseWebp) . '.webp';
+                        if ($oldName !== $slugWebp) {
+                             // Si el nombre en DB no está limpio, lo limpiamos y renombramos el archivo
+                             $directory = public_path($config['path']);
+                             if (File::exists($directory . '/' . $oldName)) {
+                                 File::move($directory . '/' . $oldName, $directory . '/' . $slugWebp);
+                             }
+                             DB::table($table)->where('id', $item->id)->update([$column => $slugWebp]);
+                             $this->line("Renombrado/Limpio [DB]: {$oldName} -> {$slugWebp}");
+                        }
+                        continue;
+                    }
 
                     $directory = public_path($config['path']);
                     $oldPath = $directory . '/' . $oldName;

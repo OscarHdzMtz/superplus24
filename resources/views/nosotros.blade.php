@@ -91,7 +91,7 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        @php $webpPath = strtolower(pathinfo($empresa->image, PATHINFO_FILENAME)) . '.webp'; @endphp
+                        @php $webpPath = \Illuminate\Support\Str::slug(pathinfo($empresa->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         @if(file_exists(public_path('img/miempresa/' . $webpPath)))
                             <picture>
                                 <source srcset="{{ asset('/img/miempresa/' . $webpPath) }}" type="image/webp">
@@ -115,7 +115,7 @@
                         <p class="historia-text">{{ $empresa->description }}</p>
                     </div>
                     <div data-aos="fade-right" class="col-md-6 order-2 order-md-1">
-                        @php $webpPathHistoria = strtolower(pathinfo($empresa->image, PATHINFO_FILENAME)) . '.webp'; @endphp
+                        @php $webpPathHistoria = \Illuminate\Support\Str::slug(pathinfo($empresa->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         @if(file_exists(public_path('img/miempresa/' . $webpPathHistoria)))
                             <picture>
                                 <source srcset="{{ asset('/img/miempresa/' . $webpPathHistoria) }}" type="image/webp">

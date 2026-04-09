@@ -138,7 +138,7 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        @php $webpFactBanner = strtolower(pathinfo($setFacturacion->image, PATHINFO_FILENAME)) . '.webp'; @endphp
+                        @php $webpFactBanner = \Illuminate\Support\Str::slug(pathinfo($setFacturacion->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         @if(file_exists(public_path('img/facturacion/' . $webpFactBanner)))
                             <picture>
                                 <source srcset="{{ asset('/img/facturacion/' . $webpFactBanner) }}" type="image/webp">
@@ -165,7 +165,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 order-2 order-md-1">
-                        @php $webpFactImage = strtolower(pathinfo($setFacturacion->image, PATHINFO_FILENAME)) . '.webp'; @endphp
+                        @php $webpFactImage = \Illuminate\Support\Str::slug(pathinfo($setFacturacion->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         @if(file_exists(public_path('img/facturacion/' . $webpFactImage)))
                             <picture>
                                 <source srcset="{{ asset('/img/facturacion/' . $webpFactImage) }}" type="image/webp">

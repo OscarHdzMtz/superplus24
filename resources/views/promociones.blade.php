@@ -120,7 +120,7 @@
                 @foreach ($slider as $slide)
                     <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                         @php $i++ @endphp
-                        @php $webpImage = strtolower(pathinfo($slide->image, PATHINFO_FILENAME)) . '.webp'; @endphp
+                        @php $webpImage = \Illuminate\Support\Str::slug(pathinfo($slide->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         <picture>
                             <source srcset="{{ asset('/img/slider/' . $webpImage) }}" type="image/webp">
                             <img class="d-block w-100" src="{{ asset('/img/slider/' . $slide->image) }}" alt="First slide" {{ $i > 1 ? 'loading="lazy"' : '' }}>
