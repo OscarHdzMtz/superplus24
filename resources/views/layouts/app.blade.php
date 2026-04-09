@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="imagenes" href="{{ asset('img/favicon.ico') }}">
+    <link rel="shortcut icon" type="imagenes" href="{{ asset('img/estaticos/logopalomita.png') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Dashboard</title>    
+    <title>{{ config('app.name', 'SuperPlus24') }}</title>    
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free-6.3.0-web/css/all.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
