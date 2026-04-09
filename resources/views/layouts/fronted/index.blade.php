@@ -28,9 +28,24 @@
     <link type="text/css" href="{{ asset('css/styleletras.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/slick.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/slider/slider.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <!-- Turbo Drive: navegación sin recarga completa de página -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
+    @livewireStyles
+    
+    <!-- Scripts Core -->
+    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/slick.min.js') }}" defer></script>
+    <script src="{{ asset('js/aos.js') }}" defer></script>
+    <script src="{{ asset('js/swiper-bundle.min.js') }}" defer></script>
+    <script src="{{ asset('js/typed.js') }}" defer></script>
+    <script src="{{ asset('js/prueba.js') }}" defer></script>
+    <script src="{{ asset('js/hgnka.js') }}" defer></script>
+    <script src="{{ asset('js/provee.js') }}" defer></script>
+    <script src="{{ asset('js/security.js') }}" defer></script>
+
+    <!-- Turbo Drive -->
+    <script src="{{ asset('js/turbo.min.js') }}"></script>
 </head>
 
 <body>
@@ -93,33 +108,19 @@
     @yield('footer')
     @yield('modals')
 
-    <!--SCRIPTS-->
-    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('js/slick.min.js') }}"></script>
-    <script src="{{ asset('js/hgnka.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('js/security.js') }}" defer></script>
-    <script src="{{ asset('js/provee.js') }}" defer></script>
-    <script src="{{ asset('js/typed.js') }}" defer></script>
-    <script src="{{ asset('js/prueba.js') }}" defer></script>
-    <script src="{{ asset('js/aos.js') }}" defer></script>
-
+    <!--SCRIPTS DE INICIALIZACION-->
     <script>
-        window.addEventListener('load', function() {
+        document.addEventListener('turbo:load', function() {
+            // AOS
             if (typeof AOS !== 'undefined') {
                 AOS.init({
                     easing: 'ease-in-out-sine',
                     duration: 1000
                 });
             }
-        });
-    </script>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-    <script>
-        window.addEventListener('load', function() {
-            if (typeof Swiper !== 'undefined') {
+            // Swiper
+            if (document.querySelector('.clients-slider') && typeof Swiper !== 'undefined') {
                 new Swiper('.clients-slider', {
                     speed: 400,
                     loop: true,
@@ -141,13 +142,10 @@
                     }
                 });
             }
-        });
-    </script>
 
-    <script>
-        window.addEventListener('load', function() {
-            if (typeof Typed !== 'undefined') {
-                var typed = new Typed('.type', {
+            // Typed
+            if (document.querySelector('.type') && typeof Typed !== 'undefined') {
+                new Typed('.type', {
                     strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
                         '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
                     ],
@@ -156,19 +154,13 @@
                     loop: true
                 });
             }
-        });
-    </script>
 
-    <script>
-        $(document).ready(function() {
+            // Modales
             $('#cookieModal').modal('show');
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>
+    @livewireScripts
 </body>
 
 </html>

@@ -24,7 +24,16 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
-    {{-- @livewireStyles --}}
+    @livewireStyles
+    
+    <!-- Scripts Core -->
+    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}" defer></script>
+    <script src="{{ asset('js/swiper-bundle.min.js') }}" defer></script>
+    <script src="{{ asset('js/typed.js') }}" defer></script>
+    <script src="{{ asset('js/prueba.js') }}" defer></script>
 </head>
 
 <body style="overflow-x:hidden">
@@ -42,88 +51,72 @@
     @yield('foda')
     @yield('footer')
 
-    <!--SCRIPTS-->
-    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/responsive.js') }}"></script>
-    <script src="{{ asset('js/security.js') }}"></script>
-    <script src="{{ asset('js/typed.js') }}"></script>
-    <script src="{{ asset('js/prueba.js') }}"></script>
-    <script src="{{ asset('js/aos.js') }}"></script>
+    <!--SCRIPTS DE INICIALIZACION-->
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
+    <script src="{{ asset('js/security.js') }}" defer></script>
 
     <script>
-        AOS.init({
-            easing: 'ease-in-out-sine',
-            duration: 1000
-        });
-    </script>
+        document.addEventListener('turbo:load', function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    easing: 'ease-in-out-sine',
+                    duration: 1000
+                });
+            }
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        if (document.querySelector('.swiper-container')) {
-            var swiper = new Swiper('.swiper-container', {
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 'auto',
-                coverflowEffect: {
-                    rotate: 20,
-                    stretch: 0,
-                    depth: 200,
-                    modifier: 1,
-                    slideShadows: true,
-                },
-                loop: true,
-                autoplay: {
-                    delay: 3500,
-                    disableOnInteraction: false,
-                },
-            });
-        }
-    </script>
+            if (document.querySelector('.swiper-container') && typeof Swiper !== 'undefined') {
+                new Swiper('.swiper-container', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflowEffect: {
+                        rotate: 20,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 1,
+                        slideShadows: true,
+                    },
+                    loop: true,
+                    autoplay: {
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    },
+                });
+            }
 
-    <script>
-        if (document.querySelector('.type')) {
-            var typed = new Typed('.type', {
-                strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
-                    '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'
-                ],
-                typeSpeed: 60,
-                backSpeed: 60,
-                loop: true
-            });
-        }
-    </script>
+            if (document.querySelector('.type') && typeof Typed !== 'undefined') {
+                new Typed('.type', {
+                    strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
+                        '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'
+                    ],
+                    typeSpeed: 60,
+                    backSpeed: 60,
+                    loop: true
+                });
+            }
 
-    <script>
-        $(function() {
-            $(document).on('click', '.clic_abre_modal', function(e) {
-                e.preventDefault();
-                var $this = $(this);
-                var imgSrc = $this.find('img').attr('src');
-                var $modalImg = $('.set_imagen_promo');
-                
-                // 1. Limpiar y ocultar imagen previa
-                $modalImg.removeClass('loaded').attr('src', '');
-                
-                // 2. Crear objeto de imagen para pre-carga
-                var imgPreload = new Image();
-                imgPreload.onload = function() {
-                    // 3. Cuando esté cargada, asignar y mostrar de inmediato
-                    $modalImg.attr('src', imgSrc);
-                    $('#modalpromo').modal('show');
-                };
-                imgPreload.src = imgSrc;
+            $(function() {
+                $("#modalPublicidadEmergente").modal("show");
             });
         });
-    </script>
-    <script>
-        $(function() {
-            $("#modalPublicidadEmergente").modal("show");
+
+        // Click Abre Modal (fuera de turbo:load para usar delegación de eventos)
+        $(document).on('click', '.clic_abre_modal', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            var imgSrc = $this.find('img').attr('src');
+            var $modalImg = $('.set_imagen_promo');
+            $modalImg.removeClass('loaded').attr('src', '');
+            var imgPreload = new Image();
+            imgPreload.onload = function() {
+                $modalImg.attr('src', imgSrc);
+                $('#modalpromo').modal('show');
+            };
+            imgPreload.src = imgSrc;
         });
     </script>
-    {{-- @livewireScripts --}}
+    @livewireScripts
 </body>
 
 </html>

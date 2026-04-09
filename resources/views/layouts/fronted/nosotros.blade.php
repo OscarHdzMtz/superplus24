@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="imagenes" href="{{ asset('img/estaticos/logopalomita.png') }}">
     <title>Nosotros | SuperPlus</title>
-    <meta name="description" content="SuperPlus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, brindado  servicio las 24 horas del día los 365 días del año,  con una experiencia de 12 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.">
+    <meta name="description" content="SuperPlus, fundada en el aÃ±o 2010, en la ciudad de Huajuapan de LeÃ³n Oaxaca, brindado  servicio las 24 horas del dÃ­a los 365 dÃ­as del aÃ±o,  con una experiencia de 12 aÃ±os en el mercado, esmerÃ¡ndos en llevar a nuestros clientes productos y servicios  de calidad.">
     <link rel="canonical" href="https://superplus24horas.com/nosotros">
     <meta property="og:locale" content="es_MX">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Nosotros | SuperPlus">
-    <meta property="og:description" content="SuperPlus, fundada en el año 2010, en la ciudad de Huajuapan de León Oaxaca, brindado  servicio las 24 horas del día los 365 días del año,  con una experiencia de 12 años en el mercado, esmerándos en llevar a nuestros clientes productos y servicios  de calidad.">
+    <meta property="og:description" content="SuperPlus, fundada en el aÃ±o 2010, en la ciudad de Huajuapan de LeÃ³n Oaxaca, brindado  servicio las 24 horas del dÃ­a los 365 dÃ­as del aÃ±o,  con una experiencia de 12 aÃ±os en el mercado, esmerÃ¡ndos en llevar a nuestros clientes productos y servicios  de calidad.">
     <meta property="og:url" content="https://superplus24horas.com/nosotros">
     <meta property="og:site_name" content="SuperPlus">
 
@@ -21,8 +21,8 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Turbo Drive: navegación sin recarga completa de página -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
+    <!-- Turbo Drive: navegaciÃ³n sin recarga completa de pÃ¡gina -->
+    <script src="{{ asset('js/turbo.min.js') }}"></script>
 </head>
 
 <body>
@@ -58,7 +58,7 @@
     <script>
         if (document.querySelector('.type')) {
             var typed = new Typed('.type', {
-                strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
+                strings: ['<span><i class="fas fa-check"></i></span> Â¡DALE UN PLUS A TU DIA!',
                     '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
                     '<span><i class="fas fa-motorcycle"></i></span> SERVICIO A DOMICILIO'
                 ],

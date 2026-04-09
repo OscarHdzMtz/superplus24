@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -19,8 +19,8 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Turbo Drive: navegación sin recarga completa de página -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
+    <!-- Turbo Drive: navegaciÃ³n sin recarga completa de pÃ¡gina -->
+    <script src="{{ asset('js/turbo.min.js') }}"></script>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
     <script>
         if (document.querySelector('.type')) {
             var typed = new Typed('.type', {
-                strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
+                strings: ['<span><i class="fas fa-check"></i></span> Â¡DALE UN PLUS A TU DIA!',
                     '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
                     '<span><i class="fas fa-motorcycle"></i></span> SERVICIO A DOMICILIO'
                 ],

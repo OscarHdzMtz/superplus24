@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="imagenes" href="{{ asset('img/estaticos/logopalomita.png') }}">
-    <title>Facturación | SuperPlus</title>
-    <meta name="description" content="Genere y descarge su Factura Electrónica.">
+    <title>FacturaciÃ³n | SuperPlus</title>
+    <meta name="description" content="Genere y descarge su Factura ElectrÃ³nica.">
     <link rel="canonical" href="https://superplus24horas.com/facturacion">
     <meta property="og:locale" content="es_MX">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Facturación | SuperPlus">
-    <meta property="og:description" content="Genere y descarge su Factura Electrónica.">
+    <meta property="og:title" content="FacturaciÃ³n | SuperPlus">
+    <meta property="og:description" content="Genere y descarge su Factura ElectrÃ³nica.">
     <meta property="og:url" content="https://superplus24horas.com/facturacion">
     <meta property="og:site_name" content="SuperPlus">
 
@@ -21,8 +21,8 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Turbo Drive: navegación sin recarga completa de página -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
+    <!-- Turbo Drive: navegaciÃ³n sin recarga completa de pÃ¡gina -->
+    <script src="{{ asset('js/turbo.min.js') }}"></script>
 </head>
 
 <body>
@@ -49,7 +49,7 @@
     <script>
         if (document.querySelector('.type')) {
             var typed = new Typed('.type', {
-                strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
+                strings: ['<span><i class="fas fa-check"></i></span> Â¡DALE UN PLUS A TU DIA!',
                     '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
                     '<span><i class="fas fa-motorcycle"></i></span> SERVICIO A DOMICILIO'
                 ],
