@@ -46,17 +46,37 @@ class OptimizeImages extends Command
                     $oldName = $item->{$column};
                     if (!$oldName || str_ends_with(strtolower($oldName), '.webp')) continue;
 
-                    $oldPath = public_path($config['path'] . '/' . $oldName);
+                    $directory = public_path($config['path']);
+                    $oldPath = $directory . '/' . $oldName;
+
+                    // Búsqueda inteligente (Case-Insensitive para Linux)
                     if (!File::exists($oldPath)) {
+                        $files = File::files($directory);
+                        foreach ($files as $file) {
+                            if (strtolower($file->getFilename()) === strtolower($oldName)) {
+                                $oldPath = $file->getRealPath();
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!File::exists($oldPath)) {
+                        $this->warn("No se encontró el archivo: {$oldName} en {$config['path']}. Saltando...");
                         continue;
                     }
 
-                    $newName = pathinfo($oldName, PATHINFO_FILENAME) . '.webp';
-                    $newPath = public_path($config['path'] . '/' . $newName);
+                    // Forzar nombre en minúsculas para el nuevo WebP
+                    $newName = strtolower(pathinfo($oldName, PATHINFO_FILENAME)) . '.webp';
+                    $newPath = $directory . '/' . $newName;
 
                     if ($this->optimizeAndConvert($oldPath, $newPath)) {
                         DB::table($table)->where('id', $item->id)->update([$column => $newName]);
                         $this->line("Optimizado [{$column}]: {$oldName} -> {$newName}");
+                        
+                        // Si el nombre cambió solo por mayúsculas/minúsculas, eliminamos el original viejo
+                        if (strtolower($oldName) !== strtolower($newName)) {
+                             // Opcional: File::delete($oldPath);
+                        }
                     }
                 }
             }
@@ -78,14 +98,19 @@ class OptimizeImages extends Command
             $this->info("Procesando imágenes en: {$folder}...");
             $folderPath = public_path($folder);
             if (File::exists($folderPath)) {
-                $files = glob($folderPath . '/*.{png,jpg,jpeg,PNG,JPG,JPEG}', GLOB_BRACE);
+                // Buscamos todas las imágenes sin importar la extensión (mayúsculas o minúsculas)
+                $files = File::files($folderPath);
                 foreach ($files as $file) {
-                    $filename = basename($file);
-                    $newName = pathinfo($filename, PATHINFO_FILENAME) . '.webp';
+                    $filename = $file->getFilename();
+                    if (str_ends_with(strtolower($filename), '.webp')) continue;
+                    
+                    if (!preg_match('/\.(png|jpg|jpeg|gif)$/i', $filename)) continue;
+
+                    $newName = strtolower(pathinfo($filename, PATHINFO_FILENAME)) . '.webp';
                     $newPath = $folderPath . '/' . $newName;
 
                     if (!file_exists($newPath)) {
-                        if ($this->optimizeAndConvert($file, $newPath)) {
+                        if ($this->optimizeAndConvert($file->getRealPath(), $newPath)) {
                             $this->line("Optimizado [{$folder}]: {$filename} -> {$newName}");
                         }
                     }
