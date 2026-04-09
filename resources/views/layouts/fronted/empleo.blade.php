@@ -23,8 +23,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     
     <!-- Core & Hybrid Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.8.0/dist/turbo.es2017-umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{{ asset('js/turbo.min.js') }}"></script>
+    <script src="{{ asset('js/typed.js') }}"></script>
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
