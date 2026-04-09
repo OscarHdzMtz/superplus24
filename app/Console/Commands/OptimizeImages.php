@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class OptimizeImages extends Command
 {
@@ -19,6 +20,12 @@ class OptimizeImages extends Command
         'proveedores' => ['path' => 'img/proveedore', 'columns' => ['image']],
         'cardservicios' => ['path' => 'img/servicios', 'columns' => ['image', 'imghover']],
         'publicidad_emergentes' => ['path' => 'img/publicidadEmergente', 'columns' => ['image']],
+        'facturacion_pages' => ['path' => 'img/facturacion', 'columns' => ['image']],
+        'indexsettings' => ['path' => 'img/imagenfooter', 'columns' => ['image']],
+        'miempresas' => ['path' => 'img/miempresa', 'columns' => ['image']],
+        'vacantes' => ['path' => 'img/vacantes', 'columns' => ['image']],
+        'instalacions' => ['path' => 'img/Instalacion', 'columns' => ['image']],
+        'crear_cupones' => ['path' => 'img/cupones', 'columns' => ['image']],
     ];
 
     public function handle()
@@ -65,8 +72,14 @@ class OptimizeImages extends Command
                         continue;
                     }
 
-                    // Forzar nombre en minúsculas para el nuevo WebP
-                    $newName = strtolower(pathinfo($oldName, PATHINFO_FILENAME)) . '.webp';
+                    // Normalización profunda (Slugify + Minúsculas) para evitar problemas en Linux
+                    $baseName = pathinfo($oldName, PATHINFO_FILENAME);
+                    $newName = Str::slug($baseName) . '.webp';
+                    
+                    if (!$newName || $newName === '.webp') {
+                         $newName = strtolower($baseName) . '.webp'; // Fallback si slug falla
+                    }
+
                     $newPath = $directory . '/' . $newName;
 
                     if ($this->optimizeAndConvert($oldPath, $newPath)) {
@@ -106,7 +119,11 @@ class OptimizeImages extends Command
                     
                     if (!preg_match('/\.(png|jpg|jpeg|gif)$/i', $filename)) continue;
 
-                    $newName = strtolower(pathinfo($filename, PATHINFO_FILENAME)) . '.webp';
+                    $baseName = pathinfo($filename, PATHINFO_FILENAME);
+                    $newName = Str::slug($baseName) . '.webp';
+                    if (!$newName || $newName === '.webp') {
+                        $newName = strtolower($baseName) . '.webp';
+                    }
                     $newPath = $folderPath . '/' . $newName;
 
                     if (!file_exists($newPath)) {
