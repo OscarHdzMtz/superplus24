@@ -3765,11 +3765,11 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   vertical-align: middle;
 }
 .estilo2 ul li a .prueba{
-  background: #003baa;
-  border-radius: 50%;
+  color: #003baa;
 }
 .estilo2 ul li a {
   color: white;
+  text-decoration: none;
 }
 .estilo2 ul li a:hover {
   color: #ffcc00;
@@ -3778,7 +3778,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   color: #ffcc00;
 }
 .estilo2 ul li a .icono:hover{
-  color: white;
+  color: #ffffff;
 }
 /* FIN ESTILO ICONOS FOOTER INDEX */
 

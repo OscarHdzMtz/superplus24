@@ -266,38 +266,30 @@
                                 <div class="estilo2">
                                     <ul>
                                         <li>
-                                            <a href="https://www.facebook.com/superplus24horas/" class=""
-                                                target="_blank">
+                                            <a href="https://www.facebook.com/superplus24horas/" target="_blank">
                                                 <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fa fa-facebook fa-stack-1x"></span>
-                                                    </div>
+                                                    <i class="fas fa-circle fa-stack-2x prueba"></i>
+                                                    <i class="fab fa-facebook-f fa-stack-1x icono"></i>
                                                 </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.instagram.com/superplus24hrs/" class=""
-                                                target="_blank">
+                                            <a href="https://www.instagram.com/superplus24hrs/" target="_blank">
                                                 <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fab fa-instagram fa-stack-1x"></span>
-                                                    </div>
+                                                    <i class="fas fa-circle fa-stack-2x prueba"></i>
+                                                    <i class="fab fa-instagram fa-stack-1x icono"></i>
                                                 </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://vm.tiktok.com/ZMNA67fEu/" class="" target="_blank">
+                                            <a href="https://vm.tiktok.com/ZMNA67fEu/" target="_blank">
                                                 <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fab fa-tiktok fa-stack-1x"></span>
-                                                    </div>
+                                                    <i class="fas fa-circle fa-stack-2x prueba"></i>
+                                                    <i class="fab fa-tiktok fa-stack-1x icono"></i>
                                                 </span>
                                             </a>
                                         </li>
-                                        <ul>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
