@@ -107,7 +107,7 @@
             <div id="carouselExampleSlidesOnly" class="banner_nosotros" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        @php $webpEmpleoBanner = pathinfo($setempleo->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @php $webpEmpleoBanner = strtolower(pathinfo($setempleo->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         @if(file_exists(public_path('img/empleo/' . $webpEmpleoBanner)))
                             <picture>
                                 <source srcset="{{ asset('/img/empleo/' . $webpEmpleoBanner) }}" type="image/webp">
@@ -130,7 +130,7 @@
                     <div class="row ">
                         <div class="col-lg-4">
                             <div class="service-img">
-                                @php $webpEmpleoImage = pathinfo($setempleo->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                                @php $webpEmpleoImage = strtolower(pathinfo($setempleo->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                                 @if(file_exists(public_path('img/empleo/' . $webpEmpleoImage)))
                                     <picture>
                                         <source srcset="{{ asset('/img/empleo/' . $webpEmpleoImage) }}" type="image/webp">
@@ -249,7 +249,7 @@
         @foreach ($addvacante as $setvacante)
             <div class="card">
                 <div class="img-cover">
-                    @php $webpVacante = pathinfo($setvacante->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                    @php $webpVacante = strtolower(pathinfo($setvacante->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                     @if(file_exists(public_path('img/vacantes/' . $webpVacante)))
                         <picture>
                             <source srcset="{{ asset('/img/vacantes/' . $webpVacante) }}" type="image/webp">

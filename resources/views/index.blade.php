@@ -103,7 +103,7 @@
             @foreach ($sliderindex as $slider)
                 <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
                     @php $i++ @endphp
-                    @php $webpImage = pathinfo($slider->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                    @php $webpImage = strtolower(pathinfo($slider->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                     <picture>
                         <source srcset="{{ asset('/img/slider/' . $webpImage) }}" type="image/webp">
                         <img class="d-block w-100" src="{{ asset('/img/slider/' . $slider->image) }}" alt="First slide" {{ $i > 2 ? ' loading="lazy"' : '' }}>
@@ -148,7 +148,7 @@
                 @endforeach
                 @foreach ($getimagen as $setimagen)
                     <div data-aos="fade-right" class="col-md-6 order-2 order-md-1">
-                        @php $webpFooterImg = pathinfo($setimagen->image, PATHINFO_FILENAME) . '.webp'; @endphp
+                        @php $webpFooterImg = strtolower(pathinfo($setimagen->image, PATHINFO_FILENAME)) . '.webp'; @endphp
                         @if(file_exists(public_path('img/imagenfooter/' . $webpFooterImg)))
                             <picture>
                                 <source srcset="{{ asset('/img/imagenfooter/' . $webpFooterImg) }}" type="image/webp">
