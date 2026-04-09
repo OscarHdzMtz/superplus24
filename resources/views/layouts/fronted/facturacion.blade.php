@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="imagenes" href="{{ asset('img/estaticos/logopalomita.png') }}">
-    <title>FacturaciÃ³n | SuperPlus</title>
+    <title>Facturacion | SuperPlus</title>
     <meta name="description" content="Genere y descarge su Factura ElectrÃ³nica.">
     <link rel="canonical" href="https://superplus24horas.com/facturacion">
     <meta property="og:locale" content="es_MX">
@@ -21,11 +21,12 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Turbo Drive: navegaciÃ³n sin recarga completa de pÃ¡gina -->
+    <!-- Turbo Drive: navegacion sin recarga completa de pÃ¡gina -->
     <script src="{{ asset('js/turbo.min.js') }}"></script>
 </head>
 
 <body>
+    @include('partials.preloader', ['onlyManual' => true])
     <section>
         @if ($getPublicidadSeleccionado)
             @include('modals.publicidadEmergente')
@@ -66,7 +67,7 @@
         });
     </script>
     <script>
-        $(function() {
+        $(function () {
             $("#modalPublicidadEmergente").modal("show");
         });
     </script>
