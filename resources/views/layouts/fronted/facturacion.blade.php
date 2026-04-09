@@ -21,12 +21,17 @@
     <link type="text/css" href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylenos.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Turbo Drive: navegacion sin recarga completa de pÃ¡gina -->
+    <!-- Turbo Drive -->
     <script src="{{ asset('js/turbo.min.js') }}"></script>
+    
+    <!-- Core Scripts (Head) -->
+    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </head>
 
 <body>
-    @include('partials.preloader', ['onlyManual' => true])
+    @include('partials.billing_preloader')
     <section>
         @if ($getPublicidadSeleccionado)
             @include('modals.publicidadEmergente')
@@ -38,9 +43,6 @@
     @yield('footer')
 
     <!--SCRIPTS-->
-    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/responsive.js') }}"></script>
     <script src="{{ asset('js/security.js') }}"></script>
     <script src="{{ asset('js/typed.js') }}"></script>

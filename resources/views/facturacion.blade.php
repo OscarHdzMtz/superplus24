@@ -37,15 +37,15 @@
 @section('navbar')
     <div class="img-fixed">
         <div {{-- data-aos="zoom-in-down" --}}>
-        <picture>
-            <source srcset="{{ asset('img/estaticos/navbar.webp') }}" type="image/webp">
-            <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
-        </picture>
+            <picture>
+                <source srcset="{{ asset('img/estaticos/navbar.webp') }}" type="image/webp">
+                <img class="imgnavbartop" src="{{ asset('img/estaticos/navbar.jpg') }}" alt="SuperPlus">
+            </picture>
         </div>
         <nav class="navbar sticky-top navbar-expand-custom navbar-mainbg">
             {{-- <a href="#" class="logo">
-            <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
-        </a> --}}
+                <img class="imgtamaño" src="{{ asset('dist/img/logo.png') }}" alt="SuperPlus">
+            </a> --}}
             <a href="#" class="logo">
                 <img class="imgtamaño">
             </a>
@@ -59,31 +59,32 @@
                         <div class="left"></div>
                         <div class="right"></div>
                     </div>
-                <li class="nav-item">
-                    <a href="/" class="nav-link"><i class="fas fa-tachometer-alt"></i>INICIO</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/promociones" class="nav-link"><i class="fas fa-percentage"></i>PROMOCIONES</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/nosotros" class="nav-link"><i class="fas fa-check-circle"></i>NOSOTROS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/empleo" class="nav-link"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/contact" class="nav-link"><i class="fas fa-phone"></i>CONTACTANOS</a>
-                </li>
-                <li class="nav-item active">
-                    <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
-                        class="nav-link"><i class="far fa-copy"></i>FACTURACION</a>
-                </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link"><i class="fas fa-tachometer-alt"></i>INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/promociones" class="nav-link"><i class="fas fa-percentage"></i>PROMOCIONES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/nosotros" class="nav-link"><i class="fas fa-check-circle"></i>NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/empleo" class="nav-link"><i class="fas fa-building"></i>BOLSA DE TRABAJO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link"><i class="fas fa-phone"></i>CONTACTANOS</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="https://picaroscomer.dyndns.org/WebFlec/facturacion_01.aspx" target="_blank"
+                            class="nav-link"><i class="far fa-copy"></i>FACTURACION</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </div>
     @if (session('info'))
-        {{-- <script>
+        {{--
+        <script>
             alert("{{ session('info') }}");
         </script> --}}
         <div classs="container ">
@@ -142,166 +143,173 @@
                         @if(file_exists(public_path('img/facturacion/' . $webpFactBanner)))
                             <picture>
                                 <source srcset="{{ asset('/img/facturacion/' . $webpFactBanner) }}" type="image/webp">
-                                <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="FacturacionPlus">
+                                <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}"
+                                    alt="FacturacionPlus">
                             </picture>
                         @else
-                            <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="FacturacionPlus">
+                            <img class="d-block w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}"
+                                alt="FacturacionPlus">
                         @endif
                     </div>
                 </div>
-            </div>            
+            </div>
         @elseif($setFacturacion->label == 'textoImagen')
             {{-- <div class="px-5"> --}}
                 <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
-                        {{-- <h5 >CONOCE</h5> --}}
-                        <div class="testimonial-title">
-                            <h3>{{ $setFacturacion->titulo }}</h3>
-                            {{-- <hr class="style6 historia-title"> --}}
+                    <div class="row align-items-center">
+                        <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+                            {{-- <h5>CONOCE</h5> --}}
+                            <div class="testimonial-title">
+                                <h3>{{ $setFacturacion->titulo }}</h3>
+                                {{--
+                                <hr class="style6 historia-title"> --}}
+                            </div>
+                            <div class="container text-justify justify-content-md-center">
+                                <p style="text-align: justify" class="historia-text">{!! $setFacturacion->description !!}</p>
+                            </div>
                         </div>
-                        <div class="container text-justify justify-content-md-center">
-                            <p style="text-align: justify" class="historia-text">{!! $setFacturacion->description !!}</p>
+                        <div class="col-md-6 order-2 order-md-1">
+                            @php $webpFactImage = \Illuminate\Support\Str::slug(pathinfo($setFacturacion->image, PATHINFO_FILENAME)) . '.webp'; @endphp
+                            @if(file_exists(public_path('img/facturacion/' . $webpFactImage)))
+                                <picture>
+                                    <source srcset="{{ asset('/img/facturacion/' . $webpFactImage) }}" type="image/webp">
+                                    <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}"
+                                        alt="about image">
+                                </picture>
+                            @else
+                                <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}"
+                                    alt="about image">
+                            @endif
                         </div>
-                    </div>
-                    <div class="col-md-6 order-2 order-md-1">
-                        @php $webpFactImage = \Illuminate\Support\Str::slug(pathinfo($setFacturacion->image, PATHINFO_FILENAME)) . '.webp'; @endphp
-                        @if(file_exists(public_path('img/facturacion/' . $webpFactImage)))
-                            <picture>
-                                <source srcset="{{ asset('/img/facturacion/' . $webpFactImage) }}" type="image/webp">
-                                <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="about image">
-                            </picture>
-                        @else
-                            <img class="img-fluid w-100" src="{{ asset('/img/facturacion/' . $setFacturacion->image) }}" alt="about image">
-                        @endif
                     </div>
                 </div>
-            </div>
         @elseif($setFacturacion->label == 'titulo')
-            <div class="testimonial-title">
-                {{-- <h5>CONOCE</h5> --}}
-                <h1>{{ $setFacturacion->titulo }}</h1>
-                <hr class="style6">
-            </div>   
-            <br>         
-        @elseif($setFacturacion->label == 'subtitulo')
-            <div class="container">
-                {{-- <h5>CONOCE</h5> --}}
-                <div class="container text-center justify-content-md-center">
-                    <p style="color: black; text-align: center">{!! $setFacturacion->subtitulo !!}</p>
+                <div class="testimonial-title">
+                    {{-- <h5>CONOCE</h5> --}}
+                    <h1>{{ $setFacturacion->titulo }}</h1>
+                    <hr class="style6">
                 </div>
-            </div>
-        @elseif($setFacturacion->label == 'boton')
-            <div>
-                {{-- <h5>CONOCE</h5> --}}
-                <div class="container text-center justify-content-md-center">
-                    <div class="">                      
+                <br>
+            @elseif($setFacturacion->label == 'subtitulo')
+                <div class="container">
+                    {{-- <h5>CONOCE</h5> --}}
+                    <div class="container text-center justify-content-md-center">
+                        <p style="color: black; text-align: center">{!! $setFacturacion->subtitulo !!}</p>
+                    </div>
+                </div>
+            @elseif($setFacturacion->label == 'boton')
+                <div>
+                    {{-- <h5>CONOCE</h5> --}}
+                    <div class="container text-center justify-content-md-center">
+                        <div class="">
                             <a style="background: #003BAA; color: blanchedalmond" href="{{ $setFacturacion->subtitulo }}"
                                 class="btn_modal_wel mt-5">{{ $setFacturacion->titulo }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
     @endforeach
 @endsection
 
-@section('footer')
-    <div style="margin-top: 35px" data-aos="fade-up" class="footer-dark">
-        <footer>
-            <footer class="new_footer_area bg_color">
-                <div class="box">
-                    {{-- <div class="box-sm red"></div> --}}
-                    {{-- <div class="box-sm orange"></div> --}}
-                    <div class="box-sm blue "></div>
-                    {{-- <div class="box-sm green "></div> --}}
-                    <div class="box-sm blue "></div>
-                    {{-- <div class="box-sm purple"></div> --}}
-                    <div class="box-sm blue "></div>
-                    <div class="box-sm blue "></div>
-                    <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px;position: relative;"
-                        src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                    <div class="box-sm yellow "></div>
-                </div>
-                {{-- pie de pagina --}}
-                <div style="margin-top: -60px" class="footer-basic">
-                    <footer>
-                        <div class="col-md-12 py-0 text-center justify-content-md-center">
-                            <div class="mb-3 flex-center">
-                                <div class="estilo2">
-                                    <ul>
-                                        <li>
-                                            <a href="https://www.facebook.com/superplus24horas/" class=""
-                                                target="_blank">
-                                                <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fa fa-facebook fa-stack-1x"></span>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.instagram.com/superplus24hrs/" class=""
-                                                target="_blank">
-                                                <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fab fa-instagram fa-stack-1x"></span>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://vm.tiktok.com/ZMNA67fEu/" class="" target="_blank">
-                                                <span class="fa-stack fa-lg fa-2x">
-                                                    <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
-                                                    <div class="icono">
-                                                        <span class="fab fa-tiktok fa-stack-1x"></span>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                        </li>
+    @section('footer')
+        <div style="margin-top: 35px" data-aos="fade-up" class="footer-dark">
+            <footer>
+                <footer class="new_footer_area bg_color">
+                    <div class="box">
+                        {{-- <div class="box-sm red"></div> --}}
+                        {{-- <div class="box-sm orange"></div> --}}
+                        <div class="box-sm blue "></div>
+                        {{-- <div class="box-sm green "></div> --}}
+                        <div class="box-sm blue "></div>
+                        {{-- <div class="box-sm purple"></div> --}}
+                        <div class="box-sm blue "></div>
+                        <div class="box-sm blue "></div>
+                        <img style="margin-top: -30px; margin-left:-20px; margin-right: -20px;position: relative;"
+                            src="{{ asset('img/logop.png') }}" width="90px" height="55px" alt="">
+                        <div class="box-sm yellow "></div>
+                        <div class="box-sm yellow "></div>
+                        <div class="box-sm yellow "></div>
+                        <div class="box-sm yellow "></div>
+                    </div>
+                    {{-- pie de pagina --}}
+                    <div style="margin-top: -60px" class="footer-basic">
+                        <footer>
+                            <div class="col-md-12 py-0 text-center justify-content-md-center">
+                                <div class="mb-3 flex-center">
+                                    <div class="estilo2">
                                         <ul>
+                                            <li>
+                                                <a href="https://www.facebook.com/superplus24horas/" class=""
+                                                    target="_blank">
+                                                    <span class="fa-stack fa-lg fa-2x">
+                                                        <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                        <div class="icono">
+                                                            <span class="fa fa-facebook fa-stack-1x"></span>
+                                                        </div>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.instagram.com/superplus24hrs/" class=""
+                                                    target="_blank">
+                                                    <span class="fa-stack fa-lg fa-2x">
+                                                        <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                        <div class="icono">
+                                                            <span class="fab fa-instagram fa-stack-1x"></span>
+                                                        </div>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://vm.tiktok.com/ZMNA67fEu/" class="" target="_blank">
+                                                    <span class="fa-stack fa-lg fa-2x">
+                                                        <span class="fa fa-circle-thin fa-stack-2x prueba"></span>
+                                                        <div class="icono">
+                                                            <span class="fab fa-tiktok fa-stack-1x"></span>
+                                                        </div>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a href="/index">Inicio</a></li>
-                            <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
-                            <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>
-                            <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
-                            <li class="list-inline-item"><a href="#">Política de privacidad</a></li>
-                        </ul>
-                        <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
-                    </footer>
-                </div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="/index">Inicio</a></li>
+                                <li class="list-inline-item"><a href="/promociones">Promociones</a></li>
+                                <li class="list-inline-item"><a href="/empleo">Bolsa de trabajo</a></li>
+                                <li class="list-inline-item"><a href="/nosotros">Nosotros</a></li>
+                                <li class="list-inline-item"><a href="#">Política de privacidad</a></li>
+                            </ul>
+                            <p class="copyright">¡DALE UN PLUS A TU DIA!</p>
+                        </footer>
+                    </div>
 
-                <!-- Copyright -->
-                <div class="text-center p-3" style="background-color:#003baa; color: white">
-                    <strong> ©{{ now()->year }} </strong>
-                    <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
-                </div>
-                <!-- Copyright -->
+                    <!-- Copyright -->
+                    <div class="text-center p-3" style="background-color:#003baa; color: white">
+                        <strong> ©{{ now()->year }} </strong>
+                        <a class="text-white" href=""><strong>SUPERPLUS</strong>. Todos los derechos reservados.</a>
+                    </div>
+                    <!-- Copyright -->
 
+                </footer>
             </footer>
-        </footer>
-    </div>
-    {{-- <footer class="footer">
-   
-</footer> --}}
-    <script>
-        function countChars(obj) {
-            document.getElementById("charNum").innerHTML = obj.value.length + ' caracteres';
-        }
+        </div>
+        {{-- <footer class="footer">
 
-        // Mostrar preloader al hacer click en el botón de facturación
-        $(document).on('click', '.btn_modal_wel', function() {
-            if (typeof window.showPreloader === 'function') {
-                window.showPreloader('Cargando portal de facturación...');
+        </footer> --}}
+        <script>
+            function countChars(obj) {
+                document.getElementById("charNum").innerHTML = obj.value.length + ' caracteres';
             }
-        });
-    </script>
-@endsection
+
+            // Mostrar preloader al hacer click en el botón de facturación (Vanilla JS para máxima compatibilidad)
+            document.addEventListener('click', function (e) {
+                if (e.target && (e.target.classList.contains('btn_modal_wel') || e.target.closest('.btn_modal_wel'))) {
+                    if (typeof window.showBillingPreloader === 'function') {
+                        window.showBillingPreloader();
+                    }
+                }
+            });
+        </script>
+    @endsection
