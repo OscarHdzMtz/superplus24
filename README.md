@@ -18,7 +18,9 @@
 - Node.js & NPM
 - Servidor de Base de Datos (MySQL/MariaDB)
 
-## 🛠️ Instalación
+## 🛠️ Instalación en Servidor (DigitalOcean)
+
+Para desplegar el proyecto en un servidor Ubuntu con Apache:
 
 1. **Clonar el repositorio:**
    ```bash
@@ -26,30 +28,27 @@
    cd superplus24
    ```
 
-2. **Instalar dependencias de PHP:**
+2. **Instalar dependencias de PHP y Frontend:**
    ```bash
-   composer install
+   composer install --no-dev --optimize-autoloader
+   npm install && npm run build
    ```
 
-3. **Instalar y compilar dependencias de Frontend:**
+3. **Configurar el entorno:**
+   - Crear archivo `.env` y configurar base de datos.
+   - Generar llave: `php artisan key:generate`
+
+4. **Configurar Permisos (Crucial):**
    ```bash
-   npm install
-   npm run build
+   sudo chown -R www-data:www-data storage bootstrap/cache public/img/
+   sudo chmod -R 775 storage bootstrap/cache public/img/
    ```
 
-4. **Configurar el entorno:**
-   - Copia el archivo de ejemplo: `cp .env.example .env`
-   - Configura tus credenciales de base de datos en el archivo `.env`.
-   - Genera la llave de la aplicación: `php artisan key:generate`
-
-5. **Migraciones y Seeders:**
+5. **Optimización Inicial:**
    ```bash
-   php artisan migrate --seed
-   ```
-
-6. **Lanzar el servidor local:**
-   ```bash
-   php artisan serve
+   php artisan images:optimize
+   php artisan optimize
+   php artisan cache:clear
    ```
 
 ## 🔐 Seguridad

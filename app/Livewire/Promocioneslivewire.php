@@ -8,11 +8,11 @@ use App\Models\Categorias;
 use Carbon\Carbon;
 
 class Promocioneslivewire extends Component
-{    
+{
     public $search = '';
     public $title = '';
     public $categoriaBuscar = '';
-    /* protected $queryString = ['search']; */    
+    /* protected $queryString = ['search']; */
     public function render()
     {
         $actualInicio = Carbon::today();
@@ -21,13 +21,13 @@ class Promocioneslivewire extends Component
         $prueba = $this->categoriaBuscar;
         $searchprueba = $this->search;
         $consulataBDCategorias = Publicoferts::where('fechaInicio', '<=', $actualInicio)
-                                ->where('fechaFin', '>', $actualFin)
-                                ->join('categorias', 'publicoferts.categoria_id', '=', 'categorias.id')
-                                ->select('categorias.id', 'categorias.name')->get();                                
+            ->where('fechaFin', '>', $actualFin)
+            ->join('categorias', 'publicoferts.categoria_id', '=', 'categorias.id')
+            ->select('categorias.id', 'categorias.name')->get();
         $arrayCategoria = $consulataBDCategorias->toArray();
 
         //ELIMINAMOS LOS ID_CATEGORIA REPETIDOS en el array        
-        $categorias = array_unique($arrayCategoria, SORT_REGULAR);           
+        $categorias = array_unique($arrayCategoria, SORT_REGULAR);
         $cat = $this->categoriaBuscar;
         $isAllCategories = empty($cat) || $cat == "FILTRE POR DEPARTAMENTO" || $cat == "TODOS";
 

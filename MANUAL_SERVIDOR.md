@@ -1,10 +1,38 @@
 # 🚀 Manual de Configuración del Servidor - SuperPlus24
 
-Este documento detalla los pasos necesarios para asegurar que la optimización de imágenes (WebP) y las mejoras de rendimiento funcionen correctamente en tu servidor de DigitalOcean.
+Este documento detalla los pasos necesarios para instalar el proyecto desde cero y asegurar que la optimización de imágenes (WebP) y las mejoras de rendimiento funcionen correctamente en tu servidor de DigitalOcean.
 
 ---
 
-## 🛠 1. Configuración del Servidor (PHP)
+## 🚀 1. Instalación Inicial (Git y Dependencias)
+
+Ejecuta estos comandos para bajar el código y preparar el entorno:
+
+```bash
+# Clonar y entrar al proyecto
+git clone https://github.com/OscarHdzMtz/superplus24.git
+cd superplus24
+
+# Instalar dependencias
+composer install --no-dev --optimize-autoloader
+npm install && npm run build
+```
+
+---
+
+## 🔐 2. Configuración de Permisos (Escritura de Imágenes)
+
+Es vital que el servidor web pueda escribir en las carpetas de imágenes y caché:
+
+```bash
+# Permisos para storage, cache y subida de imágenes
+sudo chown -R www-data:www-data storage bootstrap/cache public/img/
+sudo chmod -R 775 storage bootstrap/cache public/img/
+```
+
+---
+
+## 🛠 3. Configuración del Servidor (PHP)
 
 El servidor debe tener instalada la extensión **GD** con soporte para WebP.
 
