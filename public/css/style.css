@@ -307,6 +307,13 @@ nav ul li a:hover{
     z-index: 100;
     left: 0;
 }
+
+/* Hide floating social icons on mobile to avoid overlapping content */
+@media (max-width: 768px) {
+    .red {
+        display: none !important;
+    }
+}
 #facebook a,
 #instagram a,
 #twiter a,
@@ -4153,10 +4160,9 @@ background-color: #21c87a;
 }
 .promo-img-card {
   width: 100% !important;
-  height: auto !important;
-  min-height: 200px;
-  object-fit: contain !important;
-  background: #f8f9fa;
+  aspect-ratio: 1 / 1;
+  object-fit: cover !important;
+  background: transparent;
   display: block;
   border-radius: 8px;
   transition: transform 0.3s ease;

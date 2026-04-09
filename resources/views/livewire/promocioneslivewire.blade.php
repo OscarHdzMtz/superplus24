@@ -14,7 +14,7 @@
                     <i class="fas fa-th-large promo-icon"></i>
                     <select wire:model.live='categoriaBuscar'
                         class="form-control form-control-lg promo-search-input promo-select-input">
-                        <option value="">{{ $categoriaBuscar ? 'TODOS' : 'FILTRE POR DEPARTAMENTO' }}</option>
+                        <option value="">{{ $categoriaBuscar ? 'TODOS' : 'BUSCAR POR CATEGORÍA' }}</option>
                         @foreach ($categorias as $itemCategoria)
                             <option value="{{ $itemCategoria['id'] }}"
                                 {{ $categoriaBuscar == $itemCategoria['id'] ? 'selected' : '' }}>
