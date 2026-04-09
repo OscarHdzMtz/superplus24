@@ -31,21 +31,18 @@
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
     @livewireStyles
     
-    <!-- Scripts Core -->
+    <!-- Core & Hybrid Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.8.0/dist/turbo.es2017-umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/slick.min.js') }}" defer></script>
     <script src="{{ asset('js/aos.js') }}" defer></script>
     <script src="{{ asset('js/swiper-bundle.min.js') }}" defer></script>
-    <script src="{{ asset('js/typed.js') }}" defer></script>
     <script src="{{ asset('js/prueba.js') }}" defer></script>
     <script src="{{ asset('js/hgnka.js') }}" defer></script>
     <script src="{{ asset('js/provee.js') }}" defer></script>
     <script src="{{ asset('js/security.js') }}" defer></script>
-
-    <!-- Turbo Drive -->
-    <script src="{{ asset('js/turbo.min.js') }}"></script>
 </head>
 
 <body>
@@ -73,55 +70,51 @@
 
     <!--SCRIPTS DE INICIALIZACION-->
     <script>
-        document.addEventListener('turbo:load', function() {
-            // AOS
+        function initializeComponents() {
+            // 1. AOS
             if (typeof AOS !== 'undefined') {
                 AOS.init({
                     easing: 'ease-in-out-sine',
-                    duration: 1000
+                    duration: 1000,
+                    once: true
                 });
+                setTimeout(function() { AOS.refresh(); }, 200);
             }
 
-            // Swiper
-            if (document.querySelector('.clients-slider') && typeof Swiper !== 'undefined') {
-                new Swiper('.clients-slider', {
-                    speed: 400,
-                    loop: true,
-                    autoplay: {
-                        delay: 5000,
-                        disableOnInteraction: false
-                    },
-                    slidesPerView: 'auto',
-                    pagination: {
-                        el: '.swiper-pagination',
-                        type: 'bullets',
-                        clickable: true
-                    },
-                    breakpoints: {
-                        320: { slidesPerView: 2, spaceBetween: 40 },
-                        480: { slidesPerView: 3, spaceBetween: 60 },
-                        640: { slidesPerView: 4, spaceBetween: 80 },
-                        992: { slidesPerView: 6, spaceBetween: 120 }
-                    }
-                });
+            // 2. Carousels
+            if (typeof $ !== 'undefined' && $('.carousel').length > 0) {
+                $('.carousel').carousel({ interval: 5000, pause: 'hover' });
             }
 
-            // Typed
+            // 3. Typed.js
             if (document.querySelector('.type') && typeof Typed !== 'undefined') {
                 new Typed('.type', {
                     strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
-                        '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
-                    ],
-                    typeSpeed: 60,
-                    backSpeed: 60,
-                    loop: true
+                              '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'],
+                    typeSpeed: 60, backSpeed: 60, loop: true
                 });
             }
 
-            // Modales
-            $('#cookieModal').modal('show');
-            $("#modalPublicidadEmergente").modal("show");
-        });
+            // 4. Modals
+            if (typeof $ !== 'undefined') {
+                $('#cookieModal').modal('show');
+                $('#modalPublicidadEmergente').modal('show');
+            }
+
+            // 5. Swiper (Proveedores)
+            if (document.querySelector('.clients-slider') && typeof Swiper !== 'undefined') {
+                new Swiper('.clients-slider', {
+                    speed: 400, loop: true, autoplay: { delay: 5000, disableOnInteraction: false },
+                    slidesPerView: 'auto', pagination: { el: '.swiper-pagination', clickable: true },
+                    breakpoints: { 320: { slidesPerView: 2, spaceBetween: 40 }, 992: { slidesPerView: 6, spaceBetween: 120 } }
+                });
+            }
+        }
+
+        // Universal Loader: Funciona con o sin Turbo Drive
+        document.addEventListener('DOMContentLoaded', initializeComponents);
+        document.addEventListener('turbo:load', initializeComponents);
+        document.addEventListener('turbo:render', function() { if (typeof AOS !== 'undefined') AOS.refresh(); });
     </script>
     @livewireScripts
 </body>

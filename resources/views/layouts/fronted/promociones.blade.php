@@ -26,13 +26,14 @@
     <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
     @livewireStyles
     
-    <!-- Scripts Core -->
+    <!-- Core & Hybrid Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.8.0/dist/turbo.es2017-umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}" defer></script>
     <script src="{{ asset('js/swiper-bundle.min.js') }}" defer></script>
-    <script src="{{ asset('js/typed.js') }}" defer></script>
     <script src="{{ asset('js/prueba.js') }}" defer></script>
 </head>
 
@@ -52,54 +53,42 @@
     @yield('footer')
 
     <!--SCRIPTS DE INICIALIZACION-->
-    <script src="{{ asset('js/responsive.js') }}" defer></script>
-    <script src="{{ asset('js/security.js') }}" defer></script>
-
     <script>
-        document.addEventListener('turbo:load', function() {
+        function initializeComponents() {
+            // 1. AOS
             if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    easing: 'ease-in-out-sine',
-                    duration: 1000
-                });
+                AOS.init({ easing: 'ease-in-out-sine', duration: 1000, once: true });
+                setTimeout(function() { AOS.refresh(); }, 200);
             }
 
+            // 2. Swiper (Promociones)
             if (document.querySelector('.swiper-container') && typeof Swiper !== 'undefined') {
                 new Swiper('.swiper-container', {
-                    effect: 'coverflow',
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: 'auto',
-                    coverflowEffect: {
-                        rotate: 20,
-                        stretch: 0,
-                        depth: 200,
-                        modifier: 1,
-                        slideShadows: true,
-                    },
-                    loop: true,
-                    autoplay: {
-                        delay: 3500,
-                        disableOnInteraction: false,
-                    },
+                    effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto',
+                    coverflowEffect: { rotate: 20, stretch: 0, depth: 200, modifier: 1, slideShadows: true },
+                    loop: true, autoplay: { delay: 3500, disableOnInteraction: false }
                 });
             }
 
+            // 3. Typed.js
             if (document.querySelector('.type') && typeof Typed !== 'undefined') {
                 new Typed('.type', {
                     strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
-                        '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'
-                    ],
-                    typeSpeed: 60,
-                    backSpeed: 60,
-                    loop: true
+                              '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'],
+                    typeSpeed: 60, backSpeed: 60, loop: true
                 });
             }
 
-            $(function() {
-                $("#modalPublicidadEmergente").modal("show");
-            });
-        });
+            // 4. Modals
+            if (typeof $ !== 'undefined') {
+                $('#modalPublicidadEmergente').modal('show');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeComponents);
+        document.addEventListener('turbo:load', initializeComponents);
+        document.addEventListener('turbo:render', function() { if (typeof AOS !== 'undefined') AOS.refresh(); });
+    </script>
 
         // Click Abre Modal (fuera de turbo:load para usar delegación de eventos)
         $(document).on('click', '.clic_abre_modal', function(e) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -36,38 +36,46 @@
     @yield('footer')
 
     <!--SCRIPTS-->
-    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/responsive.js') }}"></script>
-    <script src="{{ asset('js/security.js') }}"></script>
-    <script src="{{ asset('js/typed.js') }}"></script>
-    <script src="{{ asset('js/prueba.js') }}"></script>
-    <script src="{{ asset('js/aos.js') }}"></script>
+    <!-- Core & Hybrid Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.8.0/dist/turbo.es2017-umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
+    <!--SCRIPTS DE INICIALIZACION-->
     <script>
-        if (document.querySelector('.type')) {
-            var typed = new Typed('.type', {
-                strings: ['<span><i class="fas fa-check"></i></span> Â¡DALE UN PLUS A TU DIA!',
-                    '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS',
-                    '<span><i class="fas fa-motorcycle"></i></span> SERVICIO A DOMICILIO'
-                ],
-                typeSpeed: 60,
-                backSpeed: 60,
-                loop: true
-            });
+        function initializeComponents() {
+            // 1. AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ easing: 'ease-in-out-sine', duration: 1000, once: true });
+                setTimeout(function() { AOS.refresh(); }, 200);
+            }
+
+            // 2. Carousels
+            if (typeof $ !== 'undefined' && $('.carousel').length > 0) {
+                $('.carousel').carousel({ interval: 5000, pause: 'hover' });
+            }
+
+            // 3. Typed.js
+            if (document.querySelector('.type') && typeof Typed !== 'undefined') {
+                new Typed('.type', {
+                    strings: ['<span><i class="fas fa-check"></i></span> ¡DALE UN PLUS A TU DIA!',
+                              '<span><i class="fas fa-building"></i></span> SERVICIO LAS 24 HORAS'],
+                    typeSpeed: 60, backSpeed: 60, loop: true
+                });
+            }
+
+            // 4. Modals
+            if (typeof $ !== 'undefined') {
+                $('#modalPublicidadEmergente').modal('show');
+            }
         }
-    </script>
-    <script>
-        AOS.init({
-            easing: 'ease-in-out-sine',
-            duration: 1000
-        });
-    </script>
-    <script>
-        $(function() {
-            $("#modalPublicidadEmergente").modal("show");
-        });
+
+        document.addEventListener('DOMContentLoaded', initializeComponents);
+        document.addEventListener('turbo:load', initializeComponents);
+        document.addEventListener('turbo:render', function() { if (typeof AOS !== 'undefined') AOS.refresh(); });
     </script>
 </body>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -39,14 +39,15 @@
     @yield('footer')
 
     <!--SCRIPTS-->
+    <!-- Core & Hybrid Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.8.0/dist/turbo.es2017-umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/responsive.js') }}"></script>
-    <script src="{{ asset('js/security.js') }}"></script>
-    <script src="{{ asset('js/typed.js') }}"></script>
-    <script src="{{ asset('js/html2canvas.js') }}"></script>
-    <script src="{{ asset('js/prueba.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}" defer></script>
+    <script src="{{ asset('js/prueba.js') }}" defer></script>
+    <script src="{{ asset('js/security.js') }}" defer></script>
     <script src="{{ asset('js/aos.js') }}"></script>
 
     <script>
