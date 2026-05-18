@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="imagenes" href="{{ asset('img/estaticos/logopalomita.png') }}">
     <title>Contacto | SuperPlus</title>
-    <link rel="canonical" href="https://superplus24horas.com/contacto">
+    <link rel="canonical" href="https://superplus24horas.com/contact">
     <meta property="og:locale" content="es_MX">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Contacto | SuperPlus">
-    <meta property="og:url" content="https://superplus24horas.com/contacto">
+    <meta property="og:url" content="https://superplus24horas.com/contact">
     <meta property="og:site_name" content="SuperPlus">
 
     <!--CSS-->
